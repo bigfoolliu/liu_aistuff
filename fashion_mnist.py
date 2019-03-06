@@ -16,6 +16,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# 可以直接从tensorflow访问该数据集(一般的需要自己下载到本地)
-fashion_mnist = keras.datasets.fashion_mnist
-(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()  # 加载查看该数据集的基本信息
+# 直接从tensorflow访问该数据集(一般的需要自己下载到本地)
+#fashion_mnist = keras.datasets.fashion_mnist
+#(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()  # 加载查看该数据集的基本信息
+
+
+# 下载到本地进行访问(借助官方提供的一个函数)
+from utils import mnist_reader
+x_train, y_train = mnist_reader.load_mnist("dataset", kind="train")
+x_test, y_test = mnist_reader.load_mnist("dataset", kind="t10k")
+
+print("加载数据集完成.")
