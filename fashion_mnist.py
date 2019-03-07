@@ -74,6 +74,7 @@ model = keras.Sequential([
     keras.layers.Dense(10, activation=tf.nn.softmax)  # 第二个Ｄense序列是有10个神经元的softmax层，该层返回一个具有10个概率得分的数组(表示为10个类别中某一个的概率)，得分总和为1
     ])
 print("模型构建完成．")
+print("model build:{}".format(model) )
 
 
 # 2. 编译模型
@@ -84,8 +85,24 @@ model.compile(
         )
 
 print("模型编译完成．")
-
+print("model compiled:{}".format(model))
 
 # 3. 训练模型
-model.fit(x_train, y_train, epochs=5)  # fit方法使模型和数据'拟合'
+train_ret = model.fit(x_train, y_train, epochs=5)  # fit方法使模型和数据'拟合'
 print("模型训练完成.")
+print("model trained:{}\ntype:{}".format(train_ret, type(train_ret)))  # 结果为一个History对象
+
+
+# 4. 评估准确率
+# 结果测试的准确率小于训练准确率，表明出现过拟合
+test_loss, test_accuracy = model.evaluate(x_test, y_test)
+print("评估准确率完成.")
+print("test_loss:{}\ntest_accuracy:{}".format(test_loss, test_accuracy))
+
+
+# 5. 做出预测
+predictions = model.predict(x_test)
+print("predict the image1:", predictions[0])
+print("max possibility:", class_names[np.argmax(predictions[0])])
+
+
