@@ -21,6 +21,8 @@ x = tf.constant([[0.7, 0.9]])
 a = tf.matmul(x, w1)
 y = tf.matmul(a, w2)
 
+print("[INFO]shape w1:{} w2:{} x:{} a:{} y:{}".format(w1.shape, w2.shape, x.shape, a.shape, y.shape))
+
 # 定义会话运算
 sess = tf.Session()
 

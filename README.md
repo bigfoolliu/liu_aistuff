@@ -49,4 +49,8 @@ Kye words:
 3. 通过训练数据来调整神经网络中的参数
 4. 使用训练好的神经网络来进行预测工作
 
+2019/3/9
 
+batc_size: 每批数据量的大小
+iteration: 1个iteration即迭代一次，即用batch_size个样本训练一次
+epoch: 1个epoch指用训练集中的全部样本训练一次
