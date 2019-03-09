@@ -54,3 +54,5 @@ Kye words:
 batc_size: 每批数据量的大小
 iteration: 1个iteration即迭代一次，即用batch_size个样本训练一次
 epoch: 1个epoch指用训练集中的全部样本训练一次
+
+- .gitignore cnn_facial_recognition.py
