@@ -1,6 +1,3 @@
-# file I add
-cnn_facial_recognition.py
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -11,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+dataset/
 build/
 develop-eggs/
 dist/
@@ -102,6 +100,6 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
+/dataset
 # mypy
 .mypy_cache/

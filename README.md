@@ -55,4 +55,16 @@ batc_size: 每批数据量的大小
 iteration: 1个iteration即迭代一次，即用batch_size个样本训练一次
 epoch: 1个epoch指用训练集中的全部样本训练一次
 
-- .gitignore cnn_facial_recognition.py
+- add .gitignore cnn_facial_recognition.py
+
+2019/3/10
+
+Tensorflow:
+
+- 使用图(graph)来表示计算任务
+- 在被称之为会话(session)和上下文(context)中执行图
+- 使用tensor来表示数据
+- 通过变量(Variable)维护状态
+- 使用feed和feth可以为任意的操作(arbitrary operation)赋值或者从中获取数据
+
+
