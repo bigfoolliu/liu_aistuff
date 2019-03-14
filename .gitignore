@@ -1,3 +1,9 @@
+# What I add
+dataset/
+Training/
+PublicTest/
+PrivateTest/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -8,7 +14,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-dataset/
 build/
 develop-eggs/
 dist/

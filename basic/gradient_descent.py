@@ -33,7 +33,7 @@ y = np.array([
     11, 13, 13, 16, 17, 18, 17, 19, 21
     ]).reshape(m, 1)
 
-alpha = 0.01
+alpha = 0.01  # 学习率
 
 print("m: {}\nalpha: {}\nX0: {}\nX1: {}\nX: {}\ny: {}".format(m, alpha, X0, X1, X, y))
 
