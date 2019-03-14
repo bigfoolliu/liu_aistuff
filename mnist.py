@@ -78,13 +78,13 @@ sess.run(init)
 train_loops = 1000
 for i in range(train_loops):
     print("[INFO]{}:begin test {}.".format(datetime.datetime.now().isoformat(), i))
-    batch_xs, batch_ys = mnist.train.next_batch(100)
+    batch_xs, batch_ys = mnist.train.next_batch(100)  # 表示一次抽取100个数据点进行训练
     sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 
 
 # 评估模型
 # tf.argmax(y, 1)返回的是模型对于任一预测到的标签值，tf.argmax(y_, 1)返回的是正确的标签
-correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))  # 返回一组布尔值
+correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))  # 返回一组布尔值,即预测值和实际值相同返回1,不同返回0
 
 # 将布尔值转换为浮点数，然后取平均值[True, False, True, False]变为[1, 0, 1, 0],然后取平均值0.5
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))

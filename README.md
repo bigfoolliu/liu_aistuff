@@ -51,7 +51,7 @@ Kye words:
 
 2019/3/9
 
-batc_size: 每批数据量的大小
+batch_size: 每批数据量的大小
 iteration: 1个iteration即迭代一次，即用batch_size个样本训练一次
 epoch: 1个epoch指用训练集中的全部样本训练一次
 
@@ -67,4 +67,8 @@ Tensorflow:
 - 通过变量(Variable)维护状态
 - 使用feed和feth可以为任意的操作(arbitrary operation)赋值或者从中获取数据
 
+2019/3/14
 
+- stride size(步长)
+- padding size(边界)
+- patch(切片)
