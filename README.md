@@ -72,3 +72,7 @@ Tensorflow:
 - stride size(步长)
 - padding size(边界)
 - patch(切片)
+
+2019/3/15
+- add csv_to_image
+

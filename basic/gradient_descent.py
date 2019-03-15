@@ -26,16 +26,17 @@ import matplotlib.pyplot as plt
 m = 20
 X0 = np.ones((m, 1))
 X1 = np.arange(1, m + 1).reshape(m, 1)
-X = np.hstack((X0, X1))
 
+# x
+X = np.hstack((X0, X1))  
+# y
 y = np.array([
     3, 4, 5, 5, 2, 4, 7, 8, 11, 8, 12,
     11, 13, 13, 16, 17, 18, 17, 19, 21
     ]).reshape(m, 1)
 
 alpha = 0.01  # 学习率
-
-print("m: {}\nalpha: {}\nX0: {}\nX1: {}\nX: {}\ny: {}".format(m, alpha, X0, X1, X, y))
+# print("m: {}\nalpha: {}\nX0: {}\nX1: {}\nX: {}\ny: {}".format(m, alpha, X0, X1, X, y))
 
 
 def error_func(theta, X, y):
@@ -50,21 +51,27 @@ def gradient_func(theta, X, y):
     return (1./m) * np.dot(np.transpose(X), diff)
 
 
-def gradient_descent(X, y, alpha):
-    """应用梯度下降"""
+def gradient_descent(X, y, alpha, error=1e-5):
+    """
+    应用梯度下降
+    :param error: 误差
+    """
     theta = np.array([1, 1]).reshape(2, 1)
     gradient = gradient_func(theta, X, y)
-    while not np.all(np.absolute(gradient) <= 1e-5):
+    # 当误差在1e-5之内结束梯度下降过程
+    while not np.all(np.absolute(gradient) <= error):
         theta = theta - alpha * gradient
         gradient = gradient_func(theta, X, y)
     return theta
 
 
-optimal = gradient_descent(X, y, alpha)
+# 计算
+optimal = gradient_descent(X, y, alpha, error=1000)
 print("[INFO]optimal: {}".format(optimal))
 print("[INFO]error func: {}".format(error_func(optimal, X, y)[0, 0]))
 
 
+# 图形化展示
 fig = plt.figure()
 plt.scatter(X1, y)
 

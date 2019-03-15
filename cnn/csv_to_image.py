@@ -26,6 +26,7 @@ import scipy.misc as sm
 import datetime
 
 
+# csv数据集位置
 FILE_PATH = "../dataset/fer2013/fer2013.csv"
 
 emotions = {
@@ -52,18 +53,20 @@ def create_folder(dir):
 
 def csv_to_img(file):
     """将fer2013的csv文件转换为图片"""
+    # 读取文件
     face_data = pd.read_csv(file)
-    img_count = 0
 
     # 遍历csv文件内容并将图片数据分类保存
     for index in range(len(face_data)):
         print("[INFO]{}:Begin to save data {}".format(show_time(), index))
+
+        # 将csv数据列分类
         emotion_data = face_data.loc[index][0]
         img_data = face_data.loc[index][1]
         usage_data = face_data.loc[index][2]
 
         # 将图片转换为48*48格式
-        data_array = list(map(float, img_data.split()))
+        data_array = list(map(float, img_data.split()))  # 将数据转换为float然后转换为list
         data_array = np.array(data_array)
         img = data_array.reshape(48, 48)
 
@@ -82,10 +85,7 @@ def csv_to_img(file):
         img_name = os.path.join(img_path, str(index) + ".jpg")
 
         # 转换并存储
-        sm.toimage(img).save(img_name)
-        img_count = index + 1
-
-    print("[INFO]共有{}张照片".format(img_count))
+        sm.toimage(img).save(img_name)  # 将nparray数组转换为图片并保存
 
 
 csv_to_img(FILE_PATH)
