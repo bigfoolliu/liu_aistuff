@@ -3,6 +3,10 @@
 
 
 # TODO: not finished.
+"""
+fer2013.csv文件内容
+emotions,pixels,Usage
+"""
 
 
 import string, os, sys
@@ -12,37 +16,45 @@ import scipy.io
 import random
 import tensorflow as tf
 import pandas as pd
+import datetime
 
 
-dir_name = 'dataset/fer2013'
-print('----------- no sub dir')
-print('The folder path: ', dir_name)
-files = os.listdir(dir_name)
-for f in files:
-    print(dir_name + os.sep + f)
- 
-file_path = dir_name + os.sep + files[0]
-print(file_path)
-data = pd.read_csv(file_path, dtype='a')
-label = np.array(data['emotion'])
-img_data = np.array(data['pixels'])
-N_sample = label.size
-print(N_sample)
-# print label.size
-Face_data = np.zeros((N_sample, 48 * 48))
-Face_label = np.zeros((N_sample, 7), dtype=int)
-temp = np.zeros((7), dtype= int)
-for i in range(N_sample):
-    x = img_data[i]
-    x = np.fromstring(x, dtype=float, sep=' ')
-    x_max = x.max()
-    x = x / (x_max + 0.0001)
- 
-    Face_data[i] = x
-    Face_label[i, int(label[i])] = 1
-    if i <10:
-        print('i: %d \t '%(i), Face_label[i])
- 
+# 文件位置
+FILE_PATH = "../dataset/fer2013/fer2013.csv"
+
+
+def show_time():
+    """显示当前时间"""
+    return datetime.datetime.now().isoformat()
+
+def read_file(file_path):
+    """读取csv文件"""
+    print("[INFO]{}:Begin to read csv file: {}".format(show_time(), file_path))
+    data = pd.read_csv(file_path, dtype='a')
+    label = np.array(data['emotion'])
+    img_data = np.array(data['pixels'])
+    N_sample = label.size
+    print("[INFO]{}:The size of the sample: {}".format(show_time(), N_sample))
+
+    Face_data = np.zeros((N_sample, 48 * 48))
+    Face_label = np.zeros((N_sample, 7), dtype=int)
+    temp = np.zeros((7), dtype= int)
+    # 遍历读取样本
+    for i in range(N_sample):
+        x = img_data[i]
+        x = np.fromstring(x, dtype=float, sep=" ")
+        x_max = x.max()
+        x = x / (x_max + 0.0001)
+
+        Face_data[i] = x
+        Face_label[i, int(label[i])] = 1
+        if i <10:
+            print("[INFO]{}:i {} {}\t".format(show_time(), i, Face_label[i]))
+
+
+read_file(FILE_PATH)
+
+
 train_num = 30000
 test_num = 5000
 train_x = Face_data[0:train_num, :]
@@ -50,6 +62,8 @@ train_y = Face_label[0:train_num, :]
 test_x = Face_data[train_num: train_num + test_num, :]
 test_y = Face_label[train_num: train_num + test_num, :]
 print("All is well")
+
+
 batch_size = 50
 train_batch_num = train_num / batch_size
 test_batch_num = test_num / batch_size
