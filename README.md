@@ -76,3 +76,6 @@ Tensorflow:
 2019/3/15
 - add csv_to_image
 
+2019/3/19
+- add face_recognition demos.
+
