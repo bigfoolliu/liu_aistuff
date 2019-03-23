@@ -34,12 +34,16 @@ def make_up():
         pil_image = Image.fromarray(IMAGE_TONG)
         d = ImageDraw.Draw(pil_image, "RGBA")
 
-        # 眉毛
+        # 眉毛加粗
         d.polygon(face_landmarks["left_eyebrow"], fill=(68, 54, 39, 128))
         d.polygon(face_landmarks["right_eyebrow"], fill=(68, 54, 39, 128))
         d.line(face_landmarks["left_eyebrow"], fill=(68, 54, 39, 150), width=5)
         d.line(face_landmarks["right_eyebrow"], fill=(68, 54, 39, 150), width=5)
 
+        # 嘴唇
+        d.polygon(face_landmarks["top_lip"], fill=(150, 0, 0, 128))
+        d.polygon(face_landmarks["bottom_lip"], fill=(150, 0, 0, 128))
+        d.line(face_landmarks["top_lip"], fill=(150, 0, 0, 64), width=8)
         pil_image.show()
 
 
