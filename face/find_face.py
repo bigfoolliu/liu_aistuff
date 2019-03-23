@@ -57,5 +57,20 @@ def make_up():
         pil_image.show()
 
 
-make_up()
+def recognize_face(known_image_path, unknown_image_path):
+    """3.识别图片中的人是谁"""
+    known_image = face_r.load_image_file(known_image_path)
+    unknown_image = face_r.load_image_file(unknown_image_path)
+
+    tongliya_encoding = face_r.face_encodings(known_image)[0]
+    unknown_encoding = face_r.face_encodings(unknown_image)[0]
+
+    ret = face_r.compare_faces([tongliya_encoding], unknown_encoding)
+    return ret
+
+
+# make_up()
+
+ret = recognize_face("./known_images/tongliya.jpeg", "./unknown_images/tong1.jpeg")
+print("[INFO]Recognize image tong1.jpeg, is tongliya, result: {}".format(ret))
 
