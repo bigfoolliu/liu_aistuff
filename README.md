@@ -79,3 +79,6 @@ Tensorflow:
 2019/3/19
 - add face_recognition demos.
 
+2019/3/24
+- add live video from webcam to detect faces
+
