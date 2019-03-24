@@ -7,23 +7,55 @@
 """
 import face_recognition as face_r
 import cv2
+from PIL import Image, ImageFont, ImageDraw
+import numpy as np
+import time
+import os
 
 
-SAMPLE_IMAGE = "./known_images/tongliya.jpeg"
-print("[INFO]Use file {}".format(SAMPLE_IMAGE))
+FILE_PATH = "./known_images"
+name_list = []
+face_encoding_list = []
+
+
+def get_known_images(file_path):
+    """返回文件夹中的所有图片的名称列表"""
+    if file_path:
+        for image_name in os.listdir(file_path):
+            print(image_name, type(image_name))
+            name, extension = os.path.splitext(image_name)
+            image = face_r.load_image_file(image_name)
+            face_encoding = face_r.face_encodings(image)[0]
+            global name_list, face_encoding_list
+            name_list.append(name)
+            face_encoding_list.append(face_encoding)
+    print("name_list:", name_list)
+    print("face_encoding_list:", face_encoding_list)
+    return
+
+
+get_known_images(FILE_PATH)
 
 # 使用摄像头(注意虚拟机的话需要打开摄像头设备)
 video_capture = cv2.VideoCapture(0)
 print("[INFO]video_capture: {}".format(video_capture))
 
-# 加载一张模板图片并辨别(可加载多张)
-tongliya_image = face_r.load_image_file(SAMPLE_IMAGE)
-tongliya_face_encoding = face_r.face_encodings(tongliya_image)[0]
-print("[INFO]tonyliya_image: {},tongliya_face_encoding: {}".format(tongliya_image, tongliya_face_encoding))
 
-# 创建已知图片面部的数组以及名字
-known_face_encodings = [tongliya_face_encoding]
-known_face_names = ["tongliya"]
+def load_image(file_path):
+    """加载一张模板图片并辨别(可加载多张)"""
+    image_list = []
+    face_encoding_list = []
+    if file_path:
+        for image_name in os.listdir(file_path):
+            image = face_r.load_image_file(image_name)
+            face_encoding = face_r.face_encodings(image)[0]
+            image_list.append(image)
+            face_encoding_list.append(face_encoding)
+    return face_encoding_list
+
+
+face_encoding_list = load_image(FILE_PATH)
+print("[INFO]face_encoding_list: {}".format(face_encoding_list))
 
 
 # 初始化相关变量
@@ -64,24 +96,31 @@ while True:
 
     # 展示结果
     for (top, right, bottom, left), name in zip(face_locations, face_names):
-        top += 4
-        right += 4
-        bottom += 4
-        left += 4
+        top *= 4
+        right *= 4
+        bottom *= 4
+        left *= 4
 
         # 在发现的面部画个方框
         cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
         # 放置一个面部的名字
-        cv2.rectangle(frame, (left, bottom-35), (right, bottom), (0, 0, 255), cv2.FILLED)
-        font = cv2.FONT_HERSHEY_DUPLEX
-        cv2.putText(frame, name, (left+6, bottom-6), font, 1.0, (255, 255, 255), 1)
+        # cv2.rectangle(frame, (left, bottom-100), (right, bottom), (0, 0, 255), 2)
+        # 为了显示cv2能显示中文，将frame(cv2的编码格式)转换为pillow格式，加上汉字，再转换为cv2格式
+        font = ImageFont.truetype("./fonts/SimHei.ttf", 20, encoding="utf-8")
+        pil_img = Image.fromarray(frame)
+        draw = ImageDraw.Draw(pil_img)
+        draw.text((left+6, bottom-25), name, font=font, fill=(0, 255, 0, 0))
+        frame = np.array(pil_img)
+        cv2.putText(frame, "", (left+6, bottom-25), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 1)
     # 展示图片结果
     cv2.imshow("Video", frame)
 
     # 按q键来退出
     if cv2.waitKey(1) & 0xff == ord("q"):
         break
+
+    time.sleep(0.1)
 
 # 释放摄像头
 video_capture.release()
