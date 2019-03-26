@@ -47,4 +47,27 @@ def upload_image():
 
 def detect_faces_in_image(file_stream):
     """检测在图片中的人脸"""
-    pass
+    known_face_encodings = []  # TODO: 需要添加具体数据
+    img = face_recognition.load_image_file(file_stream)
+    unknown_face_encodings = face_recogniton.face_encodings(img)
+
+    face_found = False
+    is_obama = False
+
+    if len(unknown_face_encodings) > 0:
+        face_found = True
+        match_results = face_recognition.compare_faces([known_face_encodings], unknown_face_encodings)
+        if match_results[0]:
+            is_obama = True
+
+    result = {
+            "face_found_in_image": face_found,
+            "is_picture_of_obama": is_obama
+            }
+
+    return jsonify(result)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5001, debug=True)
+
