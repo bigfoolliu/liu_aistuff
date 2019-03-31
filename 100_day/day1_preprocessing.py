@@ -3,7 +3,7 @@
 
 
 """
-数据预处理
+基本数据处理
 """
 import pandas as pd
 import numpy as np
@@ -31,7 +31,7 @@ print("[INFO]X: {}\nY: {}\n".format(X, Y))
 # 处理丢失的数据
 imputer = SimpleImputer(missing_values=np.nan, strategy="mean")  # 新
 # imputer = Imputer(missing_values="NaN", strategy="mean", axis=0)  # 旧
-imputer = imputer.fit(X[:, 1:3])
+imputer = imputer.fit(X[:, 1:3])  # 将X[:, 1:3]所有缺失值替换
 X[:, 1:3] = imputer.transform(X[:, 1:3])
 
 print("[INFO]After preprocessing:")
@@ -55,7 +55,7 @@ print("[INFO]X: {}\nY: {}\n".format(X, Y))
 # step4: 将数据分割为训练数据和测试数据
 X_train, X_test, Y_train, Y_test = train_test_split(
     X, Y, test_size=0.2, random_state=0
-    )
+    )  # test_size参数表明将所有数据的20%作为测试数据
 
 
 # step5: 特征提取

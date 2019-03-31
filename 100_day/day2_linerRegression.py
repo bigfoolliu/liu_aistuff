@@ -3,7 +3,7 @@
 
 
 """
-简单的线性回归实例
+简单的线性回归实例(一元)
 """
 import numpy as np
 import pandas as pd
