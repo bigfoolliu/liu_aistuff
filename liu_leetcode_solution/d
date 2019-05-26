@@ -1,0 +1,59 @@
+[33mcommit c16e735ab8eeb40a8b06251f4f211b7c5e3764ca[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Mon Mar 4 00:48:23 2019 +0800
+
+    add 10.py part1
+
+[33mcommit 67abb8d574ecbcbc73930f40ce0a1c29df534afb[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Sat Mar 2 16:37:50 2019 +0800
+
+    debug 8.py
+
+[33mcommit 4794d3637ce027c0cf9f923395757e204e2bc8de[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Sat Mar 2 16:36:30 2019 +0800
+
+    add 9.py
+
+[33mcommit 1e55b5482af386050aab43e6885628ebae0eb75b[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Sat Mar 2 01:02:26 2019 +0800
+
+    new func _generateStr
+
+[33mcommit e5c758551a342f9b6dfe71a8b44ad39b1c77d5b3[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Fri Mar 1 02:09:29 2019 +0800
+
+    add 8.py and update funcs
+
+[33mcommit 0b1cb1097def6220e1451ad7ef33b211f596c0fb[m
+Author: bigfoolliu <liu15671677014@icloud.com>
+Date:   Wed Feb 27 14:53:11 2019 +0800
+
+    fix a little bug
+
+[33mcommit 68cd89a66be41757089a5874f3c58b42e9541afc[m
+Author: bigfoolliu <liu15671677014@icloud.com>
+Date:   Wed Feb 27 14:20:26 2019 +0800
+
+    Delete .swap
+
+[33mcommit 50c1b8a42d7c237267919440d8c7b44b1fee3209[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Wed Feb 27 01:18:39 2019 +0800
+
+    新增加几道题
+
+[33mcommit 04d6c37e90b186101e54d46c74be697ff2bb0751[m
+Author: xwp <xwp_fullstack@163.com>
+Date:   Mon Feb 25 19:54:52 2019 +0800
+
+    首次提交
+
+[33mcommit 40b03fd4652c472e83ffb753148c5caec4857bc9[m
+Author: bigfoolliu <liu15671677014@icloud.com>
+Date:   Sat Feb 23 22:01:43 2019 +0800
+
+    Initial commit
