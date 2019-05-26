@@ -59,7 +59,7 @@ Tensorflow:
 《面向机器智能TensorFlow实践》
 《TensorFlow技术解析与实战》
 
-实际应用：
+实际应用：  
 深度学习(TensorFlow, Caffe)
 分布式计算(Hadoop, Spark)
 分布式存储(HDFS, MongoDB, Redis)
@@ -117,88 +117,14 @@ Tensorflow:
 
 #### 1.5.1 特征抽取：
 
-```python
-import sklearn.feature_extraction
-```
-
 - 特征抽取对文本进行特征值化
 - 对字典数据进行特征值化(类：`sklearn.feature_extraction.DictVectorizer`)
-
-```python
-'''
-字典特征提取:
-把字典中一些类型数据分别转换成特征，数值特征（int, float等）不必要转换
-'''
-
-from sklearn.feature_extraction import DictVectorizer
-
-def dectvec():
-    """
-    字典数据抽取函数
-    """
-    # 实例化
-    dict = DictVectorizer()
-    # 调用fit_transform
-    data = dict.fit_transform([{'city':'北京','temperature':'100'},
-                                {'city':'上海','temperature':'90'},
-                                {'city':'深圳','temperature':'70'},
-                                {'city':'广州','temperature':'80'}])
-    print(dict.get_feature_names())
-    print(data)
-    return None
-
-
-if __name__ == "__main__":
-    dectvec()
-```
-
-运行结果为：
-
-```.
-['city=上海', 'city=北京', 'city=广州', 'city=深圳', 'temperature=100', 'temperature=70', 'temperature=80', 'temperature=90']
-  (0, 1)        1.0
-  (0, 4)        1.0
-  (1, 0)        1.0
-  (1, 7)        1.0
-  (2, 3)        1.0
-  (2, 5)        1.0
-  (3, 2)        1.0
-  (3, 6)        1.0
-```
 
 返回的格式为：sparse矩阵格式
 
 另一编码方式：one-hot
 
 - 文本特征抽取(类：`sklearn.feature_extraction.text.CountVectorizer`)
-
-```python
-from sklearn.feature_extraction.text import CountVectorizer
-
-def countvec():
-    """
-    对文本进行特征值化
-    """
-    # 实例化
-    cv = CountVectorizer()
-    # fit_transform导入数据
-    data = cv.fit_transform(['life is short, i like python', 'life is too long, i dislike python'])
-    print(cv.get_feature_names())
-    print(data.toarray())
-    return None
-
-
-if __name__ == "__main__":
-    countvec()
-```
-
-返回结果为：
-
-```.
-['dislike', 'is', 'life', 'like', 'long', 'python', 'short', 'too']
-[[0 1 1 1 0 1 1 0]
- [1 1 1 0 1 1 0 1]]
-```
 
 在返回的结果中：
 
@@ -209,67 +135,7 @@ if __name__ == "__main__":
 
 #### 1.5.2 中文文本特征抽取
 
-上面的代码更改：`data = cv.fit_transform(['人生苦短，我用python', '人生漫长，我不用python'])`
-
-返回结果为：
-
-```.
-['人生漫长', '人生苦短', '我不用python', '我用python']
-[[0 1 0 1]
- [1 0 1 0]]
- ```
-
- 结果无意义，不能作为分类依据，默认不支持中文文本特征抽取，因此要进行分词处理，从而使用到jieba库。
-
- jieba分词：
-
-```python
-import jieba
-from sklearn.feature_extraction.text import CountVectorizer
-
-def cutword():
-    """
-    中文分词
-    """
-    con1 = jieba.cut('今天很残酷，明天更残酷，后天很美好，但绝大部分人都死在明天的晚上，见不到后天的太阳')
-    con2 = jieba.cut('我们看到的从遥远星系发出的光是几百万年以前发出的，因此当我们看到宇宙时，我们是在看他的过去')
-    # 转换成列表
-    content1 = list(con1)
-    content2 = list(con2)
-    # 列表转换为字符串，以空格隔开
-    c1 = ' '.join(content1)
-    c2 = ' '.join(content2)
-    return c1, c2
-
-
-def hanzivec():
-    """
-    中文特征值化
-    :return:None
-    """
-    c1, c2 = cutword()
-    print(c1, '\n', c2)
-
-    cv = CountVertorizer()
-    data = cv.fit_transform([c1, c2])
-
-    print(cv.get_feature_names())
-    print(data.toarray())
-
-
-if __name__ == "__main__":
-    hanzivec()
-```
-
-返回结果为：
-
-```.
-今天 很 残酷 ， 明天 更 残酷 ， 后天 很 美好 ， 但 绝大部分 人 都 死 在 明天 的 晚上 ， 见 不到 后天 的 太阳
- 我们 看到 的 从 遥远 星系 发出 的 光是 几百万年 以前 发出 的 ， 因此 当 我们 看到 宇宙 时 ， 我们 是 在 看 他 的 过去
-['不到', '今天', '以前', '光是', '几百万年', '发出', '后天', '因此', '太阳', '宇宙', '我们', '明天', '星系', '晚上', '残酷', '看到', '绝大部分', '美好', '过去', '遥远']
-[[1 1 0 0 0 0 2 0 1 0 0 2 0 1 2 0 1 1 0 0]
- [0 0 1 1 1 2 0 1 0 1 3 0 1 0 0 2 0 0 1 1]]
- ```
+要进行分词处理，从而使用到jieba库。
 
 #### 1.5.3 特征工程之文本`tfidf`
 
@@ -278,51 +144,7 @@ if __name__ == "__main__":
 - `重要性=tf*idf`
 
 ```python
-'''
-TfidfVectorizer(stop_words=None,...)
-    返回词的权重矩阵
-    TfidfVectorizer.fit_transform(x)
-        x:文本或者包含文本字符串的可迭代对象
-        返回值:返回sparse矩阵
-    TfidfVectorizer.inverse_transform(x)
-        x:array数组或者sparse矩阵
-        返回值:转换之前的格式
-    TfidfVectorizer.get_feature_names()
-        返回值:单词列表
-'''
-from sklearn.feature_extraction.text import TfidfVectorizer
-import jieba
 
-def cutword():
-    """
-    中文分词
-    """
-    con1 = jieba.cut('今天很残酷，明天更残酷，后天很美好，但绝大部分人都死在明天的晚上，见不到后天的太阳')
-    con2 = jieba.cut('我们看到的从遥远星系发出的光是几百万年以前发出的，因此当我们看到宇宙时，我们是在看他的过去')
-    # 转换成列表
-    content1 = list(con1)
-    content2 = list(con2)
-    # 列表转换为字符串，以空格隔开
-    c1 = ' '.join(content1)
-    c2 = ' '.join(content2)
-    return c1, c2
-
-def tfidfvec():
-    """
-    返回词的权重矩阵
-    """
-    c1, c2 = cutword()
-    print(c1, '\n', c2)
-
-    tf = TfidfVectorizer()
-    data = tf.fit_transform([c1, c2])
-
-    print(tf.get_feature_names())
-    print(data.toarray())
-
-
-if __name__ == "__main__":
-    tfidfvec()
 ```
 
 返回结果为：
