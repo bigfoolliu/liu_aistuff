@@ -20,7 +20,7 @@ def cutword():
     c2 = ' '.join(content2)
     return c1, c2
 
-
+ 
 def hanzivec():
     """
     中文特征值化
@@ -29,7 +29,7 @@ def hanzivec():
     c1, c2 = cutword()
     print(c1, '\n', c2)
 
-    cv = CountVertorizer()
+    cv = CountVectorizer()
     data = cv.fit_transform([c1, c2])
 
     print(cv.get_feature_names())

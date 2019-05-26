@@ -85,4 +85,3 @@ plt.title("gradient descent algorithm for liner-regression")
 plt.xlabel("x")
 plt.ylabel("y")
 plt.show()
-
