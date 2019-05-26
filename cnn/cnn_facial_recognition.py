@@ -173,10 +173,10 @@ def run():
                         test_loss, test_acc = sess.run([cost, accuracy], feed_dict={x: batch_x, y: batch_y, keep_prob: 1.})
                         Total_test_lost = Total_test_loss + test_loss
                         Total_test_acc = Total_test_acc + test_acc
-
-		    Total_test_acc = Total_test_acc / test_batch_num
-		    Total_test_loss = Total_test_lost / test_batch_num
-                    print("Epoch: " + str(epoch + 1) + ", Test Loss= " + "{:.3f}".format(Total_test_loss) + ", Test Accuracy= " + "{:.3f}".format(Total_test_acc))
+            
+            Total_test_acc = Total_test_acc / test_batch_num
+            Total_test_loss = Total_test_lost / test_batch_num
+            print("Epoch: " + str(epoch + 1) + ", Test Loss= " + "{:.3f}".format(Total_test_loss) + ", Test Accuracy= " + "{:.3f}".format(Total_test_acc))
 
 
 
