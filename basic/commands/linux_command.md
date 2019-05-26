@@ -1,16 +1,16 @@
+# linux 相关命令
+
 切换当前使用的python版本: sudo update-alternatives --config python
 
 设置python使用的优先级: sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
 
 完全卸载python：sudo apt-get remove --purge python3.4
 
-
 hostname -f     显示完整的主机名和域名
 hostname -i     显示当前机器的ip地址
 
 ping baidu.com          发送ECHO＿REQUEST包到指定的地址,连续不断
 ping -c 4 baidu.com     指定发送的包的个数为4
-
 
 tracepath baidu.com     追踪到指定目的地址的网络路径，并给出在路径上的每一跳
 
@@ -28,11 +28,11 @@ netstat -p      显示打开的socket对应的程序
 telnet 192.168.120.209          通过telnet协议来连接目标主机
 
 dpkg --list     显示所有已经安装的程序
-sudo apt-get remove <programe>      删除程序但是保留配置文件
-sudo apt-get --purge remove <programe>      REMOVE THE PROGRAME AND THE CONFIG FILE
+sudo apt-get remove `programe`      删除程序但是保留配置文件
+sudo apt-get --purge remove `programe`      REMOVE THE PROGRAME AND THE CONFIG FILE
 
 sudo apt-get update     更新源
-sudo apt-get upgrade <programe>     升级软件
+sudo apt-get upgrade `programe`     升级软件
 
 tree -a     展示当前目录所有的文件
 tree -d     只展示目录
@@ -49,4 +49,3 @@ ls -l | grep "^d" | wc -l       显示当前文件夹中的文件夹数量
 tar -xvf <file.tar>     解压tar包
 tar -xzvf <file.tar.gz>     解压tar.gz
 tar -xjvf <file.tar.bz2>        解压tar.bz2
-
