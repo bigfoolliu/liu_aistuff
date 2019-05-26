@@ -4,18 +4,6 @@ stuff about ai
 
 ## 计算模型－计算图
 
-```python
-# Define constant and calcilate
-
-import tensoflow as tf
-a = tf.constant([1.0, 2.0], name="a")
-ret = tf.add(a, a, name="ret")  # 或ret = a + a
-
-
-# Define variable
-weights = tf.Variable(tf.random_normal([2, 3], stddev=2))  # 声明一个2*3的矩阵变量,矩阵中的元素是均值为0，标准差为2的随机数
-```
-
 ## 运算模型－会话
 
 Kye words:
@@ -143,26 +131,6 @@ Tensorflow:
 - idf:inverse document frequency，逆文档频率，计算公式(log(总文档数量/改词出现的文档数量))
 - `重要性=tf*idf`
 
-```python
-
-```
-
-返回结果为：
-
-```.
-今天 很 残酷 ， 明天 更 残酷 ， 后天 很 美好 ， 但 绝大部分 人 都 死 在 明天 的 晚上 ， 见 不到 后天 的 太阳
- 我们 看到 的 从 遥远 星系 发出 的 光是 几百万年 以前 发出 的 ， 因此 当 我们 看到 宇宙 时 ， 我们 是 在 看 他 的 过去
-['不到', '今天', '以前', '光是', '几百万年', '发出', '后天', '因此', '太阳', '宇宙', '我们', '明天', '星系', '晚上', '残酷', '看到', '绝大部分', '美好', '过去', '遥远']
-[[0.23570226 0.23570226 0.         0.         0.         0.
-  0.47140452 0.         0.23570226 0.         0.         0.47140452
-  0.         0.23570226 0.47140452 0.         0.23570226 0.23570226
-  0.         0.        ]
- [0.         0.         0.2        0.2        0.2        0.4
-  0.         0.2        0.         0.2        0.6        0.
-  0.2        0.         0.         0.4        0.         0.
-  0.2        0.2       ]]
-  ```
-
 在结果中，**其中数字越大则说明该词在文中的重要性越高，也可以选出其中的词做进一步的分析**。
 
 #### 1.5.4 特征工程之特征预处理
@@ -178,97 +146,9 @@ Tensorflow:
 
 - 归一化：通过对原始数据进行变换映射到(默认为[0,1])之间，**当特征同等重要的时候，常常需要进行归一化处理**，但是归一化对异常点的处理不佳，即**鲁棒性较差**，只适合传统精确小数据场景。
 
-公式：
-
-![归一化计算公式](resource/归一化计算公式.png)
-
 公式中，每一列表示每一个特征，每一行表示每一个样本，x''为最终目标。
 
-```python
-'''
-sklearn归一化API：sklearn.preprocessing.MinMaxScaler
-    MinMaxScaler(featrure_range(0,1),...)
-        每个特征值的缩放给定范围默认为[0,1]
-    MinMaxScaler.fit_transform(x)
-        x：numpy array格式的数据[n_samples,n_features]
-        返回值：转换后的形状相同的array
-
-归一化步骤：
-1.实例化MinMaxScaler
-2.通过fit_transform()转换
-'''
-
-from sklearn.preprocessing import MinMaxScaler
-
-def mm():
-    """
-    归一化处理
-    :return:None
-    """
-    mm = MinMaxScaler()
-    data = mm.fit_transform([[90,2,10,40],[60,4,15,15]])
-
-    print(data)
-    return None
-
-
-if __name__ == "__main__":
-    mm()
-```
-
-所得结果为：
-
-```.
-[[1. 0. 0. 1.]
- [0. 1. 1. 0.]]
- ```
-
 - 标准化：通过对原始数据进行变化把数据变换到均值为0，方差为1的范围。在有一定的数据量情况下，少量异常点不会影响平均值。计算公式如下：
-
-![标准化公式](resource/标准化计算公式.png)
-
-```python
-'''
-sklearn标准化API：sklearn.preprocessing.StandardScaler
-    StandardScaler.fit_transform(x)
-        x：numpy array格式数据[n_samples,n_features]
-        返回值：转换后的形式相同的array
-    StandardScaler.mean_
-        原始数据(训练集)中每列特征的平均值
-    StandardScaler.var_
-        原始数据每列特征的方差
-'''
-
-from sklearn.preprocessing import StandardScaler
-
-def ss():
-    """
-    标准化
-    :return:None
-    """
-    std = StandardScaler()
-    data = std.fit_transform([[2, 3, 5, 7],[1, 8, 2, 9],[3, 4, 6, 5]])
-    print(std.mean_, '\n')
-    print(std.var_, '\n')
-    print(data)
-    return None
-
-
-if __name__ == "__main__":
-    ss()
-```
-
-所得结果为：
-
-```.
-[2.         5.         4.33333333 7.        ]
-
-[0.66666667 4.66666667 2.88888889 2.66666667]
-
-[[ 0.         -0.9258201   0.39223227  0.        ]
- [-1.22474487  1.38873015 -1.37281295  1.22474487]
- [ 1.22474487 -0.46291005  0.98058068 -1.22474487]]
- ```
 
 #### 1.5.5 数据的降维之特征选择
 
@@ -290,98 +170,24 @@ if __name__ == "__main__":
 - Embedded(嵌入式)：正则化、决策树
 - Wrapper(包裹式)：较少用
 
-```python
-'''
-sklearn特征选择API：sklearn.feature_selection.VarianceThreshold()
-    VarianceThreshold(threshold=0.0)
-        删除所有低方差特征
-    Variance.fit_transform(x)
-        x:numpy array格式的数据[n_samples, n_features]
-        返回值：训练集中差异低于threshold的特征将被删除
-        默认值为保留所有非零方差的特征，即删除所有样本中具有相同值的特征
-'''
-from sklearn.feature_selection import VarianceThreshold
-
-def var():
-    """
-    特征选择，删除低方差的特征
-    :return:None
-    """
-    var = VarianceThreshold()
-    data = var.fit_transform([[1, 2, 3 , 4],[0, 2, 5, 4],[8, 2, 6, 7]])
-
-    print(data)
-    return None
-
-
-if __name__ == "__main__":
-    var()
-```
-
-返回结果为：
-
-```.
-[[1 3 4]
- [0 5 4]
- [8 6 7]]
-```
-
-结果中删除了一个特征(其特征值为2)。
-
 主成分分析(PCA)
 
 同时改变数据的特征数量和特征数值。因为当特征数量较多的时候，很多特征可能相关。
-
-```python
-'''
-PCA(n_components=None)
-    将数据分解为较低的维数空间
-    n_components:为小数时，表示保留0-100%的信息，基本取90-95%的数据信息最好；为整数时，表示减少到的特征数量，使用较少
-    PCA.fit_transform(x)
-        x:numpy array格式的数据[n_samples, n_features]
-        返回值：转换后指定维度的array
-'''
-from sklearn.decomposition import PCA
-
-def pca():
-    """
-    主成分分析
-    :return:None
-    """
-    pca = PCA(n_components=0.92)
-
-    data = pca.fit_transform([[2, 0, 2, 34], [23, 3, 43, 5], [12, 3, 54, 6], [23, 45, 5, 67]])
-    print(data)
-    return None
-
-
-if __name__ == "__main__":
-    pca()
-```
-
-所得结果为：
-
-```.
-[[ 11.98214361  28.28081114]
- [-29.76854569  -5.86084474]
- [-35.58732941  -7.68093023]
- [ 53.3737315  -14.73903617]]
-```
 
 结果显示当保留92%的数据信息时，特征数量减少为两个，同时剩余特征的特征值也发生了变化。
 
 ### 1.6 机器学习开发流程
 
 1. 算法是核心，数据和计算是基础。
-2. 找准定位，复杂的模型算法由算法工程师做，主要做：</br>
-    2.1 分析数据</br>
-    2.2 分析具体的业务</br>
-    2.3 应用常见的算法</br>
-    2.4 特征工程，调参数，优化</br>
-3. 需要能力：</br>
-    3.1 学会分析问题，使用机器学习的目的以及需要解决的任务</br>
-    3.2 掌握算法基本思想，学会对问题用相应的算法解决</br>
-    3.3 学会用库和框架解决问题</br>
+2. 找准定位，复杂的模型算法由算法工程师做，主要做:
+  2.1 分析数据
+  2.2 分析具体的业务
+  2.3 应用常见的算法
+  2.4 特征工程，调参数，优化
+3. 需要能力:
+  3.1 学会分析问题，使用机器学习的目的以及需要解决的任务
+  3.2 掌握算法基本思想，学会对问题用相应的算法解决
+  3.3 学会用库和框架解决问题
 
 ***开发流程：***
 

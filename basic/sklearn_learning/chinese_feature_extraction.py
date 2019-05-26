@@ -5,6 +5,7 @@
 import jieba
 from sklearn.feature_extraction.text import CountVectorizer
 
+
 def cutword():
     """
     中文分词

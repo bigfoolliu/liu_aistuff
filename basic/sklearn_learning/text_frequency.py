@@ -17,6 +17,7 @@ TfidfVectorizer(stop_words=None,...)
 from sklearn.feature_extraction.text import TfidfVectorizer
 import jieba
 
+
 def cutword():
     """
     中文分词
@@ -30,6 +31,7 @@ def cutword():
     c1 = ' '.join(content1)
     c2 = ' '.join(content2)
     return c1, c2
+
 
 def tfidfvec():
     """

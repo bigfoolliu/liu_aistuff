@@ -4,6 +4,7 @@
 
 from sklearn.feature_extraction.text import CountVectorizer
 
+
 def countvec():
     """
     对文本进行特征值化
