@@ -45,3 +45,4 @@ def calc_shannon_ent(data_set):
         prob = float(label_conunts[key]) / data_set_size
         shannon_ent -= prob * log(prob, 2)
     return shannon_ent
+
