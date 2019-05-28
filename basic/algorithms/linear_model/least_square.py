@@ -41,7 +41,7 @@ print("variance score: %.2f"%r2_score(diabetes_y_test, diabetes_y_pred))  # æ–¹å
 plt.scatter(diabetes_X_test, diabetes_y_test,  color='black')
 plt.plot(diabetes_X_test, diabetes_y_pred, color='blue', linewidth=3)
 
-plt.xticks(())
-plt.yticks(())
+plt.xticks([-0.2, 0.2])
+plt.yticks([-1, 300])
 
 plt.show()
