@@ -244,5 +244,8 @@ Tensorflow:
 
 ### 2.2 决策树
 
+[决策树基础知识](https://shuwoom.com/?p=1452)
+[scikit learn决策树知识](https://scikit-learn.org/stable/modules/tree.html)
+
 `信息增益`,划分数据集之前之后信息发生的变化。
 `熵`，集合信息的度量方式。
