@@ -28,7 +28,7 @@
 from math import log
 
 
-def calc_shannon_ent(data_set):
+def cal_shannon_ent(data_set):
     """
     计算香农熵
     H = -sum(p(Xi)log(p(Xi)))
@@ -36,7 +36,7 @@ def calc_shannon_ent(data_set):
     data_set_size = len(data_set)
     label_conunts = {}
     for feat_vec in data_set:
-        current_label = feat_vec[-1]
+        current_label = feat_vec[-1]  # 数据字典，其键值为最后一列数值
         if current_label not in label_conunts.keys():
             label_conunts[current_label] = 0
             label_conunts[current_label] += 1
@@ -45,3 +45,14 @@ def calc_shannon_ent(data_set):
         prob = float(label_conunts[key]) / data_set_size
         shannon_ent -= prob * log(prob, 2)
     return shannon_ent
+
+
+def main():
+    data_set = [[0], [2], [3]]
+    ret = cal_shannon_ent(data_set)
+    print(ret)
+
+
+if __name__ == '__main__':
+    main()
+    
