@@ -35,13 +35,14 @@ regr.fit(diabetes_X_train, diabetes_y_train)
 diabetes_y_pred =  regr.predict(diabetes_X_test)
 
 print("coeffients: {}".format(regr.coef_))  # 模型的系数
+print("intercept: {}".format(regr.intercept_))  # 模型的截距
 print("mean squared error: %.2f"%mean_squared_error(diabetes_y_test, diabetes_y_pred))  # 均方误差回归损失
 print("variance score: %.2f"%r2_score(diabetes_y_test, diabetes_y_pred))  # 方差
 
 plt.scatter(diabetes_X_test, diabetes_y_test,  color='black')
 plt.plot(diabetes_X_test, diabetes_y_pred, color='blue', linewidth=3)
 
-plt.xticks([-0.2, 0.2])
-plt.yticks([-1, 300])
+# plt.xticks([0, 0.5])
+# plt.yticks([0, 400])
 
 plt.show()
