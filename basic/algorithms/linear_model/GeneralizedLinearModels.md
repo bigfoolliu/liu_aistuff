@@ -6,7 +6,7 @@
 
 ## 1.1.1. 最小二乘法
 
-[线性回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression)使用一组系数${\omega}=({\omega}_1,...,{\omega}_p)$来最小化数据集中的目标值的平方和，而目标值则是由线性近似得来的。数学形式是解决这个问题：$$\min_{\omega}{||X{\omega-y}||}_2^2$$
+[LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression)使用一组系数${\omega}=({\omega}_1,...,{\omega}_p)$来最小化数据集中的目标值的平方和，而目标值则是由线性近似得来的。数学形式是解决这个问题：$$\min_{\omega}{||X{\omega-y}||}_2^2$$
 
 ![效果图](./images/sphx_glr_plot_ols_001.png)
 
@@ -30,7 +30,7 @@ print(reg.coef_)
 
 ## 1.1.2 岭回归
 
-[岭回归](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge)通过对最小二乘法的系数添加惩罚项来解决最小二乘法的一些缺陷。岭回归系数通过最小化城惩罚项的残差平法和：$$\min_{\omega}{||X{\omega}-y||}^2_2+{\alpha}{||\omega||}^2_2$$
+[Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge)通过对最小二乘法的系数添加惩罚项来解决最小二乘法的一些缺陷。岭回归系数通过最小化城惩罚项的残差平法和：$$\min_{\omega}{||X{\omega}-y||}^2_2+{\alpha}{||\omega||}^2_2$$
 
 其中复杂度参数$\alpha \geq 0$控制收缩大小，$\alpha$越大则收缩越大，因此系数对共线性的鲁棒性越好。
 
@@ -54,3 +54,5 @@ print(reg.coef_)
 其复杂度和最小二乘法的复杂度一样。
 
 ### 1.1.2.2.设置正则化参数：一般性交叉验证
+
+[RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV)通过alpha参数的内置交叉验证来实现岭回归。
