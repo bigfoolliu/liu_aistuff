@@ -55,4 +55,22 @@ print(reg.coef_)
 
 ### 1.1.2.2.设置正则化参数：一般性交叉验证
 
-[RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV)通过alpha参数的内置交叉验证来实现岭回归。
+[RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV)通过alpha参数的内置交叉验证来实现岭回归。它和`GridSearchCV`的工作方式相同，不同之处在于它默认是通用交叉验证(`GCV`)，这是一种有效的一次性交叉验证形式：
+
+```python
+import numpy as np
+from sklearn import linear_model
+reg = linear_model.RidgeCV(alpha=np.logspace(-6, 6, 13))
+reg.fit([[0, 0], [0, 0], [1, 1]], [0, 0.1, 1])
+print(reg.alpha_)
+```
+
+指定`cv`属性的值会通过交叉验证来触发交叉验证的作用，例如，`cv=10`为10次交叉验证，而不是一般性的交叉验证。
+
+参考：
+
+- “Notes on Regularized Least Squares”, Rifkin & Lippert ([technical report](http://cbcl.mit.edu/publications/ps/MIT-CSAIL-TR-2007-025.pdf), [course slides](https://www.mit.edu/~9.520/spring07/Classes/rlsslides.pdf)).
+
+## 1.1.3.Lasso回归
+
+[Lasso](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso)是一种估计稀疏系数的线性模型。
