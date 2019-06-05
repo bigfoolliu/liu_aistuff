@@ -76,3 +76,4 @@ print(reg.alpha_)
 [Lasso](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso)是一种估计稀疏系数的线性模型。在有些场景下其是非常有用的，因为其倾向于得到更少的非零系数，尤其当解是独立且要在减少特征数量的时候。因此，Lasso及其变体是压缩传感领域的基础。在特定的条件下，它可以恢复精确的非零系数集(参照[Compressive sensing: tomography reconstruction with L1 prior (Lasso)](https://scikit-learn.org/stable/auto_examples/applications/plot_tomography_l1_reconstruction.html#sphx-glr-auto-examples-applications-plot-tomography-l1-reconstruction-py))。
 
 数学形式上来说，它包含一个带有正则化表示的线性模型，目标最小化函数是：$$\min_{\omega}{\frac{1}{2n_{samples}}}{||X\omega - y||^2_2}+{\alpha||\omega||_1}$$
+
