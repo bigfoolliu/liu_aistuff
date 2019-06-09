@@ -100,7 +100,7 @@ reg.predict([1, 1])
 
 参考：
 
-- 论文：“Regularization Path For Generalized linear Models by Coordinate 
+- 论文：“Regularization Path For Generalized linear Models by Coordinate
 Descent”, Friedman, Hastie & Tibshirani, J Stat Softw, 2010
 - 论文：An Interior-Point Method for Large-Scale L1-Regularized Least Squares,” S. J. Kim, K. Koh, M. Lustig, S. Boyd and D. Gorinevsky, in IEEE Journal of Selected Topics in Signal Processing, 2007
 
@@ -129,4 +129,3 @@ scikit-learn通过交叉验证来展示设置过$\alpha$参数的对象：`Lasso
 [Lasso模型选择：交叉验证/AIC/BIC](https://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py)
 
 ## 1.1.4.多任务Lasso
-
