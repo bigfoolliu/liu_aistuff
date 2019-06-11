@@ -129,3 +129,5 @@ scikit-learn通过交叉验证来展示设置过$\alpha$参数的对象：`Lasso
 [Lasso模型选择：交叉验证/AIC/BIC](https://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py)
 
 ## 1.1.4.多任务Lasso
+
+add
