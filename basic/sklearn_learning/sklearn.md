@@ -94,7 +94,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 module = RandomForestClassifier()
 module.fit(x, y)
-module.predict(test)
+module.predict(test)  
 ```
 
 ### 1.9Gradient Boosting 和 AdaBoost算法(GBDT)
@@ -110,6 +110,8 @@ module.predict(test)
 ```
 
 ### 1.10PCA特征降维(PCA)
+
+[PCA特征降维算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
 
 ```python
 from sklearn.decomposition import PCA
