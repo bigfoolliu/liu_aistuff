@@ -61,3 +61,58 @@ from sklearn.naive_bayes import GaussianNB
 module = GaussianNB()
 module.fit()
 ```
+
+### 1.6决策树分类器(Decision Tree)
+
+[决策树分类器介绍](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
+
+```python
+from sklearn import tree
+module = tree.DecisionTreeClassifier(criterion="gini")
+module.fit(x, y)
+module.score(x, y)
+module.predict(test)
+```
+
+### 1.7k-means聚类（K-Means)
+
+[k-means聚类算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
+
+```python
+from sklearn.cluster import KMeans
+module = KMeans(n_cluster=3, random_stat=0)
+module.fit(x, y)
+module.predict(test)
+```
+
+### 1.8随机森林(Random Forest)
+
+[随机森林算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
+module = RandomForestClassifier()
+module.fit(x, y)
+module.predict(test)
+```
+
+### 1.9Gradient Boosting 和 AdaBoost算法(GBDT)
+
+[GBDT算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
+
+```python
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import GradientBoostingRegressor
+module = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=1, random_stat=0)
+module.fit(x, y)
+module.predict(test)
+```
+
+### 1.10PCA特征降维(PCA)
+
+```python
+from sklearn.decomposition import PCA
+train_reduced = PCA.fit_transform(train)
+test_reduced = PCA.transform(test)
+```
