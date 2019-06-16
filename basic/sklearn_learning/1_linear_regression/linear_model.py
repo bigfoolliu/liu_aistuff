@@ -57,7 +57,6 @@ class LinearRegressionModel():
         standardlize preprocessing
         标准化数据，保证每个维度的特征数据方差为1，均值为0，使预测结果不会被某些维度过大的特征值主导
         """
-        print("standardlize the dataset")
         std_x = StandardScaler()
         std_y = StandardScaler()
 
@@ -74,13 +73,11 @@ class LinearRegressionModel():
         use the standardlized tain dataset to train the model
         return: trained LinearRegression
         """
-        print("train the model")
         self.lr = LinearRegression()
         self.lr.fit(self.x_train, self.y_train)
     
     def predict(self, x_test, y_test, std_y):
         """use the test dataset to test the model"""
-        print("predict the price with the test data")
         y_lr_predict = self.lr.predict(x_test)
         y_lr_predict = std_y.inverse_transform(y_lr_predict)
     
