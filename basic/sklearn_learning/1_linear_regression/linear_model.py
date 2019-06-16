@@ -40,9 +40,14 @@ class LinearRegressionModel():
         self.y_test = y_test
     
     def preprocess_dataset(self):
-        print(self.y_train, self.y_train.shape)
+        if len(self.x_train.shape) == 1:
+            self.x_train = self.x_train.reshape(-1, 1)
+        
         if len(self.y_train.shape) == 1:
             self.y_train = self.y_train.reshape(-1, 1)
+
+        if self.x_test is not None and len(self.x_test.shape) == 1:
+            self.x_test = self.x_test.reshape(-1, 1)
         
         if self.y_test is not None and len(self.y_test.shape) == 1:
             self.y_test = self.y_test.reshape(-1, 1)
@@ -92,8 +97,8 @@ def main():
     lr_boston.run()
 
     print("trained model: {}".format(lr_boston.lr))
-    print("model coef_: {}".format(lr_boston.lr.coef_))  # 一次项系数
-    print("model intercept_: {}".format(lr_boston.lr.intercept_))  # 位置系数
+    print("model coef_: {}".format(lr_boston.lr.coef_))  # Estimated coefficients(系数)
+    print("model intercept_: {}".format(lr_boston.lr.intercept_))  # Independent term
 
 
 if __name__ == '__main__':
