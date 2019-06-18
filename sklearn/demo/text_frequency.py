@@ -2,7 +2,7 @@
 #!coding:utf-8
 
 
-'''
+"""
 TfidfVectorizer(stop_words=None,...)
     返回词的权重矩阵
     TfidfVectorizer.fit_transform(x)
@@ -13,7 +13,7 @@ TfidfVectorizer(stop_words=None,...)
         返回值:转换之前的格式
     TfidfVectorizer.get_feature_names()
         返回值:单词列表
-'''
+"""
 from sklearn.feature_extraction.text import TfidfVectorizer
 import jieba
 
