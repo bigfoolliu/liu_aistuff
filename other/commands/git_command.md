@@ -44,4 +44,7 @@ git config -e --global      直接进步编辑全局配置文件
 git reset `id`　　回退至指定的版本号
 git rm -r --cached .　　删除缓存
 
-git submodule add http://gitlab.jiangxingai.com/tonyliu/edgebox_authorize.git   给一个仓库添加子仓库
+git submodule init  初始化本地.gitmodules文件
+git submodule update    同步远端submodule源码
+git submodule add <submodule_url>   给一个仓库添加子仓库
+git clone --recurse-submodules <main_project_url>   获取主项目和所有子项目源码
