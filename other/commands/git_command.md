@@ -43,3 +43,5 @@ git config -e --global      直接进步编辑全局配置文件
 当文件提交comnit后push因为大文件而失败:
 git reset `id`　　回退至指定的版本号
 git rm -r --cached .　　删除缓存
+
+git submodule add http://gitlab.jiangxingai.com/tonyliu/edgebox_authorize.git   给一个仓库添加子仓库
