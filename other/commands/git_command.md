@@ -48,3 +48,5 @@ git submodule init  初始化本地.gitmodules文件
 git submodule update    同步远端submodule源码
 git submodule add <submodule_url>   给一个仓库添加子仓库
 git clone --recurse-submodules <main_project_url>   获取主项目和所有子项目源码
+
+git remote get-url origin   获取远程仓库的地址
