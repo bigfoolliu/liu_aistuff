@@ -5,9 +5,6 @@
 import base64
 
 
-meg = "jiangxing"
-
-
 def base64_encrypt(meg):
     """
     meg: str
@@ -26,8 +23,18 @@ def base64_decrypt(meg_data):
     return meg.decode("utf-8")
 
 
-ret = base64_encrypt(meg)
-print(ret, len(ret))
+def main():
 
-ret = base64_decrypt(ret)
-print(ret, len(ret))
+    # meg = "jiangxing"
+    meg = "江行联"
+    print(meg.encode("utf-8"))
+
+    ret = base64_encrypt(meg)
+    print("meg: {}\nmeg length: {}\nret: {}\nret length: {}".format(meg, len(meg), ret, len(ret)))
+
+    ret = base64_decrypt(ret)
+    print("decode ret: {}".format(ret))
+
+
+if __name__ == "__main__":
+    main()
