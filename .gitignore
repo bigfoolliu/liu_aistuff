@@ -4,6 +4,7 @@ Training/
 PublicTest/
 PrivateTest/
 .vscode/
+*.pem
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
