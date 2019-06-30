@@ -56,7 +56,7 @@ def rsa_decrypt(cipher_text):
 def main():
     start = time.time()
 
-    generate_rsa_file(1024)
+    generate_rsa_file(2048)
     
     message = "hello"
     encrypted_data = rsa_encrypt(message)
