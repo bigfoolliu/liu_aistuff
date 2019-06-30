@@ -5,6 +5,7 @@ PublicTest/
 PrivateTest/
 .vscode/
 *.pem
+*.avi
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

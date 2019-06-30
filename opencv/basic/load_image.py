@@ -8,6 +8,8 @@ import cv2
 
 
 """
+加载图片
+
 cv2.IMREAD_COLOR : Loads a color image. Any transparency of image will be neglected. It is the default flag.
 cv2.IMREAD_GRAYSCALE : Loads image in grayscale mode
 cv2.IMREAD_UNCHANGED : Loads image as such including alpha channel

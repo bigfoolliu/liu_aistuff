@@ -35,6 +35,11 @@ while True:
 # 展示获取的图像的宽度和高度
 print("width: {}\nheight: {}".format(cap.get(3), cap.get(4)))
 
+# 重新设置图像的宽高
+# cap.set(3, 320)
+# cap.set(4, 240)
+
+
 # 当退出循环之后，释放对象，关闭所有窗口
 cap.release()
 cv2.destroyAllWindows()
