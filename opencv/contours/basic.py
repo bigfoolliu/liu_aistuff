@@ -33,5 +33,3 @@ for i in range(len(images)):
 
 
 plt.show()
-
-# contours_img = cv2.drawContours(img, c)
