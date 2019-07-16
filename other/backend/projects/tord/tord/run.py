@@ -3,8 +3,13 @@
 #author: bigfoolliu
 
 
-import tornado.web
+import tornado.httpserver
 import tornado.ioloop
+import tornado.options
+import tornado.web
+from tornado.options import define, options
+
+define("port", type=int, default=8000, help="server port")
 
 
 class IndexHandler(tornado.web.RequestHandler):
@@ -16,8 +21,11 @@ class IndexHandler(tornado.web.RequestHandler):
 
 
 if __name__ == "__main__":
-    app = tornado.web.Application([
-        (r"/", IndexHandler),
-    ])
-    app.listen(8000)
+    tornado.options.parse_command_line()
+    app = tornado.web.Application(
+        [(r"/", IndexHandler),],
+        )
+
+    http_server = tornado.httpserver.HTTPServer(app)
+    http_server.listen(options.port)
     tornado.ioloop.IOLoop.current().start()
