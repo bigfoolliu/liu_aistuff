@@ -10,17 +10,16 @@ import tornado.options
 import tornado.web
 from tornado.options import define, options
 
-from tord.handlers.index import IndexHandler
-from tord.handlers.upload import BooksHandler
+from tord.handlers import upload, index
 
 define("port", type=int, default=8000, help="server port")
 
 
-if __name__ == "__main__":
+def main():
     tornado.options.parse_command_line()
     app = tornado.web.Application(
-        [(r"/", IndexHandler),
-        (r"/books", BooksHandler),
+        [(r"/", index.IndexHandler),
+        (r"/books", upload.BooksHandler),
         ],)
 
     http_server = tornado.httpserver.HTTPServer(app)

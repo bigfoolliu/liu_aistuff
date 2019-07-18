@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 #author: bigfoolliu
 
+import os
+
 from tord.handlers.base import BaseHandler
 
 
@@ -34,8 +36,9 @@ class BooksHandler(BaseHandler):
             print(file, type(file), "\n")
         
         file1 = files["file1"]
-        file1_bak_path = file1[0]["filename"] + ".bak"
-        with open("../files/{}".format(file1_bak_path), "w", encoding="utf-8") as f:
+        files_dir = "/mnt/d/pythonProjects/liu_aistuff/other/backend/projects/tord/files"
+        file1_bak_path = os.path.join(files_dir, file1[0]["filename"] + ".bak")
+        with open(file1_bak_path, "w", encoding="utf-8") as f:
             f.write(file1[0]["body"].decode("utf-8"))
         
         self.write_success()
