@@ -35,8 +35,7 @@ class BooksHandler(BaseHandler):
         
         file1 = files["file1"]
         file1_bak_path = file1[0]["filename"] + ".bak"
-        # if not os.path.exists(file1_bak_path):
-        #     os.makedirs(os.path.dirname(file1_bak_path))
         with open("../files/{}".format(file1_bak_path), "w", encoding="utf-8") as f:
             f.write(file1[0]["body"].decode("utf-8"))
+        
         self.write_success()
