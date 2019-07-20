@@ -46,24 +46,3 @@ class BooksHandler(BaseHandler):
             f.write(file1[0]["body"].decode("utf-8"))
         
         self.write_success()
-
-
-class ImageHandler(BaseHandler):
-
-    def get(self):
-        """return a random image"""
-        image_dir = os.path.join(settings["root_path"], "files/images")
-        images = os.listdir(image_dir)
-        random_image_path = os.path.join(image_dir, random.choice(images))
-        logging.info("return image path: {}".format(random_image_path))
-
-        try:
-            with open(random_image_path, "rb") as f:
-                random_image = f.read()
-        except Exception as e:
-            logging.error("read image error: {}".format(e))
-            self.write_error(500)
-        
-        self.set_header("Content-Type", "image/jpeg")
-        self.write(random_image)
-        self.write_success()

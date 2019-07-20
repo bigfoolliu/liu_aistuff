@@ -11,7 +11,7 @@ import tornado.options
 import tornado.web
 from tornado.options import define, options
 
-from tord.handlers import index, upload
+from tord.handlers import index, upload, media
 
 define("port", type=int, default=8000, help="server port")
 
@@ -22,7 +22,8 @@ def main():
     app = tornado.web.Application(
         [(r"/", index.IndexHandler),
         (r"/books", upload.BooksHandler),
-        (r"/images", upload.ImageHandler),
+        (r"/images", media.ImageHandler),
+        (r"/videos", media.VideoHandler)
         ],)  
 
     try:
