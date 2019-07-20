@@ -22,7 +22,8 @@ def main():
     app = tornado.web.Application(
         [(r"/", index.IndexHandler),
         (r"/books", upload.BooksHandler),
-        ],)
+        (r"/images", upload.ImageHandler),
+        ],)  
 
     try:
         app.listen(options.port)
