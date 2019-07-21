@@ -23,7 +23,8 @@ def main():
         [(r"/", index.IndexHandler),
         (r"/books", upload.BooksHandler),
         (r"/images", media.ImageHandler),
-        (r"/videos", media.VideoHandler)
+        (r"/videos", media.VideoHandler),
+        (r"/async/", )
         ],)  
 
     try:
