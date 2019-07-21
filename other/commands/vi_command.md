@@ -7,16 +7,8 @@ a   insert after the cursor
 o   insert a new line at the current line
 u   撤销最后一次更改
 
-:q!  不保存退出
-:wq     保存退出
-:e!     放弃所有修改，从上次保存开始处再编辑
-ZZ  保存并退出
-
 vi `file`   open single file
 vi `file1` `file2`  open multi file
-
-:open `file`    在vi窗口中打开一个新文件
-:split `file`   在新窗口中打开一个新文件
 
 /text   查找text,按n键查找下一个,按Ｎ查找前一个
 
@@ -32,10 +24,23 @@ yy  拷贝当前行
 2yy 拷贝当前后开始的2行
 p   粘贴
 
-:1, 10 copy 20  将1-10行的内容复制到20行
-:1, 10 move 20  将1-10行的内容剪切到20行
+:q!  不保存退出
+:wq     保存退出
+:wq temp.py 以一个文件名保存并退出
+:e!     放弃所有修改，从上次保存开始处再编辑
+ZZ  保存并退出
 
 :%s/A/B/g  将所有的A替换为B
 
 g   快速跳转至文件开头
 G   快速跳转至文件末尾
+
+:1, 10 copy 20  将1-10行的内容复制到20行
+:1, 10 move 20  将1-10行的内容剪切到20行
+
+:open `file`    在vi窗口中打开一个新文件
+:split `file`   在新窗口中打开一个新文件
+:syntax on  基本的语法高亮
+:set number 显示行号
+
+通过编辑 `~/.vimrc`文件可以保存vim的配置。
