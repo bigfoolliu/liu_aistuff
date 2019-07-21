@@ -8,6 +8,7 @@ i   insert before the cursor
 a   insert after the cursor
 o   insert a new line at the current line
 u   撤销最后一次更改
+v   进入visual模式,可以使用j, k, l来移动光标确定选择的内容
 
 vi `file`   open single file
 vi `file1` `file2`  open multi file
