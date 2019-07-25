@@ -25,7 +25,7 @@ print(active_sheet["A1"].value)
 # 获取总的数据行数或列数
 rows = active_sheet.max_row
 columns = active_sheet.max_column
-# print(active_sheet.max_row, active_sheet.max_column)
+# print(active_sheet.max_row, active_sheet.maxz_column)
 
 row_range = active_sheet[1:rows]
 column_range = active_sheet["A:B"]
