@@ -25,7 +25,7 @@ def base64_decrypt(meg_data):
 
 def main():
 
-    meg = "jiangxing"
+    meg = "register_template (3).xlsx"
     # meg = "江行联"
     print(meg.encode("utf-8"))
 

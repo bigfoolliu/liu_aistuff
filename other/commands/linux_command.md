@@ -46,6 +46,6 @@ touch `date +%Y-%m-%d_%H:%M:%S`.txt     创建一个当前时间的文件
 ls -l | grep "^-" | wc -l       显示当前文件夹中的文件数量
 ls -l | grep "^d" | wc -l       显示当前文件夹中的文件夹数量
 
-tar -xvf <file.tar>     解压tar包
-tar -xzvf <file.tar.gz>     解压tar.gz
-tar -xjvf <file.tar.bz2>        解压tar.bz2
+tar -xvf <file.tar> 解压tar包
+tar -xzvf <file.tar.gz> 解压tar.gz
+tar -xjvf <file.tar.bz2>    解压tar.bz2 
