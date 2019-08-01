@@ -59,5 +59,10 @@ def main():
     print(depth_of_tree(tree))
 
 
+# TODO:
+def is_full_binary_tree(tree):
+    pass
+
+
 if __name__ == "__main__":
     main()
