@@ -17,9 +17,9 @@ class Node(object):
 
 
 def display_tree(tree):
-    """展示二叉树的数据"""
+    """展示二叉树的数据,深度优先"""
     if tree is None:
-        return None
+        return
     if tree.left:
         display_tree(tree.left)
     print(tree.data)
@@ -27,6 +27,18 @@ def display_tree(tree):
         display_tree(tree.right)
     display_tree(tree.right)
     return
+
+
+def depth_of_tree(tree):
+    """显示树的深度"""
+    if tree is None:
+        return 0
+    depth_l_tree = depth_of_tree(tree.left)
+    depth_r_tree = depth_of_tree(tree.right)
+    if depth_l_tree > depth_r_tree:
+        return 1 + depth_l_tree
+    else:
+        return 1 + depth_r_tree
 
 
 def main():
@@ -42,7 +54,9 @@ def main():
     tree.right = Node(2)
     tree.left.left = Node(3)
     tree.left.right = Node(4)
+    
     display_tree(tree)
+    print(depth_of_tree(tree))
 
 
 if __name__ == "__main__":
