@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+#author: bigfoolliu
+
+
 from __future__ import print_function
 
 grid = [[0, 1, 0, 0, 0, 0],
