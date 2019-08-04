@@ -59,7 +59,23 @@ class BinarySearchTree(object):
 
     def __init__(self):
         self.root = None
-    
+
+    def __is_right_children(self, node):
+        """判断当前节点是否为右子树的节点"""
+        if (node == node.get_parent().get_right()):
+            return True
+        return False
+
+    def __reassign_node(self, node, new_children):
+        """在某同级节点下重新分配一个子节点"""
+        if new_children:
+            new_children.set_parent(node.get_parent())
+        if node.get_parent():
+            if self.__is_right_children(node):
+                node.get_parent().set_right(new_children)
+            else:
+                node.get_parent().set_left(new_children)
+
     def is_empty(self):
         if not self.root:
             return True
@@ -78,6 +94,28 @@ class BinarySearchTree(object):
             
             return cur_node
     
+    def get_max(self, root=None):
+        """找到整个二叉搜索树的数据域最大的节点"""
+        if root:
+            cur_node = root
+        else:
+            cur_node = self.root
+        if not self.is_empty():
+            while cur_node.get_right():
+                cur_node = cur_node.get_right()
+        return cur_node
+
+    def get_min(self, root=None):
+        """找到整个二叉搜索树的数据域最小的节点"""
+        if root:
+            cur_node = root
+        else:
+            cur_node = self.root
+        if not self.is_empty():
+            while cur_node.get_left():
+                cur_node = cur_node.get_left()
+        return cur_node
+
     def insert(self, label):
         """
         向二叉搜索树中插入一个节点
@@ -118,8 +156,17 @@ class BinarySearchTree(object):
         if not self.is_empty():
             node = self.get_node(label)
             if node:
-                # TODO:
-
+                # 如果待删除节点的左右子节点都存在，则将其置为None
+                if not node.get_left() and not node.get_right():
+                    self.__reassign_node(node, None)
+                # 如果待删除节点的左右子节点只有右子节点，将其自身置为自己的右子节点
+                elif not node.get_left() and node.get_right():
+                    self.__reassign_node(node, node.get_right())
+                # 如果待删除节点的左右子节点只有左子节点，将其自身置为自己的左子节点
+                elif node.get_left() and not node.get_right():
+                    self.__reassign_node(node, node.get_left())
+                else:
+                    tmp_node = self.get_max()
 
 
 def main():
