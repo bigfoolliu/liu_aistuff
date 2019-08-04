@@ -37,8 +37,7 @@ def depth_of_tree(tree):
     depth_r_tree = depth_of_tree(tree.right)
     if depth_l_tree > depth_r_tree:
         return 1 + depth_l_tree
-    else:
-        return 1 + depth_r_tree
+    return 1 + depth_r_tree
 
 
 def main():
