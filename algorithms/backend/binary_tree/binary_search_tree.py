@@ -29,6 +29,8 @@ class Node(object):
     def __init__(self, label, parent):
         self.label = label
         self.parent = parent
+        self.left = None
+        self.right = None
     
     def get_label(self):
         return self.label
@@ -95,7 +97,7 @@ class BinarySearchTree(object):
             return cur_node
     
     def get_max(self, root=None):
-        """找到整个二叉搜索树的数据域最大的节点"""
+        """找到指定根节点下的数据域最大的节点"""
         if root:
             cur_node = root
         else:
@@ -165,13 +167,28 @@ class BinarySearchTree(object):
                 # 如果待删除节点的左右子节点只有左子节点，将其自身置为自己的左子节点
                 elif node.get_left() and not node.get_right():
                     self.__reassign_node(node, node.get_left())
+                # 如果待删除节点同时有左节点和右节点
                 else:
-                    tmp_node = self.get_max()
+                    # 获取左分支的最大节点，将其删除
+                    # TODO:有点困惑
+                    tmp_node = self.get_max(node.get_left())
+                    self.delete(tmp_node.get_label())
+                    node.set_label(tmp_node.get_label())
 
 
 def main():
-    pass
+    bst = BinarySearchTree()
+    bst.insert(12)
+    bst.insert(5)
+    bst.insert(18)
+    bst.insert(2)
+    bst.insert(9)
+    bst.insert(15)
+    bst.insert(19)
+
+    bst.delete(18)
 
 
 if __name__ == "__main__":
     main()
+ 
