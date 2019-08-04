@@ -6,6 +6,8 @@
 """
 一般二叉树
 需要对递归的知识进行多加了解
+
+二叉树的几个种类: https://www.cnblogs.com/love-yh/p/7423301.html
 """
 
 
@@ -42,6 +44,7 @@ def depth_of_tree(tree):
 
 
 def is_full_binary_tree(tree):
+    """是否为完全二叉树，即最底层叶节点均处于次底层叶节点的左侧"""
     if tree is None:
         return True
     if tree.left is None and tree.right is None:
