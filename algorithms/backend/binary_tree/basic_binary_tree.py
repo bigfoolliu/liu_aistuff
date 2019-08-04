@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 """
 一般二叉树
 需要对递归的知识进行多加了解
 """
+
 
 class Node(object):
     """一般二叉树的节点"""
@@ -40,6 +41,16 @@ def depth_of_tree(tree):
     return 1 + depth_r_tree
 
 
+def is_full_binary_tree(tree):
+    if tree is None:
+        return True
+    if tree.left is None and tree.right is None:
+        return True
+    if tree.left is not None and tree.right is not None:
+        return is_full_binary_tree(tree.left) and is_full_binary_tree(tree.right)
+    return False
+
+
 def main():
     """构造一棵结构为下方的数
             0
@@ -53,14 +64,11 @@ def main():
     tree.right = Node(2)
     tree.left.left = Node(3)
     tree.left.right = Node(4)
-    
+
+    print("display the tree:")
     display_tree(tree)
-    print(depth_of_tree(tree))
-
-
-# TODO:
-def is_full_binary_tree(tree):
-    pass
+    print("depth of the tree: {}".format(depth_of_tree(tree)))
+    print("is full binary tree: {}".format(is_full_binary_tree(tree)))
 
 
 if __name__ == "__main__":
