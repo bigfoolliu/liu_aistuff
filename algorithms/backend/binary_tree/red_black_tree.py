@@ -77,4 +77,20 @@ class RedBlackTree(object):
         return left
 
     def insert(self, label):
+        """插入节点类似于bsd,只是多了一些限制"""
+        if self.label is None:
+            self.label = label
+            return self
+        if self.label == label:
+            return self
+        elif self.label > label:
+            if self.left:
+                self.left.insert(label)
+            else:
+                self.left = RedBlackTree(label, 1, self)
+                self.left._inert_repair()
+                # TODO:
+    
+    def _inert_repair(self):
+        """当插入节点会破坏红黑树的结构时，需要变色等修复其结构"""
         pass
