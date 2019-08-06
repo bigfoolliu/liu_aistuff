@@ -5,7 +5,7 @@
 
 """
 红黑树
-特殊的二叉查找树，每个节点上都存储位表示节点的颜色，红色或者黑色。
+特殊的二叉查找树（bsd），每个节点上都存储位表示节点的颜色，红色或者黑色。
 https://www.cnblogs.com/xuxinstyle/p/9556998.html
 
 特性：
@@ -25,3 +25,16 @@ https://www.cnblogs.com/xuxinstyle/p/9556998.html
 2.左旋，右旋，变色，其是为了保证满足其红黑树的特性
 """
 
+
+class RedBlackTree(object):
+
+    def __init__(self, label=None, color=0, parent=None, left=None, right=None):
+        """
+        label: 值
+        color: 0为black, 1为red
+        """
+        self.label = label
+        self.color = color
+        self.left = left
+        self.right = right
+        self.parent = parent
