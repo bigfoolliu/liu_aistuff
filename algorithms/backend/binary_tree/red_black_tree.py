@@ -38,3 +38,26 @@ class RedBlackTree(object):
         self.left = left
         self.right = right
         self.parent = parent
+    
+    def rotate_left(self):
+        """
+        左旋：逆时针旋转两个节点，使父节点被自己的右孩子取代，自己成为自己的左孩子
+        https://blog.csdn.net/lsr40/article/details/85245027
+        """
+        parent = self.parent
+        right = self.right
+        self.right = right.left
+        if self.right:
+            self.right.parent = self
+        self.parent = right
+        right.left = self
+        if parent is not None:
+            if parent.left == self:
+                parent.left = right
+            else:
+                parent.right = right
+        right.parent = parent
+        return right
+
+    def insert(self, label):
+        pass
