@@ -30,7 +30,7 @@ class RedBlackTree(object):
 
     def __init__(self, label=None, color=0, parent=None, left=None, right=None):
         """
-        label: 值
+        label: 某个节点的值
         color: 0为black, 1为red
         """
         self.label = label
