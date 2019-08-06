@@ -61,6 +61,10 @@ class RedBlackTree(object):
         return right
 
     def rotate_right(self):
+        """
+        右旋：顺时针旋转两个节点，使父节点被自己的左孩子取代，自己成为自己的右孩子
+        https://blog.csdn.net/lsr40/article/details/85245027
+        """
         parent = self.parent
         left = self.left
         self.left = left.right
