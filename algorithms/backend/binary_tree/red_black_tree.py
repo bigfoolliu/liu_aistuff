@@ -43,6 +43,7 @@ class RedBlackTree(object):
         """
         左旋：逆时针旋转两个节点，使父节点被自己的右孩子取代，自己成为自己的左孩子
         https://blog.csdn.net/lsr40/article/details/85245027
+        核心是控制需要旋转节点的指向问题
         """
         parent = self.parent
         right = self.right
@@ -58,6 +59,22 @@ class RedBlackTree(object):
                 parent.right = right
         right.parent = parent
         return right
+
+    def rotate_right(self):
+        parent = self.parent
+        left = self.left
+        self.left = left.right
+        if self.left:
+            self.left.parent = self
+        self.parent = left
+        left.right = self
+        if parent is not None:
+            if parent.left == self:
+                parent.left = left
+            else:
+                parent.right = left
+        left.parent = parent
+        return left
 
     def insert(self, label):
         pass
