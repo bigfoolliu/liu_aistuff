@@ -135,9 +135,7 @@ class RedBlackTree(object):
             self.color = 1  # 父节点为黑色则子节点为红色
         else:
             uncle = self.parent.sibling
-            # 父节点为红色
             if color(uncle) == 0:
-                # 父节点为右节点，自己为左节点
                 if self.is_left() and self.parent.is_right():
                     self.parent.rotate_right()
                     self.right._inert_repair()
