@@ -15,130 +15,44 @@ https://docs.python.org/zh-cn/3/library/asyncio-task.html
 4. GEN_CLOSED：执行结束
 """
 
-# def averager():
-#     total = 0.0
-#     count = 0
-#     avg = None
-
-#     while True:
-#         num = yield avg
-#         total += num
-#         count += 1
-#         avg = total/count
-
-# # run
-# ag = averager()
-# # 预激协程,协程执行到yield表达式，将yield后的结果返回
-# print(next(ag))     # None
-
-# # send激活协程，将发送的值赋给yield之前的num，print打印yield返回的值
-# print(ag.send(10))  # 10
-# print(ag.send(20))  # 15
-
-
-# import time
-# import random
-# import requests
-# import gevent
-
-
-# class Worker():
-
-#     def __init__(self, name):
-#         self.name = name
-    
-#     def ping(self):
-#         print("{} ping starts".format(self.name))
-#         html = yield requests.get("hhttp://www.baidu.com")
-#         status = html.status_code
-#         data = html.content
-#         print("{} ping ends".format(self.name))
-#         return status, data
-
-
-# workers = [Worker(i) for i in range(10)]
-# for worker in workers:
-#     print(worker)
-#     task = worker.ping()
-#     next(task)
-
-
-# def long_task(i):
-#     print("{} starts".format(i))
-#     time.sleep(random.randint(1, 6))
-#     print("{} ends".format(i))
-
-
-# tasks = [gevent.spawn(long_task, i) for i in range(5)]
-# gevent.joinall(tasks)
-
-
-# import asyncio
-
-
-# async def compute(x, y):
-#     print("Compute %s + %s ..." % (x, y))
-#     await asyncio.sleep(1.0)
-#     return x + y
-
-
-# async def print_sum(x, y):
-#     result = await compute(x, y)
-#     print("%s + %s = %s" % (x, y, result))
-
-
-# loop = asyncio.get_event_loop()
-# print("start")
-# loop.run_until_complete(print_sum(1, 2))
-# print("end")
-# loop.close()
-
-
-# from tornado import gen
-# import random
-
-
-# def long_task(i):
-#     print("start {}".format(i))
-#     time.sleep(random.randint(1, 5))
-#     print("end {}".format(i))
-#     return(i)
-
-
-# # @gen.coroutine
-# def tasks():
-#     for i in range(5):
-#         ret = yield long_task(i)
-#         print(ret)
-
-
-# tasks()
-
-
 import time
 import asyncio
+import threading
 
 
-async def say_after(delay, what):
-    await asyncio.sleep(delay)
-    print(what)
+class DA(threading.Thread):
+
+    def __init__(self):
+        super().__init__()
+        self.stopped = threading.Event()
+
+    async def say_after(self, delay, what):
+        await asyncio.sleep(delay)
+        print(what)
+
+    async def tasks(self):
+        print(f"started at {time.strftime('%X')}")
+
+        tasks = []
+        for i in range(10):
+            task = asyncio.create_task(self.say_after(i+1, "ha {}".format(i)))
+            tasks.append(task)
+        
+        for task in tasks:
+            await task
+
+        print(f"finished at {time.strftime('%X')}")
+    
+    def run(self):
+        while not self.stopped.wait(5):
+            try:
+                asyncio.run(self.tasks())
+                # asyncio.get_event_loop().run_until_complete(asyncio.gather(self.tasks))
+            except Exception as e:
+                print(e)
+    
+    def stop(self):
+        self.stopped.set()
 
 
-async def main():
-    task1 = asyncio.create_task(
-        say_after(1, 'hello'))
-
-    task2 = asyncio.create_task(
-        say_after(2, 'world'))
-
-    print(f"started at {time.strftime('%X')}")
-
-    # Wait until both tasks are completed (should take
-    # around 2 seconds.)
-    await task1
-    await task2
-
-    print(f"finished at {time.strftime('%X')}")
-
-
-asyncio.run(main())
+DA().run()
