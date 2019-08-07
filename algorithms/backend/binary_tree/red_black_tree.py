@@ -26,6 +26,14 @@ https://www.cnblogs.com/xuxinstyle/p/9556998.html
 """
 
 
+def color(node):
+    """判断节点的颜色"""
+    if node is None:
+        return 0
+    else:
+        return node.color
+
+
 class RedBlackTree(object):
 
     def __init__(self, label=None, color=0, parent=None, left=None, right=None):
@@ -39,6 +47,30 @@ class RedBlackTree(object):
         self.right = right
         self.parent = parent
     
+    @property
+    def sibling(self):
+        """返回兄弟节点"""
+        if self.parent is None:
+            return None
+        elif self.parent.left is self:
+            return self.parent.right
+        else:
+            return self.parent.left
+
+    @property
+    def grandparent(self):
+        """返回当前节点的祖父节点"""
+        if self.parent is None:
+            return None
+        else:
+            return self.parent.parent
+
+    def is_left(self):
+        return self.parent and self.parent.left is self
+
+    def is_right(self):
+        return self.parent and self.parent.right is self
+
     def rotate_left(self):
         """
         左旋：逆时针旋转两个节点，使父节点被自己的右孩子取代，自己成为自己的左孩子
@@ -97,4 +129,16 @@ class RedBlackTree(object):
     
     def _inert_repair(self):
         """当插入节点会破坏红黑树的结构时，需要变色等修复其结构"""
-        pass
+        if self.parent is None:
+            self.color = 0  # 根节点为黑色
+        elif color(self.parent) == 0:
+            self.color = 1  # 父节点为黑色则子节点为红色
+        else:
+            uncle = self.parent.sibling
+            # 父节点为红色
+            if color(uncle) == 0:
+                # 父节点为右节点，自己为左节点
+                if self.is_left() and self.parent.is_right():
+                    self.parent.rotate_right()
+                    self.right._inert_repair()
+                    # TODO:
