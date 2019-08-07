@@ -5,7 +5,7 @@
 
 """
 红黑树
-特殊的二叉查找树，每个节点上都存储位表示节点的颜色，红色或者黑色。
+特殊的二叉查找树（bsd），每个节点上都存储位表示节点的颜色，红色或者黑色。
 https://www.cnblogs.com/xuxinstyle/p/9556998.html
 
 特性：
@@ -25,4 +25,76 @@ https://www.cnblogs.com/xuxinstyle/p/9556998.html
 2.左旋，右旋，变色，其是为了保证满足其红黑树的特性
 """
 
-# TODO:代码待添加
+
+class RedBlackTree(object):
+
+    def __init__(self, label=None, color=0, parent=None, left=None, right=None):
+        """
+        label: 某个节点的值
+        color: 0为black, 1为red
+        """
+        self.label = label
+        self.color = color
+        self.left = left
+        self.right = right
+        self.parent = parent
+    
+    def rotate_left(self):
+        """
+        左旋：逆时针旋转两个节点，使父节点被自己的右孩子取代，自己成为自己的左孩子
+        https://blog.csdn.net/lsr40/article/details/85245027
+        核心是控制需要旋转节点的指向问题
+        """
+        parent = self.parent
+        right = self.right
+        self.right = right.left
+        if self.right:
+            self.right.parent = self
+        self.parent = right
+        right.left = self
+        if parent is not None:
+            if parent.left == self:
+                parent.left = right
+            else:
+                parent.right = right
+        right.parent = parent
+        return right
+
+    def rotate_right(self):
+        """
+        右旋：顺时针旋转两个节点，使父节点被自己的左孩子取代，自己成为自己的右孩子
+        https://blog.csdn.net/lsr40/article/details/85245027
+        """
+        parent = self.parent
+        left = self.left
+        self.left = left.right
+        if self.left:
+            self.left.parent = self
+        self.parent = left
+        left.right = self
+        if parent is not None:
+            if parent.left == self:
+                parent.left = left
+            else:
+                parent.right = left
+        left.parent = parent
+        return left
+
+    def insert(self, label):
+        """插入节点类似于bsd,只是多了一些限制"""
+        if self.label is None:
+            self.label = label
+            return self
+        if self.label == label:
+            return self
+        elif self.label > label:
+            if self.left:
+                self.left.insert(label)
+            else:
+                self.left = RedBlackTree(label, 1, self)
+                self.left._inert_repair()
+                # TODO:
+    
+    def _inert_repair(self):
+        """当插入节点会破坏红黑树的结构时，需要变色等修复其结构"""
+        pass
