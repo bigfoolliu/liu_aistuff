@@ -66,7 +66,7 @@ def send_verify_email(to_email, verify_url):
     :param verify_url: 邮件中的验证url
     :return:
     """
-    print(verify_url)  # TODO: 测试
+    print(verify_url)
 
     # 配发送的邮件的内容
     subject = '美多商城验证'  # 邮件主题

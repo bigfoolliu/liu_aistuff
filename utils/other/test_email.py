@@ -128,14 +128,14 @@ class Email(object):
 
 
 def main():
-    # TODO:使用sina邮箱发送邮件的时候，需要用户名和密码
+    # 使用sina邮箱发送邮件的时候，需要用户名和密码
     # smtp_host = "smtp.sina.com"
     # smtp_port = 25
     # origin_addr = "liu15671677014@sina.com"
     # target_addrs = ["2713281245@qq.com"]
     # pwd = getpass.getpass("password:")  # 安全的输入用户密码
 
-    # TODO:使用qq邮箱发送邮件的时候，需要用户名以及生成的授权码
+    # 使用qq邮箱发送邮件的时候，需要用户名以及生成的授权码
     # smtp_host = "smtp.qq.com"
     # smtp_port = 465
     # origin_addr = "2713281245@qq.com"
