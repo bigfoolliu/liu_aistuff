@@ -6,5 +6,10 @@
 """
 哈希表
 """
+from number_theory.prime_numbers import next_prime
 
-# TODO:
+
+class HashTable(object):
+
+    def __init__(self):
+        pass
