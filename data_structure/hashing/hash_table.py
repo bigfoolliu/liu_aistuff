@@ -24,8 +24,8 @@ from number_theory.prime_numbers import next_prime
 class HashTable(object):
 
     def __init__(self, size_table, charge_factor=None, lim_charge=None):
-        self.size_table = size_table
-        self.values = [None] * self.size_table
+        self.size_table = size_table  # hash表的大小
+        self.values = [None] * self.size_table  # 哈希表的初始值
         self.lim_charge = 0.75 if lim_charge is None else lim_charge
         self.charge_factor = 1 if charge_factor is None else charge_factor
         self.__aux_list = []
@@ -35,6 +35,7 @@ class HashTable(object):
         return self._keys
 
     def balanced_factor(self):
+        """平衡因子"""
         return sum([1 for slot in self.values if slot is None]) / (self.size_table * self.charge_factor)
 
     def hash_function(self, key):
@@ -47,6 +48,7 @@ class HashTable(object):
         print(self.values)
     
     def bulk_insert(self, values):
+        """块插入"""
         i = 1
         self.__aux_list = values
         for value in values:
@@ -55,6 +57,7 @@ class HashTable(object):
             i += 1
 
     def _set_value(self, key, data):
+        """设置值"""
         self.values[key] = data
         self._keys[key] = data
     
@@ -69,6 +72,7 @@ class HashTable(object):
                 break
     
     def rehashing(self):
+        """重新hash"""
         survivor_values = [value for value in self.values if value is not None]
         self.size_table = next_prime(self.size_table, factor=2)
         self._keys.clear()
@@ -76,6 +80,7 @@ class HashTable(object):
         map(self.insert_data, survivor_values)
     
     def insert_data(self, data):
+        """hash表插入数据"""
         key = self.hash_function(data)
         if self.values[key] is None:
             self._set_value(key, data)
