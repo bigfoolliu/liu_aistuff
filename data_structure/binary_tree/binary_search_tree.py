@@ -69,9 +69,11 @@ class BinarySearchTree(object):
         return False
 
     def __reassign_node(self, node, new_children):
-        """在某同级节点下重新分配一个子节点"""
+        """在某节点下重新分配一个新的节点，替换掉原先的节点，即将node替换为new_children"""
+        # 如果新的子节点存在，则将新节点的父节点设置为同级节点的父节点
         if new_children:
             new_children.set_parent(node.get_parent())
+        # 如果同级节点的父节点存在，则判断该新节点是应该设置为左节点还是右节点
         if node.get_parent():
             if self.__is_right_children(node):
                 node.get_parent().set_right(new_children)
