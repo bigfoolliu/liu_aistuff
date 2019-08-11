@@ -76,4 +76,15 @@ class HashTable(object):
         map(self.insert_data, survivor_values)
     
     def insert_data(self, data):
-        key = self.hash_function()
+        key = self.hash_function(data)
+        if self.values[key] is None:
+            self._set_value(key, data)
+        elif self.values[key] == data:
+            pass
+        else:
+            colison_resolution = self._colison_resolution(key, data)
+            if colison_resolution is not None:
+                self._set_value(colison_resolution, data)
+            else:
+                self.rehashing()
+                self.insert_data(data)
