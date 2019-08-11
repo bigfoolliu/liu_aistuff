@@ -6,10 +6,12 @@
 """
 二叉搜索树
 
+也叫二叉查找树，或者二叉排序树
+
 空树或者具有以下特征：
 1.左子树不空则左子树上所有节点的值均小于根节点的值
 2.右子树不空则右子树上所有节点的值均大于根节点的值
-3.左右子树分别为二叉排序树
+3.左右子树分别为二叉搜索树
 
                 12
             /       \
@@ -160,7 +162,7 @@ class BinarySearchTree(object):
         if not self.is_empty():
             node = self.get_node(label)
             if node:
-                # 如果待删除节点的左右子节点都存在，则将其置为None
+                # 如果待删除节点的左右子节点都不存在，则将其置为None，也说明其为叶子节点
                 if not node.get_left() and not node.get_right():
                     self.__reassign_node(node, None)
                 # 如果待删除节点的左右子节点只有右子节点，将其自身置为自己的右子节点
@@ -169,10 +171,8 @@ class BinarySearchTree(object):
                 # 如果待删除节点的左右子节点只有左子节点，将其自身置为自己的左子节点
                 elif node.get_left() and not node.get_right():
                     self.__reassign_node(node, node.get_left())
-                # 如果待删除节点同时有左节点和右节点
+                # 如果待删除节点同时有左节点和右节点,将左节点替换掉为自身，同时调整子节点下的结构
                 else:
-                    # 获取左分支的最大节点，将其删除
-                    # TODO:有点困惑
                     tmp_node = self.get_max(node.get_left())
                     self.delete(tmp_node.get_label())
                     node.set_label(tmp_node.get_label())
@@ -187,8 +187,10 @@ def main():
     bst.insert(9)
     bst.insert(15)
     bst.insert(19)
+    bst.insert(13)
 
     bst.delete(18)
+    print(bst)
 
 
 if __name__ == "__main__":
