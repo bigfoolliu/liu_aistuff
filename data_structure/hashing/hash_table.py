@@ -53,3 +53,27 @@ class HashTable(object):
             self.insert_data(value)
             self._step_by_step(i)
             i += 1
+
+    def _set_value(self, key, data):
+        self.values[key] = data
+        self._keys[key] = data
+    
+    def _colison_resolution(self, key, data=None):
+        """碰撞解决"""
+        new_key = self.hash_function(key + 1)
+        while self.values[new_key] is not None and self.values[new_key] != key:
+            if self.values.count(None) > 0:
+                new_key = self.hash_function(new_key += 1)
+            else:
+                new_key = None
+                break
+    
+    def rehashing(self):
+        survivor_values = [value for value in self.values if value is not None]
+        self.size_table = next_prime(self.size_table, factor=2)
+        self._keys.clear()
+        self.values = [None] * self.size_table
+        map(self.insert_data, survivor_values)
+    
+    def insert_data(self, data):
+        key = self.hash_function()
