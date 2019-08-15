@@ -12,4 +12,7 @@
 ```shell
 # 创建项目
 django-admin startproject djd
+
+# 数据库
+python manager.py migrate
 ```
