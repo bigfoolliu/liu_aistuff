@@ -21,8 +21,8 @@ def task(msg):
 if __name__ == "__main__":
     po = multiprocessing.Pool(3)
     for i in range(0, 10):
-        po.apply_async(task, (i,))
+        po.apply_async(task, (i,))  # apply_asyc使用非阻塞方式调用函数
     print("------start------")
-    po.close()
-    po.join()
+    po.close()  # 关闭进程池，不再接受新的任务(po.terminate则是不管任务是否完成，立即终止)
+    po.join()  # 主进程阻塞，等待子进程退出，必须在close和terminate之后使用
     print("------end--------")
