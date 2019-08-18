@@ -6,7 +6,8 @@
   - [1.学习资源](#1%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90)
   - [2.基础概念](#2%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5)
     - [2.1 GOPATH规则](#21-gopath%e8%a7%84%e5%88%99)
-  - [3.基本命令](#3%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4)
+    - [2.2基本命令](#22%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4)
+    - [2.3基础语法](#23%e5%9f%ba%e7%a1%80%e8%af%ad%e6%b3%95)
 
 <!-- /TOC -->
 
@@ -28,9 +29,15 @@ pkg：Windows 平台编译好的中间文件
 src：标准库的源码
 test：测试用例
 
-## 3.基本命令
+### 2.2基本命令
 
 ```shell
+# 将文件编译
+go build hello.go
+
 # 执行命令
-go run main.go
+go run hello.go
 ```
+
+### 2.3基础语法
+
