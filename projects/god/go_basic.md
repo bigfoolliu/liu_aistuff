@@ -42,9 +42,22 @@ test：测试用例
 ```shell
 # 将文件直接编译为机器码
 go build hello.go
-
 # 执行命令
 go run hello.go
+# 查看版本
+go version
+# 查看环境
+go env
+# 查看当前目录中所有可用包
+go list
+# 清空生成的可执行文件
+go clean
+# 从远程下载第三方的库至GOPATH
+go get
+# 查看包或者函数的源码的api
+go doc [package] [function]
+# 对文件进行格式化
+gofmt hello.py
 ```
 
 ### 2.3基础语法
