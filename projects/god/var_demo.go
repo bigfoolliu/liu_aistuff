@@ -38,4 +38,6 @@ func main() {
 	if r1 {
 		print("c1||c2", r1)
 	}
+
+	print("!c1: ", !c1)
 }
