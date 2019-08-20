@@ -1,12 +1,24 @@
-# git相关命令
+# git相关知识
 
-一般配置:
+<!-- TOC -->
+
+- [git相关知识](#git%e7%9b%b8%e5%85%b3%e7%9f%a5%e8%af%86)
+  - [1.git基本命令](#1git%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4)
+  - [2.其他相关操作](#2%e5%85%b6%e4%bb%96%e7%9b%b8%e5%85%b3%e6%93%8d%e4%bd%9c)
+    - [2.1修改已经push的commit的message](#21%e4%bf%ae%e6%94%b9%e5%b7%b2%e7%bb%8fpush%e7%9a%84commit%e7%9a%84message)
+
+<!-- /TOC -->
+
+## 1.git基本命令
+
+```shell
+# 一般配置
 
 git --version       查看版本信息
 git config --global user.name       获取当前登陆的用户
 git config --global user.email      获取当前登陆用户的邮箱
 
-登陆git:
+# 登陆git:
 
 git config --global user.name `userName`      设置git账户，userName为用户名
 git config --global user.email `userEmail>`
@@ -50,3 +62,23 @@ git submodule add <submodule_url>   给一个仓库添加子仓库
 git clone --recurse-submodules <main_project_url>   获取主项目和所有子项目源码
 
 git remote get-url origin   获取远程仓库的地址
+```
+
+## 2.其他相关操作
+
+### 2.1修改已经push的commit的message
+
+[已经push的commit如何修改message](https://www.jianshu.com/p/ec45ce13289f)
+
+```shell
+# 1.确定修改哪些commit
+git rebase -i HEAD~5
+
+# 2.在vim中将待修改的commit的 pick 改为 edit，然后保存退出，此时git的分支发生改变，改成了我们第一个edit的commit id
+# 3.在当前分支轮流执行（有几条message要修改就执行几次）以下两个命令,执行完第一个命令，修改message保存
+git commit --amend
+git rebase --continue
+
+# 4.强制推到远程
+git push -f
+```
