@@ -1,5 +1,11 @@
 # linux 相关命令
 
+<!-- TOC -->
+
+- [linux 相关命令](#linux-%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4)
+
+<!-- /TOC -->
+
 切换当前使用的python版本: sudo update-alternatives --config python
 
 设置python使用的优先级: sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100

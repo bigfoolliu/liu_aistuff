@@ -1,5 +1,11 @@
 # tmux会话管理快捷键
 
+<!-- TOC -->
+
+- [tmux会话管理快捷键](#tmux%e4%bc%9a%e8%af%9d%e7%ae%a1%e7%90%86%e5%bf%ab%e6%8d%b7%e9%94%ae)
+
+<!-- /TOC -->
+
 tmux new        create a new tmux session
 tmux new -s mysession       创建一个叫mysession的会话
 

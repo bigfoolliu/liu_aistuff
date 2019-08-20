@@ -1,5 +1,11 @@
 # linux快捷键
 
+<!-- TOC -->
+
+- [linux快捷键](#linux%e5%bf%ab%e6%8d%b7%e9%94%ae)
+
+<!-- /TOC -->
+
 ctrl + alt + t      Open a new terminal window.
 ctrl + shift + t    在一个终端中打开多个标签
 
