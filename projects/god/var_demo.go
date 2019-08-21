@@ -96,6 +96,7 @@ func main() {
 
 // Phone 声明一个接口
 type Phone interface {
+	// 接口内部的方法，所有Phone的接口都可以调用该方法
 	call()
 }
 
@@ -107,10 +108,12 @@ type NokiaPhone struct {
 type IPhone struct {
 }
 
+// 实现结构体NokiaPhone的方法,即将两者绑定
 func (nokiaPhone NokiaPhone) call() {
 	fmt.Println("I am Nokia, I can call you!")
 }
 
+// 实现结构体IPhone的方法,即将两者绑定
 func (iPhone IPhone) call() {
 	fmt.Println("I am iPhone, I can call you!")
 }
