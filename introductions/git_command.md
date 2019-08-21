@@ -53,7 +53,8 @@ git checkout -b `dev`       建立一个新的本地dev分支
 git config -e --global      直接进步编辑全局配置文件
 
 当文件提交comnit后push因为大文件而失败:
-git reset `id`　　回退至指定的版本号
+git reset --hard `commit_id`　　回退至指定的版本号
+git push origin HEAD --force    远程提交回退
 git rm -r --cached .　　删除缓存
 
 git submodule init  初始化本地.gitmodules文件

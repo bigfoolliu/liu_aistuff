@@ -22,6 +22,7 @@ func (de *DivideError) Error() string {
 
 // Divide 定义 `int` 类型除法运算的函数
 func Divide(varDividee int, varDivider int) (result int, errorMsg string) {
+	// 如果除数为0，则返回error信息
 	if varDivider == 0 {
 		dData := DivideError{
 			dividee: varDividee,
