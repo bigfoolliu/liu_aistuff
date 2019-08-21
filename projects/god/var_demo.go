@@ -9,6 +9,12 @@ import (
 声明变量的示例
 */
 
+func max(num1, num2 int) int {
+	if num1 > num2 {
+		return num1
+	}
+	return num2
+}
 
 func main() {
 	// var a string = "golang"
@@ -22,7 +28,7 @@ func main() {
 	print(length)
 
 	a = "abc"
-    b = len(a)
+	b = len(a)
 	// c = unsafe.Sizeof(a)
 	println(a, b, c)
 
@@ -36,8 +42,11 @@ func main() {
 	var r1 bool
 	r1 = c1 || c2
 	if r1 {
-		print("c1||c2", r1)
+		print("c1||c2", r1, "\n")
 	}
 
-	print("!c1: ", !c1)
+	print("!c1: ", !c1, "\n")
+
+	ret := max(3, 4)
+	print("ret: ", ret, "\n")
 }
