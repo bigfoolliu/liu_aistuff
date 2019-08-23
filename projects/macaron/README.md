@@ -163,3 +163,12 @@ ctx.PlainText(200, []byte("plain text goes here"))
 ```
 
 ### 4.3指定相应状态码
+
+```go
+// 指定状态码
+ctx.Status(403)
+// 指定错误码
+ctx.Error(500)
+// 设置重定向
+ctx.Redirect("/")
+```
