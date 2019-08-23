@@ -39,6 +39,29 @@
 5. 部署简单
 6. 强大的标准库
 
+package（包）:
+
+- 同一个包下文件属于同一个工程文件，不必import，可直接使用
+- 同一个包下面所有文件package名字一样
+- 同一个包下面的文件package名字建议为目录名字，也可以不是
+
+```go
+// import点操作, 含义是导入之后调用的时候可以省略前缀包名
+import (
+    . "fmt"
+)
+
+// 别名操作,将包重命名
+import (
+    f "fmt"
+)
+
+// _操作，引入该包，但是不直接使用里面的函数，而是调用了该包的init函数
+import (
+    _ "github.com/ziutek/mymysql/godrv"
+)
+```
+
 ### 2.1 GOPATH规则
 
 api：每个版本的 api 变更差异
