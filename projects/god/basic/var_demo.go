@@ -92,6 +92,23 @@ func main() {
 	phone.call()
 	phone = new(IPhone)
 	phone.call()
+
+	novarValue := "hahaha"
+	fmt.Println("use := novarValue: ", novarValue)
+
+	// iota编译器常量使用
+	const (
+		a1 = iota //0
+		b1        //1
+		c3        //2
+		d  = "ha" //独立值，iota += 1
+		e         //"ha"   iota += 1
+		f  = 100  //iota +=1
+		g         //100  iota +=1
+		h  = iota //7,恢复计数
+		i         //8`
+	)
+	fmt.Println(a1, b1, c3, d, e, f, g, h, i)
 }
 
 // Phone 声明一个接口
