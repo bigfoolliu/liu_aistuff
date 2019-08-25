@@ -11,21 +11,15 @@ import tornado.options
 import tornado.web
 from tornado.options import define, options
 
-from tord.handlers import index, upload, media
+from tord.settings import settings
+from tord.urls import url_patterns
 
 define("port", type=int, default=8000, help="server port")
 
 
 def main():
     tornado.options.parse_command_line()
-
-    app = tornado.web.Application(
-        [(r"/", index.IndexHandler),
-        (r"/books", upload.BooksHandler),
-        (r"/images", media.ImageHandler),
-        (r"/videos", media.VideoHandler),
-        (r"/async/", )
-        ],)  
+    app = tornado.web.Application(url_patterns)
 
     try:
         app.listen(options.port)
