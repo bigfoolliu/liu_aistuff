@@ -3,11 +3,12 @@
 # author: bigfoolliu
 
 
-from tord.handlers import index, media, upload
+from tord.handlers import async, index, media, upload
 
 url_patterns = [
     (r"/", index.IndexHandler),
     (r"/books", upload.BooksHandler),
     (r"/images", media.ImageHandler),
     (r"/videos", media.VideoHandler),
+    (r"/async", async.AsyncDemoHandler),
 ]
