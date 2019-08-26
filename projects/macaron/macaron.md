@@ -2,26 +2,29 @@
 
 <!-- TOC -->
 
-- [go框架之 macaron](#go%e6%a1%86%e6%9e%b6%e4%b9%8b-macaron)
-  - [1.基本概念](#1%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5)
-    - [1.1macaron经典实例](#11macaron%e7%bb%8f%e5%85%b8%e5%ae%9e%e4%be%8b)
-    - [1.2处理器(handler)](#12%e5%a4%84%e7%90%86%e5%99%a8handler)
-    - [1.3服务注入](#13%e6%9c%8d%e5%8a%a1%e6%b3%a8%e5%85%a5)
-    - [1.4中间件机制](#14%e4%b8%ad%e9%97%b4%e4%bb%b6%e6%9c%ba%e5%88%b6)
-    - [1.5macaron环境变量](#15macaron%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f)
-  - [2.核心服务](#2%e6%a0%b8%e5%bf%83%e6%9c%8d%e5%8a%a1)
-    - [2.1请求上下文(Context)](#21%e8%af%b7%e6%b1%82%e4%b8%8a%e4%b8%8b%e6%96%87context)
-    - [2.2cookie](#22cookie)
-    - [2.3设置/获取url参数](#23%e8%ae%be%e7%bd%ae%e8%8e%b7%e5%8f%96url%e5%8f%82%e6%95%b0)
-    - [2.4获取查询参数](#24%e8%8e%b7%e5%8f%96%e6%9f%a5%e8%af%a2%e5%8f%82%e6%95%b0)
-    - [其他](#%e5%85%b6%e4%bb%96)
-  - [3.路由模块](#3%e8%b7%af%e7%94%b1%e6%a8%a1%e5%9d%97)
-    - [3.1路由定义](#31%e8%b7%af%e7%94%b1%e5%ae%9a%e4%b9%89)
-    - [3.2命名参数](#32%e5%91%bd%e5%90%8d%e5%8f%82%e6%95%b0)
-  - [4.模板引擎](#4%e6%a8%a1%e6%9d%bf%e5%bc%95%e6%93%8e)
-    - [4.1渲染html](#41%e6%b8%b2%e6%9f%93html)
-    - [4.2渲染xml,json和原始数据](#42%e6%b8%b2%e6%9f%93xmljson%e5%92%8c%e5%8e%9f%e5%a7%8b%e6%95%b0%e6%8d%ae)
-    - [4.3指定相应状态码](#43%e6%8c%87%e5%ae%9a%e7%9b%b8%e5%ba%94%e7%8a%b6%e6%80%81%e7%a0%81)
+- [go框架之 macaron](#go框架之-macaron)
+    - [1.基本概念](#1基本概念)
+        - [1.1macaron经典实例](#11macaron经典实例)
+        - [1.2处理器(handler)](#12处理器handler)
+        - [1.3服务注入](#13服务注入)
+        - [1.4中间件机制](#14中间件机制)
+        - [1.5macaron环境变量](#15macaron环境变量)
+    - [2.核心服务](#2核心服务)
+        - [2.1请求上下文(Context)](#21请求上下文context)
+        - [2.2cookie](#22cookie)
+        - [2.3设置/获取url参数](#23设置获取url参数)
+        - [2.4获取查询参数](#24获取查询参数)
+        - [2.5辅助方法](#25辅助方法)
+        - [2.6响应流](#26响应流)
+        - [2.7请求对象](#27请求对象)
+        - [其他](#其他)
+    - [3.路由模块](#3路由模块)
+        - [3.1路由定义](#31路由定义)
+        - [3.2命名参数](#32命名参数)
+    - [4.模板引擎](#4模板引擎)
+        - [4.1渲染html](#41渲染html)
+        - [4.2渲染xml,json和原始数据](#42渲染xmljson和原始数据)
+        - [4.3指定相应状态码](#43指定相应状态码)
 
 <!-- /TOC -->
 
@@ -119,7 +122,7 @@ m.Get("/set", func(ctx *macaron.Context) {
 })
 
 // 获取url参数
-m.Get("/get/:name", func(ctx *macaron.Context) string {
+m.Get("/get/:name", func(ctx *macaron.Context) {
     name := ctx.Params("name")
 })
 ```
@@ -130,13 +133,38 @@ m.Get("/get/:name", func(ctx *macaron.Context) string {
 
 ```go
 // 获取查询参数
-m.Get("/get/", func(ctx *macaron.Context) string {
+m.Get("/get", func(ctx *macaron.Context) {
     name := ctx.Query("name")  // 单个
     ids := ctx.QueryStrings("ids")  // 多个
 })
 ```
 
 其他：`ctx.QueryInt`、`ctx.QueryInt64`、`ctx.QueryFloat64`、`ctx.QueryTrim`
+
+### 2.5辅助方法
+
+- 服务内容或文件：`ctx.ServeContent`、`ctx.ServeFile`、`ctx.ServeFile`, `ctx.ServeFileContent`
+- 获取远程 IP 地址：`ctx.RemoteAddr`
+
+### 2.6响应流
+
+```go
+m.Get("/get", func(ctx *macaron.Context) {
+    ctx.Resp.Write([]byte("the request path is : " + ctx.Req.RequestURI))
+})
+```
+
+### 2.7请求对象
+
+`请求体在每个请求中只能被读取一次`
+
+```go
+m.Get("/get", func(ctx *macaron.Context) {
+    reader, err := ctx.Req.Body().ReadCloser()  // 获取io.ReadCloser类型的请求体
+    data, err := ctx.Req.Body().Bytes()  // 获取[]byte类型的请求体
+    data, err := ctx.Req.Body().String()  // 获取string类型的请求体
+})
+```
 
 ### 其他
 

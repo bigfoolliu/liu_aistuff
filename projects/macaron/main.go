@@ -25,6 +25,8 @@ func main() {
 	m.Get("/hello", helloHandler)
 	m.Get("/json", jsonHandler)
 	m.Get("/params/:name", paramsHandler)
+	m.Get("/write", writeHandler)
+	m.Get("/redirect", redirectHandler)
 
 	log.Println("server is running on ", setting.Server)
 	// log.Println(http.ListenAndServe("0.0.0.0:4000", m))
@@ -32,15 +34,18 @@ func main() {
 }
 
 func myHandler(ctx *macaron.Context) string {
+	// 带返回值
 	return "the result path is: " + ctx.Req.RequestURI
 }
 
 func helloHandler(ctx *macaron.Context) {
+	// 使用模板文件
 	ctx.Data["time"] = time.Now().UTC()
 	ctx.HTML(200, "hello")
 }
 
 func jsonHandler(ctx *macaron.Context) {
+	// 返回json格式内容
 	p := Person{"tony", 20, "male"}
 	ctx.JSON(200, &p)
 }
@@ -56,4 +61,15 @@ func paramsHandler(ctx *macaron.Context) {
 	log.Println("query id:", id)
 	log.Println("query names:", names)
 	ctx.JSON(200, &params)
+}
+
+func writeHandler(ctx *macaron.Context) {
+	// 响应流
+	ctx.Resp.Write([]byte("the request path is : " + ctx.Req.RequestURI))
+}
+
+func redirectHandler(ctx *macaron.Context) {
+	// 重定向的demo
+	time.Sleep(2)
+	ctx.Redirect("/")
 }
