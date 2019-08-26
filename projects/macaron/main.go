@@ -5,14 +5,15 @@ import (
 	"net/http"
 	"time"
 
+	"./setting"
 	"gopkg.in/macaron.v1"
 )
 
 // Person 示例
 type Person struct {
-	Name string
-	Age  int
-	Sex  string
+	Name string `json:"id"`
+	Age  int    `json:"age"`
+	Sex  string `json:"sex"`
 }
 
 func main() {
@@ -24,7 +25,7 @@ func main() {
 	m.Get("/hello", helloHandler)
 	m.Get("/json", jsonHandler)
 
-	log.Println("server is running...")
+	log.Println("server is running on ", setting.Server)
 	// log.Println(http.ListenAndServe("0.0.0.0:4000", m))
 	log.Println(http.ListenAndServe("127.0.0.1:4000", m))
 }
