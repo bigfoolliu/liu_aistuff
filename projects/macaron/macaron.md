@@ -11,7 +11,10 @@
     - [1.5macaron环境变量](#15macaron%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f)
   - [2.核心服务](#2%e6%a0%b8%e5%bf%83%e6%9c%8d%e5%8a%a1)
     - [2.1请求上下文(Context)](#21%e8%af%b7%e6%b1%82%e4%b8%8a%e4%b8%8b%e6%96%87context)
-    - [2.2其他](#22%e5%85%b6%e4%bb%96)
+    - [2.2cookie](#22cookie)
+    - [2.3设置/获取url参数](#23%e8%ae%be%e7%bd%ae%e8%8e%b7%e5%8f%96url%e5%8f%82%e6%95%b0)
+    - [2.4获取查询参数](#24%e8%8e%b7%e5%8f%96%e6%9f%a5%e8%af%a2%e5%8f%82%e6%95%b0)
+    - [其他](#%e5%85%b6%e4%bb%96)
   - [3.路由模块](#3%e8%b7%af%e7%94%b1%e6%a8%a1%e5%9d%97)
     - [3.1路由定义](#31%e8%b7%af%e7%94%b1%e5%ae%9a%e4%b9%89)
     - [3.2命名参数](#32%e5%91%bd%e5%90%8d%e5%8f%82%e6%95%b0)
@@ -81,17 +84,70 @@ func Home(ctx *macaron.Context) {
 }
 ```
 
-### 2.2其他
+### 2.2cookie
+
+Cookie，设置 Cookie 最完整的用法为：`SetCookie("user", "unknwon", 999, "/", "localhost", true, true)`,参数的顺序是固定的。
+
+如果需要更加安全的 Cookie 机制，可以先使用 `macaron.SetDefaultCookieSecret` 设定秘钥然后使用(这两个方法将会自动使用您设置的默认密钥进行加密/解密 Cookie 值)：
+
+- `*macaron.Context.SetSecureCookie`
+- `*macaron.Context.GetSecureCookie`
+
+对于那些对安全性要求特别高的应用，可以为每次设置 Cookie 使用不同的密钥加密/解密：
+
+- `*macaron.Context.SetSuperSecureCookie`
+- `*macaron.Context.GetSuperSecureCookie`
+
+```go
+// 设置cookie
+m.Get("/set", func(ctx *macaron.Context) {
+    ctx.SetCookie("user", "Unknwon", 1)
+})
+
+// 获取cookie
+m.Get("/get", func(ctx *macaron.Context) string {
+    return ctx.GetCookie("user")
+})
+```
+
+### 2.3设置/获取url参数
+
+```go
+// 设置url参数
+m.Get("/set", func(ctx *macaron.Context) {
+    name := ctx.SetParams("name", "new_name")
+})
+
+// 获取url参数
+m.Get("/get/:name", func(ctx *macaron.Context) string {
+    name := ctx.Params("name")
+})
+```
+
+其他：`ctx.ParamsEscape`、`ctx.ParamsInt`、`ctx.ParamsInt64`、`ctx.ParamsFloat64`
+
+### 2.4获取查询参数
+
+```go
+// 获取查询参数
+m.Get("/get/", func(ctx *macaron.Context) string {
+    name := ctx.Query("name")  // 单个
+    ids := ctx.QueryStrings("ids")  // 多个
+})
+```
+
+其他：`ctx.QueryInt`、`ctx.QueryInt64`、`ctx.QueryFloat64`、`ctx.QueryTrim`
+
+### 其他
 
 1. Next()，可用于中间件处理器暂时放弃执行，等待其他处理器执行完毕后执行。`ctx.Next()`
-2. Cookie，`*macaron.Context.SetCookie`, `*macaron.Context.GetCookie`,设置时候参数固定(`SetCookie(<name>, <value>, <max age>, <path>, <domain>, <secure>, <http only>)`)
-3. 路由日志,`m.Use(macaron.Logger())`
-4. 容错恢复`m.Use(macaron.Recovery())`
-5. 静态文件`m.Use(macaron.Static("public"))`
-6. 自定义选项,该服务允许接受第二个参数进行自定义选项操作`macaron.StaticOptions`
-7. 全局日志,可选,`logger *log.Logger`
-8. 相应流,可选，一般情况下可直接使用 `*macaron.Context.Resp`
-9. 请求对象,可选，一般情况下可直接使用 `*macaron.Context.Req`
+2. 路由日志,`m.Use(macaron.Logger())`
+3. 容错恢复`m.Use(macaron.Recovery())`
+4. 静态文件`m.Use(macaron.Static("public"))`
+5. 自定义选项,该服务允许接受第二个参数进行自定义选项操作`macaron.StaticOptions`
+6. 全局日志,可选,`logger *log.Logger`
+7. 相应流,可选，一般情况下可直接使用 `*macaron.Context.Resp`
+8. 请求对象,可选，一般情况下可直接使用 `*macaron.Context.Req`
 
 ## 3.路由模块
 
