@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	// 创建一个map对象，类型字典
 	m := make(map[string]int)
 
 	m["k1"] = 7
