@@ -8,5 +8,6 @@ from tord.handlers import base
 class TestHandler(base.BaseHandler):
 
     def post(self):
-        data = self.parse_json_body()
-        self.finish(data)
+        data = self.request.body
+        self.write(data)
+        self.finish()

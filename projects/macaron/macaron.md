@@ -189,6 +189,12 @@ m.Get("/", func() {
 m.Post("/", func() {
     // create something
 })
+
+// 使用组路由
+m.Group("/chapters", func() {
+    m.Get("/:id", GetBooks)
+    m.Post("/new", NewBook)
+}
 ```
 
 ### 3.2命名参数

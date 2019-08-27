@@ -28,6 +28,8 @@ func main() {
 	m.Get("/write", writeHandler)
 	m.Get("/redirect", redirectHandler)
 
+	m.Post("/gocrontest", gocrontestHandler)
+
 	log.Println("server is running on ", setting.Server)
 	// log.Println(http.ListenAndServe("0.0.0.0:4000", m))
 	log.Println(http.ListenAndServe("127.0.0.1:4000", m))
@@ -72,4 +74,8 @@ func redirectHandler(ctx *macaron.Context) {
 	// 重定向的demo
 	time.Sleep(2)
 	ctx.Redirect("/")
+}
+
+func gocrontestHandler(ctx *macaron.Context) {
+	// TODO:需要添加对post请求的处理
 }

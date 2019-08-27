@@ -11,15 +11,19 @@ import tornado.web
 
 
 class BaseHandler(tornado.web.RequestHandler):
+    
+    # @tornado.web.authenticated
+    def get(self):
+        self.render('index.html')
 
     def parse_json(self, raw_data):
         if raw_data == b"":
             return {}
         if isinstance(raw_data, bytes):
             try:
-                data = str(raw_data, encoding="utf-8")
+                data = str(raw_data, encoding='utf-8')
             except Exception:
-                return {"data": str(base64.b64encode(raw_data), encoding="utf-8")}
+                return {"data": str(base64.b64encode(raw_data), encoding='utf-8')}
         else:
             data = raw_data
         data = json.loads(data)
@@ -33,9 +37,21 @@ class BaseHandler(tornado.web.RequestHandler):
             self.request_data = None
         return self.request_data
 
+    def parse_query_arguments(self):
+        ret = {}
+        for k, v in self.request.query_arguments.items():
+            if isinstance(v, list) and len(v) != 0:
+                if isinstance(v[0], bytes):
+                    ret[k] = str(v[0], encoding='utf-8')
+                else:
+                    ret[k] = v[0]
+            else:
+                ret[k] = v
+        return ret
+
     def finish_request(self, body):
-        self.write(json.dumps(body, sort_keys=True, separators=(",", ": ")))
-        self.set_header("Content-Type", "application/json; charset=UTF-8")
+        self.write(json.dumps(body, sort_keys=True, separators=(',', ': ')))
+        self.set_header('Content-Type', 'application/json; charset=UTF-8')
         self.finish()
 
     def write_success_json(self, data=None):
@@ -57,13 +73,3 @@ class BaseHandler(tornado.web.RequestHandler):
 
         result['desc'] = desc
         self.finish_request(result)
-
-    def get(self):
-        raise NotImplementedError
-    
-    def post(self):
-        raise NotImplementedError
-    
-    def write_success(self, reason=None):
-        self.set_status(200, reason=reason)
-        self.finish()
