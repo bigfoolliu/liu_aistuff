@@ -9,7 +9,6 @@ import threading
 import time
 
 lock = threading.Lock()
-
 l = []
 
 
@@ -20,6 +19,7 @@ def test1(n):
     time.sleep(0.001)
     print(l)
     lock.release()
+
 
 def test(n):
     """不使用线程锁的情况"""
