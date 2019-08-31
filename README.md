@@ -6,7 +6,7 @@
   - [1. 介绍](#1-%e4%bb%8b%e7%bb%8d)
   - [2.aitools](#2aitools)
   - [3.books](#3books)
-  - [4.](#4)
+  - [4.algorithms](#4algorithms)
 
 <!-- /TOC -->
 
@@ -24,4 +24,6 @@ Add go features here.
 
 读的一些书和读书笔记。
 
-## 4.
+## 4.algorithms
+
+关于一些算法。
