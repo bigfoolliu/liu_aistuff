@@ -1,0 +1,178 @@
+1.常用词的含义
+
+window
+这个词在不同的上下文中有不同的含义，但通常指的是在你的显示屏上某个地方的一个矩形区域。
+
+top-level window
+一个能够独立存在于您的屏幕上的窗口。他将被饰以标准帧和控制系统的桌面管理器。你可以在桌面上移到它。
+您通常可以调整它的大小，尽管你的应用程序可以防止这种行为。
+
+widget
+在图形用户界面中组件中用于构建应用程序的任何组件块的一般称谓。 像这些组件: buttons(按钮),
+radiobuttons(单选按钮), text fields(文本框), frames(框架), and text labels(文本标签)。
+
+frame
+在 Tkinter 中, 框架构件是组织复杂的布局的基本单位。框架是一个可以包含其他部件的矩形区域。
+
+child, parent
+当任何部件被创建后，父子关系也被创建了。例如，如果你把一个文本标签放进框架内，框架是标签的父。
+
+
+2.布局管理
+稍后我们将讨论这些小组件，你的GUI应用程序构建块。组件在一个窗口中如何安排？
+虽然 Tkinter有三个不同的“几何管理器”，对于绝大多数组件，笔者强烈地推荐 .grid（）几何管理器。
+该管理器将每一个窗口或框架作为一个表格——一个包含行列的网格。
+- 一个单元是在一行和一列的交点区域。
+- 每一列的宽度是该列中最宽的单元格的宽度。
+- 每一行的高度是该行中最大的单元格的高度。
+- 对于没有填满整个单元格的组件，可以指定如何使用额外的空间。你可以将其保留组将以外额外的空间，
+或拉伸部件以适应它，在水平或垂直方向。
+
+您可以将多个单元格组成一个较大的区域，这个过程被称为跨越.
+
+当您创建了一个widget，除非你在布局管理器中注册了它，否则它不会出现。因此，建设和放置一个widget是两个步骤的过程，就像是这样的：
+
+    self.thing = tk.Constructor(parent, ...)
+    self.thing.grid(...)
+
+这里的Constructor 是按钮，框架等组件之一，并且父类是一个创建了子控件的父控件。所有的组件都有 .grid()方法，
+你可以用它来告诉布局管理器把它放在哪里。
+
+
+2.1
+.grid() 方法
+显示一个组件 w 在你的应用程序屏幕上:
+
+    w.grid(option=value, ...)
+
+这个方法在几何管理器中注册一个组件 w  ——如果你不这样做，组件将在内部存在，但它不会在屏幕上可见。对于可选项，
+可参考 Table 1, “Arguments of the .grid() geometry manager”.
+
+
+Table 1. Arguments of the .grid() geometry manager
+
+column	     您想要网格化组件的列号，从零开始计数。默认值是零。
+columnspan	 通常一个部件只占用一个单元网格。但是，你可以在一行中占用多个单元格，并且由columnspan 选项将它们合并成一个较大的单元格。
+             例如， w.grid(row=0, column=2, columnspan=3) 将会把组件 w放进第一行中占据了第2, 3, 4列 的一个单元格。
+in_	         到寄存器中W为一些小部件W2一个孩子，使用IN_= W2。新的父W2必须是建立瓦特时所使用的父控件的后裔。注册组件 w 作为组件 w2 的字组件。
+             用法： in_=w2。 新的父控件 w2 必须是继承 parent 组件used when w was created.
+ipadx	     内部 x 填充。这个尺寸被添加在窗口部件的内部，增量在左右两侧。
+ipady	     内部y 填充。这个尺寸被添加在窗口部件的内部，增量在上下两侧。
+padx	     外部 x 填充。这个尺寸被添加在窗口部件的外部，增量在左右两侧。
+pady	     外部 y 填充。这个尺寸被添加在窗口部件的外部，增量在上下两侧。
+row	         您想要网格化组件的行号，从零开始计数。默认值是下一个未占据的更高编号的行。
+rowspan	     通常一个部件只占用一个单元网格。然而，你可以占据一列的多个相邻的单元格，通过设置rowspan 选项网格的数量实现。
+             可以与columnspan 选项组合使用，来占据但单元格。例如，
+             w.grid(row=3, column=2, rowspan=4, columnspan=5) 将会把组件 w 放置在一个行号3–6，列号2-6合并了 20 个单元格的区域。
+sticky	     该选项决定如何分配单元格在部件为自然大小状态下未占据的额外空间。见下文。
+
+
+如果你不提供sticky 属性，默认行为是将组件在单元格居中放置。
+您可以把组件放置在单元格的角落，通过使用 sticky=tk.NE (右上角), tk.SE(右下角), tk.SW (左下角), 或 tk.NW (左上角)。
+您可以把组件放置在相对于单元格某个边的中心位置，通过 sticky=tk.N (上边中心), tk.E (右边中心), tk.S (下边中心), 或 tk.W (左边中心).
+使用 sticky=tk.N+tk.S 垂直伸展窗口部件，水平方向上居中。
+使用 sticky=tk.E+tk.W 水平伸展窗口部件，垂直方向上居中。
+使用sticky=tk.N+tk.E+tk.S+tk.W 在水平和垂直方向伸展部件填补单元格。
+其他的组合也会奏效。例如, sticky=tk.N+tk.S+tk.W 将垂直伸展窗口部件，并把它放置在西（左）边框。
+
+
+
+2.2. 其他grid管理方法
+这些与grid相关的方法被定义在所有的组件:
+
+w.grid_bbox(column=None, row=None, col2=None, row2=None)
+返回一个4元素的元祖，描述了组件 w 的grid系统中一部分或者全部的边框。 前两个数字返回区域左上角的 x 和y 坐标，后两个数字是宽度和高度。
+
+如果传入 column 和 row 参数, 返回的边框描述了在该行列的单元格的区域。如果你也传入了 col2 和 row2 参数, 返回的边框描述了在该行列 grid 从从列 column 到 col2 ，从行 row 到 row2 包含的区域。
+
+例如, w.grid_bbox(0, 0, 1, 1) 返回四个单元格的边框，不是一个。
+
+w.grid_forget()
+这个方法使组件 w 从屏幕上消失。 它仍然存在，只是看不见了。 你可以使用 .grid() 使它重新出现, 但是不保留它的网格操作。
+
+w.grid_info()
+返回一个字典， 它的关键字是 w 的选项名, 和选项名对应的值。
+
+w.grid_location(x, y)
+给定一个相对于容器组件的相对坐标 (x, y) , 此方法返回一个元祖 (col, row) ，描述了组件 w 网格系统包含屏幕坐标的单元格。
+
+w.grid_propagate()
+通常情况下，所有的组件都调整它们的大小，这意味着它们调正大小以适应内容。 但是, 有时候你想要强制设定一个组件的大小，忽视内容。 为了做到这一点，调用 w.grid_propagate(0) ，这里 w 是你想要强制设置大小的组件。
+
+w.grid_remove()
+这个方法类似 .grid_forget(), 但是它的选项会被记住，所以如果你使用 .grid() 使它重现, 它将使用同样的网格配置选项。
+
+w.grid_size()
+返回一个2元素的元祖，包含了列数和行数。 在组件 w 的网格系统中。
+
+w.grid_slaves(row=None, column=None)
+返回一个由组件 w 管理的子组件列表，如果没有提供参数，你将得到一个所有的管理组件列表。 用 row= argument 选择某一行的组件列表， 或者 column= argument 选择某一列的组件列表。
+
+
+2.3. 配置行列的大小
+除非你采取一定的措施，一个给定的组件内部的网格列的宽度将等于其最宽的单元格的宽度，一个网格行的高度将是其最高的单元格的高度。组件的sticky 属性，如果它不完全填充的单元格，只被放置在那里。
+
+如果你想覆盖列和行的自动调整大小，请使用包含网格布局的父组件 w 的这些方法:
+
+w.columnconfigure(N, option=value, ...)
+组件 w 内部的网格布局，配置列 N ，使给定的value 给option 。对于选项，请参阅下表。
+
+w.rowconfigure(N, option=value, ...)
+组件 w 内部的网格布局，配置行 N ，使给定的value 给option 。对于选项，请参阅下表。
+
+下面是用于配置的列和行的尺寸的选项。
+
+Table 2. Column and row configuration options for the .grid() geometry manager
+
+minsize	以像素为单位的列或行的最小尺寸。如果有什么的给定列或行中，也即使您使用此选项它将不会出现，。
+pad	像素数将被添加到给定的行列，增量加到最大的单元格的行或列。
+weight	使用此选项使列或行拉伸，提供一个值，分配额外的空间时，给出了这样的列或行的相对权重。例如，如果一个部件 w 包含一个网格布局，这些线将分发四分之三的额外空间到第一列和四分之一到第二列:
+    w.columnconfigure(0, weight=3)
+    w.columnconfigure(1, weight=1)
+如果不使用此选项，则列或行不会延长。
+
+
+
+2.4. 使跟窗口大小可调
+你想让用户调整整个应用程序的窗口大小，并且分配内部部件额外的空间吗？ 这些需要一些不明显的操作。
+
+对于行列大小管理来说，使用这些技术是很必要的。 详细描述在Section 4.3, “Configuring column and row sizes”, 使你的应用程序部件网格可拉伸。 当然，单独使用是不够的。
+
+考虑到琐碎应用详细描述在 Section 2, “A minimal application”, 其中只包含一个Quit按钮。如果你运行这个应用程序，并调整窗口的大小，按钮保持相同的大小，窗口内居中。
+
+这是在 minimal application中一个 .__createWidgets() 的一个替代方法。 在这个版本, Quit 按钮总是填充所有可用空间。
+
+    def createWidgets(self):
+        top=self.winfo_toplevel()                1
+        top.rowconfigure(0, weight=1)            2
+        top.columnconfigure(0, weight=1)         3
+        self.rowconfigure(0, weight=1)           4
+        self.columnconfigure(0, weight=1)        5
+        self.quit = Button(self, text='Quit', command=self.quit)
+        self.quit.grid(row=0, column=0,          6
+            sticky=tk.N+tk.S+tk.E+tk.W)
+1
+ “top level window”是屏幕上的最外层的窗口。然而，这个窗口是不是你的应用程序窗口，它是应用实例的父。要获得顶层窗口，在你应用程序中的任何组件调用 .winfo_toplevel() 方法 ; 参考 Section 26, “Universal widget methods”.
+
+2
+这行使顶层窗口的的第0行网格拉伸。
+
+3
+这行使顶层窗口的的第0列网格拉伸。
+
+4
+使应用程序组件的的第0行网格拉伸。
+
+5
+使应用程序组件的的第0列网格拉伸。
+
+6
+参数 sticky=tk.N+tk.S+tk.E+tk.W 使按钮扩大以填充他的单元格网格。
+
+这是另一个必须被做的改变。 在构造函数中, 向下面那样改变第二行:
+
+    def __init__(self, master=None):
+        tk.Frame.__init__(self, master)
+        self.grid(sticky=tk.N+tk.S+tk.E+tk.W)
+        self.createWidgets()
+参数 sticky=tk.N+tk.S+tk.E+tk.W 对于 self.grid() 是必要的，使应用程序部件将扩大，以填补顶层窗口的网格的单元格。
