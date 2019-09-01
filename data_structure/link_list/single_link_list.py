@@ -33,6 +33,3 @@ class SingleLinkList(object):
                 cur = cur.next
             node = SingeNode(item)
             cur.next = node
-
-
-

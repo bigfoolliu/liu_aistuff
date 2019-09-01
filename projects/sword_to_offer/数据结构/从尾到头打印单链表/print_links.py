@@ -37,7 +37,27 @@ class SingleLinkList(object):
 def print_links(links):
     stacks = []
     while links:
-        stacks.append(links.val)
+        stacks.append(links.item)
         links = links.next
     while stacks:
         print(stacks.pop())
+
+
+def main():
+    links = SingleLinkList()
+
+    # TODO:not done
+    node1 = SingleNode(1)
+    node2 = SingleNode(6)
+    node3 = SingleNode(2)
+    node4 = SingleNode(8)
+
+    links.add(node1)
+    links.append(node2)
+    links.append(node3)
+    links.append(node4)
+    print(links)
+
+
+if __name__ == '__main__':
+    main()
