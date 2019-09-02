@@ -3,13 +3,13 @@
 # author: bigfoolliu
 
 
-from tord.handlers import index, media, upload, gocron
+from tord.handlers import async_demo, gocron, index, media, upload
 
 url_patterns = [
     (r"/", index.IndexHandler),
     (r"/books", upload.BooksHandler),
     (r"/images", media.ImageHandler),
     (r"/videos", media.VideoHandler),
-    # (r"/async", async.AsyncDemoHandler),
+    (r"/async/(?P<url>/.*)", async_demo.Handler),
     (r"/test", gocron.TestHandler),
 ]
