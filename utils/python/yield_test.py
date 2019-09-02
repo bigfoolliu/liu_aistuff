@@ -31,7 +31,7 @@ class DA(threading.Thread):
         print(what)
 
     async def tasks(self):
-        print(f"started at {time.strftime('%X')}")
+        print(f"started at {time.strftime('%X')}")  # 注意此处的格式
 
         tasks = []
         for i in range(10):

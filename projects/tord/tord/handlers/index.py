@@ -10,4 +10,4 @@ class IndexHandler(BaseHandler):
     
     def get(self):
         self.write("hello, tornado")
-        self.write_success()
+        self.write_success_json("hello world")
