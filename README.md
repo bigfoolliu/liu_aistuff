@@ -7,6 +7,7 @@
   - [2.aitools](#2aitools)
   - [3.books](#3books)
   - [4.algorithms](#4algorithms)
+  - [5.modules](#5modules)
 
 <!-- /TOC -->
 
@@ -27,3 +28,7 @@ Add go features here.
 ## 4.algorithms
 
 关于一些算法。
+
+## 5.modules
+
+相关模块的基本使用。
