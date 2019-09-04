@@ -1,11 +1,7 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
-	"log"
-	"os"
 )
 
 // Task 任务, 关于标签：https://www.jianshu.com/p/c4ec92afeca8
@@ -14,27 +10,24 @@ type Task struct {
 	Name string `json:"name" xorm:"varchar(32) notnull"`
 }
 
+// notify 使用值接受者实现了一个方法
+func (t Task) notify() {
+	fmt.Printf("%s task notify\n", t.Name)
+}
+
+// changeID 使用指针接受者实现了一个方法
+func (t *Task) changeID(id int) {
+	t.ID = id
+}
+
 func main() {
 	task := Task{
 		ID:   1,
 		Name: "demo",
 	}
 
-	fmt.Println("task:", task)
-
-	// 将格式化数据转化为json字符串
-	b, err := json.Marshal(task)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	var out bytes.Buffer
-	err = json.Indent(&out, b, "", "\t")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	out.WriteTo(os.Stdout)
-	print("\n")
+	// fmt.Println("task:", task)
+	task.notify()
+	task.changeID(2)
+	fmt.Println(task.ID)
 }
