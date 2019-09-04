@@ -33,6 +33,7 @@
         - [6.1条件语句](#61条件语句)
     - [7.高级用法](#7高级用法)
         - [7.1goroutine](#71goroutine)
+        - [7.2godoc](#72godoc)
 
 <!-- /TOC -->
 
@@ -139,27 +140,6 @@ gofmt hello.py
 /*
 这是多行注释
 */
-```
-
-godoc文档：
-
-```go
-// math_test.go 测试文件
-
-package smath
-
-import "fmt"
-
-// Add 两数相加（这一行会被截取为简短介绍）
-// 两数相加的注意事项以及原理（这一行作为超级详细的介绍）
-func Add(n1,n2 int)int{
-    return n1 + n2
-}
-
-func ExampleAdd() {
-    fmt.Println(Add(1,2))
-    // Output: 3
-}
 ```
 
 ### 2.3.3符号
@@ -419,3 +399,28 @@ select {
 - M：machine的缩写。一个M代表一个内核线程，或者“工作线程”。
 - P：processor的缩写。一个P代表执行一个Go代码片段所必需的资源（或称“上下文环境”）。
 - G：goroutine的缩写。一个G代表一个Go代码片段。前者是对后者的一种封装。
+
+### 7.2godoc
+
+使用`godoc`或者指定端口`godoc -http=:6660`可以在本地开启一个文档服务器。
+
+godoc生成规则：
+
+```go
+// math_test.go 测试文件
+
+package smath
+
+import "fmt"
+
+// Add 两数相加（这一行会被截取为简短介绍）
+// 两数相加的注意事项以及原理（这一行作为超级详细的介绍）
+func Add(n1,n2 int)int{
+    return n1 + n2
+}
+
+func ExampleAdd() {
+    fmt.Println(Add(1,2))
+    // Output: 3
+}
+```
