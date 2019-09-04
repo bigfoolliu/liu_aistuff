@@ -8,6 +8,7 @@
   - [3.books](#3books)
   - [4.algorithms](#4algorithms)
   - [5.modules](#5modules)
+  - [6.projects](#6projects)
 
 <!-- /TOC -->
 
@@ -32,3 +33,7 @@ Add go features here.
 ## 5.modules
 
 相关模块的基本使用。
+
+## 6.projects
+
+一些小的简单的项目。
