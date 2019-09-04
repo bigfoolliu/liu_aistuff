@@ -34,6 +34,7 @@
     - [7.高级用法](#7高级用法)
         - [7.1goroutine](#71goroutine)
         - [7.2godoc](#72godoc)
+        - [7.3GO MODULE包管理](#73go-module包管理)
 
 <!-- /TOC -->
 
@@ -424,3 +425,10 @@ func ExampleAdd() {
     // Output: 3
 }
 ```
+
+### 7.3GO MODULE包管理
+
+- 主要用于解决当项目建立不在GOPATH路径下的导包问题
+- 环境变量不再用于解析import路径，即GOPATH/src下的包，import找不到了
+- GO MODULE功能开启之后，下载的包将放在GOPATH/
+- GOPATH/bin下面的功能依旧
