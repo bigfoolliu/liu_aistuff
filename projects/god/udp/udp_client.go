@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	connection, err := net.Dial("udp", "127.0.0.1:1111")
+	connection, err := net.Dial("udp", "127.0.0.1:1111") // 返回一个连接以及错误信息
 	defer connection.Close()
 	if err != nil {
 		os.Exit(1)
