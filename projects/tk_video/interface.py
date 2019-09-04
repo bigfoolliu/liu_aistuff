@@ -17,15 +17,15 @@ class PlayBottonInterface(object):
     
     def init_widgets(self):
         """初始化该frame上的一些GUI组件"""
-        frame = tkinter.Frame(self.master, height=400, width=300, background="yellow")
+        frame = tkinter.Frame(self.master, height=800, width=300, background="yellow")
         frame.pack(side=tkinter.BOTTOM, fill=tkinter.BOTH)  # frame放置在底部
 
         start_button = tkinter.Button(frame, text="start")
-        start_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=2)
+        start_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=1, pady=1)
         pause_button = tkinter.Button(frame, text="pause")
-        pause_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=2)
+        pause_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=1, pady=1)
         stop_button = tkinter.Button(frame, text="stop")
-        stop_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=2)
+        stop_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=1, pady=1)
 
 
 class PlayScreenInterface(object):
@@ -35,12 +35,14 @@ class PlayScreenInterface(object):
         self.init_widgets()
     
     def init_widgets(self):
-        frame = tkinter.Frame(self.master, background="green")
-        frame.pack(side=tkinter.TOP, fill=tkinter.BOTH)
+        frame = tkinter.Frame(self.master, bg="green")
+        frame.pack(expand=1, fill=tkinter.BOTH, padx=2, pady=2)
 
 
 tk = tkinter.Tk()
 tk.title("video player")
+tk.minsize(400, 300)
+tk.maxsize(800, 600)
 play_button_interface = PlayBottonInterface(tk)
 play_screen_interface = PlayScreenInterface(tk)
 tk.mainloop()
