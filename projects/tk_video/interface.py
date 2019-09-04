@@ -18,7 +18,7 @@ class Interface(tkinter.Frame):
     
     def init_widgets(self):
         """初始化该frame上的一些GUI组件"""
-        start_button = tkinter.Button(self, text="start")
+        start_button = tkinter.Button(self, text="start", background="red")
         start_button.pack()
         pause_button = tkinter.Button(self, text="pause")
         pause_button.pack()
