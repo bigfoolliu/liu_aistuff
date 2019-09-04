@@ -18,7 +18,7 @@ class PlayBottonInterface(object):
     def init_widgets(self):
         """初始化该frame上的一些GUI组件"""
         frame = tkinter.Frame(self.master, height=800, width=300, background="yellow")
-        frame.pack(side=tkinter.BOTTOM, fill=tkinter.BOTH)  # frame放置在底部
+        frame.pack(side=tkinter.BOTTOM, fill=tkinter.X)  # frame放置在底部
 
         start_button = tkinter.Button(frame, text="start")
         start_button.pack(side=tkinter.LEFT, expand=1, fill=tkinter.BOTH, padx=1, pady=1)
@@ -36,7 +36,18 @@ class PlayScreenInterface(object):
     
     def init_widgets(self):
         frame = tkinter.Frame(self.master, bg="green")
-        frame.pack(expand=1, fill=tkinter.BOTH, padx=2, pady=2)
+        frame.pack(expand=1, fill=tkinter.BOTH, padx=2, pady=2, side=tkinter.LEFT)
+
+
+class DirTreeInterface(object):
+
+    def __init__(self, master):
+        self.master = master
+        self.init_widgets()
+    
+    def init_widgets(self):
+        frame = tkinter.Frame(self.master, bg="yellow")
+        frame.pack(expand=1, fill=tkinter.BOTH, side=tkinter.RIGHT, padx=2, pady=2)
 
 
 tk = tkinter.Tk()
@@ -45,4 +56,5 @@ tk.minsize(400, 300)
 tk.maxsize(800, 600)
 play_button_interface = PlayBottonInterface(tk)
 play_screen_interface = PlayScreenInterface(tk)
+dir_tree_interface = DirTreeInterface(tk)
 tk.mainloop()
