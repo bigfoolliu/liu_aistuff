@@ -58,5 +58,4 @@ class Handler(tornado.web.RequestHandler):
     @tornado.concurrent.run_on_executor    
     def _long_task(self):
         time.sleep(10)
-        self.set_status(201)
         return "success2"
