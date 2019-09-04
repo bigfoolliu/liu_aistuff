@@ -6,17 +6,24 @@
 基础界面
 """
 import tkinter
-from tkinter import *
 
 
-class Interface(object):
+class Interface(tkinter.Frame):
 
-    def __init__(self):
-        self.tk = tkinter.Tk()
-
-        self.video_frame = tkinter.Frame(self.tk, relif=RIDGE, borderwidth=2)
-        self.video_frame.pack(fill=BOTH, expand=1)
-
+    def __init__(self, master=None):
+        """默认master设置为None,可以设置为其他顶层窗口的一个组件"""
+        tkinter.Frame.__init__(self, master)
+        self.pack()
+        self.init_widgets()
+    
+    def init_widgets(self):
+        """初始化该frame上的一些GUI组件"""
+        start_button = tkinter.Button(self, text="start")
+        start_button.pack()
+        pause_button = tkinter.Button(self, text="pause")
+        pause_button.pack()
+        stop_button = tkinter.Button(self, text="stop")
+        stop_button.pack()
 
 interface = Interface()
-tkinter.mainloop()
+interface.mainloop()
