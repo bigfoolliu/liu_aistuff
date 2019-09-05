@@ -35,6 +35,9 @@
         - [7.1goroutine](#71goroutine)
         - [7.2godoc](#72godoc)
         - [7.3GO MODULE包管理](#73go-module包管理)
+        - [7.4Generate生成代码](#74generate生成代码)
+    - [8.模块使用](#8模块使用)
+        - [8.1statik模块](#81statik模块)
 
 <!-- /TOC -->
 
@@ -432,3 +435,30 @@ func ExampleAdd() {
 - 环境变量不再用于解析import路径，即GOPATH/src下的包，import找不到了
 - GO MODULE功能开启之后，下载的包将放在GOPATH/
 - GOPATH/bin下面的功能依旧
+
+### 7.4Generate生成代码
+
+扫描与当前包相关的源码文件，找出所有包含`//go:generate`的特殊注释，提取并执行该注释后面的命令，命令为可执行程序，形同shell下面执行。
+
+```shell
+# 参数说明：
+# -run 正则表达式匹配命令行，仅执行匹配的命令
+# -v 打印已被检索处理的文件。
+# -n 打印出将被执行的命令，此时将不真实执行命令
+# -x 打印已执行的命令
+go generate [-run regexp] [-n] [-v] [-x] [build flags] [file.go... | packages]
+```
+
+## 8.模块使用
+
+### 8.1statik模块
+
+将静态资源编译进二进制文件，将静态文件封装到go语言的source code，然后提供一个统一的接口，通过该接口传入文件，返回对应路径的文件数据。
+
+简而言之：将静态文件生成.go文件，然后编译为二进制，项目启动的时候，再把这个.go文件释放为静态文件。
+
+```shell
+# 安装
+go get github.com/rakyll/statik
+go install github.com/rakyll/statik
+```
