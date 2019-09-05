@@ -447,6 +447,19 @@ func ExampleAdd() {
 # -n 打印出将被执行的命令，此时将不真实执行命令
 # -x 打印已执行的命令
 go generate [-run regexp] [-n] [-v] [-x] [build flags] [file.go... | packages]
+
+# $GOARCH
+# 架构 (arm, amd64, etc.)
+# $GOOS
+# OS (linux, windows, etc.)
+# $GOFILE
+# 当前处理中的文件名
+# $GOLINE
+# 当前命令在文件中的行号
+# $GOPACKAGE
+#     当前处理文件的包名
+# $DOLLAR
+# 固定的"$",不清楚用途
 ```
 
 ## 8.模块使用
