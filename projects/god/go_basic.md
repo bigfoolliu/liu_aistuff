@@ -436,9 +436,17 @@ func ExampleAdd() {
 - GO MODULE功能开启之后，下载的包将放在GOPATH/
 - GOPATH/bin下面的功能依旧
 
+```shell
+
+```
+
 ### 7.4Generate生成代码
 
 扫描与当前包相关的源码文件，找出所有包含`//go:generate`的特殊注释，提取并执行该注释后面的命令，命令为可执行程序，形同shell下面执行。
+
+- generate 指令只能在go文件中使用
+- 需要注意的是和传统注释不同的是 // 后面不能有空格
+- go build等其他命令不会调用go generate,必须手动调用
 
 ```shell
 # 参数说明：
