@@ -62,7 +62,7 @@ BaseWidget: 所有组件的基类，它还派生了一个子类 Widget,Widget �
 | `activeforeground` | 指定组件处于激活状态时的前景色 | color | 'gray25'或'#ff4400' |
 | `anchor` | 指定组件内的信息（比如文本或图片）在组件中如何显示。必须为下面的值之一：N、NE、E、SE、S、SW、W、NW或CENTER。比如NW（NorthWest）指定将信息显示在组件的左上角 |  | CENTER |
 | `background(bg)` | 指定组件正常显示时的背景色 | color | 'gray25'或'#ff4400' |
-| `bitmap` | 指定在组件上显示该选项指定的位图，该选项值可以是Tk_GetBitmap接收的任何形式的位图。位图的显示方式受anchor、justify选项的影响。如果同时指定了bitmap和text，那么bitmap 覆盖文本；如果同时指定了bitmap 和image，那么image 覆盖bitmap |  |  |
+| `bitmap` | 指定在组件上显示该选项指定的位图，该选项值可以是Tk_GetBitmap接收的任何形式的位图。位图的显示方式受anchor、justify选项的影响。如果同时指定了bitmap和text，那么bitmap 覆盖文本；如果同时指定了bitmap 和image，那么image 覆盖bitmap |
 | `borderwidth` | 指定组件正常显示时的3D边框的宽度，该值可以是Tk_GetPixels接收的任何格式 | pixel | 2 |
 | `cursor` | 指定光标在组件上的样式。该值可以是Tk_GetCursors 接受的任何格式 | cursor | gumby |
 | `disabledforeground` | 指定组件处于禁用状态时的前景色 | color | 'gray25'或'#ff4400' |
