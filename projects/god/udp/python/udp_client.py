@@ -18,7 +18,7 @@ def main():
  
         # 发送消息
         udp_socket.sendto(test_data.encode("utf-8"), send_addr)
- 
+
     # 关闭套接字
     # udp_socket.close()
 
