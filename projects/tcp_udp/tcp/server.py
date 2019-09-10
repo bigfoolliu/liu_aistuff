@@ -1,18 +1,35 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-import socket
+from socketserver import BaseRequestHandler,ThreadingTCPServer
+import threading
+import time
 
-BUF_SIZE = 1024
-host = 'localhost'
-port = 8083
- 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind((host, port))
-server.listen(1)  # 接收的连接数
-client, address = server.accept()  # 因为设置了接收连接数为1，所以不需要放在循环中接收
 
-# 循环收发数据包，长连接
-while True:
-    data = client.recv(BUF_SIZE)
-    print(data.decode())
+BUF_SIZE=1024
+
+
+class Handler(BaseRequestHandler):
+
+    def handle(self):
+        address, pid = self.client_address
+        print('address: {} pid: {}!'.format(address, pid))
+        while True:
+            # 持续监听
+            data = self.request.recv(BUF_SIZE)
+            if len(data)>0:
+                print('receive data: ', data.decode('utf-8'))
+                self.request.sendall('response'.encode('utf-8'))
+            else:
+                print('close')
+                break
+
+
+if __name__ == '__main__':
+    HOST = 'localhost'
+    PORT = 8998
+    ADDR = (HOST, PORT)
+    server = ThreadingTCPServer(ADDR, Handler)  # 参数为监听地址和已建立连接的处理类
+    print('listening')
+    server.serve_forever()  # 监听，建立好TCP连接后，为该连接创建新的socket和线程，并由处理类中的handle方法处理
+    print(server)

@@ -1,16 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-import socket
-import time
+import socket,sys
+HOST = 'localhost'
+PORT = 8998
+ADDR =(HOST,PORT)
+BUFSIZE = 1024
 
-host = 'localhost'
-port = 8083
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)  # 在客户端开启心跳维护
-client.connect((host, port))
+sock = socket.socket()
+try:
+    sock.connect(ADDR)
+    print('have connected with server')
 
-while True:
-    client.send('hello world\r\n'.encode())
-    print('send data')
-    time.sleep(2)  # 如果想验证长时间没发数据，SOCKET连接会不会断开，则可以设置时间长一点
+    while True:
+      data = input("input:")
+      if len(data)>0:
+        print('send:',data)
+        sock.sendall(data.encode('utf-8')) #不要用send()
+        recv_data = sock.recv(BUFSIZE)
+        print('receive:',recv_data.decode('utf-8'))
+      else:
+        sock.close()
+        break
+except Exception:
+    print('error')
+    sock.close()
+    sys.exit()
+
