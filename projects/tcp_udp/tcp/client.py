@@ -13,17 +13,16 @@ try:
     print('have connected with server')
 
     while True:
-      data = input("input:")
-      if len(data)>0:
-        print('send:',data)
-        sock.sendall(data.encode('utf-8')) #不要用send()
-        recv_data = sock.recv(BUFSIZE)
-        print('receive:',recv_data.decode('utf-8'))
-      else:
-        sock.close()
-        break
-except Exception:
-    print('error')
+        data = input("input:")
+        if len(data)>0:
+            print('send:',data)
+            sock.sendall(data.encode('utf-8')) #不要用send()
+            recv_data = sock.recv(BUFSIZE)
+            print('receive: {}'.format(recv_data.decode('utf-8')))
+        else:
+            sock.close()
+            break
+except Exception as e:
+    print("error: {}".format(e))
     sock.close()
     sys.exit()
-
