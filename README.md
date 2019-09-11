@@ -9,6 +9,7 @@
   - [4.algorithms](#4algorithms)
   - [5.modules](#5modules)
   - [6.projects](#6projects)
+  - [7.other](#7other)
 
 <!-- /TOC -->
 
@@ -37,3 +38,7 @@ Add go features here.
 ## 6.projects
 
 一些小的简单的项目。
+
+## 7.other
+
+其他。
