@@ -6,7 +6,7 @@ import threading
 import time
 from socketserver import BaseRequestHandler, ThreadingTCPServer
 
-BUF_SIZE=1024
+BUF_SIZE=10
 
 
 class Handler(BaseRequestHandler):
@@ -17,13 +17,13 @@ class Handler(BaseRequestHandler):
     def handle(self):
         address, pid = self.client_address
         print('address: {} pid: {}!'.format(address, pid))
-        try:
-            data = self.request.recv(1024).decode("utf-8").split(":")
-            worker_id, wokrer_ip = data[0], data[1]
-            print("id ip", worker_id, wokrer_ip)
-        except IndexError:
-            print('disconnect from {}'.format(self.client_address))
-            return
+        # try:
+        #     data = self.request.recv(1024).decode("utf-8").split(":")
+        #     worker_id, wokrer_ip = data[0], data[1]
+        #     print("id ip", worker_id, wokrer_ip)
+        # except IndexError:
+        #     print('disconnect from {}'.format(self.client_address))
+        #     return
 
         while True:
             # 持续监听
@@ -31,12 +31,13 @@ class Handler(BaseRequestHandler):
             if len(data)>0:
                 print('receive data: {}'.format(data.decode('utf-8')))
                 self.request.sendall('response'.encode('utf-8'))
-                print("id ip", worker_id, wokrer_ip)
+                # print("id ip", worker_id, wokrer_ip)
             else:
                 # 发送空数据来断开连接
-                print('disconnect from {}'.format(self.client_address))
-                print("id ip", worker_id, wokrer_ip)
+                print('send data empty {}'.format(self.client_address))
+                # print("id ip", worker_id, wokrer_ip)
                 break
+        print("no more disconnect")
 
     def finish(self):
         pass
