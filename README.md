@@ -10,7 +10,7 @@
   - [5.modules](#5modules)
   - [6.projects](#6projects)
   - [7.other](#7other)
-  - [8.](#8)
+  - [8.utils](#8utils)
 
 <!-- /TOC -->
 
@@ -44,4 +44,6 @@ Add go features here.
 
 其他。
 
-## 8.
+## 8.utils
+
+其他。
