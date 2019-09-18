@@ -3,8 +3,12 @@
 <!-- TOC -->
 
 - [vi快捷键](#vi%e5%bf%ab%e6%8d%b7%e9%94%ae)
+  - [1.基础命令](#1%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4)
+  - [2.vimrc相关配置](#2vimrc%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae)
 
 <!-- /TOC -->
+
+## 1.基础命令
 
 通过编辑 `~/.vimrc`文件可以保存vim的配置，可以使用网上众多的配置。
 
@@ -48,11 +52,14 @@ G   快速跳转至文件末尾
 
 :open `file`    在vi窗口中打开一个新文件
 :split `file`   在新窗口中打开一个新文件
-:syntax on  基本的语法高亮
-:set number 显示行号
 
 ctrl + b    快速回退一页
 ctrl + f    快速前进一页
 
 10gg    快速跳转到第10行
 /text   查找text,按n键查找下一个,按Ｎ查找前一个,shift+n到上一个
+
+## 2.vimrc相关配置
+
+:syntax on  基本的语法高亮
+:set number 显示行号
