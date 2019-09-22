@@ -20,4 +20,8 @@ func main() {
 	var s1 string
 	s1 = "hello go"
 	fmt.Printf("s1: %c, s1[0]: %c, s1[1]: %c\n", s1, s1[0], s1[1])
+
+	c := 2.1 + 3.2i
+	fmt.Printf("c: %v  type is %T\n", c, c)
+	fmt.Println("real(c):", real(c), "img(c):", imag(c))
 }
