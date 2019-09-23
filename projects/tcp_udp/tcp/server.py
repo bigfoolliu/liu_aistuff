@@ -29,17 +29,18 @@ class Handler(BaseRequestHandler):
             # 持续监听
             data = self.request.recv(BUF_SIZE)
             print(self.client_address, type(self.client_address))
-            if not len(data) > 0:
-                # 发送空数据来断开连接
-                print('send data empty {}'.format(self.client_address))
-                # print("id ip", worker_id, wokrer_ip)
-                break
+            # if not len(data) > 0:
+            #     # 发送空数据来断开连接
+            #     print('send data empty {}'.format(self.client_address))
+            #     # print("id ip", worker_id, wokrer_ip)
+            #     break
 
             print('receive data: {}'.format(data.decode('utf-8')))
             self.request.sendall('response'.encode('utf-8'))
             # print("id ip", worker_id, wokrer_ip)
 
-        print("no more disconnect")
+        print("disconnect with {}".format(self.client_address))
+        raise Exception("故意引发的异常")
 
     def finish(self):
         pass
@@ -55,14 +56,14 @@ class TSThread(threading.Thread):
         self.handler = Handler
 
     def run(self):
-        try:
-            server = ThreadingTCPServer(self.ADDR, self.handler)  # 参数为监听地址和已建立连接的处理类
-            print('listening')
-            server.serve_forever()  # 监听，建立好TCP连接后，为该连接创建新的socket和线程，并由处理类中的handle方法处理
-            print("--------------------------")
-            print(server)
-        except Exception:
-            print("exception")
+        while True:
+            try:
+                server = ThreadingTCPServer(self.ADDR, self.handler)  # 参数为监听地址和已建立连接的处理类
+                print('{} listening'.format(server))
+                server.serve_forever()  # 监听，建立好TCP连接后，为该连接创建新的socket和线程，并由处理类中的handle方法处理
+            except Exception as e:
+                print("exception: {}".format(e))
+                continue
 
 
 if __name__ == '__main__':

@@ -1,11 +1,10 @@
 package main
 
-import  (
+import (
 	"fmt"
-	"time"
 	"strconv"
+	"time"
 )
-
 
 // base表示以base进制来表示时间
 func getTimeStamp(base int) string {
