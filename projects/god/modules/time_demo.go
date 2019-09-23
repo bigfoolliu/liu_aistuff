@@ -8,7 +8,7 @@ import  (
 
 
 // base表示以base进制来表示时间
-function getTimeStamp(base int) string {
+func getTimeStamp(base int) string {
 	// 获取当前时间戳,类型为int64
 	timeStamp := time.Now().Unix()
 
@@ -17,7 +17,7 @@ function getTimeStamp(base int) string {
 	return strTimeStamp
 }
 
-function main() {
+func main() {
 	curTime := getTimeStamp(10)
 	curTime2 := getTimeStamp(2)
 	fmt.Println(curTime)
