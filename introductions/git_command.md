@@ -118,6 +118,8 @@ git push -f
 ### 2.2修改多次commit的信息为一个
 
 ```shell
+# 定位到指定的commit，修改cmmmit的message，倒数的修改为`squash`
 git rebase -i <commid_id>
---> git rebase --continue
+# 修改掉多余的commit message
+git rebase --continue
 ```
