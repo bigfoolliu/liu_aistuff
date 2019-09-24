@@ -4,9 +4,10 @@
 import os
 import subprocess
 from datetime import datetime
-from threading import Thread, Event
+from threading import Event, Thread
 
-from configs import SYNC_INTERVAL, LOGGER, LOG_PATH, ROOT_DIR, SYNC_TIMEOUT, RESULT_PATH, SYNC_SCRIPT_PATH
+from configs import (LOG_PATH, LOGGER, RESULT_PATH, ROOT_DIR, SYNC_INTERVAL,
+                     SYNC_SCRIPT_PATH, SYNC_TIMEOUT)
 
 
 def now_int():
