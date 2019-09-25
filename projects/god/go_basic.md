@@ -116,6 +116,9 @@ go clean hello.go
 # 执行命令
 go run hello.go
 
+# 检查代码的常见错误
+go vet hello.go
+
 # 查看版本
 go version
 
