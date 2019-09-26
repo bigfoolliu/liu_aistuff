@@ -37,6 +37,38 @@ def lst_chunk(lst, size):
     return list(map(lambda x: lst[x * size: x * size + size], list(range(0, ceil(len(lst) / size)))))
 
 
+def compact(lst):
+    """压缩，将列表中的不需要信息去掉, bool, None等"""
+    return list(filter(bool, lst))
+
+
+def deep_flatten(lst):
+    def lst_spread(lst):
+        """通过递归的方式展开一个列表为嵌套展开为单个列表"""
+        ret = []
+        for i in lst:
+            if isinstance(i, list):
+                ret.extend(i)
+            else:
+                ret.append(i)
+        return ret
+    result = []
+    result.extend(lst_spread(list(map(lambda x: deep_flatten(x) if type(x) == list else x, lst))))
+    return result
+
+
+def merge_dict(dict1, dict2):
+    """合并两个字典"""
+    dict3 = dict1.copy()
+    dict3.update(dict2)
+    return dict3
+
+
+def most_frequent(lst):
+    """返回列表中最常见的元素"""
+    return max(set(lst), key=list.count)
+
+
 if __name__ == "__main__":
     str1 = "sfsd34"
     str2 = "sdfsdfsd"
@@ -47,4 +79,13 @@ if __name__ == "__main__":
     print(byte_size_of(str1))
 
     lst = ["12", "34", 4, 6, "6", 8, 12, 34, 5]
-    print(lst_chunk(lst, 2))
+    # print(lst_chunk(lst, 2))
+
+    # lst = [[12, 3, 5], [44, 4], 1]
+    # print(deep_flatten(lst))
+
+    # dict1 = {"name": "liu", "age": 12}
+    # dict2 = {"name": "l", "age": 13}
+    # print(merge_dict(dict1, dict2))
+
+    print(most_frequent(lst))
