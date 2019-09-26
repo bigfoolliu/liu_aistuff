@@ -73,4 +73,3 @@ def recognize_face(known_image_path, unknown_image_path):
 
 ret = recognize_face("./known_images/tongliya.jpeg", "./unknown_images/tong1.jpeg")
 print("[INFO]Recognize image tong1.jpeg, is tongliya, result: {}".format(ret))
-
