@@ -46,7 +46,7 @@ def application(environ, start_response):
 	return file_content
 
 
-# TODO,需要加深这一装饰器的作用的理解
+# TODO:,需要加深这一装饰器的作用的理解
 def router(url_path):
 	"""
 	带参的装饰器
