@@ -66,7 +66,7 @@ def merge_dict(dict1, dict2):
 
 def most_frequent(lst):
     """返回列表中最常见的元素"""
-    return max(set(lst), key=list.count)
+    return max(set(lst), key=lst.count)
 
 
 if __name__ == "__main__":
