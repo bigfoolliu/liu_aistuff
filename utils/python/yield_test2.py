@@ -30,7 +30,7 @@ class DA(threading.Thread):
     #         await task
 
     #     print(f"finished at {time.strftime('%X')}")
-    
+
     def run(self):
         while not self.stopped.wait(5):
             print(f"start time at {time.strftime('%X')}")
