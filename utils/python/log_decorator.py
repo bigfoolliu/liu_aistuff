@@ -32,4 +32,3 @@ def func3(*args, **kargs):
 func1()
 func2(1, 2)
 func3("a", name="tony")
-
