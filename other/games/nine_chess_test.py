@@ -58,52 +58,69 @@ def trans_array(array):
 
 def get_winner(array):
 	"""获取当前的赢家"""
-	# 行,列产生赢家, TODO:
+	# 行,列产生赢家
 	new_lst = []
 	for index, row in enumerate(array):
-		if len(set(row)) == 1 and (None not in set(row)):
-			return row[0].owner
-		new_lst.append(array[index][index])
+		owners = [c.owner for c in row]
+		if len(set(owners)) == 1 and (None not in set(owners)):
+			return owners[0]
+		new_lst.append(array[index][index].owner)
 	
 	# 斜向产生赢家,仅两种情况
 	if len(set(new_lst)) == 1 and (None not in set(new_lst)):
-		return new_lst[0].owner
+		return new_lst[0]
 
 	new_lst = []
-	for index, row in enumerate(trans_array(array)):
-		if len(set(row)) == 1 and (None not in set(row)):
-			return row[0].owner
-		new_lst.append(array[index][index])
+	transed_array = trans_array(array)
+	for index, row in enumerate(transed_array):
+		owners = [c.owner for c in row]
+		if len(set(owners)) == 1 and (None not in set(owners)):
+			return owners[0]
+		new_lst.append(transed_array[index][index].owner)
+
 	if len(set(new_lst)) == 1 and (None not in set(new_lst)):
-		return new_lst[0].owner
+		return new_lst[0]
 	return None
 
 
 if __name__ == "__main__":
+	"""
+	    o
+	x o x
+	o x  
+	"""
 	board_array = board_init()
 	print("棋盘初始化:")
 	draw_board(board_array)
+	print(get_winner(board_array))
 
 	new_chess = Chess("x")
-	board_array = put_chess(0, 1, new_chess, board_array)
-	
-	new_chess = Chess("o")
 	board_array = put_chess(1, 0, new_chess, board_array)
+	draw_board(board_array)
+	print(get_winner(board_array))
 
 	new_chess = Chess("x")
-	board_array = put_chess(1, 1, new_chess, board_array)
-
-
-	new_chess = Chess("o")
-	board_array = put_chess(0, 0, new_chess, board_array)
+	board_array = put_chess(1, 2, new_chess, board_array)
+	draw_board(board_array)
+	print(get_winner(board_array))
 
 	new_chess = Chess("x")
 	board_array = put_chess(2, 1, new_chess, board_array)
-	print("下完棋")
 	draw_board(board_array)
+	print(get_winner(board_array))
 
-	print("棋盘向右翻转90度")
-	board_array = trans_array(board_array)
+	new_chess = Chess("o")
+	board_array = put_chess(0, 2, new_chess, board_array)
+	draw_board(board_array)
+	print(get_winner(board_array))
+
+	new_chess = Chess("o")
+	board_array = put_chess(1, 1, new_chess, board_array)
+	draw_board(board_array)
+	print(get_winner(board_array))
+
+	new_chess = Chess("o")
+	board_array = put_chess(2, 0, new_chess, board_array)
 	draw_board(board_array)
 	print(get_winner(board_array))
 
