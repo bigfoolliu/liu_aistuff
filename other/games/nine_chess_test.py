@@ -6,6 +6,7 @@
 检查九子棋的解法以及必胜策略
 """
 
+from itertools import combinations, permutations
 import numpy as np
 
 
@@ -61,7 +62,10 @@ def board_init(rows=3, cols=3):
 
 
 def put_chess(pos_x, pos_y, chess, array):
-	"""在棋盘指定放置棋子"""
+	"""在棋盘指定放置棋子
+	pos_x: int, 0, 1, 2
+	pos_y: int, 0, 1, 2
+	"""
 	if array[pos_x][pos_y].owner:
 		raise Exception("positon ({}, {}) already has chess".format(pos_x, pos_y))
 	array[pos_x][pos_y].owner = chess.owner
@@ -93,7 +97,9 @@ def trans_array(array):
 
 
 def get_winner(array):
-	"""获取当前的赢家"""
+	"""获取当前的赢家
+	return: str
+	"""
 	# 行,列产生赢家
 	new_lst = []
 	for index, row in enumerate(array):
@@ -119,12 +125,58 @@ def get_winner(array):
 	return None
 
 
-def check_all_possibilities(array):
-	"""检查所有下棋的方案"""
-	player = None
-	chess = generate_chess(player)
+def check_all_possibilities():
+	"""检查所有下棋的方案
+	1. 产生棋盘
+	2. 依次下棋子
+		从位置1至位置9依次下棋,且要保证每次下的位置不同
+	3. 每次下完检查是否有胜者
+	4. 有胜者则结束比赛
+	
+	从位置中选取数字，每个数字只能选择一次，路径规划;
+	如果前几个数字的组合中产生了胜者，则后面就没必要继续下去;
 
-	put_chess()
+	"""
+	posibilities = 0
+	positions = {0, 1, 2, 3, 4, 5, 6, 7, 8}
+	for permution in permutations(positions, len(positions)):
+		one_choice = OneChoice()
+		board_array = board_init()
+		# 根据每一种的组合获得其位置，然后一次下棋
+		print(permution)
+		for i in permution:
+			pos_x, pos_y = get_pos(i)
+			chess = Chess(one_choice.pick_player())
+			board_array = put_chess(pos_x, pos_y, chess, board_array)
+			winner = get_winner(board_array)
+			if winner:
+				print("winner is {}".format(winner))
+				draw_board(board_array)
+				posibilities += 1
+				break
+	print("all posibilities: {}".format(posibilities))
+
+
+def get_pos(num):
+	"""根据数字返回坐标位置"""
+	if num == 0:
+		return (0, 0)
+	elif num == 1:
+		return (0, 1)
+	elif num == 2:
+		return (0, 2)
+	elif num == 3:
+		return (1, 0)
+	elif num == 4:
+		return (1, 1)
+	elif num == 5:
+		return (1, 2)
+	elif num == 6:
+		return (2, 0)
+	elif num == 7:
+		return (2, 1)
+	elif num == 8:
+		return (2, 2)
 
 
 if __name__ == "__main__":
@@ -133,5 +185,5 @@ if __name__ == "__main__":
 	x o x
 	o x  
 	"""
-	pass
+	check_all_possibilities()
 
