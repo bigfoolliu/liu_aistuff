@@ -9,11 +9,45 @@
 import numpy as np
 
 
-class Chess:
+class Chess(object):
     
 	def __init__(self, owner=None):
 		"""owner为x或者o"""
 		self.owner = owner
+
+
+class OneChoice(object):
+
+	"""单例,用于选择选手，且保证每次选择的和上一次不同"""
+
+	_instance = {}
+
+	def __new__(cls, *args, **kwargs):
+		if cls not in cls._instance:
+			cls._instance[cls] = super().__new__(cls)
+		return cls._instance[cls]
+
+	def __init__(self, player=None):
+		"""初始化选择一个作为第一个选手"""
+		self.players = ["x", "o"]
+		if player and player not in self.players:
+			raise Exception("player {} does not exist".format(player))
+		self.cur_player = player
+
+	def pick_player(self):
+		"""选择一个选手，且需要确保这一次和上一次的不同"""
+		if not self.cur_player:
+			pick_player = self.players[0]
+			self.cur_player = pick_player
+			return pick_player
+
+		if self.cur_player == "o":
+			pick_player = "x"
+			self.cur_player = pick_player
+		elif self.cur_player == "x":
+			pick_player = "o"
+			self.cur_player = pick_player
+		return pick_player
 
 
 def board_init(rows=3, cols=3):
@@ -42,9 +76,11 @@ def draw_board(array):
 	print("--------------------------")
 
 
-def check_all_possibilities(array):
-	"""检查所有下棋的方案"""
-	return
+def generate_chess(player=None):
+	"""根据传入的player返回棋子对象"""
+	if player not in ("x", "o"):
+		raise Exception("player {} does not exist}".format(player))
+	return Chess(player)
 
 
 def trans_array(array):
@@ -83,44 +119,19 @@ def get_winner(array):
 	return None
 
 
+def check_all_possibilities(array):
+	"""检查所有下棋的方案"""
+	player = None
+	chess = generate_chess(player)
+
+	put_chess()
+
+
 if __name__ == "__main__":
 	"""
 	    o
 	x o x
 	o x  
 	"""
-	board_array = board_init()
-	print("棋盘初始化:")
-	draw_board(board_array)
-	print(get_winner(board_array))
-
-	new_chess = Chess("x")
-	board_array = put_chess(1, 0, new_chess, board_array)
-	draw_board(board_array)
-	print(get_winner(board_array))
-
-	new_chess = Chess("x")
-	board_array = put_chess(1, 2, new_chess, board_array)
-	draw_board(board_array)
-	print(get_winner(board_array))
-
-	new_chess = Chess("x")
-	board_array = put_chess(2, 1, new_chess, board_array)
-	draw_board(board_array)
-	print(get_winner(board_array))
-
-	new_chess = Chess("o")
-	board_array = put_chess(0, 2, new_chess, board_array)
-	draw_board(board_array)
-	print(get_winner(board_array))
-
-	new_chess = Chess("o")
-	board_array = put_chess(1, 1, new_chess, board_array)
-	draw_board(board_array)
-	print(get_winner(board_array))
-
-	new_chess = Chess("o")
-	board_array = put_chess(2, 0, new_chess, board_array)
-	draw_board(board_array)
-	print(get_winner(board_array))
+	pass
 
