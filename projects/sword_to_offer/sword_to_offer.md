@@ -12,3 +12,4 @@
 ## 问题
 
 - [ ] n个色子扔出去，点数为和为s，求不同s出现的概率:[n_dot.py](./n_dot.py)
+- [ ] 随机从扑克牌中抽出了5张牌,判断是不是顺子:[puker_judge.py](./puker_judge.py)
