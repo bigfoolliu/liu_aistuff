@@ -42,7 +42,7 @@ class DA(threading.Thread):
             await task
 
         print(f"finished at {time.strftime('%X')}")
-    
+
     def run(self):
         while not self.stopped.wait(5):
             try:
@@ -50,7 +50,7 @@ class DA(threading.Thread):
                 # asyncio.get_event_loop().run_until_complete(asyncio.gather(self.tasks))
             except Exception as e:
                 print(e)
-    
+
     def stop(self):
         self.stopped.set()
 
