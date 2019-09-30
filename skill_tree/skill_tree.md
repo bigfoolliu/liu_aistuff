@@ -65,7 +65,7 @@
         - [11.4MicroServices](#114microservices)
     - [12.消息](#12消息)
         - [12.1JMS](#121jms)
-        - [12.2IPC](#122ipc)
+        - [12.2IPC进程间通信](#122ipc进程间通信)
         - [12.3MQ](#123mq)
 
 <!-- /TOC -->
@@ -366,9 +366,9 @@ TODO:
 
 TODO:
 
-### 12.2IPC
+### 12.2IPC进程间通信
 
-TODO:
+- [ ] [ipc](../liu_work/introductions/ipc.md)
 
 ### 12.3MQ
 
