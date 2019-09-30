@@ -60,5 +60,3 @@ for i in range(100):
 
 end_time = time.time()
 print("[INFO]Spend time:", end_time - start_time)
-
-
