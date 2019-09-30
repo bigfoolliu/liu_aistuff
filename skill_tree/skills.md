@@ -53,6 +53,7 @@
 - win + ctrl + f4: 删除当前的虚拟桌面
 - win + w: windowslink工作区
 - win + e: 打开资源管理器
+- win + r, psr.exe：打开步骤计数器
 
 ## 8.必读书籍
 
