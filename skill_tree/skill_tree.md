@@ -67,6 +67,7 @@
         - [12.1JMS](#121jms)
         - [12.2IPC进程间通信](#122ipc进程间通信)
         - [12.3MQ](#123mq)
+        - [12.4消息中间件](#124消息中间件)
 
 <!-- /TOC -->
 
@@ -361,6 +362,7 @@ TODO:
 - [ ] JMS
 - [ ] IPC
 - [ ] MQ
+- [ ] 消息中间件
 
 ### 12.1JMS
 
@@ -373,3 +375,7 @@ TODO:
 ### 12.3MQ
 
 - [ ] [mqtt](../liu_work/introductions/mq)
+
+### 12.4消息中间件
+
+- [ ] [middle ware](../liu_work/introductions/middle_ware.md)
