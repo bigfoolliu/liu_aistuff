@@ -13,6 +13,7 @@
   - [8.必读书籍](#8%e5%bf%85%e8%af%bb%e4%b9%a6%e7%b1%8d)
   - [9.开发者工具](#9%e5%bc%80%e5%8f%91%e8%80%85%e5%b7%a5%e5%85%b7)
   - [10.chrome高效使用](#10chrome%e9%ab%98%e6%95%88%e4%bd%bf%e7%94%a8)
+  - [11.ssh免密以及别名](#11ssh%e5%85%8d%e5%af%86%e4%bb%a5%e5%8f%8a%e5%88%ab%e5%90%8d)
 
 <!-- /TOC -->
 
@@ -69,3 +70,21 @@
 - ctrl + w/f4: 关闭当前标签页
 - alt + space + n: 最小化当前窗口
 - alt + space + x: 最大化当前窗口
+
+## 11.ssh免密以及别名
+
+```shell
+# 1.本地生成公钥和私钥,默认放置路径为~/.ssh/id_rsa以及~/.ssh/id_rsassh-keygen.pub
+# 需要输入一个密码需要记忆,如果输入为空则为免密登录
+ssh-keygen
+# 2.将本地的公钥放到远程主机
+ssh-copy-id ubuntu@192.168.6.121
+# 3.登录时候需要输入自己的密码或者为空
+ssh ubuntu@192.168.6.121
+
+# 如果需要将远程主机取别名在~.ssh/config文件中加入
+Host 1
+    HostName 192.168.1.1
+    User ubuntu
+    Port 22
+```
