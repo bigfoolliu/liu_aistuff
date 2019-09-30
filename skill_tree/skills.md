@@ -50,6 +50,8 @@
 - win + ctrl + d: 创建新的虚拟桌面
 - win + ctrl + left/right: 左右切换虚拟桌面
 - win + ctrl + f4: 删除当前的虚拟桌面
+- win + w: windowslink工作区
+- win + e: 打开资源管理器
 
 ## 8.必读书籍
 
