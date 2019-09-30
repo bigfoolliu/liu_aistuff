@@ -2,18 +2,18 @@
 
 <!-- TOC -->
 
-- [effiency提高效率的小技巧](#effiency%e6%8f%90%e9%ab%98%e6%95%88%e7%8e%87%e7%9a%84%e5%b0%8f%e6%8a%80%e5%b7%a7)
-  - [1.为命令设置别名(alias)](#1%e4%b8%ba%e5%91%bd%e4%bb%a4%e8%ae%be%e7%bd%ae%e5%88%ab%e5%90%8dalias)
-  - [2.dotfiles快速将恢复自身配置](#2dotfiles%e5%bf%ab%e9%80%9f%e5%b0%86%e6%81%a2%e5%a4%8d%e8%87%aa%e8%ba%ab%e9%85%8d%e7%bd%ae)
-  - [3.项目里重复的工作写成makefile](#3%e9%a1%b9%e7%9b%ae%e9%87%8c%e9%87%8d%e5%a4%8d%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%86%99%e6%88%90makefile)
-  - [4.快速为项目选择一个source license](#4%e5%bf%ab%e9%80%9f%e4%b8%ba%e9%a1%b9%e7%9b%ae%e9%80%89%e6%8b%a9%e4%b8%80%e4%b8%aasource-license)
-  - [5.量化工作](#5%e9%87%8f%e5%8c%96%e5%b7%a5%e4%bd%9c)
-  - [6.会话以及终端管理tmux](#6%e4%bc%9a%e8%af%9d%e4%bb%a5%e5%8f%8a%e7%bb%88%e7%ab%af%e7%ae%a1%e7%90%86tmux)
-  - [7.windows虚拟桌面(workspace)](#7windows%e8%99%9a%e6%8b%9f%e6%a1%8c%e9%9d%a2workspace)
-  - [8.必读书籍](#8%e5%bf%85%e8%af%bb%e4%b9%a6%e7%b1%8d)
-  - [9.开发者工具](#9%e5%bc%80%e5%8f%91%e8%80%85%e5%b7%a5%e5%85%b7)
-  - [10.chrome高效使用](#10chrome%e9%ab%98%e6%95%88%e4%bd%bf%e7%94%a8)
-  - [11.ssh免密以及别名](#11ssh%e5%85%8d%e5%af%86%e4%bb%a5%e5%8f%8a%e5%88%ab%e5%90%8d)
+- [effiency提高效率的小技巧](#effiency提高效率的小技巧)
+    - [1.为命令设置别名(alias)](#1为命令设置别名alias)
+    - [2.dotfiles快速将恢复自身配置](#2dotfiles快速将恢复自身配置)
+    - [3.项目里重复的工作写成makefile](#3项目里重复的工作写成makefile)
+    - [4.快速为项目选择一个source license](#4快速为项目选择一个source-license)
+    - [5.量化工作](#5量化工作)
+    - [6.会话以及终端管理tmux](#6会话以及终端管理tmux)
+    - [7.windows虚拟桌面(workspace)](#7windows虚拟桌面workspace)
+    - [8.必读书籍](#8必读书籍)
+    - [9.开发者工具](#9开发者工具)
+    - [10.chrome高效使用](#10chrome高效使用)
+    - [11.ssh免密以及别名登录](#11ssh免密以及别名登录)
 
 <!-- /TOC -->
 
@@ -72,7 +72,7 @@
 - alt + space + n: 最小化当前窗口
 - alt + space + x: 最大化当前窗口
 
-## 11.ssh免密以及别名
+## 11.ssh免密以及别名登录
 
 ```shell
 # 1.本地生成公钥和私钥,默认放置路径为~/.ssh/id_rsa以及~/.ssh/id_rsassh-keygen.pub
