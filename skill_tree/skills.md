@@ -10,6 +10,9 @@
   - [5.量化工作](#5%e9%87%8f%e5%8c%96%e5%b7%a5%e4%bd%9c)
   - [6.会话以及终端管理tmux](#6%e4%bc%9a%e8%af%9d%e4%bb%a5%e5%8f%8a%e7%bb%88%e7%ab%af%e7%ae%a1%e7%90%86tmux)
   - [7.windows虚拟桌面(workspace)](#7windows%e8%99%9a%e6%8b%9f%e6%a1%8c%e9%9d%a2workspace)
+  - [8.必读书籍](#8%e5%bf%85%e8%af%bb%e4%b9%a6%e7%b1%8d)
+  - [9.开发者工具](#9%e5%bc%80%e5%8f%91%e8%80%85%e5%b7%a5%e5%85%b7)
+  - [10.chrome高效使用](#10chrome%e9%ab%98%e6%95%88%e4%bd%bf%e7%94%a8)
 
 <!-- /TOC -->
 
@@ -47,3 +50,20 @@
 - win + ctrl + d: 创建新的虚拟桌面
 - win + ctrl + left/right: 左右切换虚拟桌面
 - win + ctrl + f4: 删除当前的虚拟桌面
+
+## 8.必读书籍
+
+[程序员必读书单](http://lucida.me/blog/developer-reading-list/)
+
+## 9.开发者工具
+
+[免费开发工具](https://github.com/ripienaar/free-for-dev)
+
+## 10.chrome高效使用
+
+- ctrl + t: 打开新的标签页
+- ctrl + n: 打开新的窗口
+- ctrl + pgUp/pgDown: 切换标签页
+- ctrl + w/f4: 关闭当前标签页
+- alt + space + n: 最小化当前窗口
+- alt + space + x: 最大化当前窗口
