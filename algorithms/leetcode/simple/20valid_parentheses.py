@@ -36,3 +36,42 @@ Output: true
 
 思路：栈
 """
+
+def is_valid_parentheses(s):
+    """
+    :param s: str，输入一串只包含括号[]()\{\}的字符串
+    return bool
+    """
+    if s == "":
+        return True
+    map = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+    }
+    stk = []
+    for i in list(s):
+        # 若为左半边括号则压入栈中
+        if i in map:
+            stk.append(i)
+        # 若为右半边的括号则分类讨论
+        else:
+            # 如果此时的栈为空或者末尾取出来的元素和当前的不匹配
+            if len(stk) == 0 or map[stk[len(stk)-1]] != i:
+                return False
+            # 栈尾元素取出来和当前对应则压出元素
+            else:
+                stk.pop()
+    # 当最后的栈为空则说明正确
+    return len(stk) == 0
+
+
+if __name__ == "__main__":
+    s1 = r"[({})]"
+    print(s1, is_valid_parentheses(s1))
+
+    s2 = r"}[]()"
+    print(s2, is_valid_parentheses(s2))
+
+    s3 = r"[](){}{"
+    print(s1, is_valid_parentheses(s3))
