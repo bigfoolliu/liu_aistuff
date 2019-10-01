@@ -46,9 +46,9 @@ def maxinum_sum_subarray2(array):
     :return int
     """
     start_time = time.perf_counter()
-    min_sum = 0  # 前n项的最小值
+    min_sum = 0  # 前n项和的最小值
     max_sum = array[0]  # 最大子序列和
-    pre_sum = 0
+    pre_sum = 0  # 前缀和
     for i in range(len(array)):
         pre_sum += array[i]
         max_sum = max(max_sum, pre_sum - min_sum)
