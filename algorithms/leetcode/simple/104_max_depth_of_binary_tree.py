@@ -25,14 +25,37 @@ return its depth = 3.
 """
 
 
-def max_depth_of_binary_tree(array):
+class Node(object):
+
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+def max_depth_of_binary_tree(root):
     """
-    :param array: list
+    :param root: tree_node
     return int
     """
-    pass
+    if not root:
+        return 0
+    q, depth = [root, None], 1
+    while q:
+        node = q.pop(0)
+        if node:
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        elif q:
+            q.append(None)
+            depth += 1
+    return depth
 
 
 if __name__ == "__main__":
     array = [3, 9, 20, None, None, 15, 7]
+    root = Node(3)
+    root.left = 
     print(max_depth_of_binary_tree(array))
