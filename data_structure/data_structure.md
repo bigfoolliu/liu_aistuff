@@ -4,14 +4,17 @@
 
 <!-- TOC -->
 
-- [data_structure](#data_structure)
-    - [1.链表(linked list)](#1链表linked-list)
-    - [2.二叉树(binary tree)](#2二叉树binary-tree)
-    - [3.霍夫曼压缩(huffman compression)](#3霍夫曼压缩huffman-compression)
-    - [4.队列(queue)](#4队列queue)
-        - [4.1优先队列(priority queue)](#41优先队列priority-queue)
-        - [4.2双端队列(double-ended queue, dequeue)](#42双端队列double-ended-queue-dequeue)
-    - [5.堆](#5堆)
+- [data_structure](#datastructure)
+  - [1.链表(linked list)](#1%e9%93%be%e8%a1%a8linked-list)
+  - [2.二叉树(binary tree)](#2%e4%ba%8c%e5%8f%89%e6%a0%91binary-tree)
+  - [3.霍夫曼压缩(huffman compression)](#3%e9%9c%8d%e5%a4%ab%e6%9b%bc%e5%8e%8b%e7%bc%a9huffman-compression)
+  - [4.队列(queue)](#4%e9%98%9f%e5%88%97queue)
+    - [4.1优先队列(priority queue)](#41%e4%bc%98%e5%85%88%e9%98%9f%e5%88%97priority-queue)
+    - [4.2双端队列(double-ended queue, dequeue)](#42%e5%8f%8c%e7%ab%af%e9%98%9f%e5%88%97double-ended-queue-dequeue)
+  - [5.堆](#5%e5%a0%86)
+  - [6.栈](#6%e6%a0%88)
+    - [6.1介绍](#61%e4%bb%8b%e7%bb%8d)
+    - [6.2应用](#62%e5%ba%94%e7%94%a8)
 
 <!-- /TOC -->
 
@@ -60,3 +63,27 @@
 - 通常指`二叉堆`，物理结构为数组，逻辑结构为完全二叉树
 - 根节点最大的堆为最大堆或者大根堆，根节点最小的堆为最小堆或者小根堆
 - `常被用作实现优先队列`
+
+## 6.栈
+
+- [栈的实现以及其他类型的栈](https://blog.csdn.net/wenqiang1208/article/details/77193449)
+- [栈的python实现](./stack/stack.py)
+
+栈是一种 LIFO(Last In First Out) 的数据结构，常用方法有添加元素，取栈顶元素，弹出栈顶元素，判断栈是否为空。
+
+### 6.1介绍
+
+**特点**:
+
+- 先进后出，后进先出(LIFO)
+
+**类型**:
+
+- 共享栈，其实就是一个数组
+- 链式栈，通过节点构成的单链表构成
+
+### 6.2应用
+
+- 括号匹配
+- 十进制表示N进制
+- 行编辑
