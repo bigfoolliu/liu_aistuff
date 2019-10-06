@@ -104,15 +104,21 @@ a1, a0+a1+a2, a0+a1+a2+a3]`形成新的数组`[b0, b1, b2, b3];（2）如果是
 
 ### 6.1冒泡排序(bubble sort)
 
+- [冒泡排序python实现](./sort_algorithms/sort_algorithm.py)
+
 ### 6.2选择排序(selection sort)
 
 ### 6.3插入排序(insertion sort)
+
+- [插入排序python实现](./sort_algorithms/sort_algorithm.py)
 
 希尔排序
 
 ### 6.4归并排序(merge sort)
 
 ### 6.5快速排序(quick sort)
+
+- [快速排序python实现](./sort_algorithms/sort_algorithm.py)
 
 ### 6.6堆排序(heap sort)
 
@@ -150,4 +156,5 @@ a1, a0+a1+a2, a0+a1+a2+a3]`形成新的数组`[b0, b1, b2, b3];（2）如果是
 
 ## 8.二分搜索
 
-在`有序数组`中寻找目标值，当然有时候需要自己构建有序数组。
+- 在`有序数组`中寻找目标值，当然有时候需要自己构建有序数组
+- [二分搜索python实现](./search_algorithms/binary_search.py)
