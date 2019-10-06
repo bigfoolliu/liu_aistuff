@@ -52,10 +52,3 @@ def max_depth_of_binary_tree(root):
             q.append(None)
             depth += 1
     return depth
-
-
-if __name__ == "__main__":
-    array = [3, 9, 20, None, None, 15, 7]
-    root = Node(3)
-    root.left = 
-    print(max_depth_of_binary_tree(array))
