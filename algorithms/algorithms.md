@@ -1,16 +1,31 @@
-# algorithms文件夹
+# algorithms
 
 <!-- TOC -->
 
-- [algorithms文件夹](#algorithms文件夹)
-    - [1.快慢指针](#1快慢指针)
-    - [2.前缀和](#2前缀和)
-    - [3.动态规划（DP,dynamic programming）](#3动态规划dpdynamic-programming)
-    - [4.二叉树相关算法](#4二叉树相关算法)
-        - [4.1DFS(前中后序遍历)](#41dfs前中后序遍历)
-        - [4.2BFS层序遍历](#42bfs层序遍历)
-    - [5.回溯法](#5回溯法)
-        - [5.1介绍](#51介绍)
+- [algorithms](#algorithms)
+  - [1.快慢指针](#1%e5%bf%ab%e6%85%a2%e6%8c%87%e9%92%88)
+  - [2.前缀和](#2%e5%89%8d%e7%bc%80%e5%92%8c)
+  - [3.动态规划（DP,dynamic programming）](#3%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92dpdynamic-programming)
+  - [4.二叉树相关算法](#4%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9b%b8%e5%85%b3%e7%ae%97%e6%b3%95)
+    - [4.1DFS(前中后序遍历)](#41dfs%e5%89%8d%e4%b8%ad%e5%90%8e%e5%ba%8f%e9%81%8d%e5%8e%86)
+    - [4.2BFS层序遍历](#42bfs%e5%b1%82%e5%ba%8f%e9%81%8d%e5%8e%86)
+  - [5.回溯法](#5%e5%9b%9e%e6%ba%af%e6%b3%95)
+    - [5.1介绍](#51%e4%bb%8b%e7%bb%8d)
+  - [6.排序算法](#6%e6%8e%92%e5%ba%8f%e7%ae%97%e6%b3%95)
+    - [6.1冒泡排序(bubble sort)](#61%e5%86%92%e6%b3%a1%e6%8e%92%e5%ba%8fbubble-sort)
+    - [6.2选择排序(selection sort)](#62%e9%80%89%e6%8b%a9%e6%8e%92%e5%ba%8fselection-sort)
+    - [6.3插入排序(insertion sort)](#63%e6%8f%92%e5%85%a5%e6%8e%92%e5%ba%8finsertion-sort)
+    - [6.4归并排序(merge sort)](#64%e5%bd%92%e5%b9%b6%e6%8e%92%e5%ba%8fmerge-sort)
+    - [6.5快速排序(quick sort)](#65%e5%bf%ab%e9%80%9f%e6%8e%92%e5%ba%8fquick-sort)
+    - [6.6堆排序(heap sort)](#66%e5%a0%86%e6%8e%92%e5%ba%8fheap-sort)
+    - [6.7桶排序(bucket sort)](#67%e6%a1%b6%e6%8e%92%e5%ba%8fbucket-sort)
+    - [6.8计数排序(counting sort)](#68%e8%ae%a1%e6%95%b0%e6%8e%92%e5%ba%8fcounting-sort)
+    - [6.9基数排序(radix sort)](#69%e5%9f%ba%e6%95%b0%e6%8e%92%e5%ba%8fradix-sort)
+  - [7.分治法(divide and conquer)](#7%e5%88%86%e6%b2%bb%e6%b3%95divide-and-conquer)
+    - [求解问题的特征](#%e6%b1%82%e8%a7%a3%e9%97%ae%e9%a2%98%e7%9a%84%e7%89%b9%e5%be%81)
+    - [求解步骤](#%e6%b1%82%e8%a7%a3%e6%ad%a5%e9%aa%a4)
+    - [应用](#%e5%ba%94%e7%94%a8)
+  - [8.二分搜索](#8%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2)
 
 <!-- /TOC -->
 
@@ -84,3 +99,55 @@ a1, a0+a1+a2, a0+a1+a2+a3]`形成新的数组`[b0, b1, b2, b3];（2）如果是
 将问题的解空间转化为图或者树的结构，然后使用优先搜索策略遍历，遍历的过程记录和寻找所有可行解或者最优解。
 
 参考：[算法入门之回溯法](https://blog.csdn.net/weiyuefei/article/details/79316653)
+
+## 6.排序算法
+
+### 6.1冒泡排序(bubble sort)
+
+### 6.2选择排序(selection sort)
+
+### 6.3插入排序(insertion sort)
+
+希尔排序
+
+### 6.4归并排序(merge sort)
+
+### 6.5快速排序(quick sort)
+
+### 6.6堆排序(heap sort)
+
+### 6.7桶排序(bucket sort)
+
+### 6.8计数排序(counting sort)
+
+### 6.9基数排序(radix sort)
+
+## 7.分治法(divide and conquer)
+
+将一个复杂的问题分成多个相同或者相似的子问题，直至最后的子问题可以简单的求解。
+
+### 求解问题的特征
+
+- 问题规模缩小到一定的规模就可以容易解决
+- 问题可以分解为若干规模较小的相同问题，即具有`最优子结构`性质
+- 利用该问题分解的子问题的解可以合并为该问题的解
+- 分解出来的问题是相互独立的
+
+### 求解步骤
+
+1. **分解**，原问题分解为若干子问题
+2. **解决**，递归求解各个子问题
+3. **合并**，将子问题的解合并为原问题的解
+
+### 应用
+
+1. 二分搜索
+2. 大整数乘法
+3. 归并排序
+4. 快速排序
+5. 汉诺塔
+6. 循环赛日程表
+
+## 8.二分搜索
+
+在`有序数组`中寻找目标值，当然有时候需要自己构建有序数组。
