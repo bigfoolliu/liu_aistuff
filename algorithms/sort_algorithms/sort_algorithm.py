@@ -72,7 +72,40 @@ def quick_sort(array):
     return array
 
 
+def quick_sort2(array, begin, end):
+    """
+    快速排序清晰版本形式
+    begin作为该区间的最小下标
+    end作为该区间的最大下标
+    """
+    l, r = begin, end
+    # 如果左右下标重合则一轮结束
+    if l >= r:
+        return
+    # 取该区间的第一个元素作为基准元素
+    pivot = array[begin]
+    while l < r:
+        while l < r and array[r] >= pivot:
+            r -= 1
+        # 找到右边第一个小于基准的数，赋值给左边的l，而此时左边的元素记录在pivot基准中
+        array[l] = array[r]
+        while l < r and array[l] <= pivot:
+            l += 1
+        # 找到左边第一个大于基准的数，赋值给右边的r，而此时右边的r值和左边的l值相同
+        array[r] = array[l]
+    # 一轮循环结束，将基准值放到正确的位置，即l处
+    array[l] = pivot
+
+    # 在除去l之外的两段继续递归
+    quick_sort2(array, begin, l-1)
+    quick_sort2(array, l+1, end)
+
+    return array
+
+
 print(bubble_sort([1, 2, 5, 7, 12, 4, 2, 8]))
 print(insert_sort([12, 2, 4, 1, 6, 2, 7, 8]))
 print(quick_sort([8, 4, 6, 10, 7]))
 
+array = [8, 4, 6, 10, 7]
+print(quick_sort2(array, 0, len(array)-1))
