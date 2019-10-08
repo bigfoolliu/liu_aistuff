@@ -8,6 +8,7 @@ PrivateTest/
 *.avi
 .idea
 videos/
+test/
 
 django_env/
 
