@@ -1,51 +1,8 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
-"""
-几个常见的排序算法
-"""
-import time
-
-
-def count_time(func):
-    """计算耗时装饰器"""
-    def wrapper(*args, **kwargs):
-        start_time = time.time()
-        ret = func(*args, **kwargs)
-        end_time = time.time()
-        print("[INFO]Cost time:{}".format(end_time - start_time))
-        return ret  # 注意此处将函数的返回值返回
-    return wrapper
-
-
-@count_time
-def bubble_sort(array):
-    """冒泡排序"""
-    print("[INFO]Bubble_sort begins for {}".format(array))
-    if len(array) <= 1:
-        return array
-    for i in range(len(array)):
-        for j in range(len(array) - i - 1):
-            if array[j] > array[j+1]:
-                array[j], array[j+1] = array[j+1], array[j]
-    return array
-
-
-@count_time
-def insert_sort(array):
-    """插入排序"""
-    print("[INFO]Insert_sort begins for {}".format(array))
-    if len(array) <= 1:
-        return array
-    for i in range(len(array)):
-        for j in range(i):
-            if array[i] < array[j]:
-                array.insert(j, array.pop(i))
-    return array
-
-
-@count_time
 def quick_sort(array):
     """快速排序"""
     print("[INFO]Quick_sort begins for {}".format(array))
@@ -103,9 +60,7 @@ def quick_sort2(array, begin, end):
     return array
 
 
-print(bubble_sort([1, 2, 5, 7, 12, 4, 2, 8]))
-print(insert_sort([12, 2, 4, 1, 6, 2, 7, 8]))
-print(quick_sort([8, 4, 6, 10, 7]))
-
-array = [8, 4, 6, 10, 7]
-print(quick_sort2(array, 0, len(array)-1))
+if __name__ == "__main__":
+    array = [2, 4, 1, 7, 3, 8, 4]
+    print(quick_sort(array))
+    print(quick_sort2(array, 0, len(array)-1))
