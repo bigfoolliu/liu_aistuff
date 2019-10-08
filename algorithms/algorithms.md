@@ -103,28 +103,43 @@
 ### 6.1冒泡排序(bubble sort)
 
 - [冒泡排序python实现](./sort_algorithms/sort_algorithm.py)
+- [冒泡排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
 ### 6.2选择排序(selection sort)
 
 ### 6.3插入排序(insertion sort)
 
 - [插入排序python实现](./sort_algorithms/sort_algorithm.py)
+- [插入排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
 希尔排序
 
+- [希尔排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+
 ### 6.4归并排序(merge sort)
+
+- [归并排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
 ### 6.5快速排序(quick sort)
 
 - [快速排序python实现](./sort_algorithms/sort_algorithm.py)
+- [快速排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
 ### 6.6堆排序(heap sort)
 
+- [堆排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+
 ### 6.7桶排序(bucket sort)
+
+- [桶排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
 ### 6.8计数排序(counting sort)
 
+- [计数排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+
 ### 6.9基数排序(radix sort)
+
+- [基数排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
 ## 7.分治法(divide and conquer)
 
