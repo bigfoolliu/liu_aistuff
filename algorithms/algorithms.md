@@ -105,12 +105,36 @@
 - [冒泡排序python实现](./sort_algorithms/sort_algorithm.py)
 - [冒泡排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
+**复杂度**:
+
+- 平均时间复杂度:$O(n^2)$
+- 空间复杂度:$O(1)$
+
+**算法描述**：
+
+1. 比较相邻的元素，如果第一个大于第二个，则交换；
+2. 对每一对相邻元素做比较，从第一对到最后一对，最后的元素是最大的数；
+3. 针对所有元素重复以上步骤，除了最后一个元素；
+4. 重复步骤1-3至完成
+
 ### 6.2选择排序(selection sort)
+
+在没有排序的数组中找到最大或者最小的放到位置，然后从剩余中继续寻找直至最后一个元素。
+
+**复杂度**:
+
+- 平均时间复杂度:$O(n^2)$
+- 空间复杂度:$O(1)$
 
 ### 6.3插入排序(insertion sort)
 
 - [插入排序python实现](./sort_algorithms/sort_algorithm.py)
 - [插入排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+
+**复杂度**:
+
+- 平均时间复杂度:$O(n^2)$
+- 空间复杂度:$O(1)$
 
 希尔排序
 
@@ -120,26 +144,67 @@
 
 - [归并排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
+**复杂度**:
+
+- 平均时间复杂度:$O(nlogn)$
+- 空间复杂度:$O(n)$
+
 ### 6.5快速排序(quick sort)
+
+核心思想：基准数大的都放在基准数的右边,把比基准数小的放在基准数的左边,这样就找到了该数据在数组中的正确位置。
 
 - [快速排序python实现](./sort_algorithms/sort_algorithm.py)
 - [快速排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+- [快速排序算法详解](http://www.sohu.com/a/246785807_684445)
+
+**复杂度**:
+
+- 平均时间复杂度:$O(nlogn)$
+- 空间复杂度:$O(logn)$
+
+**算法描述**：
+
+使用分治法将一个串分成两个子串
+
+1. 从数列中挑出一个元素作为基准`pivot`(随意挑选，可以选择第一个)；
+2. 重新排列数列，所有元素比基准小的放在基准前面，比基准大的放在后面，在这个基准退出之后，该基准就处在数列的中间位置，这称为`分区操作`；
+3. `递归`的将小于基准值元素的子数列和大于基准元素的子数列排列
 
 ### 6.6堆排序(heap sort)
 
 - [堆排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
+**复杂度**:
+
+- 平均时间复杂度:$O(nlogn)$
+- 空间复杂度:$O(1)$
+
 ### 6.7桶排序(bucket sort)
 
 - [桶排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+
+**复杂度**:
+
+- 平均时间复杂度:$O(n+k)$, `k`为桶的个数
+- 空间复杂度:$O(n+k)$
 
 ### 6.8计数排序(counting sort)
 
 - [计数排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
 
+**复杂度**:
+
+- 平均时间复杂度:$O(n+k)$, `k`为桶的个数
+- 空间复杂度:$O(k)$
+
 ### 6.9基数排序(radix sort)
 
 - [基数排序算法图解](https://blog.csdn.net/zhangshk_/article/details/82911093)
+
+**复杂度**:
+
+- 平均时间复杂度:$O(n*k)$, `k`为桶的个数
+- 空间复杂度:$O(n+k)$
 
 ## 7.分治法(divide and conquer)
 

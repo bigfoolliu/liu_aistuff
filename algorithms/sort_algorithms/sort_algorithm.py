@@ -58,15 +58,15 @@ def quick_sort(array):
         l, r = begin, end
         pivot = array[l]  # 以左侧的数作为基准数
         while l < r:
-            while l < r and array[r] > pivot:
+            while l < r and array[r] > pivot:  # 右侧的数大于基准数则不必移动
                 r -= 1
-            while l < r and array[l] <= pivot:
+            while l < r and array[l] <= pivot:  # 左侧的数小于基准数则不必移动
                 l += 1
             array[l], array[r] = array[r], array[l]
-        array[l], array[begin] = pivot, array[l]
+        array[l], array[begin] = pivot, array[l]  # 完成一轮，找到基准元素应该放置的位置
 
-        recursive(begin, l-1)  # 对左侧的元素进行排序
-        recursive(r+1, end)  # 对右侧的元素进行排序
+        recursive(begin, l-1)
+        recursive(r+1, end)
 
     recursive(0, len(array)-1)
     return array
@@ -74,5 +74,5 @@ def quick_sort(array):
 
 print(bubble_sort([1, 2, 5, 7, 12, 4, 2, 8]))
 print(insert_sort([12, 2, 4, 1, 6, 2, 7, 8]))
-print(quick_sort([12, 34, 5, 6, 2, 4, 1, 9]))
+print(quick_sort([8, 4, 6, 10, 7]))
 
