@@ -7,5 +7,7 @@ import os
 
 
 settings = {
-    "root_path": os.path.abspath("./")
+    "root_path": os.path.abspath("./"),
+    "static_path": os.path.abspath("./static"),
+    "debug": True
 }
