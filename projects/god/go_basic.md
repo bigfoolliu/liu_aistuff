@@ -48,6 +48,8 @@
 
 ## 1.介绍
 
+相对来说，go语言更适合`系统编程`。
+
 [go语言入门教程](http://c.biancheng.net/golang/)
 [go语言中文网](https://studygolang.com/)
 [go playground,浏览器中执行go代码](https://play.golang.org/)
