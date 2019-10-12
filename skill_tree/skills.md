@@ -2,20 +2,23 @@
 
 <!-- TOC -->
 
-- [effiency提高效率的小技巧](#effiency%e6%8f%90%e9%ab%98%e6%95%88%e7%8e%87%e7%9a%84%e5%b0%8f%e6%8a%80%e5%b7%a7)
-  - [1.为命令设置别名(alias)](#1%e4%b8%ba%e5%91%bd%e4%bb%a4%e8%ae%be%e7%bd%ae%e5%88%ab%e5%90%8dalias)
-  - [2.dotfiles快速将恢复自身配置](#2dotfiles%e5%bf%ab%e9%80%9f%e5%b0%86%e6%81%a2%e5%a4%8d%e8%87%aa%e8%ba%ab%e9%85%8d%e7%bd%ae)
-  - [3.项目里重复的工作写成makefile](#3%e9%a1%b9%e7%9b%ae%e9%87%8c%e9%87%8d%e5%a4%8d%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%86%99%e6%88%90makefile)
-  - [4.快速为项目选择一个source license](#4%e5%bf%ab%e9%80%9f%e4%b8%ba%e9%a1%b9%e7%9b%ae%e9%80%89%e6%8b%a9%e4%b8%80%e4%b8%aasource-license)
-  - [5.量化工作](#5%e9%87%8f%e5%8c%96%e5%b7%a5%e4%bd%9c)
-  - [6.会话以及终端管理tmux](#6%e4%bc%9a%e8%af%9d%e4%bb%a5%e5%8f%8a%e7%bb%88%e7%ab%af%e7%ae%a1%e7%90%86tmux)
-  - [7.windows虚拟桌面(workspace)](#7windows%e8%99%9a%e6%8b%9f%e6%a1%8c%e9%9d%a2workspace)
-  - [8.必读书籍](#8%e5%bf%85%e8%af%bb%e4%b9%a6%e7%b1%8d)
-  - [9.开发者工具](#9%e5%bc%80%e5%8f%91%e8%80%85%e5%b7%a5%e5%85%b7)
-  - [10.chrome高效使用](#10chrome%e9%ab%98%e6%95%88%e4%bd%bf%e7%94%a8)
-  - [11.ssh免密以及别名登录](#11ssh%e5%85%8d%e5%af%86%e4%bb%a5%e5%8f%8a%e5%88%ab%e5%90%8d%e7%99%bb%e5%bd%95)
-  - [12.python代码](#12python%e4%bb%a3%e7%a0%81)
-  - [13.HTTP Api设计指南](#13http-api%e8%ae%be%e8%ae%a1%e6%8c%87%e5%8d%97)
+- [effiency提高效率的小技巧](#effiency提高效率的小技巧)
+    - [1.为命令设置别名(alias)](#1为命令设置别名alias)
+    - [2.dotfiles快速将恢复自身配置](#2dotfiles快速将恢复自身配置)
+    - [3.项目里重复的工作写成makefile](#3项目里重复的工作写成makefile)
+    - [4.快速为项目选择一个source license](#4快速为项目选择一个source-license)
+    - [5.量化工作](#5量化工作)
+    - [6.会话以及终端管理tmux](#6会话以及终端管理tmux)
+    - [7.windows虚拟桌面(workspace)](#7windows虚拟桌面workspace)
+    - [8.必读书籍](#8必读书籍)
+    - [9.开发者工具](#9开发者工具)
+    - [10.chrome高效使用](#10chrome高效使用)
+    - [11.ssh免密以及别名登录](#11ssh免密以及别名登录)
+    - [12.python代码](#12python代码)
+        - [12.1变量](#121变量)
+        - [12.2条件分支](#122条件分支)
+        - [12.3使用数字和字符串的](#123使用数字和字符串的)
+    - [13.HTTP Api设计指南](#13http-api设计指南)
 
 <!-- /TOC -->
 
@@ -95,6 +98,29 @@ Host 1
 ## 12.python代码
 
 - [如何编写优秀的python代码https://github.com/piglei/one-python-craftsman](https://github.com/piglei/one-python-craftsman)
+
+### 12.1变量
+
+1. bool类型：`is_superuser`,`allow_vip`,`has_error`
+2. int/float类型：`user_id`,`age`,`length_of_username`,`users_count`
+3. 适当使用[匈牙利命名法](https://blog.csdn.net/z_h_s/article/details/24007249)
+4. 尽量不要使用globals()/locals()
+5. 变量定义尽量靠近使用
+6. `使用namedtuple/dict来返回多个值，这样便于扩展和修改`
+7. 控制单个函数内的变量数量
+8. 能不用变量就不定义变量，及时删掉没用的变量
+
+### 12.2条件分支
+
+1. `避免多层分支嵌套,使用raise或者return提前结束代码`
+2. `封装过于复杂的逻辑判断到函数或者方法`
+3. 留意不同的重复代码，消灭之
+4. 谨慎只用三元表达式
+5. 使用`德摩根定律`
+6. 在条件判断中使用`all()/any()`
+7. 留意and和or的运算优先级，`and优先级别高于or`
+
+### 12.3使用数字和字符串的
 
 ## 13.HTTP Api设计指南
 
