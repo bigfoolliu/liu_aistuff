@@ -17,7 +17,9 @@
     - [12.python代码](#12python代码)
         - [12.1变量](#121变量)
         - [12.2条件分支](#122条件分支)
-        - [12.3使用数字和字符串的](#123使用数字和字符串的)
+        - [12.3使用数字和字符串的技巧](#123使用数字和字符串的技巧)
+        - [12.4python的容器操作(列表，元组等)](#124python的容器操作列表元组等)
+        - [12.5函数返回结果的技巧](#125函数返回结果的技巧)
     - [13.HTTP Api设计指南](#13http-api设计指南)
 
 <!-- /TOC -->
@@ -120,7 +122,66 @@ Host 1
 6. 在条件判断中使用`all()/any()`
 7. 留意and和or的运算优先级，`and优先级别高于or`
 
-### 12.3使用数字和字符串的
+### 12.3使用数字和字符串的技巧
+
+1. 少用数字字面量，即类似`users[0], type==1`等,而是将重复出现的数字字面量定义为`枚举类型`
+2. 不要在裸字符串上处理太多，即`不要使用基本的加减乘除配合基本函数等处理字符串，获得结果`,试着`根据字符串是否为结构化的来使用开源的对象化模块来操作或者使用模板引擎来处理`
+3. 不必预计算字面量表达式,如`不要替换7*24*3600为604800`
+4. 布尔值也是数字
+5. 改善超长字符串的可读性
+6. python中的无穷大`float("inf")为无穷大；float("-inf")为无穷小`
+
+```python
+# 超长字符串的处理
+
+# 1.括号
+logging.info(("this is a super super super super super long"
+            "logging info"))
+
+# 2.使用\
+logging.info("this is a super super super super super long \
+                logging info")
+
+# 3.多级缩进出现长字符串
+# 可以将其作为变量提取到模块的外层或者使用内置模块textwrap
+from textwrap import dedent
+def main():
+    if user.is_active:
+        # dedent 将会缩进掉整段文字最左边的空字符串
+        message = dedent("""\
+            Welcome, today's movie list:
+            - Jaw (1975)
+            - The Shining (1980)
+            - Saw (2004)""")
+```
+
+### 12.4python的容器操作(列表，元组等)
+
+1. 多使用`yield`来返回生成器对象
+2. 尽量使用生成器表达式替代列表推导式,即使用`(i for i in range(100))`而不是`[i for i in range(100)]`
+3. 尽量使用模块的懒惰对象`re.finditer而不是re.findall`,`for line in fp而不是for line in fp.readlines()`
+4. 列表头部操作多的场景使用`deque`模块
+5. 使用集合/字典来判断成员是否存在
+6. `关注容器的抽象属性，而非容器类型本身，如列表元组的抽象属性为 是否可迭代，是否可修改，是否有长度等`
+7. 在更多的地方使用`动态解包`,即用`*或者**`解开可迭代运算对象,合并字典`{**dict1, **dict2}`
+8. 尽量省略那些非核心的异常捕获逻辑
+   1. 操作字典成员时候，使用`collections.defaultdict`或者使用`dict[key]=dict.setdefault(key, 0)+1`内建函数
+   2. 移除字典成员，不要关心是否存在，设置默认值`dict.pop(key, None)`
+   3. 字典获取成员时设置默认值`dict.get(key, default_value)`
+   4. 列表进行不存在的切片访问不会抛出IndexError`["fool"][100:200]`
+9. 使用`next`函数，配合生成器表达式可以高效实现从列表查找第一个满足条件的元素`print(next(i for i in list1 if i % 2 == 0))`
+10. 使用`有序字典`去重,即`collections.OrderedDict`,去重的同时保留了顺序
+11. 不要在循环体里修改被迭代，可能会导致某些成员不能被遍历到,`使用一个空的可迭代对象来保存结果或者使用yield返回一个生成器`
+
+### 12.5函数返回结果的技巧
+
+1. 单个函数不要返回多种类型的结果
+2. 当一个函数完全依赖另外一个函数来工作时，使用`partial`函数来构造函数[partial函数官方文档](https://docs.python.org/3.6/library/functools.html#functools.partial)
+3. 函数抛出异常而不是返回和错误
+4. 谨慎使用None作为函数返回值,`作为操作类函数的返回值，作为某些意料之中可能没有的值，作为调用失败代表错误结果的值`
+5. 合理使用`空对象模式`,即`使用一个符合正常结果的接口的空类型来替代空值返回/抛出异常，从而降低调用方处理结果的成本`
+6. 使用生成器函数代替返回列表，即使用`yield item替代append`
+7. 限制递归的使用
 
 ## 13.HTTP Api设计指南
 
