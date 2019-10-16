@@ -5,13 +5,16 @@
 - [docker practice读书笔记](#docker-practice%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0)
   - [1.容器](#1%e5%ae%b9%e5%99%a8)
   - [2.镜像](#2%e9%95%9c%e5%83%8f)
-  - [dockerfile](#dockerfile)
+  - [3.dockerfile](#3dockerfile)
     - [dockerfile参考](#dockerfile%e5%8f%82%e8%80%83)
     - [dockerfile相关命令](#dockerfile%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4)
     - [dockerfile多阶段构建](#dockerfile%e5%a4%9a%e9%98%b6%e6%ae%b5%e6%9e%84%e5%bb%ba)
-  - [命令](#%e5%91%bd%e4%bb%a4)
-  - [搭建私人docker registry仓库](#%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badocker-registry%e4%bb%93%e5%ba%93)
-  - [docker网络](#docker%e7%bd%91%e7%bb%9c)
+    - [dockerfile最佳实践](#dockerfile%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5)
+  - [4.搭建私人docker registry仓库](#4%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badocker-registry%e4%bb%93%e5%ba%93)
+  - [5.docker网络](#5docker%e7%bd%91%e7%bb%9c)
+  - [6.docker-compose](#6docker-compose)
+  - [7.kubernetes](#7kubernetes)
+    - [概念](#%e6%a6%82%e5%bf%b5)
 
 <!-- /TOC -->
 
@@ -55,7 +58,7 @@ docker commit \
 docker history nginx:v2
 ```
 
-## dockerfile
+## 3.dockerfile
 
 ### dockerfile参考
 
@@ -95,21 +98,18 @@ FROM alpine as prod
 
 注意：*使用manifest列表可以根据系统不同的架构来查找不同的镜像*[manifest官方博客介绍](https://www.docker.com/blog/multi-arch-all-the-things/)
 
-## 命令
+### dockerfile最佳实践
 
-```shell
-# 启动docker-ce
-sudo systemctl enable docker
-sudo systemctl start docker
+1. 容器应该是短暂的，dockerfile构建镜像的启动的容器应该尽有可能短的生命周期
+2. 使用`.dockerignore`文件，类似.gitignore文件
+3. 使用多阶段构建
+4. 避免安装不必要的包
+5. 一个容器只运行一个进程
+6. 镜像层数应该尽可能的少
+7. 多行参数的时候要排序
+8. 构建的时候使用缓存，`--no-cache=true`就会在缓存中查找可重用的
 
-# 查看镜像，容器，数据卷所占的空间
-docker system df
-
-# 在dockerfile的目录编译镜像
-docker build -t nginx:v3 .
-```
-
-## 搭建私人docker registry仓库
+## 4.搭建私人docker registry仓库
 
 ```shell
 # 安装运行docker-registry，默认仓库将创建在/var/lib/registry目录，也可以用-v参数来指定存放位置
@@ -120,11 +120,67 @@ docker tag ubuntu:latest 127.0.0.1:5000/ubuntu:latest
 docker push 127.0.0.1:5000/ubuntu:latest
 ```
 
-## docker网络
+## 5.docker网络
 
 `尽量将容器加入自定义的docker网络，连接多个容器`
 
 ```shell
 # 创建docker网络
 docker network create -d bridge my-net
+
+# 运行一个容器并加入到网络，其他加入的容器可以通过 ping busybox1 来验证互联关系
+docker run -it --rm --name busybox1 --network mynet
 ```
+
+## 6.docker-compose
+
+`定义和运行多个docker容器的应用`。
+
+两个概念：
+
+- `服务(service)`，应用的容器，实际上可以是包含若干运行相同镜像的容器实例
+- `项目(project)`，由一组关联的的应用容器组成一个完整的业务单元
+
+```shell
+# 尝试自动完成包括构建镜像，创建服务，启动服务
+docker-compose up
+
+# 构建或者重新构建项目中的服务容器
+docker-compose build
+
+# 验证compose文件格式是否正确
+docker-compose config
+
+# 进入指定的容器
+docker-compose exec
+
+# compose文件中包含的镜像
+docker-compose images
+
+# 该命令会停止up命令所启动的容器
+docker-compose down
+
+# 拉取服务依赖的镜像
+docker-compose pull
+
+# 推送服务依赖的镜像到docker的镜像仓库
+docker-compose push
+```
+
+## 7.kubernetes
+
+`目标是管理跨多个主机的容器，提供基本的部署，维护以及运用伸缩`。*易学*，*便携*，*可扩展*，*自修复*。
+
+### 概念
+
+- `节点(Node)`：一个节点是一个运行kubernetes中的主机，`可以是虚拟主机或者物理机器`
+- `容器(Pod)`：一个Pod对应于由若干容器组成的一个容器组，同个组内的容器共享一个`存储卷(volume)`
+- `容器组生命周期(pos-states)`：包含所有容器状态集合，包含容器组状态类型，容器组生命周期，事件，重启策略
+  - 生命状态: `pending`,`running`, `succeeded`, `failed`
+- `Replication Controllers`: 负责指定数量的pod在同一时间一起运行
+- `服务(services)`: 一个kubernetes服务是容器组逻辑的高级抽象
+- `卷(volume)`: 一个卷就是一个目录，容器对其有访问权限
+- `标签(labels)`: 标签是用来连接一组对象的，比如容器组，可以被用来组织和选择子对象
+- `接口权限(accessing_the_api)`: 端口，ip地址和代理的防火墙规则
+- `web界面(ux)`：用户可以通过web界面操作kubernetes
+- `命令行操作(cli)`: kubecfg命令
