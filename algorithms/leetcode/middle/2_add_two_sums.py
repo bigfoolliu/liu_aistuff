@@ -21,6 +21,13 @@ Example:
 """
 
 
+class ListNode:
+
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
 def addTwoNumbers(l1, l2):
     """
     :type l1: ListNode
@@ -53,10 +60,28 @@ def addTwoNumbers(l1, l2):
 
         # transfer the ret to listNode
         tmp = str(ret_num)[::-1]
-        ret = ListNode(int(tmp[0]))
+        ret = ListNode(int(tmp[0]))  # 头节点，需要返回的节点
 
+        tmp_head = ret
         for i in range(1, len(tmp)):
-            ret = ListNode(int(tmp[i]))
-            ret = ret.Next
+            tmp_node = ListNode(int(tmp[i]))
+            tmp_head.next = tmp_node
+            tmp_head = tmp_head.next
 
         return ret
+
+
+l1 = ListNode(2)
+l1.next = ListNode(4)
+l1.next.next = ListNode(3)
+
+l2 = ListNode(5)
+l2.next = ListNode(6)
+l2.next.next = ListNode(4)
+l2.next.next.next = ListNode(9)
+
+ret_node = addTwoNumbers(l1, l2)
+print(ret_node.val)
+print(ret_node.next.val)
+print(ret_node.next.next.val)
+print(ret_node.next.next.next.val)
