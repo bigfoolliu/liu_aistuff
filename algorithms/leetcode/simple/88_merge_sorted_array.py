@@ -41,7 +41,7 @@ def merge_sorted_array(array1, array2, m, n):
         else:
             array1[m + n - 1] = array1[m - 1]
             m -= 1
-    if n > 0:
+    if n > 0:  # 当array2还存在最小的数值时候
         array1[:n] = array2[:n]
     return array1
 
