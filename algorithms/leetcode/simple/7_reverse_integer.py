@@ -19,7 +19,10 @@ Example 1:
     Output: 21
     Note:
     Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+
+思路：转化为字符串然后反转
 """
+
 
 def reverse(x):
     """
@@ -31,10 +34,9 @@ def reverse(x):
         ret = -int(str(x)[::-1][:-1])  # [:-1]为去掉负号
     elif x >= 0:
         ret = int(str(x)[::-1])
-    return ret if ret < 0x7fffffff else 0
+    return ret if 0x7fffffff < ret < 0x7fffffff else 0
 
 
 for x in range(-100, 100):
     ret = reverse(x)
     print("[info]x:{} ret:{}".format(x, ret))
-
