@@ -1,4 +1,6 @@
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -20,6 +22,10 @@ Example 1:
     Output: 3
     Explanation: The answer is "wke", with the length of 3. 
                  Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+找到没有重复的最长子序列
+
+思路：
 """
 
 
@@ -35,8 +41,14 @@ def lengthOfLongestSubstring(s):
 
     for i in range(len(s)):
         # 当每次有字符重复时，dict1.get(s[i], -1) + 1则会大于等于start，此时start和ret的值需要重置
-        start = max(start, dict1.get(s[i], -1) + 1)
-        ret = max(res, i - start + 1)
+        start = max(start, dict1.get(s[i], -1)+1)
+        ret = max(ret, i-start+1)
         dict1[s[i]] = i
 
+    print(dict1)
     return ret
+
+
+print(lengthOfLongestSubstring("pwwkew"))
+print(lengthOfLongestSubstring("pwwksdfsdfew"))
+print(lengthOfLongestSubstring("pwwasdgfgddddddkew"))
