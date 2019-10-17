@@ -52,3 +52,11 @@ def max_depth_of_binary_tree(root):
             q.append(None)
             depth += 1
     return depth
+
+
+root = Node(3)
+root.left = Node(9)
+root.right = Node(20)
+root.right.left = Node(5)
+root.right.right = Node(7)
+print(max_depth_of_binary_tree(root))
