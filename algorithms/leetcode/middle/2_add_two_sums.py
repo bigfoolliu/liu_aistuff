@@ -1,4 +1,6 @@
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -11,6 +13,11 @@ Example:
     Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
     Output: 7 -> 0 -> 8
     Explanation: 342 + 465 = 807.
+
+两个非空链表，代表两个非负整数，且数字是逆向存储的
+除了数字0之外，可以假设0不在首位
+
+思路：
 """
 
 
