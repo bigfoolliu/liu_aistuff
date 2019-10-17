@@ -15,4 +15,4 @@ sudo apt-get install apt-transport-https \
     software-properties-common
 
 # 安装docker-ce
-sudo apt-get install docker-ce
+sudo apt-get install docker-ce docker-ce-cli containerd.io
