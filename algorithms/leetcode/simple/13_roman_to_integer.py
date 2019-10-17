@@ -68,13 +68,13 @@ def roman_to_integer(s):
     prev = 0  # 前一个数字
     for i in s:
         if prev and 2 * prev < rom_dict[i]:
-            num += (rom_dict[i] - 2 * prev)
+            num += (rom_dict[i] - 2 * prev)  # 注意此处减去两次prev，因为之前已经加过一次
         else:
             num += rom_dict[i]
         prev = rom_dict[i]
     return num
 
 
-print(roman_to_integer("III"))
-print(roman_to_integer("LVIII"))
+# print(roman_to_integer("III"))
+# print(roman_to_integer("LVIII"))
 print(roman_to_integer("MCMXCIV"))
