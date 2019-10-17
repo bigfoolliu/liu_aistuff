@@ -41,7 +41,7 @@ def lengthOfLongestSubstring(s):
 
     for i in range(len(s)):
         # 当每次有字符重复时，dict1.get(s[i], -1) + 1则会大于等于start，此时start和ret的值需要重置
-        start = max(start, dict1.get(s[i], -1)+1)
+        start = max(start, dict1.get(s[i], -1)+1)  # 核心点，起点是最大值
         ret = max(ret, i-start+1)
         dict1[s[i]] = i
 
