@@ -37,5 +37,15 @@ def my_sqrt(x):
     return ret
 
 
+def my_sqrt2(x):
+    """
+    :param x: int
+    :return: int
+    """
+    return int(x**0.5)
+
+
 print(my_sqrt(4))
 print(my_sqrt(8))
+print(my_sqrt2(4))
+print(my_sqrt2(8))
