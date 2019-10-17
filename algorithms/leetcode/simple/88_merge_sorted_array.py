@@ -35,7 +35,7 @@ def merge_sorted_array(array1, array2, m, n):
     return list
     """
     while m > 0 and n > 0:
-        if array1[m - 1] <= array2[n - 1]:
+        if array1[m - 1] <= array2[n - 1]:  # 从后面往前面对比，找到大的元素
             array1[m + n - 1] = array2[n - 1]
             n -= 1
         else:
