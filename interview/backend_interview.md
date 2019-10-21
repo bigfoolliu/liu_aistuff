@@ -10,6 +10,7 @@
     - [1.4Token](#14token)
   - [2.HTTPS](#2https)
     - [2.1介绍](#21%e4%bb%8b%e7%bb%8d)
+    - [2.2SSL证书](#22ssl%e8%af%81%e4%b9%a6)
 
 <!-- /TOC -->
 
@@ -50,4 +51,40 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 
 ### 2.1介绍
 
+[HTTPS基础介绍](https://blog.51cto.com/11883699/2160032)
+
 基于`TLS`或者`SSL`提供加密处理数据，在加密信道进行HTTP内容传输的协议。
+
+- 通信的过程：采用对称加密进行通信
+- 协商通信的过程：采用非对称加密解决对协商过程的加密（应为相对而言，非对称加密的耗时较长）
+  - 非对称加密使用的公钥获取依赖`SSL证书(需要购买)`和`CA机构`
+
+### 2.2SSL证书
+
+包括颁发机构，有效期，公钥，证书持有者，签名。
+
+1. 浏览器校验证书中的颁发者，有效期等
+2. 浏览器查找本地内置的受信任的证书颁发机构，与之对比，校验是否合法
+3. 不合法说明证书不可信；合法则使用相同的hash算法进行解密签名
+4. 读取证书中的公钥，进行后续加密
+
+**证书获取**：
+
+- 向一些云服务商申请，获取得到该CA机构的文件(`.CSR`)
+- 其中KEY文件，为对应的server端的私钥（`丢失无法找回`）
+
+**配置https**：
+
+[阿里云SSL配置Apache,nginx等](https://help.aliyun.com/video_detail/54216.html?spm=a2c4g.11186623.4.1.WbwjQN)
+
+```nginx
+"nginx新增配置项"
+listen 443 ssl;
+ssl_certificate     /iyunwen/server/ssl/20180731.cer;
+ssl_certificate_key /iyunwen/server/ssl/20180731.key;
+ssl_prefer_server_ciphers on;
+ssl_session_timeout 10m;
+ssl_session_cache shared:SSL:10m;
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4";
+```
