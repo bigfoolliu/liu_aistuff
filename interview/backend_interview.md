@@ -11,6 +11,11 @@
   - [2.HTTPS](#2https)
     - [2.1介绍](#21%e4%bb%8b%e7%bb%8d)
     - [2.2SSL证书](#22ssl%e8%af%81%e4%b9%a6)
+  - [3.TCP协议](#3tcp%e5%8d%8f%e8%ae%ae)
+    - [3.1介绍](#31%e4%bb%8b%e7%bb%8d)
+    - [3.2三次握手，四次挥手](#32%e4%b8%89%e6%ac%a1%e6%8f%a1%e6%89%8b%e5%9b%9b%e6%ac%a1%e6%8c%a5%e6%89%8b)
+  - [4.UDP协议](#4udp%e5%8d%8f%e8%ae%ae)
+    - [4.1介绍](#41%e4%bb%8b%e7%bb%8d)
 
 <!-- /TOC -->
 
@@ -88,3 +93,37 @@ ssl_session_cache shared:SSL:10m;
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4";
 ```
+
+## 3.TCP协议
+
+### 3.1介绍
+
+- 面向连接，可靠（`但也不是100%，实际是数据的可靠传递或故障的可靠通知`）
+- 使用`校验和`，`确认`和`重传`机制来保证可靠传输
+- 对数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复
+
+### 3.2三次握手，四次挥手
+
+`三次握手`指客户端和服务端首次建立连接的时候需要发送三个包：
+
+1. 客户端发送SYN标志位为1的包，指明需要连接的服务器的端口以及初始序号X，客户端处于`SYN_SEND`状态
+2. 服务端发送ACK确认包应答，SYN和ACK标志位均为1，服务端处于`SYN_RCVD`状态
+3. 客户端发送ACK确认应打包，SYN标志位为0，ACK标志位为1，客户端进入`ESTABLISHED`状态
+
+`tcp标志位`,有6种标示：[tcp标志位详解](https://blog.csdn.net/chenvast/article/details/77978367)
+
+`四次挥手`指tcp连接的拆除，需要发送四个包：
+
+1. 客户端发送FIN标志位为1的包，表示自己无数据发送，但可以接收数据
+2. 服务端发送ACK包，表示自己收到关闭连接的请求，但未准备好关闭
+3. 服务端发送FIN标志位为1的包，表示自己结束连接
+4. 客户端发送ACK确认收到服务端的关闭请求
+
+## 4.UDP协议
+
+### 4.1介绍
+
+- 非可靠，不提供确认，序列号，超时重传等机制
+- 数据包的长度有限
+- 无连接
+- 支持多播和广播
