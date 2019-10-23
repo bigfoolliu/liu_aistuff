@@ -23,7 +23,6 @@
   - [python](#python)
     - [python解释器](#python%e8%a7%a3%e9%87%8a%e5%99%a8)
     - [python多线程，进程，协程](#python%e5%a4%9a%e7%ba%bf%e7%a8%8b%e8%bf%9b%e7%a8%8b%e5%8d%8f%e7%a8%8b)
-    - [python装饰器](#python%e8%a3%85%e9%a5%b0%e5%99%a8)
 
 <!-- /TOC -->
 
@@ -187,9 +186,3 @@
 - `what`，
 - `why`
 - `how`
-
-### python装饰器
-
-- `what`，本质是嵌套函数
-- `why`，用于抽离与函数本身无关的功能，增加函数的通用性，在`缓存`,`权限校验`，`性能测试`，`插入日志`等场景使用
-- `how`，
