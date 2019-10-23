@@ -16,39 +16,83 @@ class Node(object):
         self.right = None
 
 
-def display_tree(tree):
-    """展示二叉树的数据,深度优先"""
-    if tree is None:
+def display_tree_deep(root):
+    """展示二叉树,深度优先"""
+    if root is None:
         return
-    if tree.left:
-        display_tree(tree.left)
-    print(tree.data)
-    if tree.right:
-        display_tree(tree.right)
-    display_tree(tree.right)
-    return
+    print(root.data)
+    display_tree_deep(root.left)
+    display_tree_deep(root.right)
 
 
-def depth_of_tree(tree):
+def display_tree_wild(root):
+    """展示二叉树,广度优先,又叫层次遍历"""
+    if root is None:
+        return
+    queue = []
+    queue.append(root)
+    while queue:
+        cur = queue.pop(0)
+        print(cur.data)
+        if cur.left:
+            queue.append(cur.left)
+        if cur.right:
+            queue.append(cur.right)
+
+
+def pre_travel(root):
+    """深度优先,前序遍历,即：当前节点-->左子树-->右子树"""
+    print(root.data)
+    if root.left is not None:
+        pre_travel(root.left)
+    if root.right is not None:
+        pre_travel(root.right)
+
+
+def after_travel(root):
+    """深度优先,后序遍历,即：左子树-->右子树-->当前节点"""
+    if root.left is not None:
+        after_travel(root.left)
+    if root.right is not None:
+        after_travel(root.right)
+    print(root.data)
+
+
+def mid_travel(root):
+    """深度优先,中序遍历,即：左子树-->当前节点-->右子树"""
+    if root.left is not None:
+        mid_travel(root.left)
+    print(root.data)
+    if root.right is not None:
+        mid_travel(root.right)
+
+
+def depth_of_tree(root):
     """显示树的深度"""
-    if tree is None:
+    if root is None:
         return 0
-    depth_l_tree = depth_of_tree(tree.left)
-    depth_r_tree = depth_of_tree(tree.right)
-    if depth_l_tree > depth_r_tree:
-        return 1 + depth_l_tree
-    return 1 + depth_r_tree
+    return max(depth_of_tree(root.left), depth_of_tree(root.right)) + 1
 
 
-def is_full_binary_tree(tree):
+def is_full_binary_tree(root):
     """是否为完全二叉树，即最底层叶节点均处于次底层叶节点的左侧"""
-    if tree is None:
+    if root is None:
         return True
-    if tree.left is None and tree.right is None:
+    if root.left is None and root.right is None:
         return True
-    if tree.left is not None and tree.right is not None:
-        return is_full_binary_tree(tree.left) and is_full_binary_tree(tree.right)
+    if root.left is not None and root.right is not None:
+        return is_full_binary_tree(root.left) and is_full_binary_tree(root.right)
     return False
+
+
+def is_same_tree(root1, root2):
+    """判断两棵树是否相同"""
+    if root1 is None and root2 is None:
+        return True
+    elif root1 and root2:
+        return root1.data == root2.data and is_same_tree(root1.left, root2.left) and is_same_tree(root1.right, root2.right)
+    else:
+        return False
 
 
 def main():
@@ -59,16 +103,29 @@ def main():
        /   \
       3     4
     """
-    tree = Node(0)
-    tree.left = Node(1)
-    tree.right = Node(2)
-    tree.left.left = Node(3)
-    tree.left.right = Node(4)
+    root = Node(0)
+    root.left = Node(1)
+    root.right = Node(2)
+    root.left.left = Node(3)
+    root.left.right = Node(4)
 
-    print("display the tree:")
-    display_tree(tree)
-    print("depth of the tree: {}".format(depth_of_tree(tree)))
-    print("is full binary tree: {}".format(is_full_binary_tree(tree)))
+    print("display the tree deep:")
+    display_tree_deep(root)
+    
+    print("display the tree wild:")
+    display_tree_wild(root)
+
+    print("pre travel:")
+    pre_travel(root)
+
+    print("after travel:")
+    after_travel(root)
+
+    print("mid travel:")
+    mid_travel(root)
+
+    print("depth of the tree: {}".format(depth_of_tree(root)))
+    print("is full binary tree: {}".format(is_full_binary_tree(root)))
 
 
 if __name__ == "__main__":
