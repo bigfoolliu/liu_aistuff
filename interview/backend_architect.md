@@ -34,6 +34,8 @@
 
 ## 1.数据结构
 
+[数据结构笔记](../data_structure/data_structure.md)
+
 - [ ] 队列
 - [ ] 集合
 - [ ] 链表，数组
@@ -49,6 +51,8 @@
 - [ ] BitSet
 
 ## 2.常用算法
+
+[算法笔记](../algorithms/algorithms.md)
 
 - [ ] 排序查找算法
   - [ ] 选择排序
