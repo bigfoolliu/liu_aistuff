@@ -9,24 +9,10 @@
 
 class Node(object):
     """树的节点"""
-    def __init__(self, item, lchild=None, rchild=None):
+    def __init__(self, item, left=None, right=None):
         self.item = item
-        self.lchild = lchild
-        self.rchild - rchild
-
-
-class Queue(object):
-    """队列,先进先出"""
-    def __init__(self):
-        self.items = []
-
-    def enqueue(self, item):
-        """入列"""
-        self.items.insert(0, item)
-
-    def dequeue(self):
-        """出列"""
-        return self.items.pop()
+        self.left = left
+        self.right = right
 
 
 class BinaryTree(object):
@@ -35,20 +21,20 @@ class BinaryTree(object):
         self.__root = root
 
     def add(self, item):
-        """为树添加节点"""
+        """为树添加节点,依次从左到右增加"""
         node = Node(item)
         queue = []  # 初始化根节点入队列
         queue.insert(0, self.__root)
         while queue:
             cur = queue.pop(0)
-            if cur.lchild == None:
-                cur.lchild = node
+            if cur.left == None:
+                cur.left = node
                 return
-            queue.insert(0, cur.lchild)
-            if cur.rchild == None:
-                cur.rchild = node
+            queue.insert(0, cur.left)
+            if cur.right == None:
+                cur.right = node
                 return
-            queue.insert(0. cur.rchild)
+            queue.insert(0, cur.right)
 
     def travel(self):
         """遍历显示树的节点，广度优先，层次遍历"""
@@ -58,10 +44,10 @@ class BinaryTree(object):
             cur = queue.pop(0)
             print(cur.item)
 
-            if cur.lchild:
-                queue.insert(0, cur.lchild):
-            if cur.lchild:
-                queue.insert(0, cur.rchild)
+            if cur.left:
+                queue.insert(0, cur.left)
+            if cur.right:
+                queue.insert(0, cur.right)
 
     def pre_order(self):
         """使用深度优先的先序遍历进行节点输出,根节点-->左子树-->右子树"""
@@ -70,6 +56,26 @@ class BinaryTree(object):
             if not root:
                 return None
             print(root.item)
-            preorder(root.lchild)
-            preorder(root.rchild)
+            preorder(root.left)
+            preorder(root.right)
         return preorder(root)
+
+
+def main():
+    root_node = Node(1)
+    tree = BinaryTree(root_node)
+    tree.add(Node(2))
+    tree.add(Node(3))
+    tree.add(Node(4))
+    tree.add(Node(5))
+    tree.add(Node(6))
+    tree.add(Node(7))
+
+    print("travel*****************")
+    tree.travel()
+    print("pre_order**************")
+    tree.pre_order()
+
+
+if __name__ == '__main__':
+    main()
