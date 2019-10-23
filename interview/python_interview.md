@@ -13,6 +13,10 @@
     - [1.7python协程](#17python%e5%8d%8f%e7%a8%8b)
     - [1.8python函数式编程](#18python%e5%87%bd%e6%95%b0%e5%bc%8f%e7%bc%96%e7%a8%8b)
     - [1.9python垃圾回收机制](#19python%e5%9e%83%e5%9c%be%e5%9b%9e%e6%94%b6%e6%9c%ba%e5%88%b6)
+  - [2.重点算法](#2%e9%87%8d%e7%82%b9%e7%ae%97%e6%b3%95)
+    - [2.1快速排序](#21%e5%bf%ab%e9%80%9f%e6%8e%92%e5%ba%8f)
+    - [2.2二分搜索](#22%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2)
+    - [2.3二叉树相关](#23%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9b%b8%e5%85%b3)
 
 <!-- /TOC -->
 
@@ -101,3 +105,75 @@ ret = reduce(lambda x,y:x*y, range(1, 4))
 1. `引用计数`,每个对象都有对其引用的计数，当没有引用时候，就会销毁
 2. `标记-清除机制`
 3. `分代技术`
+
+## 2.重点算法
+
+### 2.1快速排序
+
+```python
+def quick_sort(array):
+    """
+    array: list
+    return: list
+    """
+    if not array:
+        return array
+
+    def recrusive(begin, end):
+        if begin >= end:
+            return
+        l, r = begin, end
+        pivot = array[begin]
+        while l < r:
+            while l < r and array[r] >= pivot:
+                r -= 1
+            array[l] = array[r]
+            while l < r and array[l] <= pivot:
+                l += 1
+            array[r] = array[l]
+        array[l] = pivot
+
+        recrusive(begin, l-1)
+        recrusive(l+1, end)
+
+    begin = 0
+    end = len(array) - 1
+    recrusive(begin, end)
+    return array
+```
+
+### 2.2二分搜索
+
+```python
+def binary_search(array, target):
+    """
+    array: list
+    target: numbers
+    return: int
+    """
+    if not array:
+        return array
+    begin = 0
+    end = len(array) - 1
+    while begin <= end:
+        mid = int((end-begin)/2 + begin)
+        if array[mid] > target:
+            end = mid - 1
+        elif array[mid] < target:
+            begin = mid + 1
+        else:
+            return mid
+    return None
+```
+
+### 2.3二叉树相关
+
+```python
+class Node(object):
+    def __init__(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+
+tree = Node(1, Node)
+```
