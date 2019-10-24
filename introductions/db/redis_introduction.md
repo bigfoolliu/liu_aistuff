@@ -2,38 +2,43 @@
 
 <!-- TOC -->
 
-- [redis数据库](#redis%e6%95%b0%e6%8d%ae%e5%ba%93)
-  - [1.安装使用](#1%e5%ae%89%e8%a3%85%e4%bd%bf%e7%94%a8)
-  - [2.五大数据类型](#2%e4%ba%94%e5%a4%a7%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b)
-    - [2.1字符串(string)](#21%e5%ad%97%e7%ac%a6%e4%b8%b2string)
-    - [2.2哈希(Hash)](#22%e5%93%88%e5%b8%8chash)
-    - [2.3列表(List)](#23%e5%88%97%e8%a1%a8list)
-    - [2.4集合(Set)](#24%e9%9b%86%e5%90%88set)
-    - [2.5有序集合(Sorted List)](#25%e6%9c%89%e5%ba%8f%e9%9b%86%e5%90%88sorted-list)
-  - [3.常用命令](#3%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
-  - [4.发布-订阅](#4%e5%8f%91%e5%b8%83-%e8%ae%a2%e9%98%85)
-  - [5.redis事务](#5redis%e4%ba%8b%e5%8a%a1)
-  - [6.数据备份和恢复](#6%e6%95%b0%e6%8d%ae%e5%a4%87%e4%bb%bd%e5%92%8c%e6%81%a2%e5%a4%8d)
-  - [7.redis安全](#7redis%e5%ae%89%e5%85%a8)
-  - [7.redis性能测试](#7redis%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95)
-  - [8.redis客户端连接](#8redis%e5%ae%a2%e6%88%b7%e7%ab%af%e8%bf%9e%e6%8e%a5)
-  - [9.redis管道](#9redis%e7%ae%a1%e9%81%93)
-  - [10.redis分区](#10redis%e5%88%86%e5%8c%ba)
-  - [11.应用场景](#11%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af)
-    - [11.1缓存数据](#111%e7%bc%93%e5%ad%98%e6%95%b0%e6%8d%ae)
-    - [11.2消息队列](#112%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97)
-    - [11.3计数器](#113%e8%ae%a1%e6%95%b0%e5%99%a8)
-    - [11.4电商网站信息](#114%e7%94%b5%e5%95%86%e7%bd%91%e7%ab%99%e4%bf%a1%e6%81%af)
-    - [11.5热点数据](#115%e7%83%ad%e7%82%b9%e6%95%b0%e6%8d%ae)
+- [redis数据库](#redis数据库)
+    - [1.概述](#1概述)
+        - [1.1安装使用](#11安装使用)
+        - [1.2常用命令](#12常用命令)
+    - [2.五大数据类型](#2五大数据类型)
+        - [2.1字符串(string)](#21字符串string)
+        - [2.2哈希(Hash)](#22哈希hash)
+        - [2.3列表(List)](#23列表list)
+        - [2.4集合(Set)](#24集合set)
+        - [2.5有序集合(Sorted List)](#25有序集合sorted-list)
+    - [3.使用场景](#3使用场景)
+        - [3.1计数器](#31计数器)
+        - [3.2缓存](#32缓存)
+        - [3.3查找表](#33查找表)
+        - [3.4消息队列](#34消息队列)
+        - [3.5会话缓存](#35会话缓存)
+        - [3.6分布式锁](#36分布式锁)
+        - [3.7其他](#37其他)
+    - [4.事务](#4事务)
+    - [5.持久化](#5持久化)
+        - [5.1数据备份和恢复](#51数据备份和恢复)
+        - [5.2RDB持久化](#52rdb持久化)
+        - [5.3AOF持久化](#53aof持久化)
+    - [其他](#其他)
+        - [客户端连接](#客户端连接)
+        - [安全](#安全)
+        - [性能测试](#性能测试)
+        - [发布-订阅](#发布-订阅)
 
 <!-- /TOC -->
 
-[redis笔记github](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md)
-
-## 1.安装使用
-
+- [github中redis知识点](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md)
 - [redis中文网以及教程](https://www.redis.net.cn/tutorial/3501.html)
-- [redis配置详解](https://www.redis.net.cn/tutorial/3504.html)
+
+## 1.概述
+
+### 1.1安装使用
 
 ```shell
 # 安装
@@ -53,6 +58,34 @@ redis-cli
 
 # 在远程的服务器上执行 
 redis-cli -h host -p port -a password
+```
+
+### 1.2常用命令
+
+```shell
+# 删除键
+del key
+
+# 序列化给定key，并返回序列化的值
+dump key
+
+# 判断给定的key是否存在
+exists key
+
+# 给key设置过期时间（s）
+expire key
+
+# 将key移动到新的数据库db
+move key db
+
+# 查看key所存储的值的类型
+type key
+
+# 修改key的名称
+rename key newkey
+
+# 查看redis服务器的信息
+info
 ```
 
 ## 2.五大数据类型
@@ -130,47 +163,40 @@ zadd names 10 jim
 zrangebyscore names 0 100
 ```
 
-## 3.常用命令
+## 3.使用场景
 
-```shell
-# 删除键
-del key
+### 3.1计数器
 
-# 序列化给定key，并返回序列化的值
-dump key
+- 对String进行自增或者自减实现计数
 
-# 判断给定的key是否存在
-exists key
+### 3.2缓存
 
-# 给key设置过期时间（s）
-expire key
+- 将热点数据放到内存中,设置内存的最大使用量以及淘汰策略来保证缓存的命中率
 
-# 将key移动到新的数据库db
-move key db
+### 3.3查找表
 
-# 查看key所存储的值的类型
-type key
+- DNS记录适宜使用redis存储
 
-# 修改key的名称
-rename key newkey
+### 3.4消息队列
 
-# 查看redis服务器的信息
-info
-```
+- List是双向链表，可以通过lpush和rpop写入和读取消息
+- 最好还是使用RabbitMQ等消息中间件比较好
 
-## 4.发布-订阅
+### 3.5会话缓存
 
-发布-订阅(pub/sub)是一种消息通信模式。
+- 存储多台服务器的会话
 
-```shell
-# 在客户端1订阅channel1频道的消息
-subscribe channel1
+### 3.6分布式锁
 
-# 在客户端2发送消息到channel1
-publish channel1 hello
-```
+- 可以使用Redis的SETNX命令实现分布式锁
+- 也可以使用官方的RedLock分布式锁实现
 
-## 5.redis事务
+### 3.7其他
+
+- Set可以实现交集，并集等操作，实现共同好友功能
+- ZSet可以实现有序性操作，实现排行榜功能
+
+## 4.事务
 
 - 一次执行多个命令
 - 事务是一个单独的隔离操作：事务中的所有命令都会序列化，按顺序的执行,事务执行的过程中不会被其他命令打断
@@ -189,7 +215,9 @@ get name tony
 exec
 ```
 
-## 6.数据备份和恢复
+## 5.持久化
+
+### 5.1数据备份和恢复
 
 ```shell
 # 创建当前数据库的备份，会在安装的目录创建dump.rdb文件
@@ -201,7 +229,26 @@ save
 config get dir
 ```
 
-## 7.redis安全
+### 5.2RDB持久化
+
+- 将某个时间点的所有数据存到硬盘
+- 将快照复制到其他服务器从而创建具有相同数据的服务器副本
+
+### 5.3AOF持久化
+
+## 其他
+
+### 客户端连接
+
+```shell
+# 获取最大连接数量
+config get maxclients
+
+# 服务端启动时候设置最大连接数
+redis-server --maxclients 10000
+```
+
+### 安全
 
 设置密码，客户端连接的时候就需要验证。
 
@@ -219,37 +266,21 @@ config get requirepass
 auth 123456
 ```
 
-## 7.redis性能测试
+### 性能测试
 
 ```shell
 # 模拟同时执行1000个请求来检测性能
 redis-benchmark -n 1000
 ```
 
-## 8.redis客户端连接
+### 发布-订阅
+
+发布-订阅(pub/sub)是一种消息通信模式。
 
 ```shell
-# 获取最大连接数量
-config get maxclients
+# 在客户端1订阅channel1频道的消息
+subscribe channel1
 
-# 服务端启动时候设置最大连接数
-redis-server --maxclients 10000
+# 在客户端2发送消息到channel1
+publish channel1 hello
 ```
-
-## 9.redis管道
-
-## 10.redis分区
-
-- 分割数据到多个redis实例，每个实例保存key的一个子集
-
-## 11.应用场景
-
-### 11.1缓存数据
-
-### 11.2消息队列
-
-### 11.3计数器
-
-### 11.4电商网站信息
-
-### 11.5热点数据
