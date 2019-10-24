@@ -126,6 +126,7 @@ delete from tab1;  # 不指定条件删除
 
 ```shell
 # 索引:
+create index name on tab1(name);  # 创建最简单的索引
 # 查看:
 show index from tab1;
 # 创建:
