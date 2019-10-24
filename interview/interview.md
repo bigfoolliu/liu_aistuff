@@ -21,8 +21,6 @@
   - [web框架的本质](#web%e6%a1%86%e6%9e%b6%e7%9a%84%e6%9c%ac%e8%b4%a8)
   - [其他](#%e5%85%b6%e4%bb%96)
   - [python](#python)
-    - [python解释器](#python%e8%a7%a3%e9%87%8a%e5%99%a8)
-    - [python多线程，进程，协程](#python%e5%a4%9a%e7%ba%bf%e7%a8%8b%e8%bf%9b%e7%a8%8b%e5%8d%8f%e7%a8%8b)
 
 <!-- /TOC -->
 
@@ -173,16 +171,3 @@
 - [白话https加密机制](https://www.cnblogs.com/jymblog/p/11646766.html)
 
 ## python
-
-### python解释器
-
-- 由`编译器`和`虚拟机`构成
-- 编译器将py文件编译为pyc字节码文件，虚拟机执行字节码
-- 现有的python解释器主要有三类：`CPython`,`PyPy`,`JPython`
-  - "cpython"
-
-### python多线程，进程，协程
-
-- `what`，
-- `why`
-- `how`
