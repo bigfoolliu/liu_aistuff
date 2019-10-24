@@ -46,10 +46,12 @@ def kmp_matching(original, substring):
 
 def gen_pnext(substring):
     """
-    产生构造表，构造临时数组
+    产生前缀表
     substring: 待匹配字符窜
     """
-    index, i, m = 0, 1, len(substring)
+    index = 0
+    i = 1
+    m = len(substring)
     pnext = [0] * m  # 初始元素全部为 0
     while i < m:
         if substring[i] == substring[index]:
