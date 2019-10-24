@@ -32,6 +32,11 @@
 
 <!-- /TOC -->
 
+- [github笔试面试知识整理](https://github.com/HIT-Alibaba/interview)
+- [github笔试面试题，Python实现](https://github.com/leeguandong/Interview-code-practice-python)
+- [github关于python的面试题](https://github.com/kenwoodjw/python_interview_question)
+- [github中BATJ面试知识点](https://github.com/xbox1994/Java-Interview)
+
 ## 1.HTTP
 
 ### 1.1介绍

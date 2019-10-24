@@ -2,25 +2,24 @@
 
 <!-- TOC -->
 
-- [interview面试问题总结](#interview%e9%9d%a2%e8%af%95%e9%97%ae%e9%a2%98%e6%80%bb%e7%bb%93)
-  - [1.tcp/udp](#1tcpudp)
-    - [适用场景](#%e9%80%82%e7%94%a8%e5%9c%ba%e6%99%af)
-    - [tcp粘包](#tcp%e7%b2%98%e5%8c%85)
-  - [2.进程线程](#2%e8%bf%9b%e7%a8%8b%e7%ba%bf%e7%a8%8b)
-  - [3.高并发](#3%e9%ab%98%e5%b9%b6%e5%8f%91)
-    - [3.1提升系统并发能力](#31%e6%8f%90%e5%8d%87%e7%b3%bb%e7%bb%9f%e5%b9%b6%e5%8f%91%e8%83%bd%e5%8a%9b)
-    - [3.2高并发指标](#32%e9%ab%98%e5%b9%b6%e5%8f%91%e6%8c%87%e6%a0%87)
-    - [3.3python解决高并发](#33python%e8%a7%a3%e5%86%b3%e9%ab%98%e5%b9%b6%e5%8f%91)
-  - [4.go语言](#4go%e8%af%ad%e8%a8%80)
-    - [4.1go与python对比](#41go%e4%b8%8epython%e5%af%b9%e6%af%94)
-  - [5.缓存](#5%e7%bc%93%e5%ad%98)
-    - [5.1缓存介绍](#51%e7%bc%93%e5%ad%98%e4%bb%8b%e7%bb%8d)
-    - [浏览器缓存](#%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
-  - [概念](#%e6%a6%82%e5%bf%b5)
-    - [领域驱动模型(DDD)](#%e9%a2%86%e5%9f%9f%e9%a9%b1%e5%8a%a8%e6%a8%a1%e5%9e%8bddd)
-  - [web框架的本质](#web%e6%a1%86%e6%9e%b6%e7%9a%84%e6%9c%ac%e8%b4%a8)
-  - [其他](#%e5%85%b6%e4%bb%96)
-  - [python](#python)
+- [interview面试问题总结](#interview面试问题总结)
+    - [1.tcp/udp](#1tcpudp)
+        - [适用场景](#适用场景)
+        - [tcp粘包](#tcp粘包)
+    - [2.进程线程](#2进程线程)
+    - [3.高并发](#3高并发)
+        - [3.1提升系统并发能力](#31提升系统并发能力)
+        - [3.2高并发指标](#32高并发指标)
+        - [3.3python解决高并发](#33python解决高并发)
+    - [4.go语言](#4go语言)
+        - [4.1go与python对比](#41go与python对比)
+    - [5.缓存](#5缓存)
+        - [5.1缓存介绍](#51缓存介绍)
+        - [浏览器缓存](#浏览器缓存)
+    - [web框架的本质](#web框架的本质)
+    - [其他](#其他)
+    - [概念](#概念)
+        - [领域驱动模型(DDD)](#领域驱动模型ddd)
 
 <!-- /TOC -->
 
@@ -138,6 +137,18 @@
 - `Last-Modified`：资源最后一次修改的时间
 - `ETag`: 服务器生成资源的唯一标识
 
+## web框架的本质
+
+[web框架的本质以及自定义简单web框架](https://www.cnblogs.com/wanghzh/p/5807883.html)
+
+- web应用的本质就是socket服务端，浏览器就是socket客户端
+- python的web框架遵循相同的WSGI标准，从而可以互相配和使用
+
+## 其他
+
+- [python实现支持并发以及断点续传的FTP程序](https://www.cnblogs.com/wanghzh/p/5571122.html)
+- [白话https加密机制](https://www.cnblogs.com/jymblog/p/11646766.html)
+
 ## 概念
 
 ### 领域驱动模型(DDD)
@@ -157,17 +168,3 @@
 - Application：tornado程序的起始文件
 - Config：配置文件
 - Mapper：依赖注入文件，负责整个框架不同类的依赖注入
-
-## web框架的本质
-
-[web框架的本质以及自定义简单web框架](https://www.cnblogs.com/wanghzh/p/5807883.html)
-
-- web应用的本质就是socket服务端，浏览器就是socket客户端
-- python的web框架遵循相同的WSGI标准，从而可以互相配和使用
-
-## 其他
-
-- [python实现支持并发以及断点续传的FTP程序](https://www.cnblogs.com/wanghzh/p/5571122.html)
-- [白话https加密机制](https://www.cnblogs.com/jymblog/p/11646766.html)
-
-## python
