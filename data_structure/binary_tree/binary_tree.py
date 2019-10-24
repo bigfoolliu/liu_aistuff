@@ -18,13 +18,17 @@ class Node(object):
 class BinaryTree(object):
     """二叉树"""
     def __init__(self, root=None):
-        self.__root = root
+        """
+        root: Node
+        """
+        self.root = root
 
     def add(self, item):
         """为树添加节点,依次从左到右增加"""
+        # TODO:
         node = Node(item)
         queue = []  # 初始化根节点入队列
-        queue.insert(0, self.__root)
+        queue.insert(0, self.root)
         while queue:
             cur = queue.pop(0)
             if cur.left == None:
@@ -39,7 +43,7 @@ class BinaryTree(object):
     def travel(self):
         """遍历显示树的节点，广度优先，层次遍历"""
         queue = []
-        queue.insert(0, self.__root)
+        queue.insert(0, self.root)
         while queue:
             cur = queue.pop(0)
             print(cur.item)
@@ -51,7 +55,7 @@ class BinaryTree(object):
 
     def pre_order(self):
         """使用深度优先的先序遍历进行节点输出,根节点-->左子树-->右子树"""
-        root = self.__root
+        root = self.root
         def preorder(root):
             if not root:
                 return None
@@ -75,6 +79,8 @@ def main():
     tree.travel()
     print("pre_order**************")
     tree.pre_order()
+    print("depth******************")
+    print(max_depth_of_tree(root_node))
 
 
 if __name__ == '__main__':

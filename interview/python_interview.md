@@ -17,6 +17,7 @@
     - [2.1快速排序](#21%e5%bf%ab%e9%80%9f%e6%8e%92%e5%ba%8f)
     - [2.2二分搜索](#22%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2)
     - [2.3二叉树相关](#23%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9b%b8%e5%85%b3)
+    - [2.4KMP算法](#24kmp%e7%ae%97%e6%b3%95)
 
 <!-- /TOC -->
 
@@ -168,12 +169,7 @@ def binary_search(array, target):
 
 ### 2.3二叉树相关
 
-```python
-class Node(object):
-    def __init__(self, data, left=None, right=None):
-        self.data = data
-        self.left = left
-        self.right = right
+[二叉树相关算法](../data_structure/binary_tree/basic_binary_tree.py)
 
-tree = Node(1, Node)
-```
+### 2.4KMP算法
+

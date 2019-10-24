@@ -26,6 +26,9 @@
     - [求解步骤](#%e6%b1%82%e8%a7%a3%e6%ad%a5%e9%aa%a4)
     - [应用](#%e5%ba%94%e7%94%a8)
   - [8.二分搜索](#8%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2)
+  - [9.KMP算法](#9kmp%e7%ae%97%e6%b3%95)
+    - [9.1教程](#91%e6%95%99%e7%a8%8b)
+    - [9.2使用](#92%e4%bd%bf%e7%94%a8)
 
 <!-- /TOC -->
 
@@ -236,3 +239,21 @@
 
 - 在`有序数组`中寻找目标值，当然有时候需要自己构建有序数组
 - [二分搜索python实现](./search_algorithms/binary_search.py)
+
+## 9.KMP算法
+
+### 9.1教程
+
+- [kmp算法阮一峰介绍](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
+- [kmp算法Python实现](./match/kmp_match.py)
+
+kmp算法视频教程:
+
+- [b站kmp算法上](https://www.bilibili.com/video/av11866460/?spm_id_from=333.788.videocard.0)
+- [b站kmp算法下](https://www.bilibili.com/video/av16828557/?spm_id_from=333.788.videocard.1)
+
+### 9.2使用
+
+1. 计算前缀表: ![calculate prefix table](./match/kmp/calculate_prefix_table.png)
+2. 执行kmp搜索: ![kmp move substring](./match/kmp/kmp_move.png)
+3. 当可能有多个匹配结果的时候：![kmp end match](./match/kmp/kmp_end_match.png)
