@@ -607,6 +607,16 @@ ping google.com -c 3  # 限制发送的分组的数量
 
 # 查看远程主机的端口是否开放
 telnet 106.53.65.70 1935
+
+# 开启和关闭网卡:
+# 关闭ens33网卡
+sudo ifconfig ens33 down
+# 开启ens33网卡
+sudo ifconfig ens33 up
+
+# 本地局域网ip为动态分配的
+# 修改网卡ip地址(即手动设置ip),不建议手动设置:
+sudo ifconfig ens33 192.168.42.130
 ```
 
 ### ssh文件传输

@@ -28,6 +28,8 @@
 
 <!-- /TOC -->
 
+[redis笔记github](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md)
+
 ## 1.安装使用
 
 - [redis中文网以及教程](https://www.redis.net.cn/tutorial/3501.html)
@@ -235,8 +237,6 @@ redis-server --maxclients 10000
 ```
 
 ## 9.redis管道
-
-TODO:
 
 ## 10.redis分区
 

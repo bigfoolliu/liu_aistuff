@@ -1,8 +1,8 @@
-# RabbitMQ扫盲
+# RabbitMQ介绍
 
 <!-- TOC -->
 
-- [RabbitMQ扫盲](#rabbitmq%e6%89%ab%e7%9b%b2)
+- [RabbitMQ介绍](#rabbitmq%e4%bb%8b%e7%bb%8d)
   - [概念](#%e6%a6%82%e5%bf%b5)
 
 <!-- /TOC -->
