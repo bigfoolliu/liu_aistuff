@@ -29,6 +29,12 @@
   - [9.KMP算法](#9kmp%e7%ae%97%e6%b3%95)
     - [9.1教程](#91%e6%95%99%e7%a8%8b)
     - [9.2使用](#92%e4%bd%bf%e7%94%a8)
+  - [10.贪心算法](#10%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95)
+    - [10.1介绍](#101%e4%bb%8b%e7%bb%8d)
+  - [11.朴素贝叶斯算法](#11%e6%9c%b4%e7%b4%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e7%ae%97%e6%b3%95)
+  - [12.推荐算法](#12%e6%8e%a8%e8%8d%90%e7%ae%97%e6%b3%95)
+  - [13.最小生成树算法](#13%e6%9c%80%e5%b0%8f%e7%94%9f%e6%88%90%e6%a0%91%e7%ae%97%e6%b3%95)
+  - [14.最短路径算法](#14%e6%9c%80%e7%9f%ad%e8%b7%af%e5%be%84%e7%ae%97%e6%b3%95)
 
 <!-- /TOC -->
 
@@ -257,3 +263,22 @@ kmp算法视频教程:
 1. 计算前缀表: ![calculate prefix table](./match/kmp/calculate_prefix_table.png)
 2. 执行kmp搜索: ![kmp move substring](./match/kmp/kmp_move.png)
 3. 当可能有多个匹配结果的时候：![kmp end match](./match/kmp/kmp_end_match.png)
+
+## 10.贪心算法
+
+### 10.1介绍
+
+1. 将问题分解为多个子问题
+2. 每个子问题求解，得到子问题的局部最优解
+3. 将子问题的局部最后解合并为原问题的解
+
+## 11.朴素贝叶斯算法
+
+## 12.推荐算法
+
+- [推荐系统介绍](https://www.infoq.cn/article/recommendation-algorithm-overview-part01/)
+- [开源推荐系统](https://www.oschina.net/news/51297/top-10-open-source-recommendation-systems)
+
+## 13.最小生成树算法
+
+## 14.最短路径算法

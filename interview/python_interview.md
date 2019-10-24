@@ -13,11 +13,11 @@
     - [1.7python协程](#17python%e5%8d%8f%e7%a8%8b)
     - [1.8python函数式编程](#18python%e5%87%bd%e6%95%b0%e5%bc%8f%e7%bc%96%e7%a8%8b)
     - [1.9python垃圾回收机制](#19python%e5%9e%83%e5%9c%be%e5%9b%9e%e6%94%b6%e6%9c%ba%e5%88%b6)
+    - [1.10python中变量的作用域](#110python%e4%b8%ad%e5%8f%98%e9%87%8f%e7%9a%84%e4%bd%9c%e7%94%a8%e5%9f%9f)
   - [2.重点算法](#2%e9%87%8d%e7%82%b9%e7%ae%97%e6%b3%95)
     - [2.1快速排序](#21%e5%bf%ab%e9%80%9f%e6%8e%92%e5%ba%8f)
     - [2.2二分搜索](#22%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2)
-    - [2.3二叉树相关](#23%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9b%b8%e5%85%b3)
-    - [2.4KMP算法](#24kmp%e7%ae%97%e6%b3%95)
+    - [2.3二叉树相关算法](#23%e4%ba%8c%e5%8f%89%e6%a0%91%e7%9b%b8%e5%85%b3%e7%ae%97%e6%b3%95)
 
 <!-- /TOC -->
 
@@ -107,6 +107,15 @@ ret = reduce(lambda x,y:x*y, range(1, 4))
 2. `标记-清除机制`
 3. `分代技术`
 
+### 1.10python中变量的作用域
+
+变量查找顺序(LEGB)：
+
+1. L:local，函数内部作用域
+2. E:enclosing，函数内部与内嵌函数之间
+3. G:global，全局作用域
+4. B:build-in，内置作用域
+
 ## 2.重点算法
 
 ### 2.1快速排序
@@ -167,9 +176,6 @@ def binary_search(array, target):
     return None
 ```
 
-### 2.3二叉树相关
+### 2.3二叉树相关算法
 
 [二叉树相关算法](../data_structure/binary_tree/basic_binary_tree.py)
-
-### 2.4KMP算法
-
