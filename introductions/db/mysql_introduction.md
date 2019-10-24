@@ -6,3 +6,4 @@
 
 <!-- /TOC -->
 
+[mysql读书笔记](../../books/mysql必知必会/mysql_known.md)

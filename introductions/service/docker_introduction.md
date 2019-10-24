@@ -34,6 +34,7 @@
   - [7.docker Swarm介绍](#7docker-swarm%e4%bb%8b%e7%bb%8d)
   - [8.python操作docker](#8python%e6%93%8d%e4%bd%9cdocker)
     - [8.1介绍资料](#81%e4%bb%8b%e7%bb%8d%e8%b5%84%e6%96%99)
+  - [9.读书笔记](#9%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0)
 
 <!-- /TOC -->
 
@@ -478,3 +479,7 @@ docker-compose kill -s SIGINT  # 发送SIGKILL信号强制停止服务容器
 ### 8.1介绍资料
 
 [python操作docker](https://cloud.tencent.com/developer/article/1044431)
+
+## 9.读书笔记
+
+[docker实践读书笔记](../books/../../books/docker实践/docker_practice.md)
