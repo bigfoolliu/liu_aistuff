@@ -118,6 +118,13 @@ git submodule add <submodule_url>
 # 获取主项目和所有子项目源码
 git clone --recurse-submodules <main_project_url>
 
+# 删除子模块
+rm -rf <submodule dir>  # 删除子模块的目录以及源码
+vim .gitmodule  # 删除项目目录下.gitmodule文件中子模块相关条目
+vim .git/config  # 删除配置中子模块相关条目
+rm .git/module/*  # 删除模块下的子模块目录
+git rm --cached  <submodule name>  # 如果执行完成之后报错执行
+
 # 获取远程仓库的地址
 git remote get-url origin
 ```
