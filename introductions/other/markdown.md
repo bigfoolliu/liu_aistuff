@@ -14,6 +14,7 @@
     - [其他](#其他)
     - [markdown写check_box](#markdown写check_box)
     - [markdown写出键盘效果](#markdown写出键盘效果)
+    - [markdown写出删除效果](#markdown写出删除效果)
 
 <!-- /TOC -->
 
@@ -184,3 +185,7 @@ f\left(
 ## markdown写出键盘效果
 
 <kbd>Ctrl</kbd>
+
+## markdown写出删除效果
+
+~~这是一段被删除的文字。~~
