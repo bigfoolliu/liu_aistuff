@@ -2,169 +2,99 @@
 
 <!-- TOC -->
 
-- [interview面试问题总结](#interview面试问题总结)
-    - [1.tcp/udp](#1tcpudp)
-        - [适用场景](#适用场景)
-        - [tcp粘包](#tcp粘包)
-    - [2.进程线程](#2进程线程)
-    - [3.高并发](#3高并发)
-        - [3.1提升系统并发能力](#31提升系统并发能力)
-        - [3.2高并发指标](#32高并发指标)
-        - [3.3python解决高并发](#33python解决高并发)
-    - [4.go语言](#4go语言)
-        - [4.1go与python对比](#41go与python对比)
-    - [5.缓存](#5缓存)
-        - [5.1缓存介绍](#51缓存介绍)
-        - [浏览器缓存](#浏览器缓存)
-    - [web框架的本质](#web框架的本质)
-    - [其他](#其他)
-    - [概念](#概念)
-        - [领域驱动模型(DDD)](#领域驱动模型ddd)
+- [interview面试问题总结](#interview%e9%9d%a2%e8%af%95%e9%97%ae%e9%a2%98%e6%80%bb%e7%bb%93)
+  - [1.自我介绍](#1%e8%87%aa%e6%88%91%e4%bb%8b%e7%bb%8d)
+  - [2.编程语言](#2%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80)
+    - [2.1python](#21python)
+    - [2.2go](#22go)
+  - [3.数据库](#3%e6%95%b0%e6%8d%ae%e5%ba%93)
+    - [3.1mysql](#31mysql)
+    - [3.2redis](#32redis)
+    - [3.3mongodb](#33mongodb)
+  - [4.数据结构和算法](#4%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%92%8c%e7%ae%97%e6%b3%95)
+  - [5.web相关](#5web%e7%9b%b8%e5%85%b3)
+    - [5.1规范](#51%e8%a7%84%e8%8c%83)
+    - [5.2鉴权](#52%e9%89%b4%e6%9d%83)
+  - [6.操作系统](#6%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f)
+    - [6.1进程，线程，协程](#61%e8%bf%9b%e7%a8%8b%e7%ba%bf%e7%a8%8b%e5%8d%8f%e7%a8%8b)
+    - [6.2linux](#62linux)
+  - [7.网络](#7%e7%bd%91%e7%bb%9c)
+    - [7.1TCP和UDP](#71tcp%e5%92%8cudp)
+    - [7.2HTTP](#72http)
+    - [7.3Socket](#73socket)
+  - [8.设计思想](#8%e8%ae%be%e8%ae%a1%e6%80%9d%e6%83%b3)
+    - [8.1设计模式六大原则](#81%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e5%85%ad%e5%a4%a7%e5%8e%9f%e5%88%99)
+  - [其他](#%e5%85%b6%e4%bb%96)
 
 <!-- /TOC -->
 
-概念回答原则：
+- [一文帮你理清面试知识点](https://github.com/CyC2018/Backend-Interview-Guide/blob/master/doc/%E4%B8%80%E6%96%87%E5%B8%AE%E4%BD%A0%E7%90%86%E6%B8%85%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9.md)
+- [github笔试面试知识整理](https://github.com/HIT-Alibaba/interview)
+- [github笔试面试题，Python实现](https://github.com/leeguandong/Interview-code-practice-python)
+- [github关于python的面试题](https://github.com/kenwoodjw/python_interview_question)
+- [github中BATJ面试知识点](https://github.com/xbox1994/Java-Interview)
 
-1. **What**，这个概念是什么
-2. **Why**，为什么存在
-3. **How**，怎么使用
+## 1.自我介绍
 
-## 1.tcp/udp
+## 2.编程语言
 
-### 适用场景
+### 2.1python
 
-- udp提供的无状态的连接，适合语音，直播，视频等
-- tcp面向连接，适合文件传输，远程登录
+- [python面试](./python_interview.md)
 
-### tcp粘包
+### 2.2go
 
-- [什么是TCP粘包以及如何解决](https://blog.csdn.net/weixin_41047704/article/details/85340311)
+## 3.数据库
 
-原因：
+### 3.1mysql
 
-1. 当连续发送数据时候，TCP的nagle算法将较小的内容拼接为大的内容，一次性发送，造成粘包;
-2. 发送的数据较大时，服务端的buff_size较小，不能一次性接收所有的内容，下次请求到达时候接收的是上次没有完全接收完的东西，造成粘包。
+- [mysql面试](./mysql_interview.md)
 
-## 2.进程线程
+### 3.2redis
 
-## 3.高并发
+- [redis面试](./redis_interview.md)
 
-`高并发`指的是系统能够同时并行处理多个请求。
+### 3.3mongodb
 
-参考:
+- [mongodb面试](./mongodb_interview.md)
 
-- [Python高并发详解](https://www.cnblogs.com/daofaziran/p/10154986.html)
+## 4.数据结构和算法
 
-### 3.1提升系统并发能力
+- [数据结构和算法面试](./data_structure_algorithm_interview.md)
 
-1. 垂直扩展
-   1. 增加单机硬件性能,更好的cpu, ssd, 更大的内存
-   2. 提升单机架构性能，减少cache来减少IO次数，使用异步来增加单服务吞吐量
-2. 水平扩展
-   1. 增加服务器的数量
-   2. 反向代理层：通过DNS轮询，`dns-server对于一个域名配置多个解析ip,每次DNS解析请求来访问dns-server，会轮询返回ip`
-   3. 站点层：通过`改nginx.conf，配置多个web后端`
-   4. 服务层：通过`服务连接池`实现，站点层的RPC-client与下游服务建立多个连接，服务成为瓶颈的时候，只要增加服务器数量即可
-   5. 数据层：`主从同步`等
+## 5.web相关
 
-### 3.2高并发指标
+### 5.1规范
 
-- 响应时间
-- 吞吐量
-- 每秒查询率
-- 并发用户数
+### 5.2鉴权
 
-### 3.3python解决高并发
+## 6.操作系统
 
-1. HTML页面静态化
-2. 图片服务器分离
-3. 使用缓存(使用redis作为缓存的数据库)
-4. 数据库集群，库表散列
-5. 使用负载均衡
+- [操作系统面试](./os_interview.md)
 
-    ```nginx
-    <!-- 简单的负载均衡nginx配置 -->
-    upstream myserver {
-        server 192.168.72.49:8080;
-        server 192.168.72.49:8081;
-    }
-    ```
+### 6.1进程，线程，协程
 
-6. 镜像，CDN加速等
+### 6.2linux
 
-## 4.go语言
+## 7.网络
 
-### 4.1go与python对比
+- [网络面试](./network_interview.md)
 
-- [go语言与python对比](https://zhuanlan.zhihu.com/p/62728193)
-- go因为是编译型语言，大部分情况下执行速度更快
-- go内建并发机制
-- go相对更适合系统编程
-- go作为静态型语言，更易于在编译时捕获BUG
+### 7.1TCP和UDP
 
-## 5.缓存
+### 7.2HTTP
 
-### 5.1缓存介绍
+### 7.3Socket
 
-- [缓存介绍](https://juejin.im/post/5a6c87c46fb9a01ca560b4d7)
-- [你应该知道的缓存进化史](https://juejin.im/post/5b7593496fb9a009b62904fa#comment)
-- [如何优雅的设计和使用缓存](https://juejin.im/post/5b849878e51d4538c77a974a)
-- `保存资源副本并在下一次请求时候直接使用该副本。`
+## 8.设计思想
 
-**缓存优点**：
+### 8.1设计模式六大原则
 
-- 不用每次去请求资源，缓解服务器压力
-- 因为是打开本地资源，所以提升了性能
-- 减少了带宽消耗
-
-**缓存分类**：
-
-- 宏观
-  - `私有缓存`: 用户专享的，各级代理不能缓存的缓存
-  - `共享缓存`：能被各级代理缓存的缓存
-- 微观
-  - `浏览器缓存`
-  - `代理服务器缓存`
-  - `网关缓存`
-  - `数据库缓存`
-
-### 浏览器缓存
-
-`通过响应头告知浏览器该资源是否应该缓存`
-
-- `Expires`: 告知客户端资源缓存失效的绝对时间
-- `Cache-Control`：控制缓存的行为
-- `Last-Modified`：资源最后一次修改的时间
-- `ETag`: 服务器生成资源的唯一标识
-
-## web框架的本质
-
-[web框架的本质以及自定义简单web框架](https://www.cnblogs.com/wanghzh/p/5807883.html)
-
-- web应用的本质就是socket服务端，浏览器就是socket客户端
-- python的web框架遵循相同的WSGI标准，从而可以互相配和使用
+1. `单一职责原则`：一个类负责一项职责
+2. `里氏替换原则`：子类可以扩展父类的功能，但是不要改变父类原有的功能
+3. `依赖倒转原则`：核心概念即面向抽象(抽象类或者接口)编程
+4. `接口隔离原则`：核心就是细化接口，不要将过多的方法塞进一个接口
+5. `迪米特法则`：通过引入合理的第三者降低当前对象直接的耦合度
+6. `开闭原则`：软件应该通过扩展来变化而不是通过修改原有的代码改变
 
 ## 其他
-
-- [python实现支持并发以及断点续传的FTP程序](https://www.cnblogs.com/wanghzh/p/5571122.html)
-- [白话https加密机制](https://www.cnblogs.com/jymblog/p/11646766.html)
-
-## 概念
-
-### 领域驱动模型(DDD)
-
-[基于领域驱动模型架构设计的京东用户管理后台](https://www.cnblogs.com/wanghzh/p/5847643.html)
-[领域驱动模型(DDD)介绍](https://www.jianshu.com/p/fb319d7674ff)
-
-企业级应用设计目录架构：
-
-- Infrastructure：一些公共组件，例如md5加密，分页模块，session等。
-- Model ：关于数据库的逻辑处理模块
-- Repository ：数据访问层，包含数据库的增删改查
-- Service ：服务层，调用Model，包含带有规则的请求和返回
-- Statics：静态文件目录
-- UI层：业务处理
-- Views：模板文件
-- Application：tornado程序的起始文件
-- Config：配置文件
-- Mapper：依赖注入文件，负责整个框架不同类的依赖注入
