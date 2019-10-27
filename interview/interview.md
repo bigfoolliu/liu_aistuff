@@ -44,6 +44,8 @@
 
 ### 2.2go
 
+- [go面试](./go_interview.md)
+
 ## 3.数据库
 
 ### 3.1mysql
