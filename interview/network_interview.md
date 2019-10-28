@@ -11,6 +11,7 @@
       - [1.4.1cookie](#141cookie)
       - [1.4.2session](#142session)
       - [1.4.3token](#143token)
+    - [1.5http1.0,http1.1与http2.0之间的区别](#15http10http11%e4%b8%8ehttp20%e4%b9%8b%e9%97%b4%e7%9a%84%e5%8c%ba%e5%88%ab)
   - [2.HTTPS](#2https)
     - [2.1介绍](#21%e4%bb%8b%e7%bb%8d)
     - [2.2SSL证书](#22ssl%e8%af%81%e4%b9%a6)
@@ -35,12 +36,14 @@
     - [8.1restful中相关概念](#81restful%e4%b8%ad%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5)
     - [8.2对restfule的理解](#82%e5%af%b9restfule%e7%9a%84%e7%90%86%e8%a7%a3)
     - [8.3相关规范](#83%e7%9b%b8%e5%85%b3%e8%a7%84%e8%8c%83)
+  - [9.socket编程](#9socket%e7%bc%96%e7%a8%8b)
   - [常见面试题](#%e5%b8%b8%e8%a7%81%e9%9d%a2%e8%af%95%e9%a2%98)
     - [web框架的本质](#web%e6%a1%86%e6%9e%b6%e7%9a%84%e6%9c%ac%e8%b4%a8)
 
 <!-- /TOC -->
 
 - [github后端面试网络相关](https://github.com/yongxinz/back-end-interview/tree/master/%E7%BD%91%E7%BB%9C#1%e4%b8%89%e6%ac%a1%e6%8f%a1%e6%89%8b%e5%92%8c%e5%9b%9b%e6%ac%a1%e6%8c%a5%e6%89%8b)
+- [100个网络基础知识普及](https://blog.csdn.net/devcloud/article/details/101199255)
 
 ## 1.HTTP
 
@@ -107,6 +110,17 @@ cookie和session的出现都是为了对http协议的无状态的扩展。
 - 可以避免CSRF攻击
 - 可以是无状态的，可以在多个服务器之间共享
 - 可以减轻服务器压力，减少频繁查询数据库
+
+### 1.5http1.0,http1.1与http2.0之间的区别
+
+- [http1.0,http1.1与http2.0之间的区别](https://blog.csdn.net/qq_36183935/article/details/81156225)
+- [http1.0,http1.1与http2.0之间的区别2](https://blog.csdn.net/linsongbin1/article/details/54980801)
+
+| 协议 | 特点 |
+| ---- | --- |
+| http1.0 | 1、无状态；<br>2、无连接 |
+| http1.1 | 1、持久连接；<br>2、请求管道化，响应必须按照请求的顺序；<br>3、增加缓存处理；<br>4、增加host字段，支持断点续传 |
+| http2.0 | 1、二进制分帧(对数据标识，不会乱序)；<br>2、多路复用(一个tcp连接建立无数个http请求)；<br>3、请求头头部压缩减少带宽消耗；<br>4、服务器可以在无明确请求的时候推送数据到客户端 |
 
 ## 2.HTTPS
 
@@ -227,6 +241,8 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 
 ### 5.2浏览器缓存
 
+- [浏览器缓存机制](https://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html)
+
 `通过响应头告知浏览器该资源是否应该缓存`
 
 - `Expires`: 告知客户端资源缓存失效的绝对时间
@@ -296,6 +312,12 @@ OAuth2.0的四种方式:
 4. 记录数量过多，提供过滤信息的参数
 5. 避免多级url,使用查询字符串代替
 6. 状态码以及返回值都指定特殊的格式
+
+## 9.socket编程
+
+`socket = ip_address + tcp/udp + port`
+
+![socket概念](./imgs/socket_concept.png)
 
 ## 常见面试题
 
