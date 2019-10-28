@@ -5,9 +5,12 @@
 - [网络面试](#%e7%bd%91%e7%bb%9c%e9%9d%a2%e8%af%95)
   - [1.HTTP](#1http)
     - [1.1介绍](#11%e4%bb%8b%e7%bb%8d)
-    - [1.2GET](#12get)
+    - [1.2GET和POST](#12get%e5%92%8cpost)
     - [1.3Keep-Alive模式](#13keep-alive%e6%a8%a1%e5%bc%8f)
-    - [1.4Token](#14token)
+    - [1.4cookie，session和token](#14cookiesession%e5%92%8ctoken)
+      - [1.4.1cookie](#141cookie)
+      - [1.4.2session](#142session)
+      - [1.4.3token](#143token)
   - [2.HTTPS](#2https)
     - [2.1介绍](#21%e4%bb%8b%e7%bb%8d)
     - [2.2SSL证书](#22ssl%e8%af%81%e4%b9%a6)
@@ -20,11 +23,15 @@
     - [4.2tcp/udp使用场景](#42tcpudp%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af)
   - [5.缓存](#5%e7%bc%93%e5%ad%98)
     - [5.1缓存介绍](#51%e7%bc%93%e5%ad%98%e4%bb%8b%e7%bb%8d)
-    - [浏览器缓存](#%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
+    - [5.2浏览器缓存](#52%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
+  - [6.授权](#6%e6%8e%88%e6%9d%83)
+    - [6.1OAuth2.0](#61oauth20)
   - [常见面试题](#%e5%b8%b8%e8%a7%81%e9%9d%a2%e8%af%95%e9%a2%98)
     - [web框架的本质](#web%e6%a1%86%e6%9e%b6%e7%9a%84%e6%9c%ac%e8%b4%a8)
 
 <!-- /TOC -->
+
+- [github后端面试网络相关](https://github.com/yongxinz/back-end-interview/tree/master/%E7%BD%91%E7%BB%9C#1%e4%b8%89%e6%ac%a1%e6%8f%a1%e6%89%8b%e5%92%8c%e5%9b%9b%e6%ac%a1%e6%8c%a5%e6%89%8b)
 
 ## 1.HTTP
 
@@ -33,11 +40,11 @@
 - 基于TCP/IP，应用层协议，默认端口为80
 - `无状态`(对于交互式场景没有记忆)，`无连接`(限制每次连接只处理一个请求，且请求完成断开连接)
 
-### 1.2GET
+### 1.2GET和POST
 
-条件GET：
+- [知乎:GET和POST的区别](https://www.zhihu.com/question/31640769?rf=37401322)
 
-如果客户端重新请求的这段时间内，服务端的页面没有改变，则应该使用浏览器缓存的数据。根据客户端的请求头：
+条件GET：如果客户端重新请求的这段时间内，服务端的页面没有改变，则应该使用浏览器缓存的数据。根据客户端的请求头：
 
 ```text
 If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
@@ -49,15 +56,48 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 
 非该模式下的时候，每一次请求都要建立一次连接；该模式(持久连接)下，可以使连接持续有效，避免下次请求的时候需要重新建立连接。
 
-### 1.4Token
+### 1.4cookie，session和token
 
-含义：为`令牌`，服务端生成的一串字符串，作为客户端请求的标识，比如登录一次后生成，下次请求只需携带该Token即可。
+- [cookie和session的简单使用](https://blog.csdn.net/weixin_42808295/article/details/81290306)
+- [彻底理解cookie,session,token](https://www.liangzl.com/get-article-detail-16019.html)
 
-解决问题：
+cookie和session的出现都是为了对http协议的无状态的扩展。
 
-1. 由应用管理，可以避开`同源策略`(同源指两个页面的协议，端口和域名都相同，同源策略指不同源的客户端脚本在没有明确授权的情况下不可以读写对方的资源)
-2. 可以避免CSRF攻击
-3. 可以是无状态的，可以在多个服务器之间共享
+#### 1.4.1cookie
+
+- 浏览器按照域名进行存储，A网站的cookie只会返回到A网站
+- `临时cookie`在浏览器关闭则消失；`长久cookie`是设置了有效期，浏览器关闭不会消失，而是到了有效期才消失
+- cookie主要用来存储用户的登录信息或者选购商品页面跳转的时候知道选购的信息
+
+缺陷：
+
+- cookie增加了网络流量
+- cookie是明文传输，安全性的不到保障
+- cookie传输大小有限制(4kb),无法储存的信息
+
+#### 1.4.2session
+
+- session存储在服务器端，依赖于cookie，通常根据存在cookie中的session id(可以经过算法加密)来找到对应的session
+- 每次验证的用户发送请求时，服务器储存信息，导致占用过多资源，同时可扩展性也不强
+
+#### 1.4.3token
+
+- [深入理解token](https://www.cnblogs.com/xuxinstyle/p/9675541.html)
+- [python产生token以及token的验证方法](https://www.jb51.net/article/153525.htm)
+- [阮一峰:json web token入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
+
+**介绍**:
+
+- `令牌`，服务端生成的一串字符串，作为客户端请求的标识
+- token可以发在cookie里面，但是这样不能解决跨域问题
+- token做好发在请求头`Authorization`里面
+
+**作用**：
+
+- 完全由应用管理，可以避开`同源策略`(同源指两个页面的协议，端口和域名都相同，同源策略指不同源的客户端脚本在没有明确授权的情况下不可以读写对方的资源)
+- 可以避免CSRF攻击
+- 可以是无状态的，可以在多个服务器之间共享
+- 可以减轻服务器压力，减少频繁查询数据库
 
 ## 2.HTTPS
 
@@ -176,7 +216,7 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
   - `网关缓存`
   - `数据库缓存`
 
-### 浏览器缓存
+### 5.2浏览器缓存
 
 `通过响应头告知浏览器该资源是否应该缓存`
 
@@ -184,6 +224,19 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 - `Cache-Control`：控制缓存的行为
 - `Last-Modified`：资源最后一次修改的时间
 - `ETag`: 服务器生成资源的唯一标识
+
+## 6.授权
+
+### 6.1OAuth2.0
+
+- [阮一峰:OAuth2.0简单解释](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
+
+OAuth2.0的四种方式:
+
+1. `授权码`，第三方应用先申请一个授权码，然后利用授权码获得令牌，最常用，且安全性高
+2. `隐藏式`，适用于纯前端应用，直接向前端颁发令牌，省略了授权码步骤
+3. `密码式`，对于高度信任的应用，直接将用户名以及密码告诉第三方应用
+4. `凭证式`，适用于没有前端的应用，直接在命令行下申请令牌
 
 ## 常见面试题
 
