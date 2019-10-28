@@ -31,6 +31,10 @@
     - [7.2xss(跨站脚本攻击)](#72xss%e8%b7%a8%e7%ab%99%e8%84%9a%e6%9c%ac%e6%94%bb%e5%87%bb)
     - [7.3sql注入](#73sql%e6%b3%a8%e5%85%a5)
     - [7.4ddos攻击](#74ddos%e6%94%bb%e5%87%bb)
+  - [8.Restful](#8restful)
+    - [8.1restful中相关概念](#81restful%e4%b8%ad%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5)
+    - [8.2对restfule的理解](#82%e5%af%b9restfule%e7%9a%84%e7%90%86%e8%a7%a3)
+    - [8.3相关规范](#83%e7%9b%b8%e5%85%b3%e8%a7%84%e8%8c%83)
   - [常见面试题](#%e5%b8%b8%e8%a7%81%e9%9d%a2%e8%af%95%e9%a2%98)
     - [web框架的本质](#web%e6%a1%86%e6%9e%b6%e7%9a%84%e6%9c%ac%e8%b4%a8)
 
@@ -263,6 +267,35 @@ OAuth2.0的四种方式:
 ### 7.3sql注入
 
 ### 7.4ddos攻击
+
+## 8.Restful
+
+- [阮一峰:理解restful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
+- [restful规范以及架构](http://www.imooc.com/article/details/id/265729)
+
+`restful本质上是一种网站及软件思想下的架构设计规范。`
+
+### 8.1restful中相关概念
+
+- `Representational State Tranfer,(资源)表现层状态转换`
+- 资源就是网络中的一个实体，图片，文字等，用url来标识，`上网就是和这些资源互动，调用其url`
+- 表现层指对资源的呈现形式，如文字可以是txt，html或者二进制
+- 客户端与服务端交互过程中数据和状态的转化
+
+### 8.2对restfule的理解
+
+- 每一个url代表某种资源
+- 客户端和服务端传递这种资源的表现层
+- 客户端通过四个HTTP动词(get,post,put,delete)来操作资源，实现表现层状态转化
+
+### 8.3相关规范
+
+1. api与用户通信的规范使用https
+2. 尽量将api部署到专用的域名之下，如:api.example.com
+3. api路径(url)中不能有动词，且名词使用复数
+4. 记录数量过多，提供过滤信息的参数
+5. 避免多级url,使用查询字符串代替
+6. 状态码以及返回值都指定特殊的格式
 
 ## 常见面试题
 
