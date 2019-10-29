@@ -11,7 +11,10 @@
       - [1.4.1cookie](#141cookie)
       - [1.4.2session](#142session)
       - [1.4.3token](#143token)
-    - [1.5http1.0,http1.1与http2.0之间的区别](#15http10http11%e4%b8%8ehttp20%e4%b9%8b%e9%97%b4%e7%9a%84%e5%8c%ba%e5%88%ab)
+    - [1.5同源策略及跨域解决方案](#15%e5%90%8c%e6%ba%90%e7%ad%96%e7%95%a5%e5%8f%8a%e8%b7%a8%e5%9f%9f%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88)
+      - [1.5.1同源策略](#151%e5%90%8c%e6%ba%90%e7%ad%96%e7%95%a5)
+      - [1.5.2跨域限制](#152%e8%b7%a8%e5%9f%9f%e9%99%90%e5%88%b6)
+    - [1.6http1.0,http1.1与http2.0之间的区别](#16http10http11%e4%b8%8ehttp20%e4%b9%8b%e9%97%b4%e7%9a%84%e5%8c%ba%e5%88%ab)
   - [2.HTTPS](#2https)
     - [2.1介绍](#21%e4%bb%8b%e7%bb%8d)
     - [2.2SSL证书](#22ssl%e8%af%81%e4%b9%a6)
@@ -111,7 +114,38 @@ cookie和session的出现都是为了对http协议的无状态的扩展。
 - 可以是无状态的，可以在多个服务器之间共享
 - 可以减轻服务器压力，减少频繁查询数据库
 
-### 1.5http1.0,http1.1与http2.0之间的区别
+### 1.5同源策略及跨域解决方案
+
+- [同源策略及跨域解决方案](https://www.cnblogs.com/rain-chenwei/p/9520240.html)
+- [浏览器同源策略及跨域的解决方法](https://www.cnblogs.com/laixiangran/p/9064769.html)
+
+#### 1.5.1同源策略
+
+- web构建于同源策略，是最基本最核心的浏览器安全功能，即执行web页面脚本的时候会检查脚本是属于哪个页面(协议，域名，端口)
+- 分类:`DOM同源策略`，`XMLHttpRequest同源策略`
+
+#### 1.5.2跨域限制
+
+- 浏览器同源策略的存在导致跨域限制，为了保证用户网络安全
+
+**跨域问题解决**：
+
+1. CORS(跨域资源共享)，W3C的标准，基本思想是 `使用自定义的HTTP头部决定浏览器与服务器沟通`，简单请求需要origin字段
+   1. 优点：通信与同源ajax相同，代码相同易维护
+   2. 缺点：存在一定的兼容性问题，非简单请求首次请求需要两次请求
+2. JSONP跨域，基本思想是`script标签不受浏览器同源策略影响`
+   1. 优点：最流行，使用方便，没有兼容性问题
+   2. 缺点：只适用GET方法，安全性有一定问题
+3. 图像Ping跨域，基本思想是`img标签不受同源策略影响`
+   1. 优点：实现跟踪用户点击
+   2. 缺点：只适用GET，只能浏览器与服务器的单向通信
+4. 服务器代理，基本思想是`服务器不存在跨域问题`
+   1. document.domain跨域
+   2. window.name跨域
+   3. location.hash跨域
+   4. postMessage跨域
+
+### 1.6http1.0,http1.1与http2.0之间的区别
 
 - [http1.0,http1.1与http2.0之间的区别](https://blog.csdn.net/qq_36183935/article/details/81156225)
 - [http1.0,http1.1与http2.0之间的区别2](https://blog.csdn.net/linsongbin1/article/details/54980801)
