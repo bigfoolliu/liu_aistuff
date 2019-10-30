@@ -23,6 +23,7 @@ Output: -1
 
 def strStr(haystack, needle):
     """
+    找到字符串中首次出现的子字符串的下标
     :param hsystack: str
     :param needle: str
     :return int

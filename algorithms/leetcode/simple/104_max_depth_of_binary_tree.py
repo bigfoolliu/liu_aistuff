@@ -35,6 +35,7 @@ class Node(object):
 
 def max_depth_of_binary_tree(root):
     """
+    不使用递归来计算
     :param root: tree_node
     return int
     """
@@ -54,9 +55,21 @@ def max_depth_of_binary_tree(root):
     return depth
 
 
+def max_depth_of_binary_tree2(root):
+    """
+    使用递归来计算二叉树的深度
+    """
+    if not root:
+        return 0
+    max_left = max_depth_of_binary_tree2(root.left)
+    max_right = max_depth_of_binary_tree2(root.right)
+    return max(max_left, max_right) + 1
+
+
 root = Node(3)
 root.left = Node(9)
 root.right = Node(20)
-root.right.left = Node(5)
+root.right.left = Node(15)
 root.right.right = Node(7)
 print(max_depth_of_binary_tree(root))
+print(max_depth_of_binary_tree2(root))

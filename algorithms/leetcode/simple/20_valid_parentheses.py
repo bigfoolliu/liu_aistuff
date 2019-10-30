@@ -37,6 +37,7 @@ Output: true
 思路：栈
 """
 
+
 def is_valid_parentheses(s):
     """
     :param s: str，输入一串只包含括号[]()\{\}的字符串

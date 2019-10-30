@@ -33,8 +33,8 @@ def longest_common_prefix(strs):
     """
     prefix = ""
     # zip打包列表的时候会打包成元组，且只会打包到最短的元素
-    for cmbn in zip(*strs):
-        if len(set(cmbn)) > 1:
+    for cmbn in zip(*strs):  # ("f", "f") ("l", "w")
+        if len(set(cmbn)) > 1:  # 大于1说明该位置的元素有不同
             break
         prefix += cmbn[0]
     return prefix
