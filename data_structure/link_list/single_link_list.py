@@ -3,7 +3,7 @@
 
 
 """
-实现单向链表
+单向链表以及相关涉及到的算法题
 """
 
 
@@ -46,7 +46,7 @@ class SingleLinkList(object):
     
     def delete_tail(self):
         """删除尾部节点"""
-        cur = self.__head:
+        cur = self.__head
         if self.__head:
             if not self.__head.next:
                 self.__head = None  # 只有一个头节点
@@ -59,4 +59,33 @@ class SingleLinkList(object):
     def is_empty(self):
         """判断单链表是否为空"""
         return self.__head is None
-    
+
+
+def reverse_single_link_list(head):
+    """
+    单链表反转四种方式：https://www.cnblogs.com/petrolero/p/9822008.html
+    head: 单链表头节点
+    """
+    if head == None or head.next == None:
+        return head
+    cur = head
+    tmp = None  # 临时变量
+    new_head = None  # 用来作为新的头节点
+
+    while cur:
+        tmp = cur.next
+        cur.next = new_head
+        new_head = cur
+        cur = tmp
+    return new_head
+
+
+if __name__ == '__main__':
+    head = SingleNode(1)
+    head.next = SingleNode(2)
+    head.next.next = SingleNode(3)
+    head.next.next.next = SingleNode(4)
+
+    new_head = reverse_single_link_list(head)
+    print(new_head.item)
+    assert new_head.item == 4
