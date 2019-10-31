@@ -35,7 +35,7 @@
     - [7.2xss(跨站脚本攻击)](#72xss%e8%b7%a8%e7%ab%99%e8%84%9a%e6%9c%ac%e6%94%bb%e5%87%bb)
     - [7.3sql注入](#73sql%e6%b3%a8%e5%85%a5)
     - [7.4ddos攻击](#74ddos%e6%94%bb%e5%87%bb)
-  - [8.Restful](#8restful)
+  - [8.Restful规范](#8restful%e8%a7%84%e8%8c%83)
     - [8.1restful中相关概念](#81restful%e4%b8%ad%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5)
     - [8.2对restfule的理解](#82%e5%af%b9restfule%e7%9a%84%e7%90%86%e8%a7%a3)
     - [8.3相关规范](#83%e7%9b%b8%e5%85%b3%e8%a7%84%e8%8c%83)
@@ -76,7 +76,7 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 - [cookie和session的简单使用](https://blog.csdn.net/weixin_42808295/article/details/81290306)
 - [彻底理解cookie,session,token](https://www.liangzl.com/get-article-detail-16019.html)
 
-cookie和session的出现都是为了对http协议的无状态的扩展。
+**cookie和session的出现都是为了对http协议的无状态的扩展。**
 
 #### 1.4.1cookie
 
@@ -88,11 +88,11 @@ cookie和session的出现都是为了对http协议的无状态的扩展。
 
 - cookie增加了网络流量
 - cookie是明文传输，安全性的不到保障
-- cookie传输大小有限制(4kb),无法储存的信息
+- cookie传输大小有限制(4kb),储存的信息量有限
 
 #### 1.4.2session
 
-- session存储在服务器端，依赖于cookie，通常根据存在cookie中的session id(可以经过算法加密)来找到对应的session
+- session存储在服务器端，`依赖于cookie`，通常根据存在cookie中的session id(可以经过算法加密)来找到对应的session
 - 每次验证的用户发送请求时，服务器储存信息，导致占用过多资源，同时可扩展性也不强
 
 #### 1.4.3token
@@ -203,7 +203,7 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 
 ### 3.1介绍
 
-- 面向连接，可靠（`但也不是100%，实际是数据的可靠传递或故障的可靠通知`）
+- 面向连接，可靠（`但也不是100%，实际是数据的可靠传递和故障的可靠通知`）
 - 使用`校验和`，`确认`和`重传`机制来保证可靠传输
 - 对数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复
 
@@ -211,18 +211,18 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 
 `三次握手`指客户端和服务端首次建立连接的时候需要发送三个包：
 
-1. 客户端发送SYN标志位为1的包，指明需要连接的服务器的端口以及初始序号X，客户端处于`SYN_SEND`状态
-2. 服务端发送ACK确认包应答，SYN和ACK标志位均为1，服务端处于`SYN_RCVD`状态
-3. 客户端发送ACK确认应打包，SYN标志位为0，ACK标志位为1，客户端进入`ESTABLISHED`状态
+1. 客户端发送`SYN`标志位为1的包，指明需要连接的服务器的端口以及初始序号X，客户端处于`SYN_SEND`状态
+2. 服务端发送`ACK`确认包应答，SYN和ACK标志位均为1，服务端处于`SYN_RCVD`状态
+3. 客户端发送`ACK`确认应打包，SYN标志位为0，ACK标志位为1，客户端进入`ESTABLISHED`状态
 
 `tcp标志位`,有6种标示：[tcp标志位详解](https://blog.csdn.net/chenvast/article/details/77978367)
 
 `四次挥手`指tcp连接的拆除，需要发送四个包：
 
-1. 客户端发送FIN标志位为1的包，表示自己无数据发送，但可以接收数据
-2. 服务端发送ACK包，表示自己收到关闭连接的请求，但未准备好关闭
-3. 服务端发送FIN标志位为1的包，表示自己结束连接
-4. 客户端发送ACK确认收到服务端的关闭请求
+1. 客户端发送`FIN`标志位为1的包，表示自己无数据发送，但可以接收数据
+2. 服务端发送`ACK`包，表示自己收到关闭连接的请求，但未准备好关闭
+3. 服务端发送`FIN`标志位为1的包，表示自己结束连接
+4. 客户端发送`ACK`确认收到服务端的关闭请求
 
 ### 3.3tcp粘包
 
@@ -245,7 +245,7 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 ### 4.2tcp/udp使用场景
 
 - udp提供的无状态的连接，适合语音，直播，视频等
-- tcp面向连接，适合文件传输，远程登录
+- tcp面向连接，适合文件传输，远程登录等
 
 ## 5.缓存
 
@@ -318,12 +318,12 @@ OAuth2.0的四种方式:
 
 ### 7.4ddos攻击
 
-## 8.Restful
+## 8.Restful规范
 
 - [阮一峰:理解restful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
 - [restful规范以及架构](http://www.imooc.com/article/details/id/265729)
 
-`restful本质上是一种网站及软件思想下的架构设计规范。`
+`restful本质上是一种网站即软件思想下的架构设计规范。`
 
 ### 8.1restful中相关概念
 
@@ -334,7 +334,7 @@ OAuth2.0的四种方式:
 
 ### 8.2对restfule的理解
 
-- 每一个url代表某种资源
+- 每一个url代表一种资源
 - 客户端和服务端传递这种资源的表现层
 - 客户端通过四个HTTP动词(get,post,put,delete)来操作资源，实现表现层状态转化
 

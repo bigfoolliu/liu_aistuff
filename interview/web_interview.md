@@ -2,12 +2,14 @@
 
 <!-- TOC -->
 
-- [web面试](#web%e9%9d%a2%e8%af%95)
-  - [1.web框架](#1web%e6%a1%86%e6%9e%b6)
-    - [1.1Django](#11django)
-    - [1.2Tornado](#12tornado)
-    - [1.3Flask](#13flask)
-  - [2.正则表达式](#2%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f)
+- [web面试](#web面试)
+    - [1.web框架](#1web框架)
+        - [1.1Django](#11django)
+        - [1.2Tornado](#12tornado)
+        - [1.3Flask](#13flask)
+    - [2.正则表达式](#2正则表达式)
+    - [3.第三方登录](#3第三方登录)
+        - [3.1qq第三方登录](#31qq第三方登录)
 
 <!-- /TOC -->
 
@@ -63,3 +65,13 @@
 | re.L | 做本地化识别(locale-aware)匹配 |
 | re.M | 多行匹配，影响^和$ |
 | re.U | 根据Unicode字符集解析字符。这个标志影响\w、\W、 \b和\B |
+
+## 3.第三方登录
+
+### 3.1qq第三方登录
+
+- [qq第三方登录过程详解](https://blog.csdn.net/a992970569/article/details/82107899)
+
+1. 获取Authorization Code
+2. 获取Access Token
+3. 获取Open Id,可以与账号绑定
