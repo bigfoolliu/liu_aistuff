@@ -61,6 +61,6 @@ def quick_sort2(array, begin, end):
 
 
 if __name__ == "__main__":
-    array = [2, 4, 1, 7, 3, 8, 4]
-    print(quick_sort(array))
+    array = [3, 2, 4, 6, 5]
+    # print(quick_sort(array))
     print(quick_sort2(array, 0, len(array)-1))

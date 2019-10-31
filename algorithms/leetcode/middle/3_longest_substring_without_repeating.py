@@ -29,7 +29,7 @@ Example 1:
 """
 
 
-def lengthOfLongestSubstring(s):
+def length_of_longest_substring(s):
     """
     :type s: s
     :rtype: int
@@ -40,8 +40,8 @@ def lengthOfLongestSubstring(s):
     dict1 = {}  # 存放不重复的字符的hashmap
 
     for i in range(len(s)):
-        # 当每次有字符重复时，dict1.get(s[i], -1) + 1则会大于等于start，此时start和ret的值需要重置
-        start = max(start, dict1.get(s[i], -1)+1)  # 核心点，起点是最大值
+        # 当后面的字符不在dict1中的时候，ret的结果加1
+        start = max(start, dict1.get(s[i], -1)+1)
         ret = max(ret, i-start+1)
         dict1[s[i]] = i
 
@@ -49,6 +49,6 @@ def lengthOfLongestSubstring(s):
     return ret
 
 
-print(lengthOfLongestSubstring("pwwkew"))
-print(lengthOfLongestSubstring("pwwksdfsdfew"))
-print(lengthOfLongestSubstring("pwwasdgfgddddddkew"))
+# print(length_of_longest_substring("pwwkew"))
+# print(length_of_longest_substring("pwwksdfsdfew"))
+print(length_of_longest_substring("pwwasdgfgddddddkew"))
