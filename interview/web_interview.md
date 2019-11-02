@@ -2,14 +2,22 @@
 
 <!-- TOC -->
 
-- [web面试](#web面试)
-    - [1.web框架](#1web框架)
-        - [1.1Django](#11django)
-        - [1.2Tornado](#12tornado)
-        - [1.3Flask](#13flask)
-    - [2.正则表达式](#2正则表达式)
-    - [3.第三方登录](#3第三方登录)
-        - [3.1qq第三方登录](#31qq第三方登录)
+- [web面试](#web%e9%9d%a2%e8%af%95)
+  - [1.web框架](#1web%e6%a1%86%e6%9e%b6)
+    - [1.1Django](#11django)
+    - [1.2Tornado](#12tornado)
+    - [1.3Flask](#13flask)
+  - [2.正则表达式](#2%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f)
+  - [3.第三方登录](#3%e7%ac%ac%e4%b8%89%e6%96%b9%e7%99%bb%e5%bd%95)
+    - [3.1qq第三方登录](#31qq%e7%ac%ac%e4%b8%89%e6%96%b9%e7%99%bb%e5%bd%95)
+  - [4.网络I/O模型](#4%e7%bd%91%e7%bb%9cio%e6%a8%a1%e5%9e%8b)
+    - [4.1网络I/O](#41%e7%bd%91%e7%bb%9cio)
+    - [4.2五种网络I/O模型](#42%e4%ba%94%e7%a7%8d%e7%bd%91%e7%bb%9cio%e6%a8%a1%e5%9e%8b)
+      - [4.2.1阻塞I/O(blocking I/O)](#421%e9%98%bb%e5%a1%9eioblocking-io)
+      - [4.2.2非阻塞I/O(nonblocking I/O)](#422%e9%9d%9e%e9%98%bb%e5%a1%9eiononblocking-io)
+      - [4.2.3多路复用I/O(I/O multiplexing)](#423%e5%a4%9a%e8%b7%af%e5%a4%8d%e7%94%a8ioio-multiplexing)
+      - [4.2.4信号驱动I/O(signal driven I/O)](#424%e4%bf%a1%e5%8f%b7%e9%a9%b1%e5%8a%a8iosignal-driven-io)
+      - [4.2.5异步I/O(asynchronous I/O)](#425%e5%bc%82%e6%ad%a5ioasynchronous-io)
 
 <!-- /TOC -->
 
@@ -75,3 +83,67 @@
 1. 获取Authorization Code
 2. 获取Access Token
 3. 获取Open Id,可以与账号绑定
+
+## 4.网络I/O模型
+
+- [五种网络I/O模型](https://blog.csdn.net/bob_dadoudou/article/details/79476588)
+
+### 4.1网络I/O
+
+- `网络I/O的本质就是读取socket流。`
+
+过程(两个阶段)：
+
+1. 等待网络分组数据到达，复制到`内核(kernel)的缓冲区`
+2. 从内核将数据复制到`用户进程(process)`
+
+### 4.2五种网络I/O模型
+
+- [并发编程，I/O多路复用](https://www.cnblogs.com/cainingning/p/9556642.html)
+
+![网络io模型介绍图](./imgs/network_io_module.jpg)
+
+#### 4.2.1阻塞I/O(blocking I/O)
+
+- 最简单的模型，两个阶段的操作都是阻塞的
+- 数据没准备好，进程处于等待状态
+
+**应用场景**：
+
+#### 4.2.2非阻塞I/O(nonblocking I/O)
+
+- 数据没有到达的时候，进程read不到，马上返回一个结果，结果为error则说明数据没有准备好，再次read,直至read到
+- 只在进程处理的第一阶段不阻塞
+
+**应用场景**：
+
+#### 4.2.3多路复用I/O(I/O multiplexing)
+
+- 最简单的解释就是`一个进程同时为多个客户端服务`
+- 常说的`select, poll, epoll`模型
+- 进程在两个阶段(等待和处理)都是block住等待的
+- 优势在于使用较少的代价同时监听多个I/O
+
+**常用I/O复用模型：**
+
+- `select`，各个客户端的文件描述符(套接字，socket)维护在一个集合中，select函数监视这些这些文件描述符中哪些可读，如果可读则会让工作进程去读取，`最多维持1024个连接`
+- `poll`，区别于select就是`存放集合的数据结构不同`，可以`连接任意个连接`
+- `epoll`，select和poll都是通过`轮询的方式`来查找是否有可读和可写，`epoll是基于内核的反射机制`，当有活跃的socket的时候，会提前调用设置好的回调函数
+
+**应用场景**：
+
+#### 4.2.4信号驱动I/O(signal driven I/O)
+
+- 信号驱动异步模型
+- 内核准备好数据通知进程，`通知何时启动一个I/O操作`
+- 优势在于内核准备好数据通知进程的期间，进程不会堵塞
+
+**应用场景**：
+
+#### 4.2.5异步I/O(asynchronous I/O)
+
+- 进程两个阶段都不会阻塞
+- linux中无真正的I/O
+- `内核同时I/O操作何时完成`
+
+**应用场景**：
