@@ -3,7 +3,13 @@
 # author: bigfoolliu
 
 
+"""
+使用Python的魔术方法来求解斐波那契数列
+"""
+
+
 class Fib(object):
+
     def __init__(self):
         self.a, self.b = 0, 1 # 初始化两个计数器a，b
 
