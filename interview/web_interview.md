@@ -19,8 +19,12 @@
       - [4.2.4信号驱动I/O(signal driven I/O)](#424%e4%bf%a1%e5%8f%b7%e9%a9%b1%e5%8a%a8iosignal-driven-io)
       - [4.2.5异步I/O(asynchronous I/O)](#425%e5%bc%82%e6%ad%a5ioasynchronous-io)
   - [5.多进程与多线程](#5%e5%a4%9a%e8%bf%9b%e7%a8%8b%e4%b8%8e%e5%a4%9a%e7%ba%bf%e7%a8%8b)
+  - [6.异步任务](#6%e5%bc%82%e6%ad%a5%e4%bb%bb%e5%8a%a1)
+  - [7.第三方SDK集成](#7%e7%ac%ac%e4%b8%89%e6%96%b9sdk%e9%9b%86%e6%88%90)
 
 <!-- /TOC -->
+
+- [大型网站架构设计以及性能优化](../books/大型网站技术架构核心原理与案例分析/website_structure.md)
 
 ## 1.web框架
 
@@ -181,3 +185,11 @@
 - `多协程`
   - 协程的切换只是单纯操作CPU上下文，协程在一个线程内，属于并发
   - IO密集型的任务
+
+## 6.异步任务
+
+- [Django使用celery异步发送短信](https://www.jianshu.com/p/062235710d43)
+
+## 7.第三方SDK集成
+
+- [手把手教你集成微信，支付宝支付功能SDK](https://www.jianshu.com/p/925394737c9e)

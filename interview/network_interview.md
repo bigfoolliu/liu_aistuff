@@ -18,28 +18,26 @@
   - [2.HTTPS](#2https)
     - [2.1介绍](#21%e4%bb%8b%e7%bb%8d)
     - [2.2SSL证书](#22ssl%e8%af%81%e4%b9%a6)
-  - [3.TCP协议](#3tcp%e5%8d%8f%e8%ae%ae)
+  - [3.TCP与UDP](#3tcp%e4%b8%8eudp)
     - [3.1介绍](#31%e4%bb%8b%e7%bb%8d)
     - [3.2三次握手，四次挥手](#32%e4%b8%89%e6%ac%a1%e6%8f%a1%e6%89%8b%e5%9b%9b%e6%ac%a1%e6%8c%a5%e6%89%8b)
-    - [3.3tcp粘包](#33tcp%e7%b2%98%e5%8c%85)
-  - [4.UDP协议](#4udp%e5%8d%8f%e8%ae%ae)
-    - [4.1介绍](#41%e4%bb%8b%e7%bb%8d)
-    - [4.2tcp/udp使用场景](#42tcpudp%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af)
-  - [5.缓存](#5%e7%bc%93%e5%ad%98)
-    - [5.1缓存介绍](#51%e7%bc%93%e5%ad%98%e4%bb%8b%e7%bb%8d)
-    - [5.2浏览器缓存](#52%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
-  - [6.授权](#6%e6%8e%88%e6%9d%83)
-    - [6.1OAuth2.0](#61oauth20)
-  - [7.安全](#7%e5%ae%89%e5%85%a8)
-    - [7.1csrf(跨站请求伪造)](#71csrf%e8%b7%a8%e7%ab%99%e8%af%b7%e6%b1%82%e4%bc%aa%e9%80%a0)
-    - [7.2xss(跨站脚本攻击)](#72xss%e8%b7%a8%e7%ab%99%e8%84%9a%e6%9c%ac%e6%94%bb%e5%87%bb)
-    - [7.3sql注入](#73sql%e6%b3%a8%e5%85%a5)
-    - [7.4ddos攻击](#74ddos%e6%94%bb%e5%87%bb)
-  - [8.Restful规范](#8restful%e8%a7%84%e8%8c%83)
-    - [8.1restful中相关概念](#81restful%e4%b8%ad%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5)
-    - [8.2对restfule的理解](#82%e5%af%b9restfule%e7%9a%84%e7%90%86%e8%a7%a3)
-    - [8.3相关规范](#83%e7%9b%b8%e5%85%b3%e8%a7%84%e8%8c%83)
-  - [9.socket编程](#9socket%e7%bc%96%e7%a8%8b)
+    - [3.3tcp/udp使用场景](#33tcpudp%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af)
+    - [3.4tcp粘包](#34tcp%e7%b2%98%e5%8c%85)
+  - [4.缓存](#4%e7%bc%93%e5%ad%98)
+    - [4.1缓存介绍](#41%e7%bc%93%e5%ad%98%e4%bb%8b%e7%bb%8d)
+    - [4.2浏览器缓存](#42%e6%b5%8f%e8%a7%88%e5%99%a8%e7%bc%93%e5%ad%98)
+  - [5.授权](#5%e6%8e%88%e6%9d%83)
+    - [5.1OAuth2.0](#51oauth20)
+  - [6.安全](#6%e5%ae%89%e5%85%a8)
+    - [6.1csrf(跨站请求伪造)](#61csrf%e8%b7%a8%e7%ab%99%e8%af%b7%e6%b1%82%e4%bc%aa%e9%80%a0)
+    - [6.2xss(跨站脚本攻击)](#62xss%e8%b7%a8%e7%ab%99%e8%84%9a%e6%9c%ac%e6%94%bb%e5%87%bb)
+    - [6.3sql注入](#63sql%e6%b3%a8%e5%85%a5)
+    - [6.4ddos攻击](#64ddos%e6%94%bb%e5%87%bb)
+  - [7.Restful规范](#7restful%e8%a7%84%e8%8c%83)
+    - [7.1restful中相关概念](#71restful%e4%b8%ad%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5)
+    - [7.2对restfule的理解](#72%e5%af%b9restfule%e7%9a%84%e7%90%86%e8%a7%a3)
+    - [7.3相关规范](#73%e7%9b%b8%e5%85%b3%e8%a7%84%e8%8c%83)
+  - [8.socket编程](#8socket%e7%bc%96%e7%a8%8b)
   - [常见面试题](#%e5%b8%b8%e8%a7%81%e9%9d%a2%e8%af%95%e9%a2%98)
     - [web框架的本质](#web%e6%a1%86%e6%9e%b6%e7%9a%84%e6%9c%ac%e8%b4%a8)
 
@@ -94,6 +92,13 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 
 - session存储在服务器端，`依赖于cookie`，通常根据存在cookie中的session id(可以经过算法加密)来找到对应的session
 - 每次验证的用户发送请求时，服务器储存信息，导致占用过多资源，同时可扩展性也不强
+- 默认有效时间为30分钟
+
+**使用cookie和session保存用户登录状态：**
+
+1. 浏览器第一次请求服务器
+2. 服务器收到请求，返回携带sessionid的cookie，同时服务器保存session
+3. 浏览器第二次请求服务器，携带cookie，服务器根据cookie中的sessionid找到对应的session
 
 #### 1.4.3token
 
@@ -199,13 +204,22 @@ ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4";
 ```
 
-## 3.TCP协议
+## 3.TCP与UDP
 
 ### 3.1介绍
+
+**tcp**:
 
 - 面向连接，可靠（`但也不是100%，实际是数据的可靠传递和故障的可靠通知`）
 - 使用`校验和`，`确认`和`重传`机制来保证可靠传输
 - 对数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复
+
+**udp**:
+
+- 非可靠，不提供确认，序列号，超时重传等机制
+- 数据包的长度有限
+- 无连接
+- 支持多播和广播
 
 ### 3.2三次握手，四次挥手
 
@@ -224,7 +238,12 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 3. 服务端发送`FIN`标志位为1的包，表示自己结束连接
 4. 客户端发送`ACK`确认收到服务端的关闭请求
 
-### 3.3tcp粘包
+### 3.3tcp/udp使用场景
+
+- udp提供的无状态的连接，适合语音，直播，视频等
+- tcp面向连接，适合文件传输，远程登录等
+
+### 3.4tcp粘包
 
 - [什么是TCP粘包以及如何解决](https://blog.csdn.net/weixin_41047704/article/details/85340311)
 
@@ -233,23 +252,9 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 1. 当连续发送数据时候，TCP的nagle算法将较小的内容拼接为大的内容，一次性发送，造成粘包;
 2. 发送的数据较大时，服务端的buff_size较小，不能一次性接收所有的内容，下次请求到达时候接收的是上次没有完全接收完的东西，造成粘包。
 
-## 4.UDP协议
+## 4.缓存
 
-### 4.1介绍
-
-- 非可靠，不提供确认，序列号，超时重传等机制
-- 数据包的长度有限
-- 无连接
-- 支持多播和广播
-
-### 4.2tcp/udp使用场景
-
-- udp提供的无状态的连接，适合语音，直播，视频等
-- tcp面向连接，适合文件传输，远程登录等
-
-## 5.缓存
-
-### 5.1缓存介绍
+### 4.1缓存介绍
 
 - [缓存介绍](https://juejin.im/post/5a6c87c46fb9a01ca560b4d7)
 - [你应该知道的缓存进化史](https://juejin.im/post/5b7593496fb9a009b62904fa#comment)
@@ -273,7 +278,7 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
   - `网关缓存`
   - `数据库缓存`
 
-### 5.2浏览器缓存
+### 4.2浏览器缓存
 
 - [浏览器缓存机制](https://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html)
 
@@ -284,9 +289,9 @@ ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA
 - `Last-Modified`：资源最后一次修改的时间
 - `ETag`: 服务器生成资源的唯一标识
 
-## 6.授权
+## 5.授权
 
-### 6.1OAuth2.0
+### 5.1OAuth2.0
 
 - [阮一峰:OAuth2.0简单解释](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
 
@@ -297,9 +302,9 @@ OAuth2.0的四种方式:
 3. `密码式`，对于高度信任的应用，直接将用户名以及密码告诉第三方应用
 4. `凭证式`，适用于没有前端的应用，直接在命令行下申请令牌
 
-## 7.安全
+## 6.安全
 
-### 7.1csrf(跨站请求伪造)
+### 6.1csrf(跨站请求伪造)
 
 - [常见web攻击手段之csrf](https://www.jianshu.com/p/67408d73c66d)
 
@@ -310,35 +315,35 @@ OAuth2.0的四种方式:
 - 增加token
 - 验证请求头中的referer值，referer记录请求的来源网站
 
-### 7.2xss(跨站脚本攻击)
+### 6.2xss(跨站脚本攻击)
 
 - [xss攻击详解](https://blog.csdn.net/qq_36119192/article/details/82469035)
 
-### 7.3sql注入
+### 6.3sql注入
 
-### 7.4ddos攻击
+### 6.4ddos攻击
 
-## 8.Restful规范
+## 7.Restful规范
 
 - [阮一峰:理解restful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
 - [restful规范以及架构](http://www.imooc.com/article/details/id/265729)
 
 `restful本质上是一种网站即软件思想下的架构设计规范。`
 
-### 8.1restful中相关概念
+### 7.1restful中相关概念
 
 - `Representational State Tranfer,(资源)表现层状态转换`
 - 资源就是网络中的一个实体，图片，文字等，用url来标识，`上网就是和这些资源互动，调用其url`
 - 表现层指对资源的呈现形式，如文字可以是txt，html或者二进制
 - 客户端与服务端交互过程中数据和状态的转化
 
-### 8.2对restfule的理解
+### 7.2对restfule的理解
 
 - 每一个url代表一种资源
 - 客户端和服务端传递这种资源的表现层
 - 客户端通过四个HTTP动词(get,post,put,delete)来操作资源，实现表现层状态转化
 
-### 8.3相关规范
+### 7.3相关规范
 
 1. api与用户通信的规范使用https
 2. 尽量将api部署到专用的域名之下，如:api.example.com
@@ -347,7 +352,7 @@ OAuth2.0的四种方式:
 5. 避免多级url,使用查询字符串代替
 6. 状态码以及返回值都指定特殊的格式
 
-## 9.socket编程
+## 8.socket编程
 
 `socket = ip_address + tcp/udp + port`
 
