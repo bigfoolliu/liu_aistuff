@@ -1,16 +1,17 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
-python3的环境
+python3 添加进度条效果
 
-添加进度条效果
+参考：https://blog.csdn.net/qq_33472765/article/details/82940843
 """
 
 
-from tqdm import tqdm
 import time
+from tqdm import tqdm
 
 
 def demo1():
@@ -50,7 +51,12 @@ def demo4():
         pbar.set_description("progress %s" % char)
 
 
-demo1()
-demo2()
-demo3()
-demo4()
+if __name__ == "__main__":
+    print("------------demo1--------------")
+    demo1()
+    print("------------demo2--------------")
+    demo2()
+    print("------------demo3--------------")
+    demo3()
+    print("------------demo4--------------")
+    demo4()
