@@ -4,7 +4,7 @@
 
 
 """
-python zi函数实例
+python zip函数实例
 
 zip(iterable, ...)
 
