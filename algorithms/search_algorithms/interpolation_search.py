@@ -1,100 +1,48 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
-差值搜索
-This is pure python implementation of interpolation search algorithm
+python实现差值搜索算法
 """
-from __future__ import print_function
+
+
 import bisect
 
-try:
-    raw_input          # Python 2
-except NameError:
-    raw_input = input  # Python 3
 
-
-def interpolation_search(sorted_collection, item):
-    """Pure implementation of interpolation search algorithm in Python
-    Be careful collection must be sorted, otherwise result will be
-    unpredictable
-    :param sorted_collection: some sorted collection with comparable items
-    :param item: item value to search
-    :return: index of found item or None if item is not found
+def interpolation_search(sorted_array, target):
+    """
+    差值搜索基本实现
+    return: int
     """
     left = 0
-    right = len(sorted_collection) - 1
+    right = len(sorted_array) - 1
 
     while left <= right:
-        point = left + ((item - sorted_collection[left]) * (right - left)) // (sorted_collection[right] - sorted_collection[left])
-         
-        #out of range check
-        if point<0 or point>=len(sorted_collection):
-            return None
+        # 核心
+        index = left + int((target - sorted_array[left]) * (right - left) / (sorted_array[right] - sorted_array[left]))
+        print("index: {}".format(index))
 
-        current_item = sorted_collection[point]
-        if current_item == item:
-            return point
+        # out of range check
+        if index < 0 or index >= len(sorted_array):
+            return -1
+        
+        if sorted_array[index] == target:
+            return index
         else:
-            if item < current_item:
-                right = point - 1
+            if target < sorted_array[index]:
+                right = index - 1
             else:
-                left = point + 1
-    return None
-
-
-def interpolation_search_by_recursion(sorted_collection, item, left, right):
-
-    """Pure implementation of interpolation search algorithm in Python by recursion
-    Be careful collection must be sorted, otherwise result will be
-    unpredictable
-    First recursion should be started with left=0 and right=(len(sorted_collection)-1)
-    :param sorted_collection: some sorted collection with comparable items
-    :param item: item value to search
-    :return: index of found item or None if item is not found
-    """
-    point = left + ((item - sorted_collection[left]) * (right - left)) // (sorted_collection[right] - sorted_collection[left])
-
-    #out of range check
-    if point<0 or point>=len(sorted_collection):
-        return None
-
-    if sorted_collection[point] == item:
-        return point
-    elif sorted_collection[point] > item:
-        return interpolation_search_by_recursion(sorted_collection, item, left, point-1)
-    else:
-        return interpolation_search_by_recursion(sorted_collection, item, point+1, right)
-      
-def __assert_sorted(collection):
-    """Check if collection is sorted, if not - raises :py:class:`ValueError`
-    :param collection: collection
-    :return: True if collection is sorted
-    :raise: :py:class:`ValueError` if collection is not sorted
-    Examples:
-    >>> __assert_sorted([0, 1, 2, 4])
-    True
-    >>> __assert_sorted([10, -1, 5])
-    Traceback (most recent call last):
-    ...
-    ValueError: Collection must be sorted
-    """
-    if collection != sorted(collection):
-        raise ValueError('Collection must be sorted')
-    return True
+                left = index + 1
+    return -1
 
 
 if __name__ == '__main__':
-    import sys
+    sorted_array = [0, 12, 23, 45, 56, 66, 77, 345, 556, 2345]
+    target1 = 345
+    target2 = 111
 
-    user_input = raw_input('Enter numbers separated by comma:\n').strip()
-    collection = [int(item) for item in user_input.split(',')]
-    try:
-        __assert_sorted(collection)
-    except ValueError:
-        sys.exit('Sequence must be sorted to apply interpolation search')
-
-    target_input = raw_input('Enter a single number to be found in the list:\n')
-    target = int(target_input)
-    result = interpolation_search(collection, target)
-    if result is not None:
-        print('{} found at positions: {}'.format(target, result))
-    else:
-        print('Not found')
+    ret1 = interpolation_search(sorted_array, target1)
+    ret2 = interpolation_search(sorted_array, target2)
+    print(ret1, ret2)
