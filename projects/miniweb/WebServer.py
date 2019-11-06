@@ -26,14 +26,11 @@ PORT = 2018
 class WebServer(object):
 	"""服务器类"""
 	def __init__(self):
-		# 1. 创建tcp套接字通信
+		# 1. 创建tcp套接字通信, 重新启用占用的端口
 		self.__tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		# 重新启用占用的端口
 		self.__tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
 		# 2. 绑定IP和端口号
 		self.__tcp_server_socket.bind((LOCAL_IP, PORT))
-
 		# 3. 设置套接字最大连接数
 		self.__tcp_server_socket.listen(128)
 
@@ -65,7 +62,7 @@ class WebServer(object):
 			file_name = "/index.html"
 
 		# 如果请求的为"动态页面"
-		# TODO 页面为静态还是动态的区分
+		# TODO： 页面为静态还是动态的区分
 		if file_name.endswith(".html"):
 
 			# 定义一个字典变量来存放客户端请求的信息
