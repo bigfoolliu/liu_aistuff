@@ -12,6 +12,8 @@
 
 class HashTable(object):
 
+    """忽略了对数据类型以及元素溢出的问题的判断"""
+
     def __init__(self, size):
         self.count = size  #  最大表长度
         self.elem = [None for i in range(size)]  # 使用列表最为hash元素的保存方法
