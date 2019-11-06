@@ -65,22 +65,26 @@ def reverse_single_link_list(head):
     """
     单链表反转四种方式：https://www.cnblogs.com/petrolero/p/9822008.html
     head: 单链表头节点
+    
+    head--->1--->2--->3
+    head<---1<---2<---3
     """
     if head == None or head.next == None:
         return head
     cur = head
-    tmp = None  # 临时变量
-    new_head = None  # 用来作为新的头节点
+    tmp = None  # 临时节点
+    new_head = None  # 新的头节点
 
     while cur:
-        tmp = cur.next
-        cur.next = new_head
-        new_head = cur
-        cur = tmp
+        tmp = cur.next  # 临时保存当前节点的下一个节点
+        cur.next = new_head  # 断开当前节点和后一个节点的连接
+        new_head = cur  # 设置当前节点为新的头节点
+        cur = tmp  # 将临时节点设置为当前节点
     return new_head
 
 
 if __name__ == '__main__':
+    # 1-->2-->3-->4
     head = SingleNode(1)
     head.next = SingleNode(2)
     head.next.next = SingleNode(3)

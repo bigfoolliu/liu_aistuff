@@ -3,7 +3,7 @@
 
 
 """
-实现双向链表
+python实现双向链表
 """
 
 
@@ -34,5 +34,3 @@ class DoubleLinList(object):
             cur = cur.next
         cur.next = node
         node.prev = cur
-
-
