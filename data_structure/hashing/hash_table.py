@@ -5,6 +5,8 @@
 
 """
 哈希表
+
+在哈希查找算法中会使用
 """
 from number_theory.prime_numbers import next_prime
 
