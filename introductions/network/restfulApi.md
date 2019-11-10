@@ -58,7 +58,9 @@ X-HTTP-Method-Override: PUT
 
 ***每一次的请求,服务器都必须做出回应，包括状态码和数据两部分。***
 
-HTTP状态码[常用HTTP状态码](https://www.runoob.com/http/http-status-codes.html)：
+HTTP状态码:
+
+- [常用HTTP状态码](https://www.runoob.com/http/http-status-codes.html)：
 
 - 1xx：相关信息
 - 2xx：操作成功
@@ -70,11 +72,16 @@ HTTP状态码[常用HTTP状态码](https://www.runoob.com/http/http-status-codes
 | :------: | :------ | :------ |
 | 100 | Continue | 继续，客户端应该继续请求 |
 | 200 | OK | 请求成功，一般用于GET和POST请求 |
-| 201 | Created | 已创建，成功请求并创建了新的资源 |
-| 202 | Accepted | 已接受，接受请求但未处理完成 |
-| 203 | None-Authoritative Information | 非授权信息，请求成功，但返回的meta信息不在原始的服务，而是一个副本 |
 | 204 | No Content | 无内容，服务器处理成功，但是未返回内容 |
-| 205 | Reset Content | 重置内容，服务器处理成功 |
 | 206 | Partical Content | 部分内容，服务器成功处理了部分Get请求 |
 | 300 | Multiple Choices | 多种选择，请求的资源包含多个位置，相应可以返回一个资源特征与地址的列表用于用户终端 |
 | 301 | Moved Permanently | 永久移动，请求的资源永久移动到新的URI，返回信息会包括新的URI |
+| 304 | Not Modified | 未修改，所请求的数据没有变化，服务端不会返回资源 |
+| 307 | Temporary Redirect | 临时重定向 |
+| 400 | Bad Request | 客户端请求错误 |
+| 401 | Unauthorized | 请求要求用户的身份认证 |
+| 403 | Forbidden | 服务端理解客户端请求，但是拒绝执行 |
+| 404 | Not Found | 服务器找不到请求的资源 |
+| 500 | Internal Server Error | 服务器内部错误，无法完成该请求 |
+| 502 | Bad Gateway | 网关或者代理服务器接收尝试执行请求时，从远程服务器接收到无效的响应 |
+| 503 | Service Unaviable | 超载或者系统维护，服务器暂时无法处理客户端的请求 |
