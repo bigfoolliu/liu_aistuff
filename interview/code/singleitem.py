@@ -3,9 +3,12 @@
 
 
 """
-写一个单例父类
+python实现单例
 """
+
+
 class SingleItem(object):
+    """通过重写__new__方法"""
 
     _instance = {}
 
@@ -13,6 +16,16 @@ class SingleItem(object):
         if cls not in cls._instance:
             cls._instance[cls] = super().__new__(cls)
         return cls._instance[cls]
+
+
+def single_item(cls, *args, **kwargs):
+    """通过闭包的方式"""
+    isinstances = {}
+    def get_instance():
+        if cls not in isinstances:
+            isinstances[cls] = cls(*args, **kwargs)
+        return isinstances[cls]
+    return get_instance
 
 
 class A(SingleItem):
