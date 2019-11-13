@@ -1,8 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
-二分搜索
+python实现二分搜索
 """
-import sys
+
+
 import bisect
+import sys
 
 
 def binary_search(sorted_collection, item):
