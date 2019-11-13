@@ -1,0 +1,11 @@
+Insert time statistics (In seconds)..
+Min : 0.0
+Max : 0.015625
+Mean: 0.0020380434782608695
+STD : 0.00526220563343399
+Insert disk statistics..
+Min : 2
+Max : 2
+Mean: 2.0
+STD : 0.0
+
