@@ -3,16 +3,17 @@
 <!-- TOC -->
 
 - [RabbitMQ介绍](#rabbitmq%e4%bb%8b%e7%bb%8d)
-  - [概念](#%e6%a6%82%e5%bf%b5)
+  - [1.rabbit mq基础概念](#1rabbit-mq%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5)
+  - [2.安装使用](#2%e5%ae%89%e8%a3%85%e4%bd%bf%e7%94%a8)
 
 <!-- /TOC -->
 
-[介绍](http://www.belonk.com/c/rabbitmq_intro_helloworld.html)
-[官网](https://www.rabbitmq.com/)
+- [介绍](http://www.belonk.com/c/rabbitmq_intro_helloworld.html)
+- [官网](https://www.rabbitmq.com/)
 
 主要思想非常简单:它接受并转发消息。
 
-## 概念
+## 1.rabbit mq基础概念
 
 - `Broker`：中间件。接收和分发消息的应用，RabbitMQ Server就是Message Broker。
 - `Virtual host`: 虚拟主机。出于多租户和安全因素设计的，把AMQP的基本组件划分到一个虚拟的分组中，类似于网络中的namespace概念。当多个不同的用户使用同一个RabbitMQ server提供的服务时，可以划分出多个vhost，每个用户在自己的vhost创建exchange／queue等。
@@ -27,3 +28,7 @@
 - `Binding`: 绑定。exchange和queue之间的虚拟连接，binding中可以包含routing key。Binding信息被保存到exchange中的查询表中，用于message的分发依据。
 - `Producter`: 发送消息的程序是生产者。
 - `Consumer`：通常为等待接收消息的应用程序  。注意，生产者、消费者和消息代理不需要处于同一台主机上，事实上，在大多数应用场景都是如此。
+
+## 2.安装使用
+
+- [Windows下RabbitMQ的安装和配置](https://blog.csdn.net/zhm3023/article/details/82217222)
