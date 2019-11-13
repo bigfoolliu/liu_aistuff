@@ -2,16 +2,26 @@
 
 <!-- TOC -->
 
-- [git相关知识](#git%e7%9b%b8%e5%85%b3%e7%9f%a5%e8%af%86)
-  - [1.git基本命令](#1git%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4)
-  - [2.其他相关操作](#2%e5%85%b6%e4%bb%96%e7%9b%b8%e5%85%b3%e6%93%8d%e4%bd%9c)
-    - [2.1修改已经push的commit的message](#21%e4%bf%ae%e6%94%b9%e5%b7%b2%e7%bb%8fpush%e7%9a%84commit%e7%9a%84message)
-    - [2.2修改多次commit的信息为一个](#22%e4%bf%ae%e6%94%b9%e5%a4%9a%e6%ac%a1commit%e7%9a%84%e4%bf%a1%e6%81%af%e4%b8%ba%e4%b8%80%e4%b8%aa)
-  - [3.gitmoduel使用](#3gitmoduel%e4%bd%bf%e7%94%a8)
+- [git相关知识](#git相关知识)
+    - [1.git基本命令](#1git基本命令)
+        - [1.1版本和用户](#11版本和用户)
+        - [1.2仓库克隆](#12仓库克隆)
+        - [1.3暂存](#13暂存)
+        - [1.4本地提交](#14本地提交)
+        - [1.5远程提交与拉取](#15远程提交与拉取)
+        - [1.6提交堆栈](#16提交堆栈)
+        - [1.7分支](#17分支)
+    - [2.操作命令组](#2操作命令组)
+        - [2.1修改已经push的commit的message](#21修改已经push的commit的message)
+        - [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)
+    - [3.gitmoduel使用](#3gitmoduel使用)
+    - [a.其他](#a其他)
 
 <!-- /TOC -->
 
 ## 1.git基本命令
+
+### 1.1版本和用户
 
 ```shell
 # 一般配置
@@ -22,19 +32,27 @@ git config --global user.name
 # 获取当前登陆用户的邮箱
 git config --global user.email
 
+# 直接进步编辑全局配置文件
+git config -e --global
+
 # 登陆git:
 # 设置git账户，userName为用户名
 git config --global user.name `userName`
 git config --global user.email `userEmail>`
 # 将git的文本编辑器修改为vim
 git config --global core.editor vim
+```
 
+### 1.2仓库克隆
+
+```shell
 # 从远程克隆一个版本库
 git clone `address`
+```
 
-# 查看当前状态
-git status
+### 1.3暂存
 
+```shell
 # 将所有修改文件暂存
 git add .
 # 将指定文件暂存
@@ -44,7 +62,11 @@ git add test.py
 git reset HEAD
 # 撤销对指定文件的暂存
 git reset HEAD test.py
+```
 
+### 1.4本地提交
+
+```shell
 # 直接提交
 git commit
 # 带注释的提交
@@ -55,7 +77,11 @@ git commit -a
 git commit -m "remove"
 # 修改上一次提交的信息
 git commit --amend
+```
 
+### 1.5远程提交与拉取
+
+```shell
 # 当前分支只有一个追踪分支，直接将本地的分支的更新推送至远程主机
 git push
 git push <远程主机名>　<本地分支名>:<远程分支名>
@@ -64,6 +90,14 @@ git push <远程主机名>　<本地分支名>:<远程分支名>
 git pull
 # 与本地的指定合并
 git pull <远程主机名>　<远程分支名>:<本地分支名>
+
+# 强制推到远程(慎用)
+git push -f
+```
+
+### 1.6提交堆栈
+
+```shell
 
 # 当前分支内容修改了，但是还不想提交，此时需要切换到另一个分支，则该命令将当前分支修改的内容
 # 保存到堆栈中，然后就可以在不同的分支中进行切换了
@@ -79,27 +113,20 @@ git stash pop
 git stash apply
 # 删除所有存储的进度
 git stash clear
+```
 
+### 1.7分支
+
+```shell
 # 取回所有分支的更新
 git fetch
 # 取回指定的分支更新(eg:git fetch origin master)
 git fetch <远程主机名> <分支名>
 
-# 查看commit的日志
-git log
-
-# 查看尚未暂存的更新
-git diff
-# 查看尚未提交的更新
-git diff --cached
-
 # 切换到本地的dev分支
 git checkout `dev`
 # 建立一个新的本地dev分支
 git checkout -b `dev`
-
-# 直接进步编辑全局配置文件
-git config -e --global
 
 # 当文件提交comnit后push因为大文件而失败
 # 回退至指定的版本号
@@ -109,31 +136,15 @@ git push origin HEAD --force
 # 删除缓存
 git rm -r --cached .
 
-# 初始化本地.gitmodules文件
-git submodule init
-# 同步远端submodule源码
-git submodule update
-# 给一个仓库添加子仓库
-git submodule add <submodule_url>
-# 获取主项目和所有子项目源码
-git clone --recurse-submodules <main_project_url>
-
-# 删除子模块
-rm -rf <submodule dir>  # 删除子模块的目录以及源码
-vim .gitmodule  # 删除项目目录下.gitmodule文件中子模块相关条目
-vim .git/config  # 删除配置中子模块相关条目
-rm .git/module/*  # 删除模块下的子模块目录
-git rm --cached  <submodule name>  # 如果执行完成之后报错执行
-
 # 获取远程仓库的地址
 git remote get-url origin
 ```
 
-## 2.其他相关操作
+## 2.操作命令组
 
 ### 2.1修改已经push的commit的message
 
-[已经push的commit如何修改message](https://www.jianshu.com/p/ec45ce13289f)
+- [已经push的commit如何修改message](https://www.jianshu.com/p/ec45ce13289f)
 
 ```shell
 # 1.确定修改哪些commit
@@ -143,9 +154,6 @@ git rebase -i HEAD~5
 # 3.在当前分支轮流执行（有几条message要修改就执行几次）以下两个命令,执行完第一个命令，修改message保存
 git commit --amend
 git rebase --continue
-
-# 4.强制推到远程
-git push -f
 ```
 
 ### 2.2修改多次commit的信息为一个
@@ -188,4 +196,37 @@ git rm --cached liu_work
 rm -rf liu_work
 rm .gitmodules
 # 然后重新提交修改信息
-````
+```
+
+```shell
+# 初始化本地.gitmodules文件
+git submodule init
+# 同步远端submodule源码
+git submodule update
+# 给一个仓库添加子仓库
+git submodule add <submodule_url>
+# 获取主项目和所有子项目源码
+git clone --recurse-submodules <main_project_url>
+
+# 删除子模块
+rm -rf <submodule dir>  # 删除子模块的目录以及源码
+vim .gitmodule  # 删除项目目录下.gitmodule文件中子模块相关条目
+vim .git/config  # 删除配置中子模块相关条目
+rm .git/module/*  # 删除模块下的子模块目录
+git rm --cached  <submodule name>  # 如果执行完成之后报错执行
+```
+
+## a.其他
+
+```shell
+# 查看当前状态
+git status
+
+# 查看commit的日志
+git log
+
+# 查看尚未暂存的更新
+git diff
+# 查看尚未提交的更新
+git diff --cached
+```

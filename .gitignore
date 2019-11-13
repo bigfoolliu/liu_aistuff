@@ -9,6 +9,7 @@ PrivateTest/
 .idea
 videos/
 test/
+data/
 
 django_env/
 
