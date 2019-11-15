@@ -17,10 +17,16 @@
         - [1.11python解释器](#111python解释器)
         - [1.12闭包](#112闭包)
         - [1.13提高python代码效率的方式](#113提高python代码效率的方式)
+        - [1.14python内存管理](#114python内存管理)
+        - [1.15python多线程和多进程](#115python多线程和多进程)
     - [2.重点算法](#2重点算法)
         - [2.1快速排序](#21快速排序)
         - [2.2二分搜索](#22二分搜索)
         - [2.3二叉树相关算法](#23二叉树相关算法)
+    - [3.面试常见问题](#3面试常见问题)
+        - [3.1.pyc和PyCodeObject是什么（涉及python执行过程详解）](#31pyc和pycodeobject是什么涉及python执行过程详解)
+        - [3.2range和xrange的区别](#32range和xrange的区别)
+        - [3.3python中下划线使用总结](#33python中下划线使用总结)
 
 <!-- /TOC -->
 
@@ -137,6 +143,29 @@ ret = reduce(lambda x,y:x*y, range(1, 4))
 
 - [python提高代码代码效率的方式](https://www.cnblogs.com/duaimili/p/10275728.html)
 
+### 1.14python内存管理
+
+使用`内存池`机制（即Pymalloc机制）来管理小块内存的申请和释放。
+
+频繁的申请和创建小的内存空间会到导致大量的`内存碎片`，内存池首先在内存中申请一定数量的，大小相等的内存块留作备用；当有新的内存需求时，从内存池中分配内存给这个需求，不够了再申请新的内存。
+
+**python中的内存池管理机制Pymalloc两套实现：**
+
+1. 针对小对象(小于256bits)，pymalloc在内存池中申请空间
+2. 其他则直接执行new/malloc的行为来申请内存空间
+
+### 1.15python多线程和多进程
+
+**传递参数的方式：**
+
+- python多线程有GIL，属于并发，非并行
+- python多进程将共享参数，可以使用`multiprocessing.Value`和`multiprocessing.Array`
+
+**python多线程和多进程的区别：**
+
+- 多进程的话，子进程结束需要join()，多线程则不需要
+- 多线程容易共享资源，可以使用全局变量和参数，多进程有自己的内存空间，可以通过共享内存和Manager的方法
+
 ## 2.重点算法
 
 ### 2.1快速排序
@@ -200,3 +229,23 @@ def binary_search(array, target):
 ### 2.3二叉树相关算法
 
 [二叉树相关算法](../data_structure/binary_tree/basic_binary_tree.py)
+
+## 3.面试常见问题
+
+### 3.1.pyc和PyCodeObject是什么（涉及python执行过程详解）
+
+- [pyc文件](https://blog.csdn.net/huanhuanq1209/article/details/79724632)
+
+- python先编译后解释，将.py编译为字节码，通过虚拟机执行
+- PyCodeObject(内存中)是python编译器真正编译的结果
+- .pyc文件是python程序执行完成之后python解释器将PyCodeObject写入的结果
+
+### 3.2range和xrange的区别
+
+- range根据范围生成一个序列，python3用
+- xrange不生成一个序列，而是一个生成器，生成大的集合时候性能更好，python2用
+
+### 3.3python中下划线使用总结
+
+- 单下划线开头表示该方法不是API的一部分，不要直接访问
+- 双下划线开头表示子类不能重写该方法

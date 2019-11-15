@@ -27,6 +27,8 @@
 <!-- /TOC -->
 
 - [redis面试三十问](http://blog.itpub.net/31545684/viewspace-2213990/)
+- [漫画:redis面试常见问题1](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247486641&idx=2&sn=16594b5394e52a5b0884156c271e58cf&chksm=ebd6339ddca1ba8b85df41d508434c2e727ed31736cc353d376e200e62932180f978d7f763a9&scene=21#wechat_redirect)
+- [漫画:redis面试常见问题1](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247486734&idx=2&sn=7ebb4e8d86ddae67522244c8e8584ef0&chksm=ebd63222dca1bb34515cfadd321e3d82bcbeb6210812af087ae254181067cc45cb5f740602b4&scene=21#wechat_redirect)
 
 ## 1.redis基础
 
@@ -36,9 +38,9 @@
 
 `Remote Dictionary Server`
 
-- 纯内存的key-value数据库，整个数据库加载到内存中，性能极高，通过异步定期将数据持久化到硬盘
-- 支持多种数据类型，且最大的value值为GB级别，因此可以实现多种功能
-- 数据库容量受物理内存限制，适合较小数量的高性能操作和运算
+- `纯内存的key-value数据库`，整个数据库加载到内存中，性能极高，通过`异步定期将数据持久化到硬盘`
+- 支持多种数据类型，且最大的value值为GB级别，因此可以实现多种功能(如：list实现消息队列，set实现标签系统)
+- `数据库容量受物理内存限制`，适合较小数量的高性能操作和运算
 
 ## 2.数据
 
@@ -50,12 +52,14 @@
 
 - [redis数据淘汰策略](https://www.cnblogs.com/mysql-hang/articles/10532720.html)
 - [redis数据淘汰策略及其相关注意事项](https://blog.csdn.net/qq_22860341/article/details/80681373)
+- 比如保证`数据都是热点数据`
 
 1. allkeys-lru, 尝试回收使用最少的键
 2. allkeys-random, 回收随机的键
 3. volatile-lru,尝试回收使用最少的键，但仅限于已经过期的
 4. volatile-random, 回收随机的键，仅限于已经过期的
 5. volatile-ttl, 回收过期的键，优先回收存活时间短的键
+6. no-enviction, 驱逐，禁止驱逐数据
 
 ### 2.3Key的过期时间和永久有效设置
 
@@ -99,7 +103,7 @@ redis哈希槽(`hash算法+槽位`)，使用的hash算法是`crc16校验算法`�
 - [Django获取用户浏览历史，使用redis缓存](https://www.cnblogs.com/mxsf/p/10297271.html)
 - [使用redis存储用户浏览记录](https://blog.csdn.net/weixin_44313745/article/details/95754500)
 
-将用户的会话缓存，其相对的优势在于可以将会话缓存的数据持久化。
+将用户的`会话缓存`，其相对的优势在于可以将会话缓存的数据持久化。
 
 ### 4.2全页缓存
 
@@ -109,7 +113,7 @@ redis哈希槽(`hash算法+槽位`)，使用的hash算法是`crc16校验算法`�
 
 ### 4.4队列
 
-其list和set的数据类型使redis可以作为一个消息队列使用。
+其list和set的数据类型使redis可以作为一个`消息队列`使用。
 
 ### 4.5发布/订阅
 
