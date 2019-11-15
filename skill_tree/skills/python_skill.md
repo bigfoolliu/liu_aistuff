@@ -1,116 +1,30 @@
-# effiency提高效率的小技巧
+# python相关技巧
 
 <!-- TOC -->
 
-- [effiency提高效率的小技巧](#effiency提高效率的小技巧)
-    - [1.为命令设置别名(alias)](#1为命令设置别名alias)
-    - [2.dotfiles快速将恢复自身配置](#2dotfiles快速将恢复自身配置)
-    - [3.项目里重复的工作写成makefile](#3项目里重复的工作写成makefile)
-    - [4.快速为项目选择一个source license](#4快速为项目选择一个source-license)
-    - [5.量化工作](#5量化工作)
-    - [6.会话以及终端管理tmux](#6会话以及终端管理tmux)
-    - [7.windows虚拟桌面(workspace)](#7windows虚拟桌面workspace)
-    - [8.必读书籍](#8必读书籍)
-    - [9.开发者工具](#9开发者工具)
-    - [10.chrome高效使用](#10chrome高效使用)
-    - [11.ssh免密以及别名登录](#11ssh免密以及别名登录)
-    - [12.python代码](#12python代码)
-        - [12.1变量](#121变量)
-        - [12.2条件分支](#122条件分支)
-        - [12.3使用数字和字符串的技巧](#123使用数字和字符串的技巧)
-        - [12.4python的容器操作(列表，元组等)](#124python的容器操作列表元组等)
-        - [12.5函数返回结果的技巧](#125函数返回结果的技巧)
-        - [12.6异常处理的技巧](#126异常处理的技巧)
-        - [12.7编写地道的循环](#127编写地道的循环)
-        - [12.8使用装饰器的技巧](#128使用装饰器的技巧)
-        - [12.9模块相关](#129模块相关)
-        - [12.10利用规则](#1210利用规则)
-        - [12.11高效文件操作](#1211高效文件操作)
-        - [12.12写好面向对象](#1212写好面向对象)
-        - [12.13写好文档](#1213写好文档)
-    - [13.HTTP Api设计指南](#13http-api设计指南)
+- [python相关技巧](#python相关技巧)
+    - [1.变量](#1变量)
+    - [2.条件分支](#2条件分支)
+    - [3.数字和字符串](#3数字和字符串)
+    - [4.python的容器操作(列表，元组等)](#4python的容器操作列表元组等)
+    - [5.函数返回结果的技巧](#5函数返回结果的技巧)
+    - [6.异常处理的技巧](#6异常处理的技巧)
+    - [7.编写地道的循环](#7编写地道的循环)
+    - [8.使用装饰器的技巧](#8使用装饰器的技巧)
+    - [9.模块相关](#9模块相关)
+        - [9.1模块基本使用规则](#91模块基本使用规则)
+        - [9.2模块以及缺失库导入](#92模块以及缺失库导入)
+    - [10.利用规则](#10利用规则)
+    - [11.高效文件操作](#11高效文件操作)
+    - [12.写好面向对象](#12写好面向对象)
+    - [13.写好文档](#13写好文档)
+    - [a.其他](#a其他)
 
 <!-- /TOC -->
 
-- [效率指南](https://leohxj.gitbooks.io/a-programmer-prepares/effciency/coder-guide.html)
-
-## 1.为命令设置别名(alias)
-
-- [alias为命令设置别名](https://blog.csdn.net/doiido/article/details/43762791)
-
-## 2.dotfiles快速将恢复自身配置
-
-- [dotfiles入门](https://luolei.org/dotfiles-tutorial/)
-- [dotfiles合集](http://dotfiles.github.io/)
-
-## 3.项目里重复的工作写成makefile
-
-- [makefile由浅入深](https://zhuanlan.zhihu.com/p/47390641)
-
-## 4.快速为项目选择一个source license
-
-- [chooselicense.com](https://choosealicense.com)
-
-## 5.量化工作
-
-- [quantify your code](https://blog.newrelic.com/culture/quantify-your-code/)
-
-## 6.会话以及终端管理tmux
-
-- [使用tmux加速操作](http://cenalulu.github.io/linux/tmux/)
-
-## 7.windows虚拟桌面(workspace)
-
-- [win10虚拟桌面](https://sspai.com/post/45594)
-
-- win + ctrl + d: 创建新的虚拟桌面
-- win + ctrl + left/right: 左右切换虚拟桌面
-- win + ctrl + f4: 删除当前的虚拟桌面
-- win + w: windowslink工作区
-- win + e: 打开资源管理器
-- win + r, psr.exe：打开步骤计数器
-
-## 8.必读书籍
-
-- [程序员必读书单](http://lucida.me/blog/developer-reading-list/)
-
-## 9.开发者工具
-
-- [免费开发工具](https://github.com/ripienaar/free-for-dev)
-
-## 10.chrome高效使用
-
-- ctrl + t: 打开新的标签页
-- ctrl + n: 打开新的窗口
-- ctrl + shift + n:打开新的无痕窗口
-- ctrl + pgUp/pgDown: 切换标签页
-- ctrl + w/f4: 关闭当前标签页
-- alt + space + n: 最小化当前窗口
-- alt + space + x: 最大化当前窗口
-
-## 11.ssh免密以及别名登录
-
-```shell
-# 1.本地生成公钥和私钥,默认放置路径为~/.ssh/id_rsa以及~/.ssh/id_rsassh-keygen.pub
-# 需要输入一个密码需要记忆,如果输入为空则为免密登录
-ssh-keygen
-# 2.将本地的公钥放到远程主机
-ssh-copy-id ubuntu@192.168.6.121
-# 3.登录时候需要输入自己的密码或者为空
-ssh ubuntu@192.168.6.121
-
-# 如果需要将远程主机取别名在~.ssh/config文件中加入
-Host 1
-    HostName 192.168.1.1
-    User ubuntu
-    Port 22
-```
-
-## 12.python代码
-
 - [如何编写优秀的python代码https://github.com/piglei/one-python-craftsman](https://github.com/piglei/one-python-craftsman)
 
-### 12.1变量
+## 1.变量
 
 1. bool类型：`is_superuser`,`allow_vip`,`has_error`
 2. int/float类型：`user_id`,`age`,`length_of_username`,`users_count`
@@ -121,7 +35,7 @@ Host 1
 7. 控制单个函数内的变量数量
 8. 能不用变量就不定义变量，及时删掉没用的变量
 
-### 12.2条件分支
+## 2.条件分支
 
 1. `避免多层分支嵌套,使用raise或者return提前结束代码`
 2. `封装过于复杂的逻辑判断到函数或者方法`
@@ -131,7 +45,7 @@ Host 1
 6. 在条件判断中使用`all()/any()`
 7. 留意and和or的运算优先级，`and优先级别高于or`
 
-### 12.3使用数字和字符串的技巧
+## 3.数字和字符串
 
 1. 少用数字字面量，即类似`users[0], type==1`等,而是将重复出现的数字字面量定义为`枚举类型`
 2. 不要在裸字符串上处理太多，即`不要使用基本的加减乘除配合基本函数等处理字符串，获得结果`,试着`根据字符串是否为结构化的来使用开源的对象化模块来操作或者使用模板引擎来处理`
@@ -164,7 +78,7 @@ def main():
             - Saw (2004)""")
 ```
 
-### 12.4python的容器操作(列表，元组等)
+## 4.python的容器操作(列表，元组等)
 
 1. 多使用`yield`来返回生成器对象
 2. 尽量使用生成器表达式替代列表推导式,即使用`(i for i in range(100))`而不是`[i for i in range(100)]`
@@ -182,7 +96,7 @@ def main():
 10. 使用`有序字典`去重,即`collections.OrderedDict`,去重的同时保留了顺序
 11. 不要在循环体里修改被迭代，可能会导致某些成员不能被遍历到,`使用一个空的可迭代对象来保存结果或者使用yield返回一个生成器`
 
-### 12.5函数返回结果的技巧
+## 5.函数返回结果的技巧
 
 1. 单个函数不要返回多种类型的结果
 2. 当一个函数完全依赖另外一个函数来工作时，使用`partial`函数来构造函数[partial函数官方文档](https://docs.python.org/3.6/library/functools.html#functools.partial)
@@ -192,13 +106,13 @@ def main():
 6. 使用生成器函数代替返回列表，即使用`yield item替代append`
 7. 限制递归的使用
 
-### 12.6异常处理的技巧
+## 6.异常处理的技巧
 
 1. `只对可能出错的地方做最精确的异常捕获`
 2. 别让异常破坏抽象的一致性，即`让模块只抛出与当前抽象层级一致的异常；在必要的地方进行异常的包装与转换`
 3. `异常处理不应该太多，导致扰乱了核心的代码逻辑`可以使用`上下文管理器来改善流程`[python上下文管理器demo](../python/python/context_demo.py)
 
-### 12.7编写地道的循环
+## 7.编写地道的循环
 
 1. 使用函数修饰被迭代对象来优化循环
    1. 使用`itertools.product`扁平化多层嵌套循环`for i1, i2, i3 in product(list1, list1, list3)`
@@ -208,7 +122,7 @@ def main():
 2. 按职责拆解循环体内复杂代码块
    1. 使用生成器函数解耦循环体
 
-### 12.8使用装饰器的技巧
+## 8.使用装饰器的技巧
 
 1. 尝试使用类来实现装饰器`查看对象是否可以被调用，使用callable()函数，让类可以被调用只需要实现__call__方法`
    1. 更容易维护以及更容器扩充
@@ -217,24 +131,34 @@ def main():
 3. 使用`functools.wraps()`函数装饰函数，可以不影响其所装饰的函数，仍然可以拿到被装饰函数的名称和文档等内容
 4. 修改外层变量时候要使用**nonlocal**
 
-### 12.9模块相关
+## 9.模块相关
+
+### 9.1模块基本使用规则
 
 1. 合理的模块结构与分层
 2. 合理的模块结构不是一成不变的，应该随着项目发展而调整
 3. 项目内的模块间依赖的流向应该是单向的，不能有环形依赖
 
-### 12.10利用规则
+### 9.2模块以及缺失库导入
+
+- [Python 中如何自动导入缺失的库？](https://mp.weixin.qq.com/s?__biz=MzAwNDc0MTUxMw==&mid=2649642787&idx=1&sn=bda89629cee07aabd7a986001f226a6f&chksm=833db7c5b44a3ed3ae3d5af51d90464de9f46ba2315092ff8c409e22dcb0ea6cbf6478b2be84&mpshare=1&scene=24&srcid=&sharer_sharetime=1573813305411&sharer_shareid=20ab6c09eef32b49dbe03904652b9eb2#rd)
+
+1. 使用try_except
+2. 使用requirements.txt
+3. 使用sys.meta_path可以自动导入任意缺失的库([autoinstall.py](./autoinstall.py))
+
+## 10.利用规则
 
 1. `将数据转换为自定义的对象，利用规则来计算`[利用集合计算](../python/python/other/ruler_demo.py)
 2. `__hash__`方法解决问题，`__eq__`方法决定对象间逻辑相等
 
-### 12.11高效文件操作
+## 11.高效文件操作
 
 1. 使用`pathlib模块`来使文件处理变得简单
 2. `流式读取大文件`[大文件流式操作](../python/python/files/read_big_file.py)
 3. 设计接受文件对象的函数
 
-### 12.12写好面向对象
+## 12.写好面向对象
 
 尽量编写符合**SOLID**原则的代码。
 
@@ -242,7 +166,7 @@ def main():
 2. **O**: 开放-关闭原则，在不修改某个类的前提下，可以通过传入自定义的参数来扩展其行为
 3. 使用`数据驱动思想`,将经常变动的东西完全以数据的方式抽离，当需求变动时候只需要改变数据，代码逻辑保持不变
 
-### 12.13写好文档
+## 13.写好文档
 
 1. 专注于想法，然后审查和写文本，即`先随便写核心点，然后写完整`
 2. 准确定位读者，从的角度来写
@@ -258,28 +182,6 @@ def main():
    3. `python -m pydoc -p port`启动本地服务器来查看文档信息
    4. `python -m pydoc -k xxx`查找模块
 
-## 13.HTTP Api设计指南
+## a.其他
 
-- [http api设计指南中文版](https://github.com/ZhangBohan/http-api-design-ZH_CN)
-
-**要点**:
-
-- 资源名：使用复数形式为命名
-- 行为：如`/runs/{id}/actions/stop`
-- 最小化嵌套路径，即父子路径的嵌套关系不宜过深
-- 响应：
-  - `200`: GET请求成功，及DELETE或PATCH同步请求完成，或者PUT同步更新一个已存在的资源
-  - `201`: POST 同步请求完成，或者PUT同步创建一个新的资源
-  - `202`: POST，PUT，DELETE，或PATCH请求接收，将被异步处理
-  - `206`: GET 请求成功，但是只返回一部分
-  - `401`: Unauthorized: 用户未认证，请求失败
-  - `403`: Forbidden: 用户无权限访问该资源，请求失败
-  - `422`: Unprocessable Entity: 请求被服务器正确解析，但是包含无效字段
-  - `429`: Too Many Requests: 因为访问频繁，你已经被限制访问，稍后重试
-  - `500`: Internal Server Error: 服务器错误，确认状态并报告问题
-- 提供资源的(UU)ID：默认给每一个资源id属性，最好uuid
-- 提供标准的时间戳：为资源提供默认的创建时间和更新时间
-- 使用UTC时间(世界标准时间)，并用ISO8601格式化
-- 嵌套外键关系：使用嵌套对象序列化外键关联
-- 生成结构化的错误
-- 抱枕想用json最小化，多余的空格会增加响应的大小
+- [python必备的库](https://www.cnblogs.com/jiangchunsheng/p/9275881.html)
