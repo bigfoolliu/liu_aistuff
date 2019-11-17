@@ -4,7 +4,7 @@
 
 - [Linux相关知识](#linux%e7%9b%b8%e5%85%b3%e7%9f%a5%e8%af%86)
   - [1.进程](#1%e8%bf%9b%e7%a8%8b)
-    - [1.1进程状态码(PROCESS STATE CODES)](#11%e8%bf%9b%e7%a8%8b%e7%8a%b6%e6%80%81%e7%a0%81process-state-codes)
+    - [1.1进程信息](#11%e8%bf%9b%e7%a8%8b%e4%bf%a1%e6%81%af)
     - [1.2僵尸进程(zombie process)](#12%e5%83%b5%e5%b0%b8%e8%bf%9b%e7%a8%8bzombie-process)
     - [1.3几个与开关进程有关的标准信号](#13%e5%87%a0%e4%b8%aa%e4%b8%8e%e5%bc%80%e5%85%b3%e8%bf%9b%e7%a8%8b%e6%9c%89%e5%85%b3%e7%9a%84%e6%a0%87%e5%87%86%e4%bf%a1%e5%8f%b7)
     - [1.4supervisor进程管理](#14supervisor%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86)
@@ -21,16 +21,16 @@
     - [2.5其它](#25%e5%85%b6%e5%ae%83)
   - [8.Linux文件系统](#8linux%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f)
     - [8.1使用tmpfs](#81%e4%bd%bf%e7%94%a8tmpfs)
-    - [8.a修改windows开机启动自动执行脚本](#8a%e4%bf%ae%e6%94%b9windows%e5%bc%80%e6%9c%ba%e5%90%af%e5%8a%a8%e8%87%aa%e5%8a%a8%e6%89%a7%e8%a1%8c%e8%84%9a%e6%9c%ac)
-    - [8.2进程信息](#82%e8%bf%9b%e7%a8%8b%e4%bf%a1%e6%81%af)
-    - [8.3使用crontab开启定时任务](#83%e4%bd%bf%e7%94%a8crontab%e5%bc%80%e5%90%af%e5%ae%9a%e6%97%b6%e4%bb%bb%e5%8a%a1)
-    - [8.4配置dns(/etc/resolv.conf)](#84%e9%85%8d%e7%bd%aednsetcresolvconf)
-    - [8.5ssh文件传输](#85ssh%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93)
-    - [8.6文件改变](#86%e6%96%87%e4%bb%b6%e6%94%b9%e5%8f%98)
-    - [8.7流量监控工具](#87%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e5%b7%a5%e5%85%b7)
   - [9.linux重要文件](#9linux%e9%87%8d%e8%a6%81%e6%96%87%e4%bb%b6)
     - [9.1/etc/hosts文件](#91etchosts%e6%96%87%e4%bb%b6)
+    - [9.2/etc/resolv.conf文件](#92etcresolvconf%e6%96%87%e4%bb%b6)
+    - [9.3/etc/hosts文件](#93etchosts%e6%96%87%e4%bb%b6)
   - [10.系统监控](#10%e7%b3%bb%e7%bb%9f%e7%9b%91%e6%8e%a7)
+  - [a.其他](#a%e5%85%b6%e4%bb%96)
+    - [a.1文件改变](#a1%e6%96%87%e4%bb%b6%e6%94%b9%e5%8f%98)
+    - [a.2流量监控工具](#a2%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e5%b7%a5%e5%85%b7)
+    - [a.3使用crontab开启定时任务](#a3%e4%bd%bf%e7%94%a8crontab%e5%bc%80%e5%90%af%e5%ae%9a%e6%97%b6%e4%bb%bb%e5%8a%a1)
+    - [a.4ssh文件传输](#a4ssh%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93)
 
 <!-- /TOC -->
 
@@ -38,7 +38,9 @@
 
 ## 1.进程
 
-### 1.1进程状态码(PROCESS STATE CODES)
+### 1.1进程信息
+
+**进程状态码(PROCESS STATE CODES)：**
 
 进程的状态码的含义，ps之后的`STAT`列。
 
@@ -59,6 +61,22 @@ L    has pages locked into memory (for real-time and custom IO)
 s    is a session leader
 l    is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
 +    is in the foreground process group.
+```
+
+**进程信息:**
+
+```shell
+cat /proc/pid/statm
+
+# pid 为进程号
+# 输出解释
+# 第一列  size:任务虚拟地址空间大小
+# 第二列  Resident：正在使用的物理内存大小
+# 第三列  Shared：共享页数
+# 第四列  Trs：程序所拥有的可执行虚拟内存大小
+# 第五列  Lrs：被映像倒任务的虚拟内存空间的库的大小
+# 第六列  Drs：程序数据段和用户态的栈的大小
+# 第七列 dt：脏页数量
 ```
 
 ### 1.2僵尸进程(zombie process)
@@ -494,24 +512,97 @@ mount
 
 由于它的数据是在VM里面，因此断电或者你卸载它之后，数据就会立即丢失。
 
-### 8.a修改windows开机启动自动执行脚本
+## 9.linux重要文件
 
-`cmd gpedit.msc`，将需要执行的脚本添加进去。
+### 9.1/etc/hosts文件
 
-### 8.2进程信息
+常用的网址域名与其对应的 IP 地址建立一个关联"数据库"，用户在浏览器中输入一个需要登录的网址时，系统会首先自动从hosts文件中寻找对应的 IP 地址，一旦找到，系统就会立即打开对应网页，如果没有找到，则系统会将网址提交 DNS 域名解析服务器进行 IP 地址的解析。
 
-cat /proc/pid/statm
-pid 为进程号
-输出解释
-第一列  size:任务虚拟地址空间大小
-第二列  Resident：正在使用的物理内存大小
-第三列  Shared：共享页数
-第四列  Trs：程序所拥有的可执行虚拟内存大小
-第五列  Lrs：被映像倒任务的虚拟内存空间的库的大小
-第六列  Drs：程序数据段和用户态的栈的大小
-第七列 dt：脏页数量
+作用：
 
-### 8.3使用crontab开启定时任务
+1. `加快域名解析`
+2. `构建映射关系`
+3. `屏蔽垃圾网站`
+
+### 9.2/etc/resolv.conf文件
+
+- [linux下的DNS域名解析配置文件](https://blog.csdn.net/u014453898/article/details/62426848)
+- `/etc/resolv.conf`文件设置了本地的DNS,指明域名和IP的对应关系，一个域名可以分配多个ip地址，dns服务器只会返回一个。
+
+```shell
+# 手动添加名字服务器
+echo google.com 172.217.24.14 >> /etc/resolv.conf
+
+# dns查找，列出某个域名的所有ip地址
+host google.com
+
+# 查询dns相关的细节信息
+nsloopup google.com
+```
+
+### 9.3/etc/hosts文件
+
+- [linux下/etc/hosts文件介绍](https://blog.csdn.net/Aempty/article/details/79593625)
+- 负责ip地址与域名快速解析的文件，包含ip地址和主机名之间的映射，`没有域名解析服务器的情况下，系统上的所有网络程序都是通过查询该文件来解析对应于某个主机名的ip地址`
+
+## 10.系统监控
+
+```shell
+# 报告关于线程、虚拟内存、磁盘、陷阱和 CPU 活动的统计信息
+# vmstat参数解释：
+# 　　Procs
+# 　　r: 等待运行的进程数 b: 处在非中断睡眠状态的进程数 w: 被交换出去的可运行的进程数。此数由 linux 计算得出，但 linux 并不耗尽交换空间
+# 　　Memory
+# 　　swpd: 虚拟内存使用情况，单位：KB
+# 　　free: 空闲的内存，单位KB
+# 　　buff: 被用来做为缓存的内存数，单位：KB
+# 　　Swap
+# 　　si: 从磁盘交换到内存的交换页数量，单位：KB/秒
+# 　　so: 从内存交换到磁盘的交换页数量，单位：KB/秒
+# 　　IO
+# 　　bi: 发送到块设备的块数，单位：块/秒
+# 　　bo: 从块设备接收到的块数，单位：块/秒
+# 　　System
+# 　　in: 每秒的中断数，包括时钟中断
+# 　　cs: 每秒的环境(上下文)切换次数
+# 　　CPU
+# 　　按 CPU 的总使用百分比来显示
+# 　　us: CPU 使用时间
+# 　　sy: CPU 系统使用时间
+# 　　id: 闲置时间
+vmstat 2 5
+```
+
+## a.其他
+
+### a.1文件改变
+
+***文件在网络传输过程中容易发生变化的部分通常是在文件头或者尾部，可以通过文件的二进制值(notepad++ hex插件)来对比。***
+
+```shell
+# 计算文件的md5值，可以来查看文件前后值的变化知道其是否改变
+md5sum filename
+```
+
+### a.2流量监控工具
+
+```shell
+# TX：发送流量
+# RX：接收流量
+# TOTAL：总流量
+# Cumm：运行iftop到目前时间的总流量
+# peak：流量峰值
+# rates：分别表示过去 2s 10s 40s 的平均流量
+
+# 一般显示
+iftop
+# 指定待检测的网卡
+iftop -i eth0
+# 使host信息默认都显示IP
+iftop -n
+```
+
+### a.3使用crontab开启定时任务
 
 - [crontab-generator](https://crontab-generator.org/)
 - [crontab guru](https://crontab.guru/)
@@ -560,22 +651,7 @@ crontab -e
 crontab tonycron
 ```
 
-### 8.4配置dns(/etc/resolv.conf)
-
-`/etc/resolv.conf`文件设置了本地的DNS,指明域名和IP的对应关系，一个域名可以分配多个ip地址，dns服务器只会返回一个。
-
-```shell
-# 手动添加名字服务器
-echo google.com 172.217.24.14 >> /etc/resolv.conf
-
-# dns查找，列出某个域名的所有ip地址
-host google.com
-
-# 查询dns相关的细节信息
-nsloopup google.com
-```
-
-### 8.5ssh文件传输
+### a.4ssh文件传输
 
 **设置ssh的自动化认证：**
 
@@ -613,71 +689,4 @@ ssh -D localhost:1080 ubuntu@sgcc.jiangxingai.com
 
 # 本地浏览器即可访问远程的即使未开放的端口
 http://172.16.16.14:5920
-```
-
-### 8.6文件改变
-
-***文件在网络传输过程中容易发生变化的部分通常是在文件头或者尾部，可以通过文件的二进制值(notepad++ hex插件)来对比。***
-
-```shell
-# 计算文件的md5值，可以来查看文件前后值的变化知道其是否改变
-md5sum filename
-```
-
-### 8.7流量监控工具
-
-```shell
-# TX：发送流量
-# RX：接收流量
-# TOTAL：总流量
-# Cumm：运行iftop到目前时间的总流量
-# peak：流量峰值
-# rates：分别表示过去 2s 10s 40s 的平均流量
-
-# 一般显示
-iftop
-# 指定待检测的网卡
-iftop -i eth0
-# 使host信息默认都显示IP
-iftop -n
-```
-
-## 9.linux重要文件
-
-### 9.1/etc/hosts文件
-
-常用的网址域名与其对应的 IP 地址建立一个关联"数据库"，用户在浏览器中输入一个需要登录的网址时，系统会首先自动从hosts文件中寻找对应的 IP 地址，一旦找到，系统就会立即打开对应网页，如果没有找到，则系统会将网址提交 DNS 域名解析服务器进行 IP 地址的解析。
-
-作用：
-
-1. `加快域名解析`
-2. `构建映射关系`
-3. `屏蔽垃圾网站`
-
-## 10.系统监控
-
-```shell
-# 报告关于线程、虚拟内存、磁盘、陷阱和 CPU 活动的统计信息
-# vmstat参数解释：
-# 　　Procs
-# 　　r: 等待运行的进程数 b: 处在非中断睡眠状态的进程数 w: 被交换出去的可运行的进程数。此数由 linux 计算得出，但 linux 并不耗尽交换空间
-# 　　Memory
-# 　　swpd: 虚拟内存使用情况，单位：KB
-# 　　free: 空闲的内存，单位KB
-# 　　buff: 被用来做为缓存的内存数，单位：KB
-# 　　Swap
-# 　　si: 从磁盘交换到内存的交换页数量，单位：KB/秒
-# 　　so: 从内存交换到磁盘的交换页数量，单位：KB/秒
-# 　　IO
-# 　　bi: 发送到块设备的块数，单位：块/秒
-# 　　bo: 从块设备接收到的块数，单位：块/秒
-# 　　System
-# 　　in: 每秒的中断数，包括时钟中断
-# 　　cs: 每秒的环境(上下文)切换次数
-# 　　CPU
-# 　　按 CPU 的总使用百分比来显示
-# 　　us: CPU 使用时间
-# 　　sy: CPU 系统使用时间
-# 　　id: 闲置时间
-vmstat 2 5
 ```
