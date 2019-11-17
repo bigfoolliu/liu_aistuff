@@ -2,35 +2,35 @@
 
 <!-- TOC -->
 
-- [Linux相关知识](#linux相关知识)
-    - [1.进程](#1进程)
-        - [1.1进程状态码(PROCESS STATE CODES)](#11进程状态码process-state-codes)
-        - [1.2僵尸进程(zombie process)](#12僵尸进程zombie-process)
-        - [1.3几个与开关进程有关的标准信号](#13几个与开关进程有关的标准信号)
-        - [1.4supervisor进程管理](#14supervisor进程管理)
-    - [2.linux命令](#2linux命令)
-        - [2.1系统信息](#21系统信息)
-        - [2.2目录及文件](#22目录及文件)
-        - [2.3进程相关](#23进程相关)
-            - [2.3.1杀死进程的几种方式](#231杀死进程的几种方式)
-        - [2.4网络相关](#24网络相关)
-            - [2.4.1tcpdump网络抓包](#241tcpdump网络抓包)
-            - [2.4.2网关相关命令](#242网关相关命令)
-            - [2.4.3curl命令](#243curl命令)
-            - [2.4.4wget命令](#244wget命令)
-        - [2.5其它](#25其它)
-    - [8.Linux文件系统](#8linux文件系统)
-        - [使用tmpfs](#使用tmpfs)
-        - [修改windows开机启动自动执行脚本](#修改windows开机启动自动执行脚本)
-        - [进程信息](#进程信息)
-        - [使用crontab开启定时任务](#使用crontab开启定时任务)
-        - [配置dns](#配置dns)
-        - [ssh文件传输](#ssh文件传输)
-        - [文件改变](#文件改变)
-        - [流量监控工具](#流量监控工具)
-    - [9.linux重要文件](#9linux重要文件)
-        - [9.1/etc/hosts文件](#91etchosts文件)
-    - [10.系统监控](#10系统监控)
+- [Linux相关知识](#linux%e7%9b%b8%e5%85%b3%e7%9f%a5%e8%af%86)
+  - [1.进程](#1%e8%bf%9b%e7%a8%8b)
+    - [1.1进程状态码(PROCESS STATE CODES)](#11%e8%bf%9b%e7%a8%8b%e7%8a%b6%e6%80%81%e7%a0%81process-state-codes)
+    - [1.2僵尸进程(zombie process)](#12%e5%83%b5%e5%b0%b8%e8%bf%9b%e7%a8%8bzombie-process)
+    - [1.3几个与开关进程有关的标准信号](#13%e5%87%a0%e4%b8%aa%e4%b8%8e%e5%bc%80%e5%85%b3%e8%bf%9b%e7%a8%8b%e6%9c%89%e5%85%b3%e7%9a%84%e6%a0%87%e5%87%86%e4%bf%a1%e5%8f%b7)
+    - [1.4supervisor进程管理](#14supervisor%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86)
+  - [2.linux命令](#2linux%e5%91%bd%e4%bb%a4)
+    - [2.1系统信息](#21%e7%b3%bb%e7%bb%9f%e4%bf%a1%e6%81%af)
+    - [2.2目录及文件](#22%e7%9b%ae%e5%bd%95%e5%8f%8a%e6%96%87%e4%bb%b6)
+    - [2.3进程相关](#23%e8%bf%9b%e7%a8%8b%e7%9b%b8%e5%85%b3)
+      - [2.3.1杀死进程的几种方式](#231%e6%9d%80%e6%ad%bb%e8%bf%9b%e7%a8%8b%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e5%bc%8f)
+    - [2.4网络相关](#24%e7%bd%91%e7%bb%9c%e7%9b%b8%e5%85%b3)
+      - [2.4.1tcpdump网络抓包](#241tcpdump%e7%bd%91%e7%bb%9c%e6%8a%93%e5%8c%85)
+      - [2.4.2网关相关命令](#242%e7%bd%91%e5%85%b3%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4)
+      - [2.4.3curl命令](#243curl%e5%91%bd%e4%bb%a4)
+      - [2.4.4wget命令](#244wget%e5%91%bd%e4%bb%a4)
+    - [2.5其它](#25%e5%85%b6%e5%ae%83)
+  - [8.Linux文件系统](#8linux%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f)
+    - [8.1使用tmpfs](#81%e4%bd%bf%e7%94%a8tmpfs)
+    - [8.a修改windows开机启动自动执行脚本](#8a%e4%bf%ae%e6%94%b9windows%e5%bc%80%e6%9c%ba%e5%90%af%e5%8a%a8%e8%87%aa%e5%8a%a8%e6%89%a7%e8%a1%8c%e8%84%9a%e6%9c%ac)
+    - [8.2进程信息](#82%e8%bf%9b%e7%a8%8b%e4%bf%a1%e6%81%af)
+    - [8.3使用crontab开启定时任务](#83%e4%bd%bf%e7%94%a8crontab%e5%bc%80%e5%90%af%e5%ae%9a%e6%97%b6%e4%bb%bb%e5%8a%a1)
+    - [8.4配置dns(/etc/resolv.conf)](#84%e9%85%8d%e7%bd%aednsetcresolvconf)
+    - [8.5ssh文件传输](#85ssh%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93)
+    - [8.6文件改变](#86%e6%96%87%e4%bb%b6%e6%94%b9%e5%8f%98)
+    - [8.7流量监控工具](#87%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e5%b7%a5%e5%85%b7)
+  - [9.linux重要文件](#9linux%e9%87%8d%e8%a6%81%e6%96%87%e4%bb%b6)
+    - [9.1/etc/hosts文件](#91etchosts%e6%96%87%e4%bb%b6)
+  - [10.系统监控](#10%e7%b3%bb%e7%bb%9f%e7%9b%91%e6%8e%a7)
 
 <!-- /TOC -->
 
@@ -357,7 +357,7 @@ curl --trace output.txt http://www.linux.com  # 获取更详细的通信信息
 
 # 发送表单信息
 curl http://example.com?data=xxx  # GET请求直接将数据附在网址后面
-curl -X POST --data "data=xxx" http://example.com  # POST请求则需要将数据和网址分开，同时用到data参数，POST可以替换为DELETE
+curl -X POST --data "data=xxx&&data2=xxx" http://example.com  # POST请求则需要将数据和网址分开，同时用到data参数，POST可以替换为DELETE
 
 # 携带cookie
 curl --cookie "name=xxx" http://example.com
@@ -486,7 +486,7 @@ mount
 | p    | 命名管道文件。长列表中以英文字母 p 开头。 |
 | b    | 块文件。长列表中以英文字母 b 开头。       |
 
-### 使用tmpfs
+### 8.1使用tmpfs
 
 `mount -t tmpfs -o size=20m tmpfs /mnt/tmp`
 
@@ -494,11 +494,11 @@ mount
 
 由于它的数据是在VM里面，因此断电或者你卸载它之后，数据就会立即丢失。
 
-### 修改windows开机启动自动执行脚本
+### 8.a修改windows开机启动自动执行脚本
 
 `cmd gpedit.msc`，将需要执行的脚本添加进去。
 
-### 进程信息
+### 8.2进程信息
 
 cat /proc/pid/statm
 pid 为进程号
@@ -511,10 +511,10 @@ pid 为进程号
 第六列  Drs：程序数据段和用户态的栈的大小
 第七列 dt：脏页数量
 
-### 使用crontab开启定时任务
+### 8.3使用crontab开启定时任务
 
-[crontab-generator](https://crontab-generator.org/)
-[crontab guru](https://crontab.guru/)
+- [crontab-generator](https://crontab-generator.org/)
+- [crontab guru](https://crontab.guru/)
 
 使用crontab的步骤：
 
@@ -560,7 +560,7 @@ crontab -e
 crontab tonycron
 ```
 
-### 配置dns
+### 8.4配置dns(/etc/resolv.conf)
 
 `/etc/resolv.conf`文件设置了本地的DNS,指明域名和IP的对应关系，一个域名可以分配多个ip地址，dns服务器只会返回一个。
 
@@ -575,9 +575,9 @@ host google.com
 nsloopup google.com
 ```
 
-### ssh文件传输
+### 8.5ssh文件传输
 
-设置ssh的自动化认证.
+**设置ssh的自动化认证：**
 
 ```shell
 # 1.进入.sh
@@ -592,7 +592,7 @@ ssh USERNAME@REMOTE_HOST "cat >> ~/.ssh/authorized_keys" < ~./ssh/id_rsa.pub
 # 4.可以直接ssh连接到那台远程服务器了
 ```
 
-使用sshfs设置本地挂载点挂载远程驱动器
+**使用sshfs设置本地挂载点挂载远程驱动器：**
 
 ```shell
 # 将远程的/home挂载到本地的/mnt/e
@@ -602,7 +602,7 @@ sshfs USERNAME@REMOTE_HOST:/home /mnt/e
 umount /mnt/e
 ```
 
-ssh端口转发：
+**ssh端口转发：**
 
 ```shell
 # 下载插件，设置代理: 代理协议 SOCKS5 代理服务器 127.0.0.1 代理端口 1080
@@ -615,7 +615,7 @@ ssh -D localhost:1080 ubuntu@sgcc.jiangxingai.com
 http://172.16.16.14:5920
 ```
 
-### 文件改变
+### 8.6文件改变
 
 ***文件在网络传输过程中容易发生变化的部分通常是在文件头或者尾部，可以通过文件的二进制值(notepad++ hex插件)来对比。***
 
@@ -624,7 +624,7 @@ http://172.16.16.14:5920
 md5sum filename
 ```
 
-### 流量监控工具
+### 8.7流量监控工具
 
 ```shell
 # TX：发送流量
@@ -650,9 +650,9 @@ iftop -n
 
 作用：
 
-1. 加快域名解析
-2. 构建映射关系
-3. 屏蔽垃圾网站
+1. `加快域名解析`
+2. `构建映射关系`
+3. `屏蔽垃圾网站`
 
 ## 10.系统监控
 
