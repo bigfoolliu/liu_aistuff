@@ -16,6 +16,8 @@
         - [2.4网络相关](#24网络相关)
             - [2.4.1tcpdump网络抓包](#241tcpdump网络抓包)
             - [2.4.2网关相关命令](#242网关相关命令)
+            - [2.4.3curl命令](#243curl命令)
+            - [2.4.4wget命令](#244wget命令)
         - [2.5其它](#25其它)
     - [8.Linux文件系统](#8linux文件系统)
         - [使用tmpfs](#使用tmpfs)
@@ -150,12 +152,10 @@ free -mh
 lsusb
 lsusb -v
 
-# 查看v4l设备列表
-v4l2-ctl --list-devices
-# 查看当前摄像头支持的视频压缩格式
-v4l2-ctl -d /dev/video0 --list-formats
-# 查看usb摄像头支持的格式
-v4l2-ctl --list-formats-ext -d /dev/video0
+# v4l命令查看设备
+v4l2-ctl --list-devices  # 查看v4l设备列表
+v4l2-ctl -d /dev/video0 --list-formats  # 查看当前摄像头支持的视频压缩格式
+v4l2-ctl --list-formats-ext -d /dev/video0  # 查看usb摄像头支持的格式
 
 # 查看某个摄像头的详细信息
 udevadm info --query=all --name=/dev/video0
@@ -176,27 +176,25 @@ uname -r  # 查看系统版本
 # 用grep直接搜索文件中的文本内容
 grep -i 'Out of Memory' /var/log/messages
 
-# 查看文件是否被其他进程占用(持续写入状态，vi打开不是), 返回值为1则为被占用，0则为未被占用
-fuser -s file
-# 查看文件的具体占用信息，包括占用进程的 USER, PID 等
-fuser -v file
-# 根据文件名查找文件,在当前目录下查找*.sh并将其输出
-find . -name *.sh -print
-# 查找过去 1 小时修改过的普通文件
-find . -ctime 1 -type f -print
-# 查找过去 10 分钟修改过的目录
-find . -ctime 10 -type d -print
-# 查找文件大小超过 10（b/c/w/k/M/G）的文件
-find . -size +10M -type f -print
-# 查找文件的时候避开当前目录下的test文件夹
-find . -path ./test -prune -o -print
+# 查看文件占用
+fuser -s file  # 查看文件是否被其他进程占用(持续写入状态，vi打开不是), 返回值为1则为被占用，0则为未被占用
+fuser -v file  # 查看文件的具体占用信息，包括占用进程的 USER, PID 等
+
+# 文件查找
+find . -name *.sh -print  # 根据文件名查找文件,在当前目录下查找*.sh并将其输出
+find . -ctime 1 -type f -print  # 查找过去 1 小时修改过的普通文件
+find . -ctime 10 -type d -print  # 查找过去 10 分钟修改过的目录
+find . -size +10M -type f -print  # 查找文件大小超过 10（b/c/w/k/M/G）的文件
+find . -path ./test -prune -o -print  # 查找文件的时候避开当前目录下的test文件夹
 
 # 统计当前路径下所有.py文件的个数
 find ./ -name *.py | wc -l
 find ./ -name "*.py" | wc -l
+
 # 统计当前路径下所有.py文件各自的行数
 find ./ -name *.py | xargs wc -l
 find ./ -name "*.py" | xargs wc -l
+
 # 递归的统计一目录下及其子目录下所有匹配文件的总的行数和每个文件的行数，可以使用一下命令
 wc -l `find ./ -name *.csv`
 
@@ -281,36 +279,12 @@ pkill -9 firefox
 
 ### 2.4网络相关
 
-```shell
-# curl直接返回html显示到桌面
-curl http://www.linux.com
-
-# 将返回的数据保存
-curl -o linux.html http://www.linux.com
-
-# 保存具体的文件，后面也要接具体的文件路径
-curl -O http://www.linux.com/hello.sh
-
-# 测试网页的返回值
-curl -o /dev/null -s -w %{http_code} www.linux.com
-
-# 查看自己的公网ip
-curl -s https://ip.cn
-
-# 携带HTTP头信息的查看公网ip
-curl -s https://ip.cn -i
-
-# wget相关命令
-wget http://www.baidu.com  # 将首页下载
-wget -x http://www.baidu.com  # 强制建立服务器上一模一样的目录
-wget -nd http://www.baidu.com  # 服务器上下载的所有内容加到本地目录
-
-wget -c -t 10 -T 120http://www.baidu.com/a.mp4  # 大文件断点续传，-t表示重试次数，-t 100表示重试100次, -T表示超时等待时间
-wget -i downloadlist.txt  # 批量下载，将每一个文件的url写一行
-wget -m -accept=mp4 http://www.baidu.com  # 只下载某种类型的文件,-reject表示忽略下载某种类型的文件
-```
-
 #### 2.4.1tcpdump网络抓包
+
+- [tcpdump基础教程](https://www.jianshu.com/p/d9162722f189)
+
+- 用于截取网络分组，并输出分组内容的工具
+- 针对网络层，协议，主机，网络或者端口的过滤
 
 ```shell
 # -n 表示不要解析域名，直接显示 ip。
@@ -322,9 +296,15 @@ wget -m -accept=mp4 http://www.baidu.com  # 只下载某种类型的文件,-reje
 # -v, -vv, -vvv：显示更多的详细信息
 # -c number: 截取 number 个报文，然后结束
 # -A： 只使用 ascii 打印报文的全部数据，不要和 -X 一起使用。截取 http 请求的时候可以用 sudo tcpdump -nSA port 80！
-# TODO:
 
-tcpdump
+tcpdump  # 默认启动，会监视第一个网络接口,抓取的结果会很多
+
+tcpdump -i ens33  # 监视指定网络接口的数据包
+tcpdump -i ens33 host node1  # 监视指定主机的数据包
+
+tcpdump -i ens33 dst host node1  # 监视所有发送到主机node1的数据包
+
+tcpdump -i ens433 port 8888 and host node1  # 监视指定主机和端口的数据包
 ```
 
 #### 2.4.2网关相关命令
@@ -358,6 +338,56 @@ sudo ifconfig ens33 up
 # 本地局域网ip为动态分配的
 # 修改网卡ip地址(即手动设置ip),不建议手动设置:
 sudo ifconfig ens33 192.168.42.130
+```
+
+#### 2.4.3curl命令
+
+- [阮一峰curl网站开发指南](http://www.ruanyifeng.com/blog/2011/09/curl.html)
+
+```shell
+# curl直接返回html
+curl http://www.linux.com
+
+# -i参数可以显示头信息
+curl -i http://www.linux.com
+
+# -v参数可以显示一次http通信的全部过程,包括端口连接和http request头信息
+curl -v http://www.linux.com
+curl --trace output.txt http://www.linux.com  # 获取更详细的通信信息
+
+# 发送表单信息
+curl http://example.com?data=xxx  # GET请求直接将数据附在网址后面
+curl -X POST --data "data=xxx" http://example.com  # POST请求则需要将数据和网址分开，同时用到data参数，POST可以替换为DELETE
+
+# 携带cookie
+curl --cookie "name=xxx" http://example.com
+
+# http认证
+curl --user name:password http://example.com
+
+# 增加头信息
+curl --header "Content-Type:application/json" http://example.com
+
+# 将返回的数据保存
+curl -o linux.html http://www.linux.com
+curl -O http://www.linux.com/hello.sh  # 保存具体的文件，后面也要接具体的文件路径
+curl -o /dev/null -s -w %{http_code} www.linux.com  # 测试网页的返回值
+
+# 查看自己的公网ip
+curl -s https://ip.cn
+```
+
+#### 2.4.4wget命令
+
+```shell
+# wget相关命令
+wget http://www.baidu.com  # 将首页下载
+wget -x http://www.baidu.com  # 强制建立服务器上一模一样的目录
+wget -nd http://www.baidu.com  # 服务器上下载的所有内容加到本地目录
+
+wget -c -t 10 -T 120http://www.baidu.com/a.mp4  # 大文件断点续传，-t表示重试次数，-t 100表示重试100次, -T表示超时等待时间
+wget -i downloadlist.txt  # 批量下载，将每一个文件的url写一行
+wget -m -accept=mp4 http://www.baidu.com  # 只下载某种类型的文件,-reject表示忽略下载某种类型的文件
 ```
 
 ### 2.5其它
