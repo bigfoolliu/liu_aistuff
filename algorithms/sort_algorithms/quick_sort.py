@@ -60,6 +60,21 @@ def quick_sort2(array, begin, end):
     return array
 
 
+def quick_sort3(_list):
+    """
+    quick_sort algorithm
+    :param _list: list of integers to sort
+    :return: sorted list
+    """
+    if len(_list) <= 1:
+        return _list
+    pivot = _list[len(_list) // 2]
+    left = [x for x in _list if x < pivot]
+    middle = [x for x in _list if x == pivot]
+    right = [x for x in _list if x > pivot]
+    return sort(left) + middle + sort(right)
+
+
 if __name__ == "__main__":
     array = [3, 2, 4, 6, 5]
     # print(quick_sort(array))
