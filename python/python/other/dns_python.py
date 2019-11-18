@@ -5,7 +5,8 @@
 
 """
 Python实现简单的dns服务器
-https://blog.csdn.net/trbbadboy/article/details/8093256?utm_source=blogxgwz9
+- https://blog.csdn.net/trbbadboy/article/details/8093256?utm_source=blogxgwz9
+- https://github.com/nopernik/mpDNS
 """
 
 
