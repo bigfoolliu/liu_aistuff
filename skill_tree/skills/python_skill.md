@@ -18,6 +18,10 @@
     - [11.高效文件操作](#11高效文件操作)
     - [12.写好面向对象](#12写好面向对象)
     - [13.写好文档](#13写好文档)
+    - [14.python包以及环境管理](#14python包以及环境管理)
+        - [14.1virtualenv](#141virtualenv)
+        - [14.2pip](#142pip)
+        - [14.3fabric](#143fabric)
     - [a.其他](#a其他)
 
 <!-- /TOC -->
@@ -181,6 +185,37 @@ def main():
    2. `python -m pydoc -w xxx`查看模块注释并输出html文档
    3. `python -m pydoc -p port`启动本地服务器来查看文档信息
    4. `python -m pydoc -k xxx`查找模块
+
+## 14.python包以及环境管理
+
+### 14.1virtualenv
+
+```shell
+virtualenv <venv>  # 使用默认的python解释器创建虚拟环境
+virtualenv -p python3 <venv>  # 指定python解释器版本创建虚拟环境
+
+source env/bin/activate  # 激活虚拟环境
+```
+
+### 14.2pip
+
+- [pip常用指令个人总结](https://blog.csdn.net/weixin_40877924/article/details/98658669)
+
+```shell
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <package>  # 使用清华源下载包
+python -m pip install --upgrade pip  # 更新pip
+
+pip show <packge>  # 查看某个包是否安装
+pip install --upgrade <package>  # 更新包
+pip uninstall <package>  # 卸载包
+
+pip install -r requirements.txt  # 从文件中同时安装多个包
+pip freeze > requirements.txt  # 生成一个迁移文件
+```
+
+### 14.3fabric
+
+- [python Fabric概览和教程](https://fabric-chs.readthedocs.io/zh_CN/chs/tutorial.html)
 
 ## a.其他
 
