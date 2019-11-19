@@ -244,7 +244,7 @@
 
 B+树的查询过程：
 
-![B+树的查询](./imgs/b+_tree.png)
+![B+树的查询](./imgs/b+_tree_search.png)
 
 ### 10.3B树和B+树查询区别
 
