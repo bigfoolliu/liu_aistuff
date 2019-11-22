@@ -8,7 +8,6 @@ import random
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 
-
 app = Flask(__name__, static_folder="./dist/static", template_folder="./dist")
 
 # 开启CORS,使用资源的定位的方式，允许所有的/api/*下的路由都可以被任何人访问
@@ -27,3 +26,7 @@ def random_number():
         "randomNumber": random.randint(1, 100)
     }
     return jsonify(response)
+
+
+if __name__ == "__main__":
+    app.run(debug=True, host="localhost", port=5000)
