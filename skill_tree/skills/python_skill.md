@@ -22,6 +22,7 @@
         - [14.1virtualenv](#141virtualenv)
         - [14.2pip](#142pip)
         - [14.3fabric](#143fabric)
+        - [14.4python导包](#144python导包)
     - [a.其他](#a其他)
 
 <!-- /TOC -->
@@ -195,6 +196,8 @@ virtualenv <venv>  # 使用默认的python解释器创建虚拟环境
 virtualenv -p python3 <venv>  # 指定python解释器版本创建虚拟环境
 
 source env/bin/activate  # 激活虚拟环境
+
+deactivate  # 退出虚拟环境
 ```
 
 ### 14.2pip
@@ -216,6 +219,10 @@ pip freeze > requirements.txt  # 生成一个迁移文件
 ### 14.3fabric
 
 - [python Fabric概览和教程](https://fabric-chs.readthedocs.io/zh_CN/chs/tutorial.html)
+
+### 14.4python导包
+
+- [可能是python3史上最好的导包技巧](https://blog.csdn.net/weixin_38256474/article/details/81228492)
 
 ## a.其他
 
