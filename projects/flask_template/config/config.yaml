@@ -1,0 +1,15 @@
+COMMON: &common  # 标识
+  DEBUG: False
+  SECRET_KEY: insecure
+
+DEVELOPMENT: &development  # 开发环境配置
+  <<: *common  # 继承common,使用其下面的所有配置
+  DEBUG: True
+
+STAGING: &staging  # 模拟环境配置,为生产环境的镜像
+  <<: *common
+  SECRET_KEY: sortsecure
+
+PRODUCTION: &production
+  <<: *common
+  SECRET_KEY: mdd1
