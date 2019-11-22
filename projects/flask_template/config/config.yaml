@@ -1,15 +1,33 @@
+# 公共环境配置
 COMMON: &common  # 标识
+  # app设置
   DEBUG: False
   SECRET_KEY: insecure
+  TESTING: False
+  THREADED: False
+  # 日志配置
+  LOGGING_CONFIG_PATH: ./config/logging.yaml  # 日志配置文件路径
+  LOGGING_PATH: ./logs  # 日志文件存放位置
 
-DEVELOPMENT: &development  # 开发环境配置
+# 开发环境配置
+DEVELOPMENT: &development
   <<: *common  # 继承common,使用其下面的所有配置
   DEBUG: True
+  ENV: dev
 
-STAGING: &staging  # 模拟环境配置,为生产环境的镜像
+# 测试环境配置
+TESTING: &testing
+  <<: *common
+  ENV: test
+  TESTING: True
+
+# 模拟环境配置,为生产环境的镜像
+STAGING: &staging
   <<: *common
   SECRET_KEY: sortsecure
 
+# 生产环境配置
 PRODUCTION: &production
   <<: *common
+  ENV: prod
   SECRET_KEY: mdd1

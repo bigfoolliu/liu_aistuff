@@ -8,6 +8,8 @@
 """
 
 
+import logging
+import logging.config
 import os
 
 import yaml
@@ -30,6 +32,13 @@ def create_app(config_name=None, config_path=None):
         config_name = "PRODUCTION"
     conf = read_yaml(config_name, config_path)
     app.config.update(conf)
+
+    # 日志设置
+    if not os.path.exists(app.config["LOGGING_PATH"]):
+        os.mkdir(app.config["LOGGING_PATH"])
+    with open(app.config["LOGGING_CONFIG_PATH"], "r", encoding="utf-8") as f:
+        dict_conf = yaml.safe_load(f.read())
+    logging.config.dictConfig(dict_conf)
     return app
 
 
