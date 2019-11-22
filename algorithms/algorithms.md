@@ -62,8 +62,10 @@
 
 **本文件夹主要放置一些算法的实现,leet_code以及剑指offer中的代码实现。**
 
-- [github大神算法笔记](https://github.com/nonstriater/Learn-Algorithms)
+- [github算法笔记](https://github.com/nonstriater/Learn-Algorithms)
+- [github数据结构和算法python实现](https://github.com/TheAlgorithms/Python)
 - [数据结构与算法/leetcode题解](https://algorithm.yuanbin.me/zh-hans/)
+- [python实现所有算法](https://gitee.com/liyu-liyu-666/PythonAlgorithm)
 
 ## 1.排序算法
 
