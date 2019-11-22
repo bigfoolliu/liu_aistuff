@@ -36,6 +36,8 @@
 
 ## 1.自我介绍
 
+- [如何在面试中介绍自己的项目经验](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247486163&idx=1&sn=3f395ec8287050ac719d9237eb8107aa&chksm=ebd635ffdca1bce9f444940afeb0d86f6d83bcb2acde382057609225cba6faedf010222d1bfc&scene=21#wechat_redirect)
+
 ## 2.编程语言
 
 ### 2.1python

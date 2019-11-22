@@ -40,6 +40,8 @@
         - [7.2对restfule的理解](#72对restfule的理解)
         - [7.3相关规范](#73相关规范)
     - [8.socket编程](#8socket编程)
+    - [9.DNS介绍](#9dns介绍)
+        - [9.1域名系统](#91域名系统)
     - [a.常见面试题](#a常见面试题)
         - [a.1web框架的本质](#a1web框架的本质)
         - [a.2浏览器与服务器的TCP连接是否在一个Http请求完成后断开？什么时候断开](#a2浏览器与服务器的tcp连接是否在一个http请求完成后断开什么时候断开)
@@ -406,7 +408,29 @@ OAuth2.0的四种方式:
 
 `socket = ip_address + tcp/udp + port`
 
-![socket概念](./imgs/socket_concept.png)
+- ![socket概念](./imgs/socket_concept.png)
+
+## 9.DNS介绍
+
+- [从理论到实践，全方位认识DNS（理论篇）](https://mp.weixin.qq.com/s?__biz=MzAwNDc0MTUxMw==&mid=2649639532&idx=1&sn=19b504cc7a0363d7913022d7dbda4b38&scene=21#wechat_redirect)
+- [想搭建自己的网站？先来学点DNS知识吧](https://mp.weixin.qq.com/s?__biz=MzAwNDc0MTUxMw==&mid=2649639534&idx=1&sn=40c5a4b33230be3740e6d38b430a70fb&chksm=833daa88b44a239e452cca8a5c28063dc65df594f7cfc690f92c45c0b33cf9a68c11e01abfa1&mpshare=1&scene=24&srcid=&sharer_sharetime=1573843712975&sharer_shareid=20ab6c09eef32b49dbe03904652b9eb2#rd)
+- [DNS域名解析协议详解](https://blog.csdn.net/baidu_37964071/article/details/80500825)
+- [DNS解析过程详解](https://www.cnblogs.com/liyuanhong/articles/7353974.html)
+
+### 9.1域名系统
+
+- 一种层次的基于域的命名方案，基于分布式数据库系统实现
+- 应用程序向域名服务器发送DNS请求，DNS服务器返回该域名对应的ip地址
+  1. 用户计算机不存储所有的名字到ip的映射
+  2. 规定了域名的命名规则，保证主机名字不会重复
+  3. dns服务器不是单一的服务器，而是一个层次的，合理组织的服务器集群
+
+```shell
+# 查询域名服务器
+nsloopup www.baicu.com
+```
+
+- [python实现简单的域名服务器](../python/python/other/dns_python.py)
 
 ## a.常见面试题
 

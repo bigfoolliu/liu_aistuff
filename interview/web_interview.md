@@ -21,6 +21,8 @@
   - [5.多进程与多线程](#5%e5%a4%9a%e8%bf%9b%e7%a8%8b%e4%b8%8e%e5%a4%9a%e7%ba%bf%e7%a8%8b)
   - [6.异步任务](#6%e5%bc%82%e6%ad%a5%e4%bb%bb%e5%8a%a1)
   - [7.第三方SDK集成](#7%e7%ac%ac%e4%b8%89%e6%96%b9sdk%e9%9b%86%e6%88%90)
+  - [a.其他](#a%e5%85%b6%e4%bb%96)
+    - [a.1web项目环境](#a1web%e9%a1%b9%e7%9b%ae%e7%8e%af%e5%a2%83)
 
 <!-- /TOC -->
 
@@ -30,11 +32,15 @@
 
 ### 1.1Django
 
+- [django详细介绍](../introductions/network/framework/django_introduction.md)
+
 ### 1.2Tornado
 
-- [tornado详细介绍](../introductions/framework/tornado_introduction.md)
+- [tornado详细介绍](../introductions/network/framework/tornado_introduction.md)
 
 ### 1.3Flask
+
+- [flask详细介绍](../introductions/network/framework/flask_introduction.md)
 
 ## 2.正则表达式
 
@@ -193,3 +199,14 @@
 ## 7.第三方SDK集成
 
 - [手把手教你集成微信，支付宝支付功能SDK](https://www.jianshu.com/p/925394737c9e)
+
+## a.其他
+
+### a.1web项目环境
+
+- 开发环境(development)
+- 集成环境(integration)
+- 测试环境(testing)
+- QA验证环境
+- 模拟环境(staging)，用来给客户做演示，是生产环境的镜像
+- 生产环境(production)
