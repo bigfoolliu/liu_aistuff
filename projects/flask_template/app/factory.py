@@ -14,6 +14,8 @@ import os
 
 import yaml
 
+from app.api import api_test
+from app.utils.core import JSONEncoder
 from flask import Flask
 
 
@@ -39,6 +41,19 @@ def create_app(config_name=None, config_path=None):
     with open(app.config["LOGGING_CONFIG_PATH"], "r", encoding="utf-8") as f:
         dict_conf = yaml.safe_load(f.read())
     logging.config.dictConfig(dict_conf)
+
+    # 响应设置
+    root_path = os.path.dirname(os.getcwd())
+    msg_config_path = os.path.join(pwd, "config/msg.yaml")
+    with open(msg_config_path, encoding="utf-8") as f:
+        msg_conf = yaml.safe_load(f.read())
+    app.config.update(msg_conf)
+
+    # 使用自定义的flask的json解析类
+    app.json_encoder = JSONEncoder
+
+    # 注册测试蓝图
+    app.register_blueprint(api_test.test_bp)
     return app
 
 

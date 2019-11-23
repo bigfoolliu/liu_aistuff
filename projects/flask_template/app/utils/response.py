@@ -9,7 +9,7 @@
 
 
 from flask import current_app, request
-from utils.code import ResponseCode, ResponseMessage
+from app.utils.code import ResponseCode, ResponseMessage
 
 
 class ResMsg(object):
