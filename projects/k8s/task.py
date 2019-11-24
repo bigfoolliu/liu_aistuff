@@ -99,7 +99,7 @@ def k8s_deploy(c, v=0):
     limit_tag(client, "host-manager")
     # remote_client = docker.DockerClient("tcp://10.53.1.220:2375")
     limit_tag(remote_client, "host-manager", limit_count=2)
-    res = c.run('ansible-playbook {}/playbook/200.yaml -e version={} -e old_version={} -e ansible_sudo_pass=liu941103'.format(DIR, v, v -1))
+    res = c.run('ansible-playbook {}/playbook/200.yaml -e version={} -e old_version={} -e ansible_sudo_pass=123456'.format(DIR, v, v -1))
     # res = c.run('ansible-playbook {}/playbook/files/host-manager-remove.yml --extra-vars "old_version={}"'.format(DIR, v - 1))
     file_path = 'playbooks/src/host-manager.yaml'
     # _env = Environment(loader=FileSystemLoader(DIR))
@@ -144,7 +144,7 @@ def k8s_220(c):
     m = {
         "version": v,
         "old_version": v -1,
-        "ansible_sudo_pass": "liu941103",
+        "ansible_sudo_pass": "123456",
         "event_ip": "10.208.1.3",
         "mongo_uri": "mongodb//10.208.1.3/host-manager",
         "host_manager_ip": "10.208.1.3",

@@ -109,7 +109,7 @@ class Email(object):
 #         self.smtp_port = 25
 #         self.origin_addr = "liu15671677014@sina.com"
 #         self.target_addrs = ["1365205439@qq.com", "2713281245@qq.com"]
-#         self.pwd = "liu941103"
+#         self.pwd = "123456"
 #         self.email_core = Email(host=self.smtp_host, port=self.smtp_port)
     
 #     def test_login(self):

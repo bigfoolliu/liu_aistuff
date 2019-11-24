@@ -88,7 +88,7 @@ def index():
 							</td>
 						</tr>  """
 	# 1. 准备连接数据库
-	conn = connect(host="localhost", port=3306, database="stock_db", user="tonyliu", password="liu941103",
+	conn = connect(host="localhost", port=3306, database="stock_db", user="tonyliu", password="123456",
 				   charset="utf8")
 	# 2. 获得游标
 	cur = conn.cursor()
@@ -140,7 +140,7 @@ def center():
 						</tr> """
 
 	# 同上读取数据库中的内容
-	conn = connect(host="localhost", port=3306, database="stock_db", user="tonyliu", password="liu941103",
+	conn = connect(host="localhost", port=3306, database="stock_db", user="tonyliu", password="123456",
 				   charset="utf8")
 	cur = conn.cursor()
 	sql_str = "SELECT info.code, info.short, info.chg, info.turnover, info.price, info.highs, stock_db.focus.note_info FROM info INNER JOIN focus WHERE info.id = focus.info_id;"

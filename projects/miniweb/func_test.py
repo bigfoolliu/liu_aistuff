@@ -7,7 +7,7 @@
 from pymysql import connect
 
 # 1. 准备连接数据库
-conn = connect(host="localhost", port=3306, database="stock_db", user="tonyliu", password="liu941103", charset="utf8")
+conn = connect(host="localhost", port=3306, database="stock_db", user="tonyliu", password="123456", charset="utf8")
 # 2. 获得游标
 cur = conn.cursor()
 # 3. 执行语句
