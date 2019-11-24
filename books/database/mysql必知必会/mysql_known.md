@@ -5,11 +5,15 @@
 - [mysql必知必会读书笔记](#mysql必知必会读书笔记)
     - [1.数据库](#1数据库)
     - [2.mysql相关命令](#2mysql相关命令)
-        - [2.1安装以及使用命令](#21安装以及使用命令)
+        - [2.1安装启动等](#21安装启动等)
         - [2.2数据库操作相关命令](#22数据库操作相关命令)
         - [2.3数据表操作相关命令](#23数据表操作相关命令)
         - [2.4数据操作相关命令](#24数据操作相关命令)
+            - [2.4.1CRUD基本操作](#241crud基本操作)
+            - [2.4.2索引基础](#242索引基础)
         - [2.5用户以及权限操作相关命令](#25用户以及权限操作相关命令)
+            - [2.5.1用户管理](#251用户管理)
+            - [2.5.2权限管理](#252权限管理)
     - [3.创建计算字段](#3创建计算字段)
     - [4.汇总数据](#4汇总数据)
         - [5.分组数据](#5分组数据)
@@ -22,7 +26,7 @@
 
 ## 2.mysql相关命令
 
-### 2.1安装以及使用命令
+### 2.1安装启动等
 
 ```shell
 # mysql命令(linux系统):
@@ -38,6 +42,12 @@ sudo service mysql status  # 查看服务状态
 
 # 连接到数据库进行操作
 mysql -h(ip地址,默认为localhost) -P(端口号,默认为3306) -uroot -p(密码,可输可先不输)
+
+# 更改登录密码
+use user;
+update user set authentication_string="123456" where User="root";
+flush privileges;
+# 然后重启mysql，登录
 ```
 
 ### 2.2数据库操作相关命令
@@ -89,6 +99,8 @@ drop table tab1;
 
 ### 2.4数据操作相关命令
 
+#### 2.4.1CRUD基本操作
+
 ```shell
 # 从表中查询所有的数据:
 select * from tab1;
@@ -116,7 +128,7 @@ delete from tab1 where name='tony';  # 指定条件删除,部分情况可通过�
 delete from tab1;  # 不指定条件删除
 ```
 
-### 2.5用户以及权限操作相关命令
+#### 2.4.2索引基础
 
 ```shell
 # 索引:
@@ -127,13 +139,13 @@ show index from tab1;
 create index index1 on tab1(name(20));
 # 删除:
 drop index1 from tab1;
-# 结论:
-#     1. 索引可以明显提高某些字段的查询效率, 但不是所有的表都需要建立索引
-#     2. 如果表中数据很少，没有必要建立索引
-#     3. 如果一个表中的数据增删很频繁，不能建立索引, 因为只要数据发生增减，索引就要重新建立。增加了系统开销，反而慢了。
-#     4. 索引只适合查询操作频繁的表。
+```
 
+### 2.5用户以及权限操作相关命令
 
+#### 2.5.1用户管理
+
+```shell
 # 用户管理:
 #     - 避免非开发用户误操作.
 #     - 查看所有用户 MySQL中所有的用户及权限信息都存储在MySQL数据库的user表中
@@ -141,11 +153,15 @@ drop index1 from tab1;
 select host ,user,authentication_string from user;
 
 # 创建账户并授予查询权限:
-    # grant 权限列表 on 数据库 to '用户名'@'访问主机' identified by '密码';
+# grant 权限列表 on 数据库 to '用户名'@'访问主机' identified by '密码';
 grant tab1 on db1 to "liu"@"localhost" identified by "123456"
 # 或
 grant select on db1.* to "liu"@"localhost" identified by "123456"
+```
 
+#### 2.5.2权限管理
+
+```shell
 # 查看权限:
 show grants for 用户名@主机地址
 show grants for liu@localhost
