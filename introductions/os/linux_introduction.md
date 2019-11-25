@@ -31,6 +31,7 @@
     - [a.2流量监控工具](#a2%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e5%b7%a5%e5%85%b7)
     - [a.3使用crontab开启定时任务](#a3%e4%bd%bf%e7%94%a8crontab%e5%bc%80%e5%90%af%e5%ae%9a%e6%97%b6%e4%bb%bb%e5%8a%a1)
     - [a.4ssh文件传输](#a4ssh%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93)
+    - [a.5有趣命令](#a5%e6%9c%89%e8%b6%a3%e5%91%bd%e4%bb%a4)
 
 <!-- /TOC -->
 
@@ -689,4 +690,27 @@ ssh -D localhost:1080 ubuntu@sgcc.jiangxingai.com
 
 # 本地浏览器即可访问远程的即使未开放的端口
 http://172.16.16.14:5920
+```
+
+### a.5有趣命令
+
+```shell
+# 小火车
+sl
+
+# 输出笑话，名人名言什么的
+fortune
+
+# 用ascii码打印字符画，还可以用其他的动物
+cowsay "i am cow"
+fortune | cowsay
+
+# 矩阵代码效果
+cmatrix
+
+# 艺术字生成，字符文字
+figlet fuck you !
+
+# 出现一只跟着鼠标的猫
+oneko
 ```
