@@ -37,7 +37,7 @@
         - [6.4ddos攻击](#64ddos攻击)
     - [7.Restful规范](#7restful规范)
         - [7.1restful中相关概念](#71restful中相关概念)
-        - [7.2对restfule的理解](#72对restfule的理解)
+        - [7.2对restful的理解](#72对restful的理解)
         - [7.3相关规范](#73相关规范)
     - [8.socket编程](#8socket编程)
     - [9.DNS介绍](#9dns介绍)
@@ -108,7 +108,7 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 
 #### 1.4.1cookie
 
-- 浏览器按照域名进行存储，A网站的cookie只会返回到A网站
+- 浏览器`按照域名进行存储`，A网站的cookie只会返回到A网站
 - `临时cookie`在浏览器关闭则消失；`长久cookie`是设置了有效期，浏览器关闭不会消失，而是到了有效期才消失
 - cookie主要用来存储用户的登录信息或者选购商品页面跳转的时候知道选购的信息
 
@@ -120,15 +120,19 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 
 #### 1.4.2session
 
-- session存储在服务器端，`依赖于cookie`，通常根据`存在cookie中的session id`(可以经过算法加密)来找到对应的session
+- session存储在服务器端(内存)，`依赖于cookie`，通常根据`存在cookie中的session id`(可以经过算法加密)来找到对应的session
 - 每次验证的用户发送请求时，服务器储存信息，导致占用过多资源，同时`可扩展性也不强`
-- 默认有效时间为30分钟
+- 两种实现方式：`1.将session的id存在cookie里；2.使用url重写的方式，可以在url中嵌入session id`
 
 **使用cookie和session保存用户登录状态：**
 
 1. 浏览器第一次请求服务器
 2. 服务器收到请求，返回携带sessionid的cookie，同时服务器保存session
 3. 浏览器第二次请求服务器，携带cookie，服务器根据cookie中的sessionid找到对应的session
+
+**session的有效期：**
+
+- session的有效过期时间需要配置,默认有效时间为30分钟
 
 #### 1.4.3token
 
@@ -387,12 +391,12 @@ OAuth2.0的四种方式:
 - `Representational State Tranfer,(资源)表现层状态转换`
 - 资源就是网络中的一个实体，图片，文字等，用url来标识，`上网就是和这些资源互动，调用其url`
 - 表现层指对资源的呈现形式，如文字可以是txt，html或者二进制
-- 客户端与服务端交互过程中数据和状态的转化
+- 客户端与服务端交互过程就是`数据和状态的转化`
 
-### 7.2对restfule的理解
+### 7.2对restful的理解
 
 - 每一个url代表一种资源
-- 客户端和服务端传递这种资源的表现层
+- `客户端和服务端传递这种资源的表现层`
 - 客户端通过四个HTTP动词(get,post,put,delete)来操作资源，实现表现层状态转化
 
 ### 7.3相关规范
