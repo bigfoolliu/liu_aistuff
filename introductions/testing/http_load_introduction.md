@@ -7,14 +7,14 @@
   - [2.使用](#2%e4%bd%bf%e7%94%a8)
     - [2.1安装](#21%e5%ae%89%e8%a3%85)
     - [2.2命令](#22%e5%91%bd%e4%bb%a4)
+    - [2.3结果解析](#23%e7%bb%93%e6%9e%9c%e8%a7%a3%e6%9e%90)
 
 <!-- /TOC -->
 
 ## 1.介绍
 
-[参考文档](https://www.cnblogs.com/shijingjing07/p/6539179.html)
-
-基于linux的web服务器性能测试工具，用于测试服务器的吞吐量和负载以及web页面的性能。
+- [http_load使用详解](https://www.cnblogs.com/shijingjing07/p/6539179.html)
+- 基于linux的web服务器性能测试工具，用于测试服务器的吞吐量和负载以及web页面的性能。
 
 ## 2.使用
 
@@ -38,4 +38,23 @@ make && make install
 # -seconds简写-s ：含义是总计的访问时间
 
 http_load -rate 5 -seconds 10 url.txt  # 每秒访问5次，持续10秒
+```
+
+### 2.3结果解析
+
+```shell
+# 3352个请求，最大并发进程数是10，10.0001秒内传输数据量为1.1732e+06字节
+3352 fetches, 10 max parallel, 1.1732e+06 bytes, in 10.0001 seconds
+
+# 每个连接平均传输数据量1.1732e+06/3352=350
+350 mean bytes/connection
+335.197 fetches/sec, 117319 bytes/sec
+
+# 每个连接的平均响应时间为0.243539ms，最大和最小响应时间为1.158和0.114ms
+msecs/connect: 0.243539 mean, 1.158 max, 0.114 min
+msecs/first-response: 28.2572 mean, 238.049 max, 11.271 min
+
+# 如果403的类型过多，那可能要注意是否系统遇到了瓶颈
+HTTP response codes:
+  code 200 -- 3352
 ```
