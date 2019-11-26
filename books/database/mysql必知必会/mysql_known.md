@@ -48,6 +48,12 @@ use user;
 update user set authentication_string="123456" where User="root";
 flush privileges;
 # 然后重启mysql，登录
+
+# 忘记root密码,修改my.conf，加上字段
+# [mysqld]
+# skip-grant-tables
+# 就可以免密码登录
+# 然后修改密码
 ```
 
 ### 2.2数据库操作相关命令
@@ -147,16 +153,20 @@ drop index1 from tab1;
 
 ```shell
 # 用户管理:
-#     - 避免非开发用户误操作.
-#     - 查看所有用户 MySQL中所有的用户及权限信息都存储在MySQL数据库的user表中
-#     - 查看所有用户:
-select host ,user,authentication_string from user;
+# 避免非开发用户误操作.
+# 查看所有用户 MySQL中所有的用户及权限信息都存储在MySQL数据库的user表中
 
-# 创建账户并授予查询权限:
-# grant 权限列表 on 数据库 to '用户名'@'访问主机' identified by '密码';
-grant tab1 on db1 to "liu"@"localhost" identified by "123456"
-# 或
-grant select on db1.* to "liu"@"localhost" identified by "123456"
+# 查看所有用户:
+select host, user, authentication_string from user;
+
+# 添加用户并分配权限
+# https://blog.csdn.net/xudejun/article/details/84779442
+use mysql;
+create user tonyliu@localhost identified by "123456";
+flush privileges;
+
+# 删除用户:
+drop user "liu"@"localhost";
 ```
 
 #### 2.5.2权限管理
@@ -170,9 +180,6 @@ show grants for liu@localhost
 grant 权限名称 on 数据库 to 账户@主机 with grant option;
 grant all privileges on *.* to "liu"@"localhost" with grant option;  # 赋予该用户所有数据库的权限
 flush privileges;  # 刷新权限
-
-# 删除用户:
-drop user "liu"@"localhost";
 ```
 
 ## 3.创建计算字段
