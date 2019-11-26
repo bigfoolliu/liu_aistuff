@@ -12,7 +12,7 @@ import logging
 from datetime import datetime
 from decimal import Decimal
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 
 from app.models.model import Article, ChangeLogs, User
 from app.utils.code import ResponseCode
@@ -91,6 +91,7 @@ def test_type_response():
 
 @route(test_bp, "/createUser", methods=["POST"])
 def test_create_user():
+    """创建单个用户"""
     db.create_all()
     new_user = User(name="liu", age=20)
     db.session.add(new_user)
@@ -104,7 +105,7 @@ def test_create_user():
 
 @route(test_bp, "/createArticle", methods=["POST"])
 def test_create_article():
-    """有问题"""
+    """创建单篇文章"""
     db.create_all()
     new_article = Article(title="title1", body="this is article1", last_change_time=datetime.now())
     db.session.add(new_article)
@@ -118,7 +119,7 @@ def test_create_article():
 
 @route(test_bp, "/createChangeLog", methods=["POST"])
 def test_create_change_log():
-    """有问题"""
+    """创建单篇修改日志"""
     db.create_all()
     new_change_log = ChangeLogs(author_id=1, article_id=2, modify_context="hahaha", create_time=datetime.now())
     db.session.add(new_change_log)
@@ -128,3 +129,29 @@ def test_create_change_log():
         db.session.rollback()
         return "error: {}".format(e)
     return "create change log ok"
+
+
+@route(test_bp, "/getUsers", methods=["GET"])
+def test_get_users():
+    """查询所有用户"""
+    # 或者users = db.session.query(User).all()
+    users = User.query.all()
+    ret = ResMsg()
+    data = []
+    for user in users:
+        data.append({"id": user.id, "name": user.name, "age": user.age})
+    ret.update(code=ResponseCode.SUCCESS, data=data)
+    return ret.data
+
+
+@route(test_bp, "/getUser", methods=["GET"])
+def test_get_user():
+    """查询单个用户"""
+    user_id = request.args.get("id")
+    # 或者user = db.session.query(User).filter(User.id == user_id).first()
+    user = User.query.filter(User.id == user_id).first()
+    ret = ResMsg()
+    data = []
+    data.append({"id": user.id, "name": user.name, "age": user.age})
+    ret.update(code=ResponseCode.SUCCESS, data=data)
+    return ret.data
