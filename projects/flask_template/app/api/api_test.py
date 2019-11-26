@@ -12,10 +12,13 @@ import logging
 from datetime import datetime
 from decimal import Decimal
 
+from flask import Blueprint, jsonify
+
+from app.models.model import Article, ChangeLogs, User
 from app.utils.code import ResponseCode
+from app.utils.core import db
 from app.utils.response import ResMsg
 from app.utils.util import route
-from flask import Blueprint, jsonify
 
 test_bp = Blueprint("test", __name__, url_prefix="/test")
 logger = logging.getLogger(__name__)
@@ -81,3 +84,47 @@ def test_type_response():
     test_dict = dict(now=now, date=date, num=num)
     res.update(code=ResponseCode.SUCCESS, data=test_dict)
     return res.data
+
+
+# ------------------------创建数据库表测试-------------------------
+
+
+@route(test_bp, "/createUser", methods=["POST"])
+def test_create_user():
+    db.create_all()
+    new_user = User(name="liu", age=20)
+    db.session.add(new_user)
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return "error: {}".format(e)
+    return "create user ok"
+
+
+@route(test_bp, "/createArticle", methods=["POST"])
+def test_create_article():
+    """有问题"""
+    db.create_all()
+    new_article = Article(title="title1", body="this is article1", last_change_time=datetime.now())
+    db.session.add(new_article)
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return "error: {}".format(e)
+    return "create article ok"
+
+
+@route(test_bp, "/createChangeLog", methods=["POST"])
+def test_create_change_log():
+    """有问题"""
+    db.create_all()
+    new_change_log = ChangeLogs(author_id=1, article_id=2, modify_context="hahaha", create_time=datetime.now())
+    db.session.add(new_change_log)
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return "error: {}".format(e)
+    return "create change log ok"

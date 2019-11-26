@@ -15,7 +15,7 @@ import os
 import yaml
 
 from app.api import api_test
-from app.utils.core import JSONEncoder
+from app.utils.core import JSONEncoder, db
 from flask import Flask
 
 
@@ -35,7 +35,7 @@ def create_app(config_name=None, config_path=None):
     conf = read_yaml(config_name, config_path)
     app.config.update(conf)
 
-    # 日志设置
+    # 日志文件目录和设置
     if not os.path.exists(app.config["LOGGING_PATH"]):
         os.mkdir(app.config["LOGGING_PATH"])
     with open(app.config["LOGGING_CONFIG_PATH"], "r", encoding="utf-8") as f:
@@ -43,14 +43,16 @@ def create_app(config_name=None, config_path=None):
     logging.config.dictConfig(dict_conf)
 
     # 响应设置
-    root_path = os.path.dirname(os.getcwd())
-    msg_config_path = os.path.join(pwd, "config/msg.yaml")
-    with open(msg_config_path, encoding="utf-8") as f:
+    with open(app.config["RESPONSE_MESSAGE"], "r", encoding="utf-8") as f:
         msg_conf = yaml.safe_load(f.read())
     app.config.update(msg_conf)
 
     # 使用自定义的flask的json解析类
     app.json_encoder = JSONEncoder
+
+    # 注册数据库连接
+    db.app = app
+    db.init_app(app)
 
     # 注册测试蓝图
     app.register_blueprint(api_test.test_bp)

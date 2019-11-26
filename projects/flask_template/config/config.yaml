@@ -8,6 +8,12 @@ COMMON: &common  # 标识
   # 日志配置
   LOGGING_CONFIG_PATH: ./config/logging.yaml  # 日志配置文件路径
   LOGGING_PATH: ./logs  # 日志文件存放位置
+  # 响应消息
+  RESPONSE_MESSAGE: ./config/msg.yaml
+  # 数据库连接
+  SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:123456@localhost:3306/test?charset=utf8mb4'
+  SQLALCHEMY_TRACK_MODIFICATIONS: False
+  SQLALCHEMY_COMMIT_ON_TEARDOWN: False
 
 # 开发环境配置
 DEVELOPMENT: &development
