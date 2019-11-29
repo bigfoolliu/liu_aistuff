@@ -14,6 +14,9 @@
         - [2.5用户以及权限操作相关命令](#25用户以及权限操作相关命令)
             - [2.5.1用户管理](#251用户管理)
             - [2.5.2权限管理](#252权限管理)
+        - [2.6字符集相关操作](#26字符集相关操作)
+            - [2.6.1查看已经设定的字符集](#261查看已经设定的字符集)
+            - [2.6.2设置字符集](#262设置字符集)
     - [3.创建计算字段](#3创建计算字段)
     - [4.汇总数据](#4汇总数据)
         - [5.分组数据](#5分组数据)
@@ -180,6 +183,46 @@ show grants for liu@localhost
 grant 权限名称 on 数据库 to 账户@主机 with grant option;
 grant all privileges on *.* to "liu"@"localhost" with grant option;  # 赋予该用户所有数据库的权限
 flush privileges;  # 刷新权限
+```
+
+### 2.6字符集相关操作
+
+**mysql的utf8不是真正的utf8, utf8mb4才是真正的utf8。**
+
+#### 2.6.1查看已经设定的字符集
+
+```shell
+# 查看mysql支持的字符集
+show charset;
+
+# 查看数据库服务器和数据库字符集
+show variables like '%character%';
+
+# 查看指定数据库的字符集
+show create database test_db;
+
+# 查看表的字符集
+show create table test_table;
+show table status from test_tb like "test_table";
+
+# 查看表中所有列的字符集
+show full columns from test_table;
+```
+
+#### 2.6.2设置字符集
+
+```shell
+# 创建数据库的时候设置字符集
+create database test_db default character set="utf8mb4";
+# 创建表的时候设置字符集
+create table test_table(id int(6), name char(10)) default character set="utf8mb4";
+
+# 修改库的字符集
+alter database test_db default character set "utf8mb4";
+# 修改表的字符集
+alter table test_table convert to character set "utf8mb4";
+# 修改字段的字符集
+alter table test_table modify test_field char(10) character set "utf8mb4";
 ```
 
 ## 3.创建计算字段

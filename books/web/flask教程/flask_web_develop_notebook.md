@@ -6,6 +6,7 @@
   - [1.flask简介](#1flask%e7%ae%80%e4%bb%8b)
     - [1.1上下文](#11%e4%b8%8a%e4%b8%8b%e6%96%87)
     - [1.2请求钩子](#12%e8%af%b7%e6%b1%82%e9%92%a9%e5%ad%90)
+    - [Flask MethodView](#flask-methodview)
 
 <!-- /TOC -->
 
@@ -33,3 +34,7 @@
 | before_request | 注册一个函数，在每次请求之前运行 |
 | after_request | 注册一个函数，没有异常的时候每次请求之后运行 |
 | teardown_request | 注册一个函数，即使有异常，每次请求之后运行 |
+
+### Flask MethodView
+
+根据每个HTTP的方法执行不同的函数。
