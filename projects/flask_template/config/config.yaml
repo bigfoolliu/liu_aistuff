@@ -5,6 +5,9 @@ COMMON: &common  # 标识
   SECRET_KEY: insecure
   TESTING: False
   THREADED: False
+  # 页面配置
+  DEFAULT_PAGE_INDEX: 1
+  DEFAULT_PAGE_SIZE: 10
   # 日志配置
   LOGGING_CONFIG_PATH: ./config/logging.yaml  # 日志配置文件路径
   LOGGING_PATH: ./logs  # 日志文件存放位置

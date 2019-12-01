@@ -155,3 +155,6 @@ def test_get_user():
     data.append({"id": user.id, "name": user.name, "age": user.age})
     ret.update(code=ResponseCode.SUCCESS, data=data)
     return ret.data
+
+
+# TODO：更多关于数据库的操作

@@ -55,3 +55,31 @@ def route(bp, *args, **kwargs):
                 return jsonify(rv)
         return f
     return decorator
+
+
+def view_route(f):
+    """
+    路由装饰器，返回同一的格式
+    :param f: 被装饰函数
+    """
+    
+    def decorator(*args, **kwargs):
+        rv = f(*args, **kwargs)
+        if isinstance(rv, (int, float)):
+            res = ResMsg()
+            res.update(data=rv)
+            return jsonify(res.data)
+        elif isinstance(rv, tuple):
+            if len(rv) >= 3:
+                return jsonify(rv[0]), rv[1], rv[2]
+            else:
+                return jsonify(rv[0]), rv[1]
+        elif isinstance(rv, dict):
+            return jsonify(rv)
+        elif isinstance(rv, bytes):
+            rv.decode("utf-8")
+            return jsonify(rv)
+        else:
+            return jsonify(rv)
+
+    return decorator
