@@ -40,23 +40,32 @@
 
 ### 1.1安装使用
 
+**安装：**
+
 ```shell
 # 安装
 sudo apt-get install redis-server
+```
 
+**配置：**
+
+```shell
 # 可以配置redis的绑定ip为0.0.0.0
 vim /etc/redis/redis.conf
+```
 
+**启动进入：**
+
+```shell
 # 启动redis
 sudo service redis-server restart
 
 # 进入redis服务端
 redis-server
-
 # 进入redis客户端，输入ping来判断是否可以连接
 redis-cli
 
-# 在远程的服务器上执行 
+# 在远程的服务器上执行
 redis-cli -h host -p port -a password
 ```
 
@@ -190,6 +199,8 @@ zrangebyscore names 0 100
 
 - 可以使用Redis的SETNX命令实现分布式锁
 - 也可以使用官方的RedLock分布式锁实现
+
+TODO：
 
 ### 3.7其他
 
