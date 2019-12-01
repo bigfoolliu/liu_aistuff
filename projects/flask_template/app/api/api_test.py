@@ -18,7 +18,7 @@ from app.models.model import Article, ChangeLogs, User
 from app.utils.code import ResponseCode
 from app.utils.core import db
 from app.utils.response import ResMsg
-from app.utils.util import route
+from app.utils.util import Redis, route
 
 test_bp = Blueprint("test", __name__, url_prefix="/test")
 logger = logging.getLogger(__name__)
@@ -158,3 +158,15 @@ def test_get_user():
 
 
 # TODO：更多关于数据库的操作
+
+
+@route(test_bp, "/redisWrite", methods=["GET"])
+def test_redis_write():
+    Redis.write("test_key", "test_value", 60)
+    return "write ok"
+
+
+@route(test_bp, "/redisRead", methods=["GET"])
+def test_redis_read():
+    value = Redis.read("test_key")
+    return value

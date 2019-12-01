@@ -17,6 +17,11 @@ COMMON: &common  # 标识
   SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:123456@localhost:3306/test?charset=utf8mb4'
   SQLALCHEMY_TRACK_MODIFICATIONS: False
   SQLALCHEMY_COMMIT_ON_TEARDOWN: False
+  # redis配置
+  REDIS_DB: 1
+  REDIS_HOST: 127.0.0.1
+  REDIS_PORT: 6379
+  REDIS_EXPIRE: 60*60
 
 # 开发环境配置
 DEVELOPMENT: &development
