@@ -22,6 +22,22 @@ COMMON: &common  # 标识
   REDIS_HOST: 127.0.0.1
   REDIS_PORT: 6379
   REDIS_EXPIRE: 60*60
+  # 定时任务配置
+  SCHEDULER_OPEN: False  # 是否开启定时任务
+  SCHEDULER_API_ENABLED: True  # 开启定时任务API
+  JOBS:
+    # 定义的一个简单任务
+    - id: my_job
+      func: app.task.task:my_job
+      trigger: interval
+      seconds: 10
+    # 定义的定时查询数据库的任务
+    # - id: db_query
+    #   func: app.task.task:db_query
+    #   trigger: cron
+    #   hour: 12
+    #   minute: 10
+
 
 # 开发环境配置
 DEVELOPMENT: &development

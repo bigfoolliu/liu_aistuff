@@ -281,7 +281,6 @@ class Service(BaseParse, BaseQuery, MethodView):
         res = ResMsg()
         # 获取单表的信息
         if key is not None:
-            print("get key:", key)
             data = self.parse_data(self._get(key=key))
             print(data, type(data))
             if data:

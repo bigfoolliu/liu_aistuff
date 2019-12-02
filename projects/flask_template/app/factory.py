@@ -5,18 +5,21 @@
 
 """
 工厂文件
+创建app,以及对其创建过程中的一些配置
 """
 
 
+import atexit
 import logging
 import logging.config
 import os
+import platform
 
 import yaml
+from flask import Flask
 
 from app.api import api_test
-from app.utils.core import JSONEncoder, db
-from flask import Flask
+from app.utils.core import JSONEncoder, db, scheduler
 
 
 def create_app(config_name=None, config_path=None):
@@ -54,6 +57,10 @@ def create_app(config_name=None, config_path=None):
     db.app = app
     db.init_app(app)
 
+    # 使用定时任务
+    if app.config.get("SCHEDULER_OPEN"):
+        scheduler_init(app)
+
     # 注册测试蓝图
     app.register_blueprint(api_test.test_bp)
     return app
@@ -75,3 +82,46 @@ def read_yaml(config_name, config_path):
             raise KeyError("未找到对应的配置信息")
     else:
         raise ValueError("请输入正确的配置名称和正确的配置文件路径")
+
+
+def scheduler_init(app):
+    """
+    将app传入，且保证系统多进程启动的时候定时任务只启动一次
+    启动任务的时候设置文件锁，当能获取到文件锁的时候，就不再启动任务
+    TODO:需要重点关注，刚开始运行时候会有BlockingIOError
+    """
+    if platform.system() != "Windows":
+        fcntl = __import__("fcntl")
+        f = open("scheduler.lock", "wb")
+        try:
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            scheduler.init_app(app)
+            scheduler.start()
+            app.logger.debug("scheduler start......")
+        except Exception as e:
+            app.logger.error("scheduler error, ", e)
+
+        def unlock():
+            fcntl.flock(f, fcntl.LOCK_UN)
+            f.close()
+        
+        atexit.register(unlock)
+    else:
+        msvcrt = __import__("msvcrt")
+        f = open("scheduler.lock", "wb")
+        try:
+            msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+            scheduler.init_app(app)
+            scheduler.start()
+            app.logger.debug("scheduler start......")
+        except Exception as e:
+            app.logger.error("scheduler error, ", e)
+
+        def _unlock_file():
+            try:
+                f.seek(0)
+                msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
+            except:
+                pass
+        
+        atexit.register(_unlock_file)
