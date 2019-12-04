@@ -12,13 +12,13 @@ import logging
 from datetime import datetime
 from decimal import Decimal
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session
 
 from app.models.model import Article, ChangeLogs, User
 from app.utils.code import ResponseCode
 from app.utils.core import db
 from app.utils.response import ResMsg
-from app.utils.util import Redis, route
+from app.utils.util import CaptchaTool, Redis, route
 
 test_bp = Blueprint("test", __name__, url_prefix="/test")
 logger = logging.getLogger(__name__)
@@ -170,3 +170,33 @@ def test_redis_write():
 def test_redis_read():
     value = Redis.read("test_key")
     return value
+
+
+# ------------------------验证码生成和验证测试-------------------------
+
+
+@route(test_bp, "/getCaptcha", methods=["GET"])
+def test_get_captcha():
+    """
+    测试获取图形验证码
+    将返回的字符串去除首尾引号直接粘贴至浏览器搜索栏即可看到图片
+    """
+    cap_tool = CaptchaTool()
+    img_str, code = cap_tool.get_verify_code()
+    session["code"] = code
+    print("session_code:", session.get("code"))
+    return img_str
+
+
+@route(test_bp, "/verifyCaptcha", methods=["POST"])
+def test_verify_captcha():
+    """测试验证图形验证码"""
+    obj = request.get_json(force=True)
+    code = obj.get("code", None)
+    s_code = session.get("code", None)
+    print("code:", code, type(code), "s_code:", s_code, type(s_code))
+    if not all([code, s_code]):
+        return "parameter wrong"
+    if code != s_code:
+        return "captcha wrong"
+    return "success"

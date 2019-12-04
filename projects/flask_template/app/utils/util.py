@@ -14,10 +14,15 @@ flask视图函数通常返回三个内容:
 """
 
 
+import base64
+import io
+import random
+import string
 from functools import wraps
 
 import redis
 from flask import current_app, jsonify
+from PIL import Image, ImageDraw, ImageFont
 
 from app.utils.response import ResMsg
 
@@ -167,3 +172,45 @@ class Redis(object):
             expire_seconds = current_app.config["REDIS_EXPIRE"]
         r = cls._get_r()
         r.expire(name, expire=expire_seconds)
+
+
+class CaptchaTool(object):
+    """创建图形验证码"""
+
+    def __init__(self, width=50, height=20):
+        self.width = width
+        self.height = height
+        self.im = Image.new("RGB", (width, height), "white")
+        self.font = ImageFont.load_default()
+        self.draw = ImageDraw.Draw(self.im)
+    
+    def draw_line(self, num=3):
+        """划线"""
+        for i in range(num):
+            x1 = random.randint(0, self.width/2)
+            y1 = random.randint(0, self.height/2)
+            x2 = random.randint(0, self.width)
+            y2 = random.randint(0, self.height)
+            self.draw.line(((x1, y1), (x2, y2)), fill="black", width=1)
+    
+    def get_verify_code(self):
+        """
+        生成验证码
+        :return img_str: str,验证码图片的字符串形式
+        :return code: str,生成的随机四位数字验证码
+        """
+        # 生成随机四位数字
+        code = "".join(random.sample(string.digits, 4))
+        for item in range(4):
+            self.draw.text((6+random.randint(-3, 3)+10*item, 2+random.randint(-2, 2)),
+                            text=code[item],
+                            fill=(random.randint(32, 127),
+                                random.randint(32, 127),
+                                random.randint(32, 127)),
+                            font=self.font)
+        self.im = self.im.resize((100, 24))
+        # 将图片转换为base64格式字符串
+        buffered = io.BytesIO()
+        self.im.save(buffered, format="JPEG")
+        img_str = b"data:image/png;base64," + base64.b64encode(buffered.getvalue())
+        return img_str, code
