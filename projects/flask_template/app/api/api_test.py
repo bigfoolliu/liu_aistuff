@@ -15,6 +15,8 @@ from decimal import Decimal
 from flask import Blueprint, jsonify, request, session
 
 from app.models.model import Article, ChangeLogs, User
+from app.utils.auth import (decode_auth_token, generate_access_token,
+                            generate_refresh_token, login_required)
 from app.utils.code import ResponseCode
 from app.utils.core import db
 from app.utils.response import ResMsg
@@ -200,3 +202,56 @@ def test_verify_captcha():
     if code != s_code:
         return "captcha wrong"
     return "success"
+
+
+# ------------------------鉴权测试-------------------------
+
+
+@test_bp.route("/testLogin", methods=["POST"])
+def test_login():
+    """
+    测试登录成功获取到数据获取token和刷新token
+    """
+    obj = request.get_json(force=True)
+    name = obj.get("name")
+    if not obj or not name:
+        return "parameter wrong"
+    if name == "tony":
+        access_token = generate_access_token(user_name=name)
+        refresh_token = generate_refresh_token(user_name=name)
+        data = {"access_token": access_token.decode("utf-8"),
+                "refresh_token": refresh_token.decode("utf-8")}
+        # print(data)
+        return jsonify(data)
+    else:
+        return "user name or pwd wrong"
+
+
+@test_bp.route("/testGetData", methods=["GET"])
+@login_required
+def test_get_data():
+    """
+    测试登录保护下获取数据
+    需要首先请求/test/testLogin获取access_token，将其作为请求头Authorization的内容
+    """
+    name = session.get("user_name")
+    return "hello, {}".format(name)
+
+
+@test_bp.route("/testRefreshToken", methods=["GET"])
+def test_refresh_token():
+    """
+    刷新token，将原有的token换成新的token
+    需要首先请求/test/testLogin获取access_token，将其作为请求参数refresh_token的内容
+    """
+    refresh_token = request.args.get("refresh_token")
+    if not refresh_token:
+        return "parameter wrong"
+    payload = decode_auth_token(refresh_token)
+    if not payload:
+        return "please log in"
+    if "user_name" not in payload:
+        return "please log in"
+    access_token = generate_access_token(user_name=payload["user_name"])
+    data = {"access_token": access_token.decode("utf-8"), "refresh_token": refresh_token}
+    return jsonify(data)
