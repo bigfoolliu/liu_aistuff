@@ -16,9 +16,10 @@ import os
 import platform
 
 import yaml
-from flask import Flask
+from flask import Blueprint, Flask
 
 from app.api import api_test
+from app.api.router import router
 from app.utils.core import JSONEncoder, db, scheduler
 
 
@@ -62,7 +63,8 @@ def create_app(config_name=None, config_path=None):
         scheduler_init(app)
 
     # 注册测试蓝图
-    app.register_blueprint(api_test.test_bp)
+    # app.register_blueprint(api_test.test_bp)
+    register_api(app, router)
     return app
 
 
@@ -125,3 +127,30 @@ def scheduler_init(app):
                 pass
         
         atexit.register(_unlock_file)
+
+
+def register_api(app, routers):
+    """注册蓝图和自定义的MethodView"""
+    for router in routers:
+        # 如果类型为Blueprint则直接注册
+        if isinstance(router, Blueprint):
+            app.register_blueprint(router)
+        else:
+            # 如果类型为自定义的MethodView则需要进行多重判断
+            try:
+                endpoint = router.__name__
+                view_func = router.as_view(endpoint)
+                # url默认为类名的小写
+                url = "/{}/".format(router.__name__.lower())
+                if "GET" in router.__methods__:
+                    app.add_url_rule(url, defaults={"key": None}, view_func=view_func, methods=["GET",])
+                    app.add_url_rule("{}<string:key>".format(url), view_func=view_func, methods=["GET",])
+                if "POST" in router.__methods__:
+                    app.add_url_rule(url, view_func=view_func, methods=["POST",])
+                if "PUT" in router.__methods__:
+                    app.add_url_rule("{}<string:key>".format(url), view_func=view_func, methods=["PUT",])
+                if "DELETE" in router.__methods__:
+                    app.add_url_rule("{}<string:key>".format(url), view_func=view_func, methods=["DELETE",])
+            except Exception as e:
+                print("exception: ", e)
+                raise ValueError(e)
