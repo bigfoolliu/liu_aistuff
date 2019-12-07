@@ -10,6 +10,8 @@ PrivateTest/
 videos/
 test/
 data/
+comments/
+csvs/
 
 django_env/
 
