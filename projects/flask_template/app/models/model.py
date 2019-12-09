@@ -21,6 +21,18 @@ class User(db.Model):
     age = db.Column(db.Integer, nullable=False)  # 用户年龄
 
 
+class UserLoginMethod(db.Model):
+    """
+    用户登录验证表
+    """
+    __tablename__ = "user_login_method"
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False)  # 用户主键id
+    login_method = db.Column(db.String(36), nullable=False)  # 登录方式：WX为微信，P为手机
+    identification = db.Column(db.String(36), nullable=False)  # 登录标识，手机号或者微信号
+    access_code = db.Column(db.String(36), nullable=True)  # 登录通信码，密码或者token
+
+
 class Article(db.Model):
     """
     文章表

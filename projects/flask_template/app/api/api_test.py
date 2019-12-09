@@ -14,7 +14,9 @@ from decimal import Decimal
 
 from flask import Blueprint, jsonify, request, session
 
-from app.models.model import Article, ChangeLogs, User
+from app.api.wx_login_register import (get_access_code, get_wx_user_info,
+                                       login_or_register)
+from app.models.model import Article, ChangeLogs, User, UserLoginMethod
 from app.utils.auth import (decode_auth_token, generate_access_token,
                             generate_refresh_token, login_required)
 from app.utils.code import ResponseCode
@@ -162,6 +164,9 @@ def test_get_user():
 # TODO：更多关于数据库的操作
 
 
+# -----------------------redis读写测试-------------------------
+
+
 @route(test_bp, "/redisWrite", methods=["GET"])
 def test_redis_write():
     Redis.write("test_key", "test_value", 60)
@@ -255,3 +260,71 @@ def test_refresh_token():
     access_token = generate_access_token(user_name=payload["user_name"])
     data = {"access_token": access_token.decode("utf-8"), "refresh_token": refresh_token}
     return jsonify(data)
+
+
+# ------------------------微信测试-------------------------
+
+
+@test_bp.route("/testCreateWXUser", methods=["POST"])
+def test_create_WXUser():
+    """
+    测试创建一个微信用户
+    :return:
+    """
+    data = request.get_json(force=True)
+    unionid = data.get("unionid")
+    nickname = data.get("nickname")
+
+    if not all([unionid, nickname]):
+        return "parameters wrong"
+    
+    db.create_all()
+    new_wx_user_method = UserLoginMethod(
+        user_id=111222,
+        login_method="WX",
+        identification="123456",
+        access_code="wx_access_code"
+    )
+    try:
+        db.session.add(new_wx_user_method)
+        db.session.flush()
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        print(e)
+        return "create wx user failed"
+    
+    return "create wx user success"
+
+
+@test_bp.route("/testWXLoginOrRegister", methods=["GET"])
+def test_wx_login_or_register():
+    """
+    测试微信登陆测试
+    :return:
+    """
+    code = request.args.get("code")  # 前端获取到的临时授权码
+    flag = request.args.get("flag")  # 标识是web端还是app端登陆或者注册
+
+    if not all([code, flag]):
+        return "parameters failed"
+    
+    # TODO:需要申请一个微信开发者账号
+    # access_code = get_access_code(code, flag)
+    # if not access_code:
+    #     return "get wx access_code failed"
+    
+    # wx_user_info = get_wx_user_info(access_data=access_code)
+    # if not wx_user_info:
+    #     return "get wx user info failed"
+
+    wx_user_info = {
+        "unionid": "wx_union_id",
+        "nickname": "wx_nickname"
+    }
+    
+    data = login_or_register(wx_user_info)
+    if not data:
+        return "login failed"
+    
+    return data
