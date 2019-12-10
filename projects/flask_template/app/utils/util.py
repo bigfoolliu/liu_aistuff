@@ -17,6 +17,7 @@ flask视图函数通常返回三个内容:
 import base64
 import io
 import random
+import re
 import string
 from functools import wraps
 
@@ -214,3 +215,45 @@ class CaptchaTool(object):
         self.im.save(buffered, format="JPEG")
         img_str = b"data:image/png;base64," + base64.b64encode(buffered.getvalue())
         return img_str, code
+
+
+class PhoneTool(object):
+    """
+    手机号码验证工具
+    """
+    
+    @staticmethod
+    def check_phone(phone):
+        """
+        检查传来的号码是否为手机号
+        :param phone: str
+        :return:
+        """
+        if not len(phone) == 11:
+            return None
+        
+        v_phone = re.match(r"^1[3-9][0-9]{9}$", phone)
+        if not v_phone:
+            return None
+        else:
+            phone = v_phone.group()
+            return phone
+    
+    @staticmethod
+    def check_phone_code(phone, code):
+        """
+        检查手机号码和验证码是否正确
+        :param phone: str，手机号码
+        :param code: str，验证码
+        :return: bool
+        """
+        re_phone = PhoneTool.check_phone(phone)
+        if not re_phone:
+            return False
+        
+        # 将传入的验证码和存储在redis中的对比
+        r_code = Redis.hget(re_phone, "code")
+        if code == r_code:
+            return True
+        else:
+            return False
