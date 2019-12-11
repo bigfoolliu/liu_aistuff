@@ -172,7 +172,7 @@ class Redis(object):
         else:
             expire_seconds = current_app.config["REDIS_EXPIRE"]
         r = cls._get_r()
-        r.expire(name, expire=expire_seconds)
+        r.expire(name, expire_seconds)
 
 
 class CaptchaTool(object):
@@ -229,7 +229,7 @@ class PhoneTool(object):
         :param phone: str
         :return:
         """
-        if not len(phone) == 11:
+        if not phone or not len(phone) == 11:
             return None
         
         v_phone = re.match(r"^1[3-9][0-9]{9}$", phone)

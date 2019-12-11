@@ -9,11 +9,13 @@
 
 
 import logging
-from datetime import datetime
+import random
+from datetime import datetime, timedelta
 from decimal import Decimal
 
 from flask import Blueprint, jsonify, request, session
 
+from app.api.phone_login_register import SendSMS, phone_login_or_register
 from app.api.wx_login_register import (get_access_code, get_wx_user_info,
                                        login_or_register)
 from app.models.model import Article, ChangeLogs, User, UserLoginMethod
@@ -22,7 +24,7 @@ from app.utils.auth import (decode_auth_token, generate_access_token,
 from app.utils.code import ResponseCode
 from app.utils.core import db
 from app.utils.response import ResMsg
-from app.utils.util import CaptchaTool, Redis, route
+from app.utils.util import CaptchaTool, PhoneTool, Redis, route
 
 test_bp = Blueprint("test", __name__, url_prefix="/test")
 logger = logging.getLogger(__name__)
@@ -327,4 +329,77 @@ def test_wx_login_or_register():
     if not data:
         return "login failed"
     
+    return data
+
+
+# ------------------------手机验证码测试-------------------------
+
+
+@test_bp.route("/testGetPhoneVerifyCode", methods=["GET"])
+def test_get_phone_verify_code():
+    """
+    测试获取手机号验证码
+    :return:
+    """
+    now = datetime.now()
+    category = request.args.get("category", None) or request.headers.get("category", None)
+    phone = request.args.get("account", None)
+
+    re_phone = PhoneTool.check_phone(phone)
+    if not phone or not re_phone:
+        return "phone number wrong"
+    if not category:
+        return "parameters wrong"
+
+    print("phone:", phone, "\nre_phone:", re_phone, "\ncategory:", category)
+    try:
+        # 获取手机验证码的设置时间
+        flag = Redis.hget(re_phone, "expire_time")
+        if flag:
+            flag = datetime.strptime(flag, "%Y-%m-%d %H:%M:%S")
+            print("flag:", flag)
+            if (flag-now).total_seconds() < 60:
+                return "operate too frequent"
+        # 生成随机的6位数字验证码
+        code = "".join([str(random.randint(0, 9)) for _ in range(6)])
+        print("sms code:", code)
+        template_param = {"code": code}
+
+        # TODO:发送短信,需要注册阿里云的短信服务
+        # sms = SendSMS(phone=re_phone, category=category, template_param=template_param,)
+        # sms.send_sms()
+
+        # 将验证码存入redis,方便验证,同时设置之间防止短时间内重复操作,设置其过期时间为3分钟
+        Redis.hset(re_phone, "code", code)
+        Redis.hset(re_phone, "expire_time", (now+timedelta(minutes=1)).strftime("%Y-%m-%d %H:%M:%S"))
+        Redis.expire(re_phone, 60*3)
+
+        return "get or save sms code success"
+    except Exception as e:
+        print(e)
+        return "get or save sms code failed"
+
+
+@test_bp.route("/testPhoneLoginRegister", methods=["POST"])
+def test_phone_login_or_register():
+    """
+    测试使用手机号注册或者登录
+    :return:
+    """
+    data = request.get_json(force=True)
+    phone = data.get("account")
+    code = data.get("code")
+    if not phone or not code:
+        return "parameters wrong"
+
+    # 从redis中取出对应的code
+    flag = PhoneTool.check_phone_code(phone, code)
+    if not flag:
+        return "sms code wrong"
+
+    # 根据信息注册或者登录
+    data = phone_login_or_register(phone)
+    if not data:
+        return "phone register or login wrong"
+
     return data

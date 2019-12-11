@@ -21,8 +21,10 @@
 
 import uuid
 
-from aliyunsdkcore.client import AssClient
+from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.request import CommonRequest
+from app.models.model import User, UserLoginMethod
+from app.utils.core import db
 
 
 # 阿里云申请成功获取到的内容
@@ -69,7 +71,7 @@ class SendSMS(object):
         if not template_param:
             raise ValueError("sms template params wrong")
 
-        self.asc_client = AssClient(access_key_id, access_key_secret)
+        self.asc_client = AcsClient(access_key_id, access_key_secret)
         self.phone = phone
         self.category = category
         self.template_param = template_param
@@ -169,4 +171,33 @@ def phone_login_or_register(phone):
     :param phone: str，手机号
     :return:
     """
-    pass
+    # 判断用户是否已经用手机注册,注册过了直接返回，没有则注册返回
+    user_login = db.session.query(UserLoginMethod).filter(
+        UserLoginMethod.login_method=="P",
+        UserLoginMethod.identification==phone).first()
+
+    if user_login:
+        user = db.session.query(User.id, User.name).filter(
+            User.id==user_login.user_id).first()
+        data = dict(zip(user.keys(), user))
+        return data
+    else:
+        try:
+            new_user = User(name="nicename", age=20)
+            db.session.add(new_user)
+            db.session.flush()
+            new_user_login = UserLoginMethod(
+                user_id=new_user.id,
+                login_method="P",
+                identification=phone,
+                access_code=""
+            )
+            db.session.add(new_user_login)
+            db.session.flush()
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            return None
+
+        data = dict(id=new_user.id, name=new_user.name)
+        return data
