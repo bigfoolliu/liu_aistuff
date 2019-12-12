@@ -16,7 +16,7 @@ class Worker(MongoBase):
 
 def mongo_id_to_str(mgo_obj):
     """
-        Transforms _id from mongo to what client accepts.
+    Transforms _id from mongo to what client accepts.
     """
     new_obj = deepcopy(mgo_obj)
     i = new_obj.pop("_id", None)
