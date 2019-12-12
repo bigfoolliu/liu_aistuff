@@ -1,0 +1,2 @@
+将模板文件放在这个templates的目录下,并为不同的app创建一个目录,
+每个app的目录比如templates/app_polls/index.html可简写为app_polls/index.html

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<!--% static %模板标签会生成静态文件的绝对URL路径-->
+		{% load static %}
+		<!--注意css样式引用的目录,static实际上就是已经相当于声明了之前的多级目录,后面直接就是app下的static目录-->
+		<link rel="stylesheet" type="text/css" href="{% static 'app_polls/style.css' %}"/>
+	</head>
+
+	<body>
+        <h1>index页面</h1>
+        <h2>问题如下:</h2>
+		{% if latest_question_list %}
+		<ul>
+			{% for question in latest_question_list %}
+			<li>
+                <label>{{ question.id }}:</label>
+				<a href="{% url 'app_polls:detail' question.id %}">{{question.question_text}}</a>
+			</li>
+        	{% endfor %}
+		</ul>
+		{% else %}
+		<p>No polls are available.</p>
+
+		{% endif %}
+	</body>
+
+</html>

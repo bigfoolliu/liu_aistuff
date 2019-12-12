@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#submit_btn{
+			width: 100px;
+			height: 50px;
+			margin-top: 50px;
+			margin-left: 50px;
+		}
+	</style>
+
+	<body>
+        <a href="/app_polls">回到主页面</a>
+		<!--为了接收用户的投票选择,需要选择一个表单-->
+        <h1>detail页面</h1>
+		<h2>Question:{{question.question_text}}</h2>
+
+		<!--出错显示消息-->
+		{% if error_message %}
+		<p><strong>{{error_message}}</strong></p>
+		{% endif %}
+
+		<!--显示一系列的单选按钮,按钮的值是选项的id,按钮的名字是字符串"choice"-->
+		<!--当按了某个按钮并提交表单,一个包含数据choice=#的post请求将被发送给指定的url-->
+		<form action="{% url 'app_polls:vote' question.id %}" method="post">
+			<!--post请求需要考虑跨站请求伪造的安全问题,即csrf-->
+			<!--django使用csrf_token标签,表示签名不可改,固定格式,位置任意,只要在form表单内-->
+			{% csrf_token %} {% for choice in question.choice_set.all %}
+			<!--forloop.counter是django系统专门提供的一个变量,用来表示当前循环的次数,用来给虚幻项目添加有序数标-->
+			<input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}" />
+			<label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br /> {% endfor %}
+
+			<input type="submit" value="Vote" id="submit_btn"/>
+		</form>
+	</body>
+
+</html>

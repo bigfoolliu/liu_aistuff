@@ -1,0 +1,14 @@
+{% extends 'app_login/base.html' %}
+
+{% block title %}主页{% endblock %}
+
+{% block content %}
+
+	<!--根据用户不同的登录状态,显示不同的信息-->
+	{% if request.session.is_login %}
+		<h1>{{request.session.user_name}}, 欢迎回来!</h1>
+	{% else %}
+		<h1>您尚未登录,请先登录.</h1>
+	{% endif %}
+
+{% endblock %}

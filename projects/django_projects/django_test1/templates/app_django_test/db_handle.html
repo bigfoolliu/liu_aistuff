@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>django数据库查询操作</title>
+</head>
+<body>
+	
+	<!--用以数据查询结果的显示-->
+	
+	<table border="1" cellspacing="" cellpadding="">
+		<tr>
+			<th>first name</th>
+			<th>last name</th>
+			<th>email</th>
+		</tr>
+		{% for item in li %}
+		<tr>
+			<td>{{item.first_name}}</td>
+			<td>{{item.last_name}}</td>
+			<td>{{item.email}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+</body>
+</html>
