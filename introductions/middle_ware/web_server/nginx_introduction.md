@@ -3,113 +3,73 @@
 <!-- TOC -->
 
 - [nginx知识](#nginx知识)
-    - [指令上下文](#指令上下文)
-    - [nginx模块化体系(nginx core)](#nginx模块化体系nginx-core)
-    - [Nginx如何做到热部署](#nginx如何做到热部署)
-        - [nginx启动和关闭的方式](#nginx启动和关闭的方式)
-    - [1.nginx主要应用场景](#1nginx主要应用场景)
-    - [2.nginx的组成](#2nginx的组成)
-    - [3.选择版本](#3选择版本)
-    - [4.编译出自己的nginx](#4编译出自己的nginx)
-    - [5.nginx的语法](#5nginx的语法)
-    - [6.nginx命令行](#6nginx命令行)
-    - [7.配置静态资源服务器](#7配置静态资源服务器)
-    - [8.搭建一个具备缓存功能的反向代理服务器](#8搭建一个具备缓存功能的反向代理服务器)
-    - [9.用GoAccess实现可视化并实时监控access日志](#9用goaccess实现可视化并实时监控access日志)
-    - [10.ssl协议与https](#10ssl协议与https)
+    - [1.基本介绍](#1基本介绍)
+        - [1.3语法](#13语法)
+        - [1.4主要应用场景](#14主要应用场景)
+        - [1.5组成](#15组成)
+        - [1.7编译出自己的nginx](#17编译出自己的nginx)
+    - [2.nginx命令](#2nginx命令)
+        - [1.3nginx启动和关闭](#13nginx启动和关闭)
+        - [2.2nginx操作命令](#22nginx操作命令)
+    - [3.nginx配置](#3nginx配置)
+        - [3.1全局块常用配置](#31全局块常用配置)
+        - [3.2events块配置](#32events块配置)
+        - [3.3http全局块配置](#33http全局块配置)
+        - [3.4http中server块配置](#34http中server块配置)
+    - [a.其他](#a其他)
+        - [a.1nginx如何做到热部署](#a1nginx如何做到热部署)
+        - [a.2配置静态资源服务器](#a2配置静态资源服务器)
+        - [a.3搭建一个具备缓存功能的反向代理服务器](#a3搭建一个具备缓存功能的反向代理服务器)
 
 <!-- /TOC -->
 
-[nginx教程](http://tengine.taobao.org/book/chapter_02.html)
-[nginx.io(快速生成nginx的配置文件)](https://nginxconfig.io/)
+- [nginx教程](http://tengine.taobao.org/book/chapter_02.html)
+- [nginx.io(快速生成nginx的配置文件)](https://nginxconfig.io/)
+- [nginx中文文档](http://www.nginx.cn/doc/)
+- [nginx英文文档](https://nginx.org/en/docs/)
 
-nginx却是先加载一个主配置文件nginx.conf，在nginx.conf里再加载conf.d目录下的子配置文件（一般最少一个default.conf文件）
+## 1.基本介绍
 
-kill -HUP pid: 从容地重启nginx，我们一般用这个信号来重启nginx，或重新加载配置，因为是从容地重启，因此`服务是不中断的`。
+- nginx是`先加载一个主配置文件nginx.conf`，`在nginx.conf里再加载conf.d目录下的子配置文件`
 
-## 指令上下文
+### 1.3语法
 
-- main: nginx在运行时与具体业务功能（比如http服务或者email服务代理）无关的一些参数，比如工作进程数，运行的身份等。
-- http: 与提供http服务相关的一些配置参数。例如：是否使用keepalive啊，是否使用gzip进行压缩等。
-- server: http服务上支持若干虚拟主机。每个虚拟主机一个对应的server配置项，配置项里面包含该虚拟主机相关的配置。在提供mail服务的代理时，也可以建立若干server.每个server通过监听的地址来区分。
-- location: http服务中，某些特定的URL对应的一系列配置项。
-- mail: 实现email相关的SMTP/IMAP/POP3代理时，共享的一些配置项（因为可能实现多个代理，工作在多个监听地址上）。
+1. 配置文件由指令和指令块组成
+2. 每条`指令由;分号结尾`，指令与参数间以空格分割
+3. 指令块以{}大括号将多条指令结合
+4. include语句允许组合多个配置文件以提升可读性
+5. 使用#添加注释
+6. 使用$使用变量
+7. 部分指令的参数支持正则表达式
 
-具体有哪些配置指令，以及这些配置指令可以出现在什么样的上下文中，需要参考nginx的使用文档.()
+### 1.4主要应用场景
 
-## nginx模块化体系(nginx core)
-
-模块的分类
-nginx的模块根据其功能基本上可以分为以下几种类型：
-
-- event module: 搭建了独立于操作系统的事件处理机制的框架，及提供了各具体事件的处理。包括ngx_events_module， ngx_event_core_module和ngx_epoll_module等。nginx具体使用何种事件处理模块，这依赖于具体的操作系统和编译选项。
-- phase handler: 此类型的模块也被直接称为handler模块。主要负责处理客户端请求并产生待响应内容，比如ngx_http_static_module模块，负责客户端的静态页面请求处理并将对应的磁盘文件准备为响应内容输出。
-- output filter: 也称为filter模块，主要是负责对输出的内容进行处理，可以对输出进行修改。例如，可以实现对输出的所有html页面增加预定义的footbar一类的工作，或者对输出的图片的URL进行替换之类的工作。
-- upstream: upstream模块实现反向代理的功能，将真正的请求转发到后端服务器上，并从后端服务器上读取响应，发回客户端。upstream模块是一种特殊的handler，只不过响应内容不是真正由自己产生的，而是从后端服务器上读取的。
-- load-balancer: 负载均衡模块，实现特定的算法，在众多的后端服务器中，选择一个服务器出来作为某个请求的转发服务器。
-
-## Nginx如何做到热部署
-
-所谓热部署，就是配置文件nginx.conf修改后，不需要stop Nginx，不需要中断请求，就能让配置文件生效！（nginx -s reload 重新加载/nginx -t检查配置/nginx -s stop）
-
-### nginx启动和关闭的方式
-
-```shell
-# 找到nginx的安装位置，带上参数-c，最后加上nginx的配置文件的地址
-/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
-
-# 从容停止，在进程中找到nginx(带 master 的process)并杀掉进程
-ps -ef | grep nginx
-kill -QUIT 2072
-
-# 快速停止
-ps -ef | grep nginx
-kill -TERM 2132
-
-# 强制停止
-pkill -9 nginx
-
-# 重启nginx
-# 首先验证配置文件的准确性走
-# 方式一，启动的时候加减
-cd /usr/local/nginx/sbin/
-nginx -s poload
-
-# 方式二，
-# 找到当前nginx的进程号，然后用-HUP参数推进重启
-ps -ef | grep nginx
-kill -HUP 2255
-```
-
-## 1.nginx主要应用场景
-
-[nginx教程，核心知识100讲，youtobe地址](https://www.youtube.com/watch?v=uYPO4tJPAAY&list=PLSKUOdPqiSdtP6wNRo2vjHiWwcrC7MD8X&index=10)
-[nginx官方帮助文档，配置文件等](http://nginx.org/en/docs/)
+- [nginx教程，核心知识100讲，youtobe地址](https://www.youtube.com/watch?v=uYPO4tJPAAY&list=PLSKUOdPqiSdtP6wNRo2vjHiWwcrC7MD8X&index=10)
+- [nginx官方帮助文档，配置文件等](http://nginx.org/en/docs/)
 
 1. 静态资源服务，通过本地文件系统提供服务
 2. 反向代理服务，缓存，负载均衡等
-3. API服务
+3. 动静分离，将动态页面和静态页面分开为不同的服务器，提高速度
+4. API服务
 
-## 2.nginx的组成
+### 1.5组成
 
 1. nginx的二进制可执行文件，各模块编译出来的一个文件
 2. nginx.conf配置文件，控制nginx的行为
 3. access.log访问日志，记录每一条http请求信息
 4. error.log错误日志，定位问题
 
-## 3.选择版本
+### 1.7编译出自己的nginx
 
-[开源版(偶数版本为稳定版)](http://nginx.org/)
-[商业版](http://nginx.com)
-
-## 4.编译出自己的nginx
-
-1. 下载
-2. 配置
-3. 编译
-4. 安装
+- [开源版(偶数版本为稳定版)](http://nginx.org/)
+- [商业版](http://nginx.com)
 
 ```shell
+# 1. 下载
+# 2. 配置
+# 3. 编译
+# 4. 安装
+
 # 下载
 wget http://nginx.org/download/nginx-1.16.0.tar.gz
 tar -xzf nginx-1.16.0.tar.gz
@@ -139,25 +99,28 @@ kill -USR2 1314
 kill -WINCH 1314
 ```
 
-## 5.nginx的语法
+## 2.nginx命令
 
-1. 配置文件由指令和指令块组成
-2. 每条指令由;分号结尾，指令与参数间以空格分割
-3. 指令块以{}大括号将多条指令结合
-4. include语句允许组合多个配置文件以提升可读性
-5. 使用#添加注释
-6. 使用$使用变量
-7. 部分指令的参数支持正则表达式
+### 1.3nginx启动和关闭
 
-## 6.nginx命令行
+```shell
+# 找到nginx的安装位置，带上参数-c，最后加上nginx的配置文件的地址
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 
-- 格式: nginx -s reload
-- 帮助：-h
-- 使用指定的配置文件：-c
-- 指定配置指令：-g
-- 指定运行目录：-p
-- 发送信号：-s
-  
+# 从容停止，在进程中找到nginx(带 master 的process)并杀掉进程
+ps -ef | grep nginx
+kill -QUIT 2072
+
+# 快速停止
+ps -ef | grep nginx
+kill -TERM 2132
+
+# 强制停止
+pkill -9 nginx
+```
+
+### 2.2nginx操作命令
+
 ```shell
 # 重载配置文件，不停止原有服务
 nginx -s reload
@@ -172,15 +135,91 @@ nginx -s stop
 nginx -s reopen
 ```
 
-- 测试配置文件是否有语法错误：-t -T
-- 打印版本信息和编译信息：-v -V
+## 3.nginx配置
 
-## 7.配置静态资源服务器
+### 3.1全局块常用配置
+
+- 配置影响影响全局的命令
+- 包括nginx的用户组
+- nginx进程pid存放路径
+- 日志存放路径
+- 允许生成worker process数量等
+
+```shell
+# 指定Nginx Worker进程运行用户，涉及文件访问权限
+user root;
+user wwwuser wwwgroup;
+
+# 修改 Nginx 进程最大可打开文件数: https://blog.csdn.net/liupeifeng3514/article/details/79007079
+# 操作系统启动多少个工作进程运行nginx
+worker_processes auto;
+worker_processes 4;
+
+# 配置文件的包含，Nginx.conf include使用：https://blog.csdn.net/ruby113028/article/details/52461452
+inlude /usr/local/nginx/conf/vhosts/*.conf;
+```
+
+### 3.2events块配置
+
+- 涉及的指令主要影响nginx服务器与用户的网络连接
+
+```shell
+events {
+    # 单个工作进程可以允许同时建立外部连接的数量
+    worker_connections 1024;
+
+    # on/off，默认on，多个Worker将以串行方式来处理，其中有一个Worker会被唤醒，其他的Worker继续保持休眠状态，防止"惊群效应"
+    accept_mutex on;
+
+    # 设置一个进程是否同时接受多个网络连接，默认为off
+    multi_accept on;
+}
+```
+
+### 3.3http全局块配置
+
+- 文件引入
+- MIME-TYPE定义
+- 日志自定义
+- 连接超时时间
+- 单链接请求数上限
+
+```shell
+http {
+}
+```
+
+### 3.4http中server块配置
+
+- 虚拟主机(从用户角度看就是一台独立的硬件主机)相关配置
+- 每一个server就是一个虚拟主机
+- `每个http块可以包含多个server块`
+- `每个server块可以包含多个location块`
+
+```shell
+# 表示该虚拟主机监听的端口
+listen  80;
+listen  192.168.0.1:80;  # 同时指定ip和端口
+
+# 用于配置基于名称的虚拟主机，nginx的server_name的作用：https://blog.csdn.net/cheng_kohui/article/details/82930464
+server_name www.test.site;  # 指定单个的域名
+server_name *.test.site;  # 基于正则表达式的域名匹配
+
+
+```
+
+## a.其他
+
+### a.1nginx如何做到热部署
+
+所谓热部署，就是配置文件nginx.conf修改后，不需要stop Nginx，不需要中断请求，就能让配置文件生效！（nginx -s reload 重新加载/nginx -t检查配置/nginx -s stop）
+
+### a.2配置静态资源服务器
 
 1. 配置nginx.conf文件
 2. 重新加载nginx
 
-```nginx
+```shell
 # gzip压缩打开可以让访问文件时候进行压缩传输，减少请求时间
 # gzip_min_length只小于多少字节就不再压缩
 # gzip_comp_level表示压缩级别
@@ -218,26 +257,15 @@ server {
 }
 ```
 
-```shell
-sbin/nginx -s reload
-```
+### a.3搭建一个具备缓存功能的反向代理服务器
 
-## 8.搭建一个具备缓存功能的反向代理服务器
-
-```text
-正向代理：在客户端进行配置。
-反向代理：在服务端配置。
-```
-
-上面的nginx静态服务器作为上游服务，上游服务一般是业务比较麻烦，性能较差，所以可以配置多台，下游的反向代理服务器可以根据**负载均衡算法**来将请求发给不同的上游服务器，减轻上游服务器的压力。
-
-- 反向代理针对是动态内容，减轻上游服务器的压力
-- 缓存是针对一段静态内容（长时间不变），提高响应速度，可以设置缓存时间，即使该静态内容变化了，也不管
+- `正向代理`：在客户端进行配置
+- `反向代理`：在服务端配置，针对是动态内容，减轻上游服务器的压力
 
 1. 配置上游服务器，一般上游服务器对公网不提供访问
 2. 配置反向代理服务器
 
-```nginx
+```shell
 # 静态资源服务器
 server {
     # 只让本机的进程来访问8080端口
@@ -245,7 +273,7 @@ server {
 }
 ```
 
-```nginx
+```shell
 # 反向代理服务器，对公网提供访问
 http {
 
@@ -269,17 +297,3 @@ http {
     }
 }
 ```
-
-## 9.用GoAccess实现可视化并实时监控access日志
-
-pass
-
-## 10.ssl协议与https
-
-ssl: Secure Socket Layer.
-
-CA机构颁发的证书：
-
-- DV证书
-- OV证书
-- EV证书
