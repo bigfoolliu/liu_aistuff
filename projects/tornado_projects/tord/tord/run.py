@@ -24,6 +24,6 @@ def main():
     try:
         app.listen(options.port)
         logging.info("listening on port {}".format(options.port))
-        tornado.ioloop.IOLoop.instance().start()
+        tornado.ioloop.IOLoop.current().start()
     except KeyboardInterrupt:
-        tornado.ioloop.IOLoop.instance().stop()
+        tornado.ioloop.IOLoop.current().stop()
