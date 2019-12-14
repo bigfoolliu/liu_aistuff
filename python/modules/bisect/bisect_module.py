@@ -8,6 +8,8 @@ bisect库使用
 
 该库主要用来排序,主要是二分查找
 """
+
+
 import bisect
 
 
