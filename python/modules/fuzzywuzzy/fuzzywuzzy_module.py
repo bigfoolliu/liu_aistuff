@@ -12,15 +12,17 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
 
-ret = fuzz.ratio("this is a test", "this is also a test")
+def basic_demo():
+    ret = fuzz.ratio("this is a test", "this is also a test")
+    print(ret)
 
-print(ret)
+    choices = ["china", "usa", "japan", "russian"]
+    ret2 = process.extract("ch", choices, limit=2)
+    print(ret2)
 
-choices = ["china", "usa", "japan", "russian"]
+    ret3 = process.extractOne("boys", choices)
+    print(ret3)
 
-ret2 = process.extract("ch", choices, limit=2)
-print(ret2)
 
-ret3 = process.extractOne("boys", choices)
-
-print(ret3)
+if __name__ == "__main__":
+    basic_demo()

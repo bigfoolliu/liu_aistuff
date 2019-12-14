@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
 pillow库
 
@@ -8,17 +13,15 @@ pillow库
 3.图像处理：基本的图像处理功能，包括点操作，使用内置卷积内核过滤，色彩
 空间转换。
 
-"""
-import os  # os库提供了使用各种操作系统功能的接口
-
-from PIL import Image, ImageDraw, ImageFont
-
-
-"""
 Image类
 可以通过多种方法创建这个类的实例；你可以从文件加载图像，或者处理其他图
 像, 或者从 scratch 创建。
 """
+
+
+import os  # os库提供了使用各种操作系统功能的接口
+
+from PIL import Image, ImageDraw, ImageFont
 
 
 def display_demo():

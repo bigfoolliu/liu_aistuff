@@ -7,6 +7,7 @@
 platform模块示例
 """
 
+
 import platform
 
 
@@ -37,4 +38,3 @@ def python_demo():
 if __name__ == "__main__":
     basic_demo()
     python_demo()
-

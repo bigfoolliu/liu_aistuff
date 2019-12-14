@@ -31,6 +31,7 @@ operation 的操作包括以下选项：
 LOCK_NB可以同LOCK_SH或LOCK_NB进行按位或（|）运算操作。
 """
 
+
 import fcntl
 import sys
 import time
