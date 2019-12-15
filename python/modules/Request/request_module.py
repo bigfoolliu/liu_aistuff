@@ -179,3 +179,7 @@ Cookies
 #
 # response = opener.open('http://www.baidu.com')
 # cookie.save(ignore_discard=True, ignore_expires=True)
+
+
+if __name__ == "__main__":
+    pass

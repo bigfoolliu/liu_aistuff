@@ -37,3 +37,7 @@ pattern = re.compile('explore-feed.*?question_link.*?>(.*?)</a>', re.S)
 titles = re.findall(pattern, response.text)
 
 print(titles)
+
+
+if __name__ == "__main__":
+	pass
