@@ -1,0 +1,7 @@
+first,last
+doctor,yes
+doctor,no
+rosa,klebb
+mister,big
+auric,goldfinge
+ernst,blofeld

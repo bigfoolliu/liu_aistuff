@@ -1,0 +1,5 @@
+doctor,no
+rosa,klebb
+mister,big
+auric,goldfinger
+sophia,blod
