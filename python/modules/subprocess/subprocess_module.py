@@ -35,6 +35,7 @@ subprocess.Popen():
 
 
 import subprocess
+import time
 
 
 def run_demo():
@@ -106,6 +107,53 @@ def popen_stdout_demo():
     ret.stdout.read()
 
 
+def popen_stderr_demo():
+    """
+    标准错误示例
+    """
+    ret = subprocess.Popen("pw", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)    
+    print("ret:", ret)
+    print(ret.stdout.read())
+    print(ret.stderr.read())
+
+
+def popen_poll_demo():
+    """
+    定时检查任务是否完成，执行完毕后返回执行结果的状态，没有执行完毕则返回None
+    """
+    ret = subprocess.Popen("sleep 5;echo 'hello'", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(ret.poll())
+    time.sleep(2)
+    print(ret.poll())
+    time.sleep(4)
+    print(ret.poll())
+
+
+def popen_wait_demo():
+    """
+    等待命令执行完成，并且返回结果状态
+    """
+    ret = subprocess.Popen("sleep 5;echo 'hello'", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(ret.wait())
+
+
+def popen_terminate_demo():
+    """
+    结束进程    
+    """
+    ret = subprocess.Popen("sleep 5;echo 'hello'", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(ret.terminate())
+    print(ret.stdout.read())
+
+
+def popen_pid_demo():
+    """
+    获取当前执行子shell程序的进程号
+    """
+    ret = subprocess.Popen("sleep 5;echo 'hello'", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(ret.pid)
+
+
 if __name__ == "__main__":
     # run_demo()
     # call_demo()
@@ -114,4 +162,9 @@ if __name__ == "__main__":
     # getoutput_demo()
     # check_output_demo()
 
-    popen_stdout_demo()
+    # popen_stdout_demo()
+    # popen_stderr_demo()
+    # popen_poll_demo()
+    # popen_wait_demo()
+    # popen_terminate_demo()
+    popen_pid_demo()    
