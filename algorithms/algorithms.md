@@ -156,7 +156,7 @@
 
 ### 2.1顺序查找
 
-- 遍历整个列表，逐个比较直至找到给定的值，复杂度为`O(n)`
+- 遍历整个列表，逐个比较直至找到给定的值，复杂度为: $O(n)$
 - 适用`线性表的顺序存储结构`和`链式存储结构`
 - n很大时，平均查找长度较大，效率低；优点是对表中数据元素存储没有要求，`对于线性链表，只能顺序查找`
 - [顺序查找Python实现](./search_algorithms/sequential_search.py)
@@ -164,13 +164,13 @@
 ### 2.2二分查找
 
 - 在`有序数组`中寻找目标值，当然有时候需要自己构建有序数组,每次查找都将范围缩小一半
-- 时间复杂度为`O(logn)`, 空间复杂度为`O(1)`
+- 时间复杂度为: $O(logn)$, 空间复杂度为: $O(1)$
 - [二分查找python实现](./search_algorithms/binary_search.py)
 
 ### 2.3差值查找
 
-- 核心在于差值计算公式：`(key-a[low])*(high-low)/(a[high]-a[low])`
-- 时间复杂度介于`O(loglogn)`和`O(n)`，空间复杂度为`O(1)`
+- 核心在于差值计算公式：$(key-a[low])*(high-low)/(a[high]-a[low])$
+- 时间复杂度介于$O(loglogn)$和$O(n)$，空间复杂度为$O(1)$
 - 对于`表长较长而关键字分布比较均匀`的查找表来说效率较高
 - [差值查找python实现](./search_algorithms/interpolation_search.py)
 
@@ -183,13 +183,13 @@
   - 用给定的哈希函数构造哈希表
   - 根据选择的冲突处理方法(`拉链法`和`线性探索法`)解决地址冲突
   - 在哈希表的基础上执行哈希查找
-- `无冲突hash表查找时间复杂度为O(1)`
+- `无冲突hash表查找时间复杂度为`$O(1)$
 - [哈希查找python实现](./search_algorithms/hash_search.py)
 
 ### 2.6斐波那契查找
 
 - 在`有序数列`中寻找目标值，在二分查找的基础上根据斐波那契数列进行分割
-- 时间复杂度为`O(log2n)`
+- 时间复杂度为$O(log2n)$
 - [斐波那契查找python实现](./search_algorithms/fibonacci_search.py)
 
 ### 2.3分块查找(索引查找)
@@ -214,7 +214,7 @@
 
 **核心思想:**
 
-将问题拆解为子问题，即`分治`的思想，形式为`f(n)=f(n-1)f(n-2)`
+将问题拆解为子问题，即`分治`的思想，形式为$f(n)=f(n-1)f(n-2)$
 
 1. `划分状态`，划分子问题
 2. `状态表示`，让计算机理解
@@ -344,9 +344,9 @@
 
 **应用:**
 
-1. 计算前缀表: ![calculate prefix table](./match/kmp/calculate_prefix_table.png)
-2. 执行kmp搜索: ![kmp move substring](./match/kmp/kmp_move.png)
-3. 当可能有多个匹配结果的时候：![kmp end match](./match/kmp/kmp_end_match.png)
+1. 计算前缀表: ![calculate prefix table](./match_algorithms/kmp/calculate_prefix_table.png)
+2. 执行kmp搜索: ![kmp move substring](./match_algorithms/kmp/kmp_move.png)
+3. 当可能有多个匹配结果的时候：![kmp end match](./match_algorithms/kmp/kmp_end_match.png)
 
 ### x.7动态规划
 
