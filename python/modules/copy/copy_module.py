@@ -25,64 +25,74 @@ python深浅拷贝以及赋值的区别
 import copy
 
 
-def when_is_int():
-    """当拷贝的对象是数字时候"""
+def copy_int_demo():
+    """
+    当拷贝的对象是数字时候
+    """
     a = 1
     b = a
     c = copy.copy(a)
     d = copy.deepcopy(a)
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
+    # a重新赋值，则新开辟一块空间来存储2，a的地址改变
     a = 2
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
 
-def when_is_str():
-    """当拷贝的对象是字符串时候"""
+def copy_str_demo():
+    """
+    当拷贝的对象是字符串时候
+    """
     a = "a"
     b = a
     c = copy.copy(a)
     d = copy.deepcopy(a)
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
+    # a重新赋值，则开辟一块新的空间来存储"b",a的地址改变
     a = "b"
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
 
-def when_is_list():
-    """当拷贝的对象是列表的时候"""
+def copy_list_demo():
+    """
+    当拷贝的对象是列表的时候
+    """
     a = [1, "a", [2, "b"]]
+
+    # 始终和a一致且内存地址一样
     b = a
+
+    # 拷贝第一层，新开辟内存地址，1，"a"不会跟随改变，[2, "b"]只是存储其地址，会跟随改变
     c = copy.copy(a)
+
+    # 考本所有层，新开辟内存地址，所有元素的所有层都不会跟随变化
     d = copy.deepcopy(a)
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
     a[0] = 2
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
     a[2][0] = 3
 
-    print("val:\na:{}\nb:{}\nc:{}\nd:{}".format(a, b, c, d))
-    print("id:\na:{}\nb:{}\nc:{}\nd:{}".format(id(a), id(b), id(c), id(d)))
+    print(a, b, c, d)
+    print(id(a), id(b), id(c), id(d))
 
 
 if __name__ == "__main__":
-    print("a\nb:b=a\nc:c=copy.copy(a)\nd:d=copy.deepcopy(a)")
-    print("--------------------int------------------")
-    when_is_int()
-    print("--------------------str------------------")
-    when_is_str()
-    print("------------------ list ------------------")
-    when_is_list()
+    # copy_int_demo()
+    copy_str_demo()
+    # copy_list_demo()
