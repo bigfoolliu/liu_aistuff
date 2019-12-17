@@ -25,6 +25,8 @@ Explanation: The square root of 8 is 2.82842..., and since
 
 思路：
 """
+
+
 import math
 
 
@@ -45,7 +47,8 @@ def my_sqrt2(x):
     return int(x**0.5)
 
 
-print(my_sqrt(4))
-print(my_sqrt(8))
-print(my_sqrt2(4))
-print(my_sqrt2(8))
+if __name__ == "__main__":
+    print(my_sqrt(4))
+    print(my_sqrt(8))
+    print(my_sqrt2(4))
+    print(my_sqrt2(8))

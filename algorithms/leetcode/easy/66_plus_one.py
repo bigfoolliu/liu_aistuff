@@ -62,8 +62,9 @@ def plus_one2(digits):
     return digits
 
 
-print(plus_one([1, 2, 3, 4]))
-print(plus_one2([1, 2, 3, 4]))
-
-print(plus_one([4, 3, 2, 1]))
-print(plus_one2([4, 3, 2, 1]))
+if __name__ == "__main__":
+    print(plus_one([1, 2, 3, 4]))
+    print(plus_one2([1, 2, 3, 4]))
+    
+    print(plus_one([4, 3, 2, 1]))
+    print(plus_one2([4, 3, 2, 1]))

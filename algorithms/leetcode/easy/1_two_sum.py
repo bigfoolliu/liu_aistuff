@@ -31,8 +31,10 @@ def twoSum(nums, target):
         num2 = target - num
         if num2 in hash_map:
             return [index, hash_map[num2]]
+        # 将这个暂时不需要的数字用其自身作为key，下标作为value存储
         hash_map[num] = index
     return None
 
 
-print(twoSum([2, 7, 11, 15], 9))
+if __name__ == "__main__":
+    print(twoSum([2, 7, 11, 15], 9))

@@ -17,8 +17,9 @@ If you have figured out the O(n) solution, try coding another solution using the
 
 求连续最大的子序列和。
 """
-import time
 
+
+import time
 
 
 def maxinum_sum_subarray1(array):

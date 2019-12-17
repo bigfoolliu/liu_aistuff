@@ -33,13 +33,14 @@ def longest_common_prefix(strs):
     """
     prefix = ""
     # zip打包列表的时候会打包成元组，且只会打包到最短的元素
-    for cmbn in zip(*strs):  # ("f", "f") ("l", "w")
-        if len(set(cmbn)) > 1:  # 大于1说明该位置的元素有不同
+    for common_tuple in zip(*strs):  # ("f", "f") ("l", "w")
+        if len(set(common_tuple)) > 1:  # 大于1说明该位置的元素有不同
             break
-        prefix += cmbn[0]
+        prefix += common_tuple[0]
     return prefix
 
 
-print(longest_common_prefix(["flower", "flow", "flight"]))
-print(longest_common_prefix(["alower", "flow", "flight"]))
-print(longest_common_prefix(["flower", "flow", "floight"]))
+if __name__ == "__main__":
+    print(longest_common_prefix(["flower", "flow", "flight"]))
+    print(longest_common_prefix(["alower", "flow", "flight"]))
+    print(longest_common_prefix(["flower", "flow", "floight"]))

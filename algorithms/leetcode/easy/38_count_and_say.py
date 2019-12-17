@@ -63,13 +63,14 @@ def count_and_say(n):
     return s
 
 
-print(count_and_say(1))
-print(count_and_say(2))
-print(count_and_say(3))
-print(count_and_say(4))
-print(count_and_say(5))
-print(count_and_say(6))
-print(count_and_say(7))
-print(count_and_say(8))
-print(count_and_say(9))
-print(count_and_say(10))
+if __name__ == "__main__":
+    print(count_and_say(1))
+    print(count_and_say(2))
+    print(count_and_say(3))
+    print(count_and_say(4))
+    print(count_and_say(5))
+    print(count_and_say(6))
+    print(count_and_say(7))
+    print(count_and_say(8))
+    print(count_and_say(9))
+    print(count_and_say(10))

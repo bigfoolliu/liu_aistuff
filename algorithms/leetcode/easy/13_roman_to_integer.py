@@ -75,6 +75,7 @@ def roman_to_integer(s):
     return num
 
 
-# print(roman_to_integer("III"))
-# print(roman_to_integer("LVIII"))
-print(roman_to_integer("MCMXCIV"))
+if __name__ == "__main__":
+    # print(roman_to_integer("III"))
+    # print(roman_to_integer("LVIII"))
+    print(roman_to_integer("MCMXCIV"))

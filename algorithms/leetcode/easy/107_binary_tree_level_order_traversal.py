@@ -26,6 +26,9 @@ return its bottom-up level order traversal as:
 """
 
 
+from collections import deque
+
+
 class Node(object):
 
       def __init__(self, x):
@@ -39,4 +42,33 @@ def binary_tree_level_order_travelsal(root):
     :param root: Node
     :return: list[list[int]]
     """
-    pass
+    if not root:
+        return []
+
+    ret = [[root.val]]  # 存储最后的结果
+    q = deque([root])
+
+    while q:
+        level_ret = []
+        for _ in range(0, len(q)):
+            root = q.popleft()
+            if root.left:
+                level_ret.append(root.left.val)
+                q.append(root.left)
+            if root.right:
+                level_ret.append(root.right.val)
+                q.append(root.right)
+        if level_ret:
+            ret.append(level_ret)
+    
+    return ret[::-1]
+
+
+if __name__ == "__main__":
+    root = Node(3)
+    root.left = Node(9)
+    root.right = Node(20)
+    root.left.left = Node(15)
+    root.left.right = Node(7)
+
+    print(binary_tree_level_order_travelsal(root))

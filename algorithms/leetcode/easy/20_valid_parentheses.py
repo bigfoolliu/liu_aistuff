@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 # author: bigfoolliu
 
+
 """
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
@@ -45,26 +46,26 @@ def is_valid_parentheses(s):
     """
     if s == "":
         return True
-    map = {
+    parentheses_map = {
         "(": ")",
         "[": "]",
         "{": "}"
     }
-    stk = []
+    stack = []
     for i in list(s):
         # 若为左半边括号则压入栈中
-        if i in map:
-            stk.append(i)
+        if i in parentheses_map:
+            stack.append(i)
         # 若为右半边的括号则分类讨论
         else:
-            # 如果此时的栈为空或者末尾取出来的元素和当前的不匹配
-            if len(stk) == 0 or map[stk[len(stk)-1]] != i:
+            # 如果此时的栈为空或者末尾取出来的元素和当前的不匹配则说明顺序不对
+            if len(stack) == 0 or parentheses_map[stack[len(stack)-1]] != i:
                 return False
             # 栈尾元素取出来和当前对应则压出元素
             else:
-                stk.pop()
+                stack.pop()
     # 当最后的栈为空则说明正确
-    return len(stk) == 0
+    return len(stack) == 0
 
 
 if __name__ == "__main__":

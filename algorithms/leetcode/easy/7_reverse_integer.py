@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -31,12 +32,13 @@ def reverse(x):
     """
     # 转换为字符串，然后处理输出
     if x < 0:
-        ret = -int(str(x)[::-1][:-1])  # [:-1]为去掉负号
+        ret = -int(str(x)[::-1][:-1])  # [:-1]为去掉负号,int转换可以去除首位的0
     elif x >= 0:
         ret = int(str(x)[::-1])
     return ret if 0x7fffffff < ret < 0x7fffffff else 0
 
 
-for x in range(-100, 100):
-    ret = reverse(x)
-    print("[info]x:{} ret:{}".format(x, ret))
+if __name__ == "__main__":
+    for x in range(-200, 100):
+        ret = reverse(x)
+        print("[info]x:{} ret:{}".format(x, ret))

@@ -43,12 +43,13 @@ def merge_two_sorted_lists(l1, l2):
     return start
 
 
-l1 = ListNode(1)
-l1.next = ListNode(2)
-l1.next.next = ListNode(4)
-
-l2 = ListNode(1)
-l2.next = ListNode(3)
-l2.next.next = ListNode(4)
-
-print(merge_two_sorted_lists(l1, l2).val)
+if __name__ == "__main__":
+    l1 = ListNode(1)
+    l1.next = ListNode(2)
+    l1.next.next = ListNode(4)
+    
+    l2 = ListNode(1)
+    l2.next = ListNode(3)
+    l2.next.next = ListNode(4)
+    
+    print(merge_two_sorted_lists(l1, l2).val)

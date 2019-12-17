@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -22,6 +23,8 @@ Determine whether an integer is a palindrome. An integer is a palindrome when it
     Follow up:
 
     Could you solve it without converting the integer to a string?
+
+判断一个整数是否在不转换为字符串的情况下为为回文
 """
 
 
@@ -53,10 +56,11 @@ def isPalindrome(x):
     return ret
 
 
-x = int(input("please input an integer:"))
-ret = isPalindrome(x)
-if ret == False:
-    print("{} is not a palindrome.".format(x))
-else:
-    print("{} is a palindrome.".format(x))
+if __name__ == "__main__":
+    x = int(input("please input an integer:"))
+    ret = isPalindrome(x)
 
+    if ret == False:
+        print("{} is not a palindrome.".format(x))
+    else:
+        print("{} is a palindrome.".format(x))

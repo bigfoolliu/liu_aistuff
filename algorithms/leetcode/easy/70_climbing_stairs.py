@@ -49,12 +49,13 @@ def climbing_stairs(n):
     return dp[n]
 
 
-print(climbing_stairs(0))
-print(climbing_stairs(1))
-print(climbing_stairs(2))
-print(climbing_stairs(3))
-print(climbing_stairs(4))
-print(climbing_stairs(5))
-print(climbing_stairs(6))
-print(climbing_stairs(7))
-print(climbing_stairs(10))
+if __name__ == "__main__":
+    print(climbing_stairs(0))
+    print(climbing_stairs(1))
+    print(climbing_stairs(2))
+    print(climbing_stairs(3))
+    print(climbing_stairs(4))
+    print(climbing_stairs(5))
+    print(climbing_stairs(6))
+    print(climbing_stairs(7))
+    print(climbing_stairs(10))

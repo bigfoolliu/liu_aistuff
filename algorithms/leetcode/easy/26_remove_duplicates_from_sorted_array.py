@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 # author: bigfoolliu
 
+
 """
 Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
 
@@ -44,10 +45,10 @@ def remove_duplicates_from_sorted_array(sorted_array):
         # 如果快慢指针指向的数字不同，则慢指针前进一步，同时将当前的慢指针指向的数字赋值
         if sorted_array[cur] != sorted_array[pre]:
             pre += 1
-            sorted_array[pre] = sorted_array[cur]  # 注意点
+            sorted_array[pre] = sorted_array[cur]  # 同时将慢指针对应元素修改
     return pre + 1
 
 
 if __name__ == '__main__':
     nums = [0,0,1,1,1,2,2,3,3]
-    print(nums, remove_duplicates_from_sorted_array(nums))
+    print(remove_duplicates_from_sorted_array(nums))

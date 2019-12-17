@@ -66,10 +66,11 @@ def max_depth_of_binary_tree2(root):
     return max(max_left, max_right) + 1
 
 
-root = Node(3)
-root.left = Node(9)
-root.right = Node(20)
-root.right.left = Node(15)
-root.right.right = Node(7)
-print(max_depth_of_binary_tree(root))
-print(max_depth_of_binary_tree2(root))
+if __name__ == "__main__":
+    root = Node(3)
+    root.left = Node(9)
+    root.right = Node(20)
+    root.right.left = Node(15)
+    root.right.right = Node(7)
+    print(max_depth_of_binary_tree(root))
+    # print(max_depth_of_binary_tree2(root))
