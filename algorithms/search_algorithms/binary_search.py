@@ -15,7 +15,8 @@ import sys
 def binary_search(sorted_collection, item):
     """
     使用纯python实现二分搜索
-    Pure implementation of binary search algorithm in Python"""
+    Pure implementation of binary search algorithm in Python
+    """
     left = 0
     right = len(sorted_collection) - 1
 
