@@ -185,10 +185,24 @@ udevadm info --query=all --name=/dev/video0
 cat /proc/cpuinfo
 
 id  # 展示当前用户的身份号
-passwd  # 更改用户密码
+passwd user1  # 更改用户密码
 uptime  # 查看系统启动的时间统计
 uname -a  # 查看系统信息
 uname -r  # 查看系统版本
+
+useradd user1  # 增加用户
+useradd -g group1 user2  # 增加用户并指定用户组
+useradd -d /mnt/d user3  # 增加用户并指定家目录
+useradd -p 123456 user4  # 增加用户并设置密码
+
+userdel user1  # 删除用户
+
+groupadd group1  # 新增工作组
+
+
+cat /etc/passwd  # 查看所有的用户
+cat /etc/shadow  # 查看用户密码
+cat /etc/group  # 查看所有用户组
 ```
 
 ### 2.2目录及文件
