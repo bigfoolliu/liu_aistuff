@@ -3,9 +3,15 @@
 <!-- TOC -->
 
 - [mongo db介绍以及使用](#mongo-db%e4%bb%8b%e7%bb%8d%e4%bb%a5%e5%8f%8a%e4%bd%bf%e7%94%a8)
+  - [a.mongodb数据类型](#amongodb%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b)
+    - [a.1](#a1)
   - [索引](#%e7%b4%a2%e5%bc%95)
 
 <!-- /TOC -->
+
+## a.mongodb数据类型
+
+### a.1
 
 ## 索引
 
