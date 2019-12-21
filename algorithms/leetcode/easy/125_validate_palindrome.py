@@ -27,6 +27,7 @@ import string
 
 def validate_palindrome(s):
     """
+    借助第三方模块
     :param s: str
     :return: bool
     """
@@ -45,6 +46,26 @@ def validate_palindrome(s):
     return False
 
 
+def validate_palindrome2(s):
+    """
+    不借助第三方模块
+    :param s: str
+    :return: bool
+    """
+    if s == "":
+        return True
+    
+    new_s = ""
+    s = s.lower()
+    for i in s:
+        if i.isalnum():
+            new_s += i
+    if new_s == new_s[::-1]:
+        return True
+    return False
+
+
 if __name__ == "__main__":
     s = "1A man, a plan, a canal: Panama1"
     print(validate_palindrome(s))
+    print(validate_palindrome2(s))
