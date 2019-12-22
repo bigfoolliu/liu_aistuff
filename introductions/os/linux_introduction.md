@@ -208,6 +208,10 @@ cat /etc/group  # 查看所有用户组
 ### 2.2目录及文件
 
 ```shell
+ls -t  # 列举当前文件夹下所有目录和文件并以时间排列
+ls -u  # 以文件上次被访问的时间排序
+ls -S  # 以文件大小排序
+
 # 用grep直接搜索文件中的文本内容
 grep -i 'Out of Memory' /var/log/messages
 
