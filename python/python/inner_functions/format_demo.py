@@ -48,7 +48,39 @@ def format_template_demo():
     print(a.substitute(name="tony", age=23))
 
 
+def bin_oct_hex_transfer_demo():
+    """
+    二进制，八进制，十进制，十六进制转换
+    """
+    # 使用format函数进行进制转换
+    print(format(12, "b"))  # 二进制
+    print(format(12, "o"))  # 八进制
+    print(format(12, "x"))  # 十六进制
+
+    # 创建二进制数字
+    a = bin(12)
+    b = 0b1010
+    print(a, b)
+
+    # 创建八进制数字
+    a = oct(12)
+    b = 0o1010
+    print(a, b)
+
+    # 创建十六进制数字
+    a = hex(12)
+    b = 0x1010
+    print(a, b)
+
+    # 不同进制字符串转换为整数,指定其进制
+    print(int("10110", 2))
+    print(int("17", 8))
+    print(int("4d2", 16))
+
+
 if __name__ == "__main__":
     # format_basic_demo()
     # format_f_demo()    
     # format_template_demo()
+
+    bin_oct_hex_transfer_demo()
