@@ -5,6 +5,16 @@
 
 """
 python yield的使用
+
+send方法用于与生成器的交互
+
+- 运行至yield函数返回一个值并暂停执行，相当于f.send(None)
+- next(f)也等价于f.send(None)
+
+f.send()有三个步骤（作用）：
+1. 将send中的数值赋给yield的结果 ret = yield i中的ret
+2. 重新启动生长器往下走
+3. 再次执行next(f),相当于函数又返回了一次值
 """
 
 
@@ -27,19 +37,6 @@ def yield_demo1():
             print(next(a))
     except StopIteration:
         print("iter is over")
-
-
-"""
-send方法用于与生成器的交互
-
-- 运行至yield函数返回一个值并暂停执行，相当于f.send(None)
-- next(f)也等价于f.send(None)
-
-f.send()有三个步骤（作用）：
-1. 将send中的数值赋给yield的结果 ret = yield i中的ret
-2. 重新启动生长器往下走
-3. 再次执行next(f),相当于函数又返回了一次值
-"""
 
 
 def generator_send():

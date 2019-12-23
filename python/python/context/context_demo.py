@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 # author: bigfoolliu
 
+
 """
 python上下文管理器来改善异常的处理
 
