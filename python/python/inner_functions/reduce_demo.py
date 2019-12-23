@@ -14,6 +14,8 @@ reduce(function, sequence, initial)
 
 返回的是一个具体的值
 """
+
+
 from functools import reduce
 
 

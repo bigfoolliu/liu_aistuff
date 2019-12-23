@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 # author: bigfoolliu
 
+
 """
 python枚举类和普通类的不同
 
@@ -13,6 +14,7 @@ http://c.biancheng.net/view/2305.html
 使用场景：
 当某个类的对象是有限且固定的，比如性别，季节等。
 """
+
 
 from enum import Enum
 
