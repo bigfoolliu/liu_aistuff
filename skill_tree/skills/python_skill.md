@@ -227,3 +227,4 @@ pip freeze > requirements.txt  # 生成一个迁移文件
 ## a.其他
 
 - [python必备的库](https://www.cnblogs.com/jiangchunsheng/p/9275881.html)
+- [知乎：13个python最佳编程技巧](https://zhuanlan.zhihu.com/p/59897541)
