@@ -230,7 +230,7 @@ InnoDB中：
 - 表间的外键和主键相连，只取键值一致的。
 
 ```shell
-SELECT 列名1 FROM 表1 LEFT OUTER JOIN 表2 ON 表1.外键=表2.主键 WhERE 条件语句;
+select 列名1 from 表1 left outer join 表2 on 表1.外键=表2.主键 where 条件语句;
 ```
 
 ### 6.2外连接
@@ -240,9 +240,9 @@ SELECT 列名1 FROM 表1 LEFT OUTER JOIN 表2 ON 表1.外键=表2.主键 WhERE �
 
 ```shell
 # 左外连接
-SELECT 列名1 FROM 表1 LEFT OUTER JOIN 表2 ON 表1.外键=表2.主键 WhERE 条件语句;
+select 列名1 from 表1 left outer join 表2 on 表1.外键=表2.主键 where 条件语句;
 # 右外连接
-SELECT 列名1 FROM 表1 RIGHT OUTER JOIN 表2 ON 表1.外键=表2.主键 WhERE 条件语句;
+select 列名1 from 表1 right outer join 表2 on 表1.外键=表2.主键 where 条件语句;
 ```
 
 ## 7.零散
