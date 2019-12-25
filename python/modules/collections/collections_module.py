@@ -23,6 +23,7 @@ from collections import (ChainMap, Counter, OrderedDict, defaultdict, deque,
 def counter_basic_demo():
     """
     Counter基本示例
+    Counter可以传字符串，元组，列表，字典
     """
     string = "hello, hello, this is u, that is me"
 
@@ -34,8 +35,14 @@ def counter_basic_demo():
     b = Counter(string.split())
     print(b, b["hello"])
 
-    # elements()返回迭代器，每个元素重复计数的次数
-    print(list(b.elements()))
+    # 将Couner对象转换为dict
+    print("dict: ", dict(b))
+
+    # elements()返回迭代器，每个元素重复计数的次数，用来获取所有元素
+    print("elements: ", list(b.elements()))
+
+    # 获取词频最高的n个元素，默认为0，即返回所有元素
+    print("most common: ", b.most_common(1))
 
 
 def counter_add_demo():
@@ -177,7 +184,7 @@ def chainmap_demo():
 
 
 if __name__ == "__main__":
-    # counter_basic_demo()
+    counter_basic_demo()
     # counter_add_demo()
 
     # defaultdict_basic_demo()
@@ -188,4 +195,4 @@ if __name__ == "__main__":
 
     # deque_demo()
 
-    chainmap_demo()
+    # chainmap_demo()
