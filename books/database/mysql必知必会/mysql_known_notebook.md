@@ -97,6 +97,7 @@ desc tab1;  # 清晰的查看表的结构
 show columns forom tab1;
 
 # 修改表:
+alter table tab1 rename to tab2;  # 修改表的名字
 alter table tab1 add age int;  # 追加一个字段
 alter table tab1 modify name varchar(100);  # 修改字段的数据类型
 alter table tab1 change id number int(5);  # 更改字段名,同时要说明类型
