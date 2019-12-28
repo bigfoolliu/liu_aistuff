@@ -31,6 +31,22 @@ that is you""")
     print(face)
 
 
+def index_demo():
+    """
+    字符串索引操作示例：https://www.runoob.com/w3cnote/python-string-index.html
+    1. 索引：s[0]
+    2. 切片：s[起始索引:结束索引:步长]，通常上边界不包括在提取字符串内
+        2.1 起始索引为0，可以省略
+        2.2 s最后一个索引可以取-1
+        2.3 结束索引省略，默认取到最后
+        2.4 反向取值，必须加步长
+        2.5 步长必须与索引的方向一致
+    """
+    s = "hello,python"
+    print(s[-1])  # 最后一个元素
+    print(s[-1:1:-1])  # 步长为-1，从最后一个元素到下标为1的元素(不包含)
+
+
 def operate_demo():
     """
     字符串操作函数示例
@@ -50,6 +66,9 @@ def operate_demo():
     print(s.strip())  # 去除字符串左右空格
     print(s.lstrip())  # 去除字符串左边的空格
     print(s.rstrip())  # 去除字符串右边的空格
+
+    print(s.ljust(50, "0"))  # 将原字符串左对齐，并使用指定字符来填充至指定长度，如果指定长度小于原字符串长度则返回原字符串
+    print(s.rjust(50, "0"))  # 将原字符串右对齐，并使用指定字符来填充至指定长度，如果指定长度小于原字符串长度则返回原字符串
 
     print(s.lower())  # 将字符串中的所有字母小写
 
@@ -84,6 +103,7 @@ def is_demo():
 
 
 if __name__ == "__main__":
-    basic_demo()
-    # operate_demo()
+    # basic_demo()
+    # index_demo()
+    operate_demo()
     # is_demo()
