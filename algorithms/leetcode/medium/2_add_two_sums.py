@@ -14,14 +14,13 @@ Example:
     Output: 7 -> 0 -> 8
     Explanation: 342 + 465 = 807.
 
-两个非空链表，代表两个非负整数，且数字是逆向存储的
-除了数字0之外，可以假设0不在首位
-
-思路：
+给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 """
 
 
-class ListNode:
+class Node:
 
     def __init__(self, x):
         self.val = x
@@ -30,11 +29,11 @@ class ListNode:
 
 def addTwoNumbers(l1, l2):
     """
-    :type l1: ListNode
-    :type l2: ListNode
-    :rtype: ListNode
+    将链表转换为数字，相加后的结果在转换会链表
+    :type l1: Node
+    :type l2: Node
+    :rtype: Node
     """
-    # 将链表转换为数字，相加后的结果在转换会链表
     if not l1 and not l2:
         return
     elif not l1:
@@ -54,34 +53,35 @@ def addTwoNumbers(l1, l2):
             l2 = l2.next
 
         # calculate the result
-        num1 = int(''.join(str(i) for i in list1[::-1]))
-        num2 = int(''.join(str(i) for i in list2[::-1]))
+        num1 = int("".join(str(i) for i in list1[::-1]))
+        num2 = int("".join(str(i) for i in list2[::-1]))
         ret_num = num1 + num2
 
         # transfer the ret to listNode
         tmp = str(ret_num)[::-1]
-        ret = ListNode(int(tmp[0]))  # 头节点，需要返回的节点
+        ret = Node(int(tmp[0]))  # 头节点，需要返回的节点
 
         tmp_head = ret
         for i in range(1, len(tmp)):
-            tmp_node = ListNode(int(tmp[i]))
+            tmp_node = Node(int(tmp[i]))
             tmp_head.next = tmp_node
             tmp_head = tmp_head.next
 
         return ret
 
 
-l1 = ListNode(2)
-l1.next = ListNode(4)
-l1.next.next = ListNode(3)
+if __name__ == "__main__":
+    l1 = Node(2)
+    l1.next = Node(4)
+    l1.next.next = Node(3)
 
-l2 = ListNode(5)
-l2.next = ListNode(6)
-l2.next.next = ListNode(4)
-l2.next.next.next = ListNode(9)
+    l2 = Node(5)
+    l2.next = Node(6)
+    l2.next.next = Node(4)
+    l2.next.next.next = Node(9)
 
-ret_node = addTwoNumbers(l1, l2)
-print(ret_node.val)
-print(ret_node.next.val)
-print(ret_node.next.next.val)
-print(ret_node.next.next.next.val)
+    ret_node = addTwoNumbers(l1, l2)
+    print(ret_node.val)
+    print(ret_node.next.val)
+    print(ret_node.next.next.val)
+    print(ret_node.next.next.next.val)
