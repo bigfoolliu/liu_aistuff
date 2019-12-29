@@ -108,11 +108,8 @@
 ## 3. 架构
 
 Scrapy的架构图如下：
-</br>
-![scrapy架构图](res/scrapy_architecture.png "scrapy架构图")
-</br>
 
- </br>
+- [scrapy架构图](./res/scrapy_architecture.png)
 
 ## 4. HTTP基本原理
 
@@ -269,7 +266,7 @@ Content-Type：用来表示具体请求中的媒体类型信息。</br>
 
 ### 5.2 网页的结构
 
-可参照实例：[html_demo](file:///C:/Users/tonyl/Documents/GitHub/module_learning/html_demo.html)
+可参照实例：[html_demo](./res/html_demo.html)
 
 这个实例便是网页的一般结构。一个网页的标准形式是html标签内嵌套head和body标签，head内定义网页的配置和引用，body内定义网页的正文。
 
