@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -13,10 +14,12 @@ And then read line by line: "PAHNAPLSIIGYIR"
 Write the code that will take a string and make this conversion given a number of rows:
 
     string convert(string s, int numRows);
+    
     Example 1:
 
     Input: s = "PAYPALISHIRING", numRows = 3
     Output: "PAHNAPLSIIGYIR"
+
     Example 2:
 
     Input: s = "PAYPALISHIRING", numRows = 4
@@ -27,6 +30,9 @@ Write the code that will take a string and make this conversion given a number o
     A   L S  I G
     Y A   H R
     P     I
+
+
+字符串用Z字形来表示(竖着),但是横着来读,输入的是行数
 """
 
 
@@ -55,11 +61,14 @@ def convert(s, numRows):
     return ''.join(ret)
 
 
-while True:
-    s = input("输入测试字符串(quit结束):")
-    if s == "quit":
-        break
-    numRows = int(input("请输入行数:"))
+if __name__ == "__main__":
+
+    s = "PAYPALISHIRING"
+    numRows = 3
     ret = convert(s, numRows)
-    print("[RESULT]:{}".format(ret))
-    print("\n")
+    print(ret)
+
+    numRows = 4
+    ret = convert(s, numRows)
+    print(ret)
+
