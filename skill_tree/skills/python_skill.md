@@ -194,6 +194,7 @@ def main():
 ```shell
 virtualenv <venv>  # 使用默认的python解释器创建虚拟环境
 virtualenv -p python3 <venv>  # 指定python解释器版本创建虚拟环境
+virtualenv --no-site-packages <venv>  # 添加参数从而系统所有安装的第三方库都不会复制过来
 
 source env/bin/activate  # 激活虚拟环境
 
