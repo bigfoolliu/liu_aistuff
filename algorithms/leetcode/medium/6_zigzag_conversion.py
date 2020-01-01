@@ -50,6 +50,7 @@ def convert(s, numRows):
     #　idx为下标，step为单次前进的步数
     idx, step = 0, 1
     for i in s:
+        print("i:{} idx:{} ret:{}".format(i, idx, ret))
         ret[idx] += i
         # 如果为第一行则向下增加
         if idx == 0:

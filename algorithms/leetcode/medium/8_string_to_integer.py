@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*-  coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -46,10 +47,8 @@ Note:
     Output: -2147483648
     Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
                  Thefore INT_MIN (−231) is returned.
-"""
 
 
-"""
 字符串转换为整数
 1. 输入的空格要去掉
 2. 要考虑正负号
@@ -65,9 +64,6 @@ def myAtoi(str):
     :rtype: int
     """
     str = str.strip()  # 去除字符串左右的空格
-
-    print("[INFOR]after str.strip(), str:", str)
-
     ret = 0
     if len(str) == 0:
         return ret
@@ -80,14 +76,12 @@ def myAtoi(str):
         # 截取正负号之后的数字
         str = str[1:]
 
-    print("[INFO]:after str[1:], str:", str)
     for char in str:
         if char >= "0" and char <= "9":  # 根据ascii码的区间来判断
             ret = ret * 10 + int(char)
         elif char < "0" or char > "9":
             break
 
-    print("[INFO]after cal, ret:{}, positive_flag:{}".format(ret, positive_flag))
     # 根据提取的数字确定输出结果
     if ret > 2147483647:
         if positive_flag == True:
@@ -101,8 +95,8 @@ def myAtoi(str):
     return ret
 
 
-print("[INFO]begin...")
-str_input = input("input str:")
-ret = myAtoi(str_input)
-print("ret:", ret)
+if __name__ == "__main__":
+    str_input = input("input str:")
+    ret = myAtoi(str_input)
+    print(ret)
 
