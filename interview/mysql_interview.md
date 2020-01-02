@@ -8,7 +8,7 @@
 
 ## 1.mysql基础使用及命令
 
-- [mysql必知必会](../books/mysql必知必会/mysql_known.md)
+- [mysql必知必会](../books/mysql必知必会/mysql_known_notebook.md)
 
 ## 2.索引相关
 
