@@ -192,7 +192,7 @@ zrangebyscore names 0 100
 ### 3.2缓存
 
 - 将热点数据放到内存中,设置内存的最大使用量以及淘汰策略来保证缓存的命中率
-- ![redis使用缓存的示例](./imgs/redis_cache_template.png)
+- ![redis使用缓存的模板](./imgs/redis_cache_template.png)
 
 ### 3.3查找表
 
