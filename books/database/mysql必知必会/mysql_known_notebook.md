@@ -4,6 +4,12 @@
 
 ## 1.数据库
 
+## 1.1数据库介绍
+
+**SQL:**
+
+**NoSQL:**
+
 ## 2.mysql相关命令
 
 ### 2.1安装启动等
@@ -59,6 +65,13 @@ select database();  # 查询当前使用的数据库
 
 # 删除数据库:
 drop database db1;
+
+# 使用dump备份数据库
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db > /data/db.sql  # 备份整个testdb数据库
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db | gzip > /data/db.sql  # 整个testdb数据库,但是进行压缩,防止文件过大
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db t1 t2 > /data/db.sql  # 备份数据库的多张表
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --databases db1 db2 > /data/dbs.sql  # 备份一个实例的多个数据库
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --all-databases > /data/db.sql  # 备份实例上的所有数据库
 ```
 
 ### 2.3数据表操作相关命令
