@@ -6,10 +6,26 @@
 - [pycharm常用快捷键(简书)](https://www.jianshu.com/p/5880a25ac597)
 
 ```shell
-# 显示或者不显示终端
-alt + f12
+# 编辑相关
+# 删除光标所在行
+ctrl + y
 
+# 折叠或者打开一个点代码块
+ctrl + +/-
 
+# 折叠或者打开当前文件的所有代码块
+ctrl + shift + +/-
+
+# 终端相关
+# 显示或者不显示终端2
+alt + f1
+
+# 在不同终端切换
+alt + 方向键  
+
+# 查找相关
+# 查找文件或者类
+ctrl + shift + n
 ```
 
 ## 2.webstorm
@@ -20,3 +36,6 @@ alt + f12
 ```
 
 ## 3.vscode
+
+```shell
+```

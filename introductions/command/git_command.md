@@ -1,23 +1,6 @@
 # git相关知识
 
-<!-- TOC -->
-
-- [git相关知识](#git相关知识)
-    - [1.git基本命令](#1git基本命令)
-        - [1.1版本和用户](#11版本和用户)
-        - [1.2仓库克隆](#12仓库克隆)
-        - [1.3暂存](#13暂存)
-        - [1.4本地提交](#14本地提交)
-        - [1.5远程提交与拉取](#15远程提交与拉取)
-        - [1.6提交堆栈](#16提交堆栈)
-        - [1.7分支](#17分支)
-    - [2.操作命令组](#2操作命令组)
-        - [2.1修改已经push的commit的message](#21修改已经push的commit的message)
-        - [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)
-    - [3.gitmoduel使用](#3gitmoduel使用)
-    - [a.其他](#a其他)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [git相关知识](#git相关知识)auto    - [1.git基本命令](#1git基本命令)auto        - [1.1版本和用户](#11版本和用户)auto        - [1.2仓库克隆](#12仓库克隆)auto        - [1.3暂存](#13暂存)auto        - [1.4本地提交](#14本地提交)auto        - [1.5远程提交与拉取](#15远程提交与拉取)auto        - [1.6提交堆栈](#16提交堆栈)auto        - [1.7分支](#17分支)auto    - [2.操作命令组](#2操作命令组)auto        - [2.1修改已经push的commit的message](#21修改已经push的commit的message)auto        - [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)auto    - [3.gitmoduel使用](#3gitmoduel使用)auto    - [a.其他](#a其他)autoauto<!-- /TOC -->
 
 ## 1.git基本命令
 
@@ -27,18 +10,28 @@
 # 一般配置
 # 查看版本信息
 git --version
+
 # 获取当前登陆的用户
 git config --global user.name
+
 # 获取当前登陆用户的邮箱
 git config --global user.email
 
-# 直接进步编辑全局配置文件
+# 直接进入编辑全局配置文件
 git config -e --global
 
-# 登陆git:
-# 设置git账户，userName为用户名
-git config --global user.name `userName`
-git config --global user.email `userEmail>`
+# 登陆git
+# 设置全局git账户，userName为用户名
+git config --global user.name "userName"
+git config --global user.email "userEmail"
+
+# 设置单个仓库的git账户
+git config user.name "userName"
+git conig user.email "userEmail"
+
+# 查看当前git配置
+git config --list
+
 # 将git的文本编辑器修改为vim
 git config --global core.editor vim
 ```
