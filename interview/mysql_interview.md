@@ -152,6 +152,7 @@ InnoDB中：
 
 - 保证数据行的唯一性
 - 尽量使用自增长id而不是uuid,innodb中主键索引作为聚簇索引，如果是自增id,叶子节点排序时只要依次就行，减小开销
+- [14个实用的数据库设计技巧(知乎)](https://zhuanlan.zhihu.com/p/82338929)
 
 ### 4.2NULL与NOT NULL
 
