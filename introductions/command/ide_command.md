@@ -26,6 +26,9 @@ alt + 方向键
 # 查找相关
 # 查找文件或者类
 ctrl + shift + n
+
+# 全局搜索关键字
+ctrl + shift + f
 ```
 
 ## 2.webstorm
