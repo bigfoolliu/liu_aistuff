@@ -1,40 +1,6 @@
 # Linux相关知识
 
-<!-- TOC -->
-
-- [Linux相关知识](#linux%e7%9b%b8%e5%85%b3%e7%9f%a5%e8%af%86)
-  - [1.进程](#1%e8%bf%9b%e7%a8%8b)
-    - [1.1进程信息](#11%e8%bf%9b%e7%a8%8b%e4%bf%a1%e6%81%af)
-    - [1.2僵尸进程(zombie process)](#12%e5%83%b5%e5%b0%b8%e8%bf%9b%e7%a8%8bzombie-process)
-    - [1.3几个与开关进程有关的标准信号](#13%e5%87%a0%e4%b8%aa%e4%b8%8e%e5%bc%80%e5%85%b3%e8%bf%9b%e7%a8%8b%e6%9c%89%e5%85%b3%e7%9a%84%e6%a0%87%e5%87%86%e4%bf%a1%e5%8f%b7)
-    - [1.4supervisor进程管理](#14supervisor%e8%bf%9b%e7%a8%8b%e7%ae%a1%e7%90%86)
-  - [2.linux命令](#2linux%e5%91%bd%e4%bb%a4)
-    - [2.1系统信息](#21%e7%b3%bb%e7%bb%9f%e4%bf%a1%e6%81%af)
-    - [2.2目录及文件](#22%e7%9b%ae%e5%bd%95%e5%8f%8a%e6%96%87%e4%bb%b6)
-    - [2.3进程相关](#23%e8%bf%9b%e7%a8%8b%e7%9b%b8%e5%85%b3)
-      - [2.3.1杀死进程的几种方式](#231%e6%9d%80%e6%ad%bb%e8%bf%9b%e7%a8%8b%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e5%bc%8f)
-    - [2.4网络相关](#24%e7%bd%91%e7%bb%9c%e7%9b%b8%e5%85%b3)
-      - [2.4.1tcpdump网络抓包](#241tcpdump%e7%bd%91%e7%bb%9c%e6%8a%93%e5%8c%85)
-      - [2.4.2网关相关命令](#242%e7%bd%91%e5%85%b3%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4)
-      - [2.4.3curl命令](#243curl%e5%91%bd%e4%bb%a4)
-      - [2.4.4wget命令](#244wget%e5%91%bd%e4%bb%a4)
-      - [2.4.5网络其他](#245%e7%bd%91%e7%bb%9c%e5%85%b6%e4%bb%96)
-    - [2.5其它](#25%e5%85%b6%e5%ae%83)
-  - [8.Linux文件系统](#8linux%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f)
-    - [8.1使用tmpfs](#81%e4%bd%bf%e7%94%a8tmpfs)
-  - [9.linux重要文件](#9linux%e9%87%8d%e8%a6%81%e6%96%87%e4%bb%b6)
-    - [9.1/etc/hosts文件](#91etchosts%e6%96%87%e4%bb%b6)
-    - [9.2/etc/resolv.conf文件](#92etcresolvconf%e6%96%87%e4%bb%b6)
-    - [9.3/etc/hosts文件](#93etchosts%e6%96%87%e4%bb%b6)
-  - [10.系统监控](#10%e7%b3%bb%e7%bb%9f%e7%9b%91%e6%8e%a7)
-  - [a.其他](#a%e5%85%b6%e4%bb%96)
-    - [a.1文件改变](#a1%e6%96%87%e4%bb%b6%e6%94%b9%e5%8f%98)
-    - [a.2流量监控工具](#a2%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e5%b7%a5%e5%85%b7)
-    - [a.3使用crontab开启定时任务](#a3%e4%bd%bf%e7%94%a8crontab%e5%bc%80%e5%90%af%e5%ae%9a%e6%97%b6%e4%bb%bb%e5%8a%a1)
-    - [a.4ssh文件传输](#a4ssh%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93)
-    - [a.5有趣命令](#a5%e6%9c%89%e8%b6%a3%e5%91%bd%e4%bb%a4)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Linux相关知识](#linux相关知识)auto    - [1.进程](#1进程)auto        - [1.1进程信息](#11进程信息)auto        - [1.2僵尸进程(zombie process)](#12僵尸进程zombie-process)auto        - [1.3几个与开关进程有关的标准信号](#13几个与开关进程有关的标准信号)auto        - [1.4supervisor进程管理](#14supervisor进程管理)auto    - [2.linux命令](#2linux命令)auto        - [2.1系统信息](#21系统信息)auto        - [2.2目录及文件](#22目录及文件)auto        - [2.3进程相关](#23进程相关)auto            - [2.3.1杀死进程的几种方式](#231杀死进程的几种方式)auto        - [2.4网络相关](#24网络相关)auto            - [2.4.1tcpdump网络抓包](#241tcpdump网络抓包)auto            - [2.4.2网关相关命令](#242网关相关命令)auto            - [2.4.3curl命令](#243curl命令)auto            - [2.4.4wget命令](#244wget命令)auto            - [2.4.5网络其他](#245网络其他)auto        - [2.5其它](#25其它)auto    - [8.Linux文件系统](#8linux文件系统)auto        - [8.1使用tmpfs](#81使用tmpfs)auto    - [9.linux重要文件](#9linux重要文件)auto        - [9.1/etc/hosts文件](#91etchosts文件)auto        - [9.2/etc/resolv.conf文件](#92etcresolvconf文件)auto        - [9.3/etc/hosts文件](#93etchosts文件)auto    - [10.系统监控](#10系统监控)auto    - [a.其他](#a其他)auto        - [a.1文件改变](#a1文件改变)auto        - [a.2流量监控工具](#a2流量监控工具)auto        - [a.3使用crontab开启定时任务](#a3使用crontab开启定时任务)auto        - [a.4ssh文件传输](#a4ssh文件传输)auto        - [a.5有趣命令](#a5有趣命令)autoauto<!-- /TOC -->
 
 - [Linux知识介绍](http://billie66.github.io/TLCL/book/chap04.html)
 - [Linux命令大全网站](https://man.linuxde.net/)
@@ -188,7 +154,8 @@ id  # 展示当前用户的身份号
 passwd user1  # 更改用户密码
 uptime  # 查看系统启动的时间统计
 uname -a  # 查看系统信息
-uname -r  # 查看系统版本
+
+lsb_release -a  # 简洁的显示系统信息的命令
 
 useradd user1  # 增加用户
 useradd -g group1 user2  # 增加用户并指定用户组
