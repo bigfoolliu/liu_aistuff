@@ -1,3 +1,46 @@
+/* 所有的h1标签 */
 h1{
     color: coral;
+}
+
+
+
+/* id为divid标签的所有table子标签 */
+#divid table{
+    background-color: darkorchid;
+}
+
+
+/* 块示例 */
+/* 所有id为container的div标签 */
+div#container{
+    background-color: slategrey;
+    height: 500px;
+    width: 100%;
+}
+
+div#heading{
+    background-color: darksalmon;
+    width: 100%;
+    height: 10%;
+}
+
+div#content_menu{
+    width: 20%;
+    height: 80%;
+    background-color: steelblue;
+    float: left;
+}
+
+div#content_body{
+    width: 80%;
+    height: 80%;
+    background-color: thistle;
+    float: right;
+}
+
+div#footing{
+    width: 100%;
+    height: 10%;
+    background-color: violet;
 }

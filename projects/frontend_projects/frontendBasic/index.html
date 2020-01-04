@@ -13,18 +13,18 @@
 <body>
 
     <!-- h标签示例 -->
-    <div>
+    <div style="background-color: darkgray;">
         <h1 align="center">head1</h1>
         <h2 align="left">head1</h2>
         <h3>head1</h3>
         <h4>head1</h4>
         <h5>head1</h5>
         <h6 align="right">head1</h6 align="right">
-    </div>
+    </div style="background-color: darkgray;">
 
 
     <!-- p标签示例 -->
-    <div style="background-color: darksalmon;">
+    <div style="background-color: olivedrab;">
         <p style="color: aqua;">
             this is a p demo,this is another demo;<br>
 
@@ -63,7 +63,7 @@
 
 
     <!-- table及相关标签示例 -->
-    <div>
+    <div id="divid">
         <table border="1">
             <caption>标题</caption>
             <thead>表头</thead>
@@ -81,7 +81,6 @@
                     <ul>中国</ul>
                     <ul>美国</ul>
                     <ul>日本</ul>
-                    <ul>俄罗斯</ul>
                 </td>
             </tr>
 
@@ -90,5 +89,61 @@
     </div>
 
 
+    <!-- li ol ul等列表项使用 -->
+    <div>
+        <div>
+            <!-- 无序列表的不同的样式，实体圆形，空心圆形，方块 -->
+            <!-- <ul type="disc"> -->
+            <!-- <ul type="circle"> -->
+            <ul type="square">
+                <li>ios</li>
+                <li>widows</li>
+                <li>android</li>
+            </ul>
+        </div>
+
+        <div>
+            <!-- 有序列表不同的样式 -->
+            <!-- <ol type="1"> -->
+            <!-- <ol type="i"> -->
+            <ol type="I">
+            <!-- <ol start="10"> -->
+                <li>中国</li>
+                <li>美国</li>
+                <li>日本</li>
+            </ol>
+        </div>
+
+        <div>
+            <!-- 嵌套列表 -->
+            <!-- <ol> -->
+            <ul>
+                <li>水果</li>
+                <ul>
+                    <li>苹果</li>
+                    <li>柚子</li>
+                    <li>榴莲</li>
+                </ul>
+                <li>国家</li>
+                <ul>
+                    <li>中国</li>
+                    <li>越南</li>
+                    <li>朝鲜</li>
+                </ul>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <!-- div块示例 -->
+    <div id="container">
+        <div id="heading">头部</div>
+        <div id="content_menu">内容菜单</div>
+        <div id="content_body">内容主体</div>
+        <div id="footing">底部</div>
+    </div>
+
+    
 </body>
 </html>
