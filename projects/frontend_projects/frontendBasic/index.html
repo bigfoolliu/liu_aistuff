@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang='en'>
+    <meta charset='UTF-8'>
+    <title>indexPage</title>
+
+    <!-- 使用外联式引入外部样式 -->
+    <link rel="stylesheet" href="mystyle.css">
+
+    <script src="app.js"></script>
+
+</head>
+<body>
+
+    <!-- h标签示例 -->
+    <div>
+        <h1 align="center">head1</h1>
+        <h2 align="left">head1</h2>
+        <h3>head1</h3>
+        <h4>head1</h4>
+        <h5>head1</h5>
+        <h6 align="right">head1</h6 align="right">
+    </div>
+
+
+    <!-- p标签示例 -->
+    <div style="background-color: darksalmon;">
+        <p style="color: aqua;">
+            this is a p demo,this is another demo;<br>
+
+            <!-- 各种格式化效果 -->
+
+            <b>这是粗体文本</b><br>
+            <big>这是大号字</big><br>
+            <small>这是小号字</small><br>
+            <i>这是斜体字</i><br>
+            <strong>这是加重语气字</strong><br>
+            <em>这是着重体字</em><br>
+            <sub>这是下标字</sub><br>
+            <sup>这是上标字</sup><br>
+            <ins>这是插入字</ins><br>
+            <del>这是删除字</del><br>
+        </p>
+    </div>
+
+
+    <!-- a标签示例 -->
+    <div>
+        <!-- 跳转到外部地址 -->
+        <a name="baidu" href="http://www.baidu.com" target="_blank">百度首页，我是打开新的标签</a>
+        <br>
+        <a href="http://www.baidu.com" target="_self">百度首页，我是覆盖原来的标签</a>
+        <br>
+        <!-- 跳转到内部链接,此处的 #baidu 对应标签的name -->
+        <a href="#baidu">点击跳转到上一个a标签</a>
+    </div>
+
+
+    <!-- img标签示例 -->
+    <div>
+        <img src="imgs/html_icon.jpg" alt="h5logo" style="height: 100px; width: 150px;">
+    </div>
+
+
+    <!-- table及相关标签示例 -->
+    <div>
+        <table border="1">
+            <caption>标题</caption>
+            <thead>表头</thead>
+
+            <tr>
+                <td>单元格1</td>
+                <td>单元格2</td>
+            </tr>
+            <tr>
+                <td>单元格3</td>
+                <td>单元格4</td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>中国</ul>
+                    <ul>美国</ul>
+                    <ul>日本</ul>
+                    <ul>俄罗斯</ul>
+                </td>
+            </tr>
+
+            <tfoot>页脚</tfoot>
+        </table>
+    </div>
+
+
+</body>
+</html>
