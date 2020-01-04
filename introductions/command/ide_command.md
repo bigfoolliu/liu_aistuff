@@ -41,4 +41,6 @@ ctrl + shift + f
 ## 3.vscode
 
 ```shell
+# 将当前行的代码上移或者下移
+alt + 上/下方向键
 ```
