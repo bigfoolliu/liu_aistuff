@@ -11,6 +11,8 @@
       - [2.2.2非通用标签属性](#222%e9%9d%9e%e9%80%9a%e7%94%a8%e6%a0%87%e7%ad%be%e5%b1%9e%e6%80%a7)
   - [3.html样式](#3html%e6%a0%b7%e5%bc%8f)
     - [3.1样式引入方式](#31%e6%a0%b7%e5%bc%8f%e5%bc%95%e5%85%a5%e6%96%b9%e5%bc%8f)
+  - [4.html实体](#4html%e5%ae%9e%e4%bd%93)
+  - [5.XHTML使用](#5xhtml%e4%bd%bf%e7%94%a8)
 
 <!-- /TOC -->
 
@@ -57,6 +59,12 @@
 | frame | 框架 |
 | frameset | 框架集 |
 | iframe | 内联框架 |
+| article | 代表文档，页面或者其他被外部应用的内容，可嵌套，可用来表示插件 |
+| section | 对网站或者页面上的内容进行分块 |
+| nav | 导航元素，导航条，侧边栏导航，页面导航，翻页操作 |
+| aside | 表示当前页面附属信息，侧边栏，广告，导航条等 |
+| time | 时间表示，该元素能够以机器可读的方式对时间进行编码 |
+|  |  |
 |  |  |
 
 ### 2.2html标签属性
@@ -147,3 +155,23 @@
         <div style="width:100px; height:100px; background:red">
     </body>
     ```
+
+## 4.html实体
+
+- html中预留字符串必须被替换为字符实体，即`转义`
+- [html实体参考手册](https://www.w3cschool.cn/htmltags/html-symbols.html)
+- [html实体参考手册（常用版）](https://www.w3school.com.cn/html/html_entities.asp)
+
+| 字符 | html中的字符 |
+| :---: | :--- |
+| < | `&lt;` |
+| > | `&gt;` |
+| & | `&amp;` |
+| " | `&quot;` |
+|  |  |
+
+## 5.XHTML使用
+
+- 可扩展的html，与html4.01几乎相同，更严格
+- 以xml应用的方式定义的html
+- 可以使html的代码更加规范，易读
