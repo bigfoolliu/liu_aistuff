@@ -65,3 +65,54 @@
 - [环境规范](http://guides.beanstalkapp.com/deployments/best-practices.html)
 
 ### 3.2
+
+## 4.git提交信息规范
+
+### 4.1commit格式参考
+
+- [阮一峰 git commit message和change log编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+- [wiki gitlab提交规范](https://wiki.hcmcloud.cn/pages/viewpage.action?pageId=18416313)
+
+### 4.2commit格式示例
+
+**commit message格式:**
+
+```shell
+<type>(<scope>):<subject>
+
+<body>
+
+<footer>
+```
+
+其中:
+
+header包含三个部分: type(必需),scope(可选),subject(必需)
+
+`type`的类型可选::
+
+1. feat(新功能)
+2. fix(修补bug)
+3. docs(文档)
+4. style(格式)
+5. refactor(重构,不是新增功能,也不是修改bug的变动)
+6. test(增加测试)
+7. chore(构建过程或者辅助工具的变动)
+
+*当type为feat或者fix时候,commit肯定出现在change log中,其他类型则可选.*
+
+`scope`说明影响的范围,如数据层,模型层,控制层等,取决于项目,如`model`.
+
+`subject`是commit目的的简短描述,如`修改person为Person`.
+
+`body`是对本次commit的详细描述,可以分成多行.
+
+`footer`用于两种情况:
+
+1. 不兼容变动,即当前代码和上一个版本不兼容,格式为:`BREAKING CHANGE:`,后跟变动的描述,以及变动理由和迁移方法
+2. 关闭issaue,如`close #123`
+
+**commit为revert撤销操作的时候:**
+
+以`revert:`为开头,后面跟着被撤销commit的header,如:`revert: feat(model): add something this revert commit d92761fec08ecca646f81402a415e9a07f9638b6`.
+

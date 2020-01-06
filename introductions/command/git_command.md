@@ -48,11 +48,14 @@ git clone `address`
 ```shell
 # 将所有修改文件暂存
 git add .
+
 # 将指定文件暂存
 git add test.py
 
+# reset撤销直接删除指定的commit,将HEAD后移
 # 撤销对所有文件的暂存
 git reset HEAD
+
 # 撤销对指定文件的暂存
 git reset HEAD test.py
 ```
@@ -62,10 +65,13 @@ git reset HEAD test.py
 ```shell
 # 直接提交
 git commit
+
 # 带注释的提交
 git commit -m `message`
+
 # 提交当前repo的所有改变
 git commit -a
+
 # 移除文件(从Git中删除)
 git commit -m "remove"
 # 修改上一次提交的信息
@@ -131,6 +137,20 @@ git rm -r --cached .
 
 # 获取远程仓库的地址
 git remote get-url origin
+```
+
+### 1.8撤销
+
+```shell
+# revert会将操作之前和之后的信息都会保留,用新的commit回滚旧的commit
+# 撤销前一次commit
+git revert HEAD
+
+# 撤销前前一次commit
+git revert HEAD^
+
+# 撤销指定的版本
+git revert commit d92761fec08ecca646f81402a415e9a07f9638b6
 ```
 
 ## 2.操作命令组

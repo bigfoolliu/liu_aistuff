@@ -29,6 +29,9 @@ ctrl + shift + n
 
 # 全局搜索关键字
 ctrl + shift + f
+
+# 快速跳转到函数,类的定义
+ctrl + b
 ```
 
 ## 2.webstorm

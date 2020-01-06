@@ -1,42 +1,6 @@
 # docker使用简介
 
-<!-- TOC -->
-
-- [docker使用简介](#docker%e4%bd%bf%e7%94%a8%e7%ae%80%e4%bb%8b)
-  - [1.基本概念](#1%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5)
-    - [1.1端口映射](#11%e7%ab%af%e5%8f%a3%e6%98%a0%e5%b0%84)
-    - [1.2dockerfile使用](#12dockerfile%e4%bd%bf%e7%94%a8)
-    - [1.3docker内部时区问题](#13docker%e5%86%85%e9%83%a8%e6%97%b6%e5%8c%ba%e9%97%ae%e9%a2%98)
-    - [1.4docker三剑客](#14docker%e4%b8%89%e5%89%91%e5%ae%a2)
-  - [2.基本命令](#2%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4)
-    - [2.1常用命令](#21%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
-    - [2.2命令使用示例](#22%e5%91%bd%e4%bb%a4%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b)
-      - [2.2.1docker运行nginx](#221docker%e8%bf%90%e8%a1%8cnginx)
-      - [2.2.2docker运行ngix-rtmp](#222docker%e8%bf%90%e8%a1%8cngix-rtmp)
-    - [2.3容器停止](#23%e5%ae%b9%e5%99%a8%e5%81%9c%e6%ad%a2)
-  - [3.docker构建自己的镜像](#3docker%e6%9e%84%e5%bb%ba%e8%87%aa%e5%b7%b1%e7%9a%84%e9%95%9c%e5%83%8f)
-    - [3.1使用makefile](#31%e4%bd%bf%e7%94%a8makefile)
-    - [3.2在运行中的容器构建](#32%e5%9c%a8%e8%bf%90%e8%a1%8c%e4%b8%ad%e7%9a%84%e5%ae%b9%e5%99%a8%e6%9e%84%e5%bb%ba)
-    - [3.3在linux中部署mysql](#33%e5%9c%a8linux%e4%b8%ad%e9%83%a8%e7%bd%b2mysql)
-      - [3.3.1常规部署语句](#331%e5%b8%b8%e8%a7%84%e9%83%a8%e7%bd%b2%e8%af%ad%e5%8f%a5)
-      - [3.3.2一步到位语句](#332%e4%b8%80%e6%ad%a5%e5%88%b0%e4%bd%8d%e8%af%ad%e5%8f%a5)
-      - [3.3.3常见异常](#333%e5%b8%b8%e8%a7%81%e5%bc%82%e5%b8%b8)
-      - [3.3.4在另一个容器中来连接mysql容器(容器间通信)](#334%e5%9c%a8%e5%8f%a6%e4%b8%80%e4%b8%aa%e5%ae%b9%e5%99%a8%e4%b8%ad%e6%9d%a5%e8%bf%9e%e6%8e%a5mysql%e5%ae%b9%e5%99%a8%e5%ae%b9%e5%99%a8%e9%97%b4%e9%80%9a%e4%bf%a1)
-      - [3.3.5mysql数据库容器数据持久化](#335mysql%e6%95%b0%e6%8d%ae%e5%ba%93%e5%ae%b9%e5%99%a8%e6%95%b0%e6%8d%ae%e6%8c%81%e4%b9%85%e5%8c%96)
-  - [4.docker容器间通信](#4docker%e5%ae%b9%e5%99%a8%e9%97%b4%e9%80%9a%e4%bf%a1)
-    - [4.1容器间通信方式](#41%e5%ae%b9%e5%99%a8%e9%97%b4%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f)
-    - [4.2docker网络驱动模型](#42docker%e7%bd%91%e7%bb%9c%e9%a9%b1%e5%8a%a8%e6%a8%a1%e5%9e%8b)
-    - [4.3不同容器直接的互连](#43%e4%b8%8d%e5%90%8c%e5%ae%b9%e5%99%a8%e7%9b%b4%e6%8e%a5%e7%9a%84%e4%ba%92%e8%bf%9e)
-  - [5.docker Compose介绍](#5docker-compose%e4%bb%8b%e7%bb%8d)
-    - [5.1常用命令](#51%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
-    - [5.2docker-compose.yml文件构建](#52docker-composeyml%e6%96%87%e4%bb%b6%e6%9e%84%e5%bb%ba)
-  - [6.docker Machine介绍](#6docker-machine%e4%bb%8b%e7%bb%8d)
-  - [7.docker Swarm介绍](#7docker-swarm%e4%bb%8b%e7%bb%8d)
-  - [8.python操作docker](#8python%e6%93%8d%e4%bd%9cdocker)
-    - [8.1介绍资料](#81%e4%bb%8b%e7%bb%8d%e8%b5%84%e6%96%99)
-  - [9.读书笔记](#9%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [docker使用简介](#docker使用简介)auto    - [1.基本概念](#1基本概念)auto        - [1.1端口映射](#11端口映射)auto        - [1.2dockerfile使用](#12dockerfile使用)auto        - [1.3docker内部时区问题](#13docker内部时区问题)auto        - [1.4docker三剑客](#14docker三剑客)auto    - [2.基本命令](#2基本命令)auto        - [2.1常用命令](#21常用命令)auto        - [2.2命令使用示例](#22命令使用示例)auto            - [2.2.1docker运行nginx](#221docker运行nginx)auto            - [2.2.2docker运行ngix-rtmp](#222docker运行ngix-rtmp)auto        - [2.3容器停止](#23容器停止)auto    - [3.docker构建自己的镜像](#3docker构建自己的镜像)auto        - [3.1使用makefile](#31使用makefile)auto        - [3.2在运行中的容器构建](#32在运行中的容器构建)auto        - [3.3在linux中部署mysql](#33在linux中部署mysql)auto            - [3.3.1常规部署语句](#331常规部署语句)auto            - [3.3.2一步到位语句](#332一步到位语句)auto            - [3.3.3常见异常](#333常见异常)auto            - [3.3.4在另一个容器中来连接mysql容器(容器间通信)](#334在另一个容器中来连接mysql容器容器间通信)auto            - [3.3.5mysql数据库容器数据持久化](#335mysql数据库容器数据持久化)auto    - [4.docker容器间通信](#4docker容器间通信)auto        - [4.1容器间通信方式](#41容器间通信方式)auto        - [4.2docker网络驱动模型](#42docker网络驱动模型)auto        - [4.3不同容器直接的互连](#43不同容器直接的互连)auto    - [5.docker Compose介绍](#5docker-compose介绍)auto        - [5.1常用命令](#51常用命令)auto        - [5.2docker-compose.yml文件构建](#52docker-composeyml文件构建)auto    - [6.docker Machine介绍](#6docker-machine介绍)auto    - [7.docker Swarm介绍](#7docker-swarm介绍)auto    - [8.python操作docker](#8python操作docker)auto        - [8.1介绍资料](#81介绍资料)auto    - [9.读书笔记](#9读书笔记)autoauto<!-- /TOC -->
 
 ## 1.基本概念
 
