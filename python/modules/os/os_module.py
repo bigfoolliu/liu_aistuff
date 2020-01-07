@@ -97,6 +97,25 @@ def chown_demo():
     subprocess.run("grep")
 
 
+def path_demo():
+    """
+    os.path示例
+
+    os.path.exists
+    os.path.expanduser
+    os.path.isdir
+    os.path.isfile
+    os.path.islink
+    os.path.isabs
+    os.path.join
+    os.path.basename
+    os.path.dirname
+    os.path.samefile
+    os.path.splitext
+    """
+    pass
+
+
 if __name__ == "__main__":
     # access_demo()
     # chdir_demo()
