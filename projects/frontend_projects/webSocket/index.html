@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>websocket_demo</title>
+</head>
+<body>
+    <div>
+        <h1>websocket_demo 页面</h1>
+    </div>
+
+    <script>
+
+        // 创建一个websocket对象
+        let ws = new WebSocket("ws://localhost:2333")
+
+        // 客户端发送数据
+        ws.onopen = ()=>{
+            ws.send("message from client")
+        }
+
+        // 客户端接受数据
+        ws.onmessage = (e) => {
+            console.log(e.data)
+        }
+    </script>
+</body>
+</html>
