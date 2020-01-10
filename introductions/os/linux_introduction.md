@@ -182,6 +182,9 @@ ls -S  # 以文件大小排序
 # 用grep直接搜索文件中的文本内容
 grep -i 'Out of Memory' /var/log/messages
 
+# 迭代搜索当前(或指定)目录中的文件中的文本内容
+grep -rn "grep" ./
+
 # 查看文件占用
 fuser -s file  # 查看文件是否被其他进程占用(持续写入状态，vi打开不是), 返回值为1则为被占用，0则为未被占用
 fuser -v file  # 查看文件的具体占用信息，包括占用进程的 USER, PID 等

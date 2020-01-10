@@ -70,6 +70,18 @@ ZZ  保存并退出
 :1, 10 move 20  将1-10行的内容剪切到20行
 ```
 
+**将vim中的内容复制到系统剪切板：**
+
+- [将vim中的内容复制到系统剪切板](https://www.cnblogs.com/callmelord/p/11579646.html)
+
+```shell
+# 基本步骤
+# 1.安装插件
+sudo apt-get install vim-gnome
+
+# 2.vim进入visual模式，选中块，然后使用命令 "+y 来将内容复制到系统剪切板
+```
+
 ### 1.4跳转
 
 ```shell

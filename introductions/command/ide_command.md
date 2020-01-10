@@ -30,8 +30,17 @@ ctrl + shift + n
 # 全局搜索关键字
 ctrl + shift + f
 
+# 搜索文件
+shift + shift
+
 # 快速跳转到函数,类的定义
 ctrl + b
+
+# 快速选中单词
+ctrl + w
+
+# 跳转回光标之前的位置
+shift + alt + left
 ```
 
 ## 2.webstorm

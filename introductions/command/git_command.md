@@ -102,14 +102,19 @@ git push -f
 # 保存到堆栈中，然后就可以在不同的分支中进行切换了
 # 将所有未提交的修改（工作区和暂存区）保存到堆栈
 git stash
+
 # 等同于stash,但是可以加一些注释
 git stash save "message"
+
 # 查看当前stash中内容
 git stash list
+
 # 将当前stash中的内容弹出，并应用到当前分支对应的工作目录（会删除堆栈中最近保存的内容）
 git stash pop
+
 # 将当前stash中的内容应用到当前分支对应的工作目录（不会删除堆栈中最近保存的内容）
 git stash apply
+
 # 删除所有存储的进度
 git stash clear
 ```
@@ -117,6 +122,9 @@ git stash clear
 ### 1.7分支
 
 ```shell
+# 查看当前的分支
+git branch
+
 # 取回所有分支的更新
 git fetch
 # 取回指定的分支更新(eg:git fetch origin master)
