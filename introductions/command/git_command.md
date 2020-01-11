@@ -125,6 +125,9 @@ git stash clear
 # 查看当前的分支
 git branch
 
+# 查看所有的分支详细信息
+git branch -vv -a
+
 # 取回所有分支的更新
 git fetch
 # 取回指定的分支更新(eg:git fetch origin master)
