@@ -20,9 +20,9 @@ This is a private project for recording my process for AI.
 
 Add go features here.
 
-## 2.aitools
+## 2.ai
 
-设计ai相关的库已经软件的使用。
+ai相关内容，算法实现，等等。
 
 ## 3.books
 
@@ -30,20 +30,20 @@ Add go features here.
 
 ## 4.algorithms
 
-关于一些算法。
+一些常见的算法实现。
 
-## 5.modules
+## 5.data_structure
 
-相关模块的基本使用。
+数据结构的一些概念的实现。
 
 ## 6.projects
 
 一些小的简单的项目。
 
-## 7.other
+## 7.python
 
-其他。
+python相关知识。
 
-## 8.utils
+## 8.skill_tree
 
-其他。
+后端技能树。
