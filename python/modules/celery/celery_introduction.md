@@ -8,6 +8,7 @@
   - [2.Broker](#2broker)
     - [2.1RabbitMQ](#21rabbitmq)
     - [2.2Redis](#22redis)
+  - [3.Backend](#3backend)
   - [a.参考资料](#a%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99)
 
 <!-- /TOC -->
@@ -33,6 +34,18 @@
 
 - 功能完备的broker可选项，但是其更可能因意外中断或者电源故障导致数据丢失的情况
 - [使用redis作为celery的broker](http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis)
+
+## 3.Backend
+
+Celery需要将结果保存到某个地方
+
+有几种保存的方案可选:
+
+- SQLAlchemy
+- Django ORM
+- Memcached
+- Redis
+- RPC (RabbitMQ/AMQP)
 
 ## a.参考资料
 

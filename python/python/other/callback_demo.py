@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 """
@@ -28,12 +28,14 @@ def long_io(callback):
 
 
 def missionA():
+    """耗时任务A"""
     print("start a")
     long_io(callback)
     print("end a")
 
 
 def missionB():
+    """耗时任务B"""
     print("start b")
     time.sleep(2)
     print("end b")

@@ -29,6 +29,8 @@
 """
 
 
+import os
+
 from celery import Celery
 
 
@@ -47,3 +49,7 @@ def celery_task_add(x, y):
     """
     print("celery task running...")
     return str(x+y)
+
+
+if __name__ == "__main__":
+    pass

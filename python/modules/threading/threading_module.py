@@ -55,11 +55,6 @@ threading.Event()：
 - event.set()：将event的标志设置为True，调用wait方法的所有线程将被唤醒；
 - event.clear()：将event的标志设置为False，调用wait方法的所有线程将被阻塞；
 - event.isSet()：判断event的标志是否为True。
-
-threading.local():
-
-- 保存一个全局变量,但是该全局变量只有在该线程才能使用
-- 使用场景为开发多线程,且每个线程需要一个单独的全局变量的时候
 """
 
 
@@ -186,18 +181,10 @@ def event_demo():
     event.set()
 
 
-def local_demo():
-    """使用threading.local()示例"""
-    pass
-
-
 if __name__ == "__main__":
     # thread_demo()
     # thread_demo2()
     # mythread_demo()
     # lock_demo()
-    # event_demo()
-    # print("main end")
-
-    local_demo()
-
+    event_demo()
+    print("main end")

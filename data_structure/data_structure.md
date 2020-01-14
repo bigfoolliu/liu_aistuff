@@ -7,7 +7,8 @@
 - [data_structure](#datastructure)
   - [1.链表(linked list)](#1%e9%93%be%e8%a1%a8linked-list)
     - [1.1介绍](#11%e4%bb%8b%e7%bb%8d)
-    - [1.2应用](#12%e5%ba%94%e7%94%a8)
+    - [1.2应用场景](#12%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af)
+    - [1.3链表和数组的对比](#13%e9%93%be%e8%a1%a8%e5%92%8c%e6%95%b0%e7%bb%84%e7%9a%84%e5%af%b9%e6%af%94)
   - [2.二叉树(binary tree)](#2%e4%ba%8c%e5%8f%89%e6%a0%91binary-tree)
   - [3.霍夫曼压缩(huffman compression)](#3%e9%9c%8d%e5%a4%ab%e6%9b%bc%e5%8e%8b%e7%bc%a9huffman-compression)
     - [3.1介绍](#31%e4%bb%8b%e7%bb%8d)
@@ -31,6 +32,8 @@
     - [9.2图的基本算法](#92%e5%9b%be%e7%9a%84%e5%9f%ba%e6%9c%ac%e7%ae%97%e6%b3%95)
   - [10.hash_map](#10hashmap)
     - [10.1介绍](#101%e4%bb%8b%e7%bb%8d)
+  - [a.概念](#a%e6%a6%82%e5%bf%b5)
+    - [a.1线性表和链表的区别](#a1%e7%ba%bf%e6%80%a7%e8%a1%a8%e5%92%8c%e9%93%be%e8%a1%a8%e7%9a%84%e5%8c%ba%e5%88%ab)
 
 <!-- /TOC -->
 
@@ -52,7 +55,14 @@
    1. 优点是定点插入和定点删除的时间复杂度为O(1)
    2. 缺点是访问的时间复杂度最坏为O(n)
 
-### 1.2应用
+### 1.2应用场景
+
+`线性表的长度难以，频繁的插入和删除操作，构建动态性比较强的线性表。`
+
+### 1.3链表和数组的对比
+
+- 数组使用方便；查询效率高，内存为一块连续的区域；但是大小固定，不适合动态存储不方便动态添加
+- 可以动态添加删除，大小可变；但是只能依次指针访问，查询效率低
 
 ## 2.二叉树(binary tree)
 
@@ -96,10 +106,10 @@
 
 ## 6.栈
 
+栈是一种`LIFO(Last In First Out)`的数据结构，常用方法有添加元素，取栈顶元素，弹出栈顶元素，判断栈是否为空。
+
 - [栈的实现以及其他类型的栈](https://blog.csdn.net/wenqiang1208/article/details/77193449)
 - [栈的python实现](./stack/stack.py)
-
-栈是一种`LIFO(Last In First Out)`的数据结构，常用方法有添加元素，取栈顶元素，弹出栈顶元素，判断栈是否为空。
 
 ### 6.1介绍
 
@@ -187,3 +197,9 @@
 
 hashmap本质是`链表散列的`的数据结构，即`数组和链表的结合体`。java8中为数组+链表+红黑树。
 ![hashmap](./imgs/hashmap.png)
+
+## a.概念
+
+### a.1线性表和链表的区别
+
+- [单链表和顺序表的关系](./imgs/difference_between_sll_and_ol.png)

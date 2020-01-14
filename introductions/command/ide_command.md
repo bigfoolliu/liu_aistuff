@@ -4,6 +4,7 @@
 
 - [pycharm常用快捷键](https://blog.csdn.net/cuomer/article/details/81534140)
 - [pycharm常用快捷键(简书)](https://www.jianshu.com/p/5880a25ac597)
+- [blibli官方pycharm详细演示视频](https://www.bilibili.com/video/av29271643/?p=6)
 
 ```shell
 # 编辑相关
@@ -30,17 +31,8 @@ ctrl + shift + n
 # 全局搜索关键字
 ctrl + shift + f
 
-# 搜索文件
-shift + shift
-
 # 快速跳转到函数,类的定义
 ctrl + b
-
-# 快速选中单词
-ctrl + w
-
-# 跳转回光标之前的位置
-shift + alt + left
 ```
 
 ## 2.webstorm
