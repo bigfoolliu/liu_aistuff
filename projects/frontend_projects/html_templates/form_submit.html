@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单提交</title>
+
+    <style type="text/css">
+        .login {
+            width: 250px;
+            background-color: #9d9d9d;
+            position: absolute;
+        }
+
+        .ui-form-item {
+            position: relative;
+            margin: 5px;
+        }
+
+        .ui-button {
+            width: 100%;
+            background-color: #00b3ee;
+        }
+
+        .ui-label {
+            width: 30%;
+            float: left;
+        }
+
+        .ui-input {
+            width: 60%;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="login">
+    <form class="ui-form" method="post" action="http://127.0.0.1:8080/login">
+        <div class="ui-form-item">
+            <span class="ui-label">用户名:</span><label><input class="ui-input" type="text" name="user" placeholder="用户名(3-12位)"></label>
+        </div>
+
+        <div class="ui-form-item">
+            <span class="ui-label">密码:</span><label><input class="ui-input" type="password" name="password"></label>
+        </div>
+
+        <label><input class="ui-button" type="submit" value="登录"></label>
+    </form>
+</div>
+</body>
+</html>

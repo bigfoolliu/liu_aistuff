@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head lang='en'>
     <meta charset='UTF-8'>
     <title>indexPage</title>
@@ -20,7 +20,7 @@
         <h3>head1</h3>
         <h4>head1</h4>
         <h5>head1</h5>
-        <h6 align="right">head1</h6 align="right">
+        <h6 align="right">head1</h6>
     </div>
 
     <br>
@@ -43,6 +43,8 @@
             <sup>这是上标字</sup><br>
             <ins>这是插入字</ins><br>
             <del>这是删除字</del><br>
+
+            <center>这是一段居中文本。</center>
         </p>
     </div>
 
@@ -52,7 +54,7 @@
     <!-- a标签示例 -->
     <div>
         <!-- 跳转到外部地址 -->
-        <a name="baidu" href="http://www.baidu.com" target="_blank">百度首页，我是打开新的标签</a>
+        <a id="baidu" href="http://www.baidu.com" target="_blank">百度首页，我是打开新的标签</a>
         <br>
         <a href="http://www.baidu.com" target="_self">百度首页，我是覆盖原来的标签</a>
         <br>
@@ -162,43 +164,51 @@
 
     <!-- form表单示例 -->
     <div id="form_demo">
-        <form action="">
+        <form action="" id="testForm">
             <!-- 文本框 -->
-            用户名：
-            <input type="text"><br>
+            <p>用户名：</p>
+            <label><input type="text"></label>
+            <br>
 
             <!-- 密码框 -->
-            密码：
-            <input type="password"><br>
+            <p>密码：</p>
+            <label><input type="password"></label>
+            <br>
 
             <!-- 多选框 -->
             你喜欢的水果有？
-            苹果<input type="checkbox">
-            火龙果<input type="checkbox">
-            桃子<input type="checkbox"><br>
+            苹果
+            <label><input type="checkbox"></label>
+            火龙果
+            <label><input type="checkbox"></label>
+            桃子<label><input type="checkbox"></label>
+            <br>
 
             <!-- 单选框,注意其name必须相同才能实现单选效果 -->
             性别：
-            男<input type="radio" name="sex">
-            女<input type="radio" name="sex"><br>
+            男<label><input type="radio" name="sex"></label>
+            女<label><input type="radio" name="sex"></label>
+            <br>
 
             <!-- 下拉列表 -->
             国籍：
-            <select>
-                <option>中国</option>
-                <option>美国</option>
-                <option>俄罗斯</option>
-            </select>
+            <label>
+                <select>
+                    <option>中国</option>
+                    <option>美国</option>
+                    <option>俄罗斯</option>
+                </select>
+            </label>
             <br>
 
             <!-- 按钮 -->
-            <input type="button" value="按钮">
-            <input type="submit" value="提交">
+            <input type="button" value="按钮" name="buttonTest" formmethod="GET" formaction="http://localhost/xxx">
+            <input type="submit" value="提交" name="submitName" formmethod="POST" formaction="http://localhost/xxx">
         </form>
 
         <!-- 文本域 -->
-        <textarea cols="30" rows="10">描述自己</textarea>
-    
+        <label><textarea cols="30" rows="10">描述自己</textarea></label>
+
     </div>
 
     <br>
@@ -299,8 +309,49 @@
     <div style="background-color: mistyrose;">
 
         现在是<time>2020-1-1</time>, 
-
         我在<time datetime="2020-2-14">情人节</time>有个约会。
     </div>
+
+    <br>
+    <br>
+
+    <!-- header标签 -->
+    <div>
+        <header>
+            <h1>header示例</h1>
+            <nav>
+                <li><a href="#">haha</a></li>
+                <li><a href="#">haha2</a></li>
+            </nav>
+        </header>
+    </div>
+    
+
+    <br>
+    <br>
+
+    <!-- footer标签 -->
+    <div>
+        <footer>
+            <ul>
+                <li><a href="#">版权</a></li>
+                <li><a href="#">联系方式</a></li>
+            </ul>
+        </footer>
+    </div>
+
+
+    <br>
+    <br>
+    
+    <!-- address标签 -->
+    <div>
+        <address>
+            <a href="#">姓名</a>
+            <a href="#">手机号</a>
+        </address>
+    </div>
+
+
 </body>
 </html>
