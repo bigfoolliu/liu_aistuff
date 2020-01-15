@@ -5,45 +5,116 @@
     <title>注册</title>
 
     <style type="text/css">
-        .register {
-            width: 250px;
-            background-color: #9d9d9d;
-            position: absolute;
-        }
-
-        .ui-form-item {
-            position: relative;
-            margin: 5px;
-        }
-
-        .ui-label {
-            width: 30%;
-            float: left;
-        }
-
-        .ui-button {
-            width: 100%;
-            background-color: #00b3ee;
-        }
+			body{
+				background: #0cf;
+			}
+			.register{
+				width: 430px;
+				height: 550px;
+				/*
+				 第一参数表示上下
+				 第二个参数表示左右
+				 * */
+				padding: 24px 35px;
+				background: #F9F9F9;
+				margin: 50px auto;
+			}
+			.register .register-title{
+				width: 430px;
+				height: 38px;
+				border-bottom: 1px solid #DDDDDD;
+				margin-bottom: 24px;
+			}
+			/*
+			 文字标题
+			 * */
+			.register .register-title h3{
+				color: #f96;
+				font-size: 24px;
+				font-weight: normal;
+				margin: 0;
+			}
+			.register label{
+				width: 92px;
+				text-align: right;
+				display: inline-block;
+			}
+			.register input{
+				width: 328px;
+				height: 38px;
+				padding: 0;
+				border: 1px solid #DDDDDD;
+			}
+			.register div{
+				margin-bottom: 30px;
+			}
+			.register textarea{
+				width: 328px;
+				height: 74px;
+				/*
+				 表示禁止移动
+				 * */
+				resize: none;
+			}
+			.register .person{
+				position: relative;
+				left: 0;
+				top: -50px;
+			}
+			.register .check{
+				width: 16px;
+				height: 16px;
+				position: relative;
+				left: -3px;
+				top: 3px;
+			}
+			.register .sub{
+				background: #00CCFF;
+				color: #FFFFFF;
+				height: 40px;
+				border: 1px solid #DDDDDD;
+			}
     </style>
 </head>
 <body>
+
 <div class="register">
-    <form class="ui-form" method="post" action="http://127.0.0.1:8080/register">
-        <div class="ui-form-item">
-            <span class="ui-label">用户名:</span><label><input type="text" name="user" placeholder="邮箱或者3-12位用户名"></label>
-        </div>
+			<div class="register-title">
+				<h3>注册表单</h3>
+			</div>
 
-        <div class="ui-form-item">
-            <span class="ui-label">密码:</span><label><input type="password" name="password"></label>
-        </div>
+			<form>
 
-        <div class="ui-form-item">
-            <span class="ui-label">确认密码:</span><label><input type="password" name="confirm-password"></label>
-        </div>
+				<div>
+					<label>用户名：</label><input type="text" title="" />
+				</div>
 
-        <label><input class="ui-button" type="submit" value="注册"></label>
-    </form>
-</div>
+				<div>
+					<label>密码：</label><input type="password" title="" />
+				</div>
+
+				<div>
+					<label>确认密码：</label><input type="password" title="" />
+				</div>
+
+				<div>
+					<label>邮箱：</label><input type="text"  title="" />
+				</div>
+
+				<div>
+					<label class="person">个人简介：</label><textarea title=""></textarea>
+				</div>
+
+				<div>
+					<label></label><input title="" type="checkbox"  class="check"/>同意用户使用协议
+				</div>
+
+				<div>
+					<label></label><input type="submit"  value="注册" class="sub"/>
+				</div>
+
+			</form>
+	</div>
+
 </body>
 </html>
