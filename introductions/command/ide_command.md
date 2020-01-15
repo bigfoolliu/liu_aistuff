@@ -33,6 +33,9 @@ ctrl + shift + f
 
 # 快速跳转到函数,类的定义
 ctrl + b
+
+# 格式化代码
+ctrl + alt + l
 ```
 
 ## 2.webstorm
