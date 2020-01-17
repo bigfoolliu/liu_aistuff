@@ -36,6 +36,9 @@ ctrl + b
 
 # 格式化代码
 ctrl + alt + l
+
+# 快速重命名文件
+shift + f6
 ```
 
 ## 2.webstorm

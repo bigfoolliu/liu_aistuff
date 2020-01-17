@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js输出示例</title>
+</head>
+<body>
+
+
+<div>
+    <!--写入html输出-->
+    <script>
+        document.write(1+1);
+    </script>
+
+</div>
+
+
+<div>
+    <!--写入html元素-->
+    <p id="hello" style="color: #007bff">hello</p>
+    <script>
+        document.getElementById("hello").innerHTML="hello world"
+    </script>
+</div>
+
+
+<div>
+    <!--将内容写入窗口提示框-->
+    <script>
+        window.alert("alert!!!")
+    </script>
+</div>
+
+
+<div>
+    <!--将元素写入控制台-->
+    <script>
+        console.log("console message")
+    </script>
+</div>
+
+</body>
+</html>

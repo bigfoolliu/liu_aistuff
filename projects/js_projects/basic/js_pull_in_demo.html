@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js基础示例</title>
+</head>
+
+
+<!--js代码引入示例-->
+<!--1.head引入-->
+<!--2.外部引入-->
+<!--3.url引入-->
+<!--4.body引入-->
+
+
+<!--head中添加js-->
+<script>
+    function demo1Function() {
+        document.getElementById("demo1").innerHTML="来了..."
+    }
+</script>
+
+<body>
+
+<!--js改变Html内容-->
+<div>
+    <p id="demo1">来呀</p>
+    <button type="button" onclick="demo1Function()">点击我!</button>
+</div>
+
+
+<!--使用外部引入的js函数-->
+<div>
+    <p id="demo2">再来呀</p>
+    <button type="button" onclick="demo2Function()">再点啊</button>
+</div>
+
+<!--从外部引入js-->
+<script src="js/js_pull_in_demo.js"></script>
+
+</body>
+</html>
