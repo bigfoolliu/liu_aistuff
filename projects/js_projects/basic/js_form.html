@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js表单简单示例</title>
+</head>
+<body>
+
+<!--验证输入的必须是数字-->
+<div>
+
+    <p>输入1-10的数字:</p>
+    <label><input type="text" id="num"></label>
+    <label><button type="button" onclick="validateNum()">提交</button></label>
+    <p id="ret"></p>
+
+    <script type="text/javascript">
+        function validateNum() {
+            let x, text;
+            x = document.getElementById("num").value;
+            if (isNaN(x) || x < 1 || x > 10) {
+                text = "输入无效";
+            } else {
+                text = "输入有效";
+            }
+            document.getElementById("ret").innerHTML = text;
+        }
+    </script>
+</div>
+
+<br>
+<br>
+
+<!--表单必须填写内容-->
+<div>
+    <form name="my_form" action="" onsubmit="return validateContent()" method="post">
+        <label>姓名:<input type="text" name="my_name"></label>
+        <label><button type="submit">提交</button></label>
+        <p id="ret2"></p>
+    </form>
+
+    <script type="text/javascript">
+        function validateContent() {
+            let name = document.forms["my_form"]["my_name"].value;
+            if (name === ""){
+                alert("必须填写姓名！");
+                return false;
+            } else {
+                alert("欢迎"+ name);
+            }
+        }
+    </script>
+</div>
+
+</body>
+</html>
