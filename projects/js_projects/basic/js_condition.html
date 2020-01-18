@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js条件示例</title>
+
+    <script type="text/javascript">
+        function generateNumber() {
+            let num = Math.random() * 10;
+
+            document.getElementById("num").innerHTML = num.toString();
+            if (num < 5.0) {
+                console.log("num < 5")
+            } else if (num < 8) {
+                console.log("8 > num >5")
+            } else {
+                console.log("其他")
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>js条件示例，请看console</h2>
+
+<!--点击产生随机数字-->
+<div>产生数字：<span id="num"></span></div>
+<button type="button" onclick="generateNumber()">点我！</button>
+
+</body>
+</html>
