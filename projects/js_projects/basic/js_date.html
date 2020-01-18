@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js日期示例</title>
+
+    <script type="text/javascript">
+        setInterval(function () {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth();
+            let day = date.getDay();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            let d = document.getElementById("demo");
+            d.innerHTML = "当前时间：" + year + "年" + month + "月" + day + "日 " + h + ":" + m + ":" + s;
+        }, 1000);
+
+    </script>
+
+</head>
+<body>
+
+<!--实时时间展示-->
+<div>
+    <p id="demo"></p>
+</div>
+
+</body>
+</html>

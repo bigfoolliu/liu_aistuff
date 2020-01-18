@@ -10,6 +10,7 @@
 ## 1.javascript基础
 
 - [W3school js教程](https://www.w3school.com.cn/js/js_arithmetic.asp)
+- [var和let的区别](https://blog.csdn.net/xingjia001/article/details/84560872)
 
 js关键字：
 
