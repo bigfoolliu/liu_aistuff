@@ -1,7 +1,5 @@
 # git相关知识
 
-<!-- TOC -->autoauto- [git相关知识](#git相关知识)auto    - [1.git基本命令](#1git基本命令)auto        - [1.1版本和用户](#11版本和用户)auto        - [1.2仓库克隆](#12仓库克隆)auto        - [1.3暂存](#13暂存)auto        - [1.4本地提交](#14本地提交)auto        - [1.5远程提交与拉取](#15远程提交与拉取)auto        - [1.6提交堆栈](#16提交堆栈)auto        - [1.7分支](#17分支)auto    - [2.操作命令组](#2操作命令组)auto        - [2.1修改已经push的commit的message](#21修改已经push的commit的message)auto        - [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)auto    - [3.gitmoduel使用](#3gitmoduel使用)auto    - [a.其他](#a其他)autoauto<!-- /TOC -->
-
 ## 1.git基本命令
 
 ### 1.1版本和用户
@@ -247,3 +245,8 @@ git diff
 # 查看尚未提交的更新
 git diff --cached
 ```
+
+**pull request:**
+
+- fork仓库后修改了错误，然后给原始仓库提交`pull request`
+- 原仓库的所有者看到`pr`,进行`review`，觉得对的就`merge`,完成流程
