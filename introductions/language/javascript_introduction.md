@@ -96,6 +96,52 @@ var person = {"name": "tony", "age": 12};
 
 ## 3.js函数
 
+### 3.1函数定义
+
+```javascript
+// 基础
+function x() {
+  console.log("hello");
+}
+
+// 匿名函数
+var y = function(a, b) { return a + b};
+var z = y(4, 3);
+
+// 函数构造器,少用
+var myFunc = new Function("a", "b", "return a + b");
+var a = myFunc(3, 4);
+
+// 自调用函数,函数表达式自动执行
+(function() {
+  var b = "hello";
+})();
+```
+
+### 3.2函数参数
+
+```javascript
+// 参数默认,没有传参数的时候会默认传递undefined,最好指定默认值
+function x(a) {
+    if (a === undefined) {
+        a =  0;
+    }
+}
+
+// 调用的参数太多（超过声明），则可以使用 arguments 对象来达到这些参数
+function y(a, b, c) {
+    // arguments是函数的内置对象，包含函数调用时候使用的参数数组
+    var i = 0;
+    for (; i < arguments.length; i++) {
+        console.log(i);
+    }
+}
+```
+
+### 3.3函数调用
+
+### 3.4函数call
+
 ## 4.js事件
 
 - 网页完成加载
@@ -139,3 +185,5 @@ debugger;
 8. 使用`===`进行比较，**==在比较之前会进行类型转换，===比较的时候会比较类型和值**
 9. 为函数的参数值设置默认值
 10. 使用default来结束switch
+
+## 8.DOM

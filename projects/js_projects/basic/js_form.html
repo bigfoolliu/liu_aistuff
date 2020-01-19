@@ -52,5 +52,28 @@
     </script>
 </div>
 
+
+<!--表单api-->
+<div>
+    <p>输入数字(100-300)并提交：</p>
+    <label><input id="id1" type="number" min="100" max="300" required></label>
+    <button onclick="validateFunction()">提交</button>
+
+    <p id="demo1"></p>
+
+    <script type="text/javascript">
+        function validateFunction() {
+            let inputObj = document.getElementById("id1");
+
+            // checkValidity() 方法，如果输入字段包含无效的数据，显示一条消息
+            if (!inputObj.checkValidity()) {
+                document.getElementById("demo1").innerHTML = inputObj.validationMessage;
+            } else {
+                document.getElementById("demo1").innerHTML = "输入数字有效！"
+            }
+        }
+    </script>
+</div>
+
 </body>
 </html>
