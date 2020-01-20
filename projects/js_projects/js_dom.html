@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js dom操作示例</title>
+
+    <style type="text/css">
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background-color: #00cc00;
+        }
+
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: #5f2dab;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <!--直接写入html流-->
+    <script type="text/javascript">
+        // 千万不要在文档加载后使用 document.write()。这么做会覆盖文档。
+        document.write(Date());
+    </script>
+</div>
+
+<br>
+<br>
+
+<div>
+    <p id="p1">hello, javascript!</p>
+    <script type="text/javascript">
+        // 改变p的css样式
+        document.getElementById("p1").style.color = "red";
+    </script>
+</div>
+
+
+<br>
+<br>
+
+
+<div>
+    <script type="text/javascript">
+        // DOM使用事件,创建element元素
+        function myFunc() {
+            console.log("i do click");
+            let btn = document.createElement("BUTTON");
+            let t = document.createTextNode("再点啊");
+            btn.appendChild(t);
+            document.body.appendChild(btn);
+        }
+    </script>
+    <button type="button" onclick="myFunc()">点我啊!</button>
+</div>
+
+
+<br>
+<br>
+
+
+<!--创建JavaScript HTML DOM 动画-->
+<div>
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+    <button type="button" onclick="onMove()">点击移动！</button>
+
+    <script type="text/javascript">
+        function onMove() {
+            let animate = document.getElementById("animate");
+            let pos = 0;
+            let id = setInterval(frame, 5);
+            function frame() {
+                if (pos === 350) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    animate.style.top = pos + "px";
+                    animate.style.left = pos + "px";
+                }
+            }
+        }
+    </script>
+</div>
+
+
+<br>
+<br>
+
+</body>
+</html>

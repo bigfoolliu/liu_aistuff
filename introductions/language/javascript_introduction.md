@@ -186,4 +186,22 @@ debugger;
 9. 为函数的参数值设置默认值
 10. 使用default来结束switch
 
-## 8.DOM
+## 8.JS HTML DOM
+
+- 文档对象模型(document object model)，js通过该模型来操纵Html元素
+- [JavaScript HTML DOM 文档](https://www.w3school.com.cn/js/js_htmldom_document.asp)
+
+**document对象**
+
+```javascript
+// 常用操作
+document.getElementById("id1").innerHTML = "a";
+document.createElement("a");
+document.write("a");
+document.getElementById("id2").onclick = function() {};
+
+// 常用属性
+document.cookie;
+document.domain;
+document.URL;
+```
