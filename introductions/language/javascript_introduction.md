@@ -191,7 +191,7 @@ debugger;
 - 文档对象模型(document object model)，js通过该模型来操纵Html元素
 - [JavaScript HTML DOM 文档](https://www.w3school.com.cn/js/js_htmldom_document.asp)
 
-**document对象**
+**document对象:**
 
 ```javascript
 // 常用操作
@@ -205,3 +205,13 @@ document.cookie;
 document.domain;
 document.URL;
 ```
+
+**常用DOM事件：**
+
+- 当用户点击鼠标时(onclick())
+- 当网页加载后(onload(), onunload())
+- 当图像加载后
+- 当鼠标移至元素上或移出时(onmouseup(), onmousedown())
+- 当输入字段被改变时(onchange())
+- 当 HTML 表单被提交时
+- 当用户敲击按键时

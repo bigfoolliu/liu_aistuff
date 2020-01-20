@@ -94,5 +94,29 @@
 <br>
 <br>
 
+
+<!--点击标题触发事件-->
+<div>
+    <h2 onclick="this.innerHTML='change'">我是可以点击的标题</h2>
+</div>
+
+
+<br>
+<br>
+
+
+<!--改变输入的时候触发事件-->
+<div>
+    <script type="text/javascript">
+        // 输入文本之后会将内容大写
+        function upperCase() {
+            let x = document.getElementById("frame");
+            x.value = x.value.toUpperCase();
+        }
+    </script>
+    <label>输入内容然后离开：<input type="text" id="frame" onchange="upperCase()"></label>
+</div>
+
+
 </body>
 </html>
