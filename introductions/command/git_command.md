@@ -250,3 +250,10 @@ git diff --cached
 
 - fork仓库后修改了错误，然后给原始仓库提交`pull request`
 - 原仓库的所有者看到`pr`,进行`review`，觉得对的就`merge`,完成流程
+
+**index文件损坏处理:**
+
+```shell script
+rm -rf .git/index
+git reset --mixed HEAD
+```

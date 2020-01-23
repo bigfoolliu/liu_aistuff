@@ -53,7 +53,7 @@ def blocking_date_demo():
     """一次性任务，在指定的的时间运行"""
     scheduler = BlockingScheduler()
     scheduler.add_job(timed_task2, args=("tony",), trigger="date",
-                        next_run_time=datetime.now()+timedelta(seconds=3))  # 当前时间5秒后执行
+                      next_run_time=datetime.now()+timedelta(seconds=3))  # 当前时间5秒后执行
     scheduler.start()
 
 

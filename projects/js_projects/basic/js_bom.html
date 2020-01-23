@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的bom示例</title>
+</head>
+<body>
+
+<!--window对象操作和使用-->
+<div>
+    <p id="p1"></p>
+    <p id="p2"></p>
+
+    <button type="button" onclick="openNewWindow()">点击打开新窗口</button>
+    <button type="button" onclick="closeCurrentWindow()">点击关闭当前的窗口</button>
+    <button type="button" onclick="moveToWindow()">点击移动到指定窗口</button>
+    <button type="button" onclick="resizeWindow()">点击改变窗口大小</button>
+
+    <script type="text/javascript">
+        // 浏览器窗口的内高度
+        let browser_height = window.innerHeight;
+        // 浏览器窗口的内宽度
+        let browser_width = window.innerWidth;
+
+        document.getElementById("p1").innerHTML = "浏览器高度:" + browser_height;
+        document.getElementById("p2").innerHTML = "浏览器宽度:" + browser_width;
+
+        function openNewWindow() {
+            window.open("#");  // 打开当前窗口的拷贝
+            // window.open();  // 打开一个空白的新窗口
+        }
+
+        function closeCurrentWindow() {
+            window.close();  // 关闭当前窗口
+        }
+        
+        function moveToWindow() {
+            window.moveTo(1, 2);  // TODO:参数需要调整，没有反应
+        }
+
+        function resizeWindow() {
+            window.resizeTo(200, 200);  // TODO:参数需要调整，没有反应
+        }
+    </script>
+</div>
+
+<br>
+<br>
+
+
+<!--screen对象-->
+<div>
+
+    <P id="pp1"></P>
+    <P id="pp2"></P>
+    <P id="pp3"></P>
+    <P id="pp4"></P>
+    <P id="pp5"></P>
+    <P id="pp6"></P>
+
+    <script>
+        document.getElementById("pp1").innerHTML = "屏幕宽度:" + screen.width;
+        document.getElementById("pp2").innerHTML = "屏幕高度:" + screen.height;
+        document.getElementById("pp3").innerHTML = "可用屏幕宽度:" + screen.availWidth;
+        document.getElementById("pp4").innerHTML = "可用屏幕高度:" + screen.availHeight;
+        document.getElementById("pp5").innerHTML = "色深:" + screen.colorDepth;
+        document.getElementById("pp6").innerHTML = "像素深度" + screen.pixelDepth;
+    </script>
+</div>
+
+</body>
+</html>
