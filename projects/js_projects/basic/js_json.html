@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的json示例</title>
+</head>
+<body>
+
+<!--json基础示例-->
+<div>
+    <button type="button" onclick="basicDemo()">点击执行基础示例</button>
+    <script type="text/javascript">
+        function basicDemo() {
+            let json_str = '{ "name":"tony", "age":20}';
+            let parsed_str = JSON.parse(json_str);
+            console.log(parsed_str);
+            console.log(typeof parsed_str); // object对象
+
+            try {
+                // 获取解析之后的数据的属性
+                console.log(parsed_str.name);
+                console.log(parsed_str.age);
+            } catch (e) {
+                console.log("get parsed str error: " + e);
+            }
+        }
+    </script>
+</div>
+
+
+<br>
+<br>
+
+<!--将js对象转换为字符串-->
+<div>
+    <button type="button" onclick="stringifyDemo()">点击将js对象转换为字符串</button>
+    <script>
+        function stringifyDemo() {
+            let names = ["tony", "john", "anna"];
+            let stringified_names = JSON.stringify(names);
+            console.log(stringified_names);
+            console.log(typeof stringified_names);
+        }
+    </script>
+</div>
+
+
+<br>
+<br>
+
+
+<!--json对象遍历和访问-->
+<div>
+    <button type="button" onclick="travelDemo()">点击执行遍历访问示例</button>
+    <p id="p1"></p>
+    <script type="text/javascript">
+        function travelDemo() {
+            // 创建json对象
+            let json_obj = {"name": "liu", "age":20};
+            // 遍历访问
+            for (let x in json_obj) {
+                document.getElementById("p1").innerHTML += json_obj[x];
+            }
+
+            // 删除json对象的属性
+            delete json_obj.age;
+            console.log(json_obj);
+        }
+    </script>
+</div>
+
+</body>
+</html>

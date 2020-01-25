@@ -366,3 +366,8 @@ window.history 对象可不带 window 书写。
 2. jsonp只支持get请求，不支持post请求
 3. httpClient内部转发
 4. 使用接口网关——`nginx`,`springcloud`,`zuul`(互联网公司常规解决方案)
+
+### 11.js JSON
+
+- `JSON.parse(string)`解析字符串至json对象
+- `JSON.stringify()`将js对象转换为字符串
