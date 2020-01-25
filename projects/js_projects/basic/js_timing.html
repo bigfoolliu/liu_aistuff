@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js定时函数示例</title>
+</head>
+<body>
+
+
+<!--定时函数简单示例-->
+<div>
+    <!--点击按钮会在3秒之后显示当前时间-->
+    <button type="button" onclick="my_var = setTimeout(timeDemo, 3000)">点击触发定时函数</button>
+    <button type="button" onclick="clearTimeout(my_var)">点击终止</button>
+    <script type="text/javascript">
+        function timeDemo() {
+            alert("hello");
+        }
+    </script>
+</div>
+
+<br>
+<br>
+
+<!--重复执行的定时函数,电子时钟-->
+<div>
+    <p id="p1"></p>
+    <button type="button" onclick="clearInterval(myVar)">点击停止时间</button>
+    <script type="text/javascript">
+        let myVar = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            let d = Date();
+            document.getElementById("p1").innerHTML = "当前标准时间为:" + d.toLocaleString();
+        }
+    </script>
+</div>
+
+</body>
+</html>

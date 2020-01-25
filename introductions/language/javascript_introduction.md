@@ -281,3 +281,88 @@ p_node = p_nodes[1];
 - screen.availHeight
 - screen.colorDepth, 色深
 - screen.pixelDepth, 像素深度，对于现代计算机，颜色深度和像素深度是相等的
+
+**location对象:**
+
+- window.location.href 返回当前页面的 href (URL)
+- window.location.hostname 返回 web 主机的域名
+- window.location.pathname 返回当前页面的路径或文件名
+- window.location.protocol 返回使用的 web 协议（http: 或 https:）
+- window.location.assign 加载新文档
+
+**history对象:**
+
+window.history 对象可不带 window 书写。
+
+- history.back() - 等同于在浏览器点击后退按钮
+- history.forward() - 等同于在浏览器中点击前进按钮
+
+**弹出框:**
+
+- `alert("")`,警告框
+- `cnfirm("")`,确认框,点击确认返回true,点击取消返回false
+- `prompt("", default)`，提示框,点击确认返回输入值，点击取消返回NULL
+
+**定时事件:**
+
+- `setTimeout(function, milliseconds)`, 在等待指定的毫秒数后执行函数,只会执行一次
+- `setInterval(function, milliseconds)`,等同于 setTimeout()，但`持续重复执行`该函数
+- `clearTimeout(timeoutVariable)`方法停止执行 setTimeout() 中规定的函数
+- `clearInterval(timerVariable)`方法停止 setInterval() 方法中指定的函数的执行
+
+**cookie:**
+
+*document.cookie属性看起来是普通字符串，但不是，读取时候只会得到其键值对、*
+
+- 当浏览器从服务器请求一个网页时，将属于该页的 cookie 添加到该请求中,这样服务器就获得了必要的数据来“记住”用户的信息
+- 如果浏览器已关闭本地 cookie 支持,则该功能不能工作
+- 默认情况下，在`浏览器关闭时会删除 cookie`
+- 通过 path 参数，您可以告诉浏览器 cookie 属于什么路径。`默认情况下，cookie 属于当前页`
+
+## 10.ajax
+
+### 10.1功能
+
+- 不刷新页面更新网页
+- 页面加载后向后台服务器请求数据
+- 页面加载后向后台服务器接收数据
+- 在后台向服务器发送数据
+
+**js创建XMLHttpRequest对象向后台发送web请求。**
+
+### 10.2XMLHttpRequest对象
+
+- [XMLHttpRequest对象介绍](https://www.w3school.com.cn/js/js_ajax_http.asp)
+
+常用方法：
+
+| 方法 | 描述 |
+| :---: | :--- |
+| new XMLHttpRequest | 创建新的请求 |
+| open(method, url, async, user, psw) | 构造请求 |
+| abort() | 取消请求 |
+| getAllResponseHeaders() | 获取所有的头部信息 |
+| getResponseHeader() | 获取指定的头部信息 |
+| send() | 发送GET请求 |
+| send() | 发送POST请求 |
+| setRequestHeader() | 向要发送的报头添加标签/值对 |
+
+常用属性:
+
+| 属性 | 描述 |
+| :--- | ：---： |
+| readState | 保存 XMLHttpRequest 的状态。0：请求未初始化;1：服务器连接已建立;2：请求已收到;3：正在处理请求;4：请求已完成且响应已就绪; |
+| onreadystatechange | 定义当readState属性发生变化时调用的函数 |
+| responseText | 以字符串返回响应数据 |
+| responseXML | 以XML格式返回的数据 |
+| status | 返回请求的状态号.200: "OK";403: "Forbidden";404: "Not Found" |
+| statusText | 返回状态文本（比如 "OK" 或 "Not Found"） |
+
+### 10.3解决ajax跨域问题
+
+- [解决ajax跨域问题【5种解决方案】](https://blog.csdn.net/itcats_cn/article/details/82318092)
+
+1. 响应头添加header允许访问
+2. jsonp只支持get请求，不支持post请求
+3. httpClient内部转发
+4. 使用接口网关——`nginx`,`springcloud`,`zuul`(互联网公司常规解决方案)

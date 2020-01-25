@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的cookie示例</title>
+</head>
+<body>
+
+<div>
+    <h2>首先输入用户名，然后刷新该页面</h2>
+</div>
+
+
+<!--cookie简单示例-->
+<!--<div>-->
+<!--    <script type="text/javascript">-->
+<!--        // 设置cookie的值，过期时间(utc时间)，以及作用的范围，默认为当前页面-->
+<!--        document.cookie = "userName=tony;expires=Fri, 24 Jan 2020 14:30:00 UTC;path=/";-->
+
+<!--        // 读取cookie-->
+<!--        let myCookie = document.cookie;-->
+<!--        console.log("cookie:" + myCookie);-->
+<!--    </script>-->
+<!--</div>-->
+
+
+<!--cookie的设置，读取个删除-->
+<div>
+
+    <script type="text/javascript">
+        // 设置cookie并添加过期时间
+        function setCookie(cname, cvalue, exdays) {
+            let d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+
+        // 获取cookie
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);  // 解码cookie字符串，可以将特殊字符串如$处理
+            let ca = decodedCookie.split(";");
+            for(let i=0; i<ca.length; i++) {
+                let c = ca[i];
+                while(c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if(c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+
+            }
+            return "";
+        }
+
+
+        // 检测cookie
+        function checkCookie() {
+            let username = getCookie("username");
+            if(username !== "") {
+                alert("welcome again," + username);
+            } else {
+                username = prompt("please enter your name:", "");
+                if(username !== "" && username !== null) {
+                    setCookie("username", username, 1);
+                }
+            }
+        }
+
+
+        checkCookie();
+    </script>
+</div>
+
+</body>
+</html>

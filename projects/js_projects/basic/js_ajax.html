@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的ajax示例</title>
+</head>
+<body>
+
+
+<!--发送请求的基础示例-->
+<div>
+    <p id="p1"></p>
+    <button type="button" onclick="sendDemo()">点击发送请求</button>
+    <script type="text/javascript">
+        function sendDemo() {
+            let req = new XMLHttpRequest();
+
+            // onreadystatechange 被触发五次（0-4），每次 readyState 都发生变化
+            req.onreadystatechange = function () {
+                if(this.readyState === 4 && this.status === 200) {
+                    console.log("readyState:" + this.readyState);
+                    console.log("status:" + this.status);
+                    document.getElementById("p1").innerHTML = this.responseText;
+                } else {
+                    console.log("readyState:" + this.readyState);
+                    console.log("status:" + this.status);
+                    alert("failed:" + this.response);
+                }
+            };
+
+            req.open("GET", "http://127.0.0.1:5000/test/ajax", false);  // 发送异步请求
+            req.send();
+        }
+    </script>
+</div>
+
+</body>
+</html>
