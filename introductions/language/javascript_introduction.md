@@ -371,3 +371,21 @@ window.history 对象可不带 window 书写。
 
 - `JSON.parse(string)`解析字符串至json对象
 - `JSON.stringify()`将js对象转换为字符串
+
+### 12.jquery
+
+**js的库，用于处理浏览器不兼容以及简化html的dom操作，事件处理等。**
+
+```javascript
+// 查找id为id1的元素
+let ele1 = $("#id1");
+
+// 查找<p>标签的元素
+let ele2 = $("p");
+
+// 查找类为intro的元素
+let ele3 = $(".intro");
+
+// css选择器,选择所有类为intro，标签为p的元素
+let ele4 = $("p.intro");
+```
