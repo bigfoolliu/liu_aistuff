@@ -41,7 +41,13 @@ flush privileges;
 # 就可以免密码登录
 # 然后修改密码
 
-# 执行sql文件
+# 将整个数据库导出
+mysqldump -u root -p db_name > db_name.sql
+
+# 导出数据库的一张表
+mysqldump -u root -p db_name table_name > table_name.sql
+
+# 执行sql文件,导入数据库
 use db1;
 source /home/xxx.sql;
 ```

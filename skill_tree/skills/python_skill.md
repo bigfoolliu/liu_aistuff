@@ -265,6 +265,10 @@ pyenv virtualenv 3.6.8 py368  # 创建虚拟环境并设置名字
 
 pyenv global py368  # 全局切换
 pyenv local py368  # 本地切换
+
+
+# 当需要找到关联的解释器的时候,找到对应环境的路径
+pyenv which python
 ```
 
 ## a.其他
