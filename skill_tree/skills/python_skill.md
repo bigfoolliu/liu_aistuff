@@ -225,6 +225,48 @@ pip freeze > requirements.txt  # 生成一个迁移文件
 
 - [可能是python3史上最好的导包技巧](https://blog.csdn.net/weixin_38256474/article/details/81228492)
 
+### 14.5pyenv管理python版本
+
+- [简书介绍pyenv详细使用](https://www.jianshu.com/p/60f361822a7e)
+
+```shell
+# 1.ubuntu环境下下载pyenv, pyenv-virtualenv和编译python的依赖
+
+# 下载
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
+# 添加环境变量
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# 安装编译python依赖
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev
+
+
+# 2.安装指定的python版本
+
+# 方式一，下载速度较慢，可能会失败
+pyenv install 3.6.8
+
+# 方式二
+mkdir ~/.pyenv/cache
+# 将提前下载好的指定版本的python安装包放到cache
+pyenv install 3.6.8
+
+
+# 3.创建，激活virtualenv
+pyenv virtualenv 3.6.8 py368  # 创建虚拟环境并设置名字
+
+pyenv global py368  # 全局切换
+pyenv local py368  # 本地切换
+```
+
 ## a.其他
 
 - [python必备的库](https://www.cnblogs.com/jiangchunsheng/p/9275881.html)
