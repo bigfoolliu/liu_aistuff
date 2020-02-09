@@ -9,6 +9,34 @@
 
 <!-- /TOC -->
 
+## 基础增删改查
+
+### 查询
+
+```shell
+# 查询指定集合的所有文档
+db.user.find()
+
+# 根据条件查询
+db.user.find({"name": "tony", "age": 10})
+
+# 模糊查询，使用正则表达式
+db.user.find({"name": *ony})
+
+# 范围查询，大于$gt，大于等于$gte，小于$lt，小于等于$lte, 不等于$ne
+db.user.find({"age": {"$gt": 10}})
+
+# 多值匹配$in,与多值不匹配$nin
+db.user.find({"age": {$in: [10, 20]}})
+
+# null值,$exists：true，确定存在该键。$in:[null]，值为null
+
+
+# 查询数组
+db.user.find({"like": {$all: ["a", "b"]}})
+
+```
+
 ## a.mongodb数据类型
 
 ### a.1
