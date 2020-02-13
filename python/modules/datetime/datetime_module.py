@@ -9,14 +9,36 @@ datetime模块的简单使用
 
 
 from datetime import datetime, timedelta
+import time
 
 
 def get_utc_demo():
+    """获取UTC时间并转换格式"""
     now_time = datetime.now()
     utc_time = now_time - timedelta(hours=8)              # UTC只是比北京时间提前了8个小时
     utc_time = utc_time.strftime("%Y-%m-%dT%H:%M:%SZ")    # 转换成Aliyun要求的传参格式...
-    print(utc_time)
+    print("utc_time:{} type:{}".format(utc_time, type(utc_time)))
+
+
+def str_to_timestamp_demo():
+    """字符串转换为时间戳"""
+    time_str = "2020-02-11 14:00"
+    time_stamp = time.strptime(time_str, "%Y-%m-%d %H:%M")
+    print("time_stamp:{} type:{}".format(time_stamp, type(time_stamp)))
+
+    time_stamp_float = time.mktime(time_stamp)
+    print(time_stamp_float, type(time_stamp_float))
+
+
+def timestamp_to_datetime_demo():
+    # 时间戳转换为datetime时间
+    time_stamp = int("1581696000")
+    datetime_time = datetime.fromtimestamp(time_stamp)
+    print("datetime_time:{} type:{}".format(datetime_time, type(datetime_time)))
 
 
 if __name__ == "__main__":
-    get_utc_demo()
+    # get_utc_demo()
+    str_to_timestamp_demo()
+    # timestamp_to_datetime_demo()
+
