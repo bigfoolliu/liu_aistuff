@@ -329,6 +329,10 @@
 
 ### x.2快速排序
 
+参照B站视频:
+
+- [B站快速排序介绍](https://www.bilibili.com/video/av39093184?from=search&seid=1190836991391100117)
+
 ### x.3快速选择
 
 ### x.4BFS/DFS(广度/深度优先算法)
