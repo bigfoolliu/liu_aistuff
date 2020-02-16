@@ -1,31 +1,6 @@
 # python相关技巧
 
-<!-- TOC -->
-
-- [python相关技巧](#python相关技巧)
-    - [1.变量](#1变量)
-    - [2.条件分支](#2条件分支)
-    - [3.数字和字符串](#3数字和字符串)
-    - [4.python的容器操作(列表，元组等)](#4python的容器操作列表元组等)
-    - [5.函数返回结果的技巧](#5函数返回结果的技巧)
-    - [6.异常处理的技巧](#6异常处理的技巧)
-    - [7.编写地道的循环](#7编写地道的循环)
-    - [8.使用装饰器的技巧](#8使用装饰器的技巧)
-    - [9.模块相关](#9模块相关)
-        - [9.1模块基本使用规则](#91模块基本使用规则)
-        - [9.2模块以及缺失库导入](#92模块以及缺失库导入)
-    - [10.利用规则](#10利用规则)
-    - [11.高效文件操作](#11高效文件操作)
-    - [12.写好面向对象](#12写好面向对象)
-    - [13.写好文档](#13写好文档)
-    - [14.python包以及环境管理](#14python包以及环境管理)
-        - [14.1virtualenv](#141virtualenv)
-        - [14.2pip](#142pip)
-        - [14.3fabric](#143fabric)
-        - [14.4python导包](#144python导包)
-    - [a.其他](#a其他)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [python相关技巧](#python相关技巧)auto    - [1.变量](#1变量)auto    - [2.条件分支](#2条件分支)auto    - [3.数字和字符串](#3数字和字符串)auto    - [4.python的容器操作(列表，元组等)](#4python的容器操作列表元组等)auto    - [5.函数返回结果的技巧](#5函数返回结果的技巧)auto    - [6.异常处理的技巧](#6异常处理的技巧)auto    - [7.编写地道的循环](#7编写地道的循环)auto    - [8.使用装饰器的技巧](#8使用装饰器的技巧)auto    - [9.模块相关](#9模块相关)auto        - [9.1模块基本使用规则](#91模块基本使用规则)auto        - [9.2模块以及缺失库导入](#92模块以及缺失库导入)auto    - [10.利用规则](#10利用规则)auto    - [11.高效文件操作](#11高效文件操作)auto    - [12.写好面向对象](#12写好面向对象)auto    - [13.写好文档](#13写好文档)auto    - [14.python包以及环境管理](#14python包以及环境管理)auto        - [14.1virtualenv](#141virtualenv)auto        - [14.2pip](#142pip)auto        - [14.3fabric](#143fabric)auto        - [14.4python导包](#144python导包)auto        - [14.5pyenv管理python版本](#145pyenv管理python版本)auto    - [a.其他](#a其他)autoauto<!-- /TOC -->
 
 - [如何编写优秀的python代码https://github.com/piglei/one-python-craftsman](https://github.com/piglei/one-python-craftsman)
 
@@ -269,6 +244,24 @@ pyenv local py368  # 本地切换
 
 # 当需要找到关联的解释器的时候,找到对应环境的路径
 pyenv which python
+
+# 列出所有可以安装的python版本
+pyenv install --list
+
+# 卸载某个版本的python
+pyenv uninstall --force 3.6.8
+
+# 列出所有已经安装的python
+pyenv versions
+
+# 当不再需要本地python的时候，用unset清除或者删除当前目录下的.python-version文件
+pyenv local --unset
+
+# 切换和使用虚拟环境
+pyenv activate myenv
+
+# 退出虚拟化环境
+pyenv deactivate
 ```
 
 ## a.其他
