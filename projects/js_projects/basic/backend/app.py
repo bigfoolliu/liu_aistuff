@@ -3,7 +3,7 @@
 # author: bigfoolliu
 
 
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, current_app
 
 
 app = Flask(__name__)
@@ -21,6 +21,11 @@ def ajax_test():
 @app.route("/", methods=["GET"])
 def index():
     return "server is ready"
+
+
+@app.route("/favicon.ico", methods=["GET"])
+def favicon():
+    return current_app.send_static_file("./static/favicon.ico")
 
 
 app.register_blueprint(bp_test)
