@@ -39,6 +39,9 @@ ctrl + alt + l
 
 # 快速重命名文件
 shift + f6
+
+# 回到上一个编辑位置
+ctrl + shift + backspace
 ```
 
 ## 2.webstorm
