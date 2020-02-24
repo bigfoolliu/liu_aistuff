@@ -253,7 +253,16 @@ git diff --cached
 
 **index文件损坏处理:**
 
-```shell script
+```shell
 rm -rf .git/index
 git reset --mixed HEAD
 ```
+
+**错误的commit并提交到远程**
+
+```shell
+git log
+git reset --soft HEAD~2  # 不删除工作空间改动代码，撤销commit，不撤销git add . 或者将HEAD~2改为回退到的版本号
+git push origin 分支名 --force  # 将当前撤销的提交推送到远程
+```
+
