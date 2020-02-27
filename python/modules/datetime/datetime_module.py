@@ -10,6 +10,7 @@ datetime模块的简单使用
 
 from datetime import datetime, timedelta
 import time
+from dateutil.relativedelta import relativedelta
 
 
 def get_utc_demo():
@@ -47,10 +48,24 @@ def get_add_reduce_time_demo(time_str, time_format, time_delta):
     return ret_time_str
 
 
+def timedelta_is_year_demo():
+    """当时间间隔年的时候"""
+    now = datetime.now()
+    now_str = now.strftime("%Y-%m-%d %H:%M:%S")
+    print("now_str:", now_str)
+
+    year_later = now + relativedelta(years=1)
+    year_later_str = year_later.strftime("%Y-%m-%d %H:%M:%S")
+    print("1 year later:", year_later_str)
+
+
 if __name__ == "__main__":
     # get_utc_demo()
     # str_to_timestamp_demo()
     # timestamp_to_datetime_demo()
-    print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", 15*60))
-    print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", -15*60))
+    # print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", 15*60))
+    # print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", -15*60))
+
+    timedelta_is_year_demo()
+
 
