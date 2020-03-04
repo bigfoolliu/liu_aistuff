@@ -13,6 +13,8 @@ data/
 comments/
 csvs/
 
+.DS_Store
+
 django_env/
 
 
