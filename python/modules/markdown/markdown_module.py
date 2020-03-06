@@ -13,12 +13,19 @@ import markdown
 
 
 def basic_demo():
-    with open("./md_demo.md", "r") as md_file:
-        html_content = markdown.markdown(md_file.read())
+    '''基本实例'''
+    with open("md_demo.md", "r") as md_file:
+        html_content = markdown.markdown(md_file.read(), extensions=['markdown.extensions.extra', 'markdown.extensions.codehilite'])
 
-    with open("./md_demo_ret.html", "w") as html_file:
+    with open("ret.html", "w") as html_file:
         html_file.write(html_content)
+
+
+def extensions_demo():
+    '''扩展实例'''
+    pass
 
 
 if __name__ == "__main__":
     basic_demo()
+	#extensions_demo()

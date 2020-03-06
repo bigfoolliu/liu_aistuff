@@ -16,3 +16,9 @@
 this is a demo.
 
 ## heading2
+
+```python
+import time
+
+print(time.time())
+```
