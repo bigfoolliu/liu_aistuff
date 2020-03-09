@@ -53,7 +53,19 @@ ctrl + shift + backspace
 
 ## 3.vscode
 
+
+### 3.1通用
+
 ```shell
-# 将当前行的代码上移或者下移
-alt + 上/下方向键
+alt + 上/下方向键  # 将当前行的代码上移或者下移
+alt + shift + 上/下方向键  # 复制当前行到上下行
+
+ctrl + shift + k  # 删除当前行
+
+alt + shift + f  # 格式化代码
+
+
+f12  # 挑战到定义
+ctrl + -  # 返回到跳转之前的位置
 ```
+

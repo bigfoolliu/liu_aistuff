@@ -22,10 +22,10 @@
 ```shell
 # 通过编辑 `~/.vimrc`文件可以保存vim的配置，可以使用网上众多的配置。
 
-x   删除光标出的字符
-i   insert before the cursor
-a   insert after the cursor
-o   insert a new line at the current line
+a   在光标后插入字符
+A   在行尾插入字符
+
+o   在当前行之后插入新的空行
 v   进入visual模式,可以使用j, k, l来移动光标确定选择的内容
 
 vi `file`   open single file
