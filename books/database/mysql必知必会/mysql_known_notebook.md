@@ -28,6 +28,7 @@ sudo service mysql status  # 查看服务状态
 
 # 连接到数据库进行操作
 mysql -h(ip地址,默认为localhost) -P(端口号,默认为3306) -uroot -p(密码,可输可先不输)
+-A(不预读数据库,读取大的数据库时速度较快)
 
 # 更改登录密码
 use user;
