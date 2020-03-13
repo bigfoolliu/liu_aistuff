@@ -53,7 +53,6 @@ ctrl + shift + backspace
 
 ## 3.vscode
 
-
 ### 3.1通用
 
 ```shell
@@ -68,4 +67,3 @@ alt + shift + f  # 格式化代码
 f12  # 挑战到定义
 ctrl + -  # 返回到跳转之前的位置
 ```
-
