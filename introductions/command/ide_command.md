@@ -67,3 +67,17 @@ alt + shift + f  # 格式化代码
 f12  # 挑战到定义
 ctrl + -  # 返回到跳转之前的位置
 ```
+
+## 3.mac版本pycharm
+
+```shell
+# 文件
+command + s  # 保存
+command + ,  # preferences设置
+
+# 编辑
+command + z  # 撤销
+command + shift + z  # 前进
+command + x  # 剪切
+```
+
