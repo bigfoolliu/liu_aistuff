@@ -124,6 +124,8 @@ git fetch <远程主机名> <分支名>
 git checkout `dev`
 # 建立一个新的本地dev分支
 git checkout -b `dev`
+# 导航到之前的一个分支
+git checkout -
 
 # 当文件提交comnit后push因为大文件而失败
 # 回退至指定的版本号
@@ -239,6 +241,15 @@ git status
 
 # 查看commit的日志
 git log
+# 每个提交在一行显示，更加清晰
+git log --oneline
+# 获取某人的提交的日志
+git log --author="tony"
+# 在所有提交中搜索包含关键字的提交
+git log --all --grep="homepage"
+
+# 获取所有操作历史
+git reflog
 
 # 查看尚未暂存的更新
 git diff
