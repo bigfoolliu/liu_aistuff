@@ -207,6 +207,9 @@ find ./ -name "*.py" | wc -l
 find ./ -name *.py | xargs wc -l
 find ./ -name "*.py" | xargs wc -l
 
+# 更快的搜索
+ag "someting"
+
 # 递归的统计一目录下及其子目录下所有匹配文件的总的行数和每个文件的行数，可以使用一下命令
 wc -l `find ./ -name *.csv`
 
