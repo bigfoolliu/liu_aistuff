@@ -179,6 +179,12 @@ ls -t  # 列举当前文件夹下所有目录和文件并以时间排列
 ls -u  # 以文件上次被访问的时间排序
 ls -S  # 以文件大小排序
 
+ls -lh  # 显示文件大小
+ls -lhS  # 从大到小排列
+ls -d */  # 只列出文件夹
+ls -i  # 带索引号显示
+ls -t  # 按照修改时间显示，新文件在前
+
 # 用grep直接搜索文件中的文本内容
 grep -i 'Out of Memory' /var/log/messages
 
