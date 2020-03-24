@@ -157,6 +157,19 @@ git revert HEAD^
 git revert commit d92761fec08ecca646f81402a415e9a07f9638b6
 ```
 
+### 1.9操作记录
+
+- git reflog是显示所有的操作记录，包括提交，回退的操作。一般用来找出操作记录中的版本号，进行回退
+- git reflog常用于恢复本地的错误操作
+
+```shell
+# 查看所有的操作记录
+git reflog show
+
+# 查看分支操作记录
+git reflog master
+```
+
 ## 2.操作命令组
 
 ### 2.1修改已经push的commit的message
