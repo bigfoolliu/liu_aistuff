@@ -18,7 +18,8 @@
 
 <!-- /TOC -->
 
-[更多实例](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference?page=1&tab=votes#tab-top)
+- [更多实例](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference?page=1&tab=votes#tab-top)
+- [简书markdown中公式编辑教程](https://www.jianshu.com/p/25f0139637b7)
 
 ## 行内与独行
 
