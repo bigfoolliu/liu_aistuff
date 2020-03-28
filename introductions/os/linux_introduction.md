@@ -497,7 +497,14 @@ mount
 - 将windows中的文件转义为unix格式
 
 ```shell
-dox2unix windows.txt
+# 单个文件转换
+dos2unix windows.txt
+
+# 同时数个文件转换
+dos2unix 1.txt, 2.txt
+
+# 批量转换
+
 ```
 
 ## 8.Linux文件系统

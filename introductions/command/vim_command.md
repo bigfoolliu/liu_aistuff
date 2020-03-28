@@ -42,6 +42,8 @@ vi `file1` `file2`  open multi file
 
 ctrl + b    快速回退一页
 ctrl + f    快速前进一页
+
+:!command   在vim中执行shell命令
 ```
 
 ### 1.1替换

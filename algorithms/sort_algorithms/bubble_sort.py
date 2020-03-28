@@ -3,6 +3,12 @@
 # author: bigfoolliu
 
 
+"""
+最基础，简单的排序算法
+"""
+
+
+
 def bubble_sort(array):
     """
     冒泡排序
