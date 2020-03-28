@@ -1,18 +1,18 @@
 # liu_aistuff Project
 
-<!-- TOC -->
 
-- [liu_aistuff Project](#liuaistuff-project)
-  - [1. 介绍](#1-%e4%bb%8b%e7%bb%8d)
-  - [2.aitools](#2aitools)
-  - [3.books](#3books)
-  - [4.algorithms](#4algorithms)
-  - [5.modules](#5modules)
-  - [6.projects](#6projects)
-  - [7.other](#7other)
-  - [8.utils](#8utils)
+<!-- vim-markdown-toc Marked -->
 
-<!-- /TOC -->
+* [1. 介绍](#1.-介绍)
+* [2.ai](#2.ai)
+* [3.books](#3.books)
+* [4.algorithms](#4.algorithms)
+* [5.data_structure](#5.data_structure)
+* [6.projects](#6.projects)
+* [7.python](#7.python)
+* [8.skill_tree](#8.skill_tree)
+
+<!-- vim-markdown-toc -->
 
 ## 1. 介绍
 

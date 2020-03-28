@@ -1,11 +1,15 @@
 # tmux会话管理快捷键
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [tmux会话管理快捷键](#tmux%e4%bc%9a%e8%af%9d%e7%ae%a1%e7%90%86%e5%bf%ab%e6%8d%b7%e9%94%ae)
+* [1.常用命令](#1.常用命令)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
+
+## 1.常用命令
+
+```shell
 tmux new        create a new tmux session
 tmux new -s mysession       创建一个叫mysession的会话
 
@@ -49,3 +53,5 @@ ctrl+b space(空格键)        重新排列当前窗口下的所有的窗格
 ctrl+b !        将当前窗格置于新的窗口
 ctrl+b z        放大当前窗格(再次按下将还原)
 ctrl+b i        显示当前窗格信息
+```
+

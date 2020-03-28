@@ -1,42 +1,40 @@
-# data_structure
+# Data Structure
 
-本文件夹主要放置一些数据结构的实现。
+<!-- vim-markdown-toc Marked -->
 
-<!-- TOC -->
+* [1.链表(linked list)](#1.链表(linked-list))
+        * [1.1介绍](#1.1介绍)
+        * [1.2应用场景](#1.2应用场景)
+        * [1.3链表和数组的对比](#1.3链表和数组的对比)
+* [2.二叉树(binary tree)](#2.二叉树(binary-tree))
+* [3.霍夫曼压缩(huffman compression)](#3.霍夫曼压缩(huffman-compression))
+        * [3.1介绍](#3.1介绍)
+        * [3.2应用](#3.2应用)
+* [4.队列(queue)](#4.队列(queue))
+        * [4.1优先队列(priority queue)](#4.1优先队列(priority-queue))
+        * [4.2双端队列(double-ended queue, dequeue)](#4.2双端队列(double-ended-queue,-dequeue))
+* [5.堆](#5.堆)
+        * [5.1介绍](#5.1介绍)
+        * [5.2应用](#5.2应用)
+* [6.栈](#6.栈)
+        * [6.1介绍](#6.1介绍)
+        * [6.2应用](#6.2应用)
+* [7.集合(set)](#7.集合(set))
+* [8.哈希表(map)](#8.哈希表(map))
+        * [8.1介绍](#8.1介绍)
+        * [8.2常用哈希函数](#8.2常用哈希函数)
+        * [8.3应用](#8.3应用)
+* [9.图(graph)](#9.图(graph))
+        * [9.1介绍](#9.1介绍)
+        * [9.2图的基本算法](#9.2图的基本算法)
+* [10.hash_map](#10.hash_map)
+        * [10.1介绍](#10.1介绍)
+* [a.概念](#a.概念)
+        * [a.1线性表和链表的区别](#a.1线性表和链表的区别)
 
-- [data_structure](#datastructure)
-  - [1.链表(linked list)](#1%e9%93%be%e8%a1%a8linked-list)
-    - [1.1介绍](#11%e4%bb%8b%e7%bb%8d)
-    - [1.2应用场景](#12%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af)
-    - [1.3链表和数组的对比](#13%e9%93%be%e8%a1%a8%e5%92%8c%e6%95%b0%e7%bb%84%e7%9a%84%e5%af%b9%e6%af%94)
-  - [2.二叉树(binary tree)](#2%e4%ba%8c%e5%8f%89%e6%a0%91binary-tree)
-  - [3.霍夫曼压缩(huffman compression)](#3%e9%9c%8d%e5%a4%ab%e6%9b%bc%e5%8e%8b%e7%bc%a9huffman-compression)
-    - [3.1介绍](#31%e4%bb%8b%e7%bb%8d)
-    - [3.2应用](#32%e5%ba%94%e7%94%a8)
-  - [4.队列(queue)](#4%e9%98%9f%e5%88%97queue)
-    - [4.1优先队列(priority queue)](#41%e4%bc%98%e5%85%88%e9%98%9f%e5%88%97priority-queue)
-    - [4.2双端队列(double-ended queue, dequeue)](#42%e5%8f%8c%e7%ab%af%e9%98%9f%e5%88%97double-ended-queue-dequeue)
-  - [5.堆](#5%e5%a0%86)
-    - [5.1介绍](#51%e4%bb%8b%e7%bb%8d)
-    - [5.2应用](#52%e5%ba%94%e7%94%a8)
-  - [6.栈](#6%e6%a0%88)
-    - [6.1介绍](#61%e4%bb%8b%e7%bb%8d)
-    - [6.2应用](#62%e5%ba%94%e7%94%a8)
-  - [7.集合(set)](#7%e9%9b%86%e5%90%88set)
-  - [8.哈希表(map)](#8%e5%93%88%e5%b8%8c%e8%a1%a8map)
-    - [8.1介绍](#81%e4%bb%8b%e7%bb%8d)
-    - [8.2常用哈希函数](#82%e5%b8%b8%e7%94%a8%e5%93%88%e5%b8%8c%e5%87%bd%e6%95%b0)
-    - [8.3应用](#83%e5%ba%94%e7%94%a8)
-  - [9.图(graph)](#9%e5%9b%begraph)
-    - [9.1介绍](#91%e4%bb%8b%e7%bb%8d)
-    - [9.2图的基本算法](#92%e5%9b%be%e7%9a%84%e5%9f%ba%e6%9c%ac%e7%ae%97%e6%b3%95)
-  - [10.hash_map](#10hashmap)
-    - [10.1介绍](#101%e4%bb%8b%e7%bb%8d)
-  - [a.概念](#a%e6%a6%82%e5%bf%b5)
-    - [a.1线性表和链表的区别](#a1%e7%ba%bf%e6%80%a7%e8%a1%a8%e5%92%8c%e9%93%be%e8%a1%a8%e7%9a%84%e5%8c%ba%e5%88%ab)
+<!-- vim-markdown-toc -->
 
-<!-- /TOC -->
-
+- 本文件夹主要放置一些数据结构的实现。
 - [github数据结构和算法python实现](https://github.com/TheAlgorithms/Python)
 
 ## 1.链表(linked list)

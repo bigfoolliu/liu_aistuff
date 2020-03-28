@@ -1,5 +1,12 @@
 # macos操作命令以及快捷键
 
+<!-- vim-markdown-toc Marked -->
+
+* [1.系统快捷键](#1.系统快捷键)
+* [2.开发工具](#2.开发工具)
+
+<!-- vim-markdown-toc -->
+
 ## 1.系统快捷键
 
 ```shell

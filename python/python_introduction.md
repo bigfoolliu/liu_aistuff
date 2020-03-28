@@ -1,13 +1,13 @@
 # python介绍
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [python介绍](#python%e4%bb%8b%e7%bb%8d)
-  - [a.教程](#a%e6%95%99%e7%a8%8b)
-  - [1.python魔法方法](#1python%e9%ad%94%e6%b3%95%e6%96%b9%e6%b3%95)
-  - [2.python内置函数](#2python%e5%86%85%e7%bd%ae%e5%87%bd%e6%95%b0)
+* [a.教程](#a.教程)
+* [1.python魔法方法](#1.python魔法方法)
+* [2.python内置函数](#2.python内置函数)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
+
 
 ## a.教程
 
