@@ -136,6 +136,16 @@ gd 跳转至函数的定义处
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # 将配置文件放到.vimrc
+
+
+# 常用命令
+
+:PluginList       - 查看已经安装的插件
+:PluginInstall    - 安装插件
+:PluginUpdate     - 更新插件
+:PluginSearch     - 搜索插件，例如 :PluginSearch xml就能搜到xml相关的插件
+:PluginClean      - 删除插件，把安装插件对应行删除，然后执行这个命令即可
+h: vundle         - 获取帮助
 ```
 
 
@@ -150,18 +160,18 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 h j k l
 
 # 光标在左右窗口切换
-ctrl+w+w 
+ctrl+w+w
 
 # 切换当前窗口左右布局
-ctrl + w + r 
+ctrl + w + r
 
 # 模糊搜索文件
 ctrl + p
 
 # 切换到前一个tab
-g T 
+g T
 
 # 切换到后一个tab
-g t 
+g t
 ```
 
