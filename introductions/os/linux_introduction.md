@@ -504,7 +504,7 @@ dos2unix windows.txt
 dos2unix 1.txt, 2.txt
 
 # 批量转换
-
+find ./ -name "*.md" | args dos2unix
 ```
 
 ## 8.Linux文件系统
