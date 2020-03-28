@@ -1,19 +1,24 @@
 # vi快捷键
 
-<!-- TOC -->
 
-- [vi快捷键](#vi快捷键)
-    - [1.基础命令](#1基础命令)
-        - [1.1替换](#11替换)
-        - [1.2查找](#12查找)
-        - [1.3拷贝和剪切](#13拷贝和剪切)
-        - [1.4跳转](#14跳转)
-        - [1.5保存和退出](#15保存和退出)
-        - [1.6撤销](#16撤销)
-    - [2.vimrc相关配置](#2vimrc相关配置)
-    - [3.高级操作](#3高级操作)
+<!-- vim-markdown-toc Marked -->
 
-<!-- /TOC -->
+* [1.基础命令](#1.基础命令)
+        * [1.1替换](#1.1替换)
+        * [1.2查找](#1.2查找)
+        * [1.3拷贝和剪切](#1.3拷贝和剪切)
+        * [1.4跳转](#1.4跳转)
+        * [1.5保存和退出](#1.5保存和退出)
+        * [1.6撤销](#1.6撤销)
+* [2.vimrc相关配置](#2.vimrc相关配置)
+* [3.高级操作](#3.高级操作)
+* [4.vim插件使用](#4.vim插件使用)
+        * [4.1vundle](#4.1vundle)
+        * [4.2NERDTree](#4.2nerdtree)
+        * [4.3vim-markdown](#4.3vim-markdown)
+        * [4.4vim-markdown-toc](#4.4vim-markdown-toc)
+
+<!-- vim-markdown-toc -->
 
 - [vim从入门到精通中文版](https://github.com/wsdjeg/vim-galore-zh_cn)
 - [vim插件安装](https://zhuanlan.zhihu.com/p/108697739)
@@ -125,7 +130,6 @@ gd 跳转至函数的定义处
 
 ## 4.vim插件使用
 
-
 ### 4.1vundle
 
 - vim插件管理器，不能并行处理
@@ -149,7 +153,7 @@ h: vundle         - 获取帮助
 ```
 
 
-### 4.NERDTree
+### 4.2NERDTree
 
 - 目录管理器
 - [github地址](https://github.com/preservim/nerdtree)
@@ -173,5 +177,50 @@ g T
 
 # 切换到后一个tab
 g t
+```
+
+### 4.3vim-markdown
+
+- markdown扩展
+- [github地址](https://github.com/plasticboy/vim-markdown)
+- [使用vim+markdown高效记笔记](https://github.com/plasticboy/vim-markdown)
+
+```shell
+"查看所有配置建议
+:help vim-markdwon
+[[ "跳转上一个标题
+]] "跳转下一个标题
+]c "跳转到当前标题
+]u "跳转到副标题
+zr "打开下一级折叠
+zR "打开所有折叠
+zm "折叠当前段落
+zM "折叠所有段落
+:Toc "显示目录
+```
+
+### 4.4vim-markdown-toc
+
+- [github地址](https://github.com/mzlogin/vim-markdown-toc)
+- 生成markdown文件的toc
+- [为markdown生成Toc的插件](https://mazhuang.org/2015/12/19/vim-markdown-toc/)
+
+```shell
+# 在当前光标后生成目录
+:GenTocMarked
+
+# 更新目录
+:UpdateToc
+
+# 取消储存时自动更新目录
+let g:vmt_auto_update_on_save = 0
+
+# 生成 GFM 链接风格的 Table of Contents。
+# 适用于 GitHub 仓库里的 Markdown 文件，比如 README.md，也适用用于生成 GitBook 的 Markdown 文件。
+:GenTocGFM
+
+# 生成 Redcarpet 链接风格的 Table of Contents。
+# 适用于使用 Redcarpet 作为 Markdown 引擎的 Jekyll 项目或其它地方。
+:GenTocRedcarpet
 ```
 
