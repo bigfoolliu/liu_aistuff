@@ -16,6 +16,7 @@
 <!-- /TOC -->
 
 - [vim从入门到精通中文版](https://github.com/wsdjeg/vim-galore-zh_cn)
+- [vim插件安装](https://zhuanlan.zhihu.com/p/108697739)
 
 ## 1.基础命令
 
@@ -121,3 +122,46 @@ u   撤销上一步操作
 ```shell
 gd 跳转至函数的定义处
 ```
+
+## 4.vim插件使用
+
+
+### 4.1vundle
+
+- vim插件管理器，不能并行处理
+- [github地址](https://github.com/VundleVim/Vundle.vim)
+
+```shell
+# 安装
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# 将配置文件放到.vimrc
+```
+
+
+### 4.NERDTree
+
+- 目录管理器
+- [github地址](https://github.com/preservim/nerdtree)
+
+```shell
+
+# 移动光标定位
+h j k l
+
+# 光标在左右窗口切换
+ctrl+w+w 
+
+# 切换当前窗口左右布局
+ctrl + w + r 
+
+# 模糊搜索文件
+ctrl + p
+
+# 切换到前一个tab
+g T 
+
+# 切换到后一个tab
+g t 
+```
+
