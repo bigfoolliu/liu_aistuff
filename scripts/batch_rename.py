@@ -12,7 +12,7 @@ import os
 import sys
 
 
-def main(batch_dir):
+def batch_rename(batch_dir):
     """需要重命名的文件夹,现在仅支持但一层，不支持迭代文件夹"""
     walk_files = os.walk(batch_dir)
     files = list(walk_files)[0][2]
@@ -34,8 +34,7 @@ def main(batch_dir):
 
 
 if __name__ == '__main__':
-    print(sys.argv)
     batch_dir = sys.argv[1]
-    print('{}'.format(os.path.abspath(batch_dir)))
-    main(batch_dir)
+    print('f{batch_dir}')
+    batch_rename(batch_dir)
 
