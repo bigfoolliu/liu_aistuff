@@ -35,39 +35,44 @@
 
 [数据结构笔记](../data_structure/data_structure.md)
 
-- [ ] 队列
-- [ ] 集合
-- [ ] 链表，数组
-- [ ] 字典，关联数组
-- [ ] 栈
-- [ ] 树
-  - [ ] 二叉树
+- [x] 队列,(python列表)
+- [x] 集合,(python集合)
+- [x] 链表，数组, [python实现链表](../data_structure/link_list)
+- [x] 字典，关联数组,(python字典)
+- [x] 栈,[python实现栈](../data_structure/stack)
+- [x] 树
+  - [x] 二叉树,[python实现二叉树](../data_structure/binary_tree)
   - [ ] 完全二叉树
   - [ ] 平衡二叉树
-  - [ ] 红黑树
-  - [ ] B，B+，B*树
+  - [x] 红黑树,[python实现红黑树](../data_structure/binary_tree/red_black_tree.py)
+  - [x] B，B+，B*树,[python实现b树](../data_structure/binary_tree/b_tree.py)
   - [ ] LSM树
 - [ ] BitSet
 
 ## 2.常用算法
 
-[算法笔记](../algorithms/algorithms.md)
+- [算法笔记](../algorithms/algorithms.md)
 
-- [ ] 排序查找算法
+- [x] 排序查找算法
   - [ ] 选择排序
-  - [ ] 冒泡排序
+  - [x] 冒泡排序,[python实现冒泡排序](../algorithms/sort_algorithms/bubble_sort.py)
   - [ ] 插入排序
-  - [ ] 快速排序
+  - [x] 快速排序,[python实现快速排序](../algorithms/sort_algorithms/quick_sort.py)
   - [ ] 归并排序
   - [ ] 希尔排序
   - [ ] 堆排序
   - [ ] 计数排序
   - [ ] 桶排序
   - [ ] 基数排序
-  - [ ] 二分查找
+  - [x] 二分查找,[python实现二分查找](../algorithms/search_algorithms/binary_search.py)
+  - [x] 斐波那契查找,[python实现斐波那契查找](../algorithms/search_algorithms/fibonacci_search.py)
+  - [x] 哈希查找,[python实现哈希查找](../algorithms/search_algorithms/hash_search.py)
+  - [x] 跳转查找,[python实现跳转查找](../algorithms/search_algorithms/jump_search.py)
+  - [x] 差值搜索,[python实现差值搜索](../algorithms/search_algorithms/interpolation_search.py)
+  - [x] 顺序查找,[python实现顺序查找](../algorithms/search_algorithms/sequential_search.py)
 - [ ] 布隆过滤器
-- [ ] 字符串比较
-  - [ ] KMP算法
+- [x] 字符串比较
+  - [x] KMP算法,[python实现kmp算法]((../algorithms/search_algorithms/match_algorithms/kmp)
 - [ ] 深度优先算法
 - [ ] 广度优先算法
 - [ ] 贪心算法
