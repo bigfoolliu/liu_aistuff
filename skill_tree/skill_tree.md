@@ -14,7 +14,7 @@
         * [2.4面向对象编程](#2.4面向对象编程)
         * [2.5CMS](#2.5cms)
         * [2.6API设计](#2.6api设计)
-* [2.7网络通信协议](#2.7网络通信协议)
+        * [2.7网络通信协议](#2.7网络通信协议)
 * [3.高级篇](#3.高级篇)
         * [3.1函数式编程](#3.1函数式编程)
         * [3.2领域驱动设计](#3.2领域驱动设计)
@@ -72,29 +72,29 @@
 
 ## 1.入门
 
-- [ ] 编程语言
-- [ ] web框架
-- [ ] HTTP协议基础
-- [ ] CGI基础
+- [x] 编程语言
+- [x] web框架
+- [x] HTTP协议基础
+- [x] CGI基础
 
 ### 1.1编程语言
 
-- [ ] [python](../python)
-- [ ] [go](../go)
+- [x] [python](../python)
+- [x] [go](../go)
 
 ### 1.2web框架
 
-- [ ] [flask](../projects/flaskt)
-- [ ] [django](../projects/djd)
-- [ ] [tornado](../projects/tord)
+- [x] [flask](../projects/flaskt)
+- [x] [django](../projects/djd)
+- [x] [tornado](../projects/tord)
 
 ### 1.3HTTP协议基础
 
-- [ ] [tcp_udp](../projects/tcp_udp)
+- [x] [tcp_udp](../projects/tcp_udp)
 
 ### 1.4CGI基础
 
-- [ ] [tkinter](../projects/tk_projects)
+- [x] [tkinter](../projects/tk_projects)
 
 ## 2.中级篇
 
@@ -130,7 +130,7 @@ TODO:
 
 - [] [api design](../liu_work/introductions/network/api_introduction.md)
 
-## 2.7网络通信协议
+### 2.7网络通信协议
 
 - [ ] [tcp_udp](../projects/tcp_udp)
 
