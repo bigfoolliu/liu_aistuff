@@ -99,9 +99,9 @@
 ## 2.中级篇
 
 - [ ] xml和json处理
-- [ ] 数据结构
-- [ ] 算法
-- [ ] 面向对象编程
+- [x] 数据结构
+- [x] 算法
+- [x] 面向对象编程
 - [ ] CMS
 - [ ] API设计
 - [ ] 网络通信协议，TCP/Socket
@@ -112,11 +112,11 @@ TODO:
 
 ### 2.2数据结构
 
-- [ ] [data structure](../data_structure)
+- [x] [data structure](../data_structure)
 
 ### 2.3算法
 
-- [] [algorithms](../algorithms)
+- [x] [algorithms](../algorithms)
 
 ### 2.4面向对象编程
 
@@ -128,11 +128,11 @@ TODO:
 
 ### 2.6API设计
 
-- [] [api design](../liu_work/introductions/network/api_introduction.md)
+- [x] [api design](../liu_work/introductions/network/api_introduction.md)
 
 ### 2.7网络通信协议
 
-- [ ] [tcp_udp](../projects/tcp_udp)
+- [x] [tcp_udp](../projects/tcp_udp)
 
 ## 3.高级篇
 
@@ -171,7 +171,7 @@ TODO:
 
 ### 4.1版本管理
 
-- [ ] [git](../liu_work/introductions/git_command.md)
+- [x] [git](../liu_work/introductions/git_command.md)
 
 ### 4.2单元测试
 
@@ -195,7 +195,7 @@ TODO:
 
 ### 5.1虚拟化
 
-- [ ] [docker](../liu_work/introductions/service/docker_introduction.md)
+- [x] [docker](../liu_work/introductions/service/docker_introduction.md)
 
 ### 5.2自动化部署
 
@@ -342,7 +342,7 @@ TODO:
 
 ### 11.1RESTful
 
-- [ ] [restful api](../liu_work/introductions/network/restfulApi.md)
+- [x] [restful api](../liu_work/introductions/network/restfulApi.md)
 
 ### 11.2SOA
 
@@ -377,4 +377,4 @@ TODO:
 
 ### 12.4消息中间件
 
-- [ ] [middle ware](../liu_work/introductions/middle_ware.md)
+- [x] [middle ware](../liu_work/introductions/middle_ware.md)
