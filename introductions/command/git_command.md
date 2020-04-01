@@ -280,6 +280,8 @@ git log --oneline
 git log --author="tony"
 # 在所有提交中搜索包含关键字的提交
 git log --all --grep="homepage"
+# 指定时间范围内的查询
+git log --author="liurui" --after="2020-01-01 00:00:00" --before="2020-04-01 00:00:00"
 
 # 获取所有操作历史
 git reflog
