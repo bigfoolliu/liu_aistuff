@@ -19,7 +19,6 @@
         * [a.2流量监控工具](#a.2流量监控工具)
         * [a.3使用crontab开启定时任务](#a.3使用crontab开启定时任务)
         * [a.4ssh文件传输](#a.4ssh文件传输)
-        * [a.5有趣命令](#a.5有趣命令)
 
 <!-- vim-markdown-toc -->
 
@@ -320,25 +319,3 @@ ssh -D localhost:1080 ubuntu@sgcc.jiangxingai.com
 http://172.16.16.14:5920
 ```
 
-### a.5有趣命令
-
-```shell
-# 小火车
-sl
-
-# 输出笑话，名人名言什么的
-fortune
-
-# 用ascii码打印字符画，还可以用其他的动物
-cowsay "i am cow"
-fortune | cowsay
-
-# 矩阵代码效果
-cmatrix
-
-# 艺术字生成，字符文字
-figlet fuck you !
-
-# 出现一只跟着鼠标的猫
-oneko
-```
