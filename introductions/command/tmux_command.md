@@ -2,22 +2,42 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.常用命令](#1.常用命令)
+* [1.基本命令](#1.基本命令)
+        * [1.1会话创建](#1.1会话创建)
+        * [1.2连接会话](#1.2连接会话)
+        * [1.3](#1.3)
 
 <!-- vim-markdown-toc -->
 
 
-## 1.常用命令
+## 1.基本命令
+
+### 1.1会话创建
 
 ```shell
-tmux new        create a new tmux session
-tmux new -s mysession       创建一个叫mysession的会话
+# 创建一个新的tmux会话
+tmux new
 
-tmux ls     显示会话列表
+# 创建一个叫mysession的会话
+tmux new -s mysession
+```
 
-tmux a      连接上一个会话
-tmux a -t mysession     连接指定的会话
+### 1.2连接会话
 
+```shell
+# 连接上一个会话
+tmux a
+
+# 连接已经命名的会话
+tmux new -t mysession
+
+# 显示会话列表
+tmux ls
+```
+
+### 1.3
+
+```shell
 tmux kill-session       关闭上次打开的会话
 tmux kill-session -t s1     关闭会话s1
 tmux kill-server        关闭所有会话
