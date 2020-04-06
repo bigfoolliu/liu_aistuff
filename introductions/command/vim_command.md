@@ -1,6 +1,5 @@
 # vi快捷键
 
-
 <!-- vim-markdown-toc Marked -->
 
 * [1.基础命令](#1.基础命令)
@@ -31,22 +30,24 @@
 ```shell
 # 通过编辑 `~/.vimrc`文件可以保存vim的配置，可以使用网上众多的配置。
 
-a   在光标后插入字符
-A   在行尾插入字符
+a  # 在光标后插入字符
+A  # 在行尾插入字符
 
-o   在当前行之后插入新的空行
-v   进入visual模式,可以使用j, k, l来移动光标确定选择的内容
+o  # 在当前行之后插入新的空行
+v  # 进入visual模式,可以使用j, k, l来移动光标确定选择的内容
 
-vi `file`   open single file
-vi `file1` `file2`  open multi file
+vim a.txt  # 打开单个文件
+vim a.txt b.txt  # 打开多个文件
 
-:open `file`    在vi窗口中打开一个新文件
-:split `file`   在新窗口中打开一个新文件
+:open a.txt  # 在vi窗口中打开一个新文件
+:split a.txt  # 在新窗口中打开一个新文件
 
-ctrl + b    快速回退一页
-ctrl + f    快速前进一页
+ctrl + b  # 快速回退一页
+ctrl + f  # 快速前进一页
 
-:!command   在vim中执行shell命令
+:!command  # 在vim中执行shell命令
+
+10k  # 快速跳转到相对当前行为10行的前面第10行
 ```
 
 ### 1.1替换
