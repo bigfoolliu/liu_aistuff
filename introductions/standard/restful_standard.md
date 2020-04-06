@@ -1,6 +1,20 @@
 # RESTful API实践
 
-<!-- TOC -->autoauto- [RESTful API实践](#restful-api实践)auto    - [1.url设计](#1url设计)auto        - [1.1动词即对应的5种HTTP方法](#11动词即对应的5种http方法)auto        - [1.2宾语则必须是名词](#12宾语则必须是名词)auto        - [1.3动词的覆盖](#13动词的覆盖)auto        - [1.4复数url](#14复数url)auto        - [1.5避免多级url](#15避免多级url)auto    - [2.状态码](#2状态码)auto        - [2.1状态码必须明确](#21状态码必须明确)auto    - [3.api](#3api)auto        - [3.1 open api](#31-open-api)auto    - [ａ.api,sdk,app的区别](#ａapisdkapp的区别)autoauto<!-- /TOC -->
+<!-- vim-markdown-toc Marked -->
+
+* [1.url设计](#1.url设计)
+        * [1.1动词即对应的5种HTTP方法](#1.1动词即对应的5种http方法)
+        * [1.2宾语则必须是名词](#1.2宾语则必须是名词)
+        * [1.3动词的覆盖](#1.3动词的覆盖)
+        * [1.4复数url](#1.4复数url)
+        * [1.5避免多级url](#1.5避免多级url)
+* [2.状态码](#2.状态码)
+        * [2.1状态码必须明确](#2.1状态码必须明确)
+* [3.api](#3.api)
+        * [3.1 open api](#3.1-open-api)
+* [ａ.api,sdk,app的区别](#ａ.api,sdk,app的区别)
+
+<!-- vim-markdown-toc -->
 
 ***核心思想：客户端发出的数据操作指令都是"动词 + 宾语"结构。***
 

@@ -1,17 +1,16 @@
 # docker面试准备
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [docker面试准备](#docker%e9%9d%a2%e8%af%95%e5%87%86%e5%a4%87)
-  - [1.docker基础](#1docker%e5%9f%ba%e7%a1%80)
-    - [1.1docker与虚拟机的区别(docker的特点)](#11docker%e4%b8%8e%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%9a%84%e5%8c%ba%e5%88%abdocker%e7%9a%84%e7%89%b9%e7%82%b9)
-    - [1.2构建镜像应该遵循的原则](#12%e6%9e%84%e5%bb%ba%e9%95%9c%e5%83%8f%e5%ba%94%e8%af%a5%e9%81%b5%e5%be%aa%e7%9a%84%e5%8e%9f%e5%88%99)
-    - [1.3什么是docker镜像](#13%e4%bb%80%e4%b9%88%e6%98%afdocker%e9%95%9c%e5%83%8f)
-    - [1.4什么是docker容器](#14%e4%bb%80%e4%b9%88%e6%98%afdocker%e5%ae%b9%e5%99%a8)
-  - [2.Devops](#2devops)
-  - [3.CI持续集成](#3ci%e6%8c%81%e7%bb%ad%e9%9b%86%e6%88%90)
+* [1.docker基础](#1.docker基础)
+        * [1.1docker与虚拟机的区别(docker的特点)](#1.1docker与虚拟机的区别(docker的特点))
+        * [1.2构建镜像应该遵循的原则](#1.2构建镜像应该遵循的原则)
+        * [1.3什么是docker镜像](#1.3什么是docker镜像)
+        * [1.4什么是docker容器](#1.4什么是docker容器)
+* [2.Devops](#2.devops)
+* [3.CI持续集成](#3.ci持续集成)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 - [docker介绍笔记](../introductions/service/docker_introduction.md)
 

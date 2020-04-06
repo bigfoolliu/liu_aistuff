@@ -1,12 +1,11 @@
 # go语言面试
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [go语言面试](#go%e8%af%ad%e8%a8%80%e9%9d%a2%e8%af%95)
-  - [1.介绍](#1%e4%bb%8b%e7%bb%8d)
-    - [1.1go与python对比](#11go%e4%b8%8epython%e5%af%b9%e6%af%94)
+* [1.介绍](#1.介绍)
+        * [1.1go与python对比](#1.1go与python对比)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.介绍
 
