@@ -81,6 +81,8 @@ ctrl + -  # 返回到跳转之前的位置
 
 ## 3.mac版本pycharm
 
+- [mac版pycharm快捷键](https://www.cnblogs.com/shavenfeng/p/10395042.html)
+
 ```shell
 # 文件
 command + s  # 保存
@@ -89,6 +91,8 @@ command + ,  # preferences设置
 # 编辑
 command + z  # 撤销
 command + shift + z  # 前进
-command + x  # 剪切
+command + x  # 剪切当前行到剪切板
+
+company + backspace  # 删除当前行
 ```
 

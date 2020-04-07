@@ -131,14 +131,17 @@ git stash list
 # 将当前stash中的内容弹出，并应用到当前分支对应的工作目录（会删除堆栈中最近保存的内容）
 git stash pop
 
-# 将当前stash中的内容应用到当前分支对应的工作目录（不会删除堆栈中最近保存的内容）
-git stash apply
+# 删除存储堆栈中指定的进度
+git stash drop stash@{0}
 
 # 删除所有存储的进度
 git stash clear
 
-# 删除存储堆栈中指定的进度
-git stash drop stash@{0}
+# 将当前stash中的内容应用到当前分支对应的工作目录（不会删除堆栈中最近保存的内容）
+git stash apply
+
+# 使用指定的堆栈中的内容
+git stash apply stash@{0}
 ```
 
 ### 1.7分支
