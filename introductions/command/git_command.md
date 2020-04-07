@@ -136,6 +136,9 @@ git stash apply
 
 # 删除所有存储的进度
 git stash clear
+
+# 删除存储堆栈中指定的进度
+git stash drop stash@{0}
 ```
 
 ### 1.7分支
