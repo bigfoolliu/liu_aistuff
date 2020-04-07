@@ -12,6 +12,7 @@
         * [1.7分支](#1.7分支)
         * [1.8撤销](#1.8撤销)
         * [1.9操作记录](#1.9操作记录)
+        * [1.10标签](#1.10标签)
 * [2.操作命令组](#2.操作命令组)
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
@@ -199,6 +200,46 @@ git reflog show
 
 # 查看分支操作记录
 git reflog master
+```
+
+### 1.10标签
+
+- 软件发布的时候通常使用，会记录版本的commit号,方便回溯
+- 一般的打tag都是建立在head上
+
+```shell
+# 查看目前已经打上的标签
+git tag
+
+# 显示tag，并通过关键字过滤
+git tag -l "v1"
+
+# 直接创建一个tag
+git tag v1.0
+
+# 创建一个带备注信息的tag
+git tag -a v1.0 -m "有备注信息的tag"
+
+# 在某一个提交对象上打tag，只要提交对象的校验和前几位
+git tag -a v1.0 9fedamdch -m "有备注信息的tag"
+
+# 查看tag的详细信息
+git show v1.0
+
+
+# tag创建完成之后，也需要推送到远程
+# 推送单个tag
+git push origin v1.0
+
+# 推送所有的tag
+git push origin --tags
+
+
+# 删除本地的tag
+git tag -d v1.0
+
+# 删除远程的tag
+git push origin :refs/tags/v1.0
 ```
 
 ## 2.操作命令组
