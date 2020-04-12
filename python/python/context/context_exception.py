@@ -42,3 +42,4 @@ def upload_image():
     # 调用自定义的上下文异常
     with RaiseApiError(KeyError, "image not provided"):
         image = request.FILES["image"]
+

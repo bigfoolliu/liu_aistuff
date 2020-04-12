@@ -24,9 +24,11 @@ class B(A):
     def show(self):
         print("B show")
 
-obj = B()
-obj.show()  # B show
+if __name__ == "__main__":
+    obj = B()
+    obj.show()  # B show
 
-obj1 = B()
-obj1.__class__ = A  # 通过class方法指定类对象
-obj1.show() # A show
+    obj1 = B()
+    obj1.__class__ = A  # 通过class方法指定类对象
+    obj1.show() # A show
+

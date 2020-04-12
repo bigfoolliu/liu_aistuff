@@ -65,11 +65,12 @@ def test_func(n):
     print("[INFO]Test function ends.")
     return n
 
+if __name__ == "__main__":
+    for i in range(5):
+        test_func(i)
+        print("[INFO]_cache: {}".format(_cache))
 
-for i in range(5):
-    test_func(i)
+    # 再次写入同样的内容查看是否会过滤
+    test_func(2)
     print("[INFO]_cache: {}".format(_cache))
 
-# 再次写入同样的内容查看是否会过滤
-test_func(2)
-print("[INFO]_cache: {}".format(_cache))

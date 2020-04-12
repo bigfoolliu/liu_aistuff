@@ -31,3 +31,8 @@ def read_file(fpath):
                 yield block 
             else: 
                 return
+
+
+if __name__ == "__main__":
+    pass
+
