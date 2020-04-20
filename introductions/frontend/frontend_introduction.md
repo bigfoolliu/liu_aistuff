@@ -7,9 +7,9 @@
         * [2.1Vue](#2.1vue)
         * [2.2React](#2.2react)
         * [2.3Angular](#2.3angular)
-* [a.js包管理工具](#a.js包管理工具)
-        * [a.1npm](#a.1npm)
-        * [a.2yarn](#a.2yarn)
+* [3.js包管理工具](#3.js包管理工具)
+        * [3.1npm](#3.1npm)
+        * [3.2yarn](#3.2yarn)
 * [其他](#其他)
 
 <!-- vim-markdown-toc -->
@@ -38,11 +38,32 @@
 - 自动化双向数据绑定
 - 语义化标签
 
-## a.js包管理工具
+## 3.js包管理工具
 
-### a.1npm
+### 3.1npm
 
-### a.2yarn
+预处理：
+
+```shell
+npm config get registry  # 获取当前npm的版本
+npm install -g npm  # 更新npm
+
+# 安装源切换
+npm config set registry=https://registry.npm.taobao.org  # 切换为淘宝源
+npm config set registry=http://registry.npmjs.org  # 切换为官方源
+```
+
+使用：
+
+```shell
+npm init  # 初始化
+npm install module_name -S  # 安装具体的模块
+```
+
+### 3.2yarn
+
+```shell
+```
 
 ## 其他
 
