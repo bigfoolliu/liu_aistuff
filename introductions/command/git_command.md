@@ -17,7 +17,9 @@
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
 * [3.gitmoduel使用](#3.gitmoduel使用)
-* [a.其他](#a.其他)
+* [4.其他](#4.其他)
+        * [4.非常用命令](#4.非常用命令)
+        * [4.2github搜索技巧](#4.2github搜索技巧)
 
 <!-- vim-markdown-toc -->
 
@@ -324,7 +326,9 @@ rm .git/module/*  # 删除模块下的子模块目录
 git rm --cached  <submodule name>  # 如果执行完成之后报错执行
 ```
 
-## a.其他
+## 4.其他
+
+### 4.非常用命令
 
 ```shell
 # 查看当前状态
@@ -368,5 +372,20 @@ git reset --mixed HEAD
 git log
 git reset --soft HEAD~2  # 不删除工作空间改动代码，撤销commit，不撤销git add . 或者将HEAD~2改为回退到的版本号
 git push origin 分支名 --force  # 将当前撤销的提交推送到远程
+```
+
+### 4.2github搜索技巧
+
+```shell
+# 名字包含python，stars数量大于1000
+in:name python stars:>1000
+
+in:readme 
+
+in:description
+
+language:python
+
+pushed:2020-01-01
 ```
 
