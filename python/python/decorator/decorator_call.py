@@ -63,3 +63,4 @@ def add(a, b):
 print(add(1, 2))
 # 这次执行将会立即执行
 print(add.eager_all(1, 2))
+

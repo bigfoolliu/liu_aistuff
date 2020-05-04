@@ -29,7 +29,7 @@ def _compute_key(function, *args, **kargs):
     """
     序列化并求其哈希值
     """
-    key = pickle.dumps((function.__name__, args, kargs))  # 将函数名及其参数进行序列化处理
+    key = pickle.dumps((function.__name__, args, kargs))  # 将函数名及其参数转化为列表并进行序列化处理
     return hashlib.sha1(key).hexdigest()  # 将摘要值作为十六进制数字字符串返回
 
 
