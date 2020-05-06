@@ -14,7 +14,8 @@
 ## 1.介绍
 
 - [http_load使用详解](https://www.cnblogs.com/shijingjing07/p/6539179.html)
-- 基于linux的web服务器性能测试工具，用于测试服务器的吞吐量和负载以及web页面的性能。
+- 基于linux的web服务器性能测试工具，用于测试服务器的吞吐量和负载以及web页面的性能
+- 只支持get方法，并且是乱序执行的
 
 ## 2.使用
 
@@ -28,7 +29,7 @@ make && make install
 
 ### 2.2命令
 
-1. 创建一个包含要测的url或者域名的文件
+1. 创建一个包含要测的url或者域名的文件(注意文件中不能有多余的空行)
 2. 使用命令测试
 
 ```shell
@@ -38,6 +39,8 @@ make && make install
 # -seconds简写-s ：含义是总计的访问时间
 
 http_load -rate 5 -seconds 10 url.txt  # 每秒访问5次，持续10秒
+http_load -rate 5 -seconds 10 url.txt 2>2.log 1>1.log  # 每秒访问5次，持续10秒，将错误日志(2)输出到2.log，将结果(1)输出到1.log
+http_load -parallel 1000 -fetches 1000 url.txt  # 模拟1000个用户，共访问1000次
 ```
 
 ### 2.3结果解析
@@ -58,3 +61,4 @@ msecs/first-response: 28.2572 mean, 238.049 max, 11.271 min
 HTTP response codes:
   code 200 -- 3352
 ```
+
