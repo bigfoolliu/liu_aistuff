@@ -2,7 +2,9 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.系统命令](#1.系统命令)
+* [1.命令行命令](#1.命令行命令)
+        * [1.通用系统命令](#1.通用系统命令)
+        * [1.2其他命令行命令](#1.2其他命令行命令)
 * [2.safari命令](#2.safari命令)
 * [3.终端命令](#3.终端命令)
 * [4.安装python环境](#4.安装python环境)
@@ -13,7 +15,9 @@
 
 <!-- vim-markdown-toc -->
 
-## 1.系统命令
+## 1.命令行命令
+
+### 1.通用系统命令
 
 ```shell
 ctrl + a  # 光标移动到行首
@@ -30,6 +34,8 @@ command + space  # 打开spotlight
 
 command + [  # finder返回
 command + ]  # finder前进
+command + left  # 定位到行首
+command + right  # 定位到行尾
 
 command + ⬆️   # 返回上层目录
 
@@ -38,6 +44,8 @@ command + shift + 4  # 截取部分区域
 command + shift + 5  # 打开截屏录屏等(实用)
 
 ctrl + command + space  # 快速调出表情
+ctrl + b  # 向后翻页
+ctrl + f  # 向前翻页
 
 command + c  # 拷贝(win中的复制)
 command + v  # 粘贴
@@ -48,7 +56,6 @@ command + tab  # 切换窗口
 
 # 恢复最小化的窗口
 command + tab 到应用后，松开 tab，然后按 option 上，再松开 command
-
 
 # 关闭，打开mkworker进程（用于spotlight建立索引，占用大量cpu）
 sudo mdutil -a -i off
@@ -64,16 +71,26 @@ ctrl + command + f  # 进入/退出全屏
 sudo mdutil -a -i on
 ```
 
+### 1.2其他命令行命令
+
+```shell
+# 查看网络上传下载速度
+fast
+fash --upload
+
+# cat的替代命令，可以高亮度
+bat file
+bat ./*.file  # 可以同时查看多个文件
+```
+
 ## 2.safari命令
 
 ```shell
-
 command + t  # 新建标签页面
 command + w  # 关闭标签页面
 
 command + tab  # 移动至下一个标签页
 command + shift + tab  # 移动到上一个标签页
-
 ```
 
 ## 3.终端命令
@@ -124,7 +141,7 @@ ncdu  # 查看磁盘目录占用情况
 ## 5.安装使用mysql
 
 - [mac安装mysql](https://blog.csdn.net/w605283073/article/details/80417866?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)
-- **当前使用的mysql密码强度为1(medium), Liu941103?**
+- **当前使用的mysql密码强度为1(medium), Lxxxxxxxx?**
 
 ```shell
 brew install mysql
@@ -146,8 +163,7 @@ command + backspace  # 删除当前行
 ## 7.系统快捷键
 
 ```shell
-command + space  # 打开spotlight搜索
- 
+command + space  # 打开spotlight搜索 
 ```
 
 ## 8.开发工具
