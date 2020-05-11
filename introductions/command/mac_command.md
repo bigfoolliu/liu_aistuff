@@ -1,4 +1,4 @@
-# mac高效使用
+# mac高效使用技巧
 
 <!-- vim-markdown-toc Marked -->
 
@@ -6,7 +6,7 @@
 * [2.safari命令](#2.safari命令)
 * [3.终端命令](#3.终端命令)
 * [4.安装python环境](#4.安装python环境)
-* [5.安装mysql](#5.安装mysql)
+* [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
 * [7.系统快捷键](#7.系统快捷键)
 * [8.开发工具](#8.开发工具)
@@ -121,7 +121,7 @@ ncdu  # 查看磁盘目录占用情况
 
 - [mac安装pyenv以及pyenv的使用](https://www.cnblogs.com/kumufengchun/p/10986498.html)
 
-## 5.安装mysql
+## 5.安装使用mysql
 
 - [mac安装mysql](https://blog.csdn.net/w605283073/article/details/80417866?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)
 - **当前使用的mysql密码强度为1(medium), Liu941103?**
@@ -131,6 +131,10 @@ brew install mysql
 
 brew services start mysql
 brew services stop mysql
+
+# mysql终端代码高亮工具mycli
+brew install mycli
+mycli mysql://root@127.0.0.1:3306/data_base
 ```
 
 ## 6.pycharm快捷键
