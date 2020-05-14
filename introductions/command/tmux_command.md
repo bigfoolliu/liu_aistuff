@@ -5,7 +5,8 @@
 * [1.基本命令](#1.基本命令)
         * [1.1会话创建](#1.1会话创建)
         * [1.2连接会话](#1.2连接会话)
-        * [1.3](#1.3)
+        * [1.3关闭会话](#1.3关闭会话)
+        * [1.4常用快捷键](#1.4常用快捷键)
 
 <!-- vim-markdown-toc -->
 
@@ -35,43 +36,50 @@ tmux new -t mysession
 tmux ls
 ```
 
-### 1.3
+### 1.3关闭会话
 
 ```shell
-tmux kill-session       关闭上次打开的会话
-tmux kill-session -t s1     关闭会话s1
-tmux kill-server        关闭所有会话
+# 关闭上次打开的会话
+tmux kill-session
 
-常用快捷键:
+# 关闭会话s1
+tmux kill-session -t s1
 
-ctrl+b s        列出会话，可切换
-ctrl+b $        rename the session
+# 关闭所有会话
+tmux kill-server
+```
 
-ctrl+b n        切换至下一个会话
-ctrl+b p        切换至上一个会话
+### 1.4常用快捷键
 
-窗口管理：
+```shell
+ctrl+b s  # 列出会话，可切换
+ctrl+b $  # 重命名会话
 
-ctrl+b c        创建一个新窗口
-ctrl+b d        分离(结束)当前会话
-ctrl+b 0~9      选择编号0-9的窗口
+ctrl+b n  # 切换至下一个会话
+ctrl+b p  # 切换至上一个会话
 
-ctrl+b &        关闭当前窗口
+# 窗口管理
 
-窗格管理:
+ctrl+b c  # 创建一个新窗口
+ctrl+b d  # 分离(结束)当前会话
+ctrl+b 0~9  # 选择编号0-9的窗口
 
-ctrl+b %        水平方向创建窗格
-ctrl+b "        垂直方向创建窗格
+ctrl+b &  # 关闭当前窗口
 
-ctrl+b Up/Down/Left/Right   根据箭头方向来切换窗格
+# 窗格管理
 
-ctrl+b q        显示窗格编号
+ctrl+b %  # 水平方向创建窗格
+ctrl+b "  # 垂直方向创建窗格
 
-ctrl+b x        关闭当前窗格
-ctrl+b space(空格键)        重新排列当前窗口下的所有的窗格
+ctrl+b Up/Down/Left/Right  # 根据箭头方向来切换窗格
 
-ctrl+b !        将当前窗格置于新的窗口
-ctrl+b z        放大当前窗格(再次按下将还原)
-ctrl+b i        显示当前窗格信息
+ctrl+b q  # 显示窗格编号
+
+ctrl+b x  # 关闭当前窗格
+ctrl+b space(空格键)  # 重新排列当前窗口下的所有的窗格
+
+ctrl+b !  # 将当前窗格置于新的窗口
+ctrl+b z  # 放大当前窗格(再次按下将还原)
+ctrl+b i  # 显示当前窗格信息
 ```
 
