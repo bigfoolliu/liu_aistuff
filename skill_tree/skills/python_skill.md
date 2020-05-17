@@ -1,10 +1,35 @@
 # python相关技巧
 
-<!-- TOC -->autoauto- [python相关技巧](#python相关技巧)auto    - [1.变量](#1变量)auto    - [2.条件分支](#2条件分支)auto    - [3.数字和字符串](#3数字和字符串)auto    - [4.python的容器操作(列表，元组等)](#4python的容器操作列表元组等)auto    - [5.函数返回结果的技巧](#5函数返回结果的技巧)auto    - [6.异常处理的技巧](#6异常处理的技巧)auto    - [7.编写地道的循环](#7编写地道的循环)auto    - [8.使用装饰器的技巧](#8使用装饰器的技巧)auto    - [9.模块相关](#9模块相关)auto        - [9.1模块基本使用规则](#91模块基本使用规则)auto        - [9.2模块以及缺失库导入](#92模块以及缺失库导入)auto    - [10.利用规则](#10利用规则)auto    - [11.高效文件操作](#11高效文件操作)auto    - [12.写好面向对象](#12写好面向对象)auto    - [13.写好文档](#13写好文档)auto    - [14.python包以及环境管理](#14python包以及环境管理)auto        - [14.1virtualenv](#141virtualenv)auto        - [14.2pip](#142pip)auto        - [14.3fabric](#143fabric)auto        - [14.4python导包](#144python导包)auto        - [14.5pyenv管理python版本](#145pyenv管理python版本)auto    - [a.其他](#a其他)autoauto<!-- /TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [如何编写优秀的python代码https://github.com/piglei/one-python-craftsman](https://github.com/piglei/one-python-craftsman)
+* [1.变量](#1.变量)
+* [2.条件分支](#2.条件分支)
+* [3.数字和字符串](#3.数字和字符串)
+* [4.python的容器操作(列表，元组等)](#4.python的容器操作(列表，元组等))
+* [5.函数返回结果的技巧](#5.函数返回结果的技巧)
+* [6.异常处理的技巧](#6.异常处理的技巧)
+* [7.编写地道的循环](#7.编写地道的循环)
+* [8.使用装饰器的技巧](#8.使用装饰器的技巧)
+* [9.模块相关](#9.模块相关)
+        * [9.1模块基本使用规则](#9.1模块基本使用规则)
+        * [9.2模块以及缺失库导入](#9.2模块以及缺失库导入)
+* [10.利用规则](#10.利用规则)
+* [11.高效文件操作](#11.高效文件操作)
+* [12.写好面向对象](#12.写好面向对象)
+* [13.写好文档](#13.写好文档)
+* [14.python包以及环境管理](#14.python包以及环境管理)
+        * [14.1virtualenv](#14.1virtualenv)
+        * [14.2pip](#14.2pip)
+        * [14.3fabric](#14.3fabric)
+        * [14.4python导包](#14.4python导包)
+        * [14.5pyenv管理python版本](#14.5pyenv管理python版本)
+* [a.其他](#a.其他)
+
+<!-- vim-markdown-toc -->
 
 ## 1.变量
+
+- [如何编写优秀的python代码https://github.com/piglei/one-python-craftsman](https://github.com/piglei/one-python-craftsman)
 
 1. bool类型：`is_superuser`,`allow_vip`,`has_error`
 2. int/float类型：`user_id`,`age`,`length_of_username`,`users_count`
