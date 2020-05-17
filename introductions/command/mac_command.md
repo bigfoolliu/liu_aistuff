@@ -43,6 +43,9 @@ command + shift + 3  # 截取整个屏幕
 command + shift + 4  # 截取部分区域
 command + shift + 5  # 打开截屏录屏等(实用)
 
+command + shift + 音量键  # 精确调节音量
+command + shift + 亮度键  # 精确调节亮度
+
 ctrl + command + space  # 快速调出表情
 ctrl + b  # 向后翻页
 ctrl + f  # 向前翻页
