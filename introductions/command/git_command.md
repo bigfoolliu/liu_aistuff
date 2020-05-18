@@ -378,7 +378,7 @@ git push origin 分支名 --force  # 将当前撤销的提交推送到远程
 
 ```shell
 # 名字包含python，stars数量大于1000
-in:name python stars:>1000
+python in:name stars:>1000
 
 in:readme 
 
