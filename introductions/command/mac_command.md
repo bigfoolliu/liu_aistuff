@@ -25,9 +25,15 @@ ctrl + e  # 光标移动到行尾
 ctrl + q  # 删除当前行的命令
 ctrl + w  # 删除光标所在单词
 
+ctrl + command + space  # 快速调出表情
+ctrl + b  # 向后翻页
+ctrl + f  # 向前翻页
+
 command + ctrl + q  # 锁定屏幕
 command + q  # 关闭应用
 command + m  # 最小化应用
+command + h  # 隐藏当前窗口
+command + option + h  # 隐藏其他所有窗口
 
 command + down  # 选中文件之后可以打开
 command + space  # 打开spotlight
@@ -45,10 +51,6 @@ command + shift + 5  # 打开截屏录屏等(实用)
 
 command + shift + 音量键  # 精确调节音量
 command + shift + 亮度键  # 精确调节亮度
-
-ctrl + command + space  # 快速调出表情
-ctrl + b  # 向后翻页
-ctrl + f  # 向前翻页
 
 command + c  # 拷贝(win中的复制)
 command + v  # 粘贴
