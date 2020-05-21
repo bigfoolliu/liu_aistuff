@@ -37,6 +37,29 @@ def basic_demo():
     workbook.close()
 
 
+def multi_sheet_demo():
+    # 新建excel表
+    workbook = xlsxwriter.Workbook("./multi_sheet_xlsx_test.xlsx")
+
+    for sheet_name in ['已签到', '未签到']:
+        worksheet = workbook.add_worksheet(sheet_name)
+        # 增加工作样式
+        bold = workbook.add_format(dict(bold=True, border=1))
+
+        # 写入单个单元格数据
+        worksheet.write(0, 0, "row1,column1", bold)
+
+        # 写入行数据
+        worksheet.write_row("A1", ["a", "b", "c"])
+
+        # 写入列数据
+        worksheet.write_column("B2", [10, 20, 30])
+
+    # 操作完成一定要关闭
+    workbook.close()
+
+
 if __name__ == "__main__":
-    basic_demo()
+    # basic_demo()
+    multi_sheet_demo()
 
