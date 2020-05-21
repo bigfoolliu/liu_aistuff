@@ -74,6 +74,14 @@ ctrl + command + f  # 进入/退出全屏
 
 # 重建聚焦索引
 sudo mdutil -a -i on
+
+
+# 使用文件默认的打开app来打开文件
+open <file_name>
+# 使用指定的app来打开文件
+open -a /Applications/*.app <file_name>
+# 在finder中打开指定的路径
+open ./
 ```
 
 ### 1.2其他命令行命令
