@@ -13,6 +13,7 @@
         * [1.8撤销](#1.8撤销)
         * [1.9操作记录](#1.9操作记录)
         * [1.10标签](#1.10标签)
+        * [1.11查看内容](#1.11查看内容)
 * [2.操作命令组](#2.操作命令组)
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
@@ -231,10 +232,6 @@ git tag -a v1.0 -m "有备注信息的tag"
 # 在某一个提交对象上打tag，只要提交对象的校验和前几位
 git tag -a v1.0 9fedamdch -m "有备注信息的tag"
 
-# 查看tag的详细信息
-git show v1.0
-
-
 # tag创建完成之后，也需要推送到远程
 # 推送单个tag
 git push origin v1.0
@@ -248,6 +245,19 @@ git tag -d v1.0
 
 # 删除远程的tag
 git push origin :refs/tags/v1.0
+```
+
+### 1.11查看内容
+
+```shell
+# 查看tag的详细信息
+git show v1.0
+
+
+# 查看某次提交的内容
+git show <commit_id>
+# 查看某次提交的某个文件的修改
+git show <commit_id> <file_name>
 ```
 
 ## 2.操作命令组
