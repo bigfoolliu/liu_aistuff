@@ -147,6 +147,9 @@ git stash apply
 
 # 使用指定的堆栈中的内容
 git stash apply stash@{0}
+
+# 查看某个堆栈中的修改内容
+git stash show -p stash@{0}
 ```
 
 ### 1.7分支
