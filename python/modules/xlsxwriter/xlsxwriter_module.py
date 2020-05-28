@@ -59,7 +59,28 @@ def multi_sheet_demo():
     workbook.close()
 
 
+def worksheet_page_demo():
+    """worksheet分页示例"""
+    list1 = [{'name': 'tony', 'score': 100, 'pass': True}]
+    list2 = [{'name': 'jim', 'score': 50, 'pass': False}]
+    workbook = xlsxwriter.Workbook('./worksheet_page_text.xlsx')
+
+    for sheet_name in ['通过', '未通过']:
+        work_sheet = workbook.add_worksheet(sheet_name)
+        if sheet_name == '通过':
+            data_list = list1
+        else:
+            data_list = list2
+        for data in data_list:
+            print('begin at sheet {}'.format(sheet_name))
+            work_sheet.write_row(0, 0, data)
+            print('end at sheet {}'.format(sheet_name))
+    workbook.close()i
+    del workbook
+
+
 if __name__ == "__main__":
     # basic_demo()
-    multi_sheet_demo()
+    # multi_sheet_demo()
+    worksheet_page_demo()
 
