@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 from turtle import Turtle  # 引入turtle库的turtle模块
 import turtle
 

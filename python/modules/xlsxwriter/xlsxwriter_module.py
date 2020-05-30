@@ -11,9 +11,7 @@ xlsxwriter模块的使用
 - 目前只能创建,不能读取excel文件
 """
 
-
 import xlsxwriter
-
 
 
 def basic_demo():
@@ -75,7 +73,7 @@ def worksheet_page_demo():
             print('begin at sheet {}'.format(sheet_name))
             work_sheet.write_row(0, 0, data)
             print('end at sheet {}'.format(sheet_name))
-    workbook.close()i
+    workbook.close()
     del workbook
 
 
@@ -83,4 +81,3 @@ if __name__ == "__main__":
     # basic_demo()
     # multi_sheet_demo()
     worksheet_page_demo()
-

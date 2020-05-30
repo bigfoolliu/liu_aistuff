@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -16,6 +17,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
 # from edge_box_api_gateway.settings import settings
 
 # SMTP_HOST = settings["email"]["smtp_host"]
@@ -23,9 +25,8 @@ from email.mime.text import MIMEText
 # import unittest
 
 
-
 class Email(object):
-    
+
     def __init__(self, host, port=25):
         """
         :param host: str, 发件人的邮箱服务器(smtp.sina.com)
@@ -48,7 +49,8 @@ class Email(object):
         (code, resp) = self.smtp_obj.login(user, pwd)
         return (code, resp)
 
-    def generate_msg(self, client, company, verify_link, image_path=None, image_name=None, sender=None, receiver=None, subject=None):
+    def generate_msg(self, client, company, verify_link, image_path=None, image_name=None, sender=None, receiver=None,
+                     subject=None):
         """
         生成邮件的内容,可以携带图片
         :param mail_body: str, 邮件的主体内容
@@ -85,7 +87,7 @@ class Email(object):
         if sender:
             msg["From"] = Header(sender)
         if receiver:
-            msg["To"]= Header(receiver)
+            msg["To"] = Header(receiver)
         if subject:
             msg["Subject"] = Header(subject, "utf-8")
         return msg
@@ -100,7 +102,7 @@ class Email(object):
         """
         ret = self.smtp_obj.sendmail(from_addr=from_addr, to_addrs=to_addrs, msg=msg.as_string())
         return ret
- 
+
 
 # class EmailTest(unittest.TestCase):
 
@@ -111,7 +113,7 @@ class Email(object):
 #         self.target_addrs = ["1365205439@qq.com", "2713281245@qq.com"]
 #         self.pwd = "123456"
 #         self.email_core = Email(host=self.smtp_host, port=self.smtp_port)
-    
+
 #     def test_login(self):
 #         (code, resp) = self.email_core.login(self.origin_addr, self.pwd)
 #         print("code: {}, resp: {}".format(code, resp))
@@ -147,14 +149,15 @@ def main():
     origin_addr = "jxzn@jiangxing.ai"
     target_addrs = ["2713281245@qq.com"]
     pwd = "e2wGaHbiHSRHXktF"
-    
+
     email_core = Email(host=smtp_host, port=smtp_port)
 
     email_core.login(origin_addr, pwd)
     # email_core.login(origin_addr, auth_code)
 
     for targer_addr in target_addrs:
-        msg = email_core.generate_msg(targer_addr.split("@")[0], "牛x公司", "https://www.baidu.com", sender=origin_addr, subject="【JX IoT Edge】操作员账户验证")
+        msg = email_core.generate_msg(targer_addr.split("@")[0], "牛x公司", "https://www.baidu.com", sender=origin_addr,
+                                      subject="【JX IoT Edge】操作员账户验证")
         # print("msg: {} {}".format(msg, type(msg)))
         email_core.send_mail(origin_addr, target_addrs, msg)
 

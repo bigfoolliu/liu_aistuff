@@ -1,10 +1,7 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/8/16 20:49
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
-
-# coding=utf-8
 
 import turtle
 from datetime import *

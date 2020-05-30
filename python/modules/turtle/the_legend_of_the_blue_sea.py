@@ -1,4 +1,8 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
 Created on Thu Apr 12 22:30:06 2018
 利用turtle库画图
@@ -6,6 +10,7 @@ The Legend of The Blue Sea
 """
 # 画出蓝色大海的传说，91度漩涡
 import turtle
+
 t = turtle.Pen()
 t.pencolor('blue')
 for i in range(0, 1000, 5):

@@ -1,7 +1,6 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/8/16 21:29
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """

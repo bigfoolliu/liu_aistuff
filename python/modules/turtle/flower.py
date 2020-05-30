@@ -1,10 +1,8 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/8/16 20:54
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
-# -*- coding: cp936 -*-
 import turtle
 import math
 

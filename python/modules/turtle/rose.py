@@ -1,13 +1,7 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/8/16 20:52
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
-
-"""
-Created on Nov 18, 2017
-@author: QiZhao
-"""
 import turtle
 
 # 设置初始位置

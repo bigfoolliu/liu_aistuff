@@ -33,7 +33,6 @@ subprocess.Popen():
 7、pid
 """
 
-
 import subprocess
 import time
 
@@ -111,7 +110,7 @@ def popen_stderr_demo():
     """
     标准错误示例
     """
-    ret = subprocess.Popen("pw", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)    
+    ret = subprocess.Popen("pw", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print("ret:", ret)
     print(ret.stdout.read())
     print(ret.stderr.read())
@@ -167,4 +166,4 @@ if __name__ == "__main__":
     # popen_poll_demo()
     # popen_wait_demo()
     # popen_terminate_demo()
-    popen_pid_demo()    
+    popen_pid_demo()

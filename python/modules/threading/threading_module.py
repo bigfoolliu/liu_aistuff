@@ -57,11 +57,9 @@ threading.Event()：
 - event.isSet()：判断event的标志是否为True。
 """
 
-
 import threading
 from threading import Thread
 import time
-
 
 # 创建锁
 lock = threading.Lock()
@@ -111,7 +109,7 @@ class MyThread(Thread):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-    
+
     def run(self):
         print("my thread runing...")
         time.sleep(3)
@@ -126,7 +124,7 @@ def thread_demo():
     那么在调用这个线程时可以使用被调用线程的join方法
     """
     # 创建线程并传递任务和参数
-    t = Thread(target=task, args=[2,])
+    t = Thread(target=task, args=[2, ])
     t.start()
     t.join(timeout=1)  # 阻塞
 
@@ -139,7 +137,7 @@ def thread_demo2():
     一并和主线程A退出.这就是setDaemon方法的含义，这基本和join是相反的。
     此外，还有个要特别注意的：必须在start() 方法调用之前设置，如果不设置为守护线程，程序会被无限挂起。
     """
-    t = Thread(target=task, args=[3,])
+    t = Thread(target=task, args=[3, ])
     print(t.is_alive())
     # t.setDaemon()
     t.daemon = True
@@ -164,9 +162,9 @@ def lock_demo():
     # for i in range(10):
     #     t = Thread(target=no_lock_append_task, args=[i,])
     #     t.start()
-    
+
     for i in range(10):
-        t = Thread(target=lock_append_task, args=[i,])
+        t = Thread(target=lock_append_task, args=[i, ])
         t.start()
 
 
