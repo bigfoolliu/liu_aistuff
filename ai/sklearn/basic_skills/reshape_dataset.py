@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 """
@@ -9,7 +9,6 @@ sklearn处理二维数组，当不是这种的时候需要reshape
 
 
 from sklearn import datasets
-import matplotlib.pyplot as plt
 
 
 digits = datasets.load_digits()

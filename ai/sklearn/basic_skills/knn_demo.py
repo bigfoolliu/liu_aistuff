@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 """
@@ -55,6 +55,5 @@ for weight in ["uniform", "distance"]:
     plt.ylim(yy.min(), yy.max())
 
     plt.title("3-class classification (k={}, weight={})".format(n_neighbors, weight))
-
 
 plt.show()

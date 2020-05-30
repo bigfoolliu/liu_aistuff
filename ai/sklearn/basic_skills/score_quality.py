@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 """
@@ -11,7 +11,7 @@
 
 from sklearn import datasets
 from sklearn import svm
-import numpy as np
+# import numpy as np
 
 
 digits = datasets.load_digits()

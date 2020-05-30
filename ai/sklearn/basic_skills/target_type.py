@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
-
+# author: bigfoolliu
 
 
 """
@@ -15,23 +14,20 @@ multilabel-indicator        y 是一个标签指示符矩阵，包含至少两�
 unknown
 """
 
-
-print(__doc__)
-
-
 import numpy as np
 from sklearn.utils.multiclass import type_of_target
 
 
-continuous   = type_of_target([0.1, 0.6])
-binary       = type_of_target([1, -1, -1, 1])
-mulclass     = type_of_target([0, 2, 1])
-muloutput    = type_of_target(np.array([[1, 2], [3, 1]]))
+print(__doc__)
+
+continuous = type_of_target([0.1, 0.6])
+binary = type_of_target([1, -1, -1, 1])
+mulclass = type_of_target([0, 2, 1])
+muloutput = type_of_target(np.array([[1, 2], [3, 1]]))
 mulindicator = type_of_target(np.array([[0, 1], [1, 1]]))
 
-
-print("continuous  : ", continuous  )
-print("binary      : ", binary      )
-print("mulclass    : ", mulclass    )
-print("muloutput   : ", muloutput   )
+print("continuous  : ", continuous)
+print("binary      : ", binary)
+print("mulclass    : ", mulclass)
+print("muloutput   : ", muloutput)
 print("mulindicator: ", mulindicator)
