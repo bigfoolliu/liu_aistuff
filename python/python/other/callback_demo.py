@@ -7,7 +7,6 @@
 回调函数的原理
 """
 
-
 import threading
 import time
 
@@ -23,6 +22,7 @@ def long_io(callback):
         ret = "longio ret"
         print("end long io")
         callback(ret)
+
     a = threading.Thread(target=func, args=(callback,))
     a.start()
 

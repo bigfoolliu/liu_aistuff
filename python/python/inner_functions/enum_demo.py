@@ -15,7 +15,6 @@ python枚举类和普通类的不同
 当某个类的对象是有限且固定的，比如性别，季节等。
 """
 
-
 from enum import Enum
 
 

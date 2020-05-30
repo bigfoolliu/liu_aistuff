@@ -7,7 +7,6 @@
 批量将leetcode文件命令为001_xxx.py格式
 """
 
-
 import os
 import sys
 
@@ -37,4 +36,3 @@ if __name__ == '__main__':
     batch_dir = sys.argv[1]
     print('f{batch_dir}')
     batch_rename(batch_dir)
-

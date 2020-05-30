@@ -7,7 +7,6 @@
 vpython示例
 """
 
-
 from vpython import *
 
 box()

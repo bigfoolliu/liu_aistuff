@@ -26,7 +26,7 @@ def inner_func_demo():
     # 返回指定键的值，不存在则返回default值
     print(a.get("name"))
     print(a.get("score", None))
-  
+
     # 返回字典的所有键和值以及键值对
     print(a.keys(), list(a.keys()))  # 默认返回类型为dict_keys
     print(a.values(), list(a.values()))  # 默认返回类型为dict_values

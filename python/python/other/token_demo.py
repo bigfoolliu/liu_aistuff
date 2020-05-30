@@ -64,4 +64,3 @@ def safe_b64decode(s):
 
 if __name__ == "__main__":
     print("token:", generate_token(100))
-

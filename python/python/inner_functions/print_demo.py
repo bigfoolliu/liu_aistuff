@@ -7,7 +7,6 @@
 print函数展示
 """
 
-
 import time
 
 
@@ -23,7 +22,7 @@ def progress_demo():
     """使用\r展示进度"""
     days = 365
     for i in range(days):
-        print("\r", "progress:{}%".format(round((i+1)*100/days)), end="", flush=True)
+        print("\r", "progress:{}%".format(round((i + 1) * 100 / days)), end="", flush=True)
         time.sleep(0.01)
     print()
 

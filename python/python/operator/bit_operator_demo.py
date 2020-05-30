@@ -25,13 +25,13 @@ def basic_demo():
     a = 0b1101
     b = 0b1011
     print(a, b)
-    print(bin(a&b))  # 0b1001
+    print(bin(a & b))  # 0b1001
 
     # 或位操作
-    print(bin(a|b))
+    print(bin(a | b))
 
     # 异或位操作
-    print(bin(a^b))
+    print(bin(a ^ b))
 
     # 左移位
     print(bin(a << 2), a << 2)
@@ -52,9 +52,9 @@ def xor_demo():
     a = 0b101
     b = 0b110
 
-    a = a^b
-    b = a^b
-    a = a^b
+    a = a ^ b
+    b = a ^ b
+    a = a ^ b
     print(bin(a), bin(b))
 
     # 2. 进行奇偶判断

@@ -13,10 +13,10 @@ class A(object):
 
     def __init__(self, name):
         self.name = name
-    
+
     def default_func(self):
         print("default func")
-    
+
     def __getattr__(self, attr):
         return self.default_func
 

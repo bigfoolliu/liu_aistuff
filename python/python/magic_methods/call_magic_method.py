@@ -13,10 +13,10 @@ class A(object):
     def __init__(self, a):
         """a:int"""
         self.__a = a
-    
+
     def show(self):
         print("a:{}".format(self.__a))
-    
+
     # def __call__(self, num):
     #     """num:int"""
     #     print("ret: {}".format(self.__a + num))

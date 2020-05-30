@@ -11,7 +11,6 @@ python上下文管理器来改善异常的处理
 
 
 class RaiseApiError(object):
-
     """自定义上下文管理器，捕获指定的异常
     进入上下文时不做什么
     退出上下文的时候，会判断当前上下文是否抛出了类型为self.captures的异常,有的话就用APIErrorCode异常类代替
@@ -42,4 +41,3 @@ def upload_image():
     # 调用自定义的上下文异常
     with RaiseApiError(KeyError, "image not provided"):
         image = request.FILES["image"]
-

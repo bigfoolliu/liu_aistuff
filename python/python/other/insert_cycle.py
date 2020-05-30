@@ -42,7 +42,7 @@ def dict_pickle_demo():
                     ret.append(value)
         else:
             ret.append(value)
-    
+
     dict_pickle(d)
     print(ret)
 

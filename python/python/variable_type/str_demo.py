@@ -17,9 +17,9 @@ def basic_demo():
     print("hello" + "python")  # 字符串拼接    
     print("a" * 5)  # 字符串操作
     print("he" in "hello")  # 逻辑操作
-    
+
     print(r"\n")  # 原始字符串
-    
+
     # 三引号可以将复杂的字符串进行复制
     print("""this is me,
 that is you""")
@@ -80,7 +80,6 @@ def operate_demo():
     s = " abcada \n asd"
     print(s.splitlines(keepends=True))  # 按照行('\r', '\r\n', \n')分隔，返回包含各行作为元素的列表，如果keepends为 False，不包含换行符
     print(s.splitlines(keepends=False))
-
 
 
 def is_demo():

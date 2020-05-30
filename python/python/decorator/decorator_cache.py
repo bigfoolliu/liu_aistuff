@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -9,7 +10,6 @@ import time
 import pickle
 import hashlib
 from functools import wraps
-
 
 _cache = {}
 
@@ -35,6 +35,7 @@ def _compute_key(function, *args, **kargs):
 
 def momorize(duration=-1):
     """自动缓存"""
+
     def _memorize(function):
         @wraps(function)  # 自动复制函数信息
         def __memorize(*args, **kargs):
@@ -47,11 +48,13 @@ def momorize(duration=-1):
             result = function(*args, **kargs)
             # 保存结果
             _cache[key] = {
-                    "value": result,
-                    "time": time.time()
-                    }
+                "value": result,
+                "time": time.time()
+            }
             return result
+
         return __memorize
+
     return _memorize
 
 
@@ -65,6 +68,7 @@ def test_func(n):
     print("[INFO]Test function ends.")
     return n
 
+
 if __name__ == "__main__":
     for i in range(5):
         test_func(i)
@@ -73,4 +77,3 @@ if __name__ == "__main__":
     # 再次写入同样的内容查看是否会过滤
     test_func(2)
     print("[INFO]_cache: {}".format(_cache))
-

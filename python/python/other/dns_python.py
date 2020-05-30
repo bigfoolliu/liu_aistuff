@@ -9,7 +9,6 @@ Python实现简单的dns服务器
 - https://github.com/nopernik/mpDNS
 """
 
-
 import socket as socketlib
 import socketserver
 import struct
@@ -30,10 +29,10 @@ class SinDNSQuery(object):
             else:
                 self.name = self.name + chr(d)
             i += 1
-        self.query_bytes = data[0:i+1]
-        (self.type, self.classify) = struct.unpack(">HH", data[i+1:i+5])
-        self.len = i+5
-    
+        self.query_bytes = data[0:i + 1]
+        (self.type, self.classify) = struct.unpack(">HH", data[i + 1:i + 5])
+        self.len = i + 5
+
     def get_bytes(self):
         return self.query_bytes + struct.pack(">HH", self.type, self.classify)
 
@@ -48,7 +47,7 @@ class SinDNSAnswer(object):
         self.time_to_live = 190
         self.data_length = 4
         self.ip = ip
-    
+
     def get_bytes(self):
         res = struct.unpack(">HHHLH", self.name, self.type, self.classify, self.time_to_live, self.data_length)
         s = self.ip.split(".")
@@ -59,17 +58,18 @@ class SinDNSAnswer(object):
 class SinDNSFrame(object):
 
     def __init__(self, data):
-        (self.id, self.flags, self.quests, self.answers, self.author, self.addition) = struct.unpack(">HHHHHH", data[0:12])
+        (self.id, self.flags, self.quests, self.answers, self.author, self.addition) = struct.unpack(">HHHHHH",
+                                                                                                     data[0:12])
         self.query = SinDNSQuery(data[12:])
-    
+
     def get_name(self):
         return self.query.name
-    
+
     def set_ip(self, ip):
         self.answer = SinDNSAnswer(ip)
         self.answers = 1
         self.flags = 33152
-    
+
     def get_bytes(self):
         res = struct.pack(">HHHHHH", self.id, self.flags, self.quests, self.answers, self.author, self.addition)
         res = res + self.quests.get_bytes()
@@ -84,10 +84,10 @@ class SinDNSServer(object):
     def __init__(self, port=53):
         SinDNSServer.name_map = {}
         self.port = port
-    
+
     def add_name(self, name, ip):
         SinDNSServer.name_map[name] = ip
-    
+
     def start(self):
         HOST, PORT = "0.0.0.0", self.port
         server = socketserver.UDPServer((HOST, PORT), SinDNSUdpHandler)

@@ -35,4 +35,3 @@ def read_file(fpath):
 
 if __name__ == "__main__":
     pass
-
