@@ -18,9 +18,7 @@ Image类
 像, 或者从 scratch 创建。
 """
 
-
 import os  # os库提供了使用各种操作系统功能的接口
-
 from PIL import Image, ImageDraw, ImageFont
 
 

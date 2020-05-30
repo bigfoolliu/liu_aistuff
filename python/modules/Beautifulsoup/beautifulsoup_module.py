@@ -7,7 +7,6 @@
 beautifulsoup库的简单使用
 """
 
-
 from bs4 import BeautifulSoup
 
 
@@ -15,7 +14,7 @@ def basic_demo():
     """
     1. 基本用法
     """
-    
+
     # 不完整的HTML字符串（部分节点未闭合）
     html = """
     <html><head><title>The Dormouse's story</title></head>
@@ -49,7 +48,7 @@ def node_demo():
     and they lived at the bottom of a well.</p>
     <p class="story">...</p>
     """
-    
+
     html2 = """
     <html>
         <body>
@@ -65,41 +64,41 @@ def node_demo():
                 and they lived at the bottom of a well.
             </p>
     """
-    
+
     soup = BeautifulSoup(html, 'lxml')
     soup2 = BeautifulSoup(html2, 'lxml')
-    
+
     print(soup.title)
     print(type(soup.title), '\n')  # <class 'bs4.element.Tag'>，即Tag类型
-    
+
     print(soup.head, '\n')
-    
+
     # 当有多个节点时，此种方式只会匹配第一个匹配的节点
     print(soup.p, '\n')
-    
+
     # 获取节点属性的名称
     print(soup.title.name, '\n')
-    
+
     # 获取节点属性
     print(soup.p.attrs)  # 字典形式
     print(soup.p.attrs['name'], '\n')  # 节点具有多个属性，只获取'name'属性
-    
+
     # 嵌套选择
     # Tag类型基础上再次选择仍然是Tag类型
     print(soup.head.title.string, '\n')
-    
+
     # 关联选择
     # 获取节点元素的直接子节点，直接调用contents属性，返回的为列表形式
     print(soup.p.contents, '\n')
-    
+
     # 获取某个节点元素的父节点，调用parent/parents属性
     print(soup.a.parent, '\n')  # a的直接父节点
     print(soup.a.parents, '\n')
-    
+
     # 获取兄弟节点（同级节点）
     print(soup2.a.next_sibling)
     print(list(enumerate(soup2.a.next_siblings)), '\n\n\n')
-    
+
     print(soup2.a.previous_sibling)
     print(list(enumerate(soup2.a.previous_siblings)), '\n')
 
@@ -162,7 +161,6 @@ def method_demo():
     print(soup.find_all(text=re.compile('link1')))  # 将link1编译为正则表达式对象
 
 
-
 def css_demo():
     """
     4. CSS(层叠样式表)选择器
@@ -196,7 +194,7 @@ def css_demo():
     print(soup.select('ul li'), '\n')
     print(soup.select('#list-2 .element'), '\n')
 
-    print(type(soup.select('ul')[0]), '\n')# 仍为Tag类型，可使用嵌套
+    print(type(soup.select('ul')[0]), '\n')  # 仍为Tag类型，可使用嵌套
 
     for ul in soup.select('ul'):
         print(ul.select('li'))
@@ -210,7 +208,7 @@ def css_demo():
 
 
 if __name__ == "__main__":
-    # basic_demo()
-    # node_demo()
-    # method_demo()
-    # css_demo()
+    basic_demo()
+    node_demo()
+    method_demo()
+    css_demo()

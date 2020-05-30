@@ -7,7 +7,6 @@
 pyecharts模块实现数据可视化
 """
 
-
 from pyecharts import Bar
 
 

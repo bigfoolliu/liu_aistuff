@@ -1,7 +1,6 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/9/13 9:13
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -99,8 +98,7 @@ class PoJie(object):
         self.iface.disconnect()  # 断开
         time.sleep(1)
         # 检查断开状态
-        assert self.iface.status() in \
-               [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
+        assert self.iface.status() in [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
 
         return isOK
 

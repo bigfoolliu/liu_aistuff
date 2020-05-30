@@ -1,7 +1,7 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/7/18 23:03
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
 
 """
 pygame模块包含的模块
@@ -54,7 +54,6 @@ import pygame
 from pygame.locals import *  # 导入一些常用的函数和变量
 from sys import exit  # 借exit函数退出程序
 
-
 background_image_filename = "background.jpg"
 mouse_image_filename = "follow_mouse.jpg"
 
@@ -91,24 +90,23 @@ mouse_cursor = pygame.image.load(mouse_image_filename)
 screen.blit(background, (0, 0))  # 此句应该删除
 # 游戏主循环
 while True:
-	for event in pygame.event.get():
-		if event.type == QUIT:  # 接收到退出事件后退出程序
-			exit()
+    for event in pygame.event.get():
+        if event.type == QUIT:  # 接收到退出事件后退出程序
+            exit()
 
-	# 画背景图,尽管背景图不动,但是仍然需要更新,否则鼠标经过的地方不能恢复
-	# blit函数,第一个参数代表surface对象,第二个为左上角位置
-	# screen.blit(background, (0, 0))
-	# 获得鼠标位置
-	x, y = pygame.mouse.get_pos()
-	# 计算光标左上角的位置
-	x -= mouse_cursor.get_width() / 2
-	y -= mouse_cursor.get_height() / 2
-	# 将光标画上去
-	screen.blit(mouse_cursor, (x, y))
+    # 画背景图,尽管背景图不动,但是仍然需要更新,否则鼠标经过的地方不能恢复
+    # blit函数,第一个参数代表surface对象,第二个为左上角位置
+    # screen.blit(background, (0, 0))
+    # 获得鼠标位置
+    x, y = pygame.mouse.get_pos()
+    # 计算光标左上角的位置
+    x -= mouse_cursor.get_width() / 2
+    y -= mouse_cursor.get_height() / 2
+    # 将光标画上去
+    screen.blit(mouse_cursor, (x, y))
 
-	# 刷新画面
-	pygame.display.update()
-
+    # 刷新画面
+    pygame.display.update()
 
 # """
 # pygame的事件
@@ -241,6 +239,7 @@ while True:
 窗口的大小可调整,背景图片可根据窗口的大小调整数量
 铺满整个窗口
 """
+
 # import pygame
 # from pygame.locals import *
 # import sys

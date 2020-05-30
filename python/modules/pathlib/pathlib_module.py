@@ -37,7 +37,6 @@ os.path.samefile	    Path.samefile
 os.path.splitext	    PurePath.suffix
 """
 
-
 import pathlib
 
 
@@ -68,7 +67,6 @@ def basic_demo():
     print(pathlib.Path("/home/abc.txt").suffix)  # 获取文件后缀名
     print(pathlib.Path("/home/abc.txt.tar").suffixes)  # 获取文件后缀名,当有多个后缀的时候
     print(pathlib.Path("/home/abc.txt").stem)  # 获取文件名
-
 
     # 类似touch命令的创建文件
     pathlib.Path("./test.txt").touch(mode=0o766, exist_ok=True)

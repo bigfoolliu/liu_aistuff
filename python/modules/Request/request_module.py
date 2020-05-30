@@ -173,7 +173,8 @@ Cookies
 # import urllib.request
 # filename = 'cookie_test.txt'
 #
-# cookie = http.cookiejar.MozillaCookieJar(filename)  # MozillaCookieJar类可以处理Cookies和文件相关的事件，比如保存和读取，可以将Cookies保存为Mozilla型浏览器的Cookies格式
+# cookie = http.cookiejar.MozillaCookieJar(filename)
+# MozillaCookieJar类可以处理Cookies和文件相关的事件，比如保存和读取，可以将Cookies保存为Mozilla型浏览器的Cookies格式
 # handler = urllib.request.HTTPCookieProcessor(cookie)
 # opener = urllib.request.build_opener(handler)
 #

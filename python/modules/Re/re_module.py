@@ -7,7 +7,6 @@
 re模块，正则匹配
 """
 
-
 import re
 
 
@@ -91,10 +90,10 @@ def findall_demo():
     </div>
     """
     results = re.findall('<li.*?href="(.*?)".*?singer="(.*?)">(.*?)</a>', html, re.S)
-    
+
     # print(results)
     print(type(results))
-    
+
     for result in results:
         # print(result)
         print(result[0], result[1], result[2])
@@ -107,11 +106,11 @@ def sub_demo():
     除了使用正则表达式提取信息外，有时候还需要借助它来修改文本。比如，想要把一串文本中的
     所有数字都去掉
     """
-    content  = '54aK54yr5oiR54ix5L2g'
-    
+    content = '54aK54yr5oiR54ix5L2g'
+
     # sub()第一个参数匹配想要替换的内容，第二个参数匹配替换内容
     content = re.sub(r'\d+', '', content)
-    
+
     print(content)
 
 
@@ -125,14 +124,14 @@ def complile_demo():
     content1 = '2018-4-6 19:18'
     content2 = '2018-4-6 19:19'
     content3 = '2018-4-6 19:20'
-    
+
     pattern = re.compile(r'\d{2}:\d{2}')
     print(type(pattern))
-    
+
     result1 = re.sub(pattern, '', content1)
     result2 = re.sub(pattern, '', content2)
     result3 = re.sub(pattern, '', content3)
-    
+
     print(result1, result2, result3)
 
 

@@ -12,18 +12,16 @@ python操作RabbitMQ：https://segmentfault.com/a/1190000017277218
 - producer产生消息
 """
 
-
 import json
-
 import pika
-
 
 # mq的用户名和密码
 credential = pika.PlainCredentials("admin", "123456")
 
 # 设置连接
 host = "localhost"
-connection = pika.BlockingConnection(pika.ConnectionParameters(host=host, port=5672, virtual_host="/", credentials=credential))
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host=host, port=5672, virtual_host="/", credentials=credential))
 
 # 声明消息队列，消息将在这个队列中传递，如果不存在将创建
 channel = connection.channel()

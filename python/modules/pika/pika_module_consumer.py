@@ -12,16 +12,15 @@ python操作RabbitMQ：https://segmentfault.com/a/1190000017277218
 - consumer处理消息
 """
 
-
 import pika
-
 
 # mq的用户名和密码
 credential = pika.PlainCredentials("admin", "123456")
 
 # 设置连接
 host = ""
-connection = pika.BlockingConnection(pika.ConnectionParameters(host=host, port=5672, virtual_host="/", credentials=credential))
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host=host, port=5672, virtual_host="/", credentials=credential))
 
 channel = connection.channel()
 channel.queue_declare(queue="python_test", durable=False)

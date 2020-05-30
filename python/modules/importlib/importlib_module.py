@@ -22,4 +22,3 @@ def basic_demo():
 
 if __name__ == "__main__":
     basic_demo()
-

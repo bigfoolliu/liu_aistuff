@@ -7,7 +7,6 @@
 用来简单模糊搜索的模块
 """
 
-
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 

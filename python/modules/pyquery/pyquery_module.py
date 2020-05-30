@@ -7,7 +7,6 @@
 pyquery模式示例
 """
 
-
 from pyquery import PyQuery as pq
 
 
@@ -27,21 +26,21 @@ def init_demo():
      </div>
     """
     doc = pq(html)  # 生成类<class 'pyquery.pyquery.PyQuery'>
-    
+
     print(type(doc))
     print(doc('li'))
     print(doc('ul'))
-    
+
     # 初始化的参数还可以传入网页url
     # 首先请求该url，用得到的HTML内容完成初始化
     doc = pq(url='http://cuiqingcai.com')
     print(doc('title'))
-    
+
     # 等价于
     import requests
     doc = pq(requests.get('http://cuiqingcai.com').text)
     print(doc('title'))
-    
+
     # 传递本地的文件名
     doc = pq(filename='pyquery_demo.html')
     print(doc('h2'))
@@ -66,29 +65,29 @@ def css_demo():
     # 先选取id为container的节点，然后选取内部class为list的内部的所有li节点
     print(doc('#container .list li'))
     print(type(doc('#container .list li')), '\n\n')  # 类型仍然为PyQuery类
-    
+
     # 查找节点，用find()方法
     items = doc('.list')
-    
+
     print(type(items))  # PyQuery类
     print(items, '\n\n')
-    
+
     # find()方法查找的是所有子孙节点
     lis = items.find('li')
-    
+
     print(type(lis))  # PyQuery类
     print(lis, '\n\n')
-    
+
     # 只查找子节点，用children()方法
     lis = items.children('li')
     print(lis)
     lis = items.children('.active')
     print(lis, '\n\n')
-    
+
     # 查找父节点，用parent()方法
     lis = items.parent()
     print(lis, '\n\n')
-    
+
     # 查找祖父节点，用parents()方法
     # 查找兄弟节点，用siblings()方法
     li = doc('.list .item-0.active')

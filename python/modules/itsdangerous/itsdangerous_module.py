@@ -9,7 +9,6 @@ https://pythonhosted.org/itsdangerous/
 itsdangerous用来像不可信的环境创建签名，将加密数据发送至不可信的环境
 """
 
-
 import time
 # from itsdangerous import  TimestampSigner
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer

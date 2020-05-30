@@ -1,7 +1,6 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/7/25 10:30
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 # grid_list = []

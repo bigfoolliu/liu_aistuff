@@ -10,15 +10,14 @@ Python 使用ftplib实现ftp服务器，实现文件的远程传输下载等
 代码：https://blog.csdn.net/ouyang_peng/article/details/79271113
 """
 
-
 import os
+import sys
 import socket
 import time
 from ftplib import FTP
 
 
 class SimpleFtp(object):
-
     """ftp自动上传，下载"""
 
     def __init__(self, host, port=21):
@@ -50,19 +49,19 @@ class SimpleFtp(object):
         except Exception as e:
             self.deal_error("connect or login ftp error: {}".format(e))
             pass
-    
+
     def is_same_size(self, local_file, remote_file):
         """检查本地与远程文件大小是否相同，即传输是否完整"""
         try:
             remote_file_size = self.ftp.size(remote_file)
         except Exception:
             remote_file_size = -1
-        
+
         try:
             local_file_size = self.ftp.size(local_file)
         except Exception:
             local_file_size = -1
-        
+
         self.debug_print("remote file size: {} local file size: {}".format(remote_file_size, local_file_size))
         if local_file_size == remote_file_size:
             return True
@@ -78,12 +77,13 @@ class SimpleFtp(object):
             self.debug_print("begin to download file {}".format(remote_file))
             buf_size = 1024
             file_handler = open(local_file, "wb")
-            self.ftp.retrbinary("download remote file {}".format(remote_file), file_handler.write, buf_size)  # ftp下载核心方法
+            self.ftp.retrbinary("download remote file {}".format(remote_file), file_handler.write,
+                                buf_size)  # ftp下载核心方法
             file_handler.close()
         except Exception as e:
             self.debug_print("download file error {}".format(e))
             return
-    
+
     def download_file_tree(self, local_path, remote_path):
         """批量下载文件夹文件"""
         self.debug_print("begin to download path {} to {}".format(remote_path, local_path))
@@ -92,12 +92,12 @@ class SimpleFtp(object):
         except Exception as e:
             self.debug_print("rempte path {} not exist:{}".format(remote_path, e))
             return
-        
+
         if not os.path.exists(local_path):
             self.debug_print("local path {} not exist".format(local_path))
             self.debug_print("begin to create dir {} not exist".format(local_path))
             os.makedirs(local_path)
-        
+
         self.debug_print("switch to dir {}".format(self.ftp.pwd()))
 
         self.file_list = []
@@ -120,7 +120,7 @@ class SimpleFtp(object):
             self.ftp.cwd("..")
             self.debug_print("back to last dir {}".format(self.ftp.pwd()))
         return True
-    
+
     def upload_file(self, local_file, remote_file):
         """上传本地文件"""
         if not os.path.isfile(local_file):
@@ -129,19 +129,19 @@ class SimpleFtp(object):
         if self.is_same_size(local_file, remote_file):
             self.debug_print("file {} already uploaded, skip".format(local_file))
             return
-        
+
         buf_size = 1024
         file_handler = open(local_file, "rb")
         self.ftp.storbinary("store file {}".format(remote_file), file_handler, buf_size)
         file_handler.close()
         self.debug_print("file {} already uploaded".format(local_file))
-    
+
     def upload_file_tree(self, local_path, remote_path):
         """上传本地文件夹"""
         if not os.path.isdir(local_path):
             self.debug_print("path {} not exist".format(local_path))
             return
-        
+
         self.ftp.cwd(remote_path)
         self.debug_print("switch to remote dir {}".format(self.ftp.pwd()))
 
@@ -158,7 +158,6 @@ class SimpleFtp(object):
             else:
                 self.debug_print("upload file {}".format(src, local_name))
         self.ftp.cwd("..")  # 回到上层目录
-
 
     def get_file_list(self, line):
         """获取文件列表"""
@@ -181,7 +180,7 @@ class SimpleFtp(object):
     def debug_print(self, s):
         """debug输出"""
         self.write_log(s)
-    
+
     def write_log(self, long_s):
         """设置日志格式，记录日志"""
         time_now = time.localtime()

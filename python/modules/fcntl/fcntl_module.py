@@ -31,7 +31,6 @@ operation 的操作包括以下选项：
 LOCK_NB可以同LOCK_SH或LOCK_NB进行按位或（|）运算操作。
 """
 
-
 import fcntl
 import sys
 import time
@@ -47,7 +46,7 @@ class Flock(object):
         self.file_name = file_name
         self.f_obj = open(self.file_name, "wb")
         self.fd = self.f_obj.fileno()  # 将文件流指针转化为文件描述符
-    
+
     def lock(self):
         """
         锁定文件
@@ -61,7 +60,7 @@ class Flock(object):
         except Exception as e:
             print("锁定文件 {}异常：{}".format(self.file_name, e))
             return False
-    
+
     def unlock(self):
         """解锁文件"""
         self.f_obj.close()

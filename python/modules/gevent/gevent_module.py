@@ -32,10 +32,10 @@ gevent常用方法：
 - monkey.patch_all()	非常重要，会自动将python的一些标准模块替换成gevent框架
 """
 
-
 from gevent import monkey
-monkey.patch_socket()
 import gevent
+
+monkey.patch_socket()
 
 
 def task1():

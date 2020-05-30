@@ -15,7 +15,6 @@ https://www.cnblogs.com/zhangxinqi/p/9135038.html
 3. 原始I/O
 """
 
-
 import io
 
 
@@ -24,7 +23,7 @@ def file_io_demo():
     # 常用使用文件创建文本流
     with open("./test.log", "r", encoding="utf-8") as f:
         print(f, type(f))
-    
+
     # 使用StringIO对象来创建内存中的文本流
     f1 = io.StringIO("some text data")
     print(f1.getvalue(), type(f1))
@@ -35,7 +34,7 @@ def binary_io_demo():
     # 通过读取文件创建二进制流
     with open("./io_test.jpg", "rb") as f:
         print(f, type(f))
-    
+
     # 通过BytesIO创建二进制流
     f1 = io.BytesIO(b"some binary data:\x00\x01")
     print(f1, f1.getvalue())

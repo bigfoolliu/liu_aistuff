@@ -7,7 +7,6 @@
 os模块的使用
 """
 
-
 import os
 import stat
 import subprocess

@@ -7,7 +7,6 @@
 random模块的简单应用
 """
 
-
 import random
 
 

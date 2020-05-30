@@ -7,7 +7,6 @@
 datetime模块的简单使用
 """
 
-
 from datetime import datetime, timedelta
 import time
 from dateutil.relativedelta import relativedelta
@@ -16,8 +15,8 @@ from dateutil.relativedelta import relativedelta
 def get_utc_demo():
     """获取UTC时间并转换格式"""
     now_time = datetime.now()
-    utc_time = now_time - timedelta(hours=8)              # UTC只是比北京时间提前了8个小时
-    utc_time = utc_time.strftime("%Y-%m-%dT%H:%M:%SZ")    # 转换成Aliyun要求的传参格式...
+    utc_time = now_time - timedelta(hours=8)  # UTC只是比北京时间提前了8个小时
+    utc_time = utc_time.strftime("%Y-%m-%dT%H:%M:%SZ")  # 转换成Aliyun要求的传参格式...
     print("utc_time:{} type:{}".format(utc_time, type(utc_time)))
 
 
@@ -67,5 +66,3 @@ if __name__ == "__main__":
     # print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", -15*60))
 
     timedelta_is_year_demo()
-
-

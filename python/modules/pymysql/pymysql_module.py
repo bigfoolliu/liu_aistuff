@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
 1. 首先需要安装好MySQL数据库并能正常运行
 
@@ -22,7 +27,6 @@ print('Database version:', data)
 # 直接创建默认编码为utf-8的数据库spiders
 cursor.execute("CREATE DATABASE spiders DEFAULT CHARACTER SET utf8")
 data_base.close()
-
 
 """
 3. 创建表

@@ -13,7 +13,6 @@ decimal模块使用
 3.浮点：十进制小数点的位置不固定（但位数是固定的）
 """
 
-
 from decimal import Decimal, getcontext
 
 
@@ -31,7 +30,7 @@ def basic_demo():
 
     # 进行计算
     ret1 = Decimal(1) / Decimal(3)
-    ret2 = 1/3
+    ret2 = 1 / 3
 
     ret31 = 1.2
     ret32 = 2.21232
@@ -50,7 +49,7 @@ def context_demo():
     context.prec = 6
 
     print(context)
-    print(a/b)    
+    print(a / b)
 
 
 def quantize_demo():
@@ -61,6 +60,6 @@ def quantize_demo():
 
 
 if __name__ == "__main__":
-   # basic_demo()
+    # basic_demo()
     context_demo()
     # quantize_demo()

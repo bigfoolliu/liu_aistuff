@@ -7,7 +7,6 @@
 platform模块示例
 """
 
-
 import platform
 
 

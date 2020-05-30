@@ -10,7 +10,6 @@ csv模块使用
 - 将已存在的结构化的文本写入至本地并保存为csv格式文件
 """
 
-
 import csv
 import pandas
 
@@ -49,7 +48,7 @@ def read_csv_demo():
     with open("./csv_test.txt", "rt") as fin:
         cin = csv.DictReader(fin)
         villains = [row for row in cin]
-    
+
     print(type(villains), villains)
 
 
@@ -75,24 +74,24 @@ def no_header_csv_demo():
     无标题的csv使用示例
     """
     villains = [
-    	["doctor", "no"],
-    	["rosa", "klebb"],
-    	["mister", "big"],
-    	["auric", "goldfinger"],
-    	["sophia", "blod"]
+        ["doctor", "no"],
+        ["rosa", "klebb"],
+        ["mister", "big"],
+        ["auric", "goldfinger"],
+        ["sophia", "blod"]
     ]
-    
+
     # 写入
     with open("./csv_no_header_test.txt", "wt") as f:
-    	csvout = csv.writer(f)
-    	csvout.writerows(villains)
+        csvout = csv.writer(f)
+        csvout.writerows(villains)
     print("write done")
-    
+
     # 读取
     with open("./csv_no_header_test.txt", "rt") as fin:
-    	cin = csv.reader(fin)
-    	villains = [row for row in cin]
-    
+        cin = csv.reader(fin)
+        villains = [row for row in cin]
+
     print(villains)
 
 

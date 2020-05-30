@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
 redis模块简单使用
 """
-
 
 import redis
 
@@ -53,7 +53,7 @@ def pubsub_pub_command(r):
 if __name__ == "__main__":
     pool = redis.ConnectionPool(host="localhost", port=6379, db=0)
     r = redis.Redis(connection_pool=pool)
-    
+
     # basic_set_get(r)
     # pipeline_command(r)
 

@@ -9,7 +9,6 @@ lxml库的使用
 解析html
 """
 
-
 from lxml import etree
 
 
@@ -29,14 +28,14 @@ def etree_demo1():
          </ul>
      </div>
      """
-    
+
     html = etree.HTML(text)  # 基于文本text创建了一个HTML类，构建了一个XPath解析对象
     result = etree.tostring(html)  # 调用tostring()方法即可输出修正后的HTML代码，但是结果是bytes类型
     print(result.decode('utf-8'))
-    
+
     # 从文本文件中读取
     html2 = etree.parse('./lxml_test.html', etree.HTMLParser())
-    
+
     result2 = etree.tostring(html2)
     print(result2.decode('utf-8'))
 
@@ -46,12 +45,12 @@ def etree_demo2():
     2. //选取所有节点
     """
     html = etree.parse('./lxml_test.html', etree.HTMLParser())
-    
+
     result = html.xpath('//*')  # 返回的是list，包含每一个节点，*代表任意节点
-    
+
     print(type(result))
     print(result, '\n\n')
-    
+
     # 当只获取指点的节点时，只需指定名称
     result2 = html.xpath('//ul')
     print(result2)
@@ -64,7 +63,7 @@ def etree_demo3():
     html = etree.parse('./lxml_test.html', etree.HTMLParser())
     result = html.xpath('//li/a')  # 选取所有li节点下的子节点a节点
     result2 = html.xpath('//ul//a')  # 选取所有a节点下的子孙a节点
-    
+
     print(type(result), '\n', result)
     print(type(result2), '\n', result2)
 
@@ -85,7 +84,7 @@ def etree_demo5():
 
     使用@进行属性过滤
     """
-    html = etree.parse('./lxml_test.html', etree.HTMLParser())    
+    html = etree.parse('./lxml_test.html', etree.HTMLParser())
     result = html.xpath('//li[@class="item-1"]')
     print(result)
 
@@ -95,17 +94,17 @@ def etree_demo6():
     6. text()方法，文本获取
     """
     html = etree.parse('./lxml_test.html', etree.HTMLParser())
-    
+
     # 此处result并没有获取到任何文本，只获取到了一个换行符，这是为什么呢？因为XPath中text()前面是/，
     # 而此处/的含义是选取直接子节点，很明显li的直接子节点都是a节点，文本都是在a节点内部的，
     # 所以这里匹配到的结果就是被修正的li节点内部的换行符，因为自动修正的li节点的尾标签换行了
     result = html.xpath('//li[@class="item-0"]/text()')
     print(result)
-    
+
     # 先定位至li节点下的a节点即可获取文本
     result2 = html.xpath('//li[@class="item-0"]/a/text()')
     print(result2)
-    
+
     # 要想获取子孙节点内部的所有文本，可以直接用//加text()的方式，但是会夹杂换行符等特殊字符
     result3 = html.xpath('//li[@class="item-0"]//text()')
     print(result3)
@@ -127,7 +126,7 @@ def etree_demo8():
     """
     html = etree.parse('./lxml_test.html', etree.HTMLParser())
     result = html.xpath('//li[contains(@class, "li")]/a/text()')
-    
+
     print(result)
 
 

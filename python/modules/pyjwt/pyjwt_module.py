@@ -12,7 +12,6 @@ pyjwt模块的使用
 更多使用：https://pyjwt.readthedocs.io/en/latest/usage.html
 """
 
-
 import jwt
 
 

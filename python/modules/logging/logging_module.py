@@ -16,7 +16,6 @@ INFO：处理请求或者状态变化等日常事务
 DEBUG：调试过程中使用DEBUG等级，如算法中每个循环的中间状态
 """
 
-
 import json
 import logging
 import logging.config
@@ -53,7 +52,7 @@ def handler_demo():
     stupid_logger.setLevel(logging.DEBUG)
 
     # 将日志写入文件，且该文件会自动增加
-    log_handler = RotatingFileHandler(filename="logs/logging_module.log", maxBytes=1024*1024*1, backupCount=10)
+    log_handler = RotatingFileHandler(filename="logs/logging_module.log", maxBytes=1024 * 1024 * 1, backupCount=10)
     log_formatter = logging.Formatter("%(asctime)s-%(module)s-%(lineno)s:%(message)s")
     log_handler.setFormatter(log_formatter)
 
@@ -90,7 +89,7 @@ def set_log_with_yaml(default_path="logging.yaml", default_level=logging.DEBUG, 
             logging.config.dictConfig(config)
     else:
         logging.basicConfig(level=default_level)
-    
+
     logging.info("set log yaml info message")
     logging.warning("set log yaml warning message")
     logging.critical("set log yaml critical message")
@@ -114,7 +113,7 @@ def set_log_with_json(default_path="./logging.json", default_level=logging.DEBUG
             logging.config.dictConfig(config)
     else:
         logging.basicConfig(level=default_level)
-    
+
     logging.info("set log json info message")
     logging.warning("set log json warning message")
     logging.critical("set log json critical message")

@@ -1,7 +1,6 @@
-#!-*-coding:utf-8-*-
-# !@Date: 2018/9/13 9:42
-# !@Author: Liu Rui
-# !@github: bigfoolliu
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 import time  # 时间

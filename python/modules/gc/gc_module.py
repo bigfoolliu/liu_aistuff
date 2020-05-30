@@ -22,7 +22,6 @@ gc.get_count()
 gc.get_threadshold()
 """
 
-
 import gc
 
 
@@ -39,4 +38,3 @@ def collect_demo():
 
 if __name__ == "__main__":
     pass
-
