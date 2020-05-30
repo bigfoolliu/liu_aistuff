@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -27,4 +28,3 @@ with tf.Session() as sess:
     for _ in range(3):
         sess.run(update)
         print("[INFO]new state:{}".format(sess.run(state)))
-
