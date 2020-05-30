@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -7,7 +8,6 @@
 """
 import face_recognition as face_r
 from PIL import Image, ImageDraw
-
 
 FILE_PATH = "./known_images/tongliya.jpeg"
 

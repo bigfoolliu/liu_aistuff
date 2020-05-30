@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
 多元线性回归
 """
-import numpy as np
+
+# import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression

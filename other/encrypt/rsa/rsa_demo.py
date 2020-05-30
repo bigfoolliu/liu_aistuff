@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 import time
 from Crypto import Random
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_v1_5 as Cipher_pkcs51_v1_5
-import base64
 
 
 def generate_rsa_file(length):
@@ -42,7 +41,6 @@ def rsa_decrypt(cipher_text):
     """
     use private pem to decrypt
     :param cipher_text: bytes
-    :param private_pem_file: str
     return: bytes
     """
     with open("./keys/private_key.pem", "r") as f:

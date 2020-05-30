@@ -1,5 +1,7 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
 
 """
 监听键盘的输入并将其输出
@@ -19,4 +21,3 @@ def press(key):
 
 with Listener(on_press=press) as listener:
     listener.join()
-

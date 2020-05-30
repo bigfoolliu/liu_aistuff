@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
 使用future来解决异步问题 
 """
-
 
 import tornado.web
 from tornado import gen
@@ -37,7 +37,6 @@ application = tornado.web.Application([
     (r"/index", IndexHandler),
     (r"/nonblocking", NonBlockingHandler),
 ])
-
 
 if __name__ == "__main__":
     application.listen(8888)

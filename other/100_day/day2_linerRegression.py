@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
 简单的线性回归实例(一元)
 """
-import numpy as np
+# import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split

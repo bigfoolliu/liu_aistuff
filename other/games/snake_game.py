@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -10,13 +11,12 @@ import numpy as np
 import time
 from pygame.locals import *
 
-
-BOARDWIDTH= 48
+BOARDWIDTH = 48
 BOARDHEIGHT = 28
 score = 0
 
 
-class Food():
+class Food(object):
 
     def __init__(self):
         self.item = (4, 5)
@@ -38,8 +38,8 @@ class Food():
         self._draw(screen, self.item[0], self.item[1])
 
 
-class Snake():
-    
+class Snake(object):
+
     def __init__(self):
         self.item = [[3, 25], [2, 25], [1, 25], [1, 24], ]
         self.x = 0
@@ -91,12 +91,12 @@ class Snake():
             pygame.draw.circle(screen, color, position, radius, width)
 
 
-class Board():
+class Board(object):
 
     def __init__(self):
         self.board_width = BOARDWIDTH
         self.board_height = BOARDHEIGHT
-    
+
     def draw_board(self, screen):
         """画出游戏区域"""
         color = 10, 255, 255
@@ -121,13 +121,13 @@ class Board():
 
 
 class Game():
-    
+
     def __init__(self):
         """游戏初始化"""
         pygame.init()
         self.screen = pygame.display.set_mode((BOARDWIDTH * 20, BOARDHEIGHT * 20))
         pygame.display.set_caption("snake_game")
-    
+
     def game_start(self, screen):
         """开始游戏"""
         snake = Snake()
@@ -165,7 +165,7 @@ class Game():
 
             pygame.display.update()
             time.sleep(0.05)
-    
+
     def game_over(self, snake):
         """判断游戏是否结束"""
         board_x, board_y = snake.get_head()
@@ -184,14 +184,14 @@ class Game():
             flag = 1
         if board_y == 0 or board_y == BOARDHEIGHT - 1:
             flag = 1
-        
+
         if flag:
             return True
         else:
             return False
 
 
-class Player():
+class Player(object):
 
     def __init__(self):
         pass
@@ -218,4 +218,3 @@ def main():
 
 
 main()
-

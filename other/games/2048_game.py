@@ -1,11 +1,11 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
 基于python和tkinter做的一个2048小游戏
 """
-
 
 import random
 import numpy as np
@@ -23,18 +23,18 @@ GRID_LEN = 4
 GRID_PADDING = 10
 
 BACKGROUND_COLOR_DICT = {
-        2: "#eee4da", 4: "#ede0c8", 8: "#f2b179", 16: "#f59563",
-        32: "#f67c5f", 64: "#f65e3b", 128: "#edcf72", 256: "#edcc61",
-        512: "#edc850", 1024: "#edc53f", 2048: "#edc22e", 4096: "#eee4da",
-        8192: "#edc22e", 16384: "#f2b179", 32768: "#f59563", 65536: "#f67c5f"
-        }
+    2: "#eee4da", 4: "#ede0c8", 8: "#f2b179", 16: "#f59563",
+    32: "#f67c5f", 64: "#f65e3b", 128: "#edcf72", 256: "#edcc61",
+    512: "#edc850", 1024: "#edc53f", 2048: "#edc22e", 4096: "#eee4da",
+    8192: "#edc22e", 16384: "#f2b179", 32768: "#f59563", 65536: "#f67c5f"
+}
 
 CELL_COLOR_DICT = {
-        2: "#776e65", 4: "#776e65", 8: "#f9f6f2", 16: "#f9f6f2",
-        32: "#f9f6f2", 64: "#f9f6f2", 128: "#f9f6f2", 256: "#f9f6f2",
-        512: "#f9f6f2", 1024: "#f9f6f2", 2048: "#f9f6f2", 4096: "#776e65",
-        8192: "#f9f6f2", 16384: "776e65", 32768: "#776e65", 65536: "#f9f6f2"
-        }
+    2: "#776e65", 4: "#776e65", 8: "#f9f6f2", 16: "#f9f6f2",
+    32: "#f9f6f2", 64: "#f9f6f2", 128: "#f9f6f2", 256: "#f9f6f2",
+    512: "#f9f6f2", 1024: "#f9f6f2", 2048: "#f9f6f2", 4096: "#776e65",
+    8192: "#f9f6f2", 16384: "776e65", 32768: "#776e65", 65536: "#f9f6f2"
+}
 
 FONT = ("Verdana", 40, "bold")
 
@@ -54,6 +54,7 @@ def show_time():
     """显示当前时间"""
     return datetime.datetime.now().isoformat()
 
+
 def new_game(n):
     """创建一个新的游戏"""
     print("[INFO]{}:Begin to create a new game.".format(show_time()))
@@ -62,6 +63,7 @@ def new_game(n):
         matrix.append([0] * n)
     print("[INFO]{}:Create the game mat complete, the mat:{}".format(show_time(), matrix))
     return matrix
+
 
 def add_two(mat):
     """在一个空的格子里产生一个2"""
@@ -74,6 +76,7 @@ def add_two(mat):
     mat[a][b] = 2
     print("[INFO]{}:Generate 2 complete, the mat:{}".format(show_time(), mat))
     return mat
+
 
 def game_state(mat):
     """当前游戏的状态"""
@@ -98,6 +101,7 @@ def game_state(mat):
             return "Not over"
     return "Lose"
 
+
 def reverse(mat):
     """将整个矩阵反转，[[1, 2], [3, 4]]--->[[2, 1], [4, 3]]"""
     print("[INFO]{}:To reverse the mat vertically.".format(show_time()))
@@ -106,12 +110,14 @@ def reverse(mat):
     print("[INFO]{}:Reverse the mat complete.".format(show_time()))
     return new
 
+
 def transpose(mat):
     """将整个矩阵转置，[[1, 2], [3, 4]]--->[[1, 3], [2, 4]]"""
     print("[INFO]{}:To reverse the mat horizontally.".format(show_time()))
     new = np.array(mat).T.tolist()  # 使用numpy将列表转换为矩阵求转置再转换为列表
     print("[INFO]{}:Transpose the mat complete.".format(show_time()))
     return new
+
 
 def cover_up(mat):
     """朝左侧覆盖空格"""
@@ -129,18 +135,20 @@ def cover_up(mat):
     print("[INFO]{}:Cover up the frame complete.".format(show_time()))
     return (new, done)
 
+
 def merge(mat):
     """合并可翻倍的网格"""
     print("[INFO]{}:Begin to merge.".format(show_time()))
     done = False
     for i in range(4):
         for j in range(3):
-            if mat[i][j] == mat[i][j+1] and mat[i][j] != 0:
+            if mat[i][j] == mat[i][j + 1] and mat[i][j] != 0:
                 mat[i][j] *= 2
                 mat[i][j + 1] = 0
                 done = True
     print("[INFO]{}:Merge complete.".format(show_time()))
     return (mat, done)
+
 
 def up(game):
     print("[INFO]{}:Up pressed".format(show_time()))
@@ -153,6 +161,7 @@ def up(game):
     game = transpose(game)
     return (game, done)
 
+
 def down(game):
     print("[INFO]{}:Down pressed".format(show_time()))
     game = reverse(transpose(game))
@@ -164,6 +173,7 @@ def down(game):
     game = transpose(reverse(game))
     return (game, done)
 
+
 def left(game):
     print("[INFO]{}:Left pressed".format(show_time()))
     game, done = cover_up(game)
@@ -172,6 +182,7 @@ def left(game):
     done = done or temp[1]
     game = cover_up(game)[0]
     return (game, done)
+
 
 def right(game):
     print("[INFO]{}:Right pressed".format(show_time()))
@@ -187,6 +198,7 @@ def right(game):
 
 class GameGrid(Frame):
     """游戏界面类"""
+
     def __init__(self):
         """游戏界面初始化"""
         print("[INFO]{}:Initialize the frame.".format(show_time()))
@@ -197,15 +209,15 @@ class GameGrid(Frame):
         self.master.bind("<Key>", self.key_down)
 
         self.commands = {
-                KEY_UP: up,
-                KEY_DOWN: down,
-                KEY_LEFT: left,
-                KEY_RIGHT: right,
-                KEY_UP_ALT: up,
-                KEY_DOWN_ALT: down,
-                KEY_LEFT_ALT: left,
-                KEY_RIGHT_ALT: right
-                }
+            KEY_UP: up,
+            KEY_DOWN: down,
+            KEY_LEFT: left,
+            KEY_RIGHT: right,
+            KEY_UP_ALT: up,
+            KEY_DOWN_ALT: down,
+            KEY_LEFT_ALT: left,
+            KEY_RIGHT_ALT: right
+        }
         self.grid_cells = []
         self.init_grid()
         self.init_matrix()
@@ -221,12 +233,14 @@ class GameGrid(Frame):
         for i in range(GRID_LEN):
             grid_row = []
             for j in range(GRID_LEN):
-                cell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=WIDTH / GRID_LEN, height=HEIGHT / GRID_LEN)
+                cell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=WIDTH / GRID_LEN,
+                             height=HEIGHT / GRID_LEN)
                 cell.grid(row=i, column=j, padx=GRID_PADDING, pady=GRID_PADDING)
-                t = Label(master=cell, text="", bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=LABEL_WIDTH, height=LABEL_HEIGHT)
+                t = Label(master=cell, text="", bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT,
+                          width=LABEL_WIDTH, height=LABEL_HEIGHT)
                 t.grid()
                 grid_row.append(t)
-            
+
             self.grid_cells.append(grid_row)
         print("[INFO]{}:Initialize the grid complete.".format(show_time()))
 
@@ -249,10 +263,11 @@ class GameGrid(Frame):
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
                 new_number = self.matrix[i][j]
-                if new_number == 0 :
+                if new_number == 0:
                     self.grid_cells[i][j].configure(text="", bg=BACKGROUND_COLOR_CELL_EMPTY)
                 else:
-                    self.grid_cells[i][j].configure(text=str(new_number), bg=BACKGROUND_COLOR_DICT[new_number], fg=CELL_COLOR_DICT[new_number])
+                    self.grid_cells[i][j].configure(text=str(new_number), bg=BACKGROUND_COLOR_DICT[new_number],
+                                                    fg=CELL_COLOR_DICT[new_number])
         self.update_idletasks()
         print("[INFO]{}:Update the gride cells complete.".format(show_time()))
 

@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -11,7 +12,6 @@ from tkinter import Canvas, Label, Tk, StringVar, messagebox
 import random
 import collections
 
-
 WIDTH = 300
 HEIGHT = 500
 
@@ -19,16 +19,17 @@ BOX_SIZE = 20
 START_POINT = WIDTH / 2 / BOX_SIZE * BOX_SIZE - BOX_SIZE
 # 参考直角坐标系画出各种形状
 SHAPES = (
-        ("yellow", (0, 0), (1, 0), (0, 1), (1, 1)), # square
-        ("lightblue", (0, 0), (1, 0), (2, 0), (3, 0)),  # line
-        ("orange", (2, 0), (0, 1), (1, 1), (2, 1)),  # right el
-        ("blue", (0, 0), (0, 1), (1, 1), (2, 1)),  # left el
-        ("green", (0, 1), (1, 1), (1, 0), (2, 0)),  # right wedge
-        ("red", (0, 0), (1, 0), (1, 1), (2, 1)),  # left wedge
-        ("purple", (1, 0), (0, 1), (1, 1), (2, 1))  # symmetrical wedge
-        )
+    ("yellow", (0, 0), (1, 0), (0, 1), (1, 1)),  # square
+    ("lightblue", (0, 0), (1, 0), (2, 0), (3, 0)),  # line
+    ("orange", (2, 0), (0, 1), (1, 1), (2, 1)),  # right el
+    ("blue", (0, 0), (0, 1), (1, 1), (2, 1)),  # left el
+    ("green", (0, 1), (1, 1), (1, 0), (2, 0)),  # right wedge
+    ("red", (0, 0), (1, 0), (1, 1), (2, 1)),  # left wedge
+    ("purple", (1, 0), (0, 1), (1, 1), (2, 1))  # symmetrical wedge
+)
 
-class Shape():
+
+class Shape(object):
     """游戏界面类"""
 
     def __init__(self, canvas):
@@ -39,12 +40,12 @@ class Shape():
 
         for point in self.shape[1:]:
             box = canvas.create_rectangle(
-                    point[0] * BOX_SIZE + START_POINT,
-                    point[1] * BOX_SIZE,
-                    point[0] * BOX_SIZE + BOX_SIZE + START_POINT,
-                    point[1] * BOX_SIZE + BOX_SIZE,
-                    fill=self.color
-                    )
+                point[0] * BOX_SIZE + START_POINT,
+                point[1] * BOX_SIZE,
+                point[0] * BOX_SIZE + BOX_SIZE + START_POINT,
+                point[1] * BOX_SIZE + BOX_SIZE,
+                fill=self.color
+            )
             self.boxes.append(box)
 
     def move(self, x, y):
@@ -87,7 +88,7 @@ class Shape():
         for box in boxes:
             x_move, y_move = get_move_coords(box)
             self.canvas.move(box, x_move * BOX_SIZE, y_move * BOX_SIZE)
-        
+
         return True
 
     def can_move_box(self, box, x, y):
@@ -108,7 +109,7 @@ class Shape():
             (coords[1] + coords[3] / 2 + y),
             (coords[0] + coords[2] / 2 + x),
             (coords[1] + coords[3] / 2 + y)
-            ))
+        ))
         other_items = set(self.canvas.find_all()) - set(self.boxes)
         if overlap & other_items:  # 重叠
             return False
@@ -125,6 +126,7 @@ class Shape():
 
 class Game():
     """游戏类"""
+
     def start(self):
         self.level = 1
         self.score = 0
@@ -195,10 +197,11 @@ class Game():
         """删除完成的行"""
         shape_boxes_coords = [self.canvas.coords(box)[3] for box in self.current_shape.boxes]
         all_boxes = self.canvas.find_all()
-        all_boxes_coords = {k : v for k, v in zip(all_boxes, [self.canvas.coords(box)[3] for box in all_boxes])}
+        all_boxes_coords = {k: v for k, v in zip(all_boxes, [self.canvas.coords(box)[3] for box in all_boxes])}
 
         lines_to_check = set(shape_boxes_coords)
-        boxes_to_check = dict((k, v) for k, v in all_boxes_coords.iteritems() if any(v == line for line in lines_to_check))
+        boxes_to_check = dict(
+            (k, v) for k, v in all_boxes_coords.iteritems() if any(v == line for line in lines_to_check))
 
         counter = collections.Counter()
         for box in boxes_to_check.values():
@@ -222,10 +225,9 @@ class Game():
 
     def game_over(self):
         """游戏结束"""
-        self.canvas.delete(tkinter.ALL)
+        self.canvas.delete(tf.ALL)
         messagebox.showinfo("Game Over", "You scored {} points.".format(self.score))
 
 
 game = Game()
 game.start()
-
