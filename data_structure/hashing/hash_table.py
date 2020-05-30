@@ -20,7 +20,7 @@ class HashTable(object):
         self.charge_factor = 1 if charge_factor is None else charge_factor
         self.__aux_list = []
         self._keys = {}
-    
+
     def keys(self):
         return self._keys
 
@@ -36,7 +36,7 @@ class HashTable(object):
         print("step {0}".format(step_ord))
         print([i for i in range(len(self.values))])
         print(self.values)
-    
+
     def bulk_insert(self, values):
         """块插入"""
         i = 1
@@ -50,17 +50,18 @@ class HashTable(object):
         """设置值"""
         self.values[key] = data
         self._keys[key] = data
-    
+
     def _colison_resolution(self, key, data=None):
         """碰撞解决"""
         new_key = self.hash_function(key + 1)
         while self.values[new_key] is not None and self.values[new_key] != key:
             if self.values.count(None) > 0:
-                new_key = self.hash_function(new_key += 1)
+                new_key += 1
+                new_key = self.hash_function(new_key)
             else:
                 new_key = None
                 break
-    
+
     def rehashing(self):
         """重新hash"""
         survivor_values = [value for value in self.values if value is not None]
@@ -68,7 +69,7 @@ class HashTable(object):
         self._keys.clear()
         self.values = [None] * self.size_table
         map(self.insert_data, survivor_values)
-    
+
     def insert_data(self, data):
         """hash表插入数据"""
         key = self.hash_function(data)

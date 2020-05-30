@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 """
@@ -28,7 +28,7 @@ class RedBlackTree(object):
         self.left = left
         self.right = right
         self.parent = parent
-    
+
     @property
     def sibling(self):
         """返回兄弟节点"""
@@ -108,7 +108,7 @@ class RedBlackTree(object):
                 self.left = RedBlackTree(label, 1, self)
                 self.left._inert_repair()
                 # TODO:
-    
+
     def _inert_repair(self):
         """当插入节点会破坏红黑树的结构时，需要变色等修复其结构"""
         if self.parent is None:
