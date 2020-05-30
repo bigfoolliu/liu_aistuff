@@ -47,7 +47,7 @@ def binary_search_by_recursion(sorted_collection, item, left, right):
     """
     通过迭代实现二分搜索
     Pure implementation of binary search algorithm in Python by recursion"""
-    if (right < left):
+    if right < left:
         return None
     
     midpoint = left + (right - left) // 2
@@ -60,9 +60,9 @@ def binary_search_by_recursion(sorted_collection, item, left, right):
         return binary_search_by_recursion(sorted_collection, item, midpoint+1, right)
 
 
-def __assert_sorted(collection):
+def __assert_sorted(array):
     """判断输入的数组是否为有序的数组"""
-    if collection != sorted(collection):
+    if array != sorted(array):
         raise ValueError('Collection must be ascending sorted')
     return True
 

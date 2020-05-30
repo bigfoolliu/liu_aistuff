@@ -8,6 +8,7 @@
 
 class SingleNode(object):
     """单链表节点"""
+
     def __init__(self, item):
         self.item = item
         self.next = None
@@ -15,6 +16,7 @@ class SingleNode(object):
 
 class SingleLinkList(object):
     """单链表"""
+
     def __init__(self):
         self.__head = None
 
@@ -30,7 +32,7 @@ class SingleLinkList(object):
             cur = self.__head
             while cur:
                 cur = cur.next
-            node = SingeNode(item)
+            node = SingleNode(item)
             cur.next = node
 
 

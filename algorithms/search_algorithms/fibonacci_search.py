@@ -16,23 +16,23 @@
 """
 
 
-def fibonacci_search(sorted_array, target):
+def fibonacci_search(array, target):
     """
     斐波那契查找首选需要一个现成的斐波那契表,且其最大元素必须超过查找表中元素个数的数值
     """
-    F = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]
+    fib = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]
 
     left = 0
-    right = len(sorted_array) - 1
+    right = len(array) - 1
     print("right: {}".format(right))
 
     k = 0  # k为F表中首个元素值不小于查找表中的元素个数值的下标
-    while right > F[k] - 1:
+    while right > fib[k] - 1:
         k += 1
 
     i = right
-    while F[k] - 1 > i:
-        sorted_array.append(sorted_array[right])  # 查找表的末尾添加末位元素
+    while fib[k] - 1 > i:
+        array.append(array[right])  # 查找表的末尾添加末位元素
         i += 1
 
     # 主逻辑
@@ -40,15 +40,15 @@ def fibonacci_search(sorted_array, target):
         if k < 2:
             mid = left
         else:
-            mid = left + F[k-1] - 1
+            mid = left + fib[k-1] - 1
 
-        if target < sorted_array[mid]:
+        if target < array[mid]:
             right = mid - 1
             k -= 1
-        elif target > sorted_array[mid]:
+        elif target > array[mid]:
             left = mid + 1
             k -= 2
-        else:  # target == sorted_array[mid]
+        else:  # target == array[mid]
             if mid <= right:
                 return mid
             else:

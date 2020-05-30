@@ -22,11 +22,11 @@ def sequential_search(array, target):
 
 
 if __name__ == '__main__':
-    array = [0, 3, 4, 6, 12, 5, 66, 7]
+    test_array = [0, 3, 4, 6, 12, 5, 66, 7]
     target1 = 12
     target2 = 123
 
-    ret1 = sequential_search(array, target1)
-    ret2 = sequential_search(array, target2)
+    ret1 = sequential_search(test_array, target1)
+    ret2 = sequential_search(test_array, target2)
     print(ret1)
     print(ret2)

@@ -8,30 +8,30 @@ python实现差值搜索算法
 """
 
 
-import bisect
+# import bisect
 
 
-def interpolation_search(sorted_array, target):
+def interpolation_search(array, target):
     """
     差值搜索基本实现
     return: int
     """
     left = 0
-    right = len(sorted_array) - 1
+    right = len(array) - 1
 
     while left <= right:
         # 核心
-        index = left + int((target - sorted_array[left]) * (right - left) / (sorted_array[right] - sorted_array[left]))
+        index = left + int((target - array[left]) * (right - left) / (array[right] - array[left]))
         print("index: {}".format(index))
 
         # out of range check
-        if index < 0 or index >= len(sorted_array):
+        if index < 0 or index >= len(array):
             return -1
         
-        if sorted_array[index] == target:
+        if array[index] == target:
             return index
         else:
-            if target < sorted_array[index]:
+            if target < array[index]:
                 right = index - 1
             else:
                 left = index + 1

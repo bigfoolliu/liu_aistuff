@@ -3,7 +3,7 @@
 # author: bigfoolliu
 
 """
-Use serveral ways to compress string `everyday is awesome!`
+Use several ways to compress string `everyday is awesome!`
 1. use simple bits to replace ASCII value
 2. use huffman coding
 """
@@ -20,36 +20,35 @@ class SimpleCompression(object):
     def __init__(self, string):
         self.symbols = set(string)
         self.bit_len = 1
-        while 2**self.bit_len < len(self.symbols):
+        while 2 ** self.bit_len < len(self.symbols):
             self.bit_len += 1
         self.string = string
 
         self.s2b = {}
         self.b2s = {}
         i = 0
-        for s in self.symbols:
+        for symbol in self.symbols:
             b = bin(i)[2:]
             if len(b) < self.bit_len:
                 b = (self.bit_len - len(b)) * '0' + b
-            self.s2b[s] = b
+            self.s2b[symbol] = b
             self.b2s[b] = s
             i += 1
 
     def compress(self):
-        bits = ''
-        for s in self.string:
-            bits += self.s2b[s]
-        return bits
+        compress_bits = ''
+        for i in self.string:
+            compress_bits += self.s2b[i]
+        return compress_bits
 
-    def uncompress(self, bits):
+    def uncompress(self, uncompress_bits):
         string = ''
-        for i in range(0, len(bits), self.bit_len):
-            string += self.b2s[bits[i:i + self.bit_len]]
+        for i in range(0, len(uncompress_bits), self.bit_len):
+            string += self.b2s[uncompress_bits[i:i + self.bit_len]]
         return string
 
 
 class HuffmanCompression(object):
-
     class Trie:
         def __init__(self, val, char=''):
             self.val = val
@@ -84,7 +83,8 @@ class HuffmanCompression(object):
         self.s2b = {}
         self.bfs_encode(self.root, self.s2b)
 
-    def bfs_encode(self, root, s2b):
+    @staticmethod
+    def bfs_encode(root, s2b):
         queue = collections.deque()
         queue.append(root)
         while queue:
@@ -100,15 +100,15 @@ class HuffmanCompression(object):
                 queue.append(node.right)
 
     def compress(self):
-        bits = ''
+        c_bits = ''
         for char in self.string:
-            bits += self.s2b[char]
-        return bits
+            c_bits += self.s2b[char]
+        return c_bits
 
-    def uncompress(self, bits):
+    def uncompress(self, un_bits):
         string = ''
         root = self.root
-        for bit in bits:
+        for bit in un_bits:
             if bit == '0':
                 root = root.left
             else:

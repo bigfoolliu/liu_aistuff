@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -22,33 +23,34 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 m = 20
 X0 = np.ones((m, 1))
 X1 = np.arange(1, m + 1).reshape(m, 1)
 
 # x
-X = np.hstack((X0, X1))  
+X = np.hstack((X0, X1))
 # y
 y = np.array([
     3, 4, 5, 5, 2, 4, 7, 8, 11, 8, 12,
     11, 13, 13, 16, 17, 18, 17, 19, 21
-    ]).reshape(m, 1)
+]).reshape(m, 1)
 
 alpha = 0.01  # 学习率
+
+
 # print("m: {}\nalpha: {}\nX0: {}\nX1: {}\nX: {}\ny: {}".format(m, alpha, X0, X1, X, y))
 
 
 def error_func(theta, X, y):
     """误差函数J，返回均方误差"""
     diff = np.dot(X, theta) - y
-    return (1./2*m) * np.dot(np.transpose(diff), diff)
+    return (1. / 2 * m) * np.dot(np.transpose(diff), diff)
 
 
 def gradient_func(theta, X, y):
     """J函数的梯度"""
     diff = np.dot(X, theta) - y
-    return (1./m) * np.dot(np.transpose(X), diff)
+    return (1. / m) * np.dot(np.transpose(X), diff)
 
 
 def gradient_descent(X, y, alpha, error=1e-5):
@@ -69,7 +71,6 @@ def gradient_descent(X, y, alpha, error=1e-5):
 optimal = gradient_descent(X, y, alpha, error=1000)
 print("[INFO]optimal: {}".format(optimal))
 print("[INFO]error func: {}".format(error_func(optimal, X, y)[0, 0]))
-
 
 # 图形化展示
 fig = plt.figure()

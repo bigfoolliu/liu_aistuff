@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -24,11 +25,11 @@ def sigmoid(z):
     数学形式：f(z)=1/(1+e ** (-z))
     特点：能够将输入的连续实值变换为0和1之间的输出，如果是非常大的负数，则输出为0，如果是非常大的正数则输出为1
     缺点：深度神经网络中梯度反向传播时导致梯度爆炸(概率较小)和梯度消失(概率较大);输出(output)不是0均值(0-centered);解析式中含有幂运算，规模大的深度网络会较大增加训练时间
-    1. 
+    :param z:
+    :return:
     """
     ret = 1 / (1 + math.e ** (-z))
     return ret
-
 
 
 def tanh(x):
@@ -125,4 +126,3 @@ elu_ret = elu(z, 0.02)
 plt.plot(z, elu_ret, color="g", label="elu")
 plt.legend()
 plt.show()
-

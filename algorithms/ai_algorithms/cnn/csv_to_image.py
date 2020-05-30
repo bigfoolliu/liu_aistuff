@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -19,6 +20,7 @@
     emotion, pixels, Usage
     0        ...     Training
 """
+
 import pandas as pd
 import numpy as np
 import os
@@ -85,8 +87,7 @@ def csv_to_img(file):
         img_name = os.path.join(img_path, str(index) + ".jpg")
 
         # 转换并存储
-        sm.toimage(img).save(img_name)  # 将nparray数组转换为图片并保存
+        sm.toimage(img).save(img_name)  # 将ndarray数组转换为图片并保存
 
 
 csv_to_img(FILE_PATH)
-

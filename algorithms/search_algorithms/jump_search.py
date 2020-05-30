@@ -7,7 +7,6 @@
 python实现跳转搜索
 """
 
-
 import math
 
 
@@ -16,7 +15,7 @@ def jump_search(array, target):
     n = len(array)
     step = int(math.floor(math.sqrt(n)))  # 跳转的间隔
     prev = 0  # 跳转间隔的前面一个下标
-    while array[min(step, n)-1] < target:
+    while array[min(step, n) - 1] < target:
         prev = step
         step += int(math.floor(math.sqrt(n)))
         if prev >= n:
@@ -32,7 +31,7 @@ def jump_search(array, target):
 
 
 if __name__ == "__main__":
-    array = [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
-    target = 55
-    index = jump_search(array, target)
-    print("Number " + str(target) + " is at index " + str(index))
+    test_array = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+    test_target = 55
+    index = jump_search(test_array, test_target)
+    print("Number " + str(test_target) + " is at index " + str(index))

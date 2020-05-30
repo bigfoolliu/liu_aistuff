@@ -9,7 +9,6 @@
 
 
 class SingleTon(object):
-
     """继承该父类的类都是单例类,即重写类的new方法"""
 
     _instance = {}  # 用来保存自己类的实例
@@ -22,21 +21,20 @@ class SingleTon(object):
 
 
 class Tony(SingleTon):
-
     class_val = "class_method"
 
     def __init__(self, name):
-        self.name = "tony"
-    
+        self.name = name
+
     def print_name(self):
         print(self.name)
-    
+
     @staticmethod
-    def print_staic():
+    def print_static():
         print("static method")
-    
+
     @classmethod
-    def print_classmethod(cls):
+    def print_class_method(cls):
         print(cls.class_val)
 
 
@@ -50,8 +48,8 @@ if __name__ == '__main__':
     tony.print_name()
     jim.print_name()
 
-    tony.print_staic()
-    jim.print_staic()
+    tony.print_static()
+    jim.print_static()
 
-    tony.print_classmethod()
-    jim.print_classmethod()
+    tony.print_class_method()
+    jim.print_class_method()

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 import pandas as pd
@@ -8,6 +9,7 @@ import matplotlib.pyplot as plt
 
 
 FILE_PATH = "./knn_dataset/3-16.csv"
+
 
 def read_file(file_path):
     """
@@ -33,4 +35,3 @@ plt.scatter(movie["actions"], movie["kisses"])
 plt.xlabel("actions")
 plt.ylabel("kisses")
 plt.show()
-

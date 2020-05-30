@@ -1,5 +1,6 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -11,7 +12,6 @@ import tensorflow as tf
 import numpy as np
 # RandomState是numpy的一个伪随机数生成器
 from numpy.random import RandomState
-
 
 # 定义训练数据集批次的大小，即每批数据量的大小
 BATCH_SIZE = 8
@@ -64,4 +64,3 @@ with tf.Session() as sess:
 
     print("[INFO]after {} times trained, w1:\n{}.".format(STEPS, sess.run(w1)))
     print("[INFO]after {} times trained, w2:\n{}.".format(STEPS, sess.run(w2)))
-

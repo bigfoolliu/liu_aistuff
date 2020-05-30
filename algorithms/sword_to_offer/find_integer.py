@@ -97,12 +97,12 @@ def find_integer2(array, target):
 
 
 if __name__ == "__main__":
-    array = [[0, 1, 3, 5], [2, 3, 4, 7], [5, 7, 8, 9]]
-    print(find_integer(array, 4))
-    print(find_integer(array, 6))
+    test_array = [[0, 1, 3, 5], [2, 3, 4, 7], [5, 7, 8, 9]]
+    print(find_integer(test_array, 4))
+    print(find_integer(test_array, 6))
 
-    print(find_integer1(array, 4))
-    print(find_integer1(array, 6))
+    print(find_integer1(test_array, 4))
+    print(find_integer1(test_array, 6))
 
-    print(find_integer2(array, 4))
-    print(find_integer2(array, 6))
+    print(find_integer2(test_array, 4))
+    print(find_integer2(test_array, 6))

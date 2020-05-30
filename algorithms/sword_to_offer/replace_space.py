@@ -12,7 +12,6 @@ import time
 
 # 计算时间的装饰器
 def count_time(func):
-
     def wrapper(*args, **kwargs):
         start_time = time.clock()
         ret = func(*args, **kwargs)
@@ -35,6 +34,5 @@ def replace_space(target_str):
 
 
 if __name__ == "__main__":
-    target_str = "i love china,  haha"
-    print(replace_space(target_str))
- 
+    test_str = "i love china,  haha"
+    print(replace_space(test_str))

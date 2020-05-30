@@ -1,14 +1,13 @@
-#!/usr/bin/env python
-#!coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
 展示神经网络实现输出结果的前向传播算法
 """
 
-
 import tensorflow as tf
-
 
 # 声明两个变量,元素为均值为1，标准差为1的随机数
 w1 = tf.Variable(tf.random_normal([2, 3], stddev=1, seed=1))
@@ -27,8 +26,8 @@ print("[INFO]shape w1:{} w2:{} x:{} a:{} y:{}".format(w1.shape, w2.shape, x.shap
 sess = tf.Session()
 
 # 初始化变量方式1
-#sess.run(w1.initializer)
-#sess.run(w2.initializer)
+# sess.run(w1.initializer)
+# sess.run(w2.initializer)
 
 # 初始化变量方式2
 init_op = tf.initialize_all_variables()
@@ -37,4 +36,3 @@ sess.run(init_op)
 ret = sess.run(y)
 print("[INFO]ret:{} shape:{}".format(ret, ret.shape))
 sess.close()
-

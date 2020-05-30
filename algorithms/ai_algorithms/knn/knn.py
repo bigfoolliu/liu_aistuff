@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -51,7 +52,7 @@ from numpy import tile
 import operator
 
 
-def createDateSet():
+def create_data_set():
     """
     构建最简单的数据集
     """

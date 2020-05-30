@@ -16,5 +16,5 @@ def insert_sort(array):
 
 
 if __name__ == '__main__':
-    array = [0, 2, 8, 3, 6, 2, 9]
-    print(insert_sort(array))
+    test_array = [0, 2, 8, 3, 6, 2, 9]
+    print(insert_sort(test_array))

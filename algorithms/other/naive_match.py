@@ -1,4 +1,7 @@
-#coding:utf-8
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
 
 # 朴素串字符匹配
 # 效率极低的一种字符串匹配算法
