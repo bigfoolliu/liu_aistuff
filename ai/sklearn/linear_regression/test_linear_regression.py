@@ -1,12 +1,11 @@
-
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 
 import numpy as np
 import unittest
-from linear_model import LinearRegressionModel
+from .linear_model import LinearRegressionModel
 
 
 class TestLinearRegressionModel(unittest.TestCase):
@@ -34,4 +33,3 @@ class TestLinearRegressionModel(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    

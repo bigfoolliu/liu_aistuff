@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-# author: bigfooliu
+# author: bigfoolliu
 
 
 from sklearn.feature_extraction import DictVectorizer
@@ -11,7 +11,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 class SklearnPreprocessing(object):
-    
+
     def dectvec(self):
         """
         字典数据抽取函数
@@ -21,10 +21,10 @@ class SklearnPreprocessing(object):
         # 实例化
         dict = DictVectorizer()
         # 调用fit_transform
-        data = dict.fit_transform([{'city':'北京','temperature':'100'},
-                                    {'city':'上海','temperature':'90'},
-                                    {'city':'深圳','temperature':'70'},
-                                    {'city':'广州','temperature':'80'}])
+        data = dict.fit_transform([{'city': '北京', 'temperature': '100'},
+                                   {'city': '上海', 'temperature': '90'},
+                                   {'city': '深圳', 'temperature': '70'},
+                                   {'city': '广州', 'temperature': '80'}])
         print(dict.get_feature_names())
         print(data)
         return None
@@ -43,11 +43,10 @@ class SklearnPreprocessing(object):
         :return:None
         """
         var = VarianceThreshold()
-        data = var.fit_transform([[1, 2, 3 , 4],[0, 2, 5, 4],[8, 2, 6, 7]])
+        data = var.fit_transform([[1, 2, 3, 4], [0, 2, 5, 4], [8, 2, 6, 7]])
 
         print(data)
         return None
-
 
     def pca(self):
         """
@@ -67,7 +66,6 @@ class SklearnPreprocessing(object):
         print(data)
         return None
 
-
     def ss(self):
         """
         sklearn标准化API：sklearn.preprocessing.StandardScaler
@@ -83,12 +81,11 @@ class SklearnPreprocessing(object):
         :return:None
         """
         std = StandardScaler()
-        data = std.fit_transform([[2, 3, 5, 7],[1, 8, 2, 9],[3, 4, 6, 5]])
+        data = std.fit_transform([[2, 3, 5, 7], [1, 8, 2, 9], [3, 4, 6, 5]])
         print(std.mean_, '\n')
         print(std.var_, '\n')
         print(data)
         return None
-
 
     def mm(self):
         """
@@ -107,7 +104,7 @@ class SklearnPreprocessing(object):
         :return:None
         """
         mm = MinMaxScaler()
-        data = mm.fit_transform([[90,2,10,40],[60,4,15,15]])
+        data = mm.fit_transform([[90, 2, 10, 40], [60, 4, 15, 15]])
 
         print(data)
         return None

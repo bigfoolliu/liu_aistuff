@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-def countvec():
+def count_vec():
     """
     对文本进行特征值化
     """
@@ -19,4 +20,4 @@ def countvec():
 
 
 if __name__ == "__main__":
-    countvec()
+    count_vec()

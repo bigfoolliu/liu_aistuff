@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-#author: bigfoolliu
+# author: bigfoolliu
 
 """
 线性回归模型实践
@@ -21,7 +21,7 @@ def load_boston_dataset(test_size=0.1):
     return x_train, x_test, y_train, y_test
 
 
-class LinearRegressionModel():
+class LinearRegressionModel(object):
 
     """
     when training model with LinearRegression algorithms, you can be the subclass

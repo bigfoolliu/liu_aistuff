@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 import jieba
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-def cutword():
+def cut_word():
     """
     中文分词
+    :return:
     """
     con1 = jieba.cut('今天很残酷，明天更残酷，后天很美好，但绝大部分人都死在明天的晚上，见不到后天的太阳')
     con2 = jieba.cut('我们看到的从遥远星系发出的光是几百万年以前发出的，因此当我们看到宇宙时，我们是在看他的过去')
@@ -20,13 +22,13 @@ def cutword():
     c2 = ' '.join(content2)
     return c1, c2
 
- 
+
 def hanzivec():
     """
     中文特征值化
     :return:None
     """
-    c1, c2 = cutword()
+    c1, c2 = cut_word()
     print(c1, '\n', c2)
 
     cv = CountVectorizer()

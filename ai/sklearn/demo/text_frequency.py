@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-#!coding:utf-8
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -14,11 +15,12 @@ TfidfVectorizer(stop_words=None,...)
     TfidfVectorizer.get_feature_names()
         返回值:单词列表
 """
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 import jieba
 
 
-def cutword():
+def cut_word():
     """
     中文分词
     """
@@ -37,7 +39,7 @@ def tfidfvec():
     """
     返回词的权重矩阵
     """
-    c1, c2 = cutword()
+    c1, c2 = cut_word()
     print(c1, '\n', c2)
 
     tf = TfidfVectorizer()
