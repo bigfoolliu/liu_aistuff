@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -21,10 +22,12 @@ class SingleItem(object):
 def single_item(cls, *args, **kwargs):
     """通过闭包的方式"""
     isinstances = {}
+
     def get_instance():
         if cls not in isinstances:
             isinstances[cls] = cls(*args, **kwargs)
         return isinstances[cls]
+
     return get_instance
 
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -17,4 +18,3 @@ def merge_list(*args):
 l1 = [12, 2, 4, 2, 56, 2]
 l2 = [2, 4, 5, 77, 8]
 print(merge_list(l1, l2))
-

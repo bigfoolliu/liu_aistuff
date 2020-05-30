@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -46,4 +47,3 @@ assert ret == "helloppp"
 ret2 = my_rstrip(s, "p")
 print(ret2)
 assert ret2 == "ggghello"
-

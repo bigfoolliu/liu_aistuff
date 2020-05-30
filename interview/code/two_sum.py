@@ -14,7 +14,7 @@ def two_sum(array, target):
     for i in range(0, len(array)):
         num2 = target - array[i]
         if num2 in hash_map:
-            return (i, hash_map[num2])
+            return i, hash_map[num2]
         hash_map[array[i]] = i
     return None
 

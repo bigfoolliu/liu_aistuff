@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -18,4 +19,3 @@ def min_common(a, b):
 print(min_common(1, 3))
 print(min_common(2, 9))
 print(min_common(6, 24))
-

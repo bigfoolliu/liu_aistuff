@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -8,13 +9,11 @@
 
 import copy
 
-
 # 当序列为列表的时候
-l1  = [1, 2, 3, 4, 5, 6]
+l1 = [1, 2, 3, 4, 5, 6]
 l2 = copy.deepcopy(l1)
 l2.reverse()
 print(l1, l2)
-
 
 # 当序列为字符串时候
 s = "hello. pyhton"

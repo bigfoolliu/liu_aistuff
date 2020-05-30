@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -18,7 +19,7 @@ def remove(array):
         if array[pre] != array[cur]:
             pre += 1
             array[pre] = array[cur]
-    return array[:pre+1], pre+1
+    return array[:pre + 1], pre + 1
 
 
 print(remove([0, 0, 1, 2, 2, 5]))

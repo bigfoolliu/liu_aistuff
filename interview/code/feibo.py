@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -37,4 +38,3 @@ print(feibo(5))
 
 for i in feibo2(5):
     print(i)
-

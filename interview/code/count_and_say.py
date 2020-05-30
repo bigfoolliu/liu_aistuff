@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+# author: bigfoolliu
 
 
 """
@@ -31,4 +32,3 @@ def count_and_say(n):
 
 
 print(count_and_say(5))
-
