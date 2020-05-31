@@ -33,6 +33,7 @@ command + ctrl + q  # 锁定屏幕
 command + q  # 关闭应用
 command + m  # 最小化应用(会导致command + tab键的时候不能看到)
 command + h  # 隐藏当前窗口(建议使用，command + tab键的时候可以显示)
+command + z  # 万能的还原操作
 command + option + h  # 隐藏其他所有窗口
 
 command + down  # 选中文件之后可以打开
