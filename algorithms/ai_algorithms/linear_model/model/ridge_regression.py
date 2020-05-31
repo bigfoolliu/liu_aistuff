@@ -17,7 +17,6 @@ from sklearn import linear_model
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # X is 10*10 Hilbert matrix
 X = 1.0 / (np.arange(1, 11) + np.arange(0, 10)[:, np.newaxis])
 print("X: ", X)

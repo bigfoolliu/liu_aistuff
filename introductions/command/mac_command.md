@@ -31,8 +31,8 @@ ctrl + f  # 向前翻页
 
 command + ctrl + q  # 锁定屏幕
 command + q  # 关闭应用
-command + m  # 最小化应用
-command + h  # 隐藏当前窗口
+command + m  # 最小化应用(会导致command + tab键的时候不能看到)
+command + h  # 隐藏当前窗口(建议使用，command + tab键的时候可以显示)
 command + option + h  # 隐藏其他所有窗口
 
 command + down  # 选中文件之后可以打开
@@ -56,6 +56,7 @@ command + c  # 拷贝(win中的复制)
 command + v  # 粘贴
 command + alt + v  # 粘贴(但不保留复制的文件，类似于剪切)
 command + backspace  # 删除选中的文件
+command + shift + option + v  # 去除格式粘贴
 
 command + tab  # 切换窗口
 
@@ -82,6 +83,9 @@ open <file_name>
 open -a /Applications/*.app <file_name>
 # 在finder中打开指定的路径
 open ./
+
+
+ctrl + command + space  # 快速打开emoji表情😄
 ```
 
 ### 1.2其他命令行命令
