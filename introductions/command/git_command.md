@@ -217,6 +217,22 @@ git revert commit d92761fec08ecca646f81402a415e9a07f9638b6
 - git reflog常用于恢复本地的错误操作
 
 ```shell
+# 查看提交历史
+git log
+
+# 查看提交历史并显示每次提交的差异
+git log -p
+git log -p -2  # 只查看最近的两次提交
+
+# 每次提交的简略统计信息，加减行数
+git log --stat
+
+# 带简单ascii字符来图形化展示
+git log --graph
+
+# 筛选作者
+git log --author=bigfoolliu
+
 # 查看所有的操作记录
 git reflog show
 
