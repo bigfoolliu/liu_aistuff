@@ -96,8 +96,8 @@ git commit
 # 带注释的提交
 git commit -m "init"
 
-# 提交当前repo的所有改变
-git commit -a
+# 提交当前repo的所有改变，可以跳过git add(慎用，可能会添加不需要的文件)
+git commit -a -m "format"
 
 # 修改上一次提交的信息
 git commit --amend
