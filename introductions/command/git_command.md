@@ -4,19 +4,20 @@
 
 * [1.git基本命令](#1.git基本命令)
         * [1.1版本和用户](#1.1版本和用户)
-        * [1.2仓库克隆](#1.2仓库克隆)
-        * [1.3暂存](#1.3暂存)
-        * [1.4本地提交](#1.4本地提交)
-        * [1.5远程提交与拉取](#1.5远程提交与拉取)
-        * [1.6提交堆栈](#1.6提交堆栈)
-        * [1.7分支](#1.7分支)
-        * [1.8撤销](#1.8撤销)
-        * [1.9操作记录](#1.9操作记录)
-        * [1.10标签](#1.10标签)
-        * [1.11查看内容](#1.11查看内容)
+        * [1.2仓库克隆(clone)](#1.2仓库克隆(clone))
+        * [1.3暂存(add)](#1.3暂存(add))
+        * [1.4本地提交(commit)](#1.4本地提交(commit))
+        * [1.5远程提交于拉取(push, pull)](#1.5远程提交于拉取(push,-pull))
+        * [1.6提交堆栈(stash)](#1.6提交堆栈(stash))
+        * [1.7分支(branch)](#1.7分支(branch))
+        * [1.8撤销(reset, revert)](#1.8撤销(reset,-revert))
+        * [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
+        * [1.10标签(tag)](#1.10标签(tag))
+        * [1.11查看内容(show)](#1.11查看内容(show))
 * [2.操作命令组](#2.操作命令组)
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
+        * [2.3提交之后因为大文件而push失败](#2.3提交之后因为大文件而push失败)
 * [3.gitmoduel使用](#3.gitmoduel使用)
 * [4.其他](#4.其他)
         * [4.非常用命令](#4.非常用命令)
@@ -58,14 +59,14 @@ git config --list
 git config --global core.editor vim
 ```
 
-### 1.2仓库克隆
+### 1.2仓库克隆(clone)
 
 ```shell
 # 从远程克隆一个版本库
 git clone `address`
 ```
 
-### 1.3暂存
+### 1.3暂存(add)
 
 ```shell
 # 将所有修改文件暂存
@@ -73,39 +74,33 @@ git add .
 
 # 将指定文件暂存
 git add test.py
-
-# reset撤销直接删除指定的commit,将HEAD后移
-# 撤销对所有文件的暂存
-git reset HEAD
-
-# 撤销对指定文件的暂存
-git reset HEAD test.py
 ```
 
-### 1.4本地提交
+### 1.4本地提交(commit)
 
 ```shell
 # 直接提交
 git commit
 
 # 带注释的提交
-git commit -m `message`
+git commit -m "init"
 
 # 提交当前repo的所有改变
 git commit -a
 
-# 移除文件(从Git中删除)
-git commit -m "remove"
 # 修改上一次提交的信息
 git commit --amend
 ```
 
-### 1.5远程提交与拉取
+### 1.5远程提交于拉取(push, pull)
 
 ```shell
 # 当前分支只有一个追踪分支，直接将本地的分支的更新推送至远程主机
 git push
 git push <远程主机名>　<本地分支名>:<远程分支名>
+git push origin master:master  # 将本地的master分支推送到远程的master分支
+git push origin master:dev  # 将本地的master分支推送到远程的dev分支
+
 
 # 当前分支只有一个追踪分支，直接取回远程主机某个分支的更新，与本地的分支合并
 git pull
@@ -116,7 +111,7 @@ git pull <远程主机名>　<远程分支名>:<本地分支名>
 git push -f
 ```
 
-### 1.6提交堆栈
+### 1.6提交堆栈(stash)
 
 - [git stash clear之后如何找回数据](https://www.jianshu.com/p/3c2292223335)
 
@@ -152,7 +147,7 @@ git stash apply stash@{0}
 git stash show -p stash@{0}
 ```
 
-### 1.7分支
+### 1.7分支(branch)
 
 ```shell
 # 取回所有分支的更新
@@ -161,19 +156,15 @@ git fetch
 git fetch <远程主机名> <分支名>
 
 # 切换到本地的dev分支
-git checkout `dev`
+git checkout dev
+
 # 建立一个新的本地dev分支
-git checkout -b `dev`
+git checkout -b dev
+
 # 导航到之前的一个分支
 git checkout -
 
-# 当文件提交comnit后push因为大文件而失败
-# 回退至指定的版本号
-git reset --hard `commit_id`
-# 远程提交回退
-git push origin HEAD --force
-# 删除缓存
-git rm -r --cached .
+
 
 
 # 查询本地仓库，远程仓库，跟踪关系最全的命令
@@ -189,9 +180,17 @@ git push origin --delete dev
 git remote get-url origin
 ```
 
-### 1.8撤销
+### 1.8撤销(reset, revert)
 
 ```shell
+# reset撤销直接删除指定的commit,将HEAD后移
+# 撤销对所有文件的暂存
+git reset HEAD
+
+# 撤销对指定文件的暂存
+git reset HEAD test.py
+
+
 # revert会将操作之前和之后的信息都会保留,用新的commit回滚旧的commit
 # 撤销前一次commit
 git revert HEAD
@@ -203,7 +202,7 @@ git revert HEAD^
 git revert commit d92761fec08ecca646f81402a415e9a07f9638b6
 ```
 
-### 1.9操作记录
+### 1.9操作记录(log, reflog)
 
 - git reflog是显示所有的操作记录，包括提交，回退的操作。一般用来找出操作记录中的版本号，进行回退
 - git reflog常用于恢复本地的错误操作
@@ -216,7 +215,7 @@ git reflog show
 git reflog master
 ```
 
-### 1.10标签
+### 1.10标签(tag)
 
 - 软件发布的时候通常使用，会记录版本的commit号,方便回溯
 - 一般的打tag都是建立在head上
@@ -252,7 +251,7 @@ git tag -d v1.0
 git push origin :refs/tags/v1.0
 ```
 
-### 1.11查看内容
+### 1.11查看内容(show)
 
 ```shell
 # 查看tag的详细信息
@@ -288,6 +287,17 @@ git rebase --continue
 git rebase -i <commid_id>
 # 修改掉多余的commit message
 git rebase --continue
+```
+
+### 2.3提交之后因为大文件而push失败
+
+```shell
+# 回退至指定的版本号
+git reset --hard `commit_id`
+# 远程提交回退
+git push origin HEAD --force
+# 删除缓存
+git rm -r --cached .
 ```
 
 ## 3.gitmoduel使用
