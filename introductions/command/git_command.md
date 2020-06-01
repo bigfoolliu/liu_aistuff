@@ -3,7 +3,7 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.git基本命令](#1.git基本命令)
-        * [1.1版本和用户](#1.1版本和用户)
+        * [1.1配置(config)](#1.1配置(config))
         * [1.2仓库克隆(clone)](#1.2仓库克隆(clone))
         * [1.3暂存(add)](#1.3暂存(add))
         * [1.4本地提交(commit)](#1.4本地提交(commit))
@@ -14,6 +14,7 @@
         * [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
         * [1.10标签(tag)](#1.10标签(tag))
         * [1.11查看内容(show)](#1.11查看内容(show))
+        * [1.12状态(status)](#1.12状态(status))
 * [2.操作命令组](#2.操作命令组)
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
@@ -27,33 +28,39 @@
 
 ## 1.git基本命令
 
-### 1.1版本和用户
+### 1.1配置(config)
 
 ```shell
 # 一般配置
 # 查看版本信息
 git --version
 
-# 获取当前登陆的用户
+# 获取全局登陆的用户,邮箱
 git config --global user.name
-
-# 获取当前登陆用户的邮箱
 git config --global user.email
+
+
+# 获取某个仓库的用户和邮箱(需要进入该仓库)
+git config --local user.name
+git config --local user.email
+
+# 查看所有的配置以及配置文件所在的位置
+git config --list --show-origin
+# 查看当前所有的git能找到的配置
+git config --list
 
 # 直接进入编辑全局配置文件
 git config -e --global
 
 # 登陆git
-# 设置全局git账户，userName为用户名
+# 设置全局git账户
 git config --global user.name "userName"
 git config --global user.email "userEmail"
 
 # 设置单个仓库的git账户
-git config user.name "userName"
-git conig user.email "userEmail"
+git config --local user.name "userName"
+git conig --local user.email "userEmail"
 
-# 查看当前git配置
-git config --list
 
 # 将git的文本编辑器修改为vim
 git config --global core.editor vim
@@ -165,8 +172,6 @@ git checkout -b dev
 git checkout -
 
 
-
-
 # 查询本地仓库，远程仓库，跟踪关系最全的命令
 git branch -vv -a
 
@@ -262,6 +267,16 @@ git show v1.0
 git show <commit_id>
 # 查看某次提交的某个文件的修改
 git show <commit_id> <file_name>
+```
+
+### 1.12状态(status)
+
+```shell
+# 检查当前文件状态
+git status
+
+# 以更简短的方式检查文件状态
+git status -s
 ```
 
 ## 2.操作命令组
