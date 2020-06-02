@@ -20,10 +20,11 @@
 ### 1.通用系统命令
 
 ```shell
-ctrl + a  # 光标移动到行首
+ctrl + a  # 光标移动到行首,加#使命令失效
 ctrl + e  # 光标移动到行尾
 ctrl + q  # 删除当前行的命令
 ctrl + w  # 删除光标所在单词
+ctrl + l  # 清屏，类似于clear
 
 ctrl + command + space  # 快速调出表情
 ctrl + b  # 向后翻页

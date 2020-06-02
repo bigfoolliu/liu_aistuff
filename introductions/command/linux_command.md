@@ -39,6 +39,9 @@
 tzselect
 TZ='Asia/Shanghai'
 export TZ
+
+# 查看系统运行的时间
+uptime
 ```
 
 ### 1.2系统设备
@@ -75,6 +78,8 @@ id  # 展示当前用户的身份号
 passwd user1  # 更改用户密码
 uptime  # 查看系统启动的时间统计
 uname -a  # 查看系统信息
+
+last  # 查看用户登入情况
 
 lsb_release -a  # 简洁的显示系统信息的命令
 
@@ -530,5 +535,9 @@ figlet fuck you !
 
 # 出现一只跟着鼠标的猫
 oneko
+
+# 查找单词意思
+curl v2en.co/cool
+curl v2en.co/shut%20down  # 查找词组
 ```
 
