@@ -493,6 +493,14 @@ ps x
 mount
 
 
+# json格式化工具
+# 输出file.json格式后的内容
+jq . file.json
+jq . file.json | >> new_file.json  # 写入到新文件
+cat file.json | jq .  # 等价于式1
+cur xxx | jq .
+
+
 # 有趣命令
 
 # 小火车
@@ -513,12 +521,5 @@ figlet fuck you !
 
 # 出现一只跟着鼠标的猫
 oneko
-
-
-# 输出file.json格式后的内容
-jq . file.json
-jq . file.json | >> new_file.json  # 写入到新文件
-cat file.json | jq .  # 等价于式1
-cur xxx | jq .
 ```
 
