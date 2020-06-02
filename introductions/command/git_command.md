@@ -20,13 +20,16 @@
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
         * [2.3提交之后因为大文件而push失败](#2.3提交之后因为大文件而push失败)
-* [3..gitignore文件](#3..gitignore文件)
+* [3.gitignore文件](#3.gitignore文件)
         * [3.1介绍](#3.1介绍)
         * [3.2格式规范](#3.2格式规范)
-* [4.gitmoduel使用](#4.gitmoduel使用)
-* [4.其他](#4.其他)
-        * [4.非常用命令](#4.非常用命令)
-        * [4.2github搜索技巧](#4.2github搜索技巧)
+* [4.gitmoduel](#4.gitmoduel)
+        * [4.1介绍](#4.1介绍)
+        * [4.2使用](#4.2使用)
+* [5.其他](#5.其他)
+        * [5.1非常用命令](#5.1非常用命令)
+        * [5.2git小技巧](#5.2git小技巧)
+        * [5.3github搜索技巧](#5.3github搜索技巧)
 
 <!-- vim-markdown-toc -->
 
@@ -344,7 +347,7 @@ git push origin HEAD --force
 git rm -r --cached .
 ```
 
-## 3..gitignore文件
+## 3.gitignore文件
 
 ### 3.1介绍
 
@@ -362,9 +365,13 @@ git rm -r --cached .
 
 glob 模式是指 shell 所使用的简化了的正则表达式。 星号(*)匹配零个或多个任意字符;[abc] 匹配 任何一个列在方括号中的字符 (这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c); 问号(?)只 匹配一个任意字符;如果在方括号中使用短划线分隔两个字符， 表示所有在这两个字符范围内的都可以匹配 (比如 [0-9] 表示匹配所有 0 到 9 的数字)。 使用两个星号(**)表示匹配任意中间目录，比如 a/**/z 可以 匹配 a/z 、 a/b/z 或 a/b/c/z 等。
 
-## 4.gitmoduel使用
+## 4.gitmoduel
 
-gitsubmodule是多项目使用共同类库的工具。
+### 4.1介绍
+
+- gitsubmodule是多项目使用共同类库的工具。
+
+### 4.2使用
 
 ```shell
 # 增加submodule
@@ -413,9 +420,9 @@ rm .git/module/*  # 删除模块下的子模块目录
 git rm --cached  <submodule name>  # 如果执行完成之后报错执行
 ```
 
-## 4.其他
+## 5.其他
 
-### 4.非常用命令
+### 5.1非常用命令
 
 ```shell
 # 查看当前状态
@@ -461,7 +468,11 @@ git reset --soft HEAD~2  # 不删除工作空间改动代码，撤销commit，�
 git push origin 分支名 --force  # 将当前撤销的提交推送到远程
 ```
 
-### 4.2github搜索技巧
+### 5.2git小技巧
+
+- git commit在提交信息中换行，只需要单引号，且换行之后再补齐另一半单引号即可
+
+### 5.3github搜索技巧
 
 ```shell
 # 名字包含python，stars数量大于1000
