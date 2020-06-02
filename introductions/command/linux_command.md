@@ -25,7 +25,8 @@
 * [5.实用工具](#5.实用工具)
         * [5.1dos2unix](#5.1dos2unix)
         * [5.2watch](#5.2watch)
-        * [5.3其他](#5.3其他)
+        * [5.3jq](#5.3jq)
+        * [5.x其他](#5.x其他)
 
 <!-- vim-markdown-toc -->
 
@@ -438,7 +439,23 @@ find ./ -name "*.md" | args dos2unix
 watch -n 1 -d 'netstat -i | grep tun0'
 ```
 
-### 5.3其他
+### 5.3jq
+
+- json格式化工具
+
+```shell
+# 输出file.json格式后的内容
+jq . file.json
+
+# 等价于上式
+cat file.json | jq .
+cur xxx | jq .
+
+# 将结果写入到新文件
+jq . file.json | >> new_file.json
+```
+
+### 5.x其他
 
 ```shell
 # 查看上一个命令的返回值
@@ -491,14 +508,6 @@ ps x
 
 # 查看文件系统的挂载情况
 mount
-
-
-# json格式化工具
-# 输出file.json格式后的内容
-jq . file.json
-jq . file.json | >> new_file.json  # 写入到新文件
-cat file.json | jq .  # 等价于式1
-cur xxx | jq .
 
 
 # 有趣命令
