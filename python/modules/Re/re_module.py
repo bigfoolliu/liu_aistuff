@@ -135,9 +135,19 @@ def complile_demo():
     print(result1, result2, result3)
 
 
+def constant_demo():
+    """常量操作"""
+    text = '你好a'
+    pattern = '你好A'
+    print('默认模式:', re.findall(pattern, text))
+    print('忽略大小写模式:', re.findall(pattern, text, re.IGNORECASE))
+
+
 if __name__ == "__main__":
     # search_demo()
     # match_demo()
     # findall_demo()
     # sub_demo()
-    complile_demo()
+    # complile_demo()
+    constant_demo()
+

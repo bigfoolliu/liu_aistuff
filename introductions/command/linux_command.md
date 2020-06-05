@@ -26,6 +26,7 @@
         * [5.1dos2unix](#5.1dos2unix)
         * [5.2watch](#5.2watch)
         * [5.3jq](#5.3jq)
+        * [5.4when-changed工具](#5.4when-changed工具)
         * [5.x其他](#5.x其他)
 
 <!-- vim-markdown-toc -->
@@ -458,6 +459,18 @@ cur xxx | jq .
 
 # 将结果写入到新文件
 jq . file.json | >> new_file.json
+```
+
+### 5.4when-changed工具
+
+- 监控文件的变化来执行相应的操作
+
+```shell
+# 安装
+pip3 install when-changed
+
+todo:
+
 ```
 
 ### 5.x其他
