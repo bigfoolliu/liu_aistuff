@@ -37,7 +37,7 @@ def remove_duplicates_from_sorted_array(sorted_array):
     :param sorted_array: list,有序数组
     reuturn int，去重后的数组的长度
     """
-    if sorted_array == []:
+    if not sorted_array:
         return 0
     pre = 0  # cur为快指针,pre为慢指针
     for cur in range(1, len(sorted_array)):
@@ -50,5 +50,5 @@ def remove_duplicates_from_sorted_array(sorted_array):
 
 
 if __name__ == '__main__':
-    nums = [0,0,1,1,1,2,2,3,3]
+    nums = [0, 0, 1, 1, 1, 2, 2, 3, 3]
     print(remove_duplicates_from_sorted_array(nums))

@@ -24,7 +24,7 @@ Output: -1
 
 def strStr(haystack, needle):
     """
-    :param hsystack: str
+    :param haystack: str
     :param needle: str
     :return int
     """

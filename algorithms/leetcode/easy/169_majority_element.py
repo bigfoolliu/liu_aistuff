@@ -32,5 +32,5 @@ def majority_element(nums):
 
 
 if __name__ == "__main__":
-    nums = [3, 2, 3]
-    print(majority_element(nums))
+    test_nums = [3, 2, 3]
+    print(majority_element(test_nums))

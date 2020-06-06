@@ -50,17 +50,16 @@ def isPalindrome(x):
     
     # 判断两个列表是否相等,元素的数量和位置相同
     import operator
-    if operator.eq(x_list, reverse_list) == True:
+    if operator.eq(x_list, reverse_list):
         ret = True
     
     return ret
 
 
 if __name__ == "__main__":
-    x = int(input("please input an integer:"))
-    ret = isPalindrome(x)
+    num = int(input("please input an integer:"))
+    is_palindrome = isPalindrome(num)
 
-    if ret == False:
-        print("{} is not a palindrome.".format(x))
-    else:
-        print("{} is a palindrome.".format(x))
+    if not is_palindrome:
+        print("{} is not a palindrome.".format(num))
+    print("{} is a palindrome.".format(num))

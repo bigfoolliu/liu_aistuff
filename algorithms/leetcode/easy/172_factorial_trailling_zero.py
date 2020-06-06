@@ -20,7 +20,6 @@ Explanation: 5! = 120, one trailing zero.
 给定一个整数 n，返回 n! 结果尾数中零的数量。
 """
 
-
 from functools import reduce
 
 
@@ -30,7 +29,7 @@ def trailing_zeros(n):
     :param n: int
     :return: int
     """
-    ret = reduce(lambda x,y: x*y, range(1, n+1))
+    ret = reduce(lambda x, y: x * y, range(1, n + 1))
     print("ret:", ret)
     count = 0
     for i in str(ret)[::-1]:
@@ -61,7 +60,7 @@ if __name__ == "__main__":
     # print(trailing_zeros(5))
     # print(trailing_zeros(6))
     # print(trailing_zeros(10))
-    
+
     print(trailing_zeros2(3))
     print(trailing_zeros2(5))
     print(trailing_zeros2(10))

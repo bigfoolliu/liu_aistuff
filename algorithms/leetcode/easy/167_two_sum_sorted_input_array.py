@@ -45,11 +45,11 @@ def two_sum(numbers, target):
             end -= 1
         else:
             # 按照规定，下标值不是从0开始，而是从1开始
-            return (start+1, end+1)
+            return start + 1, end + 1
 
 
 if __name__ == "__main__":
-    numbers = [2, 7, 11, 15]
-    target = 9
+    test_numbers = [2, 7, 11, 15]
+    test_target = 9
     # target = 100
-    print(two_sum(numbers, target))
+    print(two_sum(test_numbers, test_target))

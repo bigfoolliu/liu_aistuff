@@ -18,7 +18,6 @@ If you have figured out the O(n) solution, try coding another solution using the
 求连续最大的子序列和。
 """
 
-
 import time
 
 
@@ -88,7 +87,7 @@ def maxinum_sum_subarray3(array):
 
 
 if __name__ == "__main__":
-    array = [-2,1,-3,4,-1,2,1,-5,4]
+    array = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
     # array = [2, -3, 4, -5, 1]
     print(maxinum_sum_subarray1(array))
     print(maxinum_sum_subarray2(array))

@@ -60,7 +60,7 @@ def has_cycle(head):
         return False
     
     # 遍历的过程中将值置为None
-    while head.next and head.val != None:
+    while head.next and head.val is not None:
         head.val = None
         head = head.next
     
@@ -71,15 +71,15 @@ def has_cycle(head):
 
 
 if __name__ == "__main__":
-    head = Node(3)
+    test_head = Node(3)
     node2 = Node(2)
     node0 = Node(0)
     node4 = Node(4)
 
-    head.next = node2
+    test_head.next = node2
     node2.next = node0
     node0.next = node4
 
     # node4.next = node2
 
-    print(has_cycle(head))
+    print(has_cycle(test_head))

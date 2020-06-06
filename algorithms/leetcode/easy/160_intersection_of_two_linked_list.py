@@ -47,22 +47,22 @@ class Node(object):
         self.next = None
 
 
-def intersection_of_two_linked_list(headA, headB):
+def intersection_of_two_linked_list(head_a, head_b):
     """
     使两个链表到达相等位置时走过的是相同的距离，链表1长度是x1+y，链表2长度是x2+y，同时遍历到达末尾时，再指向另一个链表。
     - 则当两链表走到相等的位置时：x1+y+x2 = x2+y+x1
     - 当两个链表没有相交的时候：两个链表的
-    :param headA: Node
-    :param headA: Node
+    :param head_a: Node
+    :param head_b: Node
     :return: Node
     """
-    if not headA or not headB:
+    if not head_a or not head_b:
         return None
-    pa = headA
-    pb = headB
+    pa = head_a
+    pb = head_b
     while pa is not pb:
-        pa = headB if pa is None else pa.next
-        pb = headA if pb is None else pb.next
+        pa = head_b if pa is None else pa.next
+        pb = head_a if pb is None else pb.next
     return pa
 
 

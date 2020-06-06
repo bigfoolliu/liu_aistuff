@@ -51,5 +51,5 @@ def sortedArrayToBST(array):
 
 
 if __name__ == "__main__":
-    array = [-10, -3, 0, 5, 9]
-    print(sortedArrayToBST(array))
+    test_array = [-10, -3, 0, 5, 9]
+    print(sortedArrayToBST(test_array))
