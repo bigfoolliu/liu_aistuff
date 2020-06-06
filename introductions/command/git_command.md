@@ -46,6 +46,9 @@ git --version
 git config --global user.name
 git config --global user.email
 
+# 设置启动的编辑器
+git config --global core.editor vim
+git config --global core.editor emacs
 
 # 获取某个仓库的用户和邮箱(需要进入该仓库)
 git config --local user.name
@@ -308,7 +311,9 @@ git status -s
 # 查看暂未暂存的文件更新哪些部分
 git diff
 
-
+# 查看暂存起来(即add之后)的更新
+git diff --cached
+git diff --staged
 ```
 
 ## 2.操作命令组
