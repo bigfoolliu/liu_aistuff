@@ -3,7 +3,7 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.命令行命令](#1.命令行命令)
-        * [1.通用系统命令](#1.通用系统命令)
+        * [1.1通用系统命令](#1.1通用系统命令)
         * [1.2其他命令行命令](#1.2其他命令行命令)
 * [2.safari命令](#2.safari命令)
 * [3.终端命令](#3.终端命令)
@@ -17,7 +17,7 @@
 
 ## 1.命令行命令
 
-### 1.通用系统命令
+### 1.1通用系统命令
 
 ```shell
 ctrl + a  # 光标移动到行首,加#使命令失效
@@ -154,6 +154,8 @@ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
 
 ncdu  # 查看磁盘目录占用情况
+
+sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 ```
 
 ## 4.安装python环境
