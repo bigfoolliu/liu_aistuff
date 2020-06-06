@@ -7,14 +7,14 @@
 1. 首先需要安装好MySQL数据库并能正常运行
 
 2. 连接数据库
-当前的MySQL运行在本地，用户名为tonyliu，密码为123456，运行端口为3306。
+当前的MySQL运行在本地，用户名为user_name，密码为123456，运行端口为3306。
 这里利用PyMySQL先连接MySQL，然后创建一个新的数据库，名字叫作spiders。
 """
 import pymysql
 
 # 通过connect()方法声明一个MySQL对象data_base，需要传入运行的host(即IP)
 # 本地运行，传入localhost，远程运行的则传入公网IP地址
-data_base = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306)
+data_base = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306)
 
 # cursor()方法获得MySQL的操作光标，用游标来执行sql语句，execute()方法即执行
 cursor = data_base.cursor()
@@ -35,7 +35,7 @@ data_base.close()
 """
 # import pymysql
 # # 建立连接
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # # 获得操作光标
 # cursor = db.cursor()
 # # sql语句，在spiders数据库下创建了一个名为students的数据表，数据表下包含
@@ -64,12 +64,12 @@ data_base.close()
 # import pymysql
 #
 # # 假使爬取数据如下
-# id = '201303164006'
+# id = '12345678'
 # name = 'Tony'
 # age = 20
 #
 # # 建立mysql连接
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # cursor = db.cursor()
 #
 # sql = 'INSERT INTO students(id, name, age) values(%s, %s, %s)'
@@ -88,7 +88,7 @@ data_base.close()
 """
 # import pymysql
 #
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # cursor = db.cursor()
 #
 # # 传入的数据为字典
@@ -123,7 +123,7 @@ data_base.close()
 """
 # import pymysql
 #
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # cursor = db.cursor()
 #
 # # 数据库students中的name = %s 的age改为%s
@@ -142,7 +142,7 @@ data_base.close()
 """
 # import pymysql
 #
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # cursor = db.cursor()
 #
 # # 需要更新的数据
@@ -179,7 +179,7 @@ data_base.close()
 """
 # import pymysql
 #
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # cursor = db.cursor()
 #
 # table = 'students'
@@ -200,7 +200,7 @@ data_base.close()
 """
 # import pymysql
 #
-# db = pymysql.connect(host='localhost', user='tonyliu', password='123456', port=3306, db='spiders')
+# db = pymysql.connect(host='localhost', user='user_name', password='123456', port=3306, db='spiders')
 # cursor = db.cursor()
 #
 # sql = 'SELECT * FROM students WHERE age = 19'
