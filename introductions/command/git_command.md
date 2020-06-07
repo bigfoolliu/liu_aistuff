@@ -18,6 +18,7 @@
         * [1.13删除(rm)](#1.13删除(rm))
         * [1.14移动(mv)](#1.14移动(mv))
         * [1.15查看更新(diff)](#1.15查看更新(diff))
+        * [1.16远程(remote)](#1.16远程(remote))
 * [2.操作命令组](#2.操作命令组)
         * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
@@ -205,7 +206,7 @@ git remote get-url origin
 # 撤销对所有文件的暂存
 git reset HEAD
 
-# 撤销对指定文件的暂存
+# 撤销对指定文件的暂存(适用于误将文件暂存add的场景)
 git reset HEAD test.py
 
 
@@ -357,6 +358,28 @@ git diff
 # 查看暂存起来(即add之后)的更新
 git diff --cached
 git diff --staged
+```
+
+### 1.16远程(remote)
+
+- 对远程仓库的操作
+
+```shell
+# 查看配置的远程仓库服务器,如果是clone的则默认为origin
+git remote
+git remote -v  # 读写仓库服务器以及对应的简写url
+
+# 添加远程仓库，并设置简写,那么本地fetch之后就可以在tom/master访问
+git remote add tom https://github.com/tom/liu_aistuff
+
+# 查看某个远程仓库的更多信息
+git remote show origin
+
+# 将远程分支重命名
+git remote rename tom tom1
+
+# 移除远程仓库(适用于远程仓库搬走了或者没人贡献了场景)
+git remote remove tom
 ```
 
 ## 2.操作命令组
