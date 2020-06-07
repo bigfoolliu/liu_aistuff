@@ -173,6 +173,8 @@ git stash show -p stash@{0}
 
 ### 1.7分支(branch, checkout)
 
+- 特殊指针HEAD，用来指向当前所处的本地分支
+
 ```shell
 # 取回所有分支的更新
 git fetch
