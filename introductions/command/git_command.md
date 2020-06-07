@@ -9,7 +9,7 @@
         * [1.4本地提交(commit)](#1.4本地提交(commit))
         * [1.5远程提交于拉取(push, pull)](#1.5远程提交于拉取(push,-pull))
         * [1.6提交堆栈(stash)](#1.6提交堆栈(stash))
-        * [1.7分支(branch)](#1.7分支(branch))
+        * [1.7分支(branch, checkout)](#1.7分支(branch,-checkout))
         * [1.8撤销(reset, revert)](#1.8撤销(reset,-revert))
         * [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
         * [1.10标签(tag)](#1.10标签(tag))
@@ -64,6 +64,9 @@ git config --list
 
 # 直接进入编辑全局配置文件
 git config -e --global
+
+# 设置别名,commit别名为ci, 则git ci来替代git commit
+git config --global alias.ci commit
 
 # 登陆git
 # 设置全局git账户
@@ -168,7 +171,7 @@ git stash apply stash@{0}
 git stash show -p stash@{0}
 ```
 
-### 1.7分支(branch)
+### 1.7分支(branch, checkout)
 
 ```shell
 # 取回所有分支的更新
@@ -290,19 +293,19 @@ git tag -a v1.0 -m "有备注信息的tag"
 # 在某一个提交对象上打tag，只要提交对象的校验和前几位
 git tag -a v1.0 9fedamdch -m "有备注信息的tag"
 
-# tag创建完成之后，也需要推送到远程
+# tag创建完成之后，需要单独推送到远程,如果
 # 推送单个tag
 git push origin v1.0
 
 # 推送所有的tag
 git push origin --tags
 
+# 删除tag
+git tag -d v1.0  # 删除本地的tag
+git push origin :refs/tags/v1.0  # 将冒号之前的空值推动到远程的tag从而删除远程的tag
+git push origin --delete v1.0  # 更直观的删除远程标签
 
-# 删除本地的tag
-git tag -d v1.0
 
-# 删除远程的tag
-git push origin :refs/tags/v1.0
 ```
 
 ### 1.11查看内容(show)
