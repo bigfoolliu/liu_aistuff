@@ -89,8 +89,6 @@ open ./
 
 
 ctrl + command + space  # 快速打开emoji表情😄
-
-ranger  # 命令行文件系统管理,pip install ranger-fm
 ```
 
 ### 1.2其他命令行命令

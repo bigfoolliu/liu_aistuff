@@ -27,6 +27,7 @@
         * [5.2watch](#5.2watch)
         * [5.3jq](#5.3jq)
         * [5.4when-changed工具](#5.4when-changed工具)
+        * [5.5ranger](#5.5ranger)
         * [5.x其他](#5.x其他)
 
 <!-- vim-markdown-toc -->
@@ -472,6 +473,12 @@ pip3 install when-changed
 todo:
 
 ```
+
+### 5.5ranger
+
+- [ranger使用介绍](https://blog.csdn.net/function_dou/article/details/88909110)
+- 类似于vim的操作
+- 也可使用鼠标
 
 ### 5.x其他
 
