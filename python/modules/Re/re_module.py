@@ -89,6 +89,7 @@ def findall_demo():
         </ul>
     </div>
     """
+    # 参数有re.S，不会对\n符进行中断，可以匹配更多的内容
     results = re.findall('<li.*?href="(.*?)".*?singer="(.*?)">(.*?)</a>', html, re.S)
 
     # print(results)

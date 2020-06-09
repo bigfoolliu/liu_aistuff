@@ -115,6 +115,8 @@ ls -d */  # 只列出文件夹
 ls -i  # 带索引号显示
 ls -t  # 按照修改时间显示，新文件在前
 
+ls -t | cat -n  # 按照时间排序,且给每一个文件编号
+
 # 查看文件信息
 file test.py
 
@@ -160,6 +162,9 @@ find ./ -name "*.py" | wc -l
 # 统计当前路径下所有.py文件各自的行数
 find ./ -name *.py | xargs wc -l
 find ./ -name "*.py" | xargs wc -l
+
+# 查找文件并用file查看详细信息
+find ./ -name "core*" | xargs file
 
 # 更快的搜索
 ag "someting"
@@ -210,6 +215,10 @@ gunzip -r folder1  # 解压缩文件夹，同理，也只会解压缩其目录�
 
 # 使用双重定向符来追加写文件
 >> test.py
+
+# 给文件建立别名
+ln a.txt aa.txt  # 硬连接，删除一个，仍能找到
+ln -s a.txt aa.txt  # 符号连接(软连接)，删除源头，另一个无法使用
 ```
 
 ### 2.6目录
@@ -506,6 +515,7 @@ ls / 2> /dev/null  # 将输出错误的信息定位到"存储桶"，可以隐藏
 # 直接输入不带参数的cat，会等待从标准输入读入数据，默认为键盘，按ctrl+d结束
 cat
 cat > test.txt  # 复制标准输入到指定文件来创建简单的文件
+cat -n a.txt  # 查看的时候同时显示行号
 
 # 显示文件的行数，字数，字节数
 wc test.py
@@ -513,6 +523,8 @@ wc test.py
 # 打印文件开头部分和结尾部分
 head -n 5 test.py  # 打印文件的前5行
 tail -n 5 test.py  # 打印文件的结尾5行
+
+tail -f spider.log  # 动态显示文本的最新信息
 
 # 算术表达式展开
 echo $((2 + 2))
