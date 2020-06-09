@@ -190,12 +190,23 @@ git checkout -b dev
 # 导航到之前的一个分支
 git checkout -
 
+# 查看本地所有分支
+git branch
+
+# 查看本地所有分支和分支的最后一次提交
+git branch -v
 
 # 查询本地仓库，远程仓库，跟踪关系最全的命令
 git branch -vv -a
 
 # 删除本地分支
 git branch -d dev
+
+# 查看本地已经合并到当前的分支
+git branch --merged
+
+# 查看本地还没有合并到当前的分支
+git branch --no-merged
 
 # 删除远程分支
 git push origin --delete dev
@@ -368,6 +379,7 @@ git diff --staged
 ### 1.16远程(remote)
 
 - 对远程仓库的操作
+- origin也并没有特殊含义
 
 ```shell
 # 查看配置的远程仓库服务器,如果是clone的则默认为origin
@@ -385,6 +397,9 @@ git remote rename tom tom1
 
 # 移除远程仓库(适用于远程仓库搬走了或者没人贡献了场景)
 git remote remove tom
+
+# 查看远程分支列表
+git ls-remote origin
 ```
 
 ## 2.操作命令组
