@@ -168,7 +168,8 @@ git stash apply
 git stash apply stash@{0}
 
 # 查看某个堆栈中的修改内容
-git stash show -p stash@{0}
+git stash show -p stash@{1}
+git stash show -p  # 查看最近一个stash里面的修改
 ```
 
 ### 1.7分支(branch, checkout)

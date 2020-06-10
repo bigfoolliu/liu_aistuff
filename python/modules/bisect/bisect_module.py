@@ -6,11 +6,19 @@
 """
 bisect库使用
 
+python内置模块
+
 该库主要用来排序,主要是二分查找
 """
 
 
 import bisect
+
+
+def basic_demo():
+    array = [1, 3, 5, 4, 7, 9]  # 有序列表
+    insert_index = bisect.bisect(array, 2)  # 返回插入索引的位置
+    print(array, 2, insert_index)
 
 
 def bisect_left_demo():
@@ -40,5 +48,6 @@ def insort_right_demo():
 if __name__ == "__main__":
     # bisect_left_demo()
     # bisect_right_demo()
-    insort_left_demo()
-    insort_right_demo()
+    # insort_left_demo()
+    # insort_right_demo()
+    basic_demo()
