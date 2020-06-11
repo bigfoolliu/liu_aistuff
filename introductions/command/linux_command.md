@@ -149,18 +149,18 @@ du -h --max-depth=1 /data/
 
 ```shell
 # 文件查找
-find . -name *.sh -print  # 根据文件名查找文件,在当前目录下查找*.sh并将其输出
+find . -name "*.sh" -print  # 根据文件名查找文件,在当前目录下查找*.sh并将其输出
 find . -ctime 1 -type f -print  # 查找过去 1 小时修改过的普通文件
 find . -ctime 10 -type d -print  # 查找过去 10 分钟修改过的目录
 find . -size +10M -type f -print  # 查找文件大小超过 10（b/c/w/k/M/G）的文件
 find . -path ./test -prune -o -print  # 查找文件的时候避开当前目录下的test文件夹
 
 # 统计当前路径下所有.py文件的个数
-find ./ -name *.py | wc -l
+find ./ -name "*.py" | wc -l
 find ./ -name "*.py" | wc -l
 
 # 统计当前路径下所有.py文件各自的行数
-find ./ -name *.py | xargs wc -l
+find ./ -name "*.py" | xargs wc -l
 find ./ -name "*.py" | xargs wc -l
 
 # 查找文件并用file查看详细信息
@@ -171,14 +171,14 @@ ag "someting"
 ag "something" ./  # 指定文件夹搜索
 
 # 递归的统计一目录下及其子目录下所有匹配文件的总的行数和每个文件的行数，可以使用一下命令
-wc -l `find ./ -name *.csv`
+wc -l `find ./ -name "*.csv"`
 ```
 
 ### 2.4文件归档
 
 ```shell
 # 使用tar进行文件归档
-tar -cf out.tar file1 file2 folder1  # f表示指定tar文件名必须在参数最后，c表示新建一个tar包
+tar -cf out.tar file1 file2 `folder1  # f表示指定tar文件名必须在参数最后，c表示新建一个tar包
 tar -tf out.tar  # 列出已经归档文件中的内容
 tar -rvf out.tar file3  # r向已经归档文件添加新的文件,v表示输出待打包文件更详细的信息
 
