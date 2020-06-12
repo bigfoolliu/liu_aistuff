@@ -27,9 +27,14 @@ fping -A -d jianshu.com
 
 ### 2.1nmap
 
+- [nmap官网,doc中含有中文文档](https://nmap.org/)
+
 ```shell
 # 安装
 brew install nmap
+
+# 端口扫描
+nmap -A -T4 -Pn baidu.com
 ```
 
 ## 3.密码破解
@@ -37,6 +42,7 @@ brew install nmap
 ### 3.1john
 
 ```shell
+# 安装
 brew install john-jumbo
 ```
 
