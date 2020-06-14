@@ -182,6 +182,9 @@ git fetch
 # 取回指定的分支更新(eg:git fetch origin master)
 git fetch <远程主机名> <分支名>
 
+# 取消对某个文件的修改(即没有文件)
+git checkout a.txt
+
 # 切换到本地的dev分支
 git checkout dev
 

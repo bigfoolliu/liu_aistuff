@@ -206,8 +206,8 @@ imgls ./  # ls增强版，可以让图片有个缩略图
 # 2.从本地的finder拖动即可将文件复制到远程
 
 # tmux集成
-# 基本使用一致，但是需要加上选项目-CC
-tmux -CC detatch
+# 基本使用一致，但是进入时候需要-CC
+tmux -CC attach-session -t a
 ```
 
 ## 4.安装python环境
