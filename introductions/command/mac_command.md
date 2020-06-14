@@ -7,6 +7,8 @@
         * [1.2其他命令行命令](#1.2其他命令行命令)
 * [2.safari命令](#2.safari命令)
 * [3.终端命令](#3.终端命令)
+        * [3.1brew](#3.1brew)
+        * [3.2iterm2](#3.2iterm2)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -115,6 +117,8 @@ command + shift + tab  # 移动到上一个标签页
 
 ## 3.终端命令
 
+### 3.1brew
+
 - [安装homenbrew](https://www.wandouip.com/t5i171897/)
 - [终端颜色设定介绍](https://blog.csdn.net/liumiaocn/article/details/102962691)
 
@@ -154,6 +158,56 @@ git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/home
 ncdu  # 查看磁盘目录占用情况
 
 sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
+```
+
+### 3.2iterm2
+
+- [iterm官网](https://www.iterm2.com/index.html)
+- [设置鼠标滑动可以翻转页面](https://blog.csdn.net/weixin_34138521/article/details/94600287)
+
+```shell
+# 将当前窗口分割
+command + d  # 水平分割
+command + shift + d  # 垂直分割
+
+# 将当前活动窗口最大化,再次点击将会显示隐藏窗口
+command + shift + enter
+
+# 拆分的窗格之间导航
+command + [
+command + ]
+
+# 窗口导航
+command + 左/右箭头
+command + 数字  # 直接导航到指定窗口
+
+# 开启搜索
+commdn + f
+
+# 标记和回到标记
+command + shift + m
+command + shift + j
+
+# 查看粘贴历史
+command + shift + h
+
+# 倒退时间以准确查看最近一段时间的屏幕上的内容
+command + option + b
+
+# 打开/关闭全屏窗口
+command + enter
+
+# shell集成(需要安装iTerm2 > Install Shell Integration)
+# 图片操作
+imgcat a.png  # 命令行查看图片
+imgls ./  # ls增强版，可以让图片有个缩略图
+# 其他用途
+# 1.单击即可从远程下载文件
+# 2.从本地的finder拖动即可将文件复制到远程
+
+# tmux集成
+# 基本使用一致，但是需要加上选项目-CC
+tmux -CC detatch
 ```
 
 ## 4.安装python环境

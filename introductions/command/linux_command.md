@@ -94,7 +94,6 @@ userdel user1  # 删除用户
 
 groupadd group1  # 新增工作组
 
-
 cat /etc/passwd  # 查看所有的用户
 cat /etc/shadow  # 查看用户密码
 cat /etc/group  # 查看所有用户组
