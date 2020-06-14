@@ -48,6 +48,9 @@ vim a.txt b.txt  # 打开多个文件
 ctrl + b  # 快速回退一页
 ctrl + f  # 快速前进一页
 
+ctrl + d  # 向下翻半页
+ctrl + u  # 向上翻半页
+
 :!command  # 在vim中执行shell命令
 
 10k  # 快速跳转到相对当前行为10行的前面第10行
