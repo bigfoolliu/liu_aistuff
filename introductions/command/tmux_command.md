@@ -1,57 +1,52 @@
-# tmux会话管理快捷键
+# tmux会话管理器
 
-<!-- vim-markdown-toc Marked -->
+!-- vim-markdown-toc Marked -->
 
-* [1.基本命令](#1.基本命令)
-        * [1.1会话创建](#1.1会话创建)
-        * [1.2连接会话](#1.2连接会话)
-        * [1.3关闭会话](#1.3关闭会话)
-        * [1.4常用快捷键](#1.4常用快捷键)
+* [1.介绍](#1.介绍)
+* [2.基本命令](#2.基本命令)
 
 <!-- vim-markdown-toc -->
 
+## 1.介绍
 
-## 1.基本命令
+- [阮一峰tmux使用](http://www.ruanyifeng.com/blog/2019/10/tmux.html)
 
-### 1.1会话创建
+会话的重要特点:
 
-```shell
-# 创建一个新的tmux会话
-tmux new
+1. 窗口与其中启动的进程是连在一起
+2. 打开窗口，会话开始
+3. 关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完
 
-# 创建一个叫mysession的会话
-tmux new -s mysession
-```
-
-### 1.2连接会话
+## 2.基本命令
 
 ```shell
-# 连接上一个会话
-tmux a
+tmux new  # 创建一个新的tmux会话
+tmux new -s mysession  # 创建一个叫mysession的会话
 
-# 连接已经命名的会话
-tmux new -t mysession
+tmux a  # 连接上一个会话
+tmux new -t mysession  # 连接已经命名的会话
 
-# 显示会话列表
-tmux ls
-```
+tmux ls  # 显示会话列表
 
-### 1.3关闭会话
+tmux kill-session  # 关闭上次打开的会话
+tmux kill-session -t s1  # 关闭会话s1
+tmux kill-server  # 关闭所有会话
 
-```shell
-# 关闭上次打开的会话
-tmux kill-session
+# 退出当前会话,就不会保存会话了
+ctrl + d
+exit
 
-# 关闭会话s1
-tmux kill-session -t s1
+tmux detatch  # 会话窗口分离，但是会话和里面的进程仍然在运行
+tmux attach -t my-sess  # 接入已经存在的会话
 
-# 关闭所有会话
-tmux kill-server
-```
+tmux switch -t my-sess2  # 切换到另外一个会话
 
-### 1.4常用快捷键
+tmux rename-session -t my-sess1 my-sess2  # 将绘画重命名 
 
-```shell
+ctrl+b :  # 进入命令行模式
+
+ctrl+b :set -g mouse on  # 设置全局鼠标可用
+
 ctrl+b s  # 列出会话，可切换
 ctrl+b $  # 重命名会话
 
