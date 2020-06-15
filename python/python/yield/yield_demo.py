@@ -15,6 +15,10 @@ f.send()有三个步骤（作用）：
 1. 将send中的数值赋给yield的结果 ret = yield i中的ret
 2. 重新启动生长器往下走
 3. 再次执行next(f),相当于函数又返回了一次值
+
+将生成器重置,可以通过重新定义的方式:
+a = Generator()
+b = Generator()
 """
 
 
