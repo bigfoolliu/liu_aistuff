@@ -9,6 +9,7 @@
 * [3.终端命令](#3.终端命令)
         * [3.1brew](#3.1brew)
         * [3.2iterm2](#3.2iterm2)
+        * [3.3fzf](#3.3fzf)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -211,6 +212,32 @@ tmux -CC attach-session -t a
 
 # 清除当前行的命令
 ctrl + u
+```
+
+### 3.3fzf
+
+- 主要功能是查找文件，历史命令查询，快速进入目录
+- [知乎打造fzf](https://zhuanlan.zhihu.com/p/53380250)
+- [fzf使用](http://einverne.github.io/einverne.github.io/post/2019/08/fzf-usage.html)
+
+```shell
+# 安装
+brew install fd fzf
+
+# 命令历史,可以直接使用数字来指定
+ctrl + r
+
+# 设置好预览，直接预览文件
+pp
+
+# 搜索当前目录下的内容
+ctrl + t
+
+# 设置别名快速vim编辑文件
+vfzf
+
+# 设置别名快速cd
+dfzf
 ```
 
 ## 4.安装python环境

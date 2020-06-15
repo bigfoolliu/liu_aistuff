@@ -22,6 +22,8 @@
         * [5.分组数据](#5.分组数据)
         * [6.联结表](#6.联结表)
         * [7.事务](#7.事务)
+        * [8.其他](#8.其他)
+                * [8.1explain](#8.1explain)
 
 <!-- vim-markdown-toc -->
 
@@ -303,3 +305,15 @@ rollback;
 # 提交事务
 commit;
 ```
+
+### 8.其他
+
+#### 8.1explain
+
+- [mysql explain详解](https://www.cnblogs.com/xiaoqiang-code/p/11404149.html)
+- 使用explain,模拟优化器执行SQL语句，分析查询语句或是结构的性能瓶颈
+
+```shell
+explain select * from table1;
+```
+
