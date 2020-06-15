@@ -208,6 +208,9 @@ imgls ./  # ls增强版，可以让图片有个缩略图
 # tmux集成
 # 基本使用一致，但是进入时候需要-CC
 tmux -CC attach-session -t a
+
+# 清除当前行的命令
+ctrl + u
 ```
 
 ## 4.安装python环境
