@@ -263,6 +263,9 @@ git log --graph
 # 筛选作者
 git log --author=bigfoolliu
 
+# 模糊搜索
+git log --gerp content
+
 # 使用特定的格式输出log
 git log --pretty=format:"%H - %an, %cd : %s"
 
