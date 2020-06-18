@@ -1,4 +1,4 @@
-# 常用ide快捷键
+#随机出题固定试卷试卷库 常用ide快捷键
 
 
 <!-- vim-markdown-toc Marked -->
@@ -96,6 +96,9 @@ command + z  # 撤销
 command + shift + z  # 前进
 command + x  # 剪切当前行到剪切板
 
-company + backspace  # 删除当前行
+command + backspace  # 删除当前行
+
+command + shift + backspace  # 从定义处跳转回之前的位置
+command + b  # 跳转到定义处
 ```
 

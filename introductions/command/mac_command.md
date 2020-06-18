@@ -10,6 +10,7 @@
         * [3.1brew](#3.1brew)
         * [3.2iterm2](#3.2iterm2)
         * [3.3fzf](#3.3fzf)
+        * [3.4musicbox](#3.4musicbox)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -238,6 +239,12 @@ vfzf
 
 # 设置别名快速cd
 dfzf
+```
+### 3.4musicbox
+
+```shell
+# 命令行版本网易云
+musicbox
 ```
 
 ## 4.安装python环境
