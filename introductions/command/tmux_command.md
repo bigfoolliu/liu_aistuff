@@ -19,7 +19,7 @@
 
 ## 2.基本命令
 
-```shell
+```sh
 tmux new  # 创建一个新的tmux会话
 tmux new -s mysession  # 创建一个叫mysession的会话
 
@@ -64,7 +64,7 @@ ctrl+b &  # 关闭当前窗口
 # 窗格管理
 
 ctrl+b %  # 水平方向创建窗格
-ctrl+b "  # 垂直方向创建窗格
+ctrl+b \"  # 垂直方向创建窗格
 
 ctrl+b Up/Down/Left/Right  # 根据箭头方向来切换窗格
 

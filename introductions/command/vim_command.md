@@ -30,7 +30,7 @@
 
 ## 1.基础命令
 
-```shell
+```sh
 # 通过编辑 `~/.vimrc`文件可以保存vim的配置，可以使用网上众多的配置。
 
 a  # 在光标后插入字符
@@ -58,7 +58,7 @@ ctrl + u  # 向上翻半页
 
 ### 1.1替换
 
-```shell
+```sh
 :%s/A/B/g  # 全文中将所有的A替换为B
 :%s/A/B/gc  # 回车后会将光标移动到每一次A出现的位置并提示
 
@@ -68,13 +68,13 @@ ctrl + u  # 向上翻半页
 
 ### 1.2查找
 
-```shell
+```sh
 /text  # 查找text,按n键查找下一个,按Ｎ查找前一个,shift+n到上一个
 ```
 
 ### 1.3拷贝和剪切
 
-```shell
+```sh
 dd  # 剪切当前行
 10d  # 剪切当前开始的10行
 Ｄ  # 剪切当前字符至行尾
@@ -93,7 +93,7 @@ y$  # 复制到行尾,包含光标所在字符
 
 ### 1.4跳转
 
-```shell
+```sh
 :number  # 跳转到指定的行
 
 gg  # 快速跳转至文件开头
@@ -124,7 +124,7 @@ d5j  # 删除当前行到下面5行
 
 ### 1.5保存和退出
 
-```shell
+```sh
 :q!  # 不保存退出
 :wq  # 保存退出
 :wq temp.py  # 以一个文件名保存并退出
@@ -133,26 +133,26 @@ d5j  # 删除当前行到下面5行
 
 ### 1.6撤销与反撤销
 
-```shell
+```sh
 u   撤销上一步操作
 ctrl + r  反撤销
 ```
 
 ### 1.7补全
 
-```shell
+```sh
 ctrl + n  # 插入模式下按下有简单的提示
 ```
 
 ### 1.8其他
 
-```shell
+```sh
 :noh  # 取消选中的高亮
 ```
 
 ## 2.vimrc相关配置
 
-```shell
+```sh
 :syntax on  基本的语法高亮
 :set number 显示行号
 ```
@@ -161,14 +161,14 @@ ctrl + n  # 插入模式下按下有简单的提示
 
 ### 3.1跳转到函数定义处
 
-```shell
+```sh
 gd  # 跳转至函数的定义处
 ctrl + o  # 返回上一次的位置
 ```
 
 ### 3.2vim查看二进制文件
 
-```shell
+```sh
 # 以二进制的格式打开文件
 vim -b hello.o
 
@@ -191,7 +191,7 @@ vim -b hello.o
 
 ### 3.4不退出执行命令行
 
-```shell
+```sh
 :!command
 ```
 
@@ -202,7 +202,7 @@ vim -b hello.o
 - vim插件管理器，不能并行处理
 - [github地址](https://github.com/VundleVim/Vundle.vim)
 
-```shell
+```sh
 # 安装
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
@@ -225,7 +225,7 @@ h: vundle         - 获取帮助
 - 目录管理器
 - [github地址](https://github.com/preservim/nerdtree)
 
-```shell
+```sh
 
 # 移动光标定位
 h j k l
@@ -255,7 +255,7 @@ cd
 - [github地址](https://github.com/plasticboy/vim-markdown)
 - [使用vim+markdown高效记笔记](https://github.com/plasticboy/vim-markdown)
 
-```shell
+```sh
 "查看所有配置建议
 :help vim-markdwon
 [[ "跳转上一个标题
@@ -275,7 +275,7 @@ zM "折叠所有段落
 - 生成markdown文件的toc
 - [为markdown生成Toc的插件](https://mazhuang.org/2015/12/19/vim-markdown-toc/)
 
-```shell
+```sh
 # 在当前光标后生成目录
 :GenTocMarked
 

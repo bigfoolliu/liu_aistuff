@@ -17,7 +17,7 @@
 - [pycharm常用快捷键(简书)](https://www.jianshu.com/p/5880a25ac597)
 - [blibli官方pycharm详细演示视频](https://www.bilibili.com/video/av29271643/?p=6)
 
-```shell
+```sh
 # 编辑相关
 # 删除光标所在行
 ctrl + y
@@ -62,14 +62,14 @@ ctrl + shift + backspace
 
 - [webstorm常用快捷键](https://blog.csdn.net/qq_44333271/article/details/87439511)
 
-```shell
+```sh
 ```
 
 ## 3.vscode
 
 ### 3.1通用
 
-```shell
+```sh
 alt + 上/下方向键  # 将当前行的代码上移或者下移
 alt + shift + 上/下方向键  # 复制当前行到上下行
 
@@ -86,7 +86,7 @@ ctrl + -  # 返回到跳转之前的位置
 
 - [mac版pycharm快捷键](https://www.cnblogs.com/shavenfeng/p/10395042.html)
 
-```shell
+```sh
 # 文件
 command + s  # 保存
 command + ,  # preferences设置

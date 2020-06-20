@@ -37,7 +37,7 @@
 
 ### 1.1系统时间
 
-```shell
+```sh
 # 设置系统默认的UTC时间为Shanghai时间
 tzselect
 TZ='Asia/Shanghai'
@@ -49,7 +49,7 @@ uptime
 
 ### 1.2系统设备
 
-```shell
+```sh
 # 查看内存情况
 free -mh
 
@@ -76,7 +76,7 @@ cat /proc/cpuinfo
 
 ### 1.3系统用户
 
-```shell
+```sh
 id  # 展示当前用户的身份号
 passwd user1  # 更改用户密码
 uptime  # 查看系统启动的时间统计
@@ -104,7 +104,7 @@ cat /etc/group  # 查看所有用户组
 
 ### 2.1文件展示
 
-```shell
+```sh
 ls -t  # 列举当前文件夹下所有目录和文件并以时间排列
 ls -u  # 以文件上次被访问的时间排序
 ls -S  # 以文件大小排序
@@ -129,7 +129,7 @@ grep -i 'Out of Memory' /var/log/messages
 
 ### 2.2文件占用
 
-```shell
+```sh
 # 查看文件占用
 fuser -s file  # 查看文件是否被其他进程占用(持续写入状态，vi打开不是), 返回值为1则为被占用，0则为未被占用
 fuser -v file  # 查看文件的具体占用信息，包括占用进程的 USER, PID 等
@@ -147,7 +147,7 @@ du -h --max-depth=1 /data/
 
 ### 2.3文件查找
 
-```shell
+```sh
 # 文件查找
 find . -name "*.sh" -print  # 根据文件名查找文件,在当前目录下查找*.sh并将其输出
 find . -ctime 1 -type f -print  # 查找过去 1 小时修改过的普通文件
@@ -176,7 +176,7 @@ wc -l `find ./ -name "*.csv"`
 
 ### 2.4文件归档
 
-```shell
+```sh
 # 使用tar进行文件归档
 tar -cf out.tar file1 file2 `folder1  # f表示指定tar文件名必须在参数最后，c表示新建一个tar包
 tar -tf out.tar  # 列出已经归档文件中的内容
@@ -209,7 +209,7 @@ gunzip -r folder1  # 解压缩文件夹，同理，也只会解压缩其目录�
 
 ### 2.5文件其他
 
-```shell
+```sh
 # 单重定向从头开始写文件，使用重定向符来清空一个文件或者创建一个新的空文件
 > test.py
 
@@ -223,7 +223,7 @@ ln -s a.txt aa.txt  # 符号连接(软连接)，删除源头，另一个无法�
 
 ### 2.6目录
 
-```shell
+```sh
 # 返回上一次的目录
 cd -
 
@@ -246,14 +246,14 @@ popd -2  # 倒数为2的目录弹出
 
 ## 3.进程相关
 
-```shell
+```sh
 # 打开应用进程,查看系统调用，排查问题
 strace
 ```
 
 ### 3.1杀死进程的几种方式
 
-```shell
+```sh
 # 知道进程号，直接强制杀死进程
 kill -s 9 1024
 
@@ -276,7 +276,7 @@ pkill -9 firefox
 
 ### 3.2supervisor对进程进行管理
 
-```shell
+```sh
 # 重启服务
 service supervisor restart
 
@@ -312,7 +312,7 @@ supervisorctl reload
 - 用于截取网络分组，并输出分组内容的工具
 - 针对网络层，协议，主机，网络或者端口的过滤
 
-```shell
+```sh
 # -n 表示不要解析域名，直接显示 ip。
 # -nn 不要解析域名和端口
 # -X 同时用 hex 和 ascii 显示报文的内容。
@@ -337,7 +337,7 @@ tcpdump -i ens433 port 8888 and host node1  # 监视指定主机和端口的数�
 
 能够向外部网络转发分组的特殊节点主机叫`网关`。
 
-```shell
+```sh
 # 查看操作系统维护的路由表
 # 其包含了关于分组如何转发以及通过
 route
@@ -370,7 +370,7 @@ sudo ifconfig ens33 192.168.42.130
 
 - [阮一峰curl网站开发指南](http://www.ruanyifeng.com/blog/2011/09/curl.html)
 
-```shell
+```sh
 # curl直接返回html
 curl http://www.linux.com
 
@@ -405,7 +405,7 @@ curl -s https://ip.cn
 
 ### 4.4wget命令
 
-```shell
+```sh
 # wget相关命令
 wget http://www.baidu.com  # 将首页下载
 wget -x http://www.baidu.com  # 强制建立服务器上一模一样的目录
@@ -418,7 +418,7 @@ wget -m -accept=mp4 http://www.baidu.com  # 只下载某种类型的文件,-reje
 
 ### 4.5网络其他
 
-```shell
+```sh
 # 监听指定的网络接口并以top形式呈现
 iftop
 # 快速告知哪些进程在占用带宽
@@ -437,7 +437,7 @@ netstat -anptu
 
 - 将windows中的文件转义为unix格式
 
-```shell
+```sh
 # 单个文件转换
 dos2unix windows.txt
 
@@ -450,7 +450,7 @@ find ./ -name "*.md" | args dos2unix
 
 ### 5.2watch
 
-```shell
+```sh
 # 定期检查
 watch -n 1 -d 'netstat -i | grep tun0'
 ```
@@ -459,7 +459,7 @@ watch -n 1 -d 'netstat -i | grep tun0'
 
 - json格式化工具
 
-```shell
+```sh
 # 输出file.json格式后的内容
 jq . file.json
 
@@ -475,7 +475,7 @@ jq . file.json | >> new_file.json
 
 - 监控文件的变化来执行相应的操作
 
-```shell
+```sh
 # 安装
 pip3 install when-changed
 
@@ -497,7 +497,7 @@ todo:
 
 ### 5.x其他
 
-```shell
+```sh
 # 查看上一个命令的返回值
 echo $?
 
