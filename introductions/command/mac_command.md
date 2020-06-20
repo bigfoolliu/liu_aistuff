@@ -11,6 +11,7 @@
         * [3.2iterm2](#3.2iterm2)
         * [3.3fzf](#3.3fzf)
         * [3.4musicbox](#3.4musicbox)
+        * [3.5zsh插件命令](#3.5zsh插件命令)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -25,7 +26,7 @@
 
 ### 1.1通用系统命令
 
-```shell
+```sh
 ctrl + a  # 光标移动到行首,加#使命令失效
 ctrl + e  # 光标移动到行尾
 ctrl + q  # 删除当前行的命令
@@ -99,7 +100,7 @@ ctrl + command + space  # 快速打开emoji表情😄
 
 ### 1.2其他命令行命令
 
-```shell
+```sh
 # 查看网络上传下载速度
 fast
 fash --upload
@@ -111,7 +112,7 @@ bat ./*.file  # 可以同时查看多个文件
 
 ## 2.safari命令
 
-```shell
+```sh
 command + t  # 新建标签页面
 command + w  # 关闭标签页面
 
@@ -126,7 +127,7 @@ command + shift + tab  # 移动到上一个标签页
 - [安装homenbrew](https://www.wandouip.com/t5i171897/)
 - [终端颜色设定介绍](https://blog.csdn.net/liumiaocn/article/details/102962691)
 
-```shell
+```sh
 # shell相关
 cat /etc/shells  # 查看当前可用的shells
 echo $SHELL  # 查看当前使用的shell
@@ -169,7 +170,7 @@ sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 - [iterm官网](https://www.iterm2.com/index.html)
 - [设置鼠标滑动可以翻转页面](https://blog.csdn.net/weixin_34138521/article/details/94600287)
 
-```shell
+```sh
 # 将当前窗口分割
 command + d  # 水平分割
 command + shift + d  # 垂直分割
@@ -223,7 +224,7 @@ ctrl + u
 - [知乎打造fzf](https://zhuanlan.zhihu.com/p/53380250)
 - [fzf使用](http://einverne.github.io/einverne.github.io/post/2019/08/fzf-usage.html)
 
-```shell
+```sh
 # 安装
 brew install fd fzf
 
@@ -244,9 +245,70 @@ dfzf
 ```
 ### 3.4musicbox
 
-```shell
+```sh
 # 命令行版本网易云
 musicbox
+```
+
+### 3.5zsh插件命令
+
+```sh
+# emoji
+display_emoji  # 显示所有可展示的emoji
+echo $emoji[family]  # 展示特定的emoji
+random_emoji  # 随机显示一个emoji
+
+# git
+glols  # git log图形化展示
+
+# battery
+battery_time_remaining  # 查看电量剩余
+battery_pct  # 查看电池容量
+battery_is_charing  # 查看电池是否在充电
+
+# jump
+mark ***  # 将当前目录一个指定的标记
+unmark ***  # 删除当前标记
+jump ***  # 跳转去标记的目录
+marks  # 查看所有的标记
+
+# web-search
+baidu xxx  # 使用百度搜索关键词
+google xxx  # 谷歌搜索关键词
+github xxx
+bing xxx
+stackoverflow xxx
+image xxx  # duckduckgo图片网站搜索
+
+# extract
+extract file  # 快速解压文件
+
+# redis-cli
+redis-cli  # 进入redis，可以有提示
+
+# encode
+encode64 "aa"  # 将数据编码为base64
+e64 "aa"
+decode64 "egsdx"  # 将base64解码为原始数据
+d64 "egdx"
+
+# urltools
+urlencode https://www.github.com  # url进行编码
+urldecode https://www.github.com  # url进行解码
+
+# python
+IPython  # 交互式python环境
+pyfind  # 在当前目录递归寻找.py文件
+pyclean ./   # 删除指定目录内部的字节码文件和换缓存文件
+
+# copy
+copydir  # 将当前路径复制进系统剪贴板
+copyfile xxx  # 将文件内容复制进系统剪贴板
+
+# jsontools
+echo '{"a":1}' | pp_json  # 美化输出json
+less a.json | is_json  # 判读文件是否为合法的json格式文件
+echo '{"b":2, "a":1}' | urlencode_json  # 将内容json编码
 ```
 
 ## 4.安装python环境
@@ -258,7 +320,7 @@ musicbox
 - [mac安装mysql](https://blog.csdn.net/w605283073/article/details/80417866?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)
 - **当前使用的mysql密码强度为1(medium), Lxxxxxxxx?**
 
-```shell
+```sh
 brew install mysql
 
 brew services start mysql
@@ -271,13 +333,13 @@ mycli mysql://root@127.0.0.1:3306/data_base
 
 ## 6.pycharm快捷键
 
-```shell
+```sh
 command + backspace  # 删除当前行
 ```
 
 ## 7.系统快捷键
 
-```shell
+```sh
 command + space  # 打开spotlight搜索 
 ```
 

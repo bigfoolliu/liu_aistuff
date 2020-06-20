@@ -31,9 +31,10 @@
         * [4.2使用](#4.2使用)
 * [5.其他](#5.其他)
         * [5.1非常用命令](#5.1非常用命令)
-        * [5.2git小技巧](#5.2git小技巧)
-        * [5.3github搜索技巧](#5.3github搜索技巧)
-        * [5.4在服务器上搭建git](#5.4在服务器上搭建git)
+        * [5.2github](#5.2github)
+                * [5.2.1github搜索技巧](#5.2.1github搜索技巧)
+                * [5.2.2github知识](#5.2.2github知识)
+        * [5.3在服务器上搭建git](#5.3在服务器上搭建git)
 
 <!-- vim-markdown-toc -->
 
@@ -108,6 +109,8 @@ git add test.py
 ```
 
 ### 1.4本地提交(commit)
+
+- git commit在提交信息中换行，只需要单引号，且换行之后再补齐另一半单引号即可
 
 ```shell
 # 直接提交
@@ -389,6 +392,9 @@ git diff
 # 查看暂存起来(即add之后)的更新
 git diff --cached
 git diff --staged
+
+# 检查空白错误，可以在提交之前运行一次
+git diff --check
 ```
 
 ### 1.16远程(remote)
@@ -574,11 +580,9 @@ git reset --soft HEAD~2  # 不删除工作空间改动代码，撤销commit，�
 git push origin 分支名 --force  # 将当前撤销的提交推送到远程
 ```
 
-### 5.2git小技巧
+### 5.2github
 
-- git commit在提交信息中换行，只需要单引号，且换行之后再补齐另一半单引号即可
-
-### 5.3github搜索技巧
+#### 5.2.1github搜索技巧
 
 ```shell
 # 名字包含python，stars数量大于1000
@@ -593,7 +597,13 @@ language:python
 pushed:2020-01-01
 ```
 
-### 5.4在服务器上搭建git
+#### 5.2.2github知识
+
+fork的作用：
+
+当想参与某个项目，但是没有推动权限的时候，将其fork一个副本到自己的仓库，在本地修改之后可以通过创建`拉取请求(pull request, pr)`,将改动进入原项目仓库。
+
+### 5.3在服务器上搭建git
 
 ```shell
 # 1.将当前仓库导出为裸仓库-不包含当前目录的仓库
