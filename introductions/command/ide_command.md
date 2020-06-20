@@ -1,4 +1,4 @@
-#随机出题固定试卷试卷库 常用ide快捷键
+# 常用ide快捷键
 
 
 <!-- vim-markdown-toc Marked -->

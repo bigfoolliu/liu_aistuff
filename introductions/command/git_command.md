@@ -33,6 +33,7 @@
         * [5.1非常用命令](#5.1非常用命令)
         * [5.2git小技巧](#5.2git小技巧)
         * [5.3github搜索技巧](#5.3github搜索技巧)
+        * [5.4在服务器上搭建git](#5.4在服务器上搭建git)
 
 <!-- vim-markdown-toc -->
 
@@ -83,6 +84,13 @@ git config --global core.editor vim
 ```
 
 ### 1.2仓库克隆(clone)
+
+git可以使用四种不同的协议来传输数据：
+
+1. 本地协议(Local): `git clone /srv/git/project.git`或者`git clone file:///srv/git/project.git`
+2. HTTP协议：`git clone https://xxx.com/xxx.git`
+3. SSH协议：`git clone ssh://[user@]server/project.git]`
+4. Git协议
 
 ```shell
 # 从远程克隆一个版本库
@@ -583,5 +591,17 @@ in:description
 language:python
 
 pushed:2020-01-01
+```
+
+### 5.4在服务器上搭建git
+
+```shell
+# 1.将当前仓库导出为裸仓库-不包含当前目录的仓库
+git clone --bare my_project my_project.git
+
+# 2.将本地裸仓库放到服务器上,加入是放入/srv/git目录下
+scp -r my_project.git user@git.example.com:/srv/git
+
+# 3.如果一个用户对该目录/srv/git目录有读写权限，即可推送了
 ```
 
