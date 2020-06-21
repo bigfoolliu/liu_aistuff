@@ -125,6 +125,12 @@ less test.py
 
 # 用grep直接搜索文件中的文本内容
 grep -i 'Out of Memory' /var/log/messages
+
+# tree递归展示
+tree -a  # 显示所有文件，包含隐藏文件
+tree -d  # 仅展示目录
+tree -N ./  # 若有中文字符的话可以显示中文文件名
+tree -L 2 ./  # 展示的目录深度为2
 ````
 
 ### 2.2文件占用
