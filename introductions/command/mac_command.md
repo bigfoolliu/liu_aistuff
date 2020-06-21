@@ -309,6 +309,12 @@ copyfile xxx  # 将文件内容复制进系统剪贴板
 echo '{"a":1}' | pp_json  # 美化输出json
 less a.json | is_json  # 判读文件是否为合法的json格式文件
 echo '{"b":2, "a":1}' | urlencode_json  # 将内容json编码
+
+# vi-mode
+# 允许用vim的方式来使用命令行,esc进入normal模式，v来编辑
+
+# zsh_reload
+src  # 直接source .zsh配置文件
 ```
 
 ## 4.安装python环境
