@@ -30,6 +30,8 @@
         * [5.5ranger](#5.5ranger)
         * [5.6sed](#5.6sed)
         * [5.x其他](#5.x其他)
+* [性能检测与优化](#性能检测与优化)
+        * [ifstat](#ifstat)
 
 <!-- vim-markdown-toc -->
 
@@ -456,9 +458,15 @@ find ./ -name "*.md" | args dos2unix
 
 ### 5.2watch
 
+- 没有选项的情况下每隔2秒执行一次
+- -n 为时间间隔
+- -d 为执行的命令
+
 ```sh
 # 定期检查
 watch -n 1 -d 'netstat -i | grep tun0'
+
+watch date
 ```
 
 ### 5.3jq
@@ -583,5 +591,13 @@ oneko
 # 查找单词意思
 curl v2en.co/cool
 curl v2en.co/shut%20down  # 查找词组
+```
+
+## 性能检测与优化
+
+### ifstat
+
+```sh
+ifstat -tTz
 ```
 

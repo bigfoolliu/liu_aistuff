@@ -12,6 +12,7 @@
         * [3.3fzf](#3.3fzf)
         * [3.4musicbox](#3.4musicbox)
         * [3.5zsh插件命令](#3.5zsh插件命令)
+        * [3.6youtube-dl](#3.6youtube-dl)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -315,6 +316,14 @@ echo '{"b":2, "a":1}' | urlencode_json  # 将内容json编码
 
 # zsh_reload
 src  # 直接source .zsh配置文件
+```
+
+### 3.6youtube-dl
+
+- 从视频网站平台下载视频
+
+```sh
+
 ```
 
 ## 4.安装python环境
