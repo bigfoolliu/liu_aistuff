@@ -51,7 +51,7 @@ def operate_demo():
     """
     字符串操作函数示例
     """
-    s = " abcada asd"
+    s = " abcada asd sdf"
     print(s.capitalize())  # 首字母大写
 
     new_s = s.center(10)  # 原字符串居中并使用空格填充至指定长度的新字符串
@@ -73,6 +73,7 @@ def operate_demo():
     print(s.lower())  # 将字符串中的所有字母小写
 
     print(s.split("a"))  # 将字符串以指定字符分割为列表
+    print(s.split("a", 1))  # 将字符串以指定字符分割为列表,并指定最大分割数量
     print(s.swapcase())  # 将字符串中的大小写翻转
 
     print(s.title())  # 返回标题化的字符串，即所有单词首字母大写
