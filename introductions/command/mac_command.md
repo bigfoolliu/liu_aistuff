@@ -13,6 +13,8 @@
         * [3.4musicbox](#3.4musicbox)
         * [3.5zsh插件命令](#3.5zsh插件命令)
         * [3.6youtube-dl](#3.6youtube-dl)
+        * [3.7uglifyjs](#3.7uglifyjs)
+        * [3.8term2048](#3.8term2048)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -323,7 +325,29 @@ src  # 直接source .zsh配置文件
 - 从视频网站平台下载视频
 
 ```sh
+```
 
+### 3.7uglifyjs
+
+- js代码格式化优化工具
+- [uglifyjs](https://github.com/mishoo/UglifyJS)
+
+```sh
+# 全局安装
+npm install uglify-js -g
+
+# 将js代码简单压缩，合并为一行
+uglifyjs 1.js -o 1.min.js
+
+# 使用单引号替换双引号的美化或者直接美化
+uglifyjs 1.js -b quote_style=1 -o 1b.js
+```
+
+### 3.8term2048
+
+```sh
+# 启动终端版2048
+term2048
 ```
 
 ## 4.安装python环境
