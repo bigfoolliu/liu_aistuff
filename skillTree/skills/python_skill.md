@@ -287,6 +287,9 @@ pyenv activate myenv
 
 # 退出虚拟化环境
 pyenv deactivate
+
+# 4.删除虚拟环境
+pyenv virtualenv-delete py368
 ```
 
 ## a.其他
