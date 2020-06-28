@@ -17,6 +17,10 @@
 - [pycharm常用快捷键(简书)](https://www.jianshu.com/p/5880a25ac597)
 - [blibli官方pycharm详细演示视频](https://www.bilibili.com/video/av29271643/?p=6)
 
+**注意!**
+
+有些程序可能必须在终端下运行，在配置运行时候，把console配置为仿真terminal.
+
 ```sh
 # 编辑相关
 # 删除光标所在行

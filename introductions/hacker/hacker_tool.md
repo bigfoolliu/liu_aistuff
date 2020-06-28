@@ -8,6 +8,8 @@
         * [2.1nmap](#2.1nmap)
 * [3.密码破解](#3.密码破解)
         * [3.1john](#3.1john)
+* [4.网络](#4.网络)
+        * [4.1netcat](#4.1netcat)
 
 <!-- vim-markdown-toc -->
 
@@ -45,4 +47,13 @@ nmap -A -T4 -Pn baidu.com
 # 安装
 brew install john-jumbo
 ```
+
+## 4.网络
+
+### 4.1netcat
+
+- 端口扫描，网络通信，文件传输，加密传输，硬盘克隆，远程控制等
+
+```sh
+``
 
