@@ -179,10 +179,41 @@ def event_demo():
     event.set()
 
 
+def inner_func_demo(session_id=1):
+
+    print("innerfunc demo start")
+    t1 = time.time()
+    def inner_func():
+        print("inner func start")
+        time.sleep(3)
+        print(f"session_id:{session_id}")
+        print("inner func end")
+
+    def inner_func2():
+        print("inner func2 start")
+        time.sleep(5)
+        print(f"2 session_id:{session_id}")
+        print("inner func2 end")
+
+
+    inner_thread = threading.Thread(target=inner_func)
+    inner_thread.start()
+    # inner_thread.join()   # 写在这里会一直阻塞
+    inner2_thread = threading.Thread(target=inner_func2)
+    inner2_thread.start()
+
+    inner_thread.join()   # 写在这里不会一直阻塞
+    inner2_thread.join()
+    print("innner func demo end")
+    print(f"time: {time.time()-t1}")
+
+
 if __name__ == "__main__":
+    print("main start")
     # thread_demo()
     # thread_demo2()
     # mythread_demo()
     # lock_demo()
-    event_demo()
+    # event_demo()
+    inner_func_demo()
     print("main end")
