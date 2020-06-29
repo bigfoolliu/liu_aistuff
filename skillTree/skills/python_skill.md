@@ -23,6 +23,7 @@
         * [14.3fabric](#14.3fabric)
         * [14.4python导包](#14.4python导包)
         * [14.5pyenv管理python版本](#14.5pyenv管理python版本)
+        * [14.6python分发包步骤](#14.6python分发包步骤)
 * [a.其他](#a.其他)
 
 <!-- vim-markdown-toc -->
@@ -191,7 +192,10 @@ def main():
 
 ### 14.1virtualenv
 
-```shell
+```sh
+# 安装virtualenv
+pip3 install virtualenv
+
 virtualenv <venv>  # 使用默认的python解释器创建虚拟环境
 virtualenv -p python3 <venv>  # 指定python解释器版本创建虚拟环境
 virtualenv --no-site-packages <venv>  # 添加参数从而系统所有安装的第三方库都不会复制过来
@@ -205,7 +209,7 @@ deactivate  # 退出虚拟环境
 
 - [pip常用指令个人总结](https://blog.csdn.net/weixin_40877924/article/details/98658669)
 
-```shell
+```sh
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <package>  # 使用清华源下载包
 python -m pip install --upgrade pip  # 更新pip
 
@@ -229,7 +233,7 @@ pip freeze > requirements.txt  # 生成一个迁移文件
 
 - [简书介绍pyenv详细使用](https://www.jianshu.com/p/60f361822a7e)
 
-```shell
+```sh
 # 1.ubuntu环境下下载pyenv, pyenv-virtualenv和编译python的依赖
 
 # 下载
@@ -292,7 +296,28 @@ pyenv deactivate
 pyenv virtualenv-delete py368
 ```
 
+### 14.6python分发包步骤
+
+- [python配置打包包](https://packaging.python.org/guides/distributing-packages-using-setuptools/)
+
+```sh
+# 查看setup.py包含的命令
+python setup.py --help-commands
+
+# 分发包
+python setup.py sdist
+
+# 安装导出的包
+# 方式一
+python setup.py install
+# 方式二
+tar -xzvf a-1.0.1.tar.gz
+cd a-1.0.1
+python3 setup.py install
+```
+
 ## a.其他
 
 - [python必备的库](https://www.cnblogs.com/jiangchunsheng/p/9275881.html)
 - [知乎：13个python最佳编程技巧](https://zhuanlan.zhihu.com/p/59897541)
+
