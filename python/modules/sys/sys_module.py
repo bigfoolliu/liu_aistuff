@@ -49,9 +49,23 @@ def func_demo():
     print(f"sys.getsizeof([1, 2, 3]): {sys.getsizeof([1, 2, 3])}")  # 获取一个对象占用空间的比特数
 
 
+def exit_demo():
+    """
+    sys.exit()通过引发SystemExit异常，如果没有捕获该异常将会退出，捕获了可以继续执行
+    os._exit()会直接将python程序终止，之后的所有代码都不会继续执行
+    一般情况下使用sys.exit()即可，一般在fork出来的子进程中使用os._exit()
+    一般来说os._exit() 用于在线程中退出
+    sys.exit() 用于在主线程中退出。
+    """
+    print("start")
+    sys.exit(0)  # 0表示成功
+    # sys.exit(1)  # 1或其他数字表示失败
+    print("exit")
+
 
 if __name__ == "__main__":
     # basic_demo()
-    args_demo()
+    # args_demo()
     # func_demo()
+    exit_demo()
 
