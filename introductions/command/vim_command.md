@@ -1,4 +1,4 @@
-# vi快捷键
+# vim快捷键
 
 <!-- vim-markdown-toc Marked -->
 

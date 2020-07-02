@@ -263,6 +263,10 @@ random_emoji  # 随机显示一个emoji
 
 # git
 glols  # git log图形化展示
+gl  # git pull
+gcm  # git checkout master
+gcd  # git checkout develop
+gst  # git status
 
 # battery
 battery_time_remaining  # 查看电量剩余

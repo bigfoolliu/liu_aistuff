@@ -40,6 +40,8 @@
 
 ## 1.git基本命令
 
+- ![git仓库以及命令关系](./imgs/git_repo_intro.jpg)
+
 ### 1.1配置(config)
 
 ```sh
@@ -124,7 +126,7 @@ git commit -a -m "format"
 
 # 1. 如果上次提交以来修改了，会将暂存区中的文件提交,从而将本次的修改合并到上一次的提交(适用于一次提交忘了提交某些信息的场景)
 # 2. 如果上次提交以来没有任何修改，则只是修改上一次提交的信息(适用于修改提交信息的场景)
-git commit --amend
+git commit --amend -m [message]
 ```
 
 ### 1.5远程提交于拉取(push, pull)
@@ -193,8 +195,13 @@ git fetch
 # 取回指定的分支更新(eg:git fetch origin master)
 git fetch <远程主机名> <分支名>
 
-# 取消对某个文件的修改(即没有文件)
+# 取消对某个文件的修改(即没有文件),恢复暂存区的指定文件到工作区
 git checkout a.txt
+
+# 恢复某个commitd的指定文件到工作区
+git checkout [commit] [file]
+
+# 恢复上一个commit的所有文件到工作区
 
 # 切换到本地的dev分支
 git checkout dev
@@ -204,6 +211,8 @@ git checkout -b dev
 
 # 导航到之前的一个分支
 git checkout -
+
+# 
 
 # 查看本地所有分支
 git branch
