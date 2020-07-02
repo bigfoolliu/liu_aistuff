@@ -102,6 +102,8 @@ git clone `address`
 
 ### 1.3暂存(add)
 
+- 由于git commit的操作是原子性的,如果本次commit的内容没有完成，却要切换至其他分支等操作，那么可以将其暂存
+
 ```sh
 # 将所有修改文件暂存
 git add .
