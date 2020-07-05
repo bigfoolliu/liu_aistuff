@@ -1,4 +1,4 @@
-# linux平台下的常用命令
+# LINUX平台下的常用命令
 
 <!-- vim-markdown-toc Marked -->
 

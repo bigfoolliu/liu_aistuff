@@ -1,4 +1,4 @@
-# mac高效使用技巧
+# MAC高效使用技巧
 
 <!-- vim-markdown-toc Marked -->
 
@@ -49,7 +49,7 @@ command + z  # 万能的还原操作
 command + option + h  # 隐藏其他所有窗口
 
 command + down  # 选中文件之后可以打开
-command + space  # 打开spotlight
+command + space  # 打开sPOTLight
 
 command + [  # finder返回
 command + ]  # finder前进

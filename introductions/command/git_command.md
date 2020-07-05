@@ -110,6 +110,9 @@ git add .
 
 # 将指定文件暂存
 git add test.py
+
+# 使用交互式的暂存
+git add -i
 ```
 
 ### 1.4本地提交(commit)
