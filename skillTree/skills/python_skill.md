@@ -224,6 +224,15 @@ pip freeze > requirements.txt  # 生成一个迁移文件
 ### 14.3fabric
 
 - [python Fabric概览和教程](https://fabric-chs.readthedocs.io/zh_CN/chs/tutorial.html)
+- [鼓励构建易于部署的应用-十二要素应用][https://12factor.net/]
+
+使用fabric进行代码的部署:
+
+在目标计算机上安装代码并执行，使用特定版本的应用或服务对最终用户可用的过程叫做部署.
+
+```sh
+
+```
 
 ### 14.4python导包
 

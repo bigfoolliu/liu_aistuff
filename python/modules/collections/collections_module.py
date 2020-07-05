@@ -11,7 +11,7 @@ collections模块示例
 - defaultdict: 字典的子类，提供了一个工厂函数，为字典查询提供了默认值
 - OrderedDict: 字典的子类，保留了字典key被添加时候的顺序
 - namedtuple: 创建命名元组子类的工厂函数,类似元组，但是元素的访问更加方便，不必通过索引值，而是类型字典访问
-- deque: 类型list，实现了在两端快速添加(append)和弹出(pop)
+- deque: 双端队列，类似list，实现了在两端快速添加(append)和弹出(pop)
 - ChainMap: 类似dict，将多个映射集合到一个视图里面，是管理嵌套上下文和覆盖的有用工具。
 """
 
