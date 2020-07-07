@@ -84,6 +84,9 @@ git conig --local user.email "userEmail"
 
 # 将git的文本编辑器修改为vim
 git config --global core.editor vim
+
+# 当不能显示中文的时候
+git config --global core.quotepath false
 ```
 
 ### 1.2仓库克隆(clone)
