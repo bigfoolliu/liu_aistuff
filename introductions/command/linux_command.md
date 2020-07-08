@@ -160,6 +160,9 @@ du -hs /data/ | sort -n
 # 查看目录下的文件夹占用空间情况
 du -h --max-depth=1 /data/
 
+# du的替代工具,更好的使用体验
+ncdu
+
 # 查看文件信息
 file test.py
 
