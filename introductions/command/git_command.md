@@ -257,6 +257,8 @@ git reset HEAD
 # 撤销对指定文件的暂存(适用于误将文件暂存add的场景)
 git reset HEAD test.py
 
+# 如果想要将一个分支的最后一个提交转移到另外一个分支,然后git stash，应用到另外一个分支
+git reset HEAD~1
 
 # revert会将操作之前和之后的信息都会保留,用新的commit回滚旧的commit
 # 撤销前一次commit
