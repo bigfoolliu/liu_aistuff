@@ -12,7 +12,7 @@ import sys
 
 def basic_demo():
     # 获取对象的引用计数
-    a = "hahaha"
+    a = "hello"
     print(sys.getrefcount(a))
 
 
@@ -60,12 +60,29 @@ def exit_demo():
     print("start")
     sys.exit(0)  # 0表示成功
     # sys.exit(1)  # 1或其他数字表示失败
-    print("exit")
+
+
+def stdin_demo():
+    """
+    https://www.cnblogs.com/keye/p/7859181.html
+    """
+    iowrapper = sys.stdin  # 得到_io.TextIOWrapper对象
+    print(iowrapper, type(iowrapper))
+
+    fd = iowrapper.fileno()
+    print(fd, type(fd))
+
+    try:
+        while True:
+            a = sys.stdin.readline()
+            print(f"your input is {a}")  # 此时的a会自带换行符\n
+    except KeyboardInterrupt:  # 需要在终端中来捕获，pycharm中失败
+        print("exit")
 
 
 if __name__ == "__main__":
     # basic_demo()
     # args_demo()
     # func_demo()
-    exit_demo()
-
+    # exit_demo()
+    stdin_demo()
