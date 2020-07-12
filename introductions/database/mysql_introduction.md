@@ -1,51 +1,120 @@
-# mysql数据库使用
+# mysql数据库
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [mysql数据库使用](#mysql数据库使用)
-    - [1.索引](#1索引)
-        - [1.1索引类型](#11索引类型)
-        - [1.2索引优化](#12索引优化)
-        - [1.3索引优点](#13索引优点)
-        - [1.4索引使用条件](#14索引使用条件)
-    - [2.查询性能优化](#2查询性能优化)
-        - [2.1使用Explain分析](#21使用explain分析)
-        - [2.2优化数据访问](#22优化数据访问)
-        - [2.3重构查询方式](#23重构查询方式)
-    - [3.存储引擎](#3存储引擎)
-        - [3.1InnoDB](#31innodb)
-        - [3.2MyISAM](#32myisam)
-    - [4.数据类型](#4数据类型)
-        - [4.1整型](#41整型)
-        - [4.2浮点数](#42浮点数)
-        - [4.3字符串](#43字符串)
-        - [4.4时间和日期](#44时间和日期)
-    - [5.切分](#5切分)
-        - [5.1水平切分](#51水平切分)
-        - [5.2垂直切分](#52垂直切分)
-    - [6.复制](#6复制)
-        - [6.1主从复制](#61主从复制)
-        - [6.2读写分离](#62读写分离)
+* [1.介绍](#1.介绍)
+* [2.索引](#2.索引)
+        * [2.1索引类型](#2.1索引类型)
+                * [2.1.1B+树索引](#2.1.1b+树索引)
+                * [2.1.2哈希索引](#2.1.2哈希索引)
+                * [2.1.3全文索引](#2.1.3全文索引)
+                * [2.1.4空间数据索引](#2.1.4空间数据索引)
+                * [2.1.5联合索引](#2.1.5联合索引)
+        * [2.2索引优化](#2.2索引优化)
+        * [2.3索引优缺点](#2.3索引优缺点)
+        * [2.4索引使用条件](#2.4索引使用条件)
+        * [2.5建立索引考虑要素](#2.5建立索引考虑要素)
+        * [2.6判断索引是否被使用](#2.6判断索引是否被使用)
+        * [2.7查询不会使用索引的情况](#2.7查询不会使用索引的情况)
+* [3.事务](#3.事务)
+        * [3.1事务介绍](#3.1事务介绍)
+        * [3.2事务隔离级别](#3.2事务隔离级别)
+                * [3.2.1锁](#3.2.1锁)
+                * [3.2.2锁的类型](#3.2.2锁的类型)
+                * [3.2.3锁的粒度](#3.2.3锁的粒度)
+                * [3.2.4死锁](#3.2.4死锁)
+                * [3.2.5乐观锁和悲观锁](#3.2.5乐观锁和悲观锁)
+        * [3.3事务隔离级别](#3.3事务隔离级别)
+        * [3.4 MVCC](#3.4-mvcc)
+        * [3.5mysql事务](#3.5mysql事务)
+* [4.存储引擎](#4.存储引擎)
+        * [4.1InnoDB](#4.1innodb)
+        * [4.2MyISAM](#4.2myisam)
+        * [4.3mysql支持存储引擎及其区别](#4.3mysql支持存储引擎及其区别)
+* [5.表结构](#5.表结构)
+        * [5.1表结构切分](#5.1表结构切分)
+        * [5.2表结构设计](#5.2表结构设计)
+                * [5.2.1主键](#5.2.1主键)
+                * [5.2.2NULL与NOT NULL](#5.2.2null与not-null)
+                * [5.2.3用户密码散列用什么类型存储](#5.2.3用户密码散列用什么类型存储)
+* [6.mysql相关命令](#6.mysql相关命令)
+        * [6.1安装启动等](#6.1安装启动等)
+        * [6.2数据库操作相关命令](#6.2数据库操作相关命令)
+        * [6.3数据表操作相关命令](#6.3数据表操作相关命令)
+        * [6.4数据操作相关命令](#6.4数据操作相关命令)
+                * [6.4.1CRUD基本操作](#6.4.1crud基本操作)
+                * [6.4.2索引基础](#6.4.2索引基础)
+                * [6.4.3创建计算字段](#6.4.3创建计算字段)
+        * [6.5用户以及权限操作相关命令](#6.5用户以及权限操作相关命令)
+                * [6.5.1用户管理](#6.5.1用户管理)
+                * [6.5.2权限管理](#6.5.2权限管理)
+        * [6.6字符集相关操作](#6.6字符集相关操作)
+                * [6.6.1查看已经设定的字符集](#6.6.1查看已经设定的字符集)
+                * [6.6.2设置字符集](#6.6.2设置字符集)
+* [7.其他](#7.其他)
+        * [7.1查询性能优化](#7.1查询性能优化)
+                * [7.1.1使用Explain分析](#7.1.1使用explain分析)
+                * [7.1.2优化数据访问](#7.1.2优化数据访问)
+                * [7.1.3重构查询方式](#7.1.3重构查询方式)
+* [8.面试](#8.面试)
+        * [8.1char与varchar的区别](#8.1char与varchar的区别)
+        * [8.2varchar10与int10的区别](#8.2varchar10与int10的区别)
+        * [8.3binlog的录入方式与区别](#8.3binlog的录入方式与区别)
+        * [8.4超大分页的处理](#8.4超大分页的处理)
+        * [8.5业务中sql的耗时以及慢查询优化](#8.5业务中sql的耗时以及慢查询优化)
+        * [8.6横向分表和纵向分表的例子](#8.6横向分表和纵向分表的例子)
+        * [8.7什么是存储过程及其优缺点](#8.7什么是存储过程及其优缺点)
+        * [8.8三个范式](#8.8三个范式)
+        * [8.9mybatis中的`#`与`$`的区别](#8.9mybatis中的`#`与`$`的区别)
+        * [8.10E-R图](#8.10e-r图)
+        * [8.11mysql单表多次查询与多表联合查询效率对比](#8.11mysql单表多次查询与多表联合查询效率对比)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
+
+## 1.介绍
 
 - [mysql详细教程](http://c.biancheng.net/view/2409.html)
 - [本地mysql读书笔记](../../books/mysql必知必会/mysql_known.md)
 - [github中mysql知识点](https://github.com/DavidWhom/CS-Notes-Learning/blob/master/notes/MySQL.md)
 
-## 1.索引
+## 2.索引
 
-- 基于B+树，节点中key从左到右非递减排序
+- 索引是存储引擎用于快速查找到记录的`数据结构`
+- mysql索引默认使用B+树，节点中key从左到右非递减排序
 - 索引是在存储引擎层实现，不同存储引擎具有不同的索引类型和实现。
+- [mysql索引背后的数据结构和算法](http://blog.codinglabs.org/articles/theory-of-mysql-index.html)
 
-### 1.1索引类型
+### 2.1索引类型
 
-1. B+树索引(大多数默认索引)
-2. 哈希索引
-3. 全文索引
-4. 空间数据索引
+#### 2.1.1B+树索引
 
-### 1.2索引优化
+- 大多数默认索引
+- 底层实现是`多路平衡查找树`，每次查找从根节点出发，到叶子节点得到键值，找到记录
+- `聚簇索引`：叶子节点只存储了当前的key值
+- `非聚簇索引`：叶子节点存储了当前的key值以及整行的数据
+
+InnoDB中：
+
+- `默认使用主键建立聚簇索引`
+- 没有主键使用唯一键建立聚簇索引
+- 没有唯一键，隐式的生成一个键建立聚簇索引
+
+#### 2.1.2哈希索引
+
+- 底层实现就是hash表，调用一次hash函数就可以找到键值，然后由键值表找到记录。
+- 等值查询较快，但是性能不稳定
+- 不支持使用索引进行排序，不支持模糊查询
+
+#### 2.1.3全文索引
+
+#### 2.1.4空间数据索引
+
+#### 2.1.5联合索引
+
+- 同时使用多个字段建立的索引叫作联合索引
+- 联合索引想要命中需要按照建立索引的顺序挨个使用，否则无法命中索引
+
+### 2.2索引优化
 
 1. 独立的列
 2. 多列索引
@@ -53,37 +122,128 @@
 4. 前缀索引
 5. 覆盖索引
 
-### 1.3索引优点
+### 2.3索引优缺点
 
-1. 大大减少服务器需要扫描的行数
-2. 帮助服务器避免进行排序和分组,以及避免创建临时表,且将随机I/O变为顺序I/O(因为B+树有序)
+优点:
 
-### 1.4索引使用条件
+- 加快了记录的查询, 大大减少服务器需要扫描的行数
+- 减少了服务器的排序操作和创建临时表的操作
+- 将随机I/O变为`顺序I/O`
+
+缺点：
+
+- 占用了额外的储存空间
+- 因为需要维护，减慢了插入以及更新记录速度
+
+### 2.4索引使用条件
 
 1. 对于非常小的表,大部分情况全表扫描比建立索引效果更好
 2. `中大型的表使用索引`
 3. 特大型的表可以使用`分区技术`
 
-## 2.查询性能优化
+### 2.5建立索引考虑要素
 
-### 2.1使用Explain分析
+- 字段使用频率高的适合作为索引
+- 联合索引(即多个字段的索引)还需要考虑联合索引中的顺序
 
-### 2.2优化数据访问
+### 2.6判断索引是否被使用
 
-1. 减少请求的数据量
-   1. 只返回必要的列和行
-   2. 缓存重复查询的数据
-2. 减少服务端扫描的行数
-   1. 最有效的方式是使用索引来覆盖查询
+- explain分析sql语句执行计划可以得到是否使用索引
+- [mysql的explain语句详解](https://www.cnblogs.com/tufujie/p/9413852.html)
 
-### 2.3重构查询方式
+### 2.7查询不会使用索引的情况
 
-1. 切分大查询
-2. 分解大连接查询
+- 使用不等于查询
+- 列参与了数学运算
+- 其他
 
-## 3.存储引擎
+## 3.事务
 
-### 3.1InnoDB
+### 3.1事务介绍
+
+- 事务是一系列不可分割的操作，要么全部成功，要么全部失败
+
+需要符合四个特征：
+
+1. `原子性(A)`,即要么全部成功，要么全部失败
+2. `一致性(C)`,即db只会从一个一致性状态到另一个一致性状态，不会有中间态
+3. `隔离性(I)`,即一个事务在执行完成之前对其他事务是不可见的
+4. `持久性(D)`,即事务一旦提交，不会改变
+
+### 3.2事务隔离级别
+
+- 事务隔离级别的产生是为了控制并发
+
+#### 3.2.1锁
+
+当数据读取与数据写入产生冲突的时候，锁产生。
+
+#### 3.2.2锁的类型
+
+1. `读锁`，属于`共享锁`，可以多个同时存在，因为多个读取操作不会产生冲突
+2. `写锁`，属于`排他锁`，会排斥其他的读锁或者写锁
+
+#### 3.2.3锁的粒度
+
+锁的粒度即`锁作用的范围`，因为数据的读取和写入如果不是同一个数据的时候，频繁加锁会影响性能。
+
+1. `表锁`，对操作的表加锁，开销较小
+2. `行级锁`，对操作的数据行加锁，开销较大
+
+#### 3.2.4死锁
+
+- 死锁是一种状态的描述
+- 两个操作占有自己的`资源不释放`，然后请求对方的资源造成的状态
+
+解决方式：**Innodb将持有最少行数排他锁(写锁)的事务进行回滚来打破。**
+
+#### 3.2.5乐观锁和悲观锁
+
+- [mysql乐观锁介绍](https://blog.csdn.net/aodaidi6752/article/details/101595344)
+- [mysql悲观锁总结和实践](https://www.iteye.com/blog/chenzhou123520-1860954)
+
+**乐观锁：**
+
+- 假设认为数据一般情况下不会发生冲突，所以在数据提交更新的时候才会去检查是否冲突
+- 如果冲突了就会返回错误信息，让用户决定怎么做
+
+**悲观锁：**
+
+- 认为数据一般情况下会发生冲突，所以在整个数据处理的过程中都会将数据锁定，不被外界锁修改
+
+### 3.3事务隔离级别
+
+**事务的实现会增加性能开销，事务隔离级别是对事务实际情况选取不同的策略，从而提高性能。**
+
+事务隔离级别种类：
+
+1. `未提交读`，使用较少，即`未提交就可以读`，其他事务可以看到本事务没有提交的更改，可能会造成`脏读`，即读取到的数据是不正确的脏数据
+2. `已提交读`，其他事务只能读取到本次事务提交的部分，存在`不可重复读`的问题，[mysql事务的不可重复读演示](https://blog.csdn.net/nangeali/article/details/75578605)
+3. `可重复读`，`Inndodb默认级别`，解决了不可重复的的问题，但是可能会产生`幻读`问题，[mysql可重复读现象已经原理](https://www.2cto.com/database/201807/763885.html)
+4. `可串行化`，最高的隔离级别，较少使用，强制将所有的操作串行化，导致并发性能下降
+
+### 3.4 MVCC
+
+- 相对于锁的另一种控制并发的方式，核心思想是为每一条数据加两个版本号:`数据的删除版本号`和`数据的当前版本号`
+
+### 3.5mysql事务
+
+- mysql默认是自动提交，即每个语句后面一个提交，可以通过设置`autocmmit`关闭
+
+```sh
+# 开启事务
+start transaction;
+
+# 回滚,将事务之前的步骤取消
+rollback;
+
+# 提交事务
+commit;
+```
+
+## 4.存储引擎
+
+### 4.1InnoDB
 
 ![innodb索引原理](../imgs/innodb_save.png)
 
@@ -101,7 +261,7 @@
   - 串行化
 - `支持真正的在线热备份`
 
-### 3.2MyISAM
+### 4.2MyISAM
 
 ![myisam索引原理](../imgs/myisam_save.png)
 
@@ -115,30 +275,385 @@
 - 不支持事务
 - 不支持行级锁
 
-## 4.数据类型
+### 4.3mysql支持存储引擎及其区别
 
-### 4.1整型
+| 存储引擎 | 事务 | 锁 | MVCC | 外键 | 全文索引 |
+| -------- | ---- | -- | ---- | ---- | -------- |
+| InnoDB | 支持 | 支持行级锁 | 支持  | 支持 | 不支持 |
+| Myisam | 不支持 | 支持表级锁 | 不支持 | 不支持 | 支持 |
+| Memory |  |  |  |  |  |
+| Archive |  |  |  |  |  |
 
-### 4.2浮点数
+## 5.表结构
 
-### 4.3字符串
+### 5.1表结构切分
 
-### 4.4时间和日期
+- 水平切分, 将同一个表中的记录拆分到多个结构相同的表中
+- 垂直切分, 将一个表按列切分为多个表，通常按照列的关系密集程度进行切分
 
-## 5.切分
+### 5.2表结构设计
 
-### 5.1水平切分
+#### 5.2.1主键
 
-将同一个表中的记录拆分到多个结构相同的表中。
+- 保证数据行的唯一性
+- 尽量使用自增长id而不是uuid,innodb中主键索引作为聚簇索引，如果是自增id,叶子节点排序时只要依次就行，减小开销
+- [14个实用的数据库设计技巧(知乎)](https://zhuanlan.zhihu.com/p/82338929)
 
-### 5.2垂直切分
+#### 5.2.2NULL与NOT NULL
 
-将一个表按列切分为多个表，通常按照列的关系密集程度进行切分。
+- [为什么mysql列属性尽量使用NOT NULL](https://www.cnblogs.com/sherlockwhite/p/why_not_null.html)
+- NULL使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值。
 
-## 6.复制
+#### 5.2.3用户密码散列用什么类型存储
 
-### 6.1主从复制
+- 密码散列,盐,用户身份证号等固定长度的字符串应该使用char而不是varchar来存储,这样可以节省空间且提高检索效率
 
-### 6.2读写分离
+## 6.mysql相关命令
 
-主服务器处理写操作以及实时性要求高的读操作，从服务器处理读操作。
+### 6.1安装启动等
+
+```sh
+# mysql命令(linux系统):
+sudo apt-get install mysql-server  # 安装mysql服务器
+sudo apt-get install mysql-client  # 安装mysql客户端
+sudo apt-get install libmysqlclient-dev  # 安装mysql客户端其他相关
+
+ps aux | grep mysql  # 查看mysql的进程是否启动
+sudo service mysql start  # 开启mysql
+sudo service mysql stop  # 关闭mysql
+sudo service mysql restart  # 重启mysql
+sudo service mysql status  # 查看服务状态
+
+# 连接到数据库进行操作
+mysql -h(ip地址,默认为localhost) -P(端口号,默认为3306) -uroot -p(密码,可输可先不输)
+
+# 更改登录密码
+use user;
+update user set authentication_string="123456" where User="root";
+flush privileges;
+# 然后重启mysql，登录
+
+# 忘记root密码,修改my.conf，加上字段
+# [mysqld]
+# skip-grant-tables
+# 就可以免密码登录
+# 然后修改密码
+
+# 将整个数据库导出
+mysqldump -u root -p db_name > db_name.sql
+
+# 导出数据库的一张表
+mysqldump -u root -p db_name table_name > table_name.sql
+
+# 执行sql文件,导入数据库
+use db1;
+source /home/xxx.sql;
+```
+
+### 6.2数据库操作相关命令
+
+```sh
+# 创建数据库:
+create database db1;
+create database db1 character set utf8;  # 创建指定字符集的数据库
+create database db1 charset utf8;  # 创建指定字符集的数据库,简写
+alter database db1 charset utf8;  # 修改已经创建的数据库的字符集
+
+# 查看数据库:
+show databases;
+show create database db1;  # 查看创建数据库的过程
+
+# 使用数据库:
+use db1;  # 只有这一句后面可以增加或者不加;
+select database();  # 查询当前使用的数据库
+
+# 删除数据库:
+drop database db1;
+
+# 使用dump备份数据库
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db > /data/db.sql  # 备份整个testdb数据库
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db | gzip > /data/db.sql  # 整个testdb数据库,但是进行压缩,防止文件过大
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db t1 t2 > /data/db.sql  # 备份数据库的多张表
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --databases db1 db2 > /data/dbs.sql  # 备份一个实例的多个数据库
+mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --all-databases > /data/db.sql  # 备份实例上的所有数据库
+```
+
+### 6.3数据表操作相关命令
+
+```sh
+# 数据表操作:
+# 创建表:
+create table tab1(id int, name char(10));
+create table tab1(id int(5), name char(10));
+
+# 查看表:
+show tables;
+show create table tab1;  # 查看创建表的过程
+desc tab1;  # 清晰的查看表的结构
+
+# 显示表列
+show columns forom tab1;
+
+# 修改表:
+alter table tab1 rename to tab2;  # 修改表的名字
+alter table tab1 add age int;  # 追加一个字段
+alter table tab1 modify column name varchar(100);  # 修改字段的数据类型
+alter table tab1 change id number int(5);  # 更改字段名,同时要说明类型
+
+# 删除表:
+alter table tab1 drop age;  # 删除指定字段
+drop table tab1;  # 删除整张表
+```
+
+### 6.4数据操作相关命令
+
+#### 6.4.1CRUD基本操作
+
+```sh
+# 从表中查询所有的数据:
+select * from tab1;
+select id, name, age from tab1;  # 指定显示的列
+select distinct age from tab1;  # 只返回不同的值
+select age from tab1 limit 10;  # 指定返回前10行
+
+# 数据显示排序
+select name, age from tab1 order by age;  # 按年龄排序
+select name, age from tab1 order by age desc;  # 按年龄降序排序
+
+# 插入数据:
+insert into tab1 values(1, 'tom');  # 向所有字段插入一条数据,需要一一对应
+insert into tab1(id) values(2);  # 向指定单个字段插入一条数据
+insert into tab1(name,id) values('jim',2);  # 向指定多个字段插入数据,需要一一对应
+insert into tab1(id,name) values(3,'mary'),(4,'tony'),(5,'sam');  # 向指定字段插入多条数据
+
+# 修改数据:
+update tab1 set id=5;  # 将字段中所有的值更改
+update tab1 set id=5 where name='tom';  # 有条件的修改字段中所有的值
+
+# 删除数据:
+truncate tab1;  # 直接删除,不可恢复
+delete from tab1 where name='tony';  # 指定条件删除,部分情况可通过回滚来恢复
+delete from tab1;  # 不指定条件删除
+```
+
+#### 6.4.2索引基础
+
+```sh
+# 索引:
+create index name on tab1(name);  # 创建最简单的索引
+# 查看:
+show index from tab1;
+# 创建:
+create index index1 on tab1(name(20));
+# 删除:
+drop index1 from tab1;
+```
+#### 6.4.3创建计算字段
+
+- 存储在表中的数据不是应用所需要或者能直接使用的，`计算字段是从数据库中检索出转换，计算或者格式化的数据，不实际存在于数据库表中，而是在运行select语句的时候创建的`。
+
+```sh
+# 创建计算字段，经name和age拼接为 name(age) 格式,注意空格
+select Contat(name, ' (', age, ')') from tab1;
+select Contat(name, ' (', age, ')') as title from tab1;  # 创建计算字段并设置别名
+
+# 创建执行计算的计算字段
+select price*numbers as total_price from tab1;
+
+# 汇总数据
+# 汇总平均数
+select Avg(price) as avg_price from tab1;
+
+# 计算最大值
+select Max(price) as max_price from tab1;
+
+# 分组数据
+# 通过年龄分组
+select name from tab1 group by age;
+```
+
+### 6.5用户以及权限操作相关命令
+
+#### 6.5.1用户管理
+
+```sh
+# 用户管理:
+# 避免非开发用户误操作.
+# 查看所有用户 MySQL中所有的用户及权限信息都存储在MySQL数据库的user表中
+
+# 查看所有用户:
+select host, user, authentication_string from user;
+
+# 添加用户并分配权限
+# https://blog.csdn.net/xudejun/article/details/84779442
+use mysql;
+create user tonyliu@localhost identified by "123456";
+flush privileges;
+
+# 删除用户:
+drop user "liu"@"localhost";
+```
+
+#### 6.5.2权限管理
+
+- [mysql权限详解](https://blog.csdn.net/BlingZeng/article/details/89351946)
+- [mysql grant用户权限总结](https://blog.csdn.net/anzhen0429/article/details/78296814)
+
+```sh
+# 查看权限:
+show grants for 用户名@主机地址
+show grants for liu@localhost
+
+# 修改权限:
+grant 权限名称 on 数据库 to 账户@主机 with grant option;
+grant all privileges on *.* to "liu"@"localhost" with grant option;  # 赋予该用户所有数据库的权限
+flush privileges;  # 刷新权限
+
+# 当使用orm连数据库,仍有权限问题的时候,需要修改用户的密码并重启mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new-password';
+```
+
+### 6.6字符集相关操作
+
+- mysql的utf8不是真正的utf8, utf8mb4才是真正的utf8
+
+#### 6.6.1查看已经设定的字符集
+
+```sh
+# 查看mysql支持的字符集
+show charset;
+
+# 查看数据库服务器和数据库字符集
+show variables like '%character%';
+
+# 查看指定数据库的字符集
+show create database test_db;
+
+# 查看表的字符集
+show create table test_table;
+show table status from test_tb like "test_table";
+
+# 查看表中所有列的字符集
+show full columns from test_table;
+```
+
+#### 6.6.2设置字符集
+
+```sh
+# 创建数据库的时候设置字符集
+create database test_db default character set="utf8mb4";
+# 创建表的时候设置字符集
+create table test_table(id int(6), name char(10)) default character set="utf8mb4";
+
+# 修改库的字符集
+alter database test_db default character set "utf8mb4";
+# 修改表的字符集
+alter table test_table convert to character set "utf8mb4";
+# 修改字段的字符集
+alter table test_table modify test_field char(10) character set "utf8mb4";
+```
+
+## 7.其他
+
+### 7.1查询性能优化
+
+#### 7.1.1使用Explain分析
+
+- [mysql explain详解](https://www.cnblogs.com/xiaoqiang-code/p/11404149.html)
+- 使用explain,模拟优化器执行SQL语句，分析查询语句或是结构的性能瓶颈
+
+```sh
+explain select * from table1;
+```
+
+#### 7.1.2优化数据访问
+
+- 减少请求的数据量, 只返回必要的列和行; 缓存重复查询的数据
+- 减少服务端扫描的行数
+- 最有效的方式是使用索引来覆盖查询
+
+#### 7.1.3重构查询方式
+
+- 切分大查询
+- 分解大连接查询
+
+## 8.面试
+
+### 8.1char与varchar的区别
+
+- char是定长字段,且最长可以存储255字
+- varchar是变长字段，且最长可存储65532字符
+- 检索效率上char > varchar
+
+### 8.2varchar10与int10的区别
+
+- varchar(10)表示申请的空间长度为10，是可以存储的空间的最大值
+- int(10)表示的是展示的长度，不足10位用0填充，int(1)和int(10)占用的空间相同
+
+### 8.3binlog的录入方式与区别
+
+- [mysql的binlog使用总结](https://blog.csdn.net/zhenhuax/article/details/81295412)
+
+录入方式：
+
+1. `statement`,该模式会记录每一个sql语句造成的影响
+2. `row`，该模式会记录每一行的改动，日志量偏大
+3. `mixed`，该模式为以上两种折中方案，普通操作用statement,无法使用时用row
+
+### 8.4超大分页的处理
+
+- [后端分页查询总结](https://blog.csdn.net/qq_37465368/article/details/81315834)
+
+- 数据库层面，`先做快速定位需要获取的id段，然后再关联`(select * from tab1 where id in (select id from tab1 where age > 20 limit 100000,20))
+- 需求层面，不做这种类似的需求
+
+### 8.5业务中sql的耗时以及慢查询优化
+
+慢查询的原因：
+
+- load多余的列或者数据，则重写sql语句
+- 分析语句的执行计划，获得其索引的执行情况，可以优化索引或者修改语句使其尽可能的命中索引
+- 考虑是否表中的数据量是否太大，将表拆分
+
+### 8.6横向分表和纵向分表的例子
+
+横向拆分：按行拆分，比如一张一亿用户的表，根据用户id尾号0-99拆分为100张表
+纵向拆分：按列拆分，比如新闻表，内容较占用空间，将其单独拆分
+
+### 8.7什么是存储过程及其优缺点
+
+- [mysql存储过程](https://blog.csdn.net/wzhJava_Only/article/details/87712005)
+- [mysql存储过程实战](https://blog.csdn.net/liu16659/article/details/81708908)
+
+是一组`预编译好的sql语句集合，类似于批处理文件`，实际不推荐使用，因为管理起来不方便。
+
+优点：
+
+1. 提高代码的重用性
+2. 简化了操作
+3. 减少了编译与连接服务器的次数，提高了效率
+
+### 8.8三个范式
+
+**数据库设计三大范式**：
+
+1. 每一列都具有原子性, 即不可再分割
+2. 属性必须完全依赖主键
+3. 所有的非主属性不能依赖其他非主属性
+
+### 8.9mybatis中的`#`与`$`的区别
+
+- [深入浅出MyBatis-快速入门](https://blog.csdn.net/hupanfeng/article/details/9068003)
+- `#`将传入的内容当做字符串，可一定预防sql注入
+- `$`将传入的内容直接拼接到sql语句中
+
+### 8.10E-R图
+
+- [E-R图的基本概念](https://blog.csdn.net/chenpidaxia/article/details/62073162)
+- [数据库设计之概念设计—ER图详解](https://blog.csdn.net/zxq1138634642/article/details/9121363)
+
+### 8.11mysql单表多次查询与多表联合查询效率对比
+
+- [MySQL多表关联查询效率高点还是多次单表查询效率高，为什么？](https://www.zhihu.com/question/68258877)
+- 总体来说多次单表用的比较多一些
+

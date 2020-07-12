@@ -3,8 +3,9 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.概述](#1.概述)
-        * [1.1安装使用](#1.1安装使用)
-        * [1.2数据库操作常用命令](#1.2数据库操作常用命令)
+        * [1.1介绍](#1.1介绍)
+        * [1.2安装启动](#1.2安装启动)
+        * [1.3数据库操作常用命令](#1.3数据库操作常用命令)
 * [2.五大数据类型](#2.五大数据类型)
         * [2.1字符串(string)](#2.1字符串(string))
         * [2.2哈希(Hash)](#2.2哈希(hash))
@@ -26,11 +27,20 @@
         * [5.1RDB](#5.1rdb)
         * [5.2AOF](#5.2aof)
         * [5.3虚拟内存方式](#5.3虚拟内存方式)
+* [6.数据回收](#6.数据回收)
+        * [6.1数据淘汰(回收)策略](#6.1数据淘汰(回收)策略)
+        * [6.2回收进程工作](#6.2回收进程工作)
+* [7.redis集群](#7.redis集群)
+        * [7.1集群方案](#7.1集群方案)
+        * [7.2导致集群方案不可用的情况](#7.2导致集群方案不可用的情况)
+        * [7.3redis哈希槽](#7.3redis哈希槽)
 * [a.其他](#a.其他)
         * [a.1客户端连接](#a.1客户端连接)
         * [a.2安全](#a.2安全)
         * [a.3性能测试](#a.3性能测试)
         * [a.4发布-订阅](#a.4发布-订阅)
+        * [a.5面试](#a.5面试)
+        * [a.6内存优化](#a.6内存优化)
 
 <!-- vim-markdown-toc -->
 
@@ -39,110 +49,67 @@
 
 ## 1.概述
 
-### 1.1安装使用
+### 1.1介绍
 
-**安装：**
+- 全称：`Remote Dictionary Server`
+- `纯内存的key-value数据库`，整个数据库加载到内存中，性能极高，通过`异步定期将数据持久化到硬盘`
+- 支持多种数据类型，且最大的value值为GB级别，因此可以实现多种功能(如：list实现消息队列，set实现标签系统)
+- `数据库容量受物理内存限制`，适合较小数量的高性能操作和运算
+- 单机的支持并发量可能支持10几万
+- **redis的命令不区分大小写**
 
-```shell
-# 安装
-sudo apt-get install redis-server
+### 1.2安装启动
+
+```sh
+sudo apt-get install redis-server  # 安装
+vim /etc/redis/redis.conf  # 可以配置redis的绑定ip为0.0.0.0
+
+sudo service redis-server restart  # 启动redis
+
+redis-server  # 进入redis服务端
+redis-cli  # 进入redis客户端，输入ping来判断是否可以连接
+redis-cli -h <host> -p <port> -a <password>  # 在远程的服务器上执行
 ```
 
-**配置：**
-
-```shell
-# 可以配置redis的绑定ip为0.0.0.0
-vim /etc/redis/redis.conf
-```
-
-**启动进入：**
-
-```shell
-# 启动redis
-sudo service redis-server restart
-
-# 进入redis服务端
-redis-server
-# 进入redis客户端，输入ping来判断是否可以连接
-redis-cli
-
-# 在远程的服务器上执行
-redis-cli -h host -p port -a password
-```
-
-### 1.2数据库操作常用命令
+### 1.3数据库操作常用命令
 
 - [redis命令参考](http://redisdoc.com/)
 
-**数据库的操作:**
+```sh
+# 数据库的操作
+select 1  # 切换到不同的数据库，默认为0，共16个
+dbsize  # 查看当前数据库的key的数量
 
-```shell
-# 切换到不同的数据库，默认为0，共16个
-select 1
+flushdb  # 清空当前数据库的所有key
+flushall  # 清空整个redis服务器的数据(所有数据库的所有key)
 
-# 查看当前数据库的key的数量
-dbsize
+swapdb 0 1  # 对换0,1两个数据库
 
-# 清空当前数据库的所有key
-flushdb
+info  # 查看redis服务器的信息,进入redis-cli之后
 
-# 清空整个redis服务器的数据(所有数据库的所有key)
-flushall
 
-# 对换0,1两个数据库
-swapdb 0 1
+# key的操作
+keys *  # 查看所有的key
+del key  # 删除键
+exists key  # 判断给定的key是否存在
 
-# 查看redis服务器的信息,进入redis-cli之后
-info
-```
+dump key  # 序列化给定key，并返回序列化的值
+restore key 0 "\x00\x15hello, dumping world!\x06\x00E\xa0Z\x82\xd8r\xc1\xde"  # 将序列化的值反序列化,0为ttl的时间
 
-**key的操作:**
+expire key 10  # 给key设置过期时间为10秒
+ttl key  # 查看key的剩余生存时间(s)
+persist key  # 将一个带有过期的key设置为永久的不过期的key
 
-```shell
-# 查看所有的key
-keys *
+move key 1  # 将key移动到新的数据库1
+type key  # 查看key所存储的值的类型
+rename key newkey  # 修改key的名称
 
-# 删除键
-del key
 
-# 序列化给定key，并返回序列化的值
-dump key
-
-# 将序列化的值反序列化,0为ttl的时间
-restore key 0 "\x00\x15hello, dumping world!\x06\x00E\xa0Z\x82\xd8r\xc1\xde"
-
-# 判断给定的key是否存在
-exists key
-
-# 给key设置过期时间为10秒
-expire key 10
-
-# 查看key的剩余生存时间(s)
-ttl key
-
-# 将一个带有过期的key设置为永久的不过期的key
-persist key
-
-# 将key移动到新的数据库1
-move key 1
-
-# 查看key所存储的值的类型
-type key
-
-# 修改key的名称
-rename key newkey
-```
-
-**调试：**
-
-```shell
-# 客户端向服务器发送查看服务器是否正常
-ping
+# 调试
+ping  # 客户端向服务器发送查看服务器是否正常
 ```
 
 ## 2.五大数据类型
-
-redis的命令不区分大小写。
 
 ### 2.1字符串(string)
 
@@ -150,12 +117,9 @@ redis的命令不区分大小写。
 - 二级制安全，即string可以包含任何数据，如jpg图片或者序列化的对象
 - `一个键最多存储512MB`
 
-```shell
-# 设置键值
-set name "tony"
-
-# 取值
-get name
+```sh
+set name "tony"  # 设置键值
+get name  # 取值
 ```
 
 ### 2.2哈希(Hash)
@@ -164,12 +128,9 @@ get name
 - 适合存储对象
 - 每个hash可以存储$2^{32 - 1}$（40多亿）键值对
 
-```shell
-# 设置hash键值对
-hmset user:1 name tony pwd 123456
-
-# 取得hash键值对
-hgetall user:1
+```sh
+hmset user:1 name tony pwd 123456  # 设置hash键值对
+hgetall user:1  # 取得hash键值对
 ```
 
 ### 2.3列表(List)
@@ -177,13 +138,12 @@ hgetall user:1
 - 简单的字符串列表
 - 每个列表最多可以存储$2^{32-1}$键值对
 
-```shell
+```sh
 # 添加一个元素到列表的头部
 lpush names tony
 lpush names tom
 
-# 获取列表的内容
-lrange names 0 10
+lrange names 0 10  # 获取列表的内容
 ```
 
 ### 2.4集合(Set)
@@ -192,7 +152,7 @@ lrange names 0 10
 - 通过哈希表实现
 - 每个集合最多可以存储$2^{32-1}$成员
 
-```shell
+```sh
 # 添加一个string元素到key对应的set集合中，成功返回1
 # 再次添加相同的元素会因为唯一性被忽略,返回0
 sadd names tony
@@ -206,13 +166,12 @@ smembers names
 - 类似集合，不同的是每个元素都会关联一个double类型的分数，通过该分数对成员进行从小到大的排列
 - 成员唯一，但是分数却可以重复
 
-```shell
+```sh
 # 添加元素到有序集合
 zadd names 0 tony
 zadd names 10 jim
 
-# 取有序集合中的元素
-zrangebyscore names 0 100
+zrangebyscore names 0 100  # 取有序集合中的元素
 ```
 
 ## 3.使用场景
@@ -237,6 +196,8 @@ zrangebyscore names 0 100
 
 ### 3.5会话缓存
 
+- [Django获取用户浏览历史，使用redis缓存](https://www.cnblogs.com/mxsf/p/10297271.html)
+- [使用redis存储用户浏览记录](https://blog.csdn.net/weixin_44313745/article/details/95754500)
 - 存储多台服务器的会话
 
 ### 3.6分布式锁
@@ -278,7 +239,7 @@ zrangebyscore names 0 100
 - `DISCARD`
 - `WATCH`
 
-```shell
+```sh
 # 开始事务。
 # 命令入队。
 # 执行事务。
@@ -313,77 +274,113 @@ exec
 
 1. 当key很小而value很大时，使用效果会很好
 
-```shell
+```sh
 # 创建当前数据库的备份，会在安装的目录创建dump.rdb文件
 # 在生产环境很少执行 SAVE 操作，因为它会阻塞所有客户端，保存数据库的任务通常由 BGSAVE 命令异步地执行
 save
 
 # 恢复数据，只需要将备份文件`dump.rdb`移动到redis的安装目录
 
-# 查看备份文件的位置
-config get dir
-
-# 在后台异步的保存数据库
-bgsave
-
-# 返回最近一次Redis成功将数据保存到磁盘的时间，Unix时间戳形式
-lastsave
+config get dir  # 查看备份文件的位置
+bgsave  # 在后台异步的保存数据库
+lastsave  # 返回最近一次Redis成功将数据保存到磁盘的时间，Unix时间戳形式
 ```
+
+## 6.数据回收
+
+### 6.1数据淘汰(回收)策略
+
+- [redis数据淘汰策略](https://www.cnblogs.com/mysql-hang/articles/10532720.html)
+- [redis数据淘汰策略及其相关注意事项](https://blog.csdn.net/qq_22860341/article/details/80681373)
+- 比如保证`数据都是热点数据`
+
+1. allkeys-lru, 尝试回收使用最少的键
+2. allkeys-random, 回收随机的键
+3. volatile-lru,尝试回收使用最少的键，但仅限于已经过期的
+4. volatile-random, 回收随机的键，仅限于已经过期的
+5. volatile-ttl, 回收过期的键，优先回收存活时间短的键
+6. no-enviction, 驱逐，禁止驱逐数据
+
+### 6.2回收进程工作
+
+- 内存使用达到`maxmemory`后，使用设置的策略回收
+- 删除过期时间的键对象(惰性删除-用户访问的时候删除，定时任务删除)
+
+## 7.redis集群
+
+### 7.1集群方案
+
+- [redis模式集群原理与搭建](https://www.jianshu.com/p/84dbb25cc8dc)
+- [redis集群详细搭建过程](https://blog.csdn.net/qq_42815754/article/details/82912130)
+
+1. **Codis**，使用最多，分布式算法是`一致性hash`，支持在节点数量变化的情况下，将旧节点的数据恢复到新节点上
+2. **redis cluster3.0**，分布式算法是`hash槽`，自身节点支持设置从节点
+3. **业务层面**，起几个无关联的redis实例，对不同的key进行hash计算，去对应的redis实例操作，对hash层代码要求较高
+
+### 7.2导致集群方案不可用的情况
+
+- 若有A B C三个节点，但是没有复制模型的情况下，B失效，会导致集群缺失一部分数据。
+
+### 7.3redis哈希槽
+
+- [redis一致性hash与hash槽](https://www.jianshu.com/p/6ad87a1f070e)
+
+**一致性hash对于容错性和扩展性比较好，但是容易出现数据倾斜，对数据控制，节点位置控制不友好。**
+
+redis哈希槽(`hash算法+槽位`)，使用的hash算法是`crc16校验算法`，槽位的概念则是对于空间分配的规则。
+
+- redis哈希槽包含16384个槽位
+- 每个key计算后落到一个槽位
+- 槽位由用户分配，内存大的可以分配多个槽位
 
 ## a.其他
 
 ### a.1客户端连接
 
-```shell
-# 获取最大连接数量
-config get maxclients
-
-# 服务端启动时候设置最大连接数
-redis-server --maxclients 10000
+```sh
+config get maxclients  # 获取最大连接数量
+redis-server --maxclients 10000  # 服务端启动时候设置最大连接数
 ```
 
 ### a.2安全
 
 设置密码，客户端连接的时候就需要验证。
 
-```shell
-# 查看是否设置了密码
-config get requirepass
+```sh
+config get requirepass  # 查看是否设置了密码
+config set requirepass "123456"  # 设置密码
 
-# 设置密码
-config set requirepass "123456"
-
-# 获取密码
-config get requirepass
-
-# 验证密码
-auth 123456
+config get requirepass  # 获取密码
+auth 123456  # 验证密码
 ```
 
 ### a.3性能测试
 
-```shell
-# 模拟同时执行1000个请求来检测性能
-redis-benchmark -n 1000
+```sh
+redis-benchmark -n 1000  # 模拟同时执行1000个请求来检测性能
 ```
 
 ### a.4发布-订阅
 
 发布-订阅(pub/sub)是一种消息通信模式。
 
-```shell
-# 在客户端1订阅channel1频道的消息
-subscribe channel1
+```sh
+subscribe channel1  # 在客户端1订阅channel1频道的消息
+psubscribe news.*channel  # 订阅多个符合条件的频道
 
-# 订阅多个符合条件的频道
-psubscribe news.*channel
+unsubscribe  # 退订频道
 
-# 退订频道
-unsubscribe
+publish channel1 hello  # 在客户端2发送消息到channel1,返回结果会显示订阅该频道的数量
 
-# 在客户端2发送消息到channel1,返回结果会显示订阅该频道的数量
-publish channel1 hello
-
-# 查看当前的活跃频道(即至少有一个订阅者的频道)
-pubsub channels
+pubsub channels  # 查看当前的活跃频道(即至少有一个订阅者的频道)
 ```
+
+### a.5面试
+
+- [redis面试三十问](http://blog.itpub.net/31545684/viewspace-2213990/)
+- [漫画:redis面试常见问题1](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247486641&idx=2&sn=16594b5394e52a5b0884156c271e58cf&chksm=ebd6339ddca1ba8b85df41d508434c2e727ed31736cc353d376e200e62932180f978d7f763a9&scene=21#wechat_redirect)
+- [漫画:redis面试常见问题1](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247486734&idx=2&sn=7ebb4e8d86ddae67522244c8e8584ef0&chksm=ebd63222dca1bb34515cfadd321e3d82bcbeb6210812af087ae254181067cc45cb5f740602b4&scene=21#wechat_redirect)
+
+### a.6内存优化
+
+- 尽量使用散列表(hashes),将数据模型抽象到一个散列表格中，如将人的姓名，邮箱，年龄等存储到一张表。

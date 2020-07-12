@@ -419,6 +419,15 @@ git diff --staged
 
 # 检查空白错误，可以在提交之前运行一次
 git diff --check
+
+# 检查自上次提交以来的所有变化
+git diff HEAD
+
+# 查看和某个分支的不同
+git diff <brancn>
+
+# 仅仅查看修改，重命名等，不看增删
+git diff --diff-filter=MRC
 ```
 
 ### 1.16远程(remote)
@@ -668,5 +677,4 @@ scp -r my_project.git user@git.example.com:/srv/git
 #### 5.4.4Gitlab-Flow模式
 
 - 类似于github-flow模式，开发将`pull request` 改成了 `merge request`
-
 
