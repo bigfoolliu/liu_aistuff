@@ -172,6 +172,15 @@ sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 
 - [iterm官网](https://www.iterm2.com/index.html)
 - [设置鼠标滑动可以翻转页面](https://blog.csdn.net/weixin_34138521/article/details/94600287)
+- [iterm2设置自动登陆目标服务器](https://note.youdao.com/ynoteshare1/index.html?id=426e9cfe0d81b3449f54e2e9da5beb8b&type=note)
+
+基本使用技巧：
+
+- 双击选中，三击选中整行，四击只能选中（可配置）
+- command键技巧：选中字符可拖拽；点击url可访问；点击文件可以用默认程序打开；点击文件夹可在finder打开
+
+
+常用命令:
 
 ```sh
 # 将当前窗口分割
