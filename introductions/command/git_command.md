@@ -35,6 +35,11 @@
                 * [5.2.1github搜索技巧](#5.2.1github搜索技巧)
                 * [5.2.2github知识](#5.2.2github知识)
         * [5.3在服务器上搭建git](#5.3在服务器上搭建git)
+        * [5.4如何选择git的分支模式](#5.4如何选择git的分支模式)
+                * [5.4.1TBD](#5.4.1tbd)
+                * [5.4.2Git-Flow模式](#5.4.2git-flow模式)
+                * [5.4.3Github-Flow模式](#5.4.3github-flow模式)
+                * [5.4.4Gitlab-Flow模式](#5.4.4gitlab-flow模式)
 
 <!-- vim-markdown-toc -->
 
@@ -633,4 +638,35 @@ scp -r my_project.git user@git.example.com:/srv/git
 
 # 3.如果一个用户对该目录/srv/git目录有读写权限，即可推送了
 ```
+
+### 5.4如何选择git的分支模式
+
+- [如何选择git分支模式](https://mp.weixin.qq.com/s/9Ey04P5Xv4W95N2FEioZ1g)
+
+#### 5.4.1TBD
+
+- 主干开发模式
+- 在一个分支开发，变更要小，要快速完成验证
+- 适合小规模团队
+
+#### 5.4.2Git-Flow模式
+
+- feature(新功能分支)，开发者从develop分支拉取新的分支，开发完成，再merge到develop分支
+- develop(新功能集成分支)，永远是保存开发集成中最新的版本，代码验证可发布之后，单独从develop分支拉release分支进行发布
+- release(版本发布分支)，如果有缺陷修改，会同步到develop和master分支
+- hotfix(线上缺陷紧急修改分支)，从master拉出，修复后验证，并将问题修复合并到develop和release上
+- master(保存最新发布版本基线的分支)，主干分支，保存的是可工作版本的基线
+- 适合大规模团队
+
+#### 5.4.3Github-Flow模式
+
+- master分支永远是所有代码最新可部署，可工作的版本
+- 新工作从master拉取新分支
+- 尽可能频繁的同步服务端同名的分支
+- 合并到master，直接发起 `pull request`，请代码评审，评审通过，合并到master
+
+#### 5.4.4Gitlab-Flow模式
+
+- 类似于github-flow模式，开发将`pull request` 改成了 `merge request`
+
 
