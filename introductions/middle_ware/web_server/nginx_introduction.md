@@ -1,14 +1,34 @@
 # nginx知识
 
-<!-- TOC -->autoauto- [nginx知识](#nginx知识)auto    - [1.基本介绍](#1基本介绍)auto        - [1.3语法](#13语法)auto        - [1.4主要应用场景](#14主要应用场景)auto        - [1.5组成](#15组成)auto        - [1.7编译出自己的nginx](#17编译出自己的nginx)auto    - [2.nginx命令](#2nginx命令)auto        - [1.3nginx启动和关闭](#13nginx启动和关闭)auto        - [2.2nginx操作命令](#22nginx操作命令)auto    - [3.nginx配置](#3nginx配置)auto        - [3.1全局块常用配置](#31全局块常用配置)auto        - [3.2events块配置](#32events块配置)auto        - [3.3http全局块配置](#33http全局块配置)auto        - [3.4http中server块配置](#34http中server块配置)auto    - [a.其他](#a其他)auto        - [a.1nginx如何做到热部署](#a1nginx如何做到热部署)auto        - [a.2配置静态资源服务器](#a2配置静态资源服务器)auto        - [a.3搭建一个具备缓存功能的反向代理服务器](#a3搭建一个具备缓存功能的反向代理服务器)autoauto<!-- /TOC -->
+<!-- vim-markdown-toc Marked -->
 
+* [1.基本介绍](#1.基本介绍)
+        * [1.3语法](#1.3语法)
+        * [1.4主要应用场景](#1.4主要应用场景)
+        * [1.5组成](#1.5组成)
+        * [1.7编译出自己的nginx](#1.7编译出自己的nginx)
+* [2.nginx命令](#2.nginx命令)
+        * [1.3nginx启动和关闭](#1.3nginx启动和关闭)
+        * [2.2nginx操作命令](#2.2nginx操作命令)
+* [3.nginx配置](#3.nginx配置)
+        * [3.1全局块常用配置](#3.1全局块常用配置)
+        * [3.2events块配置](#3.2events块配置)
+        * [3.3http全局块配置](#3.3http全局块配置)
+        * [3.4http中server块配置](#3.4http中server块配置)
+* [a.其他](#a.其他)
+        * [a.1nginx如何做到热部署](#a.1nginx如何做到热部署)
+        * [a.2配置静态资源服务器](#a.2配置静态资源服务器)
+        * [a.3搭建一个具备缓存功能的反向代理服务器](#a.3搭建一个具备缓存功能的反向代理服务器)
+
+<!-- vim-markdown-toc -->
+
+## 1.基本介绍
+
+- [nginx配置文件参数详解](https://www.cnblogs.com/airoot/p/12744901.html)
 - [nginx教程](http://tengine.taobao.org/book/chapter_02.html)
 - [nginx.io(快速生成nginx的配置文件)](https://nginxconfig.io/)
 - [nginx中文文档](http://www.nginx.cn/doc/)
 - [nginx英文文档](https://nginx.org/en/docs/)
-
-## 1.基本介绍
-
 - nginx是`先加载一个主配置文件nginx.conf`，`在nginx.conf里再加载conf.d目录下的子配置文件`
 
 ### 1.3语法

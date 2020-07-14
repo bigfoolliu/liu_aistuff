@@ -433,6 +433,10 @@ vnstat
 
 # 打印网络信息，得知整个linux系统的网络情况
 netstat -anptu
+
+# 查询DNS的记录，查看域名解析是否正常，在网络故障的时候用来诊断网络问题
+# https://www.cnblogs.com/yonghegn/p/10059997.html
+nslookup -q=TXT coding3min.com
 ```
 
 

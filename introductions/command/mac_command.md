@@ -71,7 +71,8 @@ command + alt + v  # 粘贴(但不保留复制的文件，类似于剪切)
 command + backspace  # 删除选中的文件
 command + shift + option + v  # 去除格式粘贴
 
-command + tab  # 切换窗口
+command + tab  # 切换不同应用程序的窗口
+command + `  # 切换同一应用程序的不同窗口
 
 # 恢复最小化的窗口
 command + tab 到应用后，松开 tab，然后按 option 上，再松开 command
@@ -178,7 +179,7 @@ sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 
 - 双击选中，三击选中整行，四击只能选中（可配置）
 - command键技巧：选中字符可拖拽；点击url可访问；点击文件可以用默认程序打开；点击文件夹可在finder打开
-
+- 用于使用了vim-mode，可以使用esc+v，来将当前输入的命令进入vim模式,可以复制，粘贴
 
 常用命令:
 
