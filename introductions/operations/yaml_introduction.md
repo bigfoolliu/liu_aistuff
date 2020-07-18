@@ -1,18 +1,17 @@
 # yaml介绍
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [yaml介绍](#yaml%e4%bb%8b%e7%bb%8d)
-  - [1.基本语法规则](#1%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95%e8%a7%84%e5%88%99)
-  - [2.基本概念](#2%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5)
-    - [2.1对象](#21%e5%af%b9%e8%b1%a1)
-    - [2.2数组](#22%e6%95%b0%e7%bb%84)
-    - [2.2纯量](#22%e7%ba%af%e9%87%8f)
-  - [3.Kubernetes使用yaml文件的配置](#3kubernetes%e4%bd%bf%e7%94%a8yaml%e6%96%87%e4%bb%b6%e7%9a%84%e9%85%8d%e7%bd%ae)
-    - [3.1基本的使用yaml做k8s的配置实例](#31%e5%9f%ba%e6%9c%ac%e7%9a%84%e4%bd%bf%e7%94%a8yaml%e5%81%9ak8s%e7%9a%84%e9%85%8d%e7%bd%ae%e5%ae%9e%e4%be%8b)
-    - [3.2创建Deployment](#32%e5%88%9b%e5%bb%badeployment)
+* [1.基本语法规则](#1.基本语法规则)
+* [2.基本概念](#2.基本概念)
+        * [2.1对象](#2.1对象)
+        * [2.2数组](#2.2数组)
+        * [2.2纯量](#2.2纯量)
+* [3.Kubernetes使用yaml文件的配置](#3.kubernetes使用yaml文件的配置)
+        * [3.1基本的使用yaml做k8s的配置实例](#3.1基本的使用yaml做k8s的配置实例)
+        * [3.2创建Deployment](#3.2创建deployment)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.基本语法规则
 

@@ -54,7 +54,7 @@
 - -p：指定要映射的端口,一个指定端口绑定一个容器
 - -P：将容器内开放的网络端口随机映射到宿主机的一个端口
 
-```shell
+```sh
 # 格式
 ip:hostport:containerport #指定ip、指定宿主机port、指定容器port
 ip::containerport #指定ip、未指定宿主机port（随机）、指定容器port
@@ -68,7 +68,7 @@ hostport:containerport #未指定ip、指定宿主机port、指定容器port
 3. 将容器的指定端口指定到宿主机的指定端口(:前面是宿主机端口，后面是容器端口),`docker run -p 8000:80 -it ubuntu /bin/bash`
 4. 将容器ip和端口随机映射到宿主机,`docker run -P 192.168.0.100::80 -it ubuntu /bin/bash`(将容器的ip和80端口随机映射到宿主机端口)
 5. 将容器ip和端口指定映射到宿主机,`docker run -p 192.168.0.100:8000:80 -it ubuntu /bin/bash`(将容器的ip和80端口映射到宿主机8000端口)
-  
+
 ### 1.2dockerfile使用
 
 [在windows的subsystem(ubuntu上)安装docker client](https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4)
@@ -88,7 +88,7 @@ hostport:containerport #未指定ip、指定宿主机port、指定容器port
 
 ### 2.1常用命令
 
-```shell
+```sh
 service docker restart  # 重启docker服务
 
 docker --version  # 查看docer版本及其他信息
@@ -233,7 +233,7 @@ docker run --net=host registry.jiangxingai.com:5000/iotedge/host-manager:0.2.26
 
 #### 2.2.1docker运行nginx
 
-```shell
+```sh
 docker run \
   --name myNginx \
   -d -p 80:80 \
@@ -251,7 +251,7 @@ docker run \
 
 #### 2.2.2docker运行ngix-rtmp
 
-```shell
+```sh
 # 前面的/data/edgebox/remote/nginx/rtmp为master机器上的位置，/data/rtmp为docker里面的位置，开启nginx需要指定端口
 docker run -v /data/edgebox/remote/nginx/rtmp:/data/rtmp -p 1935:1935 registry.jiangxingai.com:5000/nginx-rtmp:x8664-cpu-0.1.0
 
@@ -279,10 +279,10 @@ docker run --name edgebox-rtmp-server -v /data/edgebox/remote/nginx/rtmp:/data/r
 - VOLUME /data ：设定镜像的 VOLUME, 此 VOLUME 在容器内部的路径为 /data。需要注意的是，此时并未在新一层的镜像中添加任何文件，但更新了镜像的 json 文件，以便通过此镜像启动容器时获取这方面的信息。
 - CMD ["./run.sh"] ：设置镜像的默认执行入口，此命令同样不会在新建镜像中添加任何文件，仅仅在上一层镜像 json 文件的基础上更新新建镜像的 json 文件。
 
-[官方文档](https://docs.docker.com/engine/reference/builder/)
-[多个FROM指令的意义](https://blog.csdn.net/Michaelwubo/article/details/91872076)
+- [官方文档](https://docs.docker.com/engine/reference/builder/)
+- [多个FROM指令的意义](https://blog.csdn.net/Michaelwubo/article/details/91872076)
 
-```shell
+```sh
 docker build -f /path/Dockerfile  # 指定`Dockerfile`的文件位置并执行，构建一个image
 docker build -t /path/myapp  # 指定image构建完成之后保存image的位置
 ```
@@ -294,7 +294,7 @@ docker build -t /path/myapp  # 指定image构建完成之后保存image的位置
 3. 退回宿主机的终端,使用`ctrl+P，然后ctrl+Q`,不中断容器的退出
 4. 从一个正在运行的容器中创建镜像
 
-```shell
+```sh
 # 从正在运行的容器中创建一个镜像,指定容器的id和新创建的容器的用户名称和镜像名称
 sudo docker commit 132123 UserName/ImageName
 ```
@@ -303,7 +303,7 @@ sudo docker commit 132123 UserName/ImageName
 
 #### 3.3.1常规部署语句
 
-```shell
+```sh
 # 1.拉取指定版本的镜像
 docker pull mysql/mysql-server:5.7.24
 
@@ -328,7 +328,7 @@ docker exec -it mysql1 bash
 
 #### 3.3.2一步到位语句
 
-```shell
+```sh
 docker run -p 3306:3306 --name=mysql01 --network=my-network  -v mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql/mysql-server:5.7.24 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
@@ -347,7 +347,7 @@ flush privileges;
 
 设置docker的network,可以运行不同的容器进行通信
 
-```shell
+```sh
 # 列举所有的网络
 docker network ls
 # 创建一个network
@@ -365,7 +365,7 @@ docker exec -it myapp1 mysql1 --host=myapp1 --user=myuser --password
 
 将宿主机的目录加载为容器的数据卷来存储数据库文件。
 
-```shell
+```sh
 ```
 
 ## 4.docker容器间通信
@@ -397,7 +397,7 @@ Docker的网络驱动模型分类：
 - `none`：即禁用了网络驱动，需要自己手动自定义网络驱动配置；
 - `plugins`：使用第三方网络驱动插件；
 
-```shell
+```sh
 # 检查bridge网络的详细配置,可以看到处于当前网络的容器及其ip
 docker network inspect bridge
 ```
@@ -408,7 +408,7 @@ docker network inspect bridge
 2. 启动docker容器后进入容器并修改/etc/host配置文件，缺点是手动配置较为繁杂；
 3. `用户自定义bridge网桥，这是目前解决此类问题的主要方法`；
 
-```shell
+```sh
 # 手动将容器加入某个bridge
 docker network connect <network-name> <container-name>sdf
 
@@ -427,7 +427,7 @@ docker network disconnect <network-name> <container-name>
 
 [docker-compose命令详解](https://blog.csdn.net/wanghailong041/article/details/52162293)
 
-```shell
+```sh
 # 拉取所有的镜像文件，但是不启动
 docker-compose pull
 
