@@ -60,6 +60,9 @@ shift + f6
 
 # 回到上一个编辑位置
 ctrl + shift + backspace
+
+# 在光标的之前以后位置跳转
+command + option + 左/右方向键
 ```
 
 ## 2.webstorm
