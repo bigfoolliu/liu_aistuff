@@ -2,8 +2,9 @@
 
 !-- vim-markdown-toc Marked -->
 
-* [1.介绍](#1.介绍)
-* [2.基本命令](#2.基本命令)
+- [tmux会话管理器](#tmux会话管理器)
+  - [1.介绍](#1介绍)
+  - [2.基本命令](#2基本命令)
 
 <!-- vim-markdown-toc -->
 
@@ -36,12 +37,12 @@ tmux kill-server  # 关闭所有会话
 ctrl + d
 exit
 
-tmux detatch  # 会话窗口分离，但是会话和里面的进程仍然在运行
-tmux attach -t my-sess  # 接入已经存在的会话
+tmux detach  # 会话窗口分离，但是会话和里面的进程仍然在运行
+tmux attach -t mysession  # 接入已经存在的会话
 
-tmux switch -t my-sess2  # 切换到另外一个会话
+tmux switch -t mysession  # 切换到另外一个会话
 
-tmux rename-session -t my-sess1 my-sess2  # 将绘画重命名 
+tmux rename-session -t mysession1 mysession2  # 将绘画重命名
 
 ctrl+b :  # 进入命令行模式
 
@@ -77,4 +78,3 @@ ctrl+b !  # 将当前窗格置于新的窗口
 ctrl+b z  # 放大当前窗格(再次按下将还原)
 ctrl+b i  # 显示当前窗格信息
 ```
-

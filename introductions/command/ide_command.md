@@ -1,13 +1,13 @@
 # 常用ide快捷键
 
-
 <!-- vim-markdown-toc Marked -->
 
-* [1.pycharm](#1.pycharm)
-* [2.webstorm](#2.webstorm)
-* [3.vscode](#3.vscode)
-        * [3.1通用](#3.1通用)
-* [3.mac版本pycharm](#3.mac版本pycharm)
+- [常用ide快捷键](#常用ide快捷键)
+  - [1.pycharm](#1pycharm)
+  - [2.webstorm](#2webstorm)
+  - [3.vscode](#3vscode)
+    - [3.1通用](#31通用)
+  - [3.mac版本pycharm](#3mac版本pycharm)
 
 <!-- vim-markdown-toc -->
 
@@ -108,4 +108,3 @@ command + backspace  # 删除当前行
 command + shift + backspace  # 从定义处跳转回之前的位置
 command + b  # 跳转到定义处
 ```
-

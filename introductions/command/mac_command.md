@@ -2,26 +2,27 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.命令行命令](#1.命令行命令)
-        * [1.1通用系统命令](#1.1通用系统命令)
-        * [1.2其他命令行命令](#1.2其他命令行命令)
-* [2.safari命令](#2.safari命令)
-* [3.终端命令](#3.终端命令)
-        * [3.1brew](#3.1brew)
-        * [3.2iterm2](#3.2iterm2)
-        * [3.3fzf](#3.3fzf)
-        * [3.4musicbox](#3.4musicbox)
-        * [3.5zsh插件命令](#3.5zsh插件命令)
-        * [3.6youtube-dl](#3.6youtube-dl)
-        * [3.7uglifyjs](#3.7uglifyjs)
-        * [3.8term2048](#3.8term2048)
-* [4.安装python环境](#4.安装python环境)
-* [5.安装使用mysql](#5.安装使用mysql)
-* [6.pycharm快捷键](#6.pycharm快捷键)
-* [7.系统快捷键](#7.系统快捷键)
-* [8.其他](#8.其他)
-        * [8.1开发工具](#8.1开发工具)
-        * [8.2使用技巧](#8.2使用技巧)
+- [MAC高效使用技巧](#mac高效使用技巧)
+  - [1.命令行命令](#1命令行命令)
+    - [1.1通用系统命令](#11通用系统命令)
+    - [1.2其他命令行命令](#12其他命令行命令)
+  - [2.safari命令](#2safari命令)
+  - [3.终端命令](#3终端命令)
+    - [3.1brew](#31brew)
+    - [3.2iterm2](#32iterm2)
+    - [3.3fzf](#33fzf)
+    - [3.4musicbox](#34musicbox)
+    - [3.5zsh插件命令](#35zsh插件命令)
+    - [3.6youtube-dl](#36youtube-dl)
+    - [3.7uglifyjs](#37uglifyjs)
+    - [3.8term2048](#38term2048)
+  - [4.安装python环境](#4安装python环境)
+  - [5.安装使用mysql](#5安装使用mysql)
+  - [6.pycharm快捷键](#6pycharm快捷键)
+  - [7.系统快捷键](#7系统快捷键)
+  - [8.其他](#8其他)
+    - [8.1开发工具](#81开发工具)
+    - [8.2使用技巧](#82使用技巧)
 
 <!-- vim-markdown-toc -->
 
@@ -72,7 +73,7 @@ command + backspace  # 删除选中的文件
 command + shift + option + v  # 去除格式粘贴
 
 command + tab  # 切换不同应用程序的窗口
-command + `  # 切换同一应用程序的不同窗口
+command + \`  # 切换同一应用程序的不同窗口
 
 # 恢复最小化的窗口
 command + tab 到应用后，松开 tab，然后按 option 上，再松开 command
@@ -128,7 +129,7 @@ command + shift + tab  # 移动到上一个标签页
 
 ### 3.1brew
 
-- [安装homenbrew](https://www.wandouip.com/t5i171897/)
+- [安装homebrew](https://www.wandouip.com/t5i171897/)
 - [终端颜色设定介绍](https://blog.csdn.net/liumiaocn/article/details/102962691)
 
 ```sh
@@ -200,7 +201,7 @@ command + 左/右箭头
 command + 数字  # 直接导航到指定窗口
 
 # 开启搜索
-commdn + f
+command + f
 
 # 标记和回到标记
 command + shift + m
@@ -256,6 +257,7 @@ vfzf
 # 设置别名快速cd
 dfzf
 ```
+
 ### 3.4musicbox
 
 ```sh
@@ -306,8 +308,8 @@ redis-cli  # 进入redis，可以有提示
 # encode
 encode64 "aa"  # 将数据编码为base64
 e64 "aa"
-decode64 "egsdx"  # 将base64解码为原始数据
-d64 "egdx"
+decode64 "aa"  # 将base64解码为原始数据
+d64 "aa"
 
 # urltools
 urlencode https://www.github.com  # url进行编码

@@ -2,44 +2,45 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.git基本命令](#1.git基本命令)
-        * [1.1配置(config)](#1.1配置(config))
-        * [1.2仓库克隆(clone)](#1.2仓库克隆(clone))
-        * [1.3暂存(add)](#1.3暂存(add))
-        * [1.4本地提交(commit)](#1.4本地提交(commit))
-        * [1.5远程提交于拉取(push, pull)](#1.5远程提交于拉取(push,-pull))
-        * [1.6提交堆栈(stash)](#1.6提交堆栈(stash))
-        * [1.7分支(branch, checkout)](#1.7分支(branch,-checkout))
-        * [1.8撤销(reset, revert)](#1.8撤销(reset,-revert))
-        * [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
-        * [1.10标签(tag)](#1.10标签(tag))
-        * [1.11查看内容(show)](#1.11查看内容(show))
-        * [1.12状态(status)](#1.12状态(status))
-        * [1.13删除(rm)](#1.13删除(rm))
-        * [1.14移动(mv)](#1.14移动(mv))
-        * [1.15查看更新(diff)](#1.15查看更新(diff))
-        * [1.16远程(remote)](#1.16远程(remote))
-* [2.操作命令组](#2.操作命令组)
-        * [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
-        * [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
-        * [2.3提交之后因为大文件而push失败](#2.3提交之后因为大文件而push失败)
-* [3.gitignore文件](#3.gitignore文件)
-        * [3.1介绍](#3.1介绍)
-        * [3.2格式规范](#3.2格式规范)
-* [4.gitmoduel](#4.gitmoduel)
-        * [4.1介绍](#4.1介绍)
-        * [4.2使用](#4.2使用)
-* [5.其他](#5.其他)
-        * [5.1非常用命令](#5.1非常用命令)
-        * [5.2github](#5.2github)
-                * [5.2.1github搜索技巧](#5.2.1github搜索技巧)
-                * [5.2.2github知识](#5.2.2github知识)
-        * [5.3在服务器上搭建git](#5.3在服务器上搭建git)
-        * [5.4如何选择git的分支模式](#5.4如何选择git的分支模式)
-                * [5.4.1TBD](#5.4.1tbd)
-                * [5.4.2Git-Flow模式](#5.4.2git-flow模式)
-                * [5.4.3Github-Flow模式](#5.4.3github-flow模式)
-                * [5.4.4Gitlab-Flow模式](#5.4.4gitlab-flow模式)
+- [Git](#git)
+  - [1.git基本命令](#1git基本命令)
+    - [1.1配置(config)](#11配置config)
+    - [1.2仓库克隆(clone)](#12仓库克隆clone)
+    - [1.3暂存(add)](#13暂存add)
+    - [1.4本地提交(commit)](#14本地提交commit)
+    - [1.5远程提交于拉取(push, pull)](#15远程提交于拉取push-pull)
+    - [1.6提交堆栈(stash)](#16提交堆栈stash)
+    - [1.7分支(branch, checkout)](#17分支branch-checkout)
+    - [1.8撤销(reset, revert)](#18撤销reset-revert)
+    - [1.9操作记录(log, reflog)](#19操作记录log-reflog)
+    - [1.10标签(tag)](#110标签tag)
+    - [1.11查看内容(show)](#111查看内容show)
+    - [1.12状态(status)](#112状态status)
+    - [1.13删除(rm)](#113删除rm)
+    - [1.14移动(mv)](#114移动mv)
+    - [1.15查看更新(diff)](#115查看更新diff)
+    - [1.16远程(remote)](#116远程remote)
+  - [2.操作命令组](#2操作命令组)
+    - [2.1修改已经push的commit的message](#21修改已经push的commit的message)
+    - [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)
+    - [2.3提交之后因为大文件而push失败](#23提交之后因为大文件而push失败)
+  - [3.gitignore文件](#3gitignore文件)
+    - [3.1介绍](#31介绍)
+    - [3.2格式规范](#32格式规范)
+  - [4.gitmodule](#4gitmodule)
+    - [4.1介绍](#41介绍)
+    - [4.2使用](#42使用)
+  - [5.其他](#5其他)
+    - [5.1非常用命令](#51非常用命令)
+    - [5.2github](#52github)
+      - [5.2.1github搜索技巧](#521github搜索技巧)
+      - [5.2.2github知识](#522github知识)
+    - [5.3在服务器上搭建git](#53在服务器上搭建git)
+    - [5.4如何选择git的分支模式](#54如何选择git的分支模式)
+      - [5.4.1TBD](#541tbd)
+      - [5.4.2Git-Flow模式](#542git-flow模式)
+      - [5.4.3Github-Flow模式](#543github-flow模式)
+      - [5.4.4Gitlab-Flow模式](#544gitlab-flow模式)
 
 <!-- vim-markdown-toc -->
 
@@ -84,7 +85,7 @@ git config --global user.email "userEmail"
 
 # 设置单个仓库的git账户
 git config --local user.name "userName"
-git conig --local user.email "userEmail"
+git config --local user.email "userEmail"
 
 
 # 将git的文本编辑器修改为vim
@@ -211,7 +212,7 @@ git fetch <远程主机名> <分支名>
 # 取消对某个文件的修改(即没有文件),恢复暂存区的指定文件到工作区
 git checkout a.txt
 
-# 恢复某个commitd的指定文件到工作区
+# 恢复某个commit的指定文件到工作区
 git checkout [commit] [file]
 
 # 恢复上一个commit的所有文件到工作区
@@ -225,7 +226,6 @@ git checkout -b dev
 # 导航到之前的一个分支
 git checkout -
 
-# 
 
 # 查看本地所有分支
 git branch
@@ -299,7 +299,7 @@ git log --graph
 git log --author=bigfoolliu
 
 # 模糊搜索
-git log --gerp content
+git log --grep content
 
 # 使用特定的格式输出log
 git log --pretty=format:"%H - %an, %cd : %s"
@@ -346,7 +346,7 @@ git tag v1.0
 git tag -a v1.0 -m "有备注信息的tag"
 
 # 在某一个提交对象上打tag，只要提交对象的校验和前几位
-git tag -a v1.0 9fedamdch -m "有备注信息的tag"
+git tag -a v1.0 <commit_id> -m "有备注信息的tag"
 
 # tag创建完成之后，需要单独推送到远程,如果
 # 推送单个tag
@@ -392,7 +392,7 @@ git status -s
 - 如果直接删除已经暂存的文件，需要再次提交
 
 ```sh
-# 从暂存区中删除文件，且文件不会有未追踪的情况 
+# 从暂存区中删除文件，且文件不会有未追踪的情况
 git rm test.txt
 git rm -f test.txt
 ```
@@ -424,7 +424,7 @@ git diff --check
 git diff HEAD
 
 # 查看和某个分支的不同
-git diff <brancn>
+git diff <branch>
 
 # 仅仅查看修改，重命名等，不看增删
 git diff --diff-filter=MRC
@@ -475,8 +475,8 @@ git rebase --continue
 ### 2.2修改多次commit的信息为一个
 
 ```sh
-# 定位到指定的commit，修改cmmmit的message，倒数的修改为`squash`
-git rebase -i <commid_id>
+# 定位到指定的commit，修改commit的message，倒数的修改为`squash`
+git rebase -i <commit_id>
 # 修改掉多余的commit message
 git rebase --continue
 ```
@@ -510,7 +510,7 @@ git rm -r --cached .
 
 glob 模式是指 shell 所使用的简化了的正则表达式。 星号(*)匹配零个或多个任意字符;[abc] 匹配 任何一个列在方括号中的字符 (这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c); 问号(?)只 匹配一个任意字符;如果在方括号中使用短划线分隔两个字符， 表示所有在这两个字符范围内的都可以匹配 (比如 [0-9] 表示匹配所有 0 到 9 的数字)。 使用两个星号(**)表示匹配任意中间目录，比如 a/**/z 可以 匹配 a/z 、 a/b/z 或 a/b/c/z 等。
 
-## 4.gitmoduel
+## 4.gitmodule
 
 ### 4.1介绍
 
@@ -605,7 +605,7 @@ rm -rf .git/index
 git reset --mixed HEAD
 ```
 
-**错误的commit并提交到远程**
+**错误的commit并提交到远程:**
 
 ```sh
 git log
@@ -621,7 +621,7 @@ git push origin 分支名 --force  # 将当前撤销的提交推送到远程
 # 名字包含python，stars数量大于1000
 python in:name stars:>1000
 
-in:readme 
+in:readme
 
 in:description
 
@@ -677,4 +677,3 @@ scp -r my_project.git user@git.example.com:/srv/git
 #### 5.4.4Gitlab-Flow模式
 
 - 类似于github-flow模式，开发将`pull request` 改成了 `merge request`
-
