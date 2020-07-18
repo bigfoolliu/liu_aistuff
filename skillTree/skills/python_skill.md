@@ -30,16 +30,15 @@
 
 ## 1.变量
 
-- [如何编写优秀的python代码https://github.com/piglei/one-python-craftsman](https://github.com/piglei/one-python-craftsman)
-
-1. bool类型：`is_superuser`,`allow_vip`,`has_error`
-2. int/float类型：`user_id`,`age`,`length_of_username`,`users_count`
-3. 适当使用[匈牙利命名法](https://blog.csdn.net/z_h_s/article/details/24007249)
-4. 尽量不要使用globals()/locals()
-5. 变量定义尽量靠近使用
-6. `使用namedtuple/dict来返回多个值，这样便于扩展和修改`
-7. 控制单个函数内的变量数量
-8. 能不用变量就不定义变量，及时删掉没用的变量
+- [如何编写优秀的python代码](https://github.com/piglei/one-python-craftsman)
+- - bool类型：`is_superuser`,`allow_vip`,`has_error`
+- int/float类型：`user_id`,`age`,`length_of_username`,`users_count`
+- 适当使用[匈牙利命名法](https://blog.csdn.net/z_h_s/article/details/24007249)
+- 尽量不要使用globals()/locals()
+- 变量定义尽量靠近使用
+- `使用namedtuple/dict来返回多个值，这样便于扩展和修改`
+- 控制单个函数内的变量数量
+- 能不用变量就不定义变量，及时删掉没用的变量
 
 ## 2.条件分支
 
@@ -237,6 +236,19 @@ pip freeze > requirements.txt  # 生成一个迁移文件
 ### 14.4python导包
 
 - [可能是python3史上最好的导包技巧](https://blog.csdn.net/weixin_38256474/article/details/81228492)
+
+基础概念介绍：
+
+- 模块(module): 一般情况下，是一个以.py为后缀的文件, 其他可作为module的文件类型还有”.pyo”、”.pyc”、”.pyd”、”.so”、”.dll”
+- 包(package): 含有__init__.py的文件夹
+- 使用`from p1 import *`则需要在 `__init__.py`文件中指明`__all__ = ['file1.py', 'file2.py']`,指定哪些文件在包导入时候被导入当前作用域
+- `__path__`也是一个常用变量，是个列表，默认情况下只有一个元素，即当前包（package）的路径。修改__path__可改变包（package）内的搜索路径
+- 导入一个包（package）时（会先加载__init__.py定义的引入模块，然后再运行其他代码），实际上是导入的它的__init__.py文件（导入时，该文件自动运行，助我们一下导入该包中的多个模块）
+
+sys.modules,命名空间介绍：
+
+- 将模块名称（module_name）映射到已加载的模块（modules） 的字典
+- 模块内置属性：`__file__`, `__doc__`, `__name__`, `__dict__`, `__package__`, `__path__`
 
 ### 14.5pyenv管理python版本
 
