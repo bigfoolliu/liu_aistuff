@@ -144,11 +144,20 @@ def constant_demo():
     print('忽略大小写模式:', re.findall(pattern, text, re.IGNORECASE))
 
 
+def test_demo():
+    subject1 = "1.中国"
+    subject2 = "20.美国"
+    pattern = re.compile(r"^\d*\.")
+    new_sub1 = re.sub(pattern=pattern, repl="", string=subject1)
+    new_sub2 = re.sub(pattern=pattern, repl="", string=subject2)
+    print(new_sub1, new_sub2)
+
+
 if __name__ == "__main__":
     # search_demo()
     # match_demo()
     # findall_demo()
     # sub_demo()
     # complile_demo()
-    constant_demo()
-
+    # constant_demo()
+    test_demo()

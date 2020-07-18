@@ -33,6 +33,9 @@ def basic_demo():
     group.add_argument('-a', action='store_true')
     group.add_argument('-b', action='store_true')
 
+    # 6.添加返回对象的属性值,Namespace(mode=False)
+    parser.add_argument('--mode', help='输入模式', dest='mode', action='store_true')
+
     # 解析参数
     args = parser.parse_args()
 
@@ -47,6 +50,9 @@ def basic_demo():
         print(f'group arg: {group_arg}')
     else:
         print('group_arg: None')
+
+    # 将对象的属性和属性值的字典
+    print(f'dict: {vars(args)}')
 
 
 if __name__ == "__main__":

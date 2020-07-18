@@ -14,3 +14,8 @@ https://docs.python.org/zh-cn/3/library/tty.html
 
 import tty
 
+
+
+
+if __name__ == '__main__':
+    pass
