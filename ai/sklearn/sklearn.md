@@ -2,17 +2,18 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1. 10种机器学习算法](#1.-10种机器学习算法)
-        * [1.1线性回归(Linear Regression)](#1.1线性回归(linear-regression))
-        * [1.2逻辑回归(Logistic Regression)](#1.2逻辑回归(logistic-regression))
-        * [1.3k-近邻(KNN)](#1.3k-近邻(knn))
-        * [1.4支持向量机(SVM)](#1.4支持向量机(svm))
-        * [1.5朴素贝叶斯分类器(naive_bayes)](#1.5朴素贝叶斯分类器(naive_bayes))
-        * [1.6决策树分类器(Decision Tree)](#1.6决策树分类器(decision-tree))
-        * [1.7k-means聚类（K-Means)](#1.7k-means聚类（k-means))
-        * [1.8随机森林(Random Forest)](#1.8随机森林(random-forest))
-        * [1.9Gradient Boosting 和 AdaBoost算法(GBDT)](#1.9gradient-boosting-和-adaboost算法(gbdt))
-        * [1.10PCA特征降维(PCA)](#1.10pca特征降维(pca))
+- [sklearn](#sklearn)
+  - [1. 10种机器学习算法](#1-10种机器学习算法)
+    - [1.1线性回归(Linear Regression)](#11线性回归linear-regression)
+    - [1.2逻辑回归(Logistic Regression)](#12逻辑回归logistic-regression)
+    - [1.3k-近邻(KNN)](#13k-近邻knn)
+    - [1.4支持向量机(SVM)](#14支持向量机svm)
+    - [1.5朴素贝叶斯分类器(naive_bayes)](#15朴素贝叶斯分类器naive_bayes)
+    - [1.6决策树分类器(Decision Tree)](#16决策树分类器decision-tree)
+    - [1.7k-means聚类（K-Means)](#17k-means聚类k-means)
+    - [1.8随机森林(Random Forest)](#18随机森林random-forest)
+    - [1.9Gradient Boosting 和 AdaBoost算法(GBDT)](#19gradient-boosting-和-adaboost算法gbdt)
+    - [1.10PCA特征降维(PCA)](#110pca特征降维pca)
 
 <!-- vim-markdown-toc -->
 
@@ -20,7 +21,7 @@
 
 ### 1.1线性回归(Linear Regression)
 
-[线性回归算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
+- [线性回归算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -32,7 +33,7 @@ module.predict(test)
 
 ### 1.2逻辑回归(Logistic Regression)
 
-[逻辑回归算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+- [逻辑回归算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -44,7 +45,7 @@ module.predict(test)
 
 ### 1.3k-近邻(KNN)
 
-[k近邻算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
+- [k近邻算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
 
 ```python
 from sklearn.neighbors import KNeighborsClassifier
@@ -57,20 +58,20 @@ predicted = module.predict_proba(test)
 
 ### 1.4支持向量机(SVM)
 
-[支持向量机算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+- [支持向量机算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
 
 ```python
 from sklearn import svm
 module = svm.SVC()
 module.fit(x, y)
-moduel.score(x, y)
+module.score(x, y)
 module.predict(test)
 module.predict_proba(test)
 ```
 
 ### 1.5朴素贝叶斯分类器(naive_bayes)
 
-[朴素贝叶斯介绍](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+- [朴素贝叶斯介绍](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
 
 ```python
 from sklearn.naive_bayes import GaussianNB
@@ -80,7 +81,7 @@ module.fit()
 
 ### 1.6决策树分类器(Decision Tree)
 
-[决策树分类器介绍](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
+- [决策树分类器介绍](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
 
 ```python
 from sklearn import tree
@@ -92,7 +93,7 @@ module.predict(test)
 
 ### 1.7k-means聚类（K-Means)
 
-[k-means聚类算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
+- [k-means聚类算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 
 ```python
 from sklearn.cluster import KMeans
@@ -103,7 +104,7 @@ module.predict(test)
 
 ### 1.8随机森林(Random Forest)
 
-[随机森林算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+- [随机森林算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -115,7 +116,7 @@ module.predict(test)
 
 ### 1.9Gradient Boosting 和 AdaBoost算法(GBDT)
 
-[GBDT算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
+- [GBDT算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
 
 ```python
 from sklearn.ensemble import GradientBoostingClassifier
@@ -127,7 +128,7 @@ module.predict(test)
 
 ### 1.10PCA特征降维(PCA)
 
-[PCA特征降维算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
+- [PCA特征降维算法介绍](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
 
 ```python
 from sklearn.decomposition import PCA
