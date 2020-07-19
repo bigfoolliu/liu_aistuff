@@ -19,7 +19,7 @@ cv2.imshow("window-name", img)  # 前面是窗口的名字
 # 1.基础使用方法
 # cv2.waitKey(0)  # 0的时候等待按键停止，其他的数字表示为毫秒数
 # cv2.waitKey(2000)
-# cv2.destroyWinsows()
+# cv2.destroyWindows()
 
 
 # 2.等待用户触发事件，等待时间为1000ms，

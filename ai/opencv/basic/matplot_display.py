@@ -4,7 +4,7 @@
 
 
 """
-使用matplot来展示图片
+使用matplotlib来展示图片
 """
 
 import cv2
