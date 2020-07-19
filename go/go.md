@@ -2,8 +2,9 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.介绍](#1.介绍)
-        * [1.1go与python对比](#1.1go与python对比)
+- [go文件夹](#go文件夹)
+  - [1.介绍](#1介绍)
+    - [1.1go与python对比](#11go与python对比)
 
 <!-- vim-markdown-toc -->
 
@@ -16,4 +17,3 @@
 - go内建并发机制
 - go相对更适合系统编程
 - go作为静态型语言，更易于在编译时捕获BUG
-

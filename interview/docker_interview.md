@@ -3,9 +3,9 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.docker基础](#1.docker基础)
-        * [1.1docker与虚拟机的区别(docker的特点)](#1.1docker与虚拟机的区别(docker的特点))
+        *[1.1docker与虚拟机的区别(docker的特点)](#1.1docker与虚拟机的区别(docker的特点))
         * [1.2构建镜像应该遵循的原则](#1.2构建镜像应该遵循的原则)
-        * [1.3什么是docker镜像](#1.3什么是docker镜像)
+        *[1.3什么是docker镜像](#1.3什么是docker镜像)
         * [1.4什么是docker容器](#1.4什么是docker容器)
 * [2.Devops](#2.devops)
 * [3.CI持续集成](#3.ci持续集成)
@@ -33,7 +33,7 @@
 - 尽量选取较小的基础镜像系统
 - 清理编译生成文件，构建时候删除安装包以及缓存等
 - 安装软件时候指定准确的版本号，避免引入不需要的依赖
-- dockerfiel构建镜像时候，使用.dockerignore或使用干净的工作目录
+- dockerfile构建镜像时候，使用.dockerignore或使用干净的工作目录
 
 ### 1.3什么是docker镜像
 

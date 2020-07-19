@@ -1,12 +1,28 @@
 # 1.1. 广义线性模型
 
+<!-- vim-markdown-toc Marked -->
+
+- [1.1. 广义线性模型](#11-广义线性模型)
+  - [1.1.1. 最小二乘法](#111-最小二乘法)
+    - [1.1.1.1 最小二乘法复杂度](#1111-最小二乘法复杂度)
+  - [1.1.2 岭回归](#112-岭回归)
+    - [1.1.2.1.岭回归复杂度](#1121岭回归复杂度)
+    - [1.1.2.2.设置正则化参数：一般性交叉验证](#1122设置正则化参数一般性交叉验证)
+  - [1.1.3.Lasso回归](#113lasso回归)
+    - [1.1.3.1.设定正则化参数](#1131设定正则化参数)
+      - [1.1.3.1.1.使用交叉验证](#11311使用交叉验证)
+      - [1.1.3.1.2.基于模型选择的信息准则](#11312基于模型选择的信息准则)
+  - [1.1.4.多任务Lasso](#114多任务lasso)
+
+<!-- vim-markdown-toc -->
+
 以下是一组用于回归的方法，其中目标值是特征值的线性组合。如果$\hat{y}$是预测值的话，用数学符号表示就是：$$\hat{y}({\omega}, x)={\omega}_0+{\omega}_1x_1+...+{\omega}_px_p$$
 
 根据这个模型，我们指定向量${\omega}=({\omega}_1,...,{\omega})_p$作为`coef_`（一次项系数），而${\omega}_0$作为`intercept_`（截距）。
 
 ## 1.1.1. 最小二乘法
 
-[LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression)使用一组系数${\omega}=({\omega}_1,...,{\omega}_p)$来最小化数据集中的目标值的平方和，而目标值则是由线性近似得来的。数学形式是解决这个问题：$$\min_{\omega}{||X{\omega-y}||}_2^2$$
+- [LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression)使用一组系数${\omega}=({\omega}_1,...,{\omega}_p)$来最小化数据集中的目标值的平方和，而目标值则是由线性近似得来的。数学形式是解决这个问题：$$\min_{\omega}{||X{\omega-y}||}_2^2$$
 
 ![效果图](./images/sphx_glr_plot_ols_001.png)
 
@@ -22,7 +38,8 @@ print(reg.coef_)
 最小二乘法估计的系数依赖于其特征的非独立性。当特征是相关的，即当矩阵$X$的列是线性相关的时候，设计矩阵变得接近于单数，结果就是最小二乘法的估计值和目标值的随机产生的错误高度相关。比如当数据是没有经过实验设计的，各种情况就会出现。
 
 例子：
-[线性回归实例](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html#sphx-glr-auto-examples-linear-model-plot-ols-py)
+
+- [线性回归实例](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html#sphx-glr-auto-examples-linear-model-plot-ols-py)
 
 ### 1.1.1.1 最小二乘法复杂度
 
@@ -30,7 +47,7 @@ print(reg.coef_)
 
 ## 1.1.2 岭回归
 
-[Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge)通过对最小二乘法的系数添加惩罚项来解决最小二乘法的一些缺陷。岭回归系数通过最小化城惩罚项的残差平法和：$$\min_{\omega}{||X{\omega}-y||}^2_2+{\alpha}{||\omega||}^2_2$$
+- [Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge)通过对最小二乘法的系数添加惩罚项来解决最小二乘法的一些缺陷。岭回归系数通过最小化城惩罚项的残差平法和：$$\min_{\omega}{||X{\omega}-y||}^2_2+{\alpha}{||\omega||}^2_2$$
 
 其中复杂度参数$\alpha \geq 0$控制收缩大小，$\alpha$越大则收缩越大，因此系数对共线性的鲁棒性越好。
 
@@ -46,8 +63,9 @@ print(reg.coef_)
 ```
 
 例子：
-[将岭系数绘制为正则化的函数](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html#sphx-glr-auto-examples-linear-model-plot-ridge-path-py)
-[使用稀疏特征对文本文档分类](https://scikit-learn.org/stable/auto_examples/text/plot_document_classification_20newsgroups.html#sphx-glr-auto-examples-text-plot-document-classification-20newsgroups-py)
+
+- [将岭系数绘制为正则化的函数](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html#sphx-glr-auto-examples-linear-model-plot-ridge-path-py)
+- [使用稀疏特征对文本文档分类](https://scikit-learn.org/stable/auto_examples/text/plot_document_classification_20newsgroups.html#sphx-glr-auto-examples-text-plot-document-classification-20newsgroups-py)
 
 ### 1.1.2.1.岭回归复杂度
 
@@ -55,7 +73,7 @@ print(reg.coef_)
 
 ### 1.1.2.2.设置正则化参数：一般性交叉验证
 
-[RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV)通过alpha参数的内置交叉验证来实现岭回归。它和`GridSearchCV`的工作方式相同，不同之处在于它默认是通用交叉验证(`GCV`)，这是一种有效的一次性交叉验证形式：
+- [RidgeCV](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV)通过alpha参数的内置交叉验证来实现岭回归。它和`GridSearchCV`的工作方式相同，不同之处在于它默认是通用交叉验证(`GCV`)，这是一种有效的一次性交叉验证形式：
 
 ```python
 import numpy as np
@@ -73,7 +91,7 @@ print(reg.alpha_)
 
 ## 1.1.3.Lasso回归
 
-[Lasso](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso)是一种估计稀疏系数的线性模型。在有些场景下其是非常有用的，因为其倾向于得到更少的非零系数，尤其当解是独立且要在减少特征数量的时候。因此，Lasso及其变体是压缩传感领域的基础。在特定的条件下，它可以恢复精确的非零系数集(参照[Compressive sensing: tomography reconstruction with L1 prior (Lasso)](https://scikit-learn.org/stable/auto_examples/applications/plot_tomography_l1_reconstruction.html#sphx-glr-auto-examples-applications-plot-tomography-l1-reconstruction-py))。
+- [Lasso](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso)是一种估计稀疏系数的线性模型。在有些场景下其是非常有用的，因为其倾向于得到更少的非零系数，尤其当解是独立且要在减少特征数量的时候。因此，Lasso及其变体是压缩传感领域的基础。在特定的条件下，它可以恢复精确的非零系数集(参照[Compressive sensing: tomography reconstruction with L1 prior (Lasso)](https://scikit-learn.org/stable/auto_examples/applications/plot_tomography_l1_reconstruction.html#sphx-glr-auto-examples-applications-plot-tomography-l1-reconstruction-py))。
 
 数学形式上来说，它包含一个带有正则化表示的线性模型，目标最小化函数是：$$\min_{\omega}{\frac{1}{2n_{samples}}}{||X\omega - y||^2_2}+{\alpha||\omega||_1}$$
 
@@ -98,12 +116,6 @@ reg.predict([1, 1])
 小计：使用Lasso进行特征选择
 因为Lasso产生稀疏的模型，因此可以用来进行特征选择，细节可参照：[L1-based feature selection](https://scikit-learn.org/stable/modules/feature_selection.html#l1-feature-selection)
 
-参考：
-
-- 论文：“Regularization Path For Generalized linear Models by Coordinate
-Descent”, Friedman, Hastie & Tibshirani, J Stat Softw, 2010
-- 论文：An Interior-Point Method for Large-Scale L1-Regularized Least Squares,” S. J. Kim, K. Koh, M. Lustig, S. Boyd and D. Gorinevsky, in IEEE Journal of Selected Topics in Signal Processing, 2007
-
 ### 1.1.3.1.设定正则化参数
 
 参数$\alpha$控制着估计系数的稀疏程度。
@@ -126,7 +138,7 @@ scikit-learn通过交叉验证来展示设置过$\alpha$参数的对象：`Lasso
 
 例子：
 
-[Lasso模型选择：交叉验证/AIC/BIC](https://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py)
+- [Lasso模型选择：交叉验证/AIC/BIC](https://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py)
 
 ## 1.1.4.多任务Lasso
 

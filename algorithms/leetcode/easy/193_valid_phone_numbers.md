@@ -22,7 +22,7 @@ Your script should output the following valid phone numbers:
 你也可以假设每行前后没有多余的空格字符。
 ```
 
-```shell
+```sh
 grep "^\(([0-9]\{3\}) \|[0-9]\{3\}-\)[0-9]\{3\}-[0-9]\{4\}$" file.txt
 
 # 注意""不要丢了，其中的空格，()是普通字符，" "不要丢了

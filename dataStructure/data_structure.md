@@ -2,47 +2,48 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.链表(linked list)](#1.链表(linked-list))
-        * [1.1介绍](#1.1介绍)
-        * [1.2应用场景](#1.2应用场景)
-        * [1.3链表和数组的对比](#1.3链表和数组的对比)
-* [2.二叉树(binary tree)](#2.二叉树(binary-tree))
-* [3.霍夫曼压缩(huffman compression)](#3.霍夫曼压缩(huffman-compression))
-        * [3.1介绍](#3.1介绍)
-        * [3.2应用](#3.2应用)
-* [4.队列(queue)](#4.队列(queue))
-        * [4.1优先队列(priority queue)](#4.1优先队列(priority-queue))
-        * [4.2双端队列(double-ended queue, dequeue)](#4.2双端队列(double-ended-queue,-dequeue))
-* [5.堆](#5.堆)
-        * [5.1介绍](#5.1介绍)
-        * [5.2应用](#5.2应用)
-* [6.栈](#6.栈)
-        * [6.1介绍](#6.1介绍)
-        * [6.2应用](#6.2应用)
-* [7.集合(set)](#7.集合(set))
-* [8.哈希表(map)](#8.哈希表(map))
-        * [8.1介绍](#8.1介绍)
-        * [8.2常用哈希函数](#8.2常用哈希函数)
-        * [8.3应用](#8.3应用)
-* [9.图(graph)](#9.图(graph))
-        * [9.1介绍](#9.1介绍)
-        * [9.2图的基本算法](#9.2图的基本算法)
-* [10.hash_map](#10.hash_map)
-        * [10.1介绍](#10.1介绍)
-* [a.概念](#a.概念)
-        * [a.1线性表和链表的区别](#a.1线性表和链表的区别)
+- [Data Structure](#data-structure)
+  - [1.链表(linked-list)](#1链表linked-list)
+    - [1.1基本介绍](#11基本介绍)
+    - [1.2应用场景](#12应用场景)
+    - [1.3链表和数组的对比](#13链表和数组的对比)
+  - [2.二叉树(binary tree)](#2二叉树binary-tree)
+  - [3.霍夫曼压缩(huffman compression)](#3霍夫曼压缩huffman-compression)
+    - [3.1介绍](#31介绍)
+    - [3.2应用](#32应用)
+  - [4.队列(queue)](#4队列queue)
+    - [4.1优先队列(priority queue)](#41优先队列priority-queue)
+    - [4.2双端队列(double-ended queue, dequeue)](#42双端队列double-ended-queue-dequeue)
+  - [5.堆](#5堆)
+    - [5.1介绍](#51介绍)
+    - [5.2应用](#52应用)
+  - [6.栈](#6栈)
+    - [6.1介绍](#61介绍)
+    - [6.2应用](#62应用)
+  - [7.集合(set)](#7集合set)
+  - [8.哈希表(map)](#8哈希表map)
+    - [8.1介绍](#81介绍)
+    - [8.2常用哈希函数](#82常用哈希函数)
+    - [8.3应用](#83应用)
+  - [9.图(graph)](#9图graph)
+    - [9.1介绍](#91介绍)
+    - [9.2图的基本算法](#92图的基本算法)
+  - [10.hash_map](#10hash_map)
+    - [10.1介绍](#101介绍)
+  - [a.概念](#a概念)
+    - [a.1线性表和链表的区别](#a1线性表和链表的区别)
 
 <!-- vim-markdown-toc -->
 
-- 本文件夹主要放置一些数据结构的实现。
-- [github数据结构和算法python实现](https://github.com/TheAlgorithms/Python)
+## 1.链表(linked-list)
 
-## 1.链表(linked list)
+- 本文件夹主要放置一些数据结构的实现
+- [github数据结构和算法python实现](https://github.com/TheAlgorithms/Python)
 
 - [单链表python实现](./link_list/single_link_list.py)
 - [双链表python实现](./link_list/double_link_list.py)
 
-### 1.1介绍
+### 1.1基本介绍
 
 `线性表`的一种，最基本，最简单，最常用的一种结构。
 

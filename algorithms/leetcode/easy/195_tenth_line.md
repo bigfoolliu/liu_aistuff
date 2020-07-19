@@ -25,7 +25,7 @@ Note:
 你的脚本应当显示第十行.
 ```
 
-```shell
+```sh
 # NR在awk中指行号
 awk 'NR == 10' file.txt
 
