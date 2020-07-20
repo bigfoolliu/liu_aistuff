@@ -2,8 +2,8 @@
 
 <!-- TOC -->
 
-- [RabbitMQ介绍](#rabbitmq%e4%bb%8b%e7%bb%8d)
-  - [1.RabbitMq基础概念](#1rabbitmq%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5)
+- [RabbitMQ介绍](#rabbitmq介绍)
+  - [1.RabbitMq基础概念](#1rabbitmq基础概念)
     - [1.1Broker](#11broker)
     - [1.2Virtual host](#12virtual-host)
     - [1.3Connection](#13connection)
@@ -11,11 +11,11 @@
     - [1.5Exchange](#15exchange)
     - [1.6Queue](#16queue)
     - [1.7Binding](#17binding)
-    - [1.8Producter](#18producter)
+    - [1.8Producer](#18producer)
     - [1.9Consumer](#19consumer)
-  - [2.安装使用](#2%e5%ae%89%e8%a3%85%e4%bd%bf%e7%94%a8)
-  - [3.命令](#3%e5%91%bd%e4%bb%a4)
-  - [4.工作模式](#4%e5%b7%a5%e4%bd%9c%e6%a8%a1%e5%bc%8f)
+  - [2.安装使用](#2安装使用)
+  - [3.命令](#3命令)
+  - [4.工作模式](#4工作模式)
 
 <!-- /TOC -->
 
@@ -71,7 +71,7 @@
 - exchange和queue之间的虚拟连接，binding中可以包含routing key
 - Binding信息被保存到exchange中的查询表中，用于message的分发依据
 
-### 1.8Producter
+### 1.8Producer
 
 - 发送消息的程序是生产者
 
@@ -86,7 +86,7 @@
 
 **ubuntu安装RabbitMq:**
 
-```shell
+```sh
 # 需要erlang环境
 sudo apt-get install erlang-nox
 # 查看erlang是否安装完成
@@ -115,7 +115,7 @@ service rabbitmq-server restart  # 重启
 
 ## 3.命令
 
-```shell
+```sh
 # 查看所有的用户
 rabbitmqctl list_users
 

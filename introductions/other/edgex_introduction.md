@@ -2,15 +2,15 @@
 
 <!-- TOC -->
 
-- [edgex相关介绍](#edgex%e7%9b%b8%e5%85%b3%e4%bb%8b%e7%bb%8d)
-  - [1.介绍](#1%e4%bb%8b%e7%bb%8d)
-    - [1.1地址](#11%e5%9c%b0%e5%9d%80)
-    - [1.2简介](#12%e7%ae%80%e4%bb%8b)
-    - [1.3运行edgex](#13%e8%bf%90%e8%a1%8cedgex)
-  - [go编写设备服务](#go%e7%bc%96%e5%86%99%e8%ae%be%e5%a4%87%e6%9c%8d%e5%8a%a1)
-    - [configuration配置文件](#configuration%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6)
-    - [Profile文件](#profile%e6%96%87%e4%bb%b6)
-    - [main.go入口文件](#maingo%e5%85%a5%e5%8f%a3%e6%96%87%e4%bb%b6)
+- [edgex相关介绍](#edgex相关介绍)
+  - [1.介绍](#1介绍)
+    - [1.1地址](#11地址)
+    - [1.2简介](#12简介)
+    - [1.3运行edgex](#13运行edgex)
+  - [go编写设备服务](#go编写设备服务)
+    - [configuration配置文件](#configuration配置文件)
+    - [Profile文件](#profile文件)
+    - [main.go入口文件](#maingo入口文件)
 
 <!-- /TOC -->
 
@@ -31,7 +31,7 @@
 
 `下载最新的EdgeX Foundry docker并运行`
 
-```shell
+```sh
 # 获取docker-compose文件至当前目录
 wget https://raw.githubusercontent.com/edgexfoundry/developer-scripts/master/releases/edinburgh/compose-files/docker-compose-edinburgh-1.0.1.yml
 
@@ -57,7 +57,7 @@ curl http://localhost:48082/api/v1/device/5c0e8a259f8fc20001a5d230/command/5c0e8
 
 `运行一个带web ui界面的consul`
 
-```shell
+```sh
 # 拉取consul的镜像并运行
 docker pull edgexfoundry/docker-core-consul
 docker login
@@ -77,7 +77,7 @@ docker run -p 8400:8400 -p 8500:8500 -p 8600:8600 –name edgex-core-consul –h
 2. 获取edgex device-service sdk
 3. 修改sdk中的文件内容构建服务
 
-```shell
+```sh
 sudo apt install build-essential
 mkdir -p ~/go/src/github.com/edgexfoundry
 cd ~/go/src/github.com/edgexfoundry

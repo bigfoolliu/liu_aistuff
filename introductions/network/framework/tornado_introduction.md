@@ -2,15 +2,15 @@
 
 <!-- TOC -->
 
-- [tornado web框架介绍](#tornado-web%e6%a1%86%e6%9e%b6%e4%bb%8b%e7%bb%8d)
-  - [1.tornado介绍](#1tornado%e4%bb%8b%e7%bb%8d)
-    - [1.1基础](#11%e5%9f%ba%e7%a1%80)
-    - [1.2特点](#12%e7%89%b9%e7%82%b9)
-  - [2.常见函数和方法](#2%e5%b8%b8%e8%a7%81%e5%87%bd%e6%95%b0%e5%92%8c%e6%96%b9%e6%b3%95)
-  - [3.运行和部署的方式](#3%e8%bf%90%e8%a1%8c%e5%92%8c%e9%83%a8%e7%bd%b2%e7%9a%84%e6%96%b9%e5%bc%8f)
-    - [3.1使用内置的HTTPServer](#31%e4%bd%bf%e7%94%a8%e5%86%85%e7%bd%ae%e7%9a%84httpserver)
-    - [3.2在负载均衡器（如nginx）后面运行](#32%e5%9c%a8%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1%e5%99%a8%e5%a6%82nginx%e5%90%8e%e9%9d%a2%e8%bf%90%e8%a1%8c)
-  - [4.tornado异步](#4tornado%e5%bc%82%e6%ad%a5)
+- [tornado web框架介绍](#tornado-web框架介绍)
+  - [1.tornado介绍](#1tornado介绍)
+    - [1.1基础](#11基础)
+    - [1.2特点](#12特点)
+  - [2.常见函数和方法](#2常见函数和方法)
+  - [3.运行和部署的方式](#3运行和部署的方式)
+    - [3.1使用内置的HTTPServer](#31使用内置的httpserver)
+    - [3.2在负载均衡器（如nginx）后面运行](#32在负载均衡器如nginx后面运行)
+  - [4.tornado异步](#4tornado异步)
 
 <!-- /TOC -->
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
 ## 2.常见函数和方法
 
-```text
+```python
 self.write()
 self.render()
 
@@ -78,7 +78,7 @@ self.redirect()
 
 ### 3.2在负载均衡器（如nginx）后面运行
 
-```text
+```sh
 # nginx的一项配置
 http {
     # Enumerate all the Tornado servers here(列举所有的Tornado服务器)

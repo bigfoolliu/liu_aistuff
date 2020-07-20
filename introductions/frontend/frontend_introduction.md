@@ -2,15 +2,16 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.基础知识](#1.基础知识)
-* [2.前端流行的9大框架](#2.前端流行的9大框架)
-        * [2.1Vue](#2.1vue)
-        * [2.2React](#2.2react)
-        * [2.3Angular](#2.3angular)
-* [3.js包管理工具](#3.js包管理工具)
-        * [3.1npm](#3.1npm)
-        * [3.2yarn](#3.2yarn)
-* [其他](#其他)
+- [前端相关知识](#前端相关知识)
+  - [1.基础知识](#1基础知识)
+  - [2.前端流行的9大框架](#2前端流行的9大框架)
+    - [2.1Vue](#21vue)
+    - [2.2React](#22react)
+    - [2.3Angular](#23angular)
+  - [3.js包管理工具](#3js包管理工具)
+    - [3.1npm](#31npm)
+    - [3.2yarn](#32yarn)
+  - [其他](#其他)
 
 <!-- vim-markdown-toc -->
 
@@ -44,7 +45,7 @@
 
 预处理：
 
-```shell
+```sh
 npm config get registry  # 获取当前npm的版本
 npm install -g npm  # 更新npm
 
@@ -55,14 +56,14 @@ npm config set registry=http://registry.npmjs.org  # 切换为官方源
 
 使用：
 
-```shell
+```sh
 npm init  # 初始化
 npm install module_name -S  # 安装具体的模块
 ```
 
 ### 3.2yarn
 
-```shell
+```sh
 ```
 
 ## 其他

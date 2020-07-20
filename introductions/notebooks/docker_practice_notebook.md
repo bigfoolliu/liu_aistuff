@@ -2,19 +2,19 @@
 
 <!-- TOC -->
 
-- [docker practice读书笔记](#docker-practice%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0)
-  - [1.容器](#1%e5%ae%b9%e5%99%a8)
-  - [2.镜像](#2%e9%95%9c%e5%83%8f)
+- [docker practice读书笔记](#docker-practice读书笔记)
+  - [1.容器](#1容器)
+  - [2.镜像](#2镜像)
   - [3.dockerfile](#3dockerfile)
-    - [dockerfile参考](#dockerfile%e5%8f%82%e8%80%83)
-    - [dockerfile相关命令](#dockerfile%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4)
-    - [dockerfile多阶段构建](#dockerfile%e5%a4%9a%e9%98%b6%e6%ae%b5%e6%9e%84%e5%bb%ba)
-    - [dockerfile最佳实践](#dockerfile%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5)
-  - [4.搭建私人docker registry仓库](#4%e6%90%ad%e5%bb%ba%e7%a7%81%e4%ba%badocker-registry%e4%bb%93%e5%ba%93)
-  - [5.docker网络](#5docker%e7%bd%91%e7%bb%9c)
+    - [dockerfile参考](#dockerfile参考)
+    - [dockerfile相关命令](#dockerfile相关命令)
+    - [dockerfile多阶段构建](#dockerfile多阶段构建)
+    - [dockerfile最佳实践](#dockerfile最佳实践)
+  - [4.搭建私人docker registry仓库](#4搭建私人docker-registry仓库)
+  - [5.docker网络](#5docker网络)
   - [6.docker-compose](#6docker-compose)
   - [7.kubernetes](#7kubernetes)
-    - [概念](#%e6%a6%82%e5%bf%b5)
+    - [概念](#概念)
 
 <!-- /TOC -->
 
@@ -25,19 +25,19 @@
 - 最佳实践：容器不应该向存储层写入任何内容，容器存储层保持无状态化，所有的文件写入操作，都应该使用`数据卷`，或者`绑定宿主目录`
 - 容器的应用都应该以前台执行，容器没有后台服务的概念
 
-```shell
+```sh
 # 将容器快照导出为本地文件
-docker export 1233 > ubuntun.tar
+docker export 1233 > ubuntu.tar
 
 # 将容器快照文件导入为镜像
-cat ubutun.tar | docker import - test/ubuntu:1.0
+cat ubuntu.tar | docker import - test/ubuntu:1.0
 ```
 
 ## 2.镜像
 
 - 镜像唯一的标识为ID和摘要
 
-```shell
+```sh
 # 配合删除镜像,删除所有的redis的镜像
 docker image rm $(docker image ls -q redis)
 
@@ -111,7 +111,7 @@ FROM alpine as prod
 
 ## 4.搭建私人docker registry仓库
 
-```shell
+```sh
 # 安装运行docker-registry，默认仓库将创建在/var/lib/registry目录，也可以用-v参数来指定存放位置
 docker run -d -p 5000:5000 --restart=always --name registry registry
 
@@ -124,7 +124,7 @@ docker push 127.0.0.1:5000/ubuntu:latest
 
 `尽量将容器加入自定义的docker网络，连接多个容器`
 
-```shell
+```sh
 # 创建docker网络
 docker network create -d bridge my-net
 
@@ -141,7 +141,7 @@ docker run -it --rm --name busybox1 --network mynet
 - `服务(service)`，应用的容器，实际上可以是包含若干运行相同镜像的容器实例
 - `项目(project)`，由一组关联的的应用容器组成一个完整的业务单元
 
-```shell
+```sh
 # 尝试自动完成包括构建镜像，创建服务，启动服务
 docker-compose up
 

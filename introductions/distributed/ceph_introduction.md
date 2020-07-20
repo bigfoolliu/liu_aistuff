@@ -2,19 +2,19 @@
 
 <!-- TOC -->
 
-- [ceph介绍以及使用](#ceph%e4%bb%8b%e7%bb%8d%e4%bb%a5%e5%8f%8a%e4%bd%bf%e7%94%a8)
-  - [ceph FileSysterm文件系统](#ceph-filesysterm%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f)
-    - [使用fuse挂载cephfs](#%e4%bd%bf%e7%94%a8fuse%e6%8c%82%e8%bd%bdcephfs)
+- [ceph介绍以及使用](#ceph介绍以及使用)
+  - [1.ceph FileSystem文件系统介绍](#1ceph-filesystem文件系统介绍)
+    - [1.1使用fuse挂载cephfs](#11使用fuse挂载cephfs)
 
 <!-- /TOC -->
 
-## ceph FileSysterm文件系统
+## 1.ceph FileSystem文件系统介绍
 
 使用ceph文件系统在ceph存储集群上需要至少一个`Ceph Metadata Server(MDS)`，ceph元数据服务器。
 
-### 使用fuse挂载cephfs
+### 1.1使用fuse挂载cephfs
 
-```shell
+```sh
 # 客户端的操作
 
 # 创建配置文件夹

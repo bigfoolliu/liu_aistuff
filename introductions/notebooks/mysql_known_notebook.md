@@ -2,28 +2,29 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.数据库](#1.数据库)
-* [1.1数据库介绍](#1.1数据库介绍)
-* [2.mysql相关命令](#2.mysql相关命令)
-        * [2.1安装启动等](#2.1安装启动等)
-        * [2.2数据库操作相关命令](#2.2数据库操作相关命令)
-        * [2.3数据表操作相关命令](#2.3数据表操作相关命令)
-        * [2.4数据操作相关命令](#2.4数据操作相关命令)
-                * [2.4.1CRUD基本操作](#2.4.1crud基本操作)
-                * [2.4.2索引基础](#2.4.2索引基础)
-        * [2.5用户以及权限操作相关命令](#2.5用户以及权限操作相关命令)
-                * [2.5.1用户管理](#2.5.1用户管理)
-                * [2.5.2权限管理](#2.5.2权限管理)
-        * [2.6字符集相关操作](#2.6字符集相关操作)
-                * [2.6.1查看已经设定的字符集](#2.6.1查看已经设定的字符集)
-                * [2.6.2设置字符集](#2.6.2设置字符集)
-* [3.创建计算字段](#3.创建计算字段)
-* [4.汇总数据](#4.汇总数据)
-        * [5.分组数据](#5.分组数据)
-        * [6.联结表](#6.联结表)
-        * [7.事务](#7.事务)
-        * [8.其他](#8.其他)
-                * [8.1explain](#8.1explain)
+- [mysql必知必会读书笔记](#mysql必知必会读书笔记)
+  - [1.数据库](#1数据库)
+  - [1.1数据库介绍](#11数据库介绍)
+  - [2.mysql相关命令](#2mysql相关命令)
+    - [2.1安装启动等](#21安装启动等)
+    - [2.2数据库操作相关命令](#22数据库操作相关命令)
+    - [2.3数据表操作相关命令](#23数据表操作相关命令)
+    - [2.4数据操作相关命令](#24数据操作相关命令)
+      - [2.4.1CRUD基本操作](#241crud基本操作)
+      - [2.4.2索引基础](#242索引基础)
+    - [2.5用户以及权限操作相关命令](#25用户以及权限操作相关命令)
+      - [2.5.1用户管理](#251用户管理)
+      - [2.5.2权限管理](#252权限管理)
+    - [2.6字符集相关操作](#26字符集相关操作)
+      - [2.6.1查看已经设定的字符集](#261查看已经设定的字符集)
+      - [2.6.2设置字符集](#262设置字符集)
+  - [3.创建计算字段](#3创建计算字段)
+  - [4.汇总数据](#4汇总数据)
+    - [5.分组数据](#5分组数据)
+    - [6.联结表](#6联结表)
+    - [7.事务](#7事务)
+    - [8.其他](#8其他)
+      - [8.1explain](#81explain)
 
 <!-- vim-markdown-toc -->
 
@@ -39,7 +40,7 @@
 
 ### 2.1安装启动等
 
-```shell
+```sh
 # mysql命令(linux系统):
 sudo apt-get install mysql-server  # 安装mysql服务器
 sudo apt-get install mysql-client  # 安装mysql客户端
@@ -79,7 +80,7 @@ source /home/xxx.sql;
 
 ### 2.2数据库操作相关命令
 
-```shell
+```sh
 # 创建数据库:
 create database db1;
 create database db1 character set utf8;  # 创建指定字符集的数据库
@@ -107,7 +108,7 @@ mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --all-databases > /data/db.sql  #
 
 ### 2.3数据表操作相关命令
 
-```shell
+```sh
 # 数据表操作:
 # 创建表:
 create table tab1(id int, name char(10));
@@ -119,7 +120,7 @@ show create table tab1;  # 查看创建表的过程
 desc tab1;  # 清晰的查看表的结构
 
 # 显示表列
-show columns forom tab1;
+show columns from tab1;
 
 # 修改表:
 alter table tab1 rename to tab2;  # 修改表的名字
@@ -136,7 +137,7 @@ drop table tab1;  # 删除整张表
 
 #### 2.4.1CRUD基本操作
 
-```shell
+```sh
 # 从表中查询所有的数据:
 select * from tab1;
 select id, name, age from tab1;  # 指定显示的列
@@ -165,7 +166,7 @@ delete from tab1;  # 不指定条件删除
 
 #### 2.4.2索引基础
 
-```shell
+```sh
 # 索引:
 create index name on tab1(name);  # 创建最简单的索引
 # 查看:
@@ -180,7 +181,7 @@ drop index1 from tab1;
 
 #### 2.5.1用户管理
 
-```shell
+```sh
 # 用户管理:
 # 避免非开发用户误操作.
 # 查看所有用户 MySQL中所有的用户及权限信息都存储在MySQL数据库的user表中
@@ -203,7 +204,7 @@ drop user "liu"@"localhost";
 - [mysql权限详解](https://blog.csdn.net/BlingZeng/article/details/89351946)
 - [mysql grant用户权限总结](https://blog.csdn.net/anzhen0429/article/details/78296814)
 
-```shell
+```sh
 # 查看权限:
 show grants for 用户名@主机地址
 show grants for liu@localhost
@@ -223,7 +224,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new-pass
 
 #### 2.6.1查看已经设定的字符集
 
-```shell
+```sh
 # 查看mysql支持的字符集
 show charset;
 
@@ -243,7 +244,7 @@ show full columns from test_table;
 
 #### 2.6.2设置字符集
 
-```shell
+```sh
 # 创建数据库的时候设置字符集
 create database test_db default character set="utf8mb4";
 # 创建表的时候设置字符集
@@ -261,7 +262,7 @@ alter table test_table modify test_field char(10) character set "utf8mb4";
 
 存储在表中的数据不是应用所需要或者能直接使用的，`计算字段是从数据库中检索出转换，计算或者格式化的数据，不实际存在于数据库表中，而是在运行select语句的时候创建的`。
 
-```shell
+```sh
 # 创建计算字段，经name和age拼接为 name(age) 格式,注意空格
 select Contat(name, ' (', age, ')') from tab1;
 select Contat(name, ' (', age, ')') as title from tab1;  # 创建计算字段并设置别名
@@ -272,7 +273,7 @@ select price*numbers as total_price from tab1;
 
 ## 4.汇总数据
 
-```shell
+```sh
 # 汇总平均数
 select Avg(price) as avg_price from tab1;
 
@@ -282,7 +283,7 @@ select Max(price) as max_price from tab1;
 
 ### 5.分组数据
 
-```shell
+```sh
 # 通过年龄分组
 select name from tab1 group by age;
 ```
@@ -295,7 +296,7 @@ select name from tab1 group by age;
 
 **mysql默认是自动提交，即每个语句后面一个提交，可以通过设置`autocmmit`关闭**
 
-```shell
+```sh
 # 开启事务
 start transaction;
 
@@ -313,7 +314,6 @@ commit;
 - [mysql explain详解](https://www.cnblogs.com/xiaoqiang-code/p/11404149.html)
 - 使用explain,模拟优化器执行SQL语句，分析查询语句或是结构的性能瓶颈
 
-```shell
+```sh
 explain select * from table1;
 ```
-

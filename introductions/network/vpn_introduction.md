@@ -3,8 +3,8 @@
 <!-- TOC -->
 
 - [vpn(virtual private networking)](#vpnvirtual-private-networking)
-  - [工作原理](#%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86)
-  - [openvpn安装配置](#openvpn%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae)
+  - [工作原理](#工作原理)
+  - [openvpn安装配置](#openvpn安装配置)
 
 <!-- /TOC -->
 
@@ -19,4 +19,4 @@
 
 ## openvpn安装配置
 
-[参考](https://mp.weixin.qq.com/s/vQV86VFAclcAa2OeDcNt-w)
+- [参考](https://mp.weixin.qq.com/s/vQV86VFAclcAa2OeDcNt-w)

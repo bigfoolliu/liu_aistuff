@@ -2,23 +2,24 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.基本介绍](#1.基本介绍)
-        * [1.3语法](#1.3语法)
-        * [1.4主要应用场景](#1.4主要应用场景)
-        * [1.5组成](#1.5组成)
-        * [1.7编译出自己的nginx](#1.7编译出自己的nginx)
-* [2.nginx命令](#2.nginx命令)
-        * [1.3nginx启动和关闭](#1.3nginx启动和关闭)
-        * [2.2nginx操作命令](#2.2nginx操作命令)
-* [3.nginx配置](#3.nginx配置)
-        * [3.1全局块常用配置](#3.1全局块常用配置)
-        * [3.2events块配置](#3.2events块配置)
-        * [3.3http全局块配置](#3.3http全局块配置)
-        * [3.4http中server块配置](#3.4http中server块配置)
-* [a.其他](#a.其他)
-        * [a.1nginx如何做到热部署](#a.1nginx如何做到热部署)
-        * [a.2配置静态资源服务器](#a.2配置静态资源服务器)
-        * [a.3搭建一个具备缓存功能的反向代理服务器](#a.3搭建一个具备缓存功能的反向代理服务器)
+- [nginx知识](#nginx知识)
+  - [1.基本介绍](#1基本介绍)
+    - [1.3语法](#13语法)
+    - [1.4主要应用场景](#14主要应用场景)
+    - [1.5组成](#15组成)
+    - [1.7编译出自己的nginx](#17编译出自己的nginx)
+  - [2.nginx命令](#2nginx命令)
+    - [1.3nginx启动和关闭](#13nginx启动和关闭)
+    - [2.2nginx操作命令](#22nginx操作命令)
+  - [3.nginx配置](#3nginx配置)
+    - [3.1全局块常用配置](#31全局块常用配置)
+    - [3.2events块配置](#32events块配置)
+    - [3.3http全局块配置](#33http全局块配置)
+    - [3.4http中server块配置](#34http中server块配置)
+  - [a.其他](#a其他)
+    - [a.1nginx如何做到热部署](#a1nginx如何做到热部署)
+    - [a.2配置静态资源服务器](#a2配置静态资源服务器)
+    - [a.3搭建一个具备缓存功能的反向代理服务器](#a3搭建一个具备缓存功能的反向代理服务器)
 
 <!-- vim-markdown-toc -->
 
@@ -63,7 +64,7 @@
 - [开源版(偶数版本为稳定版)](http://nginx.org/)
 - [商业版](http://nginx.com)
 
-```shell
+```sh
 # 1. 下载
 # 2. 配置
 # 3. 编译
@@ -102,7 +103,7 @@ kill -WINCH 1314
 
 ### 1.3nginx启动和关闭
 
-```shell
+```sh
 # 找到nginx的安装位置，带上参数-c，最后加上nginx的配置文件的地址
 /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 
@@ -120,7 +121,7 @@ pkill -9 nginx
 
 ### 2.2nginx操作命令
 
-```shell
+```sh
 # 重载配置文件，不停止原有服务
 nginx -s reload
 
@@ -144,7 +145,7 @@ nginx -s reopen
 - 日志存放路径
 - 允许生成worker process数量等
 
-```shell
+```sh
 # 指定Nginx Worker进程运行用户，涉及文件访问权限
 user root;
 user wwwuser wwwgroup;
@@ -155,14 +156,14 @@ worker_processes auto;
 worker_processes 4;
 
 # 配置文件的包含，Nginx.conf include使用：https://blog.csdn.net/ruby113028/article/details/52461452
-inlude /usr/local/nginx/conf/vhosts/*.conf;
+include /usr/local/nginx/conf/vhosts/*.conf;
 ```
 
 ### 3.2events块配置
 
 - 涉及的指令主要影响nginx服务器与用户的网络连接
 
-```shell
+```sh
 events {
     # 单个工作进程可以允许同时建立外部连接的数量
     worker_connections 1024;
@@ -183,7 +184,7 @@ events {
 - 连接超时时间
 - 单链接请求数上限
 
-```shell
+```sh
 http {
 }
 ```
@@ -195,7 +196,7 @@ http {
 - `每个http块可以包含多个server块`
 - `每个server块可以包含多个location块`
 
-```shell
+```sh
 # 表示该虚拟主机监听的端口
 listen  80;
 listen  192.168.0.1:80;  # 同时指定ip和端口
@@ -203,8 +204,6 @@ listen  192.168.0.1:80;  # 同时指定ip和端口
 # 用于配置基于名称的虚拟主机，nginx的server_name的作用：https://blog.csdn.net/cheng_kohui/article/details/82930464
 server_name www.test.site;  # 指定单个的域名
 server_name *.test.site;  # 基于正则表达式的域名匹配
-
-
 ```
 
 ## a.其他
@@ -218,7 +217,7 @@ server_name *.test.site;  # 基于正则表达式的域名匹配
 1. 配置nginx.conf文件
 2. 重新加载nginx
 
-```shell
+```sh
 # gzip压缩打开可以让访问文件时候进行压缩传输，减少请求时间
 # gzip_min_length只小于多少字节就不再压缩
 # gzip_comp_level表示压缩级别
@@ -249,7 +248,7 @@ server {
 server {
     listen 80;
     location / {
-        alias /data/edgebox/local/register_tmplate;
+        alias /data/edgebox/local/register_template;
         autoindex on;
         set $limit_rate 100k;
         }
@@ -264,7 +263,7 @@ server {
 1. 配置上游服务器，一般上游服务器对公网不提供访问
 2. 配置反向代理服务器
 
-```shell
+```sh
 # 静态资源服务器
 server {
     # 只让本机的进程来访问8080端口
@@ -272,7 +271,7 @@ server {
 }
 ```
 
-```shell
+```sh
 # 反向代理服务器，对公网提供访问
 http {
 
