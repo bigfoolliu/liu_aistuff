@@ -1,28 +1,27 @@
-# effiency提高效率的小技巧
+# 提高效率的小技巧
 
 <!-- TOC -->
 
-- [effiency提高效率的小技巧](#effiency提高效率的小技巧)
-    - [1.为命令设置别名(alias)](#1为命令设置别名alias)
-    - [2.dotfiles快速将恢复自身配置](#2dotfiles快速将恢复自身配置)
-    - [3.项目里重复的工作写成makefile](#3项目里重复的工作写成makefile)
-    - [4.快速为项目选择一个source license](#4快速为项目选择一个source-license)
-    - [5.量化工作](#5量化工作)
-    - [6.会话以及终端管理tmux](#6会话以及终端管理tmux)
-    - [7.windows虚拟桌面(workspace)](#7windows虚拟桌面workspace)
-    - [8.必读书籍](#8必读书籍)
-    - [9.开发者工具](#9开发者工具)
-    - [10.chrome高效使用](#10chrome高效使用)
-    - [11.ssh免密以及别名登录](#11ssh免密以及别名登录)
-    - [13.HTTP Api设计指南](#13http-api设计指南)
-    - [8.a修改windows开机启动自动执行脚本](#8a修改windows开机启动自动执行脚本)
+- [提高效率的小技巧](#提高效率的小技巧)
+  - [1.为命令设置别名(alias)](#1为命令设置别名alias)
+  - [2.dotfiles快速将恢复自身配置](#2dotfiles快速将恢复自身配置)
+  - [3.项目里重复的工作写成makefile](#3项目里重复的工作写成makefile)
+  - [4.快速为项目选择一个source license](#4快速为项目选择一个source-license)
+  - [5.量化工作](#5量化工作)
+  - [6.会话以及终端管理tmux](#6会话以及终端管理tmux)
+  - [7.windows虚拟桌面(workspace)](#7windows虚拟桌面workspace)
+  - [8.必读书籍](#8必读书籍)
+  - [9.开发者工具](#9开发者工具)
+  - [10.chrome高效使用](#10chrome高效使用)
+  - [11.ssh免密以及别名登录](#11ssh免密以及别名登录)
+  - [13.HTTP Api设计指南](#13http-api设计指南)
+  - [8.a修改windows开机启动自动执行脚本](#8a修改windows开机启动自动执行脚本)
 
 <!-- /TOC -->
 
-- [效率指南](https://leohxj.gitbooks.io/a-programmer-prepares/effciency/coder-guide.html)
-
 ## 1.为命令设置别名(alias)
 
+- [效率指南](https://leohxj.gitbooks.io/a-programmer-prepares/effciency/coder-guide.html)
 - [alias为命令设置别名](https://blog.csdn.net/doiido/article/details/43762791)
 
 ## 2.dotfiles快速将恢复自身配置
@@ -79,7 +78,7 @@
 
 ## 11.ssh免密以及别名登录
 
-```shell
+```sh
 # 1.本地生成公钥和私钥,默认放置路径为~/.ssh/id_rsa以及~/.ssh/id_rsassh-keygen.pub
 # 需要输入一个密码需要记忆,如果输入为空则为免密登录
 ssh-keygen

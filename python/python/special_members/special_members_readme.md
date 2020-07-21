@@ -2,12 +2,13 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.__dict__](#1.__dict__)
-* [2.__str__](#2.__str__)
-* [3.__doc__](#3.__doc__)
-* [4.__all__](#4.__all__)
-* [5.__name__](#5.__name__)
-* [6.__path__](#6.__path__)
+- [special_members](#special_members)
+  - [1.__dict__](#1dict)
+  - [2.__str__](#2str)
+  - [3.__doc__](#3doc)
+  - [4.__all__](#4all)
+  - [5.__name__](#5name)
+  - [6.__path__](#6path)
 
 <!-- vim-markdown-toc -->
 
@@ -31,4 +32,3 @@
 
 - `包`特有的属性
 - 初始化为一个列表，其中包含在执行该文件中的代码之前保存包的文件 __init__.py 的目录的名称
-

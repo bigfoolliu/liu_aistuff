@@ -2,14 +2,14 @@
 
 <!-- TOC -->
 
-- [shell基本知识](#shell%e5%9f%ba%e6%9c%ac%e7%9f%a5%e8%af%86)
-  - [1.shell if中的符号](#1shell-if%e4%b8%ad%e7%9a%84%e7%ac%a6%e5%8f%b7)
-    - [语句中](#%e8%af%ad%e5%8f%a5%e4%b8%ad)
-    - [if-else语句中](#if-else%e8%af%ad%e5%8f%a5%e4%b8%ad)
-    - [shell中调用另一个shell(exec, fork, source)](#shell%e4%b8%ad%e8%b0%83%e7%94%a8%e5%8f%a6%e4%b8%80%e4%b8%aashellexec-fork-source)
-    - [shell相关命令](#shell%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4)
-    - [设置shell环境](#%e8%ae%be%e7%bd%aeshell%e7%8e%af%e5%a2%83)
-    - [进程内存监控程序](#%e8%bf%9b%e7%a8%8b%e5%86%85%e5%ad%98%e7%9b%91%e6%8e%a7%e7%a8%8b%e5%ba%8f)
+- [shell基本知识](#shell基本知识)
+  - [1.shell if中的符号](#1shell-if中的符号)
+    - [语句中](#语句中)
+    - [if-else语句中](#if-else语句中)
+    - [shell中调用另一个shell(exec, fork, source)](#shell中调用另一个shellexec-fork-source)
+    - [shell相关命令](#shell相关命令)
+    - [设置shell环境](#设置shell环境)
+    - [进程内存监控程序](#进程内存监控程序)
 
 <!-- /TOC -->
 
@@ -49,7 +49,7 @@ if [ -f file ]
 11. -z string   True if string is empty.
 12. -n string   True if string is not empty.
 
-```shell
+```sh
 $#  传递到脚本的参数个数
 $*  以一个单字符串显示所有向脚本传递的参数
 $$  脚本运行的当前进程ID号
@@ -72,7 +72,7 @@ $?  显示最后命令的退出状态。0表示没有错误，其他任何值表
 
 ### shell相关命令
 
-```shell
+```sh
 # 在其之后的代码一旦出现了返回值为非零，则整个脚本立即退出
 set -e
 
@@ -96,11 +96,11 @@ dirs  # 显示目录栈中的所有目录，每次pushd执行完成之后会默�
 
 ### 设置shell环境
 
-[设置bash环境](http://billie66.github.io/TLCL/book/chap12.html)
+- [设置bash环境](http://billie66.github.io/TLCL/book/chap12.html)
 
 ### 进程内存监控程序
 
-```shell
+```sh
 #!/bin/bash
 
 gst_memo_log="/gst_memo_log.txt"

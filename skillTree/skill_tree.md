@@ -296,7 +296,7 @@ TODO:
 
 ### 9.2加密解密
 
-- [ ] [emcrypt](../other/encrypt)
+- [ ] [encrypt](../other/encrypt)
 
 ### 9.3数字签名，数字证书
 

@@ -395,7 +395,7 @@ command + backspace  # 删除当前行
 ## 7.系统快捷键
 
 ```sh
-command + space  # 打开spotlight搜索 
+command + space  # 打开spotlight搜索
 ```
 
 ## 8.其他
