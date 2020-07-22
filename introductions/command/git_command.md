@@ -1,46 +1,46 @@
 # Git
 
-<!-- vim-markdown-toc Marked -->
+<!-- vim-markdown-toc GitLab -->
 
-- [Git](#git)
-  - [1.git基本命令](#1git基本命令)
-    - [1.1配置(config)](#11配置config)
-    - [1.2仓库克隆(clone)](#12仓库克隆clone)
-    - [1.3暂存(add)](#13暂存add)
-    - [1.4本地提交(commit)](#14本地提交commit)
-    - [1.5远程提交于拉取(push, pull)](#15远程提交于拉取push-pull)
-    - [1.6提交堆栈(stash)](#16提交堆栈stash)
-    - [1.7分支(branch, checkout)](#17分支branch-checkout)
-    - [1.8撤销(reset, revert)](#18撤销reset-revert)
-    - [1.9操作记录(log, reflog)](#19操作记录log-reflog)
-    - [1.10标签(tag)](#110标签tag)
-    - [1.11查看内容(show)](#111查看内容show)
-    - [1.12状态(status)](#112状态status)
-    - [1.13删除(rm)](#113删除rm)
-    - [1.14移动(mv)](#114移动mv)
-    - [1.15查看更新(diff)](#115查看更新diff)
-    - [1.16远程(remote)](#116远程remote)
-  - [2.操作命令组](#2操作命令组)
-    - [2.1修改已经push的commit的message](#21修改已经push的commit的message)
-    - [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)
-    - [2.3提交之后因为大文件而push失败](#23提交之后因为大文件而push失败)
-  - [3.gitignore文件](#3gitignore文件)
-    - [3.1介绍](#31介绍)
-    - [3.2格式规范](#32格式规范)
-  - [4.gitmodule](#4gitmodule)
-    - [4.1介绍](#41介绍)
-    - [4.2使用](#42使用)
-  - [5.其他](#5其他)
-    - [5.1非常用命令](#51非常用命令)
-    - [5.2github](#52github)
-      - [5.2.1github搜索技巧](#521github搜索技巧)
-      - [5.2.2github知识](#522github知识)
-    - [5.3在服务器上搭建git](#53在服务器上搭建git)
-    - [5.4如何选择git的分支模式](#54如何选择git的分支模式)
-      - [5.4.1TBD](#541tbd)
-      - [5.4.2Git-Flow模式](#542git-flow模式)
-      - [5.4.3Github-Flow模式](#543github-flow模式)
-      - [5.4.4Gitlab-Flow模式](#544gitlab-flow模式)
+* [1.git基本命令](#1git基本命令)
+        * [1.1配置(config)](#11配置config)
+        * [1.2仓库克隆(clone)](#12仓库克隆clone)
+        * [1.3暂存(add)](#13暂存add)
+        * [1.4本地提交(commit)](#14本地提交commit)
+        * [1.5远程提交于拉取(push, pull)](#15远程提交于拉取push-pull)
+        * [1.6提交堆栈(stash)](#16提交堆栈stash)
+        * [1.7分支(branch, checkout)](#17分支branch-checkout)
+        * [1.8撤销(reset, revert)](#18撤销reset-revert)
+        * [1.9操作记录(log, reflog)](#19操作记录log-reflog)
+        * [1.10标签(tag)](#110标签tag)
+        * [1.11查看内容(show)](#111查看内容show)
+        * [1.12状态(status)](#112状态status)
+        * [1.13删除(rm)](#113删除rm)
+        * [1.14移动(mv)](#114移动mv)
+        * [1.15查看更新(diff)](#115查看更新diff)
+        * [1.16远程(remote)](#116远程remote)
+        * [1.17清除(clean)](#117清除clean)
+* [2.操作命令组](#2操作命令组)
+        * [2.1修改已经push的commit的message](#21修改已经push的commit的message)
+        * [2.2修改多次commit的信息为一个](#22修改多次commit的信息为一个)
+        * [2.3提交之后因为大文件而push失败](#23提交之后因为大文件而push失败)
+* [3.gitignore文件](#3gitignore文件)
+        * [3.1介绍](#31介绍)
+        * [3.2格式规范](#32格式规范)
+* [4.gitmodule](#4gitmodule)
+        * [4.1介绍](#41介绍)
+        * [4.2使用](#42使用)
+* [5.其他](#5其他)
+        * [5.1非常用命令](#51非常用命令)
+        * [5.2github](#52github)
+                * [5.2.1github搜索技巧](#521github搜索技巧)
+                * [5.2.2github知识](#522github知识)
+        * [5.3在服务器上搭建git](#53在服务器上搭建git)
+        * [5.4如何选择git的分支模式](#54如何选择git的分支模式)
+                * [5.4.1TBD](#541tbd)
+                * [5.4.2Git-Flow模式](#542git-flow模式)
+                * [5.4.3Github-Flow模式](#543github-flow模式)
+                * [5.4.4Gitlab-Flow模式](#544gitlab-flow模式)
 
 <!-- vim-markdown-toc -->
 
@@ -454,6 +454,22 @@ git remote remove tom
 
 # 查看远程分支列表
 git ls-remote origin
+```
+
+### 1.17清除(clean)
+
+```sh
+# 演示，查看哪些文件会被删除
+git clean -n
+
+# 删除当前目录下所有没有track的文件,不清理.gitignore文件中指定的文件和文件夹
+git clean -f
+
+# 删除当前目录下所有没有没有被track的文件和文件夹
+git clean -df
+
+# 删除当前目录下的所有文件和文件夹，不管是否在.gitignore中指定
+git clean -xf
 ```
 
 ## 2.操作命令组
