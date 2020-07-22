@@ -49,6 +49,7 @@ def length_of_longest_substring(s):
     return ret
 
 
-# print(length_of_longest_substring("pwwkew"))
-# print(length_of_longest_substring("pwwksdfsdfew"))
-print(length_of_longest_substring("pwwasdgfgddddddkew"))
+if __name__ == "__main__":
+    # print(length_of_longest_substring("pwwkew"))
+    # print(length_of_longest_substring("pwwksdfsdfew"))
+    print(length_of_longest_substring("pwwasdgfgddddddkew"))
