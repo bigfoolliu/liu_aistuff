@@ -35,7 +35,7 @@ Note that the input array is passed in by reference, which means modification to
 def remove_duplicates_from_sorted_array(sorted_array):
     """
     :param sorted_array: list,有序数组
-    reuturn int，去重后的数组的长度
+    :return int，去重后的数组的长度
     """
     if not sorted_array:
         return 0

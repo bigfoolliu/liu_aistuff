@@ -28,7 +28,7 @@ def majority_element(nums):
     :param nums: list
     :return: int
     """
-    return sorted(nums)[int(len(nums)/2)]
+    return sorted(nums)[int(len(nums) / 2)]
 
 
 if __name__ == "__main__":

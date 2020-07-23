@@ -39,10 +39,10 @@ def pascal_triangle(num):
         elif i == 1:
             num_row = [1, 1]
         else:
-            num_row = [None] * (i+1)
+            num_row = [None] * (i + 1)
             num_row[0], num_row[-1] = 1, 1
-            for j in range(1, len(num_row)-1):
-                num_row[j] = ret[i-1][j-1] + ret[i-1][j]
+            for j in range(1, len(num_row) - 1):
+                num_row[j] = ret[i - 1][j - 1] + ret[i - 1][j]
         ret.append(num_row)
     return ret
 

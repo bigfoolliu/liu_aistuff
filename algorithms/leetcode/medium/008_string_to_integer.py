@@ -77,21 +77,21 @@ def myAtoi(str):
         str = str[1:]
 
     for char in str:
-        if char >= "0" and char <= "9":  # 根据ascii码的区间来判断
+        if "9" >= char >= "0":  # 根据ascii码的区间来判断
             ret = ret * 10 + int(char)
         elif char < "0" or char > "9":
             break
 
     # 根据提取的数字确定输出结果
     if ret > 2147483647:
-        if positive_flag == True:
+        if positive_flag:
             ret = 2147483647
         else:
             ret = -2147483648
     else:
-        if positive_flag == False:
+        if not positive_flag:
             ret = 0 - ret
-    
+
     return ret
 
 
@@ -99,4 +99,3 @@ if __name__ == "__main__":
     str_input = input("input str:")
     ret = myAtoi(str_input)
     print(ret)
-

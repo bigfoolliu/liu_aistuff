@@ -26,7 +26,7 @@ return its minimum depth = 2.
 
 
 class Node(object):
-    
+
     def __init__(self, x):
         self.val = x
         self.left = None
@@ -40,7 +40,7 @@ def minimum_depth_of_binary_tree(root):
     """
     if not root:
         return 0
-    
+
     left_depth = minimum_depth_of_binary_tree(root.left)
     right_depth = minimum_depth_of_binary_tree(root.right)
 

@@ -34,10 +34,10 @@ def single_number(nums):
     """
     for i in range(1, len(nums)):
         nums[0] ^= nums[i]
-    
+
     return nums[0]
 
 
 if __name__ == "__main__":
-    print(single_number([2,2,1]))
-    print(single_number([4,1,2,1,2]))
+    print(single_number([2, 2, 1]))
+    print(single_number([4, 1, 2, 1, 2]))

@@ -29,15 +29,15 @@ def pascal_triangle_get_row(row):
     :param row: int,非负整数
     :return: list
     """
-    fact = [1] * (row+1)
-    ret = [1] * (row+1)
-    for i in range(1, row+1):
-        fact[i] = fact[i-1] * i
-    
+    fact = [1] * (row + 1)
+    ret = [1] * (row + 1)
+    for i in range(1, row + 1):
+        fact[i] = fact[i - 1] * i
+
     print("fact:", fact)
 
-    for i in range(1, row+1):
-        ret[i] = int(fact[-1] / (fact[i] * fact[row-i]))
+    for i in range(1, row + 1):
+        ret[i] = int(fact[-1] / (fact[i] * fact[row - i]))
     return ret
 
 

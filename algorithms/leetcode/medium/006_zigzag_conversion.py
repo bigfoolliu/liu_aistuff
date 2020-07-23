@@ -47,7 +47,7 @@ def convert(s, numRows):
         return s
 
     ret = [""] * numRows
-    #　idx为下标，step为单次前进的步数
+    # 　idx为下标，step为单次前进的步数
     idx, step = 0, 1
     for i in s:
         print("i:{} idx:{} ret:{}".format(i, idx, ret))
@@ -63,7 +63,6 @@ def convert(s, numRows):
 
 
 if __name__ == "__main__":
-
     s = "PAYPALISHIRING"
     numRows = 3
     ret = convert(s, numRows)
@@ -72,4 +71,3 @@ if __name__ == "__main__":
     numRows = 4
     ret = convert(s, numRows)
     print(ret)
-

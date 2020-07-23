@@ -34,7 +34,7 @@ def best_time_to_sell_stock(prices):
     """
     if not prices:
         return 0
-    
+
     ret_index = 0  # 结果的索引
     min_item = prices[0]
     max_profit = 0
@@ -43,7 +43,7 @@ def best_time_to_sell_stock(prices):
         min_item = min(prices[i], min_item)
         if prices[i] - min_item > max_profit:
             ret_index = i
-            max_profit = max(max_profit, prices[i]-min_item)
+            max_profit = max(max_profit, prices[i] - min_item)
 
     return ret_index + 1  # 天数从1开始
 

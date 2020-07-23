@@ -35,7 +35,7 @@ def length_of_longest_substring(s):
     :rtype: int
     """
     # define the result and the target substring
-    ret = 0
+    ret = 0  # 返回的最大长度
     start = 0  # 每次不重复子串的首字母的下标
     dict1 = {}  # 存放不重复的字符的hashmap
 

@@ -21,7 +21,6 @@ Output: false
 说明：本题中，我们将空字符串定义为有效的回文串。
 """
 
-
 import string
 
 
@@ -33,7 +32,7 @@ def validate_palindrome(s):
     """
     if s == "":
         return True
-    
+
     new_s = ""
     for i in s:
         if i in string.ascii_letters or i in string.digits:
@@ -54,7 +53,7 @@ def validate_palindrome2(s):
     """
     if s == "":
         return True
-    
+
     new_s = ""
     s = s.lower()
     for i in s:

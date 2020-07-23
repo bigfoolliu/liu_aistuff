@@ -58,12 +58,12 @@ def has_cycle(head):
     """
     if not head:
         return False
-    
+
     # 遍历的过程中将值置为None
     while head.next and head.val is not None:
         head.val = None
         head = head.next
-    
+
     # 如果有节点的下一个节点为None,则说明有环
     if not head.next:
         return False

@@ -38,10 +38,10 @@ def excel_sheet_column_from_title(n):
     :param n: int
     :return: str
     """
-    if (n-1) // 26 == 0:
-        return chr(65 + (n-1) % 26)
+    if (n - 1) // 26 == 0:
+        return chr(65 + (n - 1) % 26)
     else:
-        return excel_sheet_column_from_title((n-1)//26) + chr(65 + (n-1)%26)
+        return excel_sheet_column_from_title((n - 1) // 26) + chr(65 + (n - 1) % 26)
 
 
 if __name__ == "__main__":

@@ -46,7 +46,7 @@ def sortedArrayToBST(array):
 
         # 递归，根据二叉搜索树的特点，中间的数是根节点
         root.left = sortedArrayToBST(array[:mid_pos])
-        root.right = sortedArrayToBST(array[mid_pos+1:])
+        root.right = sortedArrayToBST(array[mid_pos + 1:])
         return root
 
 

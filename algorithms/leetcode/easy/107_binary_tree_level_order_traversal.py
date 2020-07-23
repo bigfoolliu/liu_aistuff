@@ -25,16 +25,15 @@ return its bottom-up level order traversal as:
 二叉树的层次遍历
 """
 
-
 from collections import deque
 
 
 class Node(object):
 
-      def __init__(self, x):
-          self.val = x
-          self.left = None
-          self.right = None
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 
 def binary_tree_level_order_travelsal(root):
@@ -60,7 +59,7 @@ def binary_tree_level_order_travelsal(root):
                 q.append(root.right)
         if level_ret:
             ret.append(level_ret)
-    
+
     return ret[::-1]
 
 

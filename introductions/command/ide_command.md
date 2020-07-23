@@ -2,12 +2,11 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [常用ide快捷键](#常用ide快捷键)
-  - [1.pycharm](#1pycharm)
-  - [2.webstorm](#2webstorm)
-  - [3.vscode](#3vscode)
-    - [3.1通用](#31通用)
-  - [3.mac版本pycharm](#3mac版本pycharm)
+* [1.pycharm](#1.pycharm)
+* [2.webstorm](#2.webstorm)
+* [3.vscode](#3.vscode)
+        * [3.1通用](#3.1通用)
+* [3.mac版本pycharm](#3.mac版本pycharm)
 
 <!-- vim-markdown-toc -->
 
@@ -63,6 +62,18 @@ ctrl + shift + backspace
 
 # 在光标的之前以后位置跳转
 command + option + 左/右方向键
+
+# 使用ace_jump插件，快速跳转到指定的字符位置
+ctrl + ;
+
+# 快速定位到行首和行尾或者菜单栏
+command + 上/下/左/右方向键
+
+# 快速展开和合并json代码段
+commans + .
+
+# tab标签左右跳转
+cmmand + shift + ']`
 ```
 
 ## 2.webstorm

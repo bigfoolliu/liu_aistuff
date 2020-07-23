@@ -46,11 +46,13 @@ def clone_graph(node):
     node: Node
     """
     d = {}
+
     def dfs(old):
-        if old not in in d:
+        if old not in d:
             d[old] = new = Node(old.val, None)
             new.neighbors = [*map(dfs, old.neighbors)]
         return d[old]
+
     return dfs(node)
 
 

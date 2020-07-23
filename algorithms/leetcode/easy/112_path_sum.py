@@ -24,12 +24,11 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。
 """
 
-
 from collections import deque
 
 
 class Node(object):
-    
+
     def __init__(self, x):
         self.val = x
         self.left = None
@@ -45,14 +44,14 @@ def has_path_sum(root, target):
     """
     if not root:
         return False
-    
+
     queue = deque([(root, root.val)])
     while queue:
         node, s = queue.popleft()
         if node.left:
-            queue.append((node.left, s+node.left.val))
+            queue.append((node.left, s + node.left.val))
         if node.right:
-            queue.append((node.right, s+node.right.val))
+            queue.append((node.right, s + node.right.val))
         if not node.left and not node.right and s == target:
             return True
     return False

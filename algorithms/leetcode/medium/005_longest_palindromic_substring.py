@@ -30,24 +30,24 @@ def longestPalindrome(s):
     l, r = 0, 0
     m = 0
     for i in range(len(s)):
-        for j in range(min(i+1, len(s)-i)):
-            if s[i-j] != s[i+j]:
+        for j in range(min(i + 1, len(s) - i)):
+            if s[i - j] != s[i + j]:
                 break
-            if 2*j+1 > m:
-                m = 2*j+1
-                l = i-j
-                r = i+j
+            if 2 * j + 1 > m:
+                m = 2 * j + 1
+                l = i - j
+                r = i + j
 
-        if i+1 < len(s) and s[i] == s[i+1]:
-            for j in range(min(i+1, len(s)-i-1)):
-                if s[i-j] != s[i+j+1]:
+        if i + 1 < len(s) and s[i] == s[i + 1]:
+            for j in range(min(i + 1, len(s) - i - 1)):
+                if s[i - j] != s[i + j + 1]:
                     break
-                if 2*j+2 > m:
-                    m = 2*j+2
-                    l = i-j
-                    r = i+j+1
+                if 2 * j + 2 > m:
+                    m = 2 * j + 2
+                    l = i - j
+                    r = i + j + 1
 
-    return s[l:r+1]
+    return s[l:r + 1]
 
 
 print(longestPalindrome("babad"))

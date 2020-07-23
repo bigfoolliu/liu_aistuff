@@ -34,7 +34,6 @@ getMin() -- 检索栈中的最小元素。
 
 
 class MinimumStack(object):
-
     """
     实现类似栈的结构，但是要有常数时间，可以在存储单个节点的时候存储当前栈的最小值
     """
@@ -62,7 +61,7 @@ class MinimumStack(object):
         """
         :return: int
         """
-        return self.stack[-1][0]        
+        return self.stack[-1][0]
 
     def getMin(self):
         """
