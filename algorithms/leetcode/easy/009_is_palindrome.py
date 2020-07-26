@@ -28,6 +28,9 @@ Determine whether an integer is a palindrome. An integer is a palindrome when it
 """
 
 
+import unittest
+
+
 def isPalindrome(x):
     """
     判断输入的整数是否为回文数字
@@ -36,7 +39,6 @@ def isPalindrome(x):
     """
     # 将该数字逆序输出和原始的对比,相同则为回文
     x_list = [i for i in str(x)]
-    print("[INFO]the x_list:", x_list)
 
     reverse_list = []
     ret = False
@@ -46,8 +48,6 @@ def isPalindrome(x):
     for i in range(len(x_list)):
         reverse_list.append(x_list_copy.pop())
 
-    print("[INFO]the reverse_list:", reverse_list)
-    
     # 判断两个列表是否相等,元素的数量和位置相同
     import operator
     if operator.eq(x_list, reverse_list):
@@ -56,10 +56,14 @@ def isPalindrome(x):
     return ret
 
 
-if __name__ == "__main__":
-    num = int(input("please input an integer:"))
-    is_palindrome = isPalindrome(num)
+class TestDemo(unittest.TestCase):
 
-    if not is_palindrome:
-        print("{} is not a palindrome.".format(num))
-    print("{} is a palindrome.".format(num))
+    def test_demo1(self):
+        self.assertEqual(True, isPalindrome(12321))
+
+    def test_demo2(self):
+        self.assertEqual(False, isPalindrome(12211))
+
+
+if __name__ == "__main__":
+    unittest.main()

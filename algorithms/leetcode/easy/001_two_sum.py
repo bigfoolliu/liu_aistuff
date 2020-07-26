@@ -19,6 +19,9 @@ Example:
 """
 
 
+import unittest
+
+
 def twoSum(nums, target):
     """
     :type nums: List[int]
@@ -36,5 +39,14 @@ def twoSum(nums, target):
     return None
 
 
+class TestTwoSum(unittest.TestCase):
+
+    def test_demo1(self):
+        self.assertEqual([0, 1], twoSum([2, 7, 11, 15], 9))
+
+    def test_demo2(self):
+        self.assertEqual([1, 2], twoSum([2, 7, 11, 15], 18))
+
+
 if __name__ == "__main__":
-    print(twoSum([2, 7, 11, 15], 9))
+    unittest.main()

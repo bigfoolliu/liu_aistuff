@@ -27,6 +27,9 @@ Example 1:
 """
 
 
+import unittest
+
+
 def reverse(x):
     """
     :type x: int
@@ -41,9 +44,17 @@ def reverse(x):
     return ret if -0x7fffffff < ret < 0x7fffffff else 0
 
 
+class TestDemo(unittest.TestCase):
+
+    def test_demo1(self):
+        self.assertEqual(-234, reverse(-432))
+
+    def test_demo2(self):
+        self.assertEqual(1234, reverse(4321))
+
+    def test_demo3(self):
+        self.assertEqual(0, reverse(1234455552249))
+
+
 if __name__ == "__main__":
-    for i in range(-200, 100):
-        reverse_ret = reverse(i)
-        print("x:{} reverse_ret:{}".format(i, reverse_ret))
-    reverse_ret = reverse(123123314214414124214214)
-    print(reverse_ret)
+    unittest.main()

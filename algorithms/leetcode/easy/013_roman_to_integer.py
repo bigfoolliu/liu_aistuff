@@ -50,6 +50,9 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
 
 
+import unittest
+
+
 def roman_to_integer(s):
     """
     :param s: str
@@ -75,7 +78,20 @@ def roman_to_integer(s):
     return num
 
 
+class TestDemo(unittest.TestCase):
+
+    def test_demo1(self):
+        self.assertEqual(3, roman_to_integer('III'))
+
+    def test_demo2(self):
+        self.assertEqual(9, roman_to_integer('IX'))
+
+    def test_demo3(self):
+        self.assertEqual(58, roman_to_integer('LVIII'))
+
+    def test_demo4(self):
+        self.assertEqual(1994, roman_to_integer('MCMXCIV'))
+
+
 if __name__ == "__main__":
-    # print(roman_to_integer("III"))
-    # print(roman_to_integer("LVIII"))
-    print(roman_to_integer("MCMXCIV"))
+    unittest.main()
