@@ -1,0 +1,30 @@
+# 键值对，类似python的字典
+user:
+  name: admin
+  password: 123456
+
+# 嵌套键值对
+mysql:
+  port: 3306
+
+
+# 序列，类似python中的列表,此处字典嵌套列表
+names:
+  - name1: anna
+  - name2: tony
+  - name3: tom
+
+# 序列的另一种写法,可以省略下面的其他的 - 号
+ages:
+  - age1: 12
+    age2: 13
+
+# 纯量
+numbers:
+  a: 12  # 整数
+  b: 1.4  # 浮点数
+  c: true  # 布尔真
+  d: false  # 布尔假
+  e: ~   # 对应python None
+  time1: 2018-04-18t21:59:43.10+08:00  # 对应datetime
+  date1: 2018-04-18  # 对应date

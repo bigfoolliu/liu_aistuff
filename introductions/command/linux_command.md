@@ -2,35 +2,34 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [LINUX平台下的常用命令](#linux平台下的常用命令)
-  - [1.系统管理](#1系统管理)
-    - [1.1系统时间(tzselect, uptime)](#11系统时间tzselect-uptime)
-    - [1.2系统信息(free, lsusb, v4l2-ctl, cpuinfo, udevadm)](#12系统信息free-lsusb-v4l2-ctl-cpuinfo-udevadm)
-    - [1.3系统用户(id, passwd, uname, last, useradd, userdel, groupadd)](#13系统用户id-passwd-uname-last-useradd-userdel-groupadd)
-  - [2.文件目录管理](#2文件目录管理)
-    - [2.1目录基本操作(ls, tree, cd, dirs, pushd, popd)](#21目录基本操作ls-tree-cd-dirs-pushd-popd)
-    - [2.2文件信息(fuser, du, file, less)](#22文件信息fuser-du-file-less)
-    - [2.3文件查找和比较(find, ag, wc, grep)](#23文件查找和比较find-ag-wc-grep)
-    - [2.4文件归档(tar, gzip, gunzip, extract)](#24文件归档tar-gzip-gunzip-extract)
-    - [2.x文件其他(>, >>, ln)](#2x文件其他--ln)
-  - [3.进程相关](#3进程相关)
-    - [3.1杀死进程的几种方式](#31杀死进程的几种方式)
-    - [3.2supervisor对进程进行管理](#32supervisor对进程进行管理)
-  - [4.网络管理](#4网络管理)
-    - [4.1网络抓包(tcpdump)](#41网络抓包tcpdump)
-    - [4.2网络服务器(ifconfig, route)](#42网络服务器ifconfig-route)
-    - [4.3网络应用(curl, wget, telnet, ping)](#43网络应用curl-wget-telnet-ping)
-    - [4.5网络其他](#45网络其他)
-  - [5.实用工具](#5实用工具)
-    - [5.1dos2unix](#51dos2unix)
-    - [5.2watch](#52watch)
-    - [5.3jq](#53jq)
-    - [5.4when-changed工具](#54when-changed工具)
-    - [5.5ranger](#55ranger)
-    - [5.6sed](#56sed)
-    - [5.x其他](#5x其他)
-  - [性能检测与优化](#性能检测与优化)
-    - [ifstat](#ifstat)
+* [1.系统管理](#1.系统管理)
+        * [1.1系统时间(tzselect, uptime)](#1.1系统时间(tzselect,-uptime))
+        * [1.2系统信息(free, lsusb, v4l2-ctl, cpuinfo, udevadm)](#1.2系统信息(free,-lsusb,-v4l2-ctl,-cpuinfo,-udevadm))
+        * [1.3系统用户(id, passwd, uname, last, useradd, userdel, groupadd)](#1.3系统用户(id,-passwd,-uname,-last,-useradd,-userdel,-groupadd))
+* [2.文件目录管理](#2.文件目录管理)
+        * [2.1目录基本操作(ls, tree, cd, dirs, pushd, popd)](#2.1目录基本操作(ls,-tree,-cd,-dirs,-pushd,-popd))
+        * [2.2文件信息(fuser, du, file, less)](#2.2文件信息(fuser,-du,-file,-less))
+        * [2.3文件查找和比较(find, ag, wc, grep)](#2.3文件查找和比较(find,-ag,-wc,-grep))
+        * [2.4文件归档(tar, gzip, gunzip, extract)](#2.4文件归档(tar,-gzip,-gunzip,-extract))
+        * [2.x文件其他(>, >>, ln)](#2.x文件其他(>,->>,-ln))
+* [3.进程相关](#3.进程相关)
+        * [3.1杀死进程的几种方式](#3.1杀死进程的几种方式)
+        * [3.2supervisor对进程进行管理](#3.2supervisor对进程进行管理)
+* [4.网络管理](#4.网络管理)
+        * [4.1网络抓包(tcpdump)](#4.1网络抓包(tcpdump))
+        * [4.2网络服务器(ifconfig, route)](#4.2网络服务器(ifconfig,-route))
+        * [4.3网络应用(curl, wget, telnet, ping)](#4.3网络应用(curl,-wget,-telnet,-ping))
+        * [4.5网络其他](#4.5网络其他)
+* [5.实用工具](#5.实用工具)
+        * [5.1dos2unix](#5.1dos2unix)
+        * [5.2watch](#5.2watch)
+        * [5.3jq](#5.3jq)
+        * [5.4when-changed工具](#5.4when-changed工具)
+        * [5.5ranger](#5.5ranger)
+        * [5.6sed](#5.6sed)
+        * [5.x其他](#5.x其他)
+* [性能检测与优化](#性能检测与优化)
+        * [ifstat](#ifstat)
 
 <!-- vim-markdown-toc -->
 
@@ -235,8 +234,7 @@ gunzip -r folder1  # 解压缩文件夹，同理，也只会解压缩其目录�
 # 8、*.rar 用 unrar e解压
 # 9、*.zip 用 unzip 解压
 
-# 万能的解压(基于zsh的插件)
-extract
+extract  # 万能的解压(基于zsh的插件)
 ```
 
 ### 2.x文件其他(>, >>, ln)
