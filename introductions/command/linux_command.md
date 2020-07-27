@@ -27,6 +27,7 @@
         * [5.4when-changed工具](#5.4when-changed工具)
         * [5.5ranger](#5.5ranger)
         * [5.6sed](#5.6sed)
+        * [5.7pandoc](#5.7pandoc)
         * [5.x其他](#5.x其他)
 * [性能检测与优化](#性能检测与优化)
         * [ifstat](#ifstat)
@@ -507,6 +508,15 @@ todo:
 - 流编辑，处理数据之前需要预先提供一组规则
 - sed 默认不会直接修改源文件数据，而是会将数据复制到缓冲区中，修改也仅限于缓冲区中的数据
 - [sed命令介绍](https://www.cnblogs.com/zhangzongjian/p/10708222.html)
+
+### 5.7pandoc
+
+- 文档格式转换
+
+```sh
+# markdown格式转换为html格式
+pandoc a.md -o a.html
+```
 
 ### 5.x其他
 
