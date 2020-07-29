@@ -1,17 +1,16 @@
 # shell基本知识
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [shell基本知识](#shell基本知识)
-  - [1.shell if中的符号](#1shell-if中的符号)
-    - [语句中](#语句中)
-    - [if-else语句中](#if-else语句中)
-    - [shell中调用另一个shell(exec, fork, source)](#shell中调用另一个shellexec-fork-source)
-    - [shell相关命令](#shell相关命令)
-    - [设置shell环境](#设置shell环境)
-    - [进程内存监控程序](#进程内存监控程序)
+* [1.shell if中的符号](#1.shell-if中的符号)
+        - [语句中](#语句中)
+        - [if-else语句中](#if-else语句中)
+        - [shell中调用另一个shell(exec, fork, source)](#shell中调用另一个shell(exec,-fork,-source))
+        - [shell相关命令](#shell相关命令)
+        - [设置shell环境](#设置shell环境)
+        - [进程内存监控程序](#进程内存监控程序)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 - [shell编程范例](https://tinylab.gitbooks.io/shellbook/)
 

@@ -1,23 +1,22 @@
 # 提高效率的小技巧
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [提高效率的小技巧](#提高效率的小技巧)
-  - [1.为命令设置别名(alias)](#1为命令设置别名alias)
-  - [2.dotfiles快速将恢复自身配置](#2dotfiles快速将恢复自身配置)
-  - [3.项目里重复的工作写成makefile](#3项目里重复的工作写成makefile)
-  - [4.快速为项目选择一个source license](#4快速为项目选择一个source-license)
-  - [5.量化工作](#5量化工作)
-  - [6.会话以及终端管理tmux](#6会话以及终端管理tmux)
-  - [7.windows虚拟桌面(workspace)](#7windows虚拟桌面workspace)
-  - [8.必读书籍](#8必读书籍)
-  - [9.开发者工具](#9开发者工具)
-  - [10.chrome高效使用](#10chrome高效使用)
-  - [11.ssh免密以及别名登录](#11ssh免密以及别名登录)
-  - [13.HTTP Api设计指南](#13http-api设计指南)
-  - [8.a修改windows开机启动自动执行脚本](#8a修改windows开机启动自动执行脚本)
+* [1.为命令设置别名(alias)](#1.为命令设置别名(alias))
+* [2.dotfiles快速将恢复自身配置](#2.dotfiles快速将恢复自身配置)
+* [3.项目里重复的工作写成makefile](#3.项目里重复的工作写成makefile)
+* [4.快速为项目选择一个source license](#4.快速为项目选择一个source-license)
+* [5.量化工作](#5.量化工作)
+* [6.会话以及终端管理tmux](#6.会话以及终端管理tmux)
+* [7.windows虚拟桌面(workspace)](#7.windows虚拟桌面(workspace))
+* [8.必读书籍](#8.必读书籍)
+* [9.开发者工具](#9.开发者工具)
+* [10.chrome高效使用](#10.chrome高效使用)
+* [11.ssh免密以及别名登录](#11.ssh免密以及别名登录)
+* [13.HTTP Api设计指南](#13.http-api设计指南)
+* [8.a修改windows开机启动自动执行脚本](#8.a修改windows开机启动自动执行脚本)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.为命令设置别名(alias)
 

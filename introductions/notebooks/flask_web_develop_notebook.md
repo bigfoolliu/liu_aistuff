@@ -1,14 +1,13 @@
 # flask web开发读书笔记
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [flask web开发读书笔记](#flask-web%e5%bc%80%e5%8f%91%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0)
-  - [1.flask简介](#1flask%e7%ae%80%e4%bb%8b)
-    - [1.1上下文](#11%e4%b8%8a%e4%b8%8b%e6%96%87)
-    - [1.2请求钩子](#12%e8%af%b7%e6%b1%82%e9%92%a9%e5%ad%90)
-    - [Flask MethodView](#flask-methodview)
+* [1.flask简介](#1.flask简介)
+        - [1.1上下文](#1.1上下文)
+        - [1.2请求钩子](#1.2请求钩子)
+        - [Flask MethodView](#flask-methodview)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.flask简介
 

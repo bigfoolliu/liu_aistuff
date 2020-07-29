@@ -2,18 +2,17 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [sklearn](#sklearn)
-  - [1. 10种机器学习算法](#1-10种机器学习算法)
-    - [1.1线性回归(Linear Regression)](#11线性回归linear-regression)
-    - [1.2逻辑回归(Logistic Regression)](#12逻辑回归logistic-regression)
-    - [1.3k-近邻(KNN)](#13k-近邻knn)
-    - [1.4支持向量机(SVM)](#14支持向量机svm)
-    - [1.5朴素贝叶斯分类器(naive_bayes)](#15朴素贝叶斯分类器naive_bayes)
-    - [1.6决策树分类器(Decision Tree)](#16决策树分类器decision-tree)
-    - [1.7k-means聚类（K-Means)](#17k-means聚类k-means)
-    - [1.8随机森林(Random Forest)](#18随机森林random-forest)
-    - [1.9Gradient Boosting 和 AdaBoost算法(GBDT)](#19gradient-boosting-和-adaboost算法gbdt)
-    - [1.10PCA特征降维(PCA)](#110pca特征降维pca)
+* [1. 10种机器学习算法](#1.-10种机器学习算法)
+        - [1.1线性回归(Linear Regression)](#1.1线性回归(linear-regression))
+        - [1.2逻辑回归(Logistic Regression)](#1.2逻辑回归(logistic-regression))
+        - [1.3k-近邻(KNN)](#1.3k-近邻(knn))
+        - [1.4支持向量机(SVM)](#1.4支持向量机(svm))
+        - [1.5朴素贝叶斯分类器(naive_bayes)](#1.5朴素贝叶斯分类器(naive_bayes))
+        - [1.6决策树分类器(Decision Tree)](#1.6决策树分类器(decision-tree))
+        - [1.7k-means聚类（K-Means)](#1.7k-means聚类（k-means))
+        - [1.8随机森林(Random Forest)](#1.8随机森林(random-forest))
+        - [1.9Gradient Boosting 和 AdaBoost算法(GBDT)](#1.9gradient-boosting-和-adaboost算法(gbdt))
+        - [1.10PCA特征降维(PCA)](#1.10pca特征降维(pca))
 
 <!-- vim-markdown-toc -->
 

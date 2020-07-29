@@ -2,13 +2,12 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [special_members](#special_members)
-  - [1.__dict__](#1dict)
-  - [2.__str__](#2str)
-  - [3.__doc__](#3doc)
-  - [4.__all__](#4all)
-  - [5.__name__](#5name)
-  - [6.__path__](#6path)
+* [1.__dict__](#1.__dict__)
+* [2.__str__](#2.__str__)
+* [3.__doc__](#3.__doc__)
+* [4.__all__](#4.__all__)
+* [5.__name__](#5.__name__)
+* [6.__path__](#6.__path__)
 
 <!-- vim-markdown-toc -->
 

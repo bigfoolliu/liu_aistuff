@@ -4,27 +4,27 @@
 
 * [1.参考](#1.参考)
 * [2.解法分类以及刷题顺序](#2.解法分类以及刷题顺序)
-        * [2.1Pattern: Sliding window，滑动窗口类型](#2.1pattern:-sliding-window，滑动窗口类型)
-        * [2.2Pattern: two points, 双指针类型](#2.2pattern:-two-points,-双指针类型)
-        * [2.3Pattern: Fast & Slow pointers, 快慢指针类型](#2.3pattern:-fast-&-slow-pointers,-快慢指针类型)
-        * [2.4Pattern: Merge Intervals，区间合并类型](#2.4pattern:-merge-intervals，区间合并类型)
-        * [2.5Pattern: Cyclic Sort，循环排序](#2.5pattern:-cyclic-sort，循环排序)
-        * [2.6Pattern: In-place Reversal of a LinkedList，链表翻转](#2.6pattern:-in-place-reversal-of-a-linkedlist，链表翻转)
-        * [2.7Pattern: Tree Breadth First Search，树上的BFS](#2.7pattern:-tree-breadth-first-search，树上的bfs)
-        * [2.8Pattern: Tree Depth First Search，树上的DFS](#2.8pattern:-tree-depth-first-search，树上的dfs)
-        * [2.9Pattern: Two Heaps，双堆类型](#2.9pattern:-two-heaps，双堆类型)
-        * [2.10Pattern: Subsets，子集类型，一般都是使用多重DFS](#2.10pattern:-subsets，子集类型，一般都是使用多重dfs)
-        * [2.11Pattern: Modified Binary Search，改造过的二分](#2.11pattern:-modified-binary-search，改造过的二分)
-        * [2.12Pattern: Top ‘K’ Elements，前K个系列](#2.12pattern:-top-‘k’-elements，前k个系列)
-        * [2.13Pattern: K-way merge，多路归并](#2.13pattern:-k-way-merge，多路归并)
-        * [2.14Pattern: 0/1 Knapsack (Dynamic Programming)，0/1背包类型](#2.14pattern:-0/1-knapsack-(dynamic-programming)，0/1背包类型)
-        * [2.15Pattern: Topological Sort (Graph)，拓扑排序类型](#2.15pattern:-topological-sort-(graph)，拓扑排序类型)
-        * [2.16DP：动态规划](#2.16dp：动态规划)
-                * [2.16.10/1 Knapsack, 0/1背包](#2.16.10/1-knapsack,-0/1背包)
-                * [2.16.2Unbounded Knapsack，无限背包](#2.16.2unbounded-knapsack，无限背包)
-                * [2.16.3Fibonacci Numbers，斐波那契数列](#2.16.3fibonacci-numbers，斐波那契数列)
-                * [2.16.4Palindromic Subsequence，回文子系列](#2.16.4palindromic-subsequence，回文子系列)
-                * [2.16.5Longest Common Substring，最长子字符串系列](#2.16.5longest-common-substring，最长子字符串系列)
+        - [2.1Pattern: Sliding window，滑动窗口类型](#2.1pattern:-sliding-window，滑动窗口类型)
+        - [2.2Pattern: two points, 双指针类型](#2.2pattern:-two-points,-双指针类型)
+        - [2.3Pattern: Fast & Slow pointers, 快慢指针类型](#2.3pattern:-fast-&-slow-pointers,-快慢指针类型)
+        - [2.4Pattern: Merge Intervals，区间合并类型](#2.4pattern:-merge-intervals，区间合并类型)
+        - [2.5Pattern: Cyclic Sort，循环排序](#2.5pattern:-cyclic-sort，循环排序)
+        - [2.6Pattern: In-place Reversal of a LinkedList，链表翻转](#2.6pattern:-in-place-reversal-of-a-linkedlist，链表翻转)
+        - [2.7Pattern: Tree Breadth First Search，树上的BFS](#2.7pattern:-tree-breadth-first-search，树上的bfs)
+        - [2.8Pattern: Tree Depth First Search，树上的DFS](#2.8pattern:-tree-depth-first-search，树上的dfs)
+        - [2.9Pattern: Two Heaps，双堆类型](#2.9pattern:-two-heaps，双堆类型)
+        - [2.10Pattern: Subsets，子集类型，一般都是使用多重DFS](#2.10pattern:-subsets，子集类型，一般都是使用多重dfs)
+        - [2.11Pattern: Modified Binary Search，改造过的二分](#2.11pattern:-modified-binary-search，改造过的二分)
+        - [2.12Pattern: Top ‘K’ Elements，前K个系列](#2.12pattern:-top-‘k’-elements，前k个系列)
+        - [2.13Pattern: K-way merge，多路归并](#2.13pattern:-k-way-merge，多路归并)
+        - [2.14Pattern: 0/1 Knapsack (Dynamic Programming)，0/1背包类型](#2.14pattern:-0/1-knapsack-(dynamic-programming)，0/1背包类型)
+        - [2.15Pattern: Topological Sort (Graph)，拓扑排序类型](#2.15pattern:-topological-sort-(graph)，拓扑排序类型)
+        - [2.16DP：动态规划](#2.16dp：动态规划)
+                + [2.16.10/1 Knapsack, 0/1背包](#2.16.10/1-knapsack,-0/1背包)
+                + [2.16.2Unbounded Knapsack，无限背包](#2.16.2unbounded-knapsack，无限背包)
+                + [2.16.3Fibonacci Numbers，斐波那契数列](#2.16.3fibonacci-numbers，斐波那契数列)
+                + [2.16.4Palindromic Subsequence，回文子系列](#2.16.4palindromic-subsequence，回文子系列)
+                + [2.16.5Longest Common Substring，最长子字符串系列](#2.16.5longest-common-substring，最长子字符串系列)
 
 <!-- vim-markdown-toc -->
 
@@ -122,4 +122,3 @@
 #### 2.16.4Palindromic Subsequence，回文子系列
 
 #### 2.16.5Longest Common Substring，最长子字符串系列
-

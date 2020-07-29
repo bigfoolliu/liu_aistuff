@@ -1,13 +1,12 @@
 # 分布式系统之Hadoop
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [分布式系统之Hadoop](#%e5%88%86%e5%b8%83%e5%bc%8f%e7%b3%bb%e7%bb%9f%e4%b9%8bhadoop)
-  - [1.概念](#1%e6%a6%82%e5%bf%b5)
-    - [1.1几种计算的区别](#11%e5%87%a0%e7%a7%8d%e8%ae%a1%e7%ae%97%e7%9a%84%e5%8c%ba%e5%88%ab)
-    - [1.2master-slave结构](#12master-slave%e7%bb%93%e6%9e%84)
+* [1.概念](#1.概念)
+        - [1.1几种计算的区别](#1.1几种计算的区别)
+        - [1.2master-slave结构](#1.2master-slave结构)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.概念
 

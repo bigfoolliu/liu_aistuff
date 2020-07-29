@@ -2,9 +2,8 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [vimium](#vimium)
-  - [1.介绍](#1介绍)
-  - [2.命令](#2命令)
+* [1.介绍](#1.介绍)
+* [2.命令](#2.命令)
 
 <!-- vim-markdown-toc -->
 

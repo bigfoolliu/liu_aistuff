@@ -2,14 +2,13 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [docker面试准备](#docker面试准备)
-  - [1.docker基础](#1docker基础)
-    - [1.1docker与虚拟机的区别(docker的特点)](#11docker与虚拟机的区别docker的特点)
-    - [1.2构建镜像应该遵循的原则](#12构建镜像应该遵循的原则)
-    - [1.3什么是docker镜像](#13什么是docker镜像)
-    - [1.4什么是docker容器](#14什么是docker容器)
-  - [2.Devops](#2devops)
-  - [3.CI持续集成](#3ci持续集成)
+* [1.docker基础](#1.docker基础)
+        - [1.1docker与虚拟机的区别(docker的特点)](#1.1docker与虚拟机的区别(docker的特点))
+        - [1.2构建镜像应该遵循的原则](#1.2构建镜像应该遵循的原则)
+        - [1.3什么是docker镜像](#1.3什么是docker镜像)
+        - [1.4什么是docker容器](#1.4什么是docker容器)
+* [2.Devops](#2.devops)
+* [3.CI持续集成](#3.ci持续集成)
 
 <!-- vim-markdown-toc -->
 

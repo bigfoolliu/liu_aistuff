@@ -1,22 +1,21 @@
 # docker practice读书笔记
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [docker practice读书笔记](#docker-practice读书笔记)
-  - [1.容器](#1容器)
-  - [2.镜像](#2镜像)
-  - [3.dockerfile](#3dockerfile)
-    - [dockerfile参考](#dockerfile参考)
-    - [dockerfile相关命令](#dockerfile相关命令)
-    - [dockerfile多阶段构建](#dockerfile多阶段构建)
-    - [dockerfile最佳实践](#dockerfile最佳实践)
-  - [4.搭建私人docker registry仓库](#4搭建私人docker-registry仓库)
-  - [5.docker网络](#5docker网络)
-  - [6.docker-compose](#6docker-compose)
-  - [7.kubernetes](#7kubernetes)
-    - [概念](#概念)
+* [1.容器](#1.容器)
+* [2.镜像](#2.镜像)
+* [3.dockerfile](#3.dockerfile)
+        - [dockerfile参考](#dockerfile参考)
+        - [dockerfile相关命令](#dockerfile相关命令)
+        - [dockerfile多阶段构建](#dockerfile多阶段构建)
+        - [dockerfile最佳实践](#dockerfile最佳实践)
+* [4.搭建私人docker registry仓库](#4.搭建私人docker-registry仓库)
+* [5.docker网络](#5.docker网络)
+* [6.docker-compose](#6.docker-compose)
+* [7.kubernetes](#7.kubernetes)
+        - [概念](#概念)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.容器
 

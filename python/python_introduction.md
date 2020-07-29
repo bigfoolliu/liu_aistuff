@@ -2,10 +2,9 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [python介绍](#python介绍)
-  - [a.教程](#a教程)
-  - [1.python魔法方法](#1python魔法方法)
-  - [2.python内置函数](#2python内置函数)
+* [a.教程](#a.教程)
+* [1.python魔法方法](#1.python魔法方法)
+* [2.python内置函数](#2.python内置函数)
 
 <!-- vim-markdown-toc -->
 

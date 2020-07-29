@@ -1,12 +1,11 @@
 # ceph介绍以及使用
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [ceph介绍以及使用](#ceph介绍以及使用)
-  - [1.ceph FileSystem文件系统介绍](#1ceph-filesystem文件系统介绍)
-    - [1.1使用fuse挂载cephfs](#11使用fuse挂载cephfs)
+* [1.ceph FileSystem文件系统介绍](#1.ceph-filesystem文件系统介绍)
+        - [1.1使用fuse挂载cephfs](#1.1使用fuse挂载cephfs)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.ceph FileSystem文件系统介绍
 

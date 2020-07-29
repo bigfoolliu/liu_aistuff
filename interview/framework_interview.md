@@ -2,17 +2,16 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [framework框架面试](#framework框架面试)
-  - [1.Flask](#1flask)
-    - [1.1Flask介绍](#11flask介绍)
-    - [1.2flask中的数据库连接方式](#12flask中的数据库连接方式)
-    - [1.3flask依赖的组件](#13flask依赖的组件)
-    - [1.4蓝图的作用](#14蓝图的作用)
-    - [1.5flask常用扩展包](#15flask常用扩展包)
-    - [1.6简述flask上下文管理](#16简述flask上下文管理)
-    - [1.7flask中g的作用](#17flask中g的作用)
-  - [2.Django](#2django)
-  - [3.Tornado](#3tornado)
+* [1.Flask](#1.flask)
+        - [1.1Flask介绍](#1.1flask介绍)
+        - [1.2flask中的数据库连接方式](#1.2flask中的数据库连接方式)
+        - [1.3flask依赖的组件](#1.3flask依赖的组件)
+        - [1.4蓝图的作用](#1.4蓝图的作用)
+        - [1.5flask常用扩展包](#1.5flask常用扩展包)
+        - [1.6简述flask上下文管理](#1.6简述flask上下文管理)
+        - [1.7flask中g的作用](#1.7flask中g的作用)
+* [2.Django](#2.django)
+* [3.Tornado](#3.tornado)
 
 <!-- vim-markdown-toc -->
 

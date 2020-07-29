@@ -1,12 +1,11 @@
 # ansible工具使用
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [ansible工具使用](#ansible%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8)
-  - [介绍](#%e4%bb%8b%e7%bb%8d)
-  - [使用](#%e4%bd%bf%e7%94%a8)
+* [介绍](#介绍)
+* [使用](#使用)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 介绍
 

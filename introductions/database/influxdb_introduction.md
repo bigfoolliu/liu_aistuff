@@ -1,11 +1,11 @@
 # influxdb时序数据库介绍
-<!-- TOC -->
 
-- [influxdb时序数据库介绍](#influxdb时序数据库介绍)
-  - [1.特点](#1特点)
-  - [2.基础命令](#2基础命令)
+<!-- vim-markdown-toc Marked -->
 
-<!-- /TOC -->
+* [1.特点](#1.特点)
+* [2.基础命令](#2.基础命令)
+
+<!-- vim-markdown-toc -->
 
 时序数据库，Time Series Database，最大的特点就是每个条数据都带有Time列。
 

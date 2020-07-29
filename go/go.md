@@ -2,9 +2,8 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [go文件夹](#go文件夹)
-  - [1.介绍](#1介绍)
-    - [1.1go与python对比](#11go与python对比)
+* [1.介绍](#1.介绍)
+        - [1.1go与python对比](#1.1go与python对比)
 
 <!-- vim-markdown-toc -->
 

@@ -1,15 +1,14 @@
 # CI持续集成(Continuous integration)
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [CI持续集成(Continuous integration)](#ci%e6%8c%81%e7%bb%ad%e9%9b%86%e6%88%90continuous-integration)
-  - [1.概念](#1%e6%a6%82%e5%bf%b5)
-  - [持续交付(Continuous delivery)](#%e6%8c%81%e7%bb%ad%e4%ba%a4%e4%bb%98continuous-delivery)
-  - [持续部署](#%e6%8c%81%e7%bb%ad%e9%83%a8%e7%bd%b2)
-  - [测试](#%e6%b5%8b%e8%af%95)
-  - [TDD测试驱动开发(Test Driven Development)](#tdd%e6%b5%8b%e8%af%95%e9%a9%b1%e5%8a%a8%e5%bc%80%e5%8f%91test-driven-development)
+* [1.概念](#1.概念)
+* [持续交付(Continuous delivery)](#持续交付(continuous-delivery))
+* [持续部署](#持续部署)
+* [测试](#测试)
+* [TDD测试驱动开发(Test Driven Development)](#tdd测试驱动开发(test-driven-development))
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.概念
 

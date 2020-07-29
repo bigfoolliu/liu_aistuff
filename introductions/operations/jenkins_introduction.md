@@ -1,10 +1,8 @@
 # jenkins使用介绍
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [jenkins使用介绍](#jenkins%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%bb%8d)
-
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 持续集成是一种软件开发实践, 每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽快地发现集成错误。
 
