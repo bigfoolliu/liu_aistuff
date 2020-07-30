@@ -70,10 +70,10 @@ ctrl + ;
 command + 上/下/左/右方向键
 
 # 快速展开和合并json代码段
-commans + .
+command + .
 
 # tab标签左右跳转
-cmmand + shift + ']`
+command + shift + ']`
 ```
 
 ## 2.webstorm

@@ -14,13 +14,13 @@
 
 <!-- /TOC -->
 
-- [参照教程](https://www.tornadoweb.org/en/stable/guide/structure.html)
-- [tornado源码解析](http://www.nowamagic.net/academy/detail/13321002)
-- [Introduction to tornado中文版](http://demo.pythoner.com/itt2zh/index.html)
-
 ## 1.tornado介绍
 
 ### 1.1基础
+
+- [参照教程](https://www.tornadoweb.org/en/stable/guide/structure.html)
+- [tornado源码解析](http://www.nowamagic.net/academy/detail/13321002)
+- [Introduction to tornado中文版](http://demo.pythoner.com/itt2zh/index.html)
 
 一个普通的tornado web服务器通常由四大组件组成:
 

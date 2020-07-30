@@ -14,13 +14,13 @@
 
 <!-- /TOC -->
 
+## 1.基本概念
+
 一个轻量级的"发布/订阅"机器对机器的互联网消息传递协议，专为受限设备和低带宽，高延迟或不可靠的网络设计。
 
 - [官网](http://mqtt.org/)
 - [介绍](https://randomnerdtutorials.com/what-is-mqtt-and-how-it-works/)
 - [paho-mqtt使用](https://pypi.org/project/paho-mqtt/)
-
-## 1.基本概念
 
 - Publish/Subscribe
 - Messages
