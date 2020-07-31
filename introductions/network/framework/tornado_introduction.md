@@ -1,18 +1,17 @@
 # tornado web框架介绍
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [tornado web框架介绍](#tornado-web框架介绍)
-  - [1.tornado介绍](#1tornado介绍)
-    - [1.1基础](#11基础)
-    - [1.2特点](#12特点)
-  - [2.常见函数和方法](#2常见函数和方法)
-  - [3.运行和部署的方式](#3运行和部署的方式)
-    - [3.1使用内置的HTTPServer](#31使用内置的httpserver)
-    - [3.2在负载均衡器（如nginx）后面运行](#32在负载均衡器如nginx后面运行)
-  - [4.tornado异步](#4tornado异步)
+* [1.tornado介绍](#1.tornado介绍)
+        - [1.1基础](#1.1基础)
+        - [1.2特点](#1.2特点)
+* [2.常见函数和方法](#2.常见函数和方法)
+* [3.运行和部署的方式](#3.运行和部署的方式)
+        - [3.1使用内置的HTTPServer](#3.1使用内置的httpserver)
+        - [3.2在负载均衡器（如nginx）后面运行](#3.2在负载均衡器（如nginx）后面运行)
+* [4.tornado异步](#4.tornado异步)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.tornado介绍
 

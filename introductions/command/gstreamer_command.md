@@ -1,20 +1,19 @@
 # GStreamer使用介绍
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [GStreamer使用介绍](#gstreamer%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%bb%8d)
-  - [1.概念](#1%e6%a6%82%e5%bf%b5)
-    - [1.1管道pipeline](#11%e7%ae%a1%e9%81%93pipeline)
-    - [1.2元素element](#12%e5%85%83%e7%b4%a0element)
-    - [1.3属性](#13%e5%b1%9e%e6%80%a7)
-    - [1.4插头pad](#14%e6%8f%92%e5%a4%b4pad)
-    - [1.5cap](#15cap)
-    - [1.6bin](#16bin)
-    - [1.7ghost pad](#17ghost-pad)
-  - [2.常用命令](#2%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
-  - [3.示例](#3%e7%a4%ba%e4%be%8b)
+* [1.概念](#1.概念)
+        - [1.1管道pipeline](#1.1管道pipeline)
+        - [1.2元素element](#1.2元素element)
+        - [1.3属性](#1.3属性)
+        - [1.4插头pad](#1.4插头pad)
+        - [1.5cap](#1.5cap)
+        - [1.6bin](#1.6bin)
+        - [1.7ghost pad](#1.7ghost-pad)
+* [2.常用命令](#2.常用命令)
+* [3.示例](#3.示例)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 ## 1.概念
 

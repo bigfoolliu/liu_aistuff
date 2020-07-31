@@ -1,12 +1,11 @@
 # vpn(virtual private networking)
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [vpn(virtual private networking)](#vpnvirtual-private-networking)
-  - [工作原理](#工作原理)
-  - [openvpn安装配置](#openvpn安装配置)
+* [工作原理](#工作原理)
+* [openvpn安装配置](#openvpn安装配置)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
 `虚拟专用网络`，在公用网络上建立专用网络，进行加密通讯。VPN网关通过对数据包的加密和数据包目标地址的转换实现远程访问。VPN可通过服务器、硬件、软件等多种方式实现。基于c-s架构。
 
