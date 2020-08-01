@@ -28,8 +28,11 @@ Note that the input array is passed in by reference, which means modification to
 
 去除有序数组中的重复数字并返回其去重后的长度，且时间复杂度为O(1)
 
-思路：长短指针
+双指针
 """
+
+
+import unittest
 
 
 def remove_duplicates_from_sorted_array(sorted_array):
@@ -39,16 +42,32 @@ def remove_duplicates_from_sorted_array(sorted_array):
     """
     if not sorted_array:
         return 0
-    pre = 0  # cur为快指针,pre为慢指针
-    for cur in range(1, len(sorted_array)):
+    if len(sorted_array) == 1:
+        return 1
+    slow = 0  # fast为快指针,slow为慢指针
+    for fast in range(1, len(sorted_array)):
         # 快指针始终前进
         # 如果快慢指针指向的数字不同，则慢指针前进一步，同时将当前的慢指针指向的数字赋值
-        if sorted_array[cur] != sorted_array[pre]:
-            pre += 1
-            sorted_array[pre] = sorted_array[cur]  # 同时将慢指针对应元素修改
-    return pre + 1
+        if sorted_array[fast] != sorted_array[slow]:
+            slow += 1
+            sorted_array[slow] = sorted_array[fast]  # 同时将慢指针对应元素修改
+    return slow + 1
+
+
+class TestRemoveDuplicates(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def test_1(self):
+        self.assertEqual(2, remove_duplicates_from_sorted_array([1, 1, 2]))
+
+    def test_2(self):
+        self.assertEqual(1, remove_duplicates_from_sorted_array([1, 1]))
+
+    def test_3(self):
+        self.assertEqual(4, remove_duplicates_from_sorted_array([0, 0, 1, 1, 2, 3]))
 
 
 if __name__ == '__main__':
-    nums = [0, 0, 1, 1, 1, 2, 2, 3, 3]
-    print(remove_duplicates_from_sorted_array(nums))
+    unittest.main()

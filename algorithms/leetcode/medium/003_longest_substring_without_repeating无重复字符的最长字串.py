@@ -23,9 +23,9 @@ Example 1:
     Explanation: The answer is "wke", with the length of 3. 
                  Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-找到没有重复的最长子序列
+无重复字符的最长子串
 
-思路：
+思路：双指针法
 """
 
 
