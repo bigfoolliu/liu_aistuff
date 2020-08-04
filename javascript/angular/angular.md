@@ -4,31 +4,33 @@
 
 * [1.安装](#1.安装)
 * [2.目录介绍](#2.目录介绍)
+        - [2.1package.json文件介绍](#2.1package.json文件介绍)
 * [3.命令介绍](#3.命令介绍)
+* [4.核心](#4.核心)
 
 <!-- vim-markdown-toc -->
 
 ## 1.安装
 
 ```sh
-# 安装cnpm
+# 1.安装cnpm
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-# 使用cnpm安装angular/cli
+# 2.使用cnpm安装angular/cli
 cnpm i -g @angular/cli
 
-# 检查安装版本
+# 3.检查安装版本
 ng version
 
-# 创建和初始化一个项目,默认会使用npm来安装依赖包，可以打断
-ng new project-name
+# 4.创建和初始化一个项目,默认会使用npm来安装依赖包，可以打断
+ng new [project-name]
 cnpm install  # 使用cnpm来安装package.json中的依赖包
 
-# 两条命令均可，启动该项目
+# 5.两条命令均可，启动该项目
 ng serve
 ng start
 
-# 程序启动之后，自动检测代码更新
+# 6.程序启动之后，自动检测代码更新
 ```
 
 ## 2.目录介绍
@@ -41,12 +43,32 @@ ng start
 - package.json，包说明文件，依赖信息
 - karma.conf.js，单元测试
 
+### 2.1package.json文件介绍
+
+- `scripts`: 设置别名
+
 ## 3.命令介绍
 
-- ng serve，运行开发模式
-- ng build --prod，运行项目打包构建用于生产上线
-- ng test，运行karma单元测试
-- ng lint，运行TypeScript代码校验
-- ng e2e，运行protrator端到端测试
+```sh
+# 运行开发模式
+ng serve
 
+# 运行项目打包构建用于生产上线
+ng build --prod
 
+# 运行karma单元测试
+ng test
+
+# 运行TypeScript代码校验
+ng lint
+
+# 运行protrator端到端测试
+ng e2e
+
+# 生成一个组件
+ng generate component [component_nam]
+```
+
+## 4.核心
+
+- 组件(component)

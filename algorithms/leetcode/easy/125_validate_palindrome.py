@@ -65,6 +65,6 @@ def validate_palindrome2(s):
 
 
 if __name__ == "__main__":
-    s = "1A man, a plan, a canal: Panama1"
+    s = "A man, a plan, a canal: Panama"
     print(validate_palindrome(s))
     print(validate_palindrome2(s))
