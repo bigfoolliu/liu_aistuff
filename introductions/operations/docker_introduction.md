@@ -11,7 +11,7 @@
         - [2.1常用命令](#2.1常用命令)
         - [2.2命令使用示例](#2.2命令使用示例)
                 + [2.2.1docker运行nginx](#2.2.1docker运行nginx)
-                + [2.2.2docker运行ngix-rtmp](#2.2.2docker运行ngix-rtmp)
+                + [2.2.2docker运行nginx-rtmp](#2.2.2docker运行nginx-rtmp)
         - [2.3容器停止](#2.3容器停止)
 * [3.docker构建自己的镜像](#3.docker构建自己的镜像)
         - [3.1使用makefile](#3.1使用makefile)
@@ -71,12 +71,12 @@ hostport:containerport #未指定ip、指定宿主机port、指定容器port
 
 ### 1.2dockerfile使用
 
-[在windows的subsystem(ubuntu上)安装docker client](https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4)
-[Dockerfile详解](http://seanlook.com/2014/11/17/dockerfile-introduction/)
+- [在windows的subsystem(ubuntu上)安装docker client](https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4)
+- [Dockerfile详解](http://seanlook.com/2014/11/17/dockerfile-introduction/)
 
 ### 1.3docker内部时区问题
 
-[docker修改默认时区](https://blog.csdn.net/qq_34924407/article/details/82057080)
+- [docker修改默认时区](https://blog.csdn.net/qq_34924407/article/details/82057080)
 
 ### 1.4docker三剑客
 
@@ -91,7 +91,7 @@ hostport:containerport #未指定ip、指定宿主机port、指定容器port
 ```sh
 service docker restart  # 重启docker服务
 
-docker --version  # 查看docer版本及其他信息
+docker --version  # 查看docker版本及其他信息
 docker-compose --version  # 查看docker-compose的版本
 docker-machine --version  # 查看docker-machine的版本
 
@@ -190,8 +190,8 @@ docker rm $(docker ps -aq)
 docker rmi $(docker images -q)
 
 # 复制文件
-docker cp mycontainer:/opt/file.txt /opt/local/
-docker cp /opt/local/file.txt mycontainer:/opt/
+docker cp container:/opt/file.txt /opt/local/
+docker cp /opt/local/file.txt container:/opt/
 
 # 删除所有不使用的镜像
 docker image prune --force --all或者docker image prune -f -a
@@ -206,7 +206,7 @@ docker system prune
 docker system df
 docker system df -v
 
-# 更新: @snakeliwei 的提醒， 现在的docker有了专门清理资源(container、image、网络)的命令。 docker 1.13 中增加了 docker system prune的命令，针对container、image可以使用docker container prune、docker image prune命令。
+# 现在的docker有了专门清理资源(container、image、网络)的命令。 docker 1.13 中增加了 docker system prune的命令，针对container、image可以使用docker container prune、docker image prune命令。
 
 # 查看docker容器的日志
 docker logs <container_id>
@@ -249,7 +249,7 @@ docker run \
 # （4）重点强调一下，nginx.conf是挂载了一个文件（docker是不推荐这样用的），conf.d挂载的是一个目录
 ```
 
-#### 2.2.2docker运行ngix-rtmp
+#### 2.2.2docker运行nginx-rtmp
 
 ```sh
 # 前面的/data/edgebox/remote/nginx/rtmp为master机器上的位置，/data/rtmp为docker里面的位置，开启nginx需要指定端口
@@ -263,7 +263,7 @@ docker run --name edgebox-rtmp-server -v /data/edgebox/remote/nginx/rtmp:/data/r
 
 ### 2.3容器停止
 
-[如何优雅的终止docker，docker stop和docker kill的区别](https://xiaozhou.net/stop-docker-container-gracefully-2016-09-08.html)
+- [如何优雅的终止docker，docker stop和docker kill的区别](https://xiaozhou.net/stop-docker-container-gracefully-2016-09-08.html)
 在docker stop命令执行的时候，会先向容器中`PID为1的进程`发送系统信号SIGTERM，然后等待容器中的应用程序终止执行，如果等待时间达到设定的超时时间，或者默认的10秒，会继续发送SIGKILL的系统信号强行kill掉进程。
 
 ## 3.docker构建自己的镜像
@@ -284,7 +284,7 @@ docker run --name edgebox-rtmp-server -v /data/edgebox/remote/nginx/rtmp:/data/r
 
 ```sh
 docker build -f /path/Dockerfile  # 指定`Dockerfile`的文件位置并执行，构建一个image
-docker build -t /path/myapp  # 指定image构建完成之后保存image的位置
+docker build -t /path/my_app  # 指定image构建完成之后保存image的位置
 ```
 
 ### 3.2在运行中的容器构建
@@ -353,12 +353,12 @@ docker network ls
 # 创建一个network
 docker network create my-custom-net
 
-# 当创建和启动其他容器的时候指定network，myapp1容器就可以访问mysql
+# 当创建和启动其他容器的时候指定network，my_app1容器就可以访问mysql
 docker run --name=mysql1 --network=my-custom-net -d mysql/mysql-server
-docker run --name=myapp1 --network=my-custom-net -d myapp
+docker run --name=my_app1 --network=my-custom-net -d my_app
 
-# 在myapp1容器的内部运行mysql1容器
-docker exec -it myapp1 mysql1 --host=myapp1 --user=myuser --password
+# 在my_app1容器的内部运行mysql1容器
+docker exec -it my_app1 mysql1 --host=my_app1 --user=my_user --password
 ```
 
 #### 3.3.5mysql数据库容器数据持久化
@@ -370,7 +370,7 @@ docker exec -it myapp1 mysql1 --host=myapp1 --user=myuser --password
 
 ## 4.docker容器间通信
 
-[容器间通信](https://juejin.im/post/5ce26cb9f265da1bcd37aa7c)
+- [容器间通信](https://juejin.im/post/5ce26cb9f265da1bcd37aa7c)
 
 ### 4.1容器间通信方式
 
@@ -420,12 +420,12 @@ docker network disconnect <network-name> <container-name>
 
 ## 5.docker Compose介绍
 
-[官方文档](https://docs.docker.com/compose/)
-对多个容器进行管理，是一个用于定义和运行多容器docker的应用程序工具。
+- [官方文档](https://docs.docker.com/compose/)
+- 对多个容器进行管理，是一个用于定义和运行多容器docker的应用程序工具。
 
 ### 5.1常用命令
 
-[docker-compose命令详解](https://blog.csdn.net/wanghailong041/article/details/52162293)
+- [docker-compose命令详解](https://blog.csdn.net/wanghailong041/article/details/52162293)
 
 ```sh
 # 拉取所有的镜像文件，但是不启动
