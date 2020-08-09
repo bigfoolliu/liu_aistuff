@@ -7,7 +7,6 @@
 python建造者模式实现
 """
 
-
 from abc import ABCMeta, abstractmethod
 
 
@@ -70,7 +69,7 @@ class Director(object):
         self.person.draw_body()
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     thin = Thin()
     fat = Fat()
     director_thin = Director(thin)

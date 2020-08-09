@@ -10,7 +10,7 @@
 
 class Person(object):
 
-    def __init__(self,height,weight):
+    def __init__(self, height, weight):
         self.height = height
         self.weight = weight
 
@@ -23,19 +23,27 @@ class Person(object):
 
 class Male(Person):
 
-    def __init__(self, name):
-        print("Hello Mr." + name)
+    def __init__(self, name, height=None, weight=None, **kwargs):
+        super(Person).__init__(height, weight)
+        self.name = name
+        self.__dict__.update(kwargs)
 
 
 class Female(Person):
 
-    def __init__(self, name):
-        print("Hello Miss." + name)
+    def __init__(self, name, height=None, weight=None, **kwargs):
+        super(Person).__init__(height, weight)
+        self.name = name
+        self.__dict__.update(kwargs)
 
 
 class Factory(object):
-    
-    def getPerson(self, name, gender):
+
+    """实现工厂模式的类"""
+
+    @staticmethod
+    def get_person(name, gender):
+        """只要根据gender参数就可以实现不同的对象构建"""
         if gender == 'M':
             return Male(name)
         if gender == 'F':
@@ -44,4 +52,4 @@ class Factory(object):
 
 if __name__ == '__main__':
     factory = Factory()
-    person = factory.getPerson("ll", "F")
+    person = factory.get_person("ll", "F")
