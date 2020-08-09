@@ -12,6 +12,7 @@ import collections
 
 
 def get_rate(compressed_binary, uncompressed_bits):
+    """获取压缩率"""
     return len(compressed_binary) * 100 / uncompressed_bits
 
 
@@ -124,6 +125,7 @@ if __name__ == '__main__':
     # ASCII
     bits = len(s) * 8
     print('Total bits: %d' % bits)
+    print('===================')
 
     # simple compression
     sc = SimpleCompression(s)
