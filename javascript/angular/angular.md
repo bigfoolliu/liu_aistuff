@@ -31,21 +31,24 @@ ng serve
 ng start
 
 # 6.程序启动之后，自动检测代码更新
+
+# 帮助angular-cli监听文件系统的变化
+brew install watchman
 ```
 
 ## 2.目录介绍
 
-- main.ts，程序入口文件,加载app/中的组件
-- app/，组件
-- node_moudles/，安装的第三方包
-- .editorconfig，编辑器配置
-- angular.json，脚手架工具相关配置
-- package.json，包说明文件，依赖信息
-- karma.conf.js，单元测试
+1. `main.ts`，程序入口文件,加载app/中的组件
+2. `app/`，组件
+3. `node_moudles/`，安装的第三方包
+4. `.editorconfig`，编辑器配置
+5. `angular.json`，脚手架工具相关配置
+6. `package.json`，包说明文件，依赖信息
+7. `karma.conf.js`，单元测试
 
 ### 2.1package.json文件介绍
 
-- `scripts`: 设置别名
+1. `scripts`: 设置别名
 
 ## 3.命令介绍
 
@@ -71,4 +74,4 @@ ng generate component [component_nam]
 
 ## 4.核心
 
-- 组件(component)
+组件(component)
