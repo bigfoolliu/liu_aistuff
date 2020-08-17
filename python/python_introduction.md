@@ -11,6 +11,7 @@
 ## a.教程
 
 - [python教程，知识回顾](http://c.biancheng.net/python/)
+- [python内存管理机制](https://zhuanlan.zhihu.com/p/164627977)
 
 ## 1.python魔法方法
 

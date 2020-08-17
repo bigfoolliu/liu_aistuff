@@ -68,6 +68,8 @@ l = []
 # 创建事件
 event = threading.Event()
 
+# 
+local_obj = threading.local()
 
 def task(num):
     """

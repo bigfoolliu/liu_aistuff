@@ -73,7 +73,10 @@ command + 上/下/左/右方向键
 command + .
 
 # tab标签左右跳转
-command + shift + ']`
+command + shift + ]
+
+# 代码块迭代展开
+command + alt + +
 ```
 
 ## 2.webstorm
