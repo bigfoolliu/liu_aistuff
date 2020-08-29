@@ -71,6 +71,7 @@ event = threading.Event()
 # 
 local_obj = threading.local()
 
+
 def task(num):
     """
     耗时任务

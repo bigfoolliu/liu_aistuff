@@ -17,7 +17,6 @@ unknown
 import numpy as np
 from sklearn.utils.multiclass import type_of_target
 
-
 print(__doc__)
 
 continuous = type_of_target([0.1, 0.6])

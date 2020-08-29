@@ -54,13 +54,15 @@ class SimpleFtp(object):
         """检查本地与远程文件大小是否相同，即传输是否完整"""
         try:
             remote_file_size = self.ftp.size(remote_file)
-        except Exception:
+        except Exception as e:
             remote_file_size = -1
+            print(e)
 
         try:
             local_file_size = self.ftp.size(local_file)
-        except Exception:
+        except Exception as e:
             local_file_size = -1
+            print(e)
 
         self.debug_print("remote file size: {} local file size: {}".format(remote_file_size, local_file_size))
         if local_file_size == remote_file_size:
@@ -170,9 +172,9 @@ class SimpleFtp(object):
         """获取文件名"""
         pos = line.rfind(":")
         # 去除空格
-        while (line[pos] != " "):
+        while line[pos] != " ":
             pos += 1
-        while (line[pos] == " "):
+        while line[pos] == " ":
             pos += 1
         file_arr = [line[0], line[pos:]]
         return file_arr
@@ -191,9 +193,9 @@ class SimpleFtp(object):
 
     def deal_error(self, e):
         """处理错误, 当发生严重错误时，程序终止"""
-        log_str = "error: {}".format()
+        log_str = "error: {}".format(e)
         self.write_log(log_str)
-        sys.exist()
+        sys.exit(1)
 
     def close(self):
         """退出ftp,关闭log"""

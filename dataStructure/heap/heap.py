@@ -43,7 +43,7 @@ class MaxHeap(object):
             self._swim(array, father)
 
     def _max_heapify(self, array):
-        for i in xrange(len(array) / 2, -1, -1):
+        for i in range(int(len(array) / 2), -1, -1):
             self._sink(array, i)
         return array
 
