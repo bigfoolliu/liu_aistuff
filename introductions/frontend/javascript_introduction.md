@@ -96,7 +96,7 @@ let a = prompt('input: ');
 - [W3school js教程](https://www.w3school.com.cn/js/js_arithmetic.asp)
 - [var和let的区别](https://blog.csdn.net/xingjia001/article/details/84560872)
 
-## 2.类型,值和变量
+## 2.类型，变量和运算
 
 注意点：
 
@@ -121,8 +121,9 @@ typeof a;
 ### 2.1数值型(Number)
 
 - 只有一种数值类型, 无论整数还是浮点数
-- 由于内存限制不能保存所有数值，最大值`Number.MAX_VALUE`和最小值为`Number.MIN_VALUE`
+- 由于内存限制不能保存所有数值，最大值`Number.MAX_VALUE (约1.79e308)`和最小值为`Number.MIN_VALUE(约5-e324)`
 - 超过最大值或者最小值，返回无穷(`Infinity`和`-Infinity`)
+- `NaN`，特殊数字，表示非数值，与任何值都不相等，包括 NaN 本身。
 
 ```javascript
 let a = 12;
@@ -147,6 +148,11 @@ console.log(`str1: ${str1}, str2: ${str2}`);  // ES6新写法
 // 模板字符串中带有表达式
 console.log("str1 + str2: " + (str1 + str2));  // 传统写法
 console.log(`str1 + str2: ${str1 + str2}`);  // ES6新写法
+
+// 常用方法
+// 检索一个字符串中是否含有指定内容。如果字符串中含有该内容，则会返回其第一次出现的索引；如果没有找到指定的内容，则返回 -1。
+索引值 = str.indexOf(想要查询的字符串);
+索引值 = str.indexOf(想要查询的字符串, [起始位置]);  // 第二个参数指定查找的起始位置
 ```
 
 ### 2.3数组
@@ -166,8 +172,111 @@ let b = false;
 
 ### 2.4对象
 
+***对象类别:**
+
+- `内置对象`，ES标准的，Object、Math、Date、String、Array、Number、Boolean、Function等
+- `宿主对象`，JS的运行环境提供的对象，目前来讲主要指由浏览器提供的对象；BOM DOM，比如console、document
+- `自定义对象`，new 关键字创建出来的对象实例，都是属于对象类型，比如Object、Array、Date等
+
 ```javascript
-let person = {"name": "tony", "age": 12};
+// 方式1
+let person = {};
+person.name = "tom";
+person.age = 12;
+
+// 方式2
+let p = new Object();
+p.gender = "男";
+```
+
+### 2.5null和undefined
+
+- `null`用来定义一个空的对象，用于定义一个变量用来保存引用类型，但是还没想好放什么内容的场景，参与数值元算当作0
+- `undefined`: 声明但是没有赋值的变量；typeof(未定义的变量)；函数定义返回值时的返回值；调用参数时没有传参的参数，参与数值运算当作NaN
+
+### 2.6变量类型转换
+
+```javascript
+// 1.其他数据类型-->字符串
+let a = 1;
+a.toString();  // toString()不会改变原来变量的值
+console.log(a + "");  // 隐式的类型转换
+String(a);  // 强制的类型转换，也不会影响到原来的变量
+
+// 2.其他数据类型-->Number
+// 字符串-->Number,纯数字直接转；空格或空为0；含非数字内容的转为NaN;
+// 布尔-->Number, true为1，false为0;
+// null为0，undefined为NaN
+Number(true);
+Number("12.1");
+
+let b = "12.ab";
+parseInt(b);  // 数字开头自动取前，否则报错
+parseInt(b, 16);  // 以16进制转换
+
+// 3.转换为Boolean
+// 数字 --> 布尔。除了 0 和 NaN，其余的都是 true。也就是说，Boolean(NaN)的结果是 false。
+// 字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，转换结果也是 true。字符串'0'的转换结果也是 true。
+// null 和 undefined 都会转换为 false。
+// `引用数据类型会转换为 true。注意，空数组[]和空对象{}，转换结果也是 true
+
+// 使用运算符号的时候也会隐式的调用类型转换
+```
+
+### 2.7运算
+
+- 算数运算符：`+ - * / %(取余) ++(自增) --(自减)`
+- 逻辑运算符：`&&(与) ||(或) !(非)`
+- 逻辑运算符：`> < >= <= == ===(全等于) !=(不等于) !==(不全等于)`
+
+**短路运算:**
+
+```javascript
+// 短路运算&&
+// 如果第一个值为false，则不会执行后面的内容。
+// 如果第一个值为 true，则继续执行第二条语句，并返回第二个值。
+let a = 1;
+a && alert("hello");  // 会执行alert
+
+// 短路运算||
+// 如果第一个值为true，则不会执行后面的内容。
+// 如果第一个值为 false，则继续执行第二条语句，并返回第二个值。
+a || alert("hello");  // 不会执行alert
+
+
+// 非数值的比较会将其转换为数值比较
+1 > "0";  // true
+
+// 如果两侧都是字符串比较则比较字符串的Unicode编码
+"22" > "100"; // true
+
+// == 会做隐式转换，不严谨，而 === 则会严格比较
+1 == "1";  // true
+1 === "1"; // false
+"1" == true;  // true
+
+// 三元运算符
+// 条件表达式 ? 语句1 : 语句2;
+```
+
+### 2.8条件和循环
+
+```javascript
+// 条件语句推荐写法
+function handleCode(code) {
+        if (code == 200) {
+                return "success";
+        }
+        if (code == 400) {
+                return "bad request"
+        }
+}
+
+
+// 循环写法
+for (let i = 0; i < 12; i++) {
+        console.log(i);
+}
 ```
 
 ## 3.js函数
