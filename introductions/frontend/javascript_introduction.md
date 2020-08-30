@@ -37,13 +37,22 @@
 
 ## 1.javascript基础
 
-### 1.1词法结构
+### 1.1介绍
 
 - 使用Unicode字符集编写
 - 区分大小写
 - 忽略大小写，空格
 - 语句结尾分号可选
 - 没有整数型，只有浮点型
+- 单线程
+
+**JavaScript分为三个部分:**
+
+- **ECMAScript**：JavaScript 的**语法标准**。包括变量、表达式、运算符、函数、if语句、for语句等。
+- **DOM**：Document Object Model（文档对象模型），操作**页面上的元素**的API。比如让盒子移动、变色、改变大小、轮播图等等。
+- **BOM**：Browser Object Model（浏览器对象模型），操作**浏览器部分功能**的API。通过BOM可以操作浏览器窗口，比如弹框、控制浏览器跳转、获取浏览器分辨率等等。
+
+通俗理解就是：ECMAScript 是 JS 的语法；DOM 和 BOM 浏览器运行环境为 JS提供的API。
 
 ### 1.2注释
 
@@ -69,11 +78,23 @@ js多行注释
 - try...catch
 - let
 
+### 1.4输入输出的三种方式
+
+```javascript
+// 1.弹出警告框
+alert('warning');
+
+// 2.控制台输出
+console.log('hello');
+
+// 3.弹出输入框
+let a = prompt('input: ');
+```
+
 ### 1.x其他
 
 - [W3school js教程](https://www.w3school.com.cn/js/js_arithmetic.asp)
 - [var和let的区别](https://blog.csdn.net/xingjia001/article/details/84560872)
-
 
 ## 2.类型,值和变量
 
@@ -86,16 +107,22 @@ js多行注释
 - `null`的数据类型是对象，也可以通过设置值为 undefined 清空对象
 - Undefined 与 null 的值相等，但类型不相等
 
+一共6种数据类型：
+
+- *基本数据类型（值类型）*：String 字符串、Number 数值、Boolean 布尔值、Null 空值、Undefined 未定义, `参数赋值的时候，传数值`。
+- *引用数据类型（引用类型）*：Object 对象, 内置对象 Function、Array、Date、RegExp、Error等都是属于 Object 类型, `参数赋值的时候，传地址（修改的同一片内存空间）`。
+
 ```javascript
 // 使用typeof确定变量的类型
 a = 1;
 typeof a;
 ```
 
-### 2.1数值
+### 2.1数值型(Number)
 
-- 只有一种数值类型
-- 写数值时用不用小数点均可
+- 只有一种数值类型, 无论整数还是浮点数
+- 由于内存限制不能保存所有数值，最大值`Number.MAX_VALUE`和最小值为`Number.MIN_VALUE`
+- 超过最大值或者最小值，返回无穷(`Infinity`和`-Infinity`)
 
 ```javascript
 let a = 12;
@@ -104,7 +131,23 @@ let c = 11e4;  // 110000
 let d = 21e-3;  // 0.021
 ```
 
-### 2.2字符串值
+### 2.2字符串型(String)
+
+```javascript
+// 字符串拼接语法，拼接前，会把与字符串相加的这个数据类型转成字符串，然后再拼接成一个新的字符串
+字符串 + 任意数据类型 = 拼接之后的新字符串;
+
+let str1 = "hello" + 1;
+let str1 = "hello" + true;
+
+// 模板字符串的输出
+console.log("str1:" + str1 + ", str2:" + str2);  // 传统写法
+console.log(`str1: ${str1}, str2: ${str2}`);  // ES6新写法
+
+// 模板字符串中带有表达式
+console.log("str1 + str2: " + (str1 + str2));  // 传统写法
+console.log(`str1 + str2: ${str1 + str2}`);  // ES6新写法
+```
 
 ### 2.3数组
 
@@ -422,4 +465,3 @@ let ele3 = $(".intro");
 // css选择器,选择所有类为intro，标签为p的元素
 let ele4 = $("p.intro");
 ```
-
