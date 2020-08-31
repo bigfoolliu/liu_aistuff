@@ -73,5 +73,5 @@ def yield_demo2():
 
 
 if __name__ == "__main__":
-    # yield_demo1()
-    yield_demo2()
+    yield_demo1()
+    # yield_demo2()
