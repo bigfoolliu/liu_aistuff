@@ -77,6 +77,26 @@ command + shift + ]
 
 # 代码块迭代展开
 command + alt + +
+
+# 增加书签
+F3
+
+# 展示所有书签
+command + F3
+
+# 列出哪些地方调用了当前光标的类或者方法
+command + option + F7
+
+# 重构变量
+shift + F6
+
+# 精准定位到类
+command + o
+
+# 精准定位到文件
+command + shift + o
+
+# 精准定位到成员，方法，函数，变量等
 ```
 
 ## 2.webstorm
