@@ -130,6 +130,30 @@ let a = 12;
 let b = 12.001;
 let c = 11e4;  // 110000
 let d = 21e-3;  // 0.021
+
+// 判断是否为整数
+布尔值 = Number.isInteger(数字);
+a.isInteger();
+
+// 小数点后面保留指定位数,返回值是一个字符串,不会改变原值，会四舍五入取结果
+字符串 = b.toFixed(num);
+
+// 内置对象Math的常用用法
+// Math.PI 圆周率
+// Math.abs() 返回绝对值
+// Math.random() 生成0-1之间的随机浮点数,取值范围是 [0，1)
+// Math.floor() 向下取整（往小取值）
+// Math.ceil() 向上取整（往大取值）
+// Math.round() 四舍五入取整（正数四舍五入，负数五舍六入）
+// Math.max(x, y, z) 返回多个数中的最大值
+// Math.min(x, y, z) 返回多个数中的最小值
+// Math.pow(x,y) 乘方：返回 x 的 y 次幂
+// Math.sqrt() 开方：对一个数进行开方运算
+
+// 生成 [0, x) 之间的随机数
+Math.round(Math.random()*x)
+// 生成 [x, y) 之间的随机数
+Math.round(Math.random()*(y-x)+x)
 ```
 
 ### 2.2字符串型(String)
@@ -198,6 +222,10 @@ str1.sub();  // <sub>hello</sub>
 str1.sup();  // <sup>hello</sup>
 str1.link('http://www.baidu.com');  // <a href="http://www.baidu.com">hello</a>
 str1.bold();  // <b>hello</b>
+
+// url编解码
+encodeURIComponent(str1);  // 把字符串作为 URI 组件进行编码
+decodeURIComponent(str1);  // 把字符串作为 URI 组件进行解码
 ```
 
 ### 2.3数组
