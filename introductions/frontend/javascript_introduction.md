@@ -350,6 +350,10 @@ function handleCode(code) {
 for (let i = 0; i < 12; i++) {
         console.log(i);
 }
+// 循环推荐写法
+items.map(function(item){
+        console.log(item);
+})
 ```
 
 ## 3.js函数
