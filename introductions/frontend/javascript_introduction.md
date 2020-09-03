@@ -171,9 +171,33 @@ str1.endsWith("lo");
 str1.charAt(2);
 str1[2];
 
-// 字符串截取,slice(开始索引，结束索引)
+// 字符串截取,slice(开始索引，结束索引)，包含左边的，不包含右边的
 str1.slice(1, 4);
 
+// 通过分隔符将字符串转换为数组
+str1.split(".");
+
+// 字符串的替换,默认只会替换第一个被匹配到的字符
+新的字符串 = str.replace(被替换的字符，新的字符);
+str2 = str1.replace("ll", "ee");
+
+// 重复字符串
+"*".repeat(4); // ****
+
+// 去除字符串前后的空白
+str1.trim();
+
+// 大小写转换
+str1.toLowerCase();
+str1.toUpperCase();
+
+// 相关的html方法
+str1.anchor();  // <a name="undefined">hello</a>
+str1.big();  // <big>hello</big>
+str1.sub();  // <sub>hello</sub>
+str1.sup();  // <sup>hello</sup>
+str1.link('http://www.baidu.com');  // <a href="http://www.baidu.com">hello</a>
+str1.bold();  // <b>hello</b>
 ```
 
 ### 2.3数组

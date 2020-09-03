@@ -97,6 +97,7 @@ command + o
 command + shift + o
 
 # 精准定位到成员，方法，函数，变量等
+
 ```
 
 ## 2.webstorm
