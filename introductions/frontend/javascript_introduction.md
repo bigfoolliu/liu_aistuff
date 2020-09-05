@@ -447,16 +447,16 @@ while (a < 10) {
 ### 3.1函数定义
 
 ```javascript
-// 基础
+// 方法一：利用关键字，即命名函数
 function x() {
     console.log("hello");
 }
 
-// 匿名函数
+// 方法二：匿名函数
 let y = function(a, b) { return a + b};
 let z = y(4, 3);
 
-// 函数构造器,少用
+// 方法三：使用构造函数
 let myFunc = new Function("a", "b", "return a + b");
 let a = myFunc(3, 4);
 
@@ -467,6 +467,8 @@ let a = myFunc(3, 4);
 ```
 
 ### 3.2函数参数
+
+- 调用函数的时候，每次浏览器会自动传递两个参数`函数的上下文对象this`和`封装实参的对象arguments，一个类数组对象，它可以通过索引来操作数据，也可以获取长度`
 
 ```javascript
 // 参数默认,没有传参数的时候会默认传递undefined,最好指定默认值
@@ -488,7 +490,32 @@ function y(a, b, c) {
 
 ### 3.3函数调用
 
-### 3.4函数call
+```javascript
+// 方法一：普通调用
+func1();
+func1.all();
+
+// 方法二：通过对象的方法调用
+let obj = {
+    func1: function(){console.log(1)}
+}
+obj.func1();
+
+// 方法三：立即执行函数
+(function(){
+    console.log(1);
+})();
+
+// 方法四：通过构造函数调用
+function func1(){};
+new func1();
+
+// 方法五：绑定时间函数
+btn.onclick = function(){};
+
+// 方法六：定时器函数
+setInterval(func1(){}, 1000);
+```
 
 ## 4.js事件
 
