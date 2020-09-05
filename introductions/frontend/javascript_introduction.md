@@ -311,6 +311,10 @@ nums.filter((item) => {
     if(item > 2){return true};  // 过滤出所有的大于2的元素，组成新元素
     return false;
 });
+
+// 其他函数
+// reduce();
+// splice();
 ```
 
 ### 2.4布尔型
