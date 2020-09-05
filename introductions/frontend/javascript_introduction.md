@@ -154,6 +154,8 @@ a.isInteger();
 Math.round(Math.random()*x)
 // 生成 [x, y) 之间的随机数
 Math.round(Math.random()*(y-x)+x)
+
+// 数值的隐式转换，当有符号 + - * / 的时候,注意要提前转换好类型
 ```
 
 ### 2.2字符串型(String)
@@ -354,6 +356,11 @@ for (let i = 0; i < 12; i++) {
 items.map(function(item){
         console.log(item);
 })
+// while循环
+let a = 1；
+while (a < 10) {
+        a ++;
+}
 ```
 
 ## 3.js函数

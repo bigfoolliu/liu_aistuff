@@ -368,6 +368,9 @@ git push origin --delete v1.0  # 更直观的删除远程标签
 ### 1.11查看内容(show)
 
 ```sh
+# 查看最近的commit
+git show
+
 # 查看tag的详细信息
 git show v1.0
 
