@@ -20,3 +20,10 @@ const date3 = new Date(1591950413388);
 // getMinutes()	获取分钟：0-59	
 // getSeconds()	获取秒：0-59	
 // getMilliseconds()	获取毫秒	
+
+// 获取时间对象的时间戳的几种方式
+const timeStamp = +new Date();
+const timeStamp1 = new Date().getTime();
+const timeStamp2 = new Date().valueOf();
+
+console.log(Date.now());  // 当前时间的时间戳

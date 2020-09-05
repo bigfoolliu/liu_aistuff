@@ -233,9 +233,84 @@ decodeURIComponent(str1);  // 把字符串作为 URI 组件进行解码
 ### 2.3数组
 
 - 数组索引基于零
+- 数组的类型实际上也是对象
+- `伪数组`: 包含 length 属性的对象或可迭代的对象
 
 ```javascript
+// 普通方式
 let fruits = ["apple", "banana"];
+
+// 构造函数方式
+let names = new Array();
+let nums = new Array(2, 3)
+
+// 数组中添加元素,获取不存在的索引时候返回undefined
+nums[4] = 12;
+
+// 获取数组的长度
+len = nums.length;
+
+// 数组的常用方法
+nums.isArray();  // 判断是否为数组
+nums.toString(); // 数组转换为字符串
+
+nums.push(2);  // 末尾添加元素
+nums.pop();  // 删除末尾元素
+nums.fill();  // 固定的数值填充数组
+
+nums.concat(nums);  // 数组合并
+nums.join();  // 数组转换为字符串
+
+nums.reverse();  // 数组翻转
+nums.sort();  // 数组元素按照Unicode从小到大排列
+
+// 伪数组转换为真数组
+realArray = Array.from(fakeArray);
+
+索引值 = 数组.indexOf(想要查询的元素);
+
+// 判断数组是否包含某个元素
+nums.includes(1);
+
+// find函数, 找出第一个满足「指定条件返回 true」的元素；如果没找到，则返回 undefined。
+nums.find((item, index) => {
+    return item > 2; // 找到第一个元素大于2的元素，找到了则返回该元素
+});
+
+// 找到第一个满足条件的index
+nums.findIndex((item, index) => {
+    return item > 2;
+});
+
+
+// every()：全部真，才为真。当你需要让数组中的每一个元素都满足指定条件时，那就使用 every()。
+// some()：一个真，则为真，点到为止。数组中只要有一个元素满足指定条件时，就停止遍历。那就使用 some()。
+nums.every(function(item, index, array){
+    if (item > 2) {return false};  // 所有的元素大于2才返回true
+    return true
+});
+
+nums.some(function(item, index, array){
+    if (item > 2){return true};  // 只要有一个元素大于2则返回true
+    return false
+});
+
+
+// 数组的遍历
+// 如果纯粹只是遍历数组，那么，可以用 forEach() 方法; 如果你想在遍历数组的同时，去改变数组里的元素内容，那么，最好是用 map() 方法来做，不要用 forEach()方法
+nums.forEach((item, index, array) => {
+    console.log(item);
+});
+
+nums.map((item, index, array) => {
+    return item + 1;
+});
+
+// 数组过滤
+nums.filter((item) => {
+    if(item > 2){return true};  // 过滤出所有的大于2的元素，组成新元素
+    return false;
+});
 ```
 
 ### 2.4布尔型
@@ -339,27 +414,27 @@ a || alert("hello");  // 不会执行alert
 ```javascript
 // 条件语句推荐写法
 function handleCode(code) {
-        if (code == 200) {
-                return "success";
-        }
-        if (code == 400) {
-                return "bad request"
-        }
+    if (code == 200) {
+        return "success";
+    }
+    if (code == 400) {
+        return "bad request"
+    }
 }
 
 
 // 循环写法
 for (let i = 0; i < 12; i++) {
-        console.log(i);
+    console.log(i);
 }
 // 循环推荐写法
 items.map(function(item){
-        console.log(item);
+    console.log(item);
 })
 // while循环
 let a = 1；
 while (a < 10) {
-        a ++;
+    a ++;
 }
 ```
 
@@ -370,7 +445,7 @@ while (a < 10) {
 ```javascript
 // 基础
 function x() {
-  console.log("hello");
+    console.log("hello");
 }
 
 // 匿名函数
@@ -383,7 +458,7 @@ let a = myFunc(3, 4);
 
 // 自调用函数,函数表达式自动执行
 (function() {
-  let b = "hello";
+    let b = "hello";
 })();
 ```
 
