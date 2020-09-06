@@ -106,6 +106,7 @@ let a = prompt('input: ');
 - 没有值的变量，其值是`undefined`，可以通过设置值为 null 清空对象
 - `null`的数据类型是对象，也可以通过设置值为 undefined 清空对象
 - Undefined 与 null 的值相等，但类型不相等
+- 任何变量，如果没有声明直接赋值则该变量是window的属性，如`a = 100;`, 引用时候为`window.a` ;一切声明的全局变量，全是window的属性
 
 一共6种数据类型：
 
@@ -446,6 +447,9 @@ while (a < 10) {
 
 ### 3.1函数定义
 
+- 全局作用域：script标签内或者独立的js文件中
+- 函数作用域：单个函数内部
+
 ```javascript
 // 方法一：利用关键字，即命名函数
 function x() {
@@ -515,6 +519,35 @@ btn.onclick = function(){};
 
 // 方法六：定时器函数
 setInterval(func1(){}, 1000);
+```
+
+### 3.4this介绍
+
+- 解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个隐含的参数就是 this，`this 指向的是一个对象`，这个对象我们称为`函数执行的上下文对象`
+
+**函数内this的指向：**
+
+1. 以函数的形式（包括普通函数、定时器函数、立即执行函数）调用时，`this 的指向永远都是 window`, 比如fun();相当于window.fun()
+2. 以方法的形式调用时，`this 指向调用方法的那个对象`
+3. 以构造函数的形式调用时，`this 指向实例对象`
+4. 以事件绑定函数的形式调用时，`this 指向绑定事件的对象`
+5. 使用 call 和 apply 调用时，`this 指向指定的那个对象`
+
+```javascript
+// 示例一：使用call函数可以改变函数内部的this指向
+var obj1 = {
+    nickName: 'hello',
+    age: 10,
+};
+
+function fn1(a, b) {
+    console.log(this);
+    console.log(this.nickName);
+    console.log(a + b);
+}
+
+fn1.call(obj1, 2, 4); // 先将 this 指向 obj1，然后执行 fn1() 函数
+
 ```
 
 ## 4.js事件
@@ -638,15 +671,49 @@ let p_nodes = document.getElementsByTagName("p");
 p_node = p_nodes[1];
 ```
 
-## 9.JS BROWSER BOM
+## 9.JS BROWSER对象
 
 - 浏览器对象模型
 
-**window对象:**
+### 9.1window对象
 
 - `window`对象代表浏览器窗口
+- [window对象介绍](https://www.runoob.com/jsref/obj-window.html)
 
-**screen对象:**
+常用属性和方法：
+
+```javascript
+// window对象常用属性
+window.closed;  // 返回窗口是否关闭
+window.document;  // 对Document对象的只读引用
+window.history;  // 对History对象的只读引用
+
+window.innerWidth;  // 窗口文档显示区的宽度，高度
+window.innerHeight;
+window.outerHeight;  // 窗口的外部宽度和高度（包含工具条和滚动条）
+window.outerWidth;
+
+window.localStorage;  // 浏览器中存储的key/value对，没有过期时间
+
+window.name;  // 设置或者获取窗口的名称
+window.sessionStorage;  // 在浏览器中存储 key/value 对。 在关闭窗口或标签页之后将会删除这些数据
+
+// window对象常用方法
+window.alert('alert');  // 警告框
+window.confirm('confirm?');  // 确认框,点击确认返回true,点击取消返回false
+window.prompt('input name:', 'tony');  // 提示框,点击确认返回输入值，点击取消返回NULL
+
+window.atob('aGVsbG8=');  // 解码一个base64编码的字符串
+window.btoa('hello');  // 编码一个字符串至一个base64
+
+window.open();  // 打开一个空白窗口或者已经命名的窗口：https://www.runoob.com/jsref/met-win-open.html
+window.print();  // 打印当前窗口的内容
+window.stop();  // 停止页面载入
+
+window.close();  // 关闭浏览器窗口
+```
+
+### 9.2screen对象
 
 - 或者`window.screen`对象
 - 表示用户屏幕的信息
@@ -657,7 +724,7 @@ p_node = p_nodes[1];
 - screen.colorDepth, 色深
 - screen.pixelDepth, 像素深度，对于现代计算机，颜色深度和像素深度是相等的
 
-**location对象:**
+### 9.3location对象
 
 - window.location.href 返回当前页面的 href (URL)
 - window.location.hostname 返回 web 主机的域名
@@ -665,18 +732,39 @@ p_node = p_nodes[1];
 - window.location.protocol 返回使用的 web 协议（http: 或 https:）
 - window.location.assign 加载新文档
 
-**history对象:**
+### 9.4history对象
 
 window.history 对象可不带 window 书写。
 
 - history.back() - 等同于在浏览器点击后退按钮
 - history.forward() - 等同于在浏览器中点击前进按钮
 
-**弹出框:**
+### 9.5navigator对象
 
-- `alert("")`,警告框
-- `cnfirm("")`,确认框,点击确认返回true,点击取消返回false
-- `prompt("", default)`，提示框,点击确认返回输入值，点击取消返回NULL
+- 包含浏览器的信息
+
+```javascript
+// navigator对象常用属性
+navigator.appCodeName;  // 浏览器的代码名
+navigator.appName;  // 浏览器的名称
+
+navigator.appVersion;  // 浏览器的平台和版本信息
+navigator.cookieEnabled;  // 浏览器是否启用cookie
+
+navigator.userAgent;  // 头部用户代理信息
+navigator.platform;  // 浏览器的操作系统平台
+```
+
+### 9.6document对象
+
+- document对象是html文档的根节点
+- [document对象属性和方法](https://www.runoob.com/jsref/dom-obj-document.html)
+
+```javascript
+// document对象的常用属性
+
+
+```
 
 **定时事件:**
 
