@@ -14,6 +14,16 @@ xlsxwriter模块的使用
 import xlsxwriter
 
 
+def create_workbook(file_name):
+    workbook = xlsxwriter.Workbook(filename=file_name)
+    return workbook
+
+
+def workbook_add_worksheet(workbook, sheet_name):
+    worksheet = workbook.add_worksheet(sheet_name)
+    return worksheet
+
+
 def basic_demo():
     # 新建excel表
     workbook = xlsxwriter.Workbook("./xlsx_test.xlsx")
@@ -77,7 +87,23 @@ def worksheet_page_demo():
     del workbook
 
 
+def format_demo():
+    """格式化"""
+    workbook = create_workbook("w1.xlsx")
+    worksheet = workbook_add_worksheet(workbook, "sheet1")
+
+    cell_format = workbook.add_format()
+    cell_format.set_text_wrap(text_wrap=True)
+    cell_format.set_bg_color("")
+
+    worksheet.write_column(row=1, col=1, data=["tony", "jim"], cell_format=cell_format)
+
+    worksheet.set_column(first_col=2, last_col=2, cell_format=cell_format)
+    workbook.close()
+
+
 if __name__ == "__main__":
     # basic_demo()
     # multi_sheet_demo()
-    worksheet_page_demo()
+    # worksheet_page_demo()
+    format_demo()

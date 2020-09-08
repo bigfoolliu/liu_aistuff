@@ -96,7 +96,7 @@ class SingleTon(object):
 ### 1.7python协程
 
 - 协程，进程的升级版，用户自己控制内核态用户态的切换，不需要陷入系统的内核态，加快速度
-- pytho中的协程实现主要是用`yield`
+- python中的协程实现主要是用`yield`
 
 ### 1.8python函数式编程
 

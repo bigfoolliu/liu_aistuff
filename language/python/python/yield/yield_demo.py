@@ -19,6 +19,9 @@ f.send()有三个步骤（作用）：
 将生成器重置,可以通过重新定义的方式:
 a = Generator()
 b = Generator()
+
+
+yield简单介绍： https://blog.csdn.net/mieleizhi0522/article/details/82142856/
 """
 
 
