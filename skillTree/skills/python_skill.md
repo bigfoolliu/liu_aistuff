@@ -212,7 +212,7 @@ deactivate  # 退出虚拟环境
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <package>  # 使用清华源下载包
 python -m pip install --upgrade pip  # 更新pip
 
-pip show <packge>  # 查看某个包是否安装
+pip show <package>  # 查看某个包是否安装
 pip install --upgrade <package>  # 更新包
 pip uninstall <package>  # 卸载包
 
@@ -308,7 +308,7 @@ pyenv versions
 pyenv local --unset
 
 # 切换和使用虚拟环境
-pyenv activate myenv
+pyenv activate env
 
 # 退出虚拟化环境
 pyenv deactivate
@@ -341,4 +341,4 @@ python3 setup.py install
 
 - [python必备的库](https://www.cnblogs.com/jiangchunsheng/p/9275881.html)
 - [知乎：13个python最佳编程技巧](https://zhuanlan.zhihu.com/p/59897541)
-
+- [如何建立一个完美的python项目](https://juejin.im/post/6869560352859193357)
