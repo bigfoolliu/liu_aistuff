@@ -98,6 +98,8 @@ command + shift + o
 
 # 精准定位到成员，方法，函数，变量等
 
+# 多窗口之间切换
+command + option + `
 ```
 
 ## 2.webstorm
@@ -105,6 +107,7 @@ command + shift + o
 - [webstorm常用快捷键](https://blog.csdn.net/qq_44333271/article/details/87439511)
 
 ```sh
+# 基本和pycharm一致
 ```
 
 ## 3.vscode
