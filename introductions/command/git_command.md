@@ -108,7 +108,10 @@ git可以使用四种不同的协议来传输数据：
 
 ```sh
 # 从远程克隆一个版本库
-git clone `address`
+git clone <git_address>
+
+# 浅克隆，不要commit历史，只要代码
+git clone --depth 1 <git_address>
 ```
 
 ### 1.3暂存(add)
@@ -201,7 +204,7 @@ git stash show -p stash@{1}
 git stash show -p  # 查看最近一个stash里面的修改
 ```
 
-### 1.7分支(branch, checkout)
+### 1.7分支(fetch, branch, checkout)
 
 - 特殊指针HEAD，用来指向当前所处的本地分支
 
@@ -210,6 +213,9 @@ git stash show -p  # 查看最近一个stash里面的修改
 git fetch
 # 取回指定的分支更新(eg:git fetch origin master)
 git fetch <远程主机名> <分支名>
+
+git fetch -p # 跟随远程删除分支的操作删除本地分支
+git fetch -P # 跟随远程删除分支的操作删除本地tag
 
 # 取消对某个文件的修改(即没有文件),恢复暂存区的指定文件到工作区
 git checkout a.txt
@@ -256,18 +262,21 @@ git remote get-url origin
 
 ### 1.8撤销(reset, revert)
 
-```sh
-# reset撤销直接删除指定的commit,将HEAD后移
-# 撤销对所有文件的暂存
-git reset HEAD
+- reset撤销直接删除指定的commit, 将HEAD后移
+- revert会将操作之前和之后的信息都会保留, 用新的commit回滚旧的commit
 
+```sh
+# 撤销对所有文件的暂存, add到暂存区的代码想撤销
+git reset HEAD
 # 撤销对指定文件的暂存(适用于误将文件暂存add的场景)
 git reset HEAD test.py
 
 # 如果想要将一个分支的最后一个提交转移到另外一个分支,然后git stash，应用到另外一个分支
 git reset HEAD~1
 
-# revert会将操作之前和之后的信息都会保留,用新的commit回滚旧的commit
+git reset --soft HEAD~1  # 将刚刚的提交撤回到暂存区
+git reset --hard <commit_id/版本号>  # 提交到本地仓库的代码想撤销
+
 # 撤销前一次commit
 git revert HEAD
 
