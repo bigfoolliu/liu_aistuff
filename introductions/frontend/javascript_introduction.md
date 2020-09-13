@@ -57,6 +57,7 @@
 - 语句结尾分号可选
 - 没有整数型，只有浮点型
 - 单线程
+- `以事件驱动为核心`
 
 **JavaScript分为三个部分:**
 
@@ -630,9 +631,29 @@ function B() {
 
 ## 4.js事件
 
+### 4.1基础介绍
+
 - 网页完成加载
 - 输入字段修改
 - 用户点击
+-[js中的常用事件](https://www.w3school.com.cn/jsref/jsref_events.asp)
+
+### 4.2使用
+
+```javascript
+// 1.获取事件源
+var div1 = document.getElementById('box1');  // id单个获取
+var div_s = document.getElementByName('box');  // 通过标签名批量获取
+var div_s = document.getElementByClassName('box');  // 通过类名批量获取
+
+// 2.绑定事件
+div.onclick = function(){alert('hello!')};  // 直接绑定匿名函数
+
+function fn() {alert('hello')}; div.onclick = fn;  // 先定义再绑定
+
+<div id="box1" onclick="fn()"></div>  // 行内绑定
+
+```
 
 ## 5.关键字
 
@@ -674,10 +695,13 @@ debugger;
 
 ## 8.JS HTML DOM
 
-- 文档对象模型(document object model)，js通过该模型来操纵Html元素
+### 8.1基础介绍
+
+- `文档对象模型(document object model)`，js通过该模型来操纵Html元素, dom由节点组成，一切都是节点
+- html加载完毕，在内存中生成一个dom树，整个html就是一个文档节点，`所有的节点都是对象（object)`
 - [JavaScript HTML DOM 文档](https://www.w3school.com.cn/js/js_htmldom_document.asp)
 
-**document对象:**
+### 8.2document对象
 
 ```javascript
 // 常用操作
@@ -692,7 +716,7 @@ document.domain;
 document.URL;
 ```
 
-**常用DOM事件：**
+### 8.3常用DOM事件
 
 - 当用户点击鼠标时(onclick())
 - 当网页加载后(onload(), onunload())
@@ -707,29 +731,34 @@ dom事件监听器:
 - `addEventListener("click", displayDate, useCapture)`为指定元素增加事件处理程序,useCapture为布尔值，表示是否使用事件冒泡顺序
 - `removeEventListener("mousemove", myfunction)`删除元素指定额事件处理程序
 
-**DOM事件传播顺序:**
+### 8.4DOM事件传播顺序
 
 1. `事件冒泡`,最内侧的元素的事件最先被处理
 2. `事件捕获`,最外侧的元素的事件最先被处理
 
-**DOM导航:**
-
-| 节点属性 | 解释 |
-|  :---  | :--- |
-| parentNode | 该节点的父节点 |
-| childNode[2] | 该节点的第2个子节点 |
-| firstChild | 首个子节点 |
-| lastChild | 最后一个子节点 |
-| nextSibling | 下一个兄弟节点 |
-| previousSibling | 前一个兄弟节点 |
-
-**DOM节点增删:**
+### 8.5DOM导航
 
 ```javascript
-// 创建一个p标签节点
+node.parentNode  // 该节点的父节点
+
+node.childNode[2]  // 该节点的第2个子节点
+node.firstChild  // 首个子节点
+node.lastChild  // 最后一个子节点
+node.childNodes  // 所有的子节点数组
+
+node.nextSibling  // 下一个兄弟节点
+node.previousSibling  //前一个兄弟节点
+```
+
+### 8.6DOM节点操作
+
+```javascript
+// 1.创建节点, 创建一个p标签节点
 let p_node = document.createElement("p");
+
 // 创建一个文本内容节点
 let text_node = document.createTextNode("this is text.");
+
 // 将文本节点作为p节点的子节点
 p_node.appendChild(text_node);
 
@@ -740,7 +769,7 @@ p_node.removeChild(text_node);
 p_node.replaceChild(new_node, old_node);
 ```
 
-**DOM数组:**
+### 8.7DOM数组
 
 ```javascript
 // 该方法为获取所有的节点元素
