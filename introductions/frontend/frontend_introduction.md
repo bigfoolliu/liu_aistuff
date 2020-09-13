@@ -75,7 +75,30 @@ npm install module_name -S  # 安装具体的模块
 
 ### 3.2yarn
 
+- 一个包管理器
+- [使用文档](https://yarn.bootcss.com/docs/)
+
 ```sh
+# 安装升级
+brew install yarn
+brew upgrade yarn
+
+yarn --version
+
+# 1.初始化一个项目
+yarn init
+
+# 2.管理依赖
+yarn add <package>  # 添加依赖包，自动添加至package.json
+yarn add --dev  # 将依赖只添加到devDependencies
+yarn add --optional  # 将依赖只添加到optionalDependencies中
+
+yarn upgrade <package>  # 升级依赖，会修改package.json和yarn.lock
+
+yarn remove <package>  # 删除依赖，会修改package,json和yarn.lock
+
+# 3.安装依赖
+yarn install  # 安装所有的依赖
 ```
 
 ## 其他

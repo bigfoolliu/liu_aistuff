@@ -286,14 +286,12 @@ nums.findIndex((item, index) => {
 
 // every()：全部真，才为真。当你需要让数组中的每一个元素都满足指定条件时，那就使用 every()。
 // some()：一个真，则为真，点到为止。数组中只要有一个元素满足指定条件时，就停止遍历。那就使用 some()。
-nums.every(function(item, index, array){
-    if (item > 2) {return false};  // 所有的元素大于2才返回true
-    return true
+nums.every(function(item){
+    return item > 0;  // 所有元素大于0返回true,否则返回false
 });
 
-nums.some(function(item, index, array){
-    if (item > 2){return true};  // 只要有一个元素大于2则返回true
-    return false
+nums.some(function(item){
+    return item > 0;  // 主要有一个元素大于0,就返回true
 });
 
 
