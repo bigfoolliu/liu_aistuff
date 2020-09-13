@@ -3,21 +3,27 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.javascript基础](#1.javascript基础)
-        - [1.1词法结构](#1.1词法结构)
+        - [1.1介绍](#1.1介绍)
         - [1.2注释](#1.2注释)
         - [1.3关键字](#1.3关键字)
+        - [1.4输入输出的三种方式](#1.4输入输出的三种方式)
         - [1.x其他](#1.x其他)
-* [2.类型,值和变量](#2.类型,值和变量)
-        - [2.1数值](#2.1数值)
-        - [2.2字符串值](#2.2字符串值)
+* [2.类型，变量和运算](#2.类型，变量和运算)
+        - [2.1数值型(Number)](#2.1数值型(number))
+        - [2.2字符串型(String)](#2.2字符串型(string))
         - [2.3数组](#2.3数组)
         - [2.4布尔型](#2.4布尔型)
-        - [2.4对象](#2.4对象)
+        - [2.5对象](#2.5对象)
+        - [2.6null和undefined](#2.6null和undefined)
+        - [2.7变量类型转换](#2.7变量类型转换)
+        - [2.8运算](#2.8运算)
+        - [2.9条件和循环](#2.9条件和循环)
 * [3.js函数](#3.js函数)
         - [3.1函数定义](#3.1函数定义)
         - [3.2函数参数](#3.2函数参数)
         - [3.3函数调用](#3.3函数调用)
-        - [3.4函数call](#3.4函数call)
+        - [3.4this介绍](#3.4this介绍)
+        - [3.5高阶函数](#3.5高阶函数)
 * [4.js事件](#4.js事件)
 * [5.关键字](#5.关键字)
         - [5.1this](#5.1this)
@@ -25,7 +31,13 @@
 * [6.javascript调试](#6.javascript调试)
 * [7.javascript最佳实践](#7.javascript最佳实践)
 * [8.JS HTML DOM](#8.js-html-dom)
-* [9.JS BROWSER BOM](#9.js-browser-bom)
+* [9.JS BROWSER对象](#9.js-browser对象)
+        - [9.1window对象](#9.1window对象)
+        - [9.2screen对象](#9.2screen对象)
+        - [9.3location对象](#9.3location对象)
+        - [9.4history对象](#9.4history对象)
+        - [9.5navigator对象](#9.5navigator对象)
+        - [9.6document对象](#9.6document对象)
 * [10.ajax](#10.ajax)
         - [10.1功能](#10.1功能)
         - [10.2XMLHttpRequest对象](#10.2xmlhttprequest对象)
@@ -323,7 +335,7 @@ let a = true;
 let b = false;
 ```
 
-### 2.4对象
+### 2.5对象
 
 ***对象类别:**
 
@@ -332,22 +344,58 @@ let b = false;
 - `自定义对象`，new 关键字创建出来的对象实例，都是属于对象类型，比如Object、Array、Date等
 
 ```javascript
-// 方式1
+// 创建对象方式1
 let person = {};
 person.name = "tom";
 person.age = 12;
 
-// 方式2
+// 创建对象方式2
 let p = new Object();
 p.gender = "男";
+p['score'] = 100;  // 注意此种调用方式需要加引号
+
+// 复杂对象与输出
+const a = {
+    name: 'tony',
+    age: 20,
+    skills: {
+        language: 'javascript',
+        db: 'mysql'
+    }
+}
+console.log(JSON.stringify(a));
+
+// 使用构造函数创建对象
+function Student(name) {
+    this.name = name;
+    this.sayHi = function() {
+        console.log('hi' + this.name);
+    }
+}
+var stu1 = new Student();
+stu1.sayHi();
+
+// 删除对象的属性
+delete stu1.name;
+
+'name' in stu1;  // 判断属性是否在对象中
+
+// 遍历对象的属性
+for (var x in stu1) {
+    return;
+}
+
+// 对象的冻结:
+// 一个被冻结的对象再也不能被修改；冻结了一个对象则不能向这个对象添加新的属性，不能删除已有属性，不能修改该对象已有属性的可枚举性、可配置性、可写性，以及不能修改已有属性的值
+Object.freeze(stu1);
 ```
 
-### 2.5null和undefined
+### 2.6null和undefined
 
 - `null`用来定义一个空的对象，用于定义一个变量用来保存引用类型，但是还没想好放什么内容的场景，参与数值元算当作0
 - `undefined`: 声明但是没有赋值的变量；typeof(未定义的变量)；函数定义返回值时的返回值；调用参数时没有传参的参数，参与数值运算当作NaN
 
-### 2.6变量类型转换
+### 2.7变量类型转换
 
 ```javascript
 // 1.其他数据类型-->字符串
@@ -376,7 +424,7 @@ parseInt(b, 16);  // 以16进制转换
 // 使用运算符号的时候也会隐式的调用类型转换
 ```
 
-### 2.7运算
+### 2.8运算
 
 - 算数运算符：`+ - * / %(取余) ++(自增) --(自减)`
 - 逻辑运算符：`&&(与) ||(或) !(非)`
@@ -412,7 +460,7 @@ a || alert("hello");  // 不会执行alert
 // 条件表达式 ? 语句1 : 语句2;
 ```
 
-### 2.8条件和循环
+### 2.9条件和循环
 
 ```javascript
 // 条件语句推荐写法
@@ -439,6 +487,20 @@ let a = 1；
 while (a < 10) {
     a ++;
 }
+```
+
+### 2.10深浅拷贝
+
+```javascript
+// 浅拷贝
+Object.assign(目标对象, 源对象1, 源对象2...);  // 用源对象的值追加到目标对象，如果属性值相同会更新，且可以有多个源对象
+
+// 深拷贝: https://blog.csdn.net/chentony123/article/details/81428803
+```
+
+### 2.11正则表达式
+
+```javascript
 ```
 
 ## 3.js函数
@@ -545,7 +607,25 @@ function fn1(a, b) {
 }
 
 fn1.call(obj1, 2, 4); // 先将 this 指向 obj1，然后执行 fn1() 函数
+```
 
+### 3.5高阶函数
+
+- 一个函数接受函数作为参数或者输出结果为函数则为`高阶函数`
+
+```javascript
+// 函数将其他函数作为回调函数
+function A(a, call_back) {
+    console.log(a);
+    call_back();
+}
+
+// 将其他函数作为返回值
+function B() {
+    return function() {
+        console.log('');
+    }
+}
 ```
 
 ## 4.js事件

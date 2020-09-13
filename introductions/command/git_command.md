@@ -300,6 +300,8 @@ git log
 git log -p
 git log -p -2  # 只查看最近的两次提交
 
+git log -p <file_name>  # 查看某个文件每次提交的diff
+
 # 每次提交的简略统计信息，加减行数
 git log --stat
 
