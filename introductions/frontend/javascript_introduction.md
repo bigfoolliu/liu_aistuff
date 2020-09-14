@@ -700,6 +700,8 @@ debugger;
 - `文档对象模型(document object model)`，js通过该模型来操纵Html元素, dom由节点组成，一切都是节点
 - html加载完毕，在内存中生成一个dom树，整个html就是一个文档节点，`所有的节点都是对象（object)`
 - [JavaScript HTML DOM 文档](https://www.w3school.com.cn/js/js_htmldom_document.asp)
+- 浏览器在加载一个页面时，是按照自上向下的顺序加载的，读取到一行就运行一行。如果将script标签写到页面的上边，在代码执行时，页面还没有加载，页面没有加载DOM对象也没有加载，会导致无法获取到DOM对象。
+- `onload事件`会在整个页面加载完成之后才触发。为window绑定一个onload事件，该事件对应的响应函数将会在页面加载完成之后执行
 
 ### 8.2document对象
 
@@ -753,20 +755,43 @@ node.previousSibling  //前一个兄弟节点
 ### 8.6DOM节点操作
 
 ```javascript
-// 1.创建节点, 创建一个p标签节点
+// 1.创建节点,
+// 创建一个p标签节点
 let p_node = document.createElement("p");
-
 // 创建一个文本内容节点
 let text_node = document.createTextNode("this is text.");
 
-// 将文本节点作为p节点的子节点
-p_node.appendChild(text_node);
+// 2.插入节点
+// 父节点的最后插入一个新的子节点
+父节点.appendChild(子节点);
+// 在参考节点前插入一个新的节点，如果参考节点为null，那么他将在父节点里面的最后插入一个子节点
+父节点.insertBefore(新的子节点, 作为参考的子节点);
 
-// p节点删除文本子节点
-p_node.removeChild(text_node);
+// 3.删除节点
+// 用父节点删除子节点。必须要指定是删除哪个子节点
+父节点.removeChild(子节点);
 
-// 替换节点
+// 4.复制节点
+要复制的节点.cloneNode();  // 不带参数/false, 只复制节点自身，不复制子节点
+要复制的节点.cloneNode(true);  // 复制自身和子节点
+
+// 5.替换节点
 p_node.replaceChild(new_node, old_node);
+
+
+// 节点属性操作
+
+// 1.获取节点的属性
+节点.属性;
+节点[属性];
+节点.getAttribute('属性名称');
+
+// 2.设置节点的属性
+节点.属性 = 新值;
+节点.setAttribute('属性名称', '新的属性值');
+
+// 3.删除节点的属性值
+节点.removeAttribute('属性名称');
 ```
 
 ### 8.7DOM数组
