@@ -254,12 +254,25 @@ ln -s a.txt aa.txt  # 符号连接(软连接)，删除源头，另一个无法�
 
 ## 3.进程相关
 
+### 3.1基本进程信息(strace, lsof)
+
 ```sh
 # 打开应用进程,查看系统调用，排查问题
 strace
+
+# 查看你进程打开的文件，打开文件的进程，进程打开的端口(TCP、UDP)
+lsof  # 查看所有打开的文件
+lsof <file_name>  # 查看当前文件的使用情况
+lsof +D <dir_name>  # 递归查看对应目录下的所有文件和目录
+lsof -u <user_name>  # 查看某个用户打开的文件
+lsof -c <mysql>  # 查看某个应用程序打开的文件
+lsof -p 1  # 通过某个进程号来显示对应打开的文件
+lsof -i tcp/udp  # 列出所有tcp或者udp协议正在使用的文件
+lsof -i :3306  # 查看某个端口在被哪些引用占用
+lsof -i tcp:8000  # 查看特定的tcp端口在被哪个程序使用
 ```
 
-### 3.1杀死进程的几种方式
+### 3.2杀死进程的几种方式(kill, pkill)
 
 ```sh
 # 知道进程号，直接强制杀死进程
@@ -282,7 +295,7 @@ pgrep firefox | xargs kill -s 9
 pkill -9 firefox
 ```
 
-### 3.2supervisor对进程进行管理
+### 3.3进程管理(supervisor)
 
 ```sh
 # 重启服务
