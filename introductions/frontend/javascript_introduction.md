@@ -18,6 +18,8 @@
         - [2.7变量类型转换](#2.7变量类型转换)
         - [2.8运算](#2.8运算)
         - [2.9条件和循环](#2.9条件和循环)
+        - [2.10深浅拷贝](#2.10深浅拷贝)
+        - [2.11正则表达式](#2.11正则表达式)
 * [3.js函数](#3.js函数)
         - [3.1函数定义](#3.1函数定义)
         - [3.2函数参数](#3.2函数参数)
@@ -25,12 +27,21 @@
         - [3.4this介绍](#3.4this介绍)
         - [3.5高阶函数](#3.5高阶函数)
 * [4.js事件](#4.js事件)
+        - [4.1基础介绍](#4.1基础介绍)
+        - [4.2使用](#4.2使用)
 * [5.关键字](#5.关键字)
         - [5.1this](#5.1this)
         - [5.2let](#5.2let)
 * [6.javascript调试](#6.javascript调试)
 * [7.javascript最佳实践](#7.javascript最佳实践)
 * [8.JS HTML DOM](#8.js-html-dom)
+        - [8.1基础介绍](#8.1基础介绍)
+        - [8.2document对象](#8.2document对象)
+        - [8.3常用DOM事件](#8.3常用dom事件)
+        - [8.4DOM事件传播顺序](#8.4dom事件传播顺序)
+        - [8.5DOM导航](#8.5dom导航)
+        - [8.6DOM节点操作](#8.6dom节点操作)
+        - [8.7DOM数组](#8.7dom数组)
 * [9.JS BROWSER对象](#9.js-browser对象)
         - [9.1window对象](#9.1window对象)
         - [9.2screen对象](#9.2screen对象)
@@ -42,8 +53,10 @@
         - [10.1功能](#10.1功能)
         - [10.2XMLHttpRequest对象](#10.2xmlhttprequest对象)
         - [10.3解决ajax跨域问题](#10.3解决ajax跨域问题)
-        - [11.js JSON](#11.js-json)
-        - [12.jquery](#12.jquery)
+* [11.js JSON](#11.js-json)
+* [12.jquery](#12.jquery)
+* [13.js其他](#13.js其他)
+        - [13.1js动画](#13.1js动画)
 
 <!-- vim-markdown-toc -->
 
@@ -962,12 +975,12 @@ navigator.platform;  // 浏览器的操作系统平台
 3. httpClient内部转发
 4. 使用接口网关——`nginx`,`springcloud`,`zuul`(互联网公司常规解决方案)
 
-### 11.js JSON
+## 11.js JSON
 
 - `JSON.parse(string)`解析字符串至json对象
 - `JSON.stringify()`将js对象转换为字符串
 
-### 12.jquery
+## 12.jquery
 
 **js的库，用于处理浏览器不兼容以及简化html的dom操作，事件处理等。**
 
@@ -983,4 +996,65 @@ let ele3 = $(".intro");
 
 // css选择器,选择所有类为intro，标签为p的元素
 let ele4 = $("p.intro");
+```
+
+## 13.js其他
+
+### 13.1js动画
+
+- 三大家族：`offset/scroll/client`
+- 事件对象：事件被触动时候鼠标和键盘的状态
+- 动画：`闪现(少用)，匀速，缓动`
+
+```javascript
+// offset家族
+// js中有一套方便的获取元素尺寸的办法就是offset家族。offset家族包括：
+// offsetWidth， 获取元素节点的宽度，offsetWidth = width + padding + border
+node.offsetWidth
+
+// offsetHight，获取元素节点的高度，offsetHeight = height + padding + border
+node.offsetHeight
+
+// offsetLeft, 当前元素相对于其定位父元素的水平偏移量
+// offsetTop, 当前元素相对于其定位父元素的垂直偏移量
+// offsetParent, 获取当前元素的定位父元素
+
+
+// 匀速运动
+//2、匀速运动
+btn.onclick = function () {
+    //定时器，每隔一定的时间向右走一些
+    setInterval(function () {
+        //动画原理： 盒子未来的位置 = 盒子现在的位置 + 步长；
+        //方法1：用offsetLeft获取值，用style.left赋值。
+        div.style.left = div.offsetLeft + 100 + 'px';
+        // 方法2：必须一开始就在DOM节点上添加 style="left: 0px;"属性，才能用方法2。否则， div.style.left 的值为 NaN
+        // div.style.left = parseInt(div.style.left)+100+"px";  //方法2：
+    }, 500);
+};
+
+
+//【重要】方法的封装：每间隔30ms，将盒子向右移动10px
+function animate(ele, target) {
+    //要用定时器，先清除定时器
+    //一个盒子只能有一个定时器，这样的话，不会和其他盒子出现定时器冲突
+    //我们可以把定时器本身，当成为盒子的一个属性
+    clearInterval(ele.timer);
+    //我们要求盒子既能向前又能向后，那么我们的步长就得有正有负
+    //目标值如果大于当前值取正，目标值如果小于当前值取负
+    var speed = target > ele.offsetLeft ? 10 : -10;  //speed指的是步长
+    ele.timer = setInterval(function () {
+        //在执行之前就获取当前值和目标值之差
+        var val = target - ele.offsetLeft;
+
+        //移动的过程中，如果目标值和当前值之差如果小于步长，那么就不能在前进了
+        //因为步长有正有负，所有转换成绝对值来比较
+        if (Math.abs(val) < Math.abs(speed)) {  //如果val小于步长，则直接到达目的地；否则，每次移动一个步长
+            ele.style.left = target + "px";
+            clearInterval(ele.timer);
+        } else {
+            ele.style.left = ele.offsetLeft + speed + "px";
+        }
+    }, 30)
+}
 ```
