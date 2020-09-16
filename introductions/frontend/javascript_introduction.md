@@ -906,9 +906,11 @@ navigator.platform;  // 浏览器的操作系统平台
 - [document对象属性和方法](https://www.runoob.com/jsref/dom-obj-document.html)
 
 ```javascript
-// document对象的常用属性
-
-
+// document文档对象的常用属性
+document.title  // 标题
+document.head  // 头标签
+document.body  // body标签
+document.documentElement  // 整个html标签
 ```
 
 **定时事件:**
@@ -1006,8 +1008,9 @@ let ele4 = $("p.intro");
 - 事件对象：事件被触动时候鼠标和键盘的状态
 - 动画：`闪现(少用)，匀速，缓动`
 
+**offset家族与匀速运动:**
+
 ```javascript
-// offset家族
 // js中有一套方便的获取元素尺寸的办法就是offset家族。offset家族包括：
 // offsetWidth， 获取元素节点的宽度，offsetWidth = width + padding + border
 node.offsetWidth
@@ -1056,5 +1059,67 @@ function animate(ele, target) {
             ele.style.left = ele.offsetLeft + speed + "px";
         }
     }, 30)
+}
+```
+
+**scroll与缓动动画：**
+
+- `window.scroll()`：在网页向下滚动的时候触发
+- `window.scrollTo(x, y)`：浏览器显示区域跳转到指定的坐标
+- `scrollWidth`：获取元素整个滚动区域的宽，不包括 border和margin，内容超出盒子，为内容的宽（包括内容），不超出盒子，为盒子的宽度
+- `scrollHeight`：获取元素整个滚动区域的高，不包括 border和margin，内容超出盒子，为内容的高（包括内容），不超出盒子，为盒子的高度
+- `scrollLeft`：获取水平滚动条滚动的距离, 当某个元素满足`scrollWidth - scrollLeft == clientWidth`时，说明水平滚动条滚动到底了
+- `scrollTop`：获取垂直滚动条滚动的距离, 当某个元素满足`scrollHeight - scrollTop == clientHeight`时，说明垂直滚动条滚动到底了
+
+```javascript
+// 文档DTD声明: https://www.w3school.com.cn/dtd/dtd_intro.asp
+// 判断文档是否有DTD声明
+document.compatMode === "CSS1Compat"   // 已声明
+document.compatMode === "BackCompat"   // 未声明
+
+// 文档没有DTD声明写法
+document.body.scrollTop
+// 文档有DTD声明写法
+document.documentElement.scrollTop
+
+// 兼容写法
+document.body.scrollTop || document.documentElement.scrollTop  //方式一
+document.body.scrollTop + document.documentElement.scrollTop  //方式二
+
+// 函数封装（简单封装，实际工作使用），返回对象，实际使用为: scroll().left 或scroll().right
+function scroll() {
+    return { //此函数的返回值是对象
+        left: window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+        right: window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+    }
+}
+
+
+// 缓动动画
+// 缓动动画封装
+function animate(ele, target) {
+    //要用定时器，先清定时器
+    clearInterval(ele.timer);
+    //定义定时器
+    ele.timer = setInterval(function () {
+        //获取步长
+        //步长应该是越来越小的，缓动的算法。
+        var step = (target - ele.offsetLeft) / 10;
+        //对步长进行二次加工(大于0向上取整,小于0向下取整)
+        //达到的效果是：最后10像素的时候都是1像素1像素的向目标位置移动，就能够到达指定位置。
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        //动画原理： 目标位置 = 当前位置 + 步长
+        ele.style.left = ele.offsetLeft + step + "px";
+        //检测缓动动画有没有停止
+        if (Math.abs(target - ele.offsetLeft) <= Math.abs(step)) {
+            //处理小数赋值
+            ele.style.left = target + "px";
+            clearInterval(ele.timer);
+        }
+    }, 30);
+}
+// 调用
+btn.onclick = function() {
+    animate(div, 400);
 }
 ```
