@@ -112,6 +112,9 @@ fash --upload
 # cat的替代命令，可以高亮度
 bat file
 bat ./*.file  # 可以同时查看多个文件
+
+# 截屏中显示系统/主题信息的命令行脚本
+screenfetch
 ```
 
 ## 2.safari命令
