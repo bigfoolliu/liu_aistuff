@@ -58,6 +58,35 @@ def timedelta_is_year_demo():
     print("1 year later:", year_later_str)
 
 
+def calculate_months(begin_date, end_date):
+    """
+    计算两个日期之间相隔的月份, 并将连续的月份输出
+    eg: 输入2019-10 2020-01, 输出[2019-10, 2019-11, 2019-12, 2020-01]
+    """
+    if begin_date > end_date:
+        return None
+
+    begin_year = int(begin_date[0:4])
+    end_year = int(end_date[0:4])
+    begin_month = int(begin_date[5:7])
+    end_month = int(end_date[5:7])
+
+    month_delta = (end_year - begin_year) * 12 + (end_month - begin_month)
+
+    ret = []
+    for i in range(month_delta + 1):
+        if i == 0:
+            ret.append(begin_date)
+            continue
+        # 新的相加
+        _temp_year = begin_year + (begin_month + i) // 12
+        _temp_month = (begin_month + i) % 12
+        if _temp_month == 0:
+            _temp_month = 12
+        ret.append("-".join([str(_temp_year), str(_temp_month)]))
+    return ret
+
+
 if __name__ == "__main__":
     # get_utc_demo()
     # str_to_timestamp_demo()
@@ -65,4 +94,7 @@ if __name__ == "__main__":
     # print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", 15*60))
     # print(get_add_reduce_time_demo('2020-02-15 00:00', "%Y-%m-%d %H:%M", -15*60))
 
-    timedelta_is_year_demo()
+    # timedelta_is_year_demo()
+
+    print(calculate_months('2019-10', '2020-02'))  # [2019-10, 2019-11, 2019-12, 2020-01, 2020-02]
+    print(calculate_months('2020-01', '2020-02'))  # [2020-01, 2020-02]

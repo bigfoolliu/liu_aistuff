@@ -115,6 +115,9 @@ bat ./*.file  # 可以同时查看多个文件
 
 # 截屏中显示系统/主题信息的命令行脚本
 screenfetch
+
+# find的替代品
+fd
 ```
 
 ## 2.safari命令
