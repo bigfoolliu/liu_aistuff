@@ -130,7 +130,7 @@ def main():
 ## 8.使用装饰器的技巧
 
 1. 尝试使用类来实现装饰器`查看对象是否可以被调用，使用callable()函数，让类可以被调用只需要实现__call__方法`
-   1. 更容易维护以及更容器扩充
+   1. 更容易维护以及更容易扩充
    2. 更容易实现一个兼顾装饰器以及上下文管理器协议的对象
 2. 使用`[wrapt模块](https://pypi.org/project/wrapt/)`实现更扁平的装饰器
 3. 使用`functools.wraps()`函数装饰函数，可以不影响其所装饰的函数，仍然可以拿到被装饰函数的名称和文档等内容
@@ -151,6 +151,24 @@ def main():
 1. 使用try_except
 2. 使用requirements.txt
 3. 使用sys.meta_path可以自动导入任意缺失的库([autoinstall.py](./autoinstall.py))
+
+### 9.3web开发常用python库
+
+- web/restful 框架：Django/Flask/Tornado
+- 异步http web框架：fastapi/aiohttp/Sanic
+- ORM: sqlalchemy, Peewee
+- 表单验证：WTForms, marshmallow
+- 数据处理和分析：Numpy, Pandas, Matplotlib
+- 异步：celery, asyncio, tornado
+- 并发：gevent, threading, concurrent.futures
+- 部署：uwsgi, gunicorn(推荐)
+- html 处理: lxml, beautifulsoup
+- 爬虫：requests, Scrapy
+- 单元测试：unittest, nose, pytest(推荐)
+- 图片处理：pillow
+- python2/3 兼容：six, 2to3
+- 代码检测：autopep8, pylint, flake8, mypy(python3)
+- 调试：Ipython, Ipdb, pdbpp
 
 ## 10.利用规则
 

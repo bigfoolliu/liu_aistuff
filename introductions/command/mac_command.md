@@ -118,6 +118,9 @@ screenfetch
 
 # find的替代品
 fd
+
+# mac下查看端口占用较好的命令
+lsof -i :8000
 ```
 
 ## 2.safari命令

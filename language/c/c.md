@@ -7,7 +7,14 @@
 
 <!-- vim-markdown-toc -->
 
-## 1.gcc基础
+## 1.基础知识
+
+流行的 C++ 编译器有以下这些：
+
+1. Linux 系统下的 `GCC`；
+2. Windows 系统下的 `MinGW-w64（GCC 的 Windows 版本）`；
+3. Windows 系统下的`Microsoft C++ complier`（微软 Visual Studio 带的）；
+4. macOS 里面的 `Clang`
 
 - [gcc基础知识](https://www.cnblogs.com/roverliang/p/11493452.html)
 
@@ -17,6 +24,8 @@ gcc main.c -o main
 
 # 查看可执行文件信息
 file main
+
+clang --version
 ```
 
 ## 2.c语言基础
@@ -24,5 +33,4 @@ file main
 ```sh
 # 将文件输出重定向到指定文件
 hello > text.txt
-
 ```

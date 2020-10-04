@@ -57,6 +57,7 @@
 * [12.jquery](#12.jquery)
 * [13.js其他](#13.js其他)
         - [13.1js动画](#13.1js动画)
+        - [13.2client（可视区）属性](#13.2client（可视区）属性)
 
 <!-- vim-markdown-toc -->
 
@@ -1122,4 +1123,36 @@ function animate(ele, target) {
 btn.onclick = function() {
     animate(div, 400);
 }
+```
+
+### 13.2client（可视区）属性
+
+```javascript
+// 获取元素的可见宽度（width + padding)
+node.clientWidth
+// 获取元素的可见高度（width + padding)
+node.clientHeight
+
+// body/html调用的时候,获取的是网页可视区域宽度和高度
+```
+
+### 13.3事件和event对象
+
+- [介绍](https://github.com/qianguyihao/Web/blob/master/04-JavaScript%E5%9F%BA%E7%A1%80/45-%E4%BA%8B%E4%BB%B6%E7%9A%84%E7%BB%91%E5%AE%9A%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1Event.md)
+
+```javascript
+// 事件的两种绑定方式
+// 1.DOM写法，一个元素的一个事件只能绑定一个响应函数。如果绑定了多个响应函数，则后者会覆盖前者
+element.onclick = function(){};
+
+// 2.DOM2写法(高版本浏览器)，事件监听器，前后事件不影响
+// 参数1：事件名的字符串(注意，没有on)
+// 参数2：回调函数：当事件触发时，该函数会被执行
+// 参数3：true表示捕获阶段触发，false表示冒泡阶段触发（默认）。如果不写，则默认为false。【重要】
+// addEventListener()中的this，是绑定事件的对象
+element.addEventListener('click', function (
+    this.style.color = 'red';
+    console.log(event);  // 当事件的响应函数被触发时，会产生一个事件对象event。浏览器每次都会将这个事件event作为实参传进之前的响应函数
+) {}, false);
+
 ```
