@@ -18,14 +18,11 @@
 
 <!-- vim-markdown-toc -->
 
-参考：
+## 1.树
 
 - [递归算法](https://blog.csdn.net/feizaosyuacm/article/details/54919389)
 - [二叉树基础](https://www.jianshu.com/p/bf73c8d50dc2)
 - [二叉树的几个种类](https://www.cnblogs.com/love-yh/p/7423301.html)
-
-## 1.树
-
 - [树的介绍：易百教程](https://www.yiibai.com/data_structure/tree.html)
 
 - **结点的度**

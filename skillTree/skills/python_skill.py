@@ -69,6 +69,20 @@ def most_frequent(lst):
     return max(set(lst), key=lst.count)
 
 
+def unpoision_str(str1):
+    """将字符串中的特殊字符替换为替他内容的更方便方式"""
+    ch_map = {
+        ord('\n'): '',
+        ord('\t'): ' '
+    }
+    return str1.tranalate(ch_map)
+
+
+def kwargs_func(*, a, b):
+    """创建一个强支持关键字参数的函数"""
+    return a, b
+
+
 if __name__ == "__main__":
     str1 = "sfsd34"
     str2 = "sdfsdfsd"
@@ -76,11 +90,11 @@ if __name__ == "__main__":
     # print(is_str_element_same(str1, str2))
     # print(size_of(str1))
 
-    print(byte_size_of(str1))
-
-    lst = ["12", "34", 4, 6, "6", 8, 12, 34, 5]
+    # print(byte_size_of(str1))
+    #
+    # lst = ["12", "34", 4, 6, "6", 8, 12, 34, 5]
     # print(lst_chunk(lst, 2))
-
+    #
     # lst = [[12, 3, 5], [44, 4], 1]
     # print(deep_flatten(lst))
 
@@ -88,4 +102,5 @@ if __name__ == "__main__":
     # dict2 = {"name": "l", "age": 13}
     # print(merge_dict(dict1, dict2))
 
-    print(most_frequent(lst))
+    # print(most_frequent(lst))
+    
