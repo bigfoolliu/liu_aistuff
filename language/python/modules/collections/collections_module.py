@@ -31,11 +31,11 @@ def counter_basic_demo():
     a = Counter(string)
     print(a, a["l"])
 
-    # 统计单次的个数,以及直接获取某个单词出项的次数
+    # 统计单词的个数,以及直接获取某个单词出项的次数
     b = Counter(string.split())
     print(b, b["hello"])
 
-    # 将Couner对象转换为dict
+    # 将Counter对象转换为dict
     print("dict: ", dict(b))
 
     # elements()返回迭代器，每个元素重复计数的次数，用来获取所有元素
@@ -68,7 +68,7 @@ def counter_add_demo():
 def defaultdict_basic_demo():
     """
     defaultdict示例
-    为字典没有的key提供一个默认的值，而一般的字典没有的key直接引用会报异常
+    为字典没有的key提供一个默认的值，而这个默认值可以随意指定类型，而一般的字典没有的key直接引用会报异常
     """
     # 不使用默认工厂，报错
     d = defaultdict()
@@ -184,14 +184,14 @@ def chainmap_demo():
 
 
 if __name__ == "__main__":
-    counter_basic_demo()
+    # counter_basic_demo()
     # counter_add_demo()
 
     # defaultdict_basic_demo()
 
     # ordered_dict_demo()
 
-    # namedtuple_demo()
+    namedtuple_demo()
 
     # deque_demo()
 

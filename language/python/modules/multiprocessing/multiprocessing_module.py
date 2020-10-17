@@ -5,6 +5,9 @@
 
 """
 python multiprocessing模块使用的示例
+
+官方文档：
+https://docs.python.org/zh-cn/3/library/multiprocessing.html
 """
 
 
@@ -100,8 +103,9 @@ def pipe_demo():
 
 
 if __name__ == "__main__":
-    # basic_demo()
+    basic_demo()
     # pool_demo()
     # process_demo()
     # queue_demo()
     # TODO:
+    pass

@@ -5,6 +5,8 @@
 
 """
 functools模块使用
+
+- 用于高阶函数，即作用于函数或者返回值为函数的函数
 """
 
 # 1.使用自带的缓存机制
@@ -34,6 +36,7 @@ def read_from_file(file_name, block_size=1024 * 8):
     :return: generator object
     """
     with open(file_name, 'r') as fp:
+        # partial将fp.read函数转换为为一个可被调用的对象,且参数固定
         for chunk in iter(partial(fp.read, block_size), ''):
             yield chunk
 
