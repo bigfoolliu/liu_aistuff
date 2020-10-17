@@ -237,6 +237,5 @@ def main():
 
 # pygame.display.update((150, 150, 300, 300))  # 可以只更新一个矩形区域或者整个窗口
 
-
 if __name__ == "__main__":
     main()
