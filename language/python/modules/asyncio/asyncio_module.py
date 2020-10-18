@@ -11,7 +11,6 @@ asyncio模块的使用
 - 允许异步任务交出执行权给其他任务，等到其他任务完成，再收回执行权继续往下执行
 """
 
-
 import asyncio
 
 
@@ -34,3 +33,4 @@ def coroutine_demo():
 
 if __name__ == "__main__":
     coroutine_demo()
+    print('hi')
