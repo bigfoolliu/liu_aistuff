@@ -47,6 +47,14 @@ nmap -A -T4 -Pn baidu.com
 ```sh
 # 安装
 brew install john-jumbo
+
+# 简单示例，破解有密码的rar文件
+# 1.生成有密码的rar文件
+rar a test.rar test.txt -p
+# 2.生成rar文件的哈希值
+rar2john test.rar > hash.txt
+# 3.使用john破解密码
+john hash.txt
 ```
 
 ## 4.网络
