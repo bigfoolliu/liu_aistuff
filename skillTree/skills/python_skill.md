@@ -61,6 +61,7 @@
 
 ```python
 # 超长字符串的处理
+import logging
 
 # 1.括号
 logging.info(("this is a super super super super super long"
@@ -73,7 +74,7 @@ logging.info("this is a super super super super super long \
 # 3.多级缩进出现长字符串
 # 可以将其作为变量提取到模块的外层或者使用内置模块textwrap
 from textwrap import dedent
-def main():
+def main(user):
     if user.is_active:
         # dedent 将会缩进掉整段文字最左边的空字符串
         message = dedent("""\
