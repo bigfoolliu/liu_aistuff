@@ -768,6 +768,47 @@ node.previousSibling  //前一个兄弟节点
 
 ### 8.6DOM节点操作
 
+DOM
+DOM树
+访问元素
+getElementById() / querySelector()
+getElementsByClassName() / getElementsByTagName() / querySelectorAll()
+parentNode / previousSibling / nextSibling / children / firstChild / lastChild
+操作元素
+nodeValue
+innerHTML / textContent / createElement() / createTextNode() / appendChild() / insertBefore() / removeChild()
+className / id / hasAttribute() / getAttribute() / setAttribute() / removeAttribute()
+事件处理
+事件类型
+UI事件：load / unload / error / resize / scroll
+键盘事件：keydown / keyup / keypress
+鼠标事件：click / dbclick / mousedown / mouseup / mousemove / mouseover / mouseout
+焦点事件：focus / blur
+表单事件：input / change / submit / reset / cut / copy / paste / select
+事件绑定
+HTML事件处理程序（不推荐使用，因为要做到标签与代码分离）
+传统的DOM事件处理程序（只能附加一个回调函数）
+事件监听器（旧的浏览器中不被支持）
+事件流：事件捕获 / 事件冒泡
+事件对象（低版本IE中的window.event）
+target（有些浏览器使用srcElement）
+type
+cancelable
+preventDefault()
+stopPropagation()（低版本IE中的cancelBubble）
+鼠标事件 - 事件发生的位置
+屏幕位置：screenX和screenY
+页面位置：pageX和pageY
+客户端位置：clientX和clientY
+键盘事件 - 哪个键被按下了
+keyCode属性（有些浏览器使用which）
+String.fromCharCode(event.keyCode)
+HTML5事件
+DOMContentLoaded
+hashchange
+beforeunload
+
+
 ```javascript
 // 1.创建节点,
 // 创建一个p标签节点
@@ -1156,3 +1197,8 @@ element.addEventListener('click', function (
 ) {}, false);
 
 ```
+
+### 13.4事件委托
+
+- 通俗地来讲，就是把一个元素响应事件（click、keydown......）的函数委托到另一个元素
+- 事件委托是利用了冒泡机制，减少了事件绑定的次数，减少内存消耗，提高性能

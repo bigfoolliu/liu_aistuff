@@ -11,6 +11,7 @@ vars内置函数
 
 
 class Demo(object):
+    """doc"""
     name = "demo class"
 
 
@@ -24,4 +25,3 @@ def basic_demo():
 
 if __name__ == "__main__":
     basic_demo()
-
