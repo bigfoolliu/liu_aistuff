@@ -12,9 +12,13 @@
 
 <!-- vim-markdown-toc -->
 
-- [shell编程范例](https://tinylab.gitbooks.io/shellbook/)
+## 1.设置shell环境
 
-## 1.shell if中的符号
+- [设置bash环境](http://billie66.github.io/TLCL/book/chap12.html)
+- [shell编程范例](https://tinylab.gitbooks.io/shellbook/)
+- [shell脚本静态检查工具-shellcheck](https://github.com/koalaman/shellcheck)
+
+## 2.shell if中的符号
 
 比如： `if [ $a -eq $b ]`
 
@@ -25,13 +29,13 @@
 - -ge：大于等于
 - -le：小于等于
 
-### 语句中
+### 2.1语句中
 
 - if [ -n str1 ]：当串的长度大于0时为真(串非空)
 - if [ -z str1 ]：当串的长度为0时为真(空串)
 - `v1=$(command)`: 将命令执行的结果赋给v1
 
-### if-else语句中
+### 2.2if-else语句中
 
 if [ -f file ]
 
@@ -58,7 +62,9 @@ $-  显示Shell使用的当前选项，与set命令功能相同。
 $?  显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。
 ```
 
-### shell中调用另一个shell(exec, fork, source)
+## 3.shell使用范例
+
+### 3.1shell中调用另一个shell(exec, fork, source)
 
 - fork  ( /directory/script.sh):
   fork是最普通的, 就是直接在脚本里面用/directory/script.sh来调用script.sh这个脚本.运行的时候开一个sub-shell执行调用的脚本，sub-shell执行的时候, parent-shell还在。sub-shell执行完毕后返回parent-shell. sub-shell从parent-shell继承环境变量.但是sub-shell中的环境变量不会带回parent-shell
@@ -69,7 +75,7 @@ $?  显示最后命令的退出状态。0表示没有错误，其他任何值表
 - source (source /directory/script.sh 也可以用点命令，即 . /directory/script.sh)
   与fork的区别是不新开一个sub-shell来执行被调用的脚本，而是在同一个shell中执行. 所以被调用的脚本中声明的变量和环境变量, 都可以在主脚本中得到和使用.
 
-### shell相关命令
+### 3.2shell相关命令
 
 ```sh
 # 在其之后的代码一旦出现了返回值为非零，则整个脚本立即退出
@@ -93,11 +99,7 @@ popd +n  # 将第n个目录删除
 dirs  # 显示目录栈中的所有目录，每次pushd执行完成之后会默认执行一次
 ```
 
-### 设置shell环境
-
-- [设置bash环境](http://billie66.github.io/TLCL/book/chap12.html)
-
-### 进程内存监控程序
+### 3.3进程内存监控程序
 
 ```sh
 #!/bin/bash
@@ -120,3 +122,105 @@ do
     process_pid=$(ps -ef | grep $process | grep -v 'grep' | awk '{print $2}')
 done
 ```
+
+## 4.shell编程最佳实践
+
+### 4.1开头有蛇棒
+
+```sh
+# 查看本机支持的shell
+cat /etc/shells
+
+# 可以在shell脚本中指定：如
+/bin/sh
+/bin/dash
+```
+
+### 4.2代码有注释
+
+一般包括下面几个部分：
+
+- shebang
+- 脚本的参数
+- 脚本的用途
+- 脚本的注意事项
+- 脚本的写作时间，作者，版权等
+- 各个函数前的说明注释
+- 一些较复杂的单行命令注释
+
+### 4.3参数要规范
+
+```sh
+# 判断参数的个数
+if [[ $# != 2 ]];then
+    echo "Parameter incorrect."
+    exit 1
+fi
+```
+
+### 4.4缩进问题
+
+缩进方法主要有”soft tab”和”hard tab”两种：
+
+- 所谓soft tab就是使用n个空格进行缩进(n通常是2或4)
+- 所谓hard tab当然就是指真实的\t字符
+- 对于if和for语句之类的，我们最好不要把then，do这些关键字单独写一行
+
+### 4.5单行太长要分行
+
+```sh
+# 使用\来分行，且\前面加空格
+./configure \
+–prefix=/usr \
+–sbin-path=/usr/sbin/nginx \
+–conf-path=/etc/nginx/nginx.conf
+```
+
+### 4.6shell中的main函数
+
+```sh
+# shell脚本中的main函数
+#!/usr/bin/env bash
+
+func1(){
+    #do sth
+}
+main(){
+    func1
+}
+main "$@"
+```
+
+### 4.7考虑作用域
+
+- shell中变量的作用域默认是全局的
+- 声明局部变量: `local a=99;`
+
+### 4.8函数返回值
+
+- 默认函数只能返回整数
+
+```sh
+# 函数返回字符串的折中方式
+func(){
+    echo "2333"
+}
+res=$(func)
+echo "This is from $res."
+```
+
+### 4.9查找路径
+
+```sh
+# 先进入当前脚本的路径，然后根据该路径获取其他路径
+script_dir=$(cd $(dirname $0) && pwd)
+script_dir=$(dirname $(readlink -f $0 ))
+```
+
+### 4.10使用新写法
+
+- 尽量使用func(){}来定义函数，而不是func{}
+- 尽量使用[[]]来代替[]
+- 尽量使用$()将命令的结果赋给变量，而不是反引号
+- 在复杂的场景下尽量使用printf代替echo进行回显
+
