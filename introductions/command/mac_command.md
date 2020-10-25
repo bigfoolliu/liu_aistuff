@@ -32,7 +32,7 @@
 ```sh
 ctrl + a  # 光标移动到行首,加#使命令失效
 ctrl + e  # 光标移动到行尾
-ctrl + q  # 删除当前行的命令
+ctrl + u  # 删除当前行命令
 ctrl + w  # 删除光标所在单词
 ctrl + l  # 清屏，类似于clear
 ctrl + k  # 删除到末尾的命令
