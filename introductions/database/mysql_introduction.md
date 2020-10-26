@@ -401,7 +401,8 @@ alter table tab1 modify column name varchar(100);  # 修改字段的数据类型
 alter table tab1 change id number int(5);  # 更改字段名,同时要说明类型
 
 # 删除表:
-alter table tab1 drop age;  # 删除指定字段
+alter table tab1 drop age;  # 删除指定字段，删除列
+alter table tab1 drop column age  # 删除质指定字段，删除列
 drop table tab1;  # 删除整张表
 ```
 
