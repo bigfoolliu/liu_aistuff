@@ -11,7 +11,7 @@
         - [1.4本地提交(commit)](#1.4本地提交(commit))
         - [1.5远程提交于拉取(push, pull)](#1.5远程提交于拉取(push,-pull))
         - [1.6提交堆栈(stash)](#1.6提交堆栈(stash))
-        - [1.7分支(branch, checkout)](#1.7分支(branch,-checkout))
+        - [1.7分支(fetch, branch, checkout)](#1.7分支(fetch,-branch,-checkout))
         - [1.8撤销(reset, revert)](#1.8撤销(reset,-revert))
         - [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
         - [1.10标签(tag)](#1.10标签(tag))
@@ -338,6 +338,9 @@ git reflog show
 
 # 查看分支操作记录
 git reflog master
+
+# 查看branch_name分支是基于哪个分支创建的
+git reflog --date=local | grep branch_name
 ```
 
 ### 1.10标签(tag)
