@@ -201,6 +201,7 @@ wc -l `find ./ -name "*.csv"`
 
 # 用grep直接搜索文件中的文本内容
 grep -i 'Out of Memory' /var/log/messages
+grep 'hello' -r ./
 ```
 
 ### 2.4文件归档(tar, gzip, gunzip, extract)
@@ -471,7 +472,7 @@ find ./ -name "*.md" | args dos2unix
 
 ### 5.2watch
 
-- 没有选项的情况下每隔2秒执行一次
+- 没有选项的情况下每隔2秒执行一次, 定时执行
 - -n 为时间间隔
 - -d 为执行的命令
 

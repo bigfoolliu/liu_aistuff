@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
 rich 模块使用
 
@@ -17,8 +22,9 @@ print("Hello, [bold magenta]World[/bold magenta]!", ":vampire:", locals())
 
 
 def do_step(step):
-    time.sleep(1)
+    time.sleep(0.1)
 
 
 for step in track(range(100)):
     do_step(step)
+
