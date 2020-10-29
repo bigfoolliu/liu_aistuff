@@ -136,6 +136,8 @@ drop table tab1;  # 删除整张表
 
 #### 2.4.1CRUD基本操作
 
+**查询:**
+
 ```sh
 # 从表中查询所有的数据:
 select * from tab1;
@@ -147,16 +149,31 @@ select age from tab1 limit 10;  # 指定返回前10行
 select name, age from tab1 order by age;  # 按年龄排序
 select name, age from tab1 order by age desc;  # 按年龄降序排序
 
+# 联合查询：https://blog.csdn.net/weixin_39411321/article/details/90602030
+select a.id, b.name from a join b where a.id=b.aid;   # 内连接
+```
+
+**插入：**
+
+```sh
 # 插入数据:
 insert into tab1 values(1, 'tom');  # 向所有字段插入一条数据,需要一一对应
 insert into tab1(id) values(2);  # 向指定单个字段插入一条数据
 insert into tab1(name,id) values('jim',2);  # 向指定多个字段插入数据,需要一一对应
 insert into tab1(id,name) values(3,'mary'),(4,'tony'),(5,'sam');  # 向指定字段插入多条数据
+```
 
+**修改：**
+
+```sh
 # 修改数据:
 update tab1 set id=5;  # 将字段中所有的值更改
 update tab1 set id=5 where name='tom';  # 有条件的修改字段中所有的值
+```
 
+**删除：**
+
+```sh
 # 删除数据:
 truncate tab1;  # 直接删除,不可恢复
 delete from tab1 where name='tony';  # 指定条件删除,部分情况可通过回滚来恢复
