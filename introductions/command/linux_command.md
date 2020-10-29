@@ -6,6 +6,7 @@
         - [1.1系统时间(tzselect, uptime)](#1.1系统时间(tzselect,-uptime))
         - [1.2系统信息(free, lsusb, v4l2-ctl, cpuinfo, udevadm)](#1.2系统信息(free,-lsusb,-v4l2-ctl,-cpuinfo,-udevadm))
         - [1.3系统用户(id, passwd, uname, last, useradd, userdel, groupadd)](#1.3系统用户(id,-passwd,-uname,-last,-useradd,-userdel,-groupadd))
+        - [1.4系统命令以及别名(alias,unalias)](#1.4系统命令以及别名(alias,unalias))
 * [2.文件目录管理](#2.文件目录管理)
         - [2.1目录基本操作(ls, tree, cd, dirs, pushd, popd)](#2.1目录基本操作(ls,-tree,-cd,-dirs,-pushd,-popd))
         - [2.2文件信息(fuser, du, file, less)](#2.2文件信息(fuser,-du,-file,-less))
@@ -13,8 +14,9 @@
         - [2.4文件归档(tar, gzip, gunzip, extract)](#2.4文件归档(tar,-gzip,-gunzip,-extract))
         - [2.x文件其他(>, >>, ln)](#2.x文件其他(>,->>,-ln))
 * [3.进程相关](#3.进程相关)
-        - [3.1杀死进程的几种方式](#3.1杀死进程的几种方式)
-        - [3.2supervisor对进程进行管理](#3.2supervisor对进程进行管理)
+        - [3.1基本进程信息(strace, lsof)](#3.1基本进程信息(strace,-lsof))
+        - [3.2杀死进程的几种方式(kill, pkill)](#3.2杀死进程的几种方式(kill,-pkill))
+        - [3.3进程管理(supervisor)](#3.3进程管理(supervisor))
 * [4.网络管理](#4.网络管理)
         - [4.1网络抓包(tcpdump)](#4.1网络抓包(tcpdump))
         - [4.2网络服务器(ifconfig, route)](#4.2网络服务器(ifconfig,-route))
@@ -100,6 +102,19 @@ groupadd group1  # 新增工作组
 cat /etc/passwd  # 查看所有的用户
 cat /etc/shadow  # 查看用户密码
 cat /etc/group  # 查看所有用户组
+```
+
+### 1.4系统命令以及别名(alias,unalias)
+
+```sh
+# 查看当前shell中所有别名
+alias
+
+# 设置别名
+alias lx=ls
+
+# 取消别名设置
+unalias lx
 ```
 
 ## 2.文件目录管理
@@ -477,9 +492,10 @@ find ./ -name "*.md" | args dos2unix
 - -d 为执行的命令
 
 ```sh
-# 定期检查
+# 定期检查, 每隔1秒执行一次命令
 watch -n 1 -d 'netstat -i | grep tun0'
 
+# 不带时间执行，默认为每2s执行一次命令
 watch date
 ```
 
