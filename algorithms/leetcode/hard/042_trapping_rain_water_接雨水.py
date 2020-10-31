@@ -61,12 +61,10 @@ class Solution(object):
 
 class Solution2(object):
     """
-    使用栈来保存每一个墙
+    使用栈来保存可以存水的墙区间的下标
 
     当遍历墙的高度的时候，如果当前高度小于栈顶的墙高度，说明这里会有积水，我们将墙的高度的下标入栈。
     如果当前高度大于栈顶的墙的高度，说明之前的积水到这里停下，我们可以计算下有多少积水了。计算完，就把当前的墙继续入栈，作为新的积水的墙。
-
-    栈顶保存的高度始终是栈里最小的
 
     总体的原则就是:
     1.当前高度小于等于栈顶高度，入栈，指针后移。
@@ -85,18 +83,18 @@ class Solution2(object):
         ret = 0
         current = 0
         while current < len(height):
-            # 栈不为空或者当前高度大于栈顶高度则一直循环
+            # 栈不为空或者当前墙高大于栈顶墙高，遍历计算当前墙高和栈中的每一堵墙之间的与水量
             while len(stack) != 0 and height[current] > height[stack[-1]]:
-                # 获取栈顶高度并出栈
-                top = height[stack[-1]]
+                # 获取栈顶墙高并出栈
+                top = height[stack[-1]]  # 栈顶墙高
                 stack.pop()
                 if not stack:
                     break
                 # 计算新的栈顶高度下标和当前高度下标之间的距离
                 distance = current - stack[-1] - 1
-                min_height = min([height[stack[-1]], height[current]])
+                min_height = min([height[stack[-1]], height[current]])  # 当前墙和新的栈顶墙的高度差
                 ret += distance * (min_height - top)
-            stack.append(current)
+            stack.append(current)  # 当前栈为空或者当前墙高小于等于栈顶墙高则如栈
             current += 1
         return ret
 
