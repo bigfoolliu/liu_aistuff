@@ -56,6 +56,11 @@
                 + [7.1.1使用Explain分析](#7.1.1使用explain分析)
                 + [7.1.2优化数据访问](#7.1.2优化数据访问)
                 + [7.1.3重构查询方式](#7.1.3重构查询方式)
+        - [7.2视图](#7.2视图)
+        - [7.3几个写sql的好习惯](#7.3几个写sql的好习惯)
+                + [7.3.1sql性能优化](#7.3.1sql性能优化)
+                + [7.3.2sql后悔药](#7.3.2sql后悔药)
+                + [7.3.3sql规范](#7.3.3sql规范)
 * [8.面试](#8.面试)
         - [8.1char与varchar的区别](#8.1char与varchar的区别)
         - [8.2varchar10与int10的区别](#8.2varchar10与int10的区别)
@@ -622,6 +627,66 @@ select * from view_avg_score;
 
 # 删除视图
 drop view view_avg_score;
+```
+
+### 7.3几个写sql的好习惯
+
+#### 7.3.1sql性能优化
+
+1. 写完sql，用`explain`来检查一下是否走的索引
+2. 写完SQL语句，检查where,order by,group by后面的列，多表关联的列是否已加索引，优先考虑组合索引
+3. where后面的字段，留意其数据类型的隐式转换
+    - `select * from user where id=1`与`select * from id='1'`
+    - 因为不加单引号时，是字符串跟数字的比较，它们类型不匹配，MySQL会做隐式的类型转换，把它们转换为浮点数再做比较，最后导致索引失效
+4. 减少不必要的字段返回，如使用select <具体字段> 代替 select *
+5. 尽量使用varchar代替 char
+    - 因为首先变长字段存储空间小，可以节省存储空间。
+    - 其次对于查询来说，在一个相对较小的字段内搜索，效率更高。
+6.  WHERE从句中不对列进行函数转换和表达式计算,因为索引列上使用内置函数会使索引失效
+
+#### 7.3.2sql后悔药
+
+1. 操作delete或者update加个`limit`
+    - 降低写错sql的代价;
+    - sql的效率更高; 
+    - 避免长事务，因为当字段加了索引，mysql会将相关行锁住，如果delete的行过多的时候可能会导致业务不可用；
+    - 数据量大的时候，会讲cpu打满
+2. 变更SQL操作先在测试环境执行，写明详细的操作步骤以及回滚方案，并在上生产前review
+3. 修改或删除重要数据前，要先备份
+4. 修改或者删除SQL，先写WHERE查一下，确认后再补充 delete 或 update
+5. SQL修改数据，养成begin + commit 事务的习惯(`begin; update account set money=1000; commit;`)
+
+#### 7.3.3sql规范
+
+1. 设计表的时候，所有的表和字段都增加注释，便于后期的维护
+2. sql书写格式，关键字大小写一致，使用缩进
+3. insert语句表明对应的字段名称(`insert into Student(id, name, age) values('1', 'tony', '100')`)
+4. 设计数据库表的时候，加上三个字段：主键，create_time,update_time。
+5. 尽量把所有列定义为NOT NULL
+    - `NOT NULL列更节省空间`，NULL列需要一个额外字节作为判断是否为 NULL 的标志位。
+    - NULL列需要注意空指针问题，NULL列在计算和比较的时候，需要注意空指针问题。
+6. 所有表必须使用Innodb存储引擎(innodb不支持列存储，存储空间数据等)
+7. 数据库和表的字符集统一使用UTF8
+8. 如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释
+9. 索引命名要规范
+    - 主键索引名为 pk_字段名, primary_key
+    - 唯一索引名为 uk_索引名, unique_key
+    - 普通索引名则为 idx_字段, index
+10. 如果修改\更新数据过多，考虑批量进行(for each)
+    - 大批量操作会会造成主从延迟。
+    - 大批量操作会产生大事务，阻塞。
+    - 大批量操作，数据量过大，会把cpu打满。
+
+```sh
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键Id',
+  `name` varchar(255) DEFAULT NULL COMMENT '账户名',
+  `balance` int(11) DEFAULT NULL COMMENT '余额',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_name` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1570068 DEFAULT CHARSET=utf8 ROW_FORMAT=REDUNDANT COMMENT='账户表';
 ```
 
 ## 8.面试
