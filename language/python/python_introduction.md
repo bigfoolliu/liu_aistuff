@@ -5,6 +5,7 @@
 * [a.教程](#a.教程)
 * [1.python魔法方法](#1.python魔法方法)
 * [2.python内置函数](#2.python内置函数)
+* [3.模块](#3.模块)
 
 <!-- vim-markdown-toc -->
 
@@ -109,3 +110,9 @@
 | zip() | |
 | __import__() | |
 |exec | |
+
+## 3.模块
+
+- [知乎:关于python中的module你需要了解的](https://zhuanlan.zhihu.com/p/104518038?utm_source=ZHShareTargetIDMore)
+- [知乎:Python模块总结](https://zhuanlan.zhihu.com/p/174789603)
+

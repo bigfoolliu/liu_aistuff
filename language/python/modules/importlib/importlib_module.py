@@ -15,5 +15,14 @@ import sys
 import os
 
 
+# 将当前路径加入导入路径
+sys.path.append(os.path.abspath(__file__))
+print(sys.path)
+
+
+from package1.module_p1 import test_pkg1
+
+
 if __name__ == "__main__":
-    pass
+    test_pkg1()
+
