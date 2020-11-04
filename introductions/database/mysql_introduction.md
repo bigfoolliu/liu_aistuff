@@ -316,7 +316,7 @@ commit;
 
 ### 5.3分库分表
 
-- [csdn-如何进行分库分表](https://blog.csdn.net/wdcl2468/article/details/102911160)
+- [csdn:如何进行分库分表](https://blog.csdn.net/wdcl2468/article/details/102911160)
 
 ## 6.mysql相关命令
 
@@ -622,10 +622,10 @@ explain select * from table1;
 
 ```sh
 # 创建视图
-create view view_avg_score 
-as 
-    select id, round(avg(score), 1) as avgscore 
-    from student group by id;
+create view view_avg_score
+as
+        select id, round(avg(score), 1) as avg_score
+        from student group by id;
 
 # 使用视图
 select * from view_avg_score;
@@ -647,13 +647,13 @@ drop view view_avg_score;
 5. 尽量使用varchar代替 char
     - 因为首先变长字段存储空间小，可以节省存储空间。
     - 其次对于查询来说，在一个相对较小的字段内搜索，效率更高。
-6.  WHERE从句中不对列进行函数转换和表达式计算,因为索引列上使用内置函数会使索引失效
+6. WHERE从句中不对列进行函数转换和表达式计算,因为索引列上使用内置函数会使索引失效
 
 #### 7.3.2sql后悔药
 
 1. 操作delete或者update加个`limit`
     - 降低写错sql的代价;
-    - sql的效率更高; 
+    - sql的效率更高;
     - 避免长事务，因为当字段加了索引，mysql会将相关行锁住，如果delete的行过多的时候可能会导致业务不可用；
     - 数据量大的时候，会讲cpu打满
 2. 变更SQL操作先在测试环境执行，写明详细的操作步骤以及回滚方案，并在上生产前review
