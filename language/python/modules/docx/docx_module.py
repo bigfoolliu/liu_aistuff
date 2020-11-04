@@ -8,7 +8,7 @@ python-docx模块使用
 
 操作word文档: 
 官方文档: https://python-docx.readthedocs.io/en/latest/index.html
-知乎：https://zhuanlan.zhihu.com/p/61340025
+知乎：https://zhuanlan.zhihu.com/p/61340025,  https://zhuanlan.zhihu.com/p/258763983
 """
 
 import docx
