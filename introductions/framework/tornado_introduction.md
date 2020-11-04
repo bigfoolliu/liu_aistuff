@@ -5,6 +5,7 @@
 * [1.tornado介绍](#1.tornado介绍)
         - [1.1基础](#1.1基础)
         - [1.2特点](#1.2特点)
+        - [1.3tornado协程(coroutine)原理](#1.3tornado协程(coroutine)原理)
 * [2.常见函数和方法](#2.常见函数和方法)
 * [3.运行和部署的方式](#3.运行和部署的方式)
         - [3.1使用内置的HTTPServer](#3.1使用内置的httpserver)
@@ -58,6 +59,10 @@ if __name__ == "__main__":
     tornado.ioloop.IOLoop.current().start()
 ```
 
+### 1.3tornado协程(coroutine)原理
+
+- [csdn:tornado协程工作原理](https://blog.csdn.net/wyx819/article/details/45420017)
+
 ## 2.常见函数和方法
 
 ```python
@@ -101,3 +106,4 @@ http {
 2. tornado协程 + 生成器
 3. tornado协程 + Future
 4. 线程池，进程池
+
