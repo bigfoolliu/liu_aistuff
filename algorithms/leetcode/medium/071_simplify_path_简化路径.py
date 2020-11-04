@@ -52,7 +52,7 @@ class Solution:
     def simplifyPath(self, path):
         if not isinstance(path, str) or not len(path) > 0:
             raise ValueError
-        stack = []  # 存储一个个字符
+        stack = []  # 存储一个字符
 
         path = path.split('/')
         for i in path:

@@ -16,7 +16,7 @@
 * [3.进程相关](#3.进程相关)
         - [3.1基本进程信息(strace, lsof)](#3.1基本进程信息(strace,-lsof))
         - [3.2杀死进程的几种方式(kill, pkill)](#3.2杀死进程的几种方式(kill,-pkill))
-        - [3.3进程管理(supervisor)](#3.3进程管理(supervisor))
+        - [3.3进程管理(supervisor,systemctl)](#3.3进程管理(supervisor,systemctl))
 * [4.网络管理](#4.网络管理)
         - [4.1网络抓包(tcpdump)](#4.1网络抓包(tcpdump))
         - [4.2网络服务器(ifconfig, route)](#4.2网络服务器(ifconfig,-route))
@@ -30,6 +30,7 @@
         - [5.5ranger](#5.5ranger)
         - [5.6sed](#5.6sed)
         - [5.7pandoc](#5.7pandoc)
+        - [5.8ripgrep](#5.8ripgrep)
         - [5.x其他](#5.x其他)
 * [性能检测与优化](#性能检测与优化)
         - [ifstat](#ifstat)
@@ -316,9 +317,10 @@ pgrep firefox | xargs kill -s 9
 pkill -9 firefox
 ```
 
-### 3.3进程管理(supervisor)
+### 3.3进程管理(supervisor,systemctl)
 
 ```sh
+# supervisor使用
 # 重启服务
 service supervisor restart
 
@@ -343,6 +345,10 @@ supervisorctl restart adm
 
 # 重新启动配置中的所有程序
 supervisorctl reload
+
+
+# systemctl使用, https://www.cnblogs.com/zwcry/p/9602756.html
+systemctl --version
 ```
 
 ## 4.网络管理
@@ -553,6 +559,15 @@ todo:
 # markdown格式转换为html格式
 pandoc a.md -o a.html
 ```
+
+### 5.8ripgrep
+
+- grep的替代命令，效率更高，输出更友好
+
+```sh
+rg 'name'
+```
+
 
 ### 5.x其他
 
