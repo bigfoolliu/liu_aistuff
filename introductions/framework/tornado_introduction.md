@@ -6,6 +6,7 @@
         - [1.1基础](#1.1基础)
         - [1.2特点](#1.2特点)
         - [1.3tornado协程(coroutine)原理](#1.3tornado协程(coroutine)原理)
+        - [1.4tornado,flask,django的区别](#1.4tornado,flask,django的区别)
 * [2.常见函数和方法](#2.常见函数和方法)
 * [3.运行和部署的方式](#3.运行和部署的方式)
         - [3.1使用内置的HTTPServer](#3.1使用内置的httpserver)
@@ -63,6 +64,20 @@ if __name__ == "__main__":
 
 - [csdn:tornado协程工作原理](https://blog.csdn.net/wyx819/article/details/45420017)
 
+### 1.4tornado,flask,django的区别
+
+**底层io处理机制：**
+
+1. tornado，自带异步特性，底层io处理机制是`事件循环+协程`
+2. django, flask， 传统的模型，同步框架，阻塞io模型。api写同步代码，使用celery /apscheduler处理异步任务
+
+**性能对比：**
+
+1. 基本的json序列化：django和flask占优
+2. 处理远程http的请求的能力：tornado占有优势
+3. 数据库和模板处理性能：tornado和flask相当， Django ORM很慢,但开发效率与维护好，深度绑定了该框架，若换成其它轮子，意味着诸多优秀特性消失
+
+
 ## 2.常见函数和方法
 
 ```python
@@ -106,4 +121,3 @@ http {
 2. tornado协程 + 生成器
 3. tornado协程 + Future
 4. 线程池，进程池
-
