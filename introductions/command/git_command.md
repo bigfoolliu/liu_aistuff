@@ -275,6 +275,10 @@ git reset HEAD test.py
 git reset HEAD~1
 
 git reset --soft HEAD~1  # 将刚刚的提交撤回到暂存区
+git reset --soft HEAD^  # 将刚刚的提交撤回到暂存区
+
+git reset --soft HEAD~3  # 撤销最近的三次提交，HEAD, HEAD^ 和HEAD~2均被撤销
+
 git reset --hard <commit_id/版本号>  # 提交到本地仓库的代码想撤销
 
 # 撤销前一次commit
