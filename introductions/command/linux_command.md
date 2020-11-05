@@ -31,6 +31,7 @@
         - [5.6sed](#5.6sed)
         - [5.7pandoc](#5.7pandoc)
         - [5.8ripgrep](#5.8ripgrep)
+        - [5.9ncdu](#5.9ncdu)
         - [5.x其他](#5.x其他)
 * [性能检测与优化](#性能检测与优化)
         - [ifstat](#ifstat)
@@ -176,9 +177,6 @@ du -hs /data/ | sort -n
 
 # 查看目录下的文件夹占用空间情况
 du -h --max-depth=1 /data/
-
-# du的替代工具,更好的使用体验
-ncdu
 
 # 查看文件信息
 file test.py
@@ -568,6 +566,12 @@ pandoc a.md -o a.html
 rg 'name'
 ```
 
+### 5.9ncdu
+
+```sh
+# du的替代工具,更好的使用体验,可以用来分析磁盘使用空间
+ncdu
+```
 
 ### 5.x其他
 
