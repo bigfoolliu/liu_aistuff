@@ -467,7 +467,30 @@ docker-compose kill -s SIGINT  # 发送SIGKILL信号强制停止服务容器
 
 ### 5.2docker-compose.yml文件构建
 
-[参考资料](https://www.jianshu.com/p/658911a8cff3)
+- [参考资料](https://www.jianshu.com/p/658911a8cff3)
+- [掘金:docker compose入门指南](https://juejin.im/post/6886018425353682951)
+
+```yml
+ services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+
+  webapp:
+    build: .
+    container_name: webapp
+    restart: always
+    depends_on:
+      - 'mysql'
+    environment:
+      NODE_ENV: 'production'
+    ports:
+      - '80:8080'
+```
 
 ## 6.docker Machine介绍
 

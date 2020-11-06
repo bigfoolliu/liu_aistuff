@@ -69,14 +69,13 @@ if __name__ == "__main__":
 **底层io处理机制：**
 
 1. tornado，自带异步特性，底层io处理机制是`事件循环+协程`
-2. django, flask， 传统的模型，同步框架，阻塞io模型。api写同步代码，使用celery /apscheduler处理异步任务
+2. django, flask， 传统的模型，同步框架，阻塞io模型。api写同步代码，使用celery/APScheduler处理异步任务
 
 **性能对比：**
 
 1. 基本的json序列化：django和flask占优
 2. 处理远程http的请求的能力：tornado占有优势
 3. 数据库和模板处理性能：tornado和flask相当， Django ORM很慢,但开发效率与维护好，深度绑定了该框架，若换成其它轮子，意味着诸多优秀特性消失
-
 
 ## 2.常见函数和方法
 
