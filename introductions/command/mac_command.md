@@ -15,6 +15,7 @@
         - [3.6youtube-dl](#3.6youtube-dl)
         - [3.7uglifyjs](#3.7uglifyjs)
         - [3.8term2048](#3.8term2048)
+        - [3.9train-cli](#3.9train-cli)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -372,6 +373,27 @@ uglifyjs 1.js -b quote_style=1 -o 1b.js
 ```sh
 # 启动终端版2048
 term2048
+```
+
+### 3.9train-cli
+
+- 替换rm命令，将文件移动到垃圾箱中，安全
+
+```sh
+# 删除文件和目录（仅放入回收站中）
+trash-put
+
+# 列出被删除了的文件和目录
+trash-list
+
+# 从回收站中恢复文件或目录 trash.
+trash-restore
+
+# 删除回收站中的文件
+trash-rm
+
+# 清空回收站
+trash-empty
 ```
 
 ## 4.安装python环境

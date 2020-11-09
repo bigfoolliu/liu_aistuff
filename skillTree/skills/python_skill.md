@@ -13,6 +13,7 @@
 * [9.模块相关](#9.模块相关)
         - [9.1模块基本使用规则](#9.1模块基本使用规则)
         - [9.2模块以及缺失库导入](#9.2模块以及缺失库导入)
+        - [9.3web开发常用python库](#9.3web开发常用python库)
 * [10.利用规则](#10.利用规则)
 * [11.高效文件操作](#11.高效文件操作)
 * [12.写好面向对象](#12.写好面向对象)
@@ -228,6 +229,13 @@ deactivate  # 退出虚拟环境
 - [pip常用指令个人总结](https://blog.csdn.net/weixin_40877924/article/details/98658669)
 
 ```sh
+# pip管理工具安装时，默认使用的国外源，国内下载速度很慢，解决方法是更换成国内源
+#（1）阿里云 http://mirrors.aliyun.com/pypi/simple/
+# （2）豆瓣 http://pypi.douban.com/simple/
+# （3）清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+# （4）中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+# （5）华中科技大学 http://pypi.hustunique.com/
+
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <package>  # 使用清华源下载包
 python -m pip install --upgrade pip  # 更新pip
 
@@ -237,6 +245,8 @@ pip uninstall <package>  # 卸载包
 
 pip install -r requirements.txt  # 从文件中同时安装多个包
 pip freeze > requirements.txt  # 生成一个迁移文件
+
+pip --default-timeout=100 install numpy  # 当网络连接较差安装失败时设置超时时间
 ```
 
 ### 14.3fabric
