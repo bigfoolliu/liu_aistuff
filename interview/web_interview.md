@@ -295,3 +295,4 @@ upstream myserver {
 - QA验证环境
 - 模拟环境(staging)，用来给客户做演示，是生产环境的镜像
 - 生产环境(production)
+

@@ -229,7 +229,7 @@ def binary_search(array, target):
 
 ### 2.3二叉树相关算法
 
-[二叉树相关算法](../data_structure/binary_tree/basic_binary_tree.py)
+- [二叉树相关算法](../data_structure/binary_tree/basic_binary_tree.py)
 
 ## 3.面试常见问题
 
@@ -250,3 +250,4 @@ def binary_search(array, target):
 
 - 单下划线开头表示该方法不是API的一部分，不要直接访问
 - 双下划线开头表示子类不能重写该方法
+
