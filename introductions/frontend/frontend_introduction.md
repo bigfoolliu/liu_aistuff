@@ -2,16 +2,18 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [前端相关知识](#前端相关知识)
-  - [1.基础知识](#1基础知识)
-  - [2.前端流行的9大框架](#2前端流行的9大框架)
-    - [2.1Vue](#21vue)
-    - [2.2React](#22react)
-    - [2.3Angular](#23angular)
-  - [3.js包管理工具](#3js包管理工具)
-    - [3.1npm](#31npm)
-    - [3.2yarn](#32yarn)
-  - [其他](#其他)
+* [1.基础知识](#1.基础知识)
+        - [1.1web标准](#1.1web标准)
+        - [1.2浏览器](#1.2浏览器)
+* [2.前端流行的9大框架](#2.前端流行的9大框架)
+        - [2.1Vue](#2.1vue)
+        - [2.2React](#2.2react)
+        - [2.3Angular](#2.3angular)
+* [3.js包管理工具](#3.js包管理工具)
+        - [3.1npm](#3.1npm)
+        - [3.2yarn](#3.2yarn)
+        - [3.3nvm](#3.3nvm)
+* [其他](#其他)
 
 <!-- vim-markdown-toc -->
 
@@ -99,6 +101,20 @@ yarn remove <package>  # 删除依赖，会修改package,json和yarn.lock
 
 # 3.安装依赖
 yarn install  # 安装所有的依赖
+```
+
+### 3.3nvm
+
+- `Node Version Manager`,管理不同版本node的工具
+- 类似于pyenv
+
+```sh
+nvm ls  # 查看已经安装版本的node
+
+nvm install 4.2.2  # 安装指定版本的node
+
+nvm use 4.2.2  # 切换不同的版本
+nvm use node  # 切换使用最新版本
 ```
 
 ## 其他
