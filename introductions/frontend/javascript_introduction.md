@@ -58,6 +58,8 @@
 * [13.js其他](#13.js其他)
         - [13.1js动画](#13.1js动画)
         - [13.2client（可视区）属性](#13.2client（可视区）属性)
+        - [13.3事件和event对象](#13.3事件和event对象)
+        - [13.4事件委托](#13.4事件委托)
 
 <!-- vim-markdown-toc -->
 
@@ -352,7 +354,7 @@ let b = false;
 
 ### 2.5对象
 
-***对象类别:**
+***对象类别:***
 
 - `内置对象`，ES标准的，Object、Math、Date、String、Array、Number、Boolean、Function等
 - `宿主对象`，JS的运行环境提供的对象，目前来讲主要指由浏览器提供的对象；BOM DOM，比如console、document
@@ -898,6 +900,8 @@ window.print();  // 打印当前窗口的内容
 window.stop();  // 停止页面载入
 
 window.close();  // 关闭浏览器窗口
+
+window.onblur();  // 当失去对在窗口失焦时候
 ```
 
 ### 9.2screen对象
