@@ -31,3 +31,4 @@ clf = pickle.loads(s)
 
 pre_digit = clf.predict(digits["data"][-1:])
 print("pre_digit: ", pre_digit)
+
