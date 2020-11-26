@@ -10,6 +10,9 @@ dict对象的存储结构采用的是散列表(hash表)，其在最优情况下�
 """
 
 
+import random
+
+
 def inner_func_demo():
     """
     字典内置函数示例
@@ -40,6 +43,12 @@ def inner_func_demo():
 
     # 删除字典的所有键值对
     print(a.clear(), a)
+
+    # 字典解析式以及过滤
+    d = {k: random.randint(60, 100) for k in range(10)}
+    print(d)
+    d = {k: v for k, v in d.items() if v >= 90}
+    print(d)
 
 
 if __name__ == "__main__":
