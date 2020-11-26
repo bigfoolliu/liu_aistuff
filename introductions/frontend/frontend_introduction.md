@@ -9,10 +9,11 @@
         - [2.1Vue](#2.1vue)
         - [2.2React](#2.2react)
         - [2.3Angular](#2.3angular)
-* [3.js包管理工具](#3.js包管理工具)
+* [3.相关工具](#3.相关工具)
         - [3.1npm](#3.1npm)
         - [3.2yarn](#3.2yarn)
         - [3.3nvm](#3.3nvm)
+        - [3.4webpack](#3.4webpack)
 * [其他](#其他)
 
 <!-- vim-markdown-toc -->
@@ -53,11 +54,11 @@
 - 自动化双向数据绑定
 - 语义化标签
 
-## 3.js包管理工具
+## 3.相关工具
 
 ### 3.1npm
 
-预处理：
+- js包管理工具
 
 ```sh
 npm config get registry  # 获取当前npm的版本
@@ -66,13 +67,12 @@ npm install -g npm  # 更新npm
 # 安装源切换
 npm config set registry=https://registry.npm.taobao.org  # 切换为淘宝源
 npm config set registry=http://registry.npmjs.org  # 切换为官方源
-```
 
-使用：
 
-```sh
-npm init  # 初始化
-npm install module_name -S  # 安装具体的模块
+npm init  # 初始化,生成package.json
+npm install module_name -S  # 安装具体的模块, 生成node-modules文件夹
+
+npm i webpack vue vue-loader  # 安装包示例
 ```
 
 ### 3.2yarn
@@ -115,6 +115,68 @@ nvm install 4.2.2  # 安装指定版本的node
 
 nvm use 4.2.2  # 切换不同的版本
 nvm use node  # 切换使用最新版本
+```
+
+### 3.4webpack
+
+- [官网](https://www.webpackjs.com/)
+- 静态模块打包器
+
+```javascript
+// webpack.config.js
+// 该配置将输入index.js打包到指定文件夹dist
+
+const path = require('path');  // 表明使用绝对路径
+
+const config = {
+    entry: path.join(__dirname, 'src/index.js'),  // 入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始,__dirname表示当前文件的路径
+    output: {
+        filename: 'bundle.js',
+        path: path.join(__dirname, 'dist')
+    }, // output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,  // test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件,此处指所有的.vue文件
+                loader: 'vue-loader'  // use 属性，表示进行转换时，应该使用哪个 loader
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',  // css
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(gif|jpg|png)$/
+                user: [
+                    {
+                        loader: 'url-loader',  // 将图片加载为base64格式，可以减少http请求
+                        options: {
+                            limit: 1024,
+                            name: '[name].[ext]'  // 输出的图片的文件名为原始名+原始文件名的扩展名
+                        }
+                    }
+                ]
+            }
+        ]
+    },  // loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）
+    plugins: [
+        new HtmlWebpackPlugin({template: './src/index.html'})
+    ]  // 插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量
+}
+
+module.exports = config;
+```
+
+在package.json中配置使用该webpack配置:
+
+```json
+{
+    "scripts": [
+        "build": "webpack --config webpack.config.js"
+    ]
+}
 ```
 
 ## 其他
