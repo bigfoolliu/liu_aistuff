@@ -93,15 +93,44 @@ class Solution:
             is_mail = True
 
         if is_mail:
-            pass
-
+            # @分割为两部分
+            _mails = S.split('@')
+            _front = str(_mails[0][0].lower()) + '*****' + str(_mails[0][-1].lower())
+            _end = ''
+            for _x in _mails[1]:
+                if _x.isalnum():
+                    _x = _x.lower()
+                _end += _x
+            ret = _front + '@' + _end
+        else:
+            _nums = [x for x in S if x.isalnum()]
+            if len(_nums) == 10:
+                ret = '***-***-' + ''.join(_nums[-4:])
+            else:
+                ret = '+**-***-***-' + ''.join(_nums[-4:])
         return ret
 
 
 class TestDemo(unittest.TestCase):
 
+    def setUp(self) -> None:
+        self.solution = Solution().maskPII
+
     def test1(self):
-        pass
+        _s = 'LeetCode@LeetCode.com'
+        self.assertEqual('l*****e@leetcode.com', self.solution(S=_s), msg='success failed')
+
+    def test2(self):
+        _s = 'AB@qq.com'
+        self.assertEqual('a*****b@qq.com', self.solution(S=_s))
+
+    def test3(self):
+        _s = '1(234)567-890'
+        self.assertEqual('***-***-7890', self.solution(S=_s))
+
+    def test4(self):
+        _s = '86-(10)12345678'
+        self.assertEqual('+**-***-***-5678', self.solution(S=_s))
 
 
 if __name__ == '__main__':
