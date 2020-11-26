@@ -107,7 +107,7 @@ class Solution:
             if len(_nums) == 10:
                 ret = '***-***-' + ''.join(_nums[-4:])
             else:
-                ret = '+**-***-***-' + ''.join(_nums[-4:])
+                ret = '+' + ('*' * (len(_nums) - 10)) + '-***-***-' + ''.join(_nums[-4:])
         return ret
 
 
