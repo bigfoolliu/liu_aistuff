@@ -585,6 +585,9 @@ tail -f /dev/null
 # 对命令的一些命令操作
 type ls  # 说明怎么样解释命令ls,即显示命令的类别
 man ls  # 显示ls的手册页面
+
+man -k terminal  # 不知道命令的时候搜索相关的命令
+
 which ls  # 显示会执行哪一个可执行程序, 可执行程序的位置
 apropos ls  # 显示ls一系列的适合的命令
 info ls  # 显示ls的命令,类似于man
