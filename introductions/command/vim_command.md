@@ -26,6 +26,10 @@
         - [4.2NERDTree](#4.2nerdtree)
         - [4.3vim-markdown](#4.3vim-markdown)
         - [4.4vim-markdown-toc](#4.4vim-markdown-toc)
+* [5.介绍](#5.介绍)
+        - [5.1模式](#5.1模式)
+        - [5.2按键映射](#5.2按键映射)
+        - [5.3寄存器](#5.3寄存器)
 
 <!-- vim-markdown-toc -->
 
@@ -377,3 +381,29 @@ let g:vmt_auto_update_on_save = 0
 # 适用于使用 Redcarpet 作为 Markdown 引擎的 Jekyll 项目或其它地方。
 :GenTocRedcarpet
 ```
+
+## 5.介绍
+
+### 5.1模式
+
+- 插入模式,insert
+- 命令模式,command-line
+- 可视模式,visual
+- 普通模式,normal
+
+### 5.2按键映射
+
+- 除非递归映射是必须的，否则配置都是使用非递归
+- `:map` 和`:noremap`, 前者递归，后者不递归，使用模式:`normal, visual, operator-pending`
+- `:nmap` 和`:nnoremap`, 前者递归，后者不递归，使用模式: `normal`
+- `:xmap` 和`:xnoremap`, 前者递归，后者不递归，使用模式: `visual`
+- `:cmap` 和`:cnoremap`, 前者递归，后者不递归，使用模式: `command-line`
+- `:omap` 和`:onoremap`, 前者递归，后者不递归，使用模式: `operator-pending`
+- `:imap` 和`:inoremap`, 前者递归，后者不递归，使用模式: `insert`
+
+### 5.3寄存器
+
+存储文本的地方，复制粘贴就是在寄存中存和取文本。
+
+- 使用命令`:register`或者`:reg`查看当前所有寄存器中的内容
+- 
