@@ -417,4 +417,4 @@ let g:vmt_auto_update_on_save = 0
 存储文本的地方，复制粘贴就是在寄存中存和取文本。
 
 - 使用命令`:register`或者`:reg`查看当前所有寄存器中的内容
-- 
+
