@@ -14,6 +14,7 @@
         - [3.2yarn](#3.2yarn)
         - [3.3nvm](#3.3nvm)
         - [3.4webpack](#3.4webpack)
+* [4.前端工程化](#4.前端工程化)
 * [其他](#其他)
 
 <!-- vim-markdown-toc -->
@@ -178,6 +179,10 @@ module.exports = config;
     ]
 }
 ```
+
+## 4.前端工程化
+
+
 
 ## 其他
 
