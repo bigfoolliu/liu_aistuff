@@ -79,9 +79,15 @@
 
 ## 1.介绍
 
+### 1.1基本知识
+
 - [mysql详细教程](http://c.biancheng.net/view/2409.html)
 - [本地mysql读书笔记](../../books/mysql必知必会/mysql_known.md)
 - [github中mysql知识点](https://github.com/DavidWhom/CS-Notes-Learning/blob/master/notes/MySQL.md)
+
+### 1.2使用场景
+
+可以嵌入到应用程序中，可以支持: `数据仓库`，`内容索引`和`部署软件`,`高可用的冗余系统`，`在线事务处理系统`等。
 
 ## 2.索引
 
