@@ -3,6 +3,7 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.介绍](#1.介绍)
+        - [1.1基本知识](#1.1基本知识)
 * [2.索引](#2.索引)
         - [2.1索引类型](#2.1索引类型)
                 + [2.1.1B+树索引](#2.1.1b+树索引)
@@ -251,7 +252,7 @@ commit;
 3. `可重复读`，`Innodb默认级别`，解决了不可重复的的问题，但是可能会产生`幻读`问题，[mysql可重复读现象已经原理](https://www.2cto.com/database/201807/763885.html)
 4. `可串行化`，最高的隔离级别，较少使用，强制将所有的操作串行化，导致并发性能下降
 
-### 3.4 MVCC
+### 3.4 MVCC(多版本并发控制)
 
 - 相对于锁的另一种控制并发的方式，核心思想是为每一条数据加两个版本号:`数据的删除版本号`和`数据的当前版本号`
 
@@ -282,7 +283,7 @@ commit;
 
 **特点：**
 
-- 默认的事务性存储引擎
+- mysql默认的事务性存储引擎
 - 实现了四个标准的隔离级别：[mysql innodb四个事务隔离级别](https://blog.csdn.net/wangzhiguo9261/article/details/80999492)
   - 可重复读(默认)
   - 提交读
@@ -423,6 +424,7 @@ create table tab1(id int(5), name char(10));
 show tables;
 show create table tab1;  # 查看创建表的过程
 desc tab1;  # 清晰的查看表的结构
+show table status like 'tab1';  # 查看表的信息，包括存储引擎，版本，行数，占用大小，更新时间等
 
 # 显示表列
 show columns from tab1;
