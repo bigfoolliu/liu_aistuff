@@ -196,15 +196,19 @@ find . -size +10M -type f -print  # 查找文件大小超过 10（b/c/w/k/M/G）
 find . -path ./test -prune -o -print  # 查找文件的时候避开当前目录下的test文件夹
 
 # 统计当前路径下所有.py文件的个数
-find ./ -name "*.py" | wc -l
-find ./ -name "*.py" | wc -l
+find . -name "*.py" | wc -l
+find . -name "*.py" | wc -l
 
 # 统计当前路径下所有.py文件各自的行数
-find ./ -name "*.py" | xargs wc -l
-find ./ -name "*.py" | xargs wc -l
+find . -name "*.py" | xargs wc -l
+find . -name "*.py" | xargs wc -l
 
 # 查找文件并用file查看详细信息
-find ./ -name "core*" | xargs file
+find . -name "core*" | xargs file
+
+
+# 使用正则表达式查找,注意不同版本的find命令有所差异,对于mac版本，需要对文明名称的全匹配
+find . -regex '.*vim.*' -type f  # 查找文件名称带有vim
 
 # 更快的搜索
 ag <something>
