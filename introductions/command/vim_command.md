@@ -1,6 +1,6 @@
 # vim快捷键
 
-<!-- vim-markdown-toc Marked -->
+<!-- vim-markdown-toc marked -->
 
 * [1.基础命令](#1.基础命令)
         - [1.1替换](#1.1替换)
@@ -14,6 +14,7 @@
         - [1.9寄存器](#1.9寄存器)
         - [1.10窗口操作](#1.10窗口操作)
         - [1.11标注](#1.11标注)
+        - [1.12重复](#1.12重复)
         - [1.x其他](#1.x其他)
 * [2.vimrc相关配置](#2.vimrc相关配置)
 * [3.高级操作](#3.高级操作)
@@ -25,13 +26,14 @@
         - [3.6定位技巧](#3.6定位技巧)
 * [4.vim插件使用](#4.vim插件使用)
         - [4.1vundle](#4.1vundle)
-        - [4.2NERDTree](#4.2nerdtree)
+        - [4.2nerdtree](#4.2nerdtree)
         - [4.3vim-markdown](#4.3vim-markdown)
         - [4.4vim-markdown-toc](#4.4vim-markdown-toc)
 * [5.介绍](#5.介绍)
         - [5.1模式](#5.1模式)
         - [5.2按键映射](#5.2按键映射)
         - [5.3寄存器](#5.3寄存器)
+        - [5.4可视模式](#5.4可视模式)
 
 <!-- vim-markdown-toc -->
 
@@ -45,7 +47,7 @@
 :help  # 进入帮助
 
 a  # 在光标后插入字符
-A  # 在行尾插入字符
+a  # 在行尾插入字符
 
 o  # 在当前行之后插入新的空行
 v  # 进入visual模式,可以使用j, k, l来移动光标确定选择的内容
@@ -68,7 +70,7 @@ ctrl + y  # 向上翻滚一行
 
 10k  # 快速跳转到相对当前行为10行的前面第10行
 
-viw  # 快速选中当前光标处的单词
+viw  # 快速选中并高亮当前光标处的单词
 
 vim scp://cirdan@192.168.225.22/info.txt  # 编辑远程的文件
 ```
@@ -76,21 +78,26 @@ vim scp://cirdan@192.168.225.22/info.txt  # 编辑远程的文件
 ### 1.1替换
 
 ```sh
-:%s/A/B/g  # 全文中将所有的A替换为B
-:%s/A/B/gc  # 回车后会将光标移动到每一次A出现的位置并提示
-:%s/A/B  # 只替换从光标位置开始目标的第一次
+:%s/a/b/g  # 全文中将所有的a替换为b
+:%s/a/b/gc  # 回车后会将光标移动到每一次a出现的位置并提示
+:%s/a/b  # 只替换从光标位置开始目标的第一次
 
-:s/A/B/g  # 本行中将所有A替换为B
-:.,+5s/A/B  # 替换本行到下面第五行的A为B
+:s/a/b/g  # 本行中将所有a替换为b
+:.,+5s/a/b  # 替换本行到下面第五行的a为b
 ```
 
 ### 1.2查找
 
 ```sh
-/text  # 查找text,按n键查找下一个,按Ｎ查找前一个,shift+n到上一个
+/text  # 查找text,按n键查找下一个,按ｎ查找前一个,shift+n到上一个
 
 # vim默认使用正则表达式查找
 /^a  # 查找以a开头的字符
+
+
+*  # 查找当前光标下的单词
+# 其中一个修改组合技巧，先查找当前光标下的单词，然后替换内容，跳到下一个单词，重复,可以快速替换多个单词
+* cw<esc> n .
 ```
 
 ### 1.3复制,删除,剪切和粘贴
@@ -98,7 +105,7 @@ vim scp://cirdan@192.168.225.22/info.txt  # 编辑远程的文件
 ```sh
 2yy  # 拷贝当前后开始的2行
 yy  # 拷贝当前行
-ZZ  # 保存并退出,注意是大写
+zz  # 保存并退出,注意是大写
 
 :1, 10 copy 20  # 将1-10行的内容复制到20行
 :1, 10 move 20  # 将1-10行的内容剪切到20行
@@ -109,10 +116,10 @@ y$  # 复制到行尾,包含光标所在字符
 dd  # 剪切当前行
 10d  # 剪切当前开始的10行
 
-shift + d(D)  # 删除光标后整行内容
+shift + d(d)  # 删除光标后整行内容
 
 d0  # 删除到行首
-D  # 删除到行尾
+d  # 删除到行尾
 d$  # 删除到行尾
 
 d5k  # 删除当前行到上面5行
@@ -121,13 +128,22 @@ d5j  # 删除当前行到下面5行
 dw  # 删除当前光标之后的一个单词
 2dw  # 删除当前光标之后的2个单词
 
-P  # 光标前粘贴
+dl  # 删除一个字符
+daw  # delete a word，删除一个文本对象，比如当前光标下的单词
+dap  # delete a paragraph，删除一个段落
+
+p  # 光标前粘贴
 p  # 光标后面粘贴
 
 x  # 删除光标之后的单个字符
-X  # 删除光标之前的单个字符
+x  # 删除光标之前的单个字符
 3x  # 剪切光标后面3个字符
-3X  # 剪切光标前面3个字符
+3x  # 剪切光标前面3个字符
+
+
+# 插入模式下
+ctrl + w  # 删除删除前一个单词
+ctrl + u  # 删除至行首
 ```
 
 ### 1.4跳转,移动
@@ -136,7 +152,7 @@ X  # 删除光标之前的单个字符
 :number  # 跳转到指定的行
 
 gg  # 快速跳转至文件开头
-G  # 快速跳转至文件末尾
+g  # 快速跳转至文件末尾
 
 w  # 跳到下一个单词的开头
 3w  # 跳到下3个单词的开头
@@ -158,6 +174,8 @@ vg_  # 选中到当前行的最后一个字符,不包括换行符
 ^  # 跳到当前行的第一个字符
 
 fa  # 单字符查找,跳到这行a字母的下一个出现的地方
+;  # 可以重复查找f命令所查找的命令
+
 t,  # 跳到,字符的前一个字符
 
 5k  # 相对行号跳转到向上第5行
@@ -196,15 +214,15 @@ tab  # 设置代码段之后可以展示
 ```sh
 # 插入
 i  # 在当前光标的前面开始插入
-I # 在当前行的第一个非空字符前插入
+i # 在当前行的第一个非空字符前插入
 
-gI  # 在当前行的第一列插入
+gi  # 在当前行的第一列插入
 
-A  # 在行尾插入
+a  # 在行尾插入
 a  # 在光标后插入
 
 o  # 在下面新建一行插入
-O  # 在上面新建一行插入
+o  # 在上面新建一行插入
 
 
 # 修改
@@ -231,10 +249,10 @@ xp  # 前后两个字符的位置反了使用，将光标放在前一个字符�
 ### 1.10窗口操作
 
 ```sh
-:sp[lit]  # 水平分割一个新窗口
-:split a.txt  # 在水平的新窗口中打开一个文件
+:sp[lit]  # 水平分割一个新窗口.
+:split a.txt  # 在水平的新窗口中打开一个文件.
 
-:vs[plit]  # 垂直分割一个新窗口
+:vs[plit]  # 垂直分割一个新窗口.
 :vsplit a.txt  # 在垂直的新窗口中打开一个文件
 
 
@@ -250,12 +268,24 @@ m + 任意字符  # 给当前为位置标注
 `m  # 跳转到刚才标注的行
 ```
 
+### 1.12重复
+
+```sh
+# 比如在每一行的行尾加一个m字符，可以执行 $am, 然后到下一行直接运行 .
+.  # 重复执行上一步的修改，可以减少重复操作
+
+
+```
+
 ### 1.x其他
 
 ```sh
 :noh  # 取消选中的高亮
 
 g ctrl + g  # 统计文件中的字符个数
+
+
+>  # 对当前行缩进，单行或者多行
 ```
 
 ## 2.vimrc相关配置
@@ -289,7 +319,7 @@ vim -b hello.o  # 以二进制的格式打开文件
 ```text
 1. ctrl+v 进入可视块模式
 2. j/k上下选择
-3. I进入插入模式编辑
+3. i进入插入模式编辑
 4. 退出编辑模式即可看到多行编辑效果
 5. 多行删除则选中待删除的内容，然后d
 ```
@@ -305,7 +335,7 @@ vim -b hello.o  # 以二进制的格式打开文件
 ```sh
 # 直接分屏打开多个文件
 vim -on [file1] [file2]  # 水平分屏打开
-vim -On [file1] [file2]  # 垂直分屏打开
+vim -on [file1] [file2]  # 垂直分屏打开
 
 # 在已经打开一个文件的情况下分屏
 :new  # 打开一个空的窗口
@@ -335,25 +365,25 @@ $  # 移动到行尾
 ### 4.1vundle
 
 - vim插件管理器，不能并行处理
-- [github地址](https://github.com/VundleVim/Vundle.vim)
+- [github地址](https://github.com/vundlevim/vundle.vim)
 
 ```sh
 # 安装
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/vundlevim/vundle.vim.git ~/.vim/bundle/vundle.vim
 
 # 将配置文件放到.vimrc
 
 # 常用命令
 
-:PluginList       - 查看已经安装的插件
-:PluginInstall    - 安装插件
-:PluginUpdate     - 更新插件
-:PluginSearch     - 搜索插件，例如 :PluginSearch xml就能搜到xml相关的插件
-:PluginClean      - 删除插件，把安装插件对应行删除，然后执行这个命令即可
+:pluginlist       - 查看已经安装的插件
+:plugininstall    - 安装插件
+:pluginupdate     - 更新插件
+:pluginsearch     - 搜索插件，例如 :pluginsearch xml就能搜到xml相关的插件
+:pluginclean      - 删除插件，把安装插件对应行删除，然后执行这个命令即可
 h: vundle         - 获取帮助
 ```
 
-### 4.2NERDTree
+### 4.2nerdtree
 
 - 目录管理器
 - [github地址](https://github.com/preservim/nerdtree)
@@ -373,12 +403,12 @@ ctrl + w + r
 ctrl + p
 
 # 切换到前一个tab
-g T
+g t
 
 # 切换到后一个tab
 g t
 
-# 将光标所处的目录设置为家目录，进入其他目录之后，CD直接跳转回来
+# 将光标所处的目录设置为家目录，进入其他目录之后，cd直接跳转回来
 cd
 ```
 
@@ -396,35 +426,35 @@ cd
 ]c "跳转到当前标题
 ]u "跳转到副标题
 zr "打开下一级折叠
-zR "打开所有折叠
+zr "打开所有折叠
 zm "折叠当前段落
-zM "折叠所有段落
-:Toc "显示目录
+zm "折叠所有段落
+:toc "显示目录
 ```
 
 ### 4.4vim-markdown-toc
 
 - [github地址](https://github.com/mzlogin/vim-markdown-toc)
 - 生成markdown文件的toc
-- [为markdown生成Toc的插件](https://mazhuang.org/2015/12/19/vim-markdown-toc/)
+- [为markdown生成toc的插件](https://mazhuang.org/2015/12/19/vim-markdown-toc/)
 
 ```sh
 # 在当前光标后生成目录
-:GenTocMarked
+:gentocmarked
 
 # 更新目录
-:UpdateToc
+:updatetoc
 
 # 取消储存时自动更新目录
 let g:vmt_auto_update_on_save = 0
 
-# 生成 GFM 链接风格的 Table of Contents。
-# 适用于 GitHub 仓库里的 Markdown 文件，比如 README.md，也适用用于生成 GitBook 的 Markdown 文件。
-:GenTocGFM
+# 生成 gfm 链接风格的 table of contents。
+# 适用于 github 仓库里的 markdown 文件，比如 readme.md，也适用用于生成 gitbook 的 markdown 文件。
+:gentocgfm
 
-# 生成 Redcarpet 链接风格的 Table of Contents。
-# 适用于使用 Redcarpet 作为 Markdown 引擎的 Jekyll 项目或其它地方。
-:GenTocRedcarpet
+# 生成 redcarpet 链接风格的 table of contents。
+# 适用于使用 redcarpet 作为 markdown 引擎的 jekyll 项目或其它地方。
+:gentocredcarpet
 ```
 
 ## 5.介绍
@@ -452,3 +482,19 @@ let g:vmt_auto_update_on_save = 0
 
 - 使用命令`:register`或者`:reg`查看当前所有寄存器中的内容
 
+### 5.4可视模式
+
+```sh
+# 三种不同的可视模式
+v  # 进入面向字符的可视模式
+
+V  # 进入面向行的可视模式,直接选中整行
+
+ctrl + v  # 进入面向块的可视模式
+
+gv  # 重选上次的高亮区域
+
+
+o  # 在可视模式下，可以切换高亮选区的活动端，即开始端选错了不用退出重新选
+
+```
