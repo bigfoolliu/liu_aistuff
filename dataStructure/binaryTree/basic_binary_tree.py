@@ -29,8 +29,7 @@ def display_tree_wild(root):
     """展示二叉树,广度优先,又叫层次遍历"""
     if root is None:
         return
-    queue = []
-    queue.append(root)
+    queue = [root]
     while queue:
         cur = queue.pop(0)
         print(cur.data)
