@@ -4,6 +4,8 @@
 
 * [1.介绍](#1.介绍)
         - [1.1基本知识](#1.1基本知识)
+        - [1.2数据类型](#1.2数据类型)
+                + [1.2.1json](#1.2.1json)
 * [2.索引](#2.索引)
         - [2.1索引类型](#2.1索引类型)
                 + [2.1.1B+树索引](#2.1.1b+树索引)
@@ -87,6 +89,17 @@
 - [github中mysql知识点](https://github.com/DavidWhom/CS-Notes-Learning/blob/master/notes/MySQL.md)
 - 可以嵌入到应用程序中，可以支持: `数据仓库`，`内容索引`和`部署软件`,`高可用的冗余系统`，`在线事务处理系统`等。
 - 最大的特性是其`存储引擎架构`，将查询处理和其他系统任务以及数据的存储/提取相分离
+
+### 1.2数据类型
+
+#### 1.2.1json
+
+- [json数据类型查询](https://www.cnblogs.com/sxdcgaq8080/p/10876745.html)
+
+```sh
+# scores是json格式的查询
+select * from user where JSON_CONTAINS(scores, '[4, 3]');  # scores同时包含4和3的
+```
 
 ## 2.索引
 
@@ -459,9 +472,11 @@ select name, age from tab1 order by age desc;  # 按年龄降序排序
 
 # 插入数据:
 insert into tab1 values(1, 'tom');  # 向所有字段插入一条数据,需要一一对应
-insert into tab1(id) values(2);  # 向指定单个字段插入一条数据
 insert into tab1(name,id) values('jim',2);  # 向指定多个字段插入数据,需要一一对应
 insert into tab1(id,name) values(3,'mary'),(4,'tony'),(5,'sam');  # 向指定字段插入多条数据
+
+insert into tab1(id) values(2);  # 向指定单个字段插入一条数据, 推荐
+
 
 # 修改数据:
 update tab1 set id=5;  # 将字段中所有的值更改
