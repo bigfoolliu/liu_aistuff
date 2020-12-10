@@ -26,6 +26,7 @@
         - [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
         - [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
         - [2.3提交之后因为大文件而push失败](#2.3提交之后因为大文件而push失败)
+        - [2.4提交错误且已经push到远程](#2.4提交错误且已经push到远程)
 * [3.gitignore文件](#3.gitignore文件)
         - [3.1介绍](#3.1介绍)
         - [3.2格式规范](#3.2格式规范)
@@ -529,6 +530,21 @@ git reset --hard `commit_id`
 git push origin HEAD --force
 # 删除缓存
 git rm -r --cached .
+```
+
+### 2.4提交错误且已经push到远程
+
+```sh
+# 1.本地撤销到指定版本
+git reset --soft <commit_id>
+
+# 2.取消对所有文件的头指针指向
+git reset --HEAD ./
+
+# 3.重新提交xxx
+
+# 4.重新推送到远程,必须要-f
+git push -f
 ```
 
 ## 3.gitignore文件
