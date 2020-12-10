@@ -85,6 +85,9 @@ npm init  # 初始化,生成package.json
 npm install module_name -S  # 安装具体的模块, 生成node-modules文件夹
 
 npm i webpack vue vue-loader  # 安装包示例
+
+
+npm root -g  # 查看全局安装目录,即全局安装的node_moudles的目录
 ```
 
 ### 3.2yarn
@@ -118,12 +121,13 @@ yarn install  # 安装所有的依赖
 ### 3.3nvm
 
 - `Node Version Manager`,管理不同版本node的工具
-- 类似于pyenv
+- 类似于pyenv,安装使用见: [nvm github地址](https://github.com/nvm-sh/nvm)
 
 ```sh
 nvm ls  # 查看已经安装版本的node
 
 nvm install 4.2.2  # 安装指定版本的node
+nvm install node  # 直接安装最新版本的node
 
 nvm use 4.2.2  # 切换不同的版本
 nvm use node  # 切换使用最新版本
