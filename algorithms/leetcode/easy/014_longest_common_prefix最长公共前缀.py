@@ -40,7 +40,19 @@ def longest_common_prefix(strs):
     return prefix
 
 
+def longest_common_prefix2(strs):
+    """
+    :param: List(str)
+    return: str
+    寻找字符串的最长公共段2
+    """
+    pass
+ 
+
 if __name__ == "__main__":
-    print(longest_common_prefix(["flower", "flow", "flight"]))
-    print(longest_common_prefix(["alower", "flow", "flight"]))
-    print(longest_common_prefix(["flower", "flow", "floight"]))
+    assert longest_common_prefix(["flower", "flow", "flight"]) == 'fl'
+    assert longest_common_prefix(["alower", "flow", "flight"]) == ''
+    assert longest_common_prefix(["flower", "flow", "floight"]) == 'flo'
+
+    print('pass')
+
