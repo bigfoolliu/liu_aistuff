@@ -31,13 +31,14 @@
 
 import os
 from celery import Celery
+import time
 
 
 # 指定celery实例的名称和broker,backend用来指定存储结果
-celery_app = Celery("celery_demo", broker="redis://127.0.0.1:6379/14", backend="redis://127.0.0.1:6379/13")
+app = Celery("celery_demo", broker="redis://127.0.0.1:6379/14", backend="redis://127.0.0.1:6379/13")
 
 
-@celery_app.task
+@app.task
 def celery_task_add(x, y):
     """
     定义一个耗时的celery任务
@@ -50,5 +51,9 @@ def celery_task_add(x, y):
     return str(x+y)
 
 
-if __name__ == "__main__":
-    pass
+if __name__ == '__main__':
+    # app.start()
+    # celery_task_add.delay(1, 2)
+
+    app.worker_main()
+

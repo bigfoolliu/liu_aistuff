@@ -13,14 +13,17 @@
         - [1.8Producer(生产者)](#1.8producer(生产者))
         - [1.9Consumer(消费者)](#1.9consumer(消费者))
 * [2.安装使用](#2.安装使用)
-* [3.命令](#3.命令)
+        - [2.1window安装](#2.1window安装)
+        - [ubuntu安装](#ubuntu安装)
+        - [2.3Macos安装](#2.3macos安装)
+* [3.rabbitmq命令](#3.rabbitmq命令)
 * [4.工作模式](#4.工作模式)
 
 <!-- vim-markdown-toc -->
 
 ## 1.RabbitMq基础概念
 
-- 主要思想非常简单:它接受并转发消息,基于AMQP协议实现
+- 主要思想非常简单:它`接受并转发消息`，基于AMQP协议实现
 - [介绍](http://www.belonk.com/c/rabbitmq_intro_helloworld.html)
 - [官网](https://www.rabbitmq.com/)
 - [博客园:python操作rabbitmq]https://www.cnblogs.com/shenh/p/10497244.html()
@@ -81,9 +84,11 @@
 
 ## 2.安装使用
 
+### 2.1window安装
+
 - [Windows下RabbitMQ的安装和配置](https://blog.csdn.net/zhm3023/article/details/82217222)
 
-**ubuntu安装RabbitMq:**
+### ubuntu安装
 
 ```sh
 # 需要erlang环境
@@ -98,10 +103,6 @@ wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-ke
 sudo apt-get update
 sudo apt-get install rabbitmq-server  # 安装成功自动启动
 
-# 查看rabbitmq的状态
-systemctl status rabbitmq-server
-service rabbitmq-server status
-
 # 启动或者终止rabbitmq
 service rabbitmq start
 service rabbitmq stop
@@ -110,16 +111,34 @@ service rabbitmq restart
 # 启动rabbitmq的web端需要配置插件，通过 http://localhost:15672 查看，使用默认账户guest/guest 登录
 rabbitmq-plugins enable rabbitmq_management  # 启用插件
 service rabbitmq-server restart  # 重启
+
+# 查看rabbitmq的状态
+systemctl status rabbitmq-server
+service rabbitmq-server status
 ```
 
-## 3.命令
+### 2.3Macos安装
 
 ```sh
+brew install rabbitmq
+```
+
+## 3.rabbitmq命令
+
+```sh
+# 启动服务
+sudo rabbitmqctl-server
+sudo rabbitmqctl-server --detached
+
+# 停止服务，永远不要用kill命令终止
+sudo rabbitmqctl stop
+
 # 查看所有的用户
 rabbitmqctl list_users
 
 # 增加普通用户
 rabbitmqctl add_user admin password
+
 # 给普通用户分配管理员角色
 rabbitmqctl set_user_tags admin administrator
 ```
