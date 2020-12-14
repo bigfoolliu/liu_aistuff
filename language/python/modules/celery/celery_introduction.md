@@ -108,21 +108,11 @@ app.conf.result_backend = 'redis://localhost:7379/0'
 ```sh
 celery -h  # 查看帮助
 
-
-
 ```
 
 ## a.参考资料
 
-中文资料参考书：[celery中文手册](https://www.celerycn.io/)
-
-- [celery初级教程(一)](https://blog.csdn.net/mbl114/article/details/78046694)
-- [celery初级教程(二)](https://blog.csdn.net/mbl114/article/details/78046825)
-- [celery初级教程(三)](https://blog.csdn.net/mbl114/article/details/78046888)
-- [celery初级教程(四)](https://blog.csdn.net/mbl114/article/details/78046937)
-- [celery初级教程(五)](https://blog.csdn.net/mbl114/article/details/78046961)
-- [celery初级教程(六)](https://blog.csdn.net/mbl114/article/details/78047001)
-- [celery初级教程(七)](https://blog.csdn.net/mbl114/article/details/78047032)
-- [python之celery使用详解(一)](https://www.cnblogs.com/cwp-bg/p/8759638.html)
-- [python之celery使用详解(二)](https://www.cnblogs.com/cwp-bg/p/10575688.html)
-
+- 中文资料参考书：[celery中文手册](https://www.celerycn.io/)
+- [celert5.2文档](- [python之celery使用详解(二)](https://www.cnblogs.com/cwp-bg/p/10575688.html)
+- [celery初级教程](https://blog.csdn.net/mbl114/article/details/78046694)
+- [python之celery使用详解](https://www.cnblogs.com/cwp-bg/p/8759638.html)
