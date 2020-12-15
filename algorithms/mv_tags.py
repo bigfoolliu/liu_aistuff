@@ -22,4 +22,4 @@ file_name = origin_file_path.split('/')[-1]
 
 print(origin_file_path, file_name)
 
-# os.system(f'ln -s {origin_file_path} {file_name}')
+os.system(f'ln -s {origin_file_path} {file_name}')

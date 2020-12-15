@@ -145,4 +145,16 @@ command + backspace  # 删除当前行
 
 command + shift + backspace  # 从定义处跳转回之前的位置
 command + b  # 跳转到定义处
+
+# 导航
+alt + shift + H  # 查看函数的调用层级信息, call hierarchy，即哪些地方引用了当前的函数或者方法
+f3  # 添加/删除书签
+command + f3   # 展示所有书签
+
+# 搜索
+command + f  # 当前文件搜索
+command + shift + f  # 全文搜索
+command + o  # 搜索类
+command + shift + o   # 搜索文件
+shift + shift  # 搜索所有/文件/类等
 ```
