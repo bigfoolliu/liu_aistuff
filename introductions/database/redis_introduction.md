@@ -4,8 +4,6 @@
 
 * [1.概述](#1.概述)
         - [1.1介绍](#1.1介绍)
-        - [1.2安装启动](#1.2安装启动)
-        - [1.3数据库操作常用命令](#1.3数据库操作常用命令)
 * [2.五大数据类型](#2.五大数据类型)
         - [2.1字符串(string)](#2.1字符串(string))
         - [2.2哈希(Hash)](#2.2哈希(hash))
@@ -22,7 +20,6 @@
         - [3.7其他](#3.7其他)
 * [4.事务](#4.事务)
         - [4.1事务基础](#4.1事务基础)
-        - [4.2redis事务机制命令](#4.2redis事务机制命令)
 * [5.持久化](#5.持久化)
         - [5.1RDB](#5.1rdb)
         - [5.2AOF](#5.2aof)
@@ -34,11 +31,13 @@
         - [7.1集群方案](#7.1集群方案)
         - [7.2导致集群方案不可用的情况](#7.2导致集群方案不可用的情况)
         - [7.3redis哈希槽](#7.3redis哈希槽)
+* [8.redis命令](#8.redis命令)
+        - [8.1安装启动](#8.1安装启动)
+        - [8.2数据库操作](#8.2数据库操作)
+        - [8.3数据操作](#8.3数据操作)
+        - [8.4事务操作](#8.4事务操作)
+        - [8.5持久化操作](#8.5持久化操作)
 * [a.其他](#a.其他)
-        - [a.1客户端连接](#a.1客户端连接)
-        - [a.2安全](#a.2安全)
-        - [a.3性能测试](#a.3性能测试)
-        - [a.4发布-订阅](#a.4发布-订阅)
         - [a.5面试](#a.5面试)
         - [a.6内存优化](#a.6内存优化)
 
@@ -58,57 +57,6 @@
 - 单机的支持并发量可能支持10几万
 - **redis的命令不区分大小写**
 
-### 1.2安装启动
-
-```sh
-sudo apt-get install redis-server  # 安装
-vim /etc/redis/redis.conf  # 可以配置redis的绑定ip为0.0.0.0
-
-sudo service redis-server restart  # 启动redis
-
-redis-server  # 进入redis服务端
-redis-cli  # 进入redis客户端，输入ping来判断是否可以连接
-redis-cli -h <host> -p <port> -a <password>  # 在远程的服务器上执行
-```
-
-### 1.3数据库操作常用命令
-
-- [redis命令参考](http://redisdoc.com/)
-
-```sh
-# 数据库的操作
-select 1  # 切换到不同的数据库，默认为0，共16个
-dbsize  # 查看当前数据库的key的数量
-
-flushdb  # 清空当前数据库的所有key
-flushall  # 清空整个redis服务器的数据(所有数据库的所有key)
-
-swapdb 0 1  # 对换0,1两个数据库
-
-info  # 查看redis服务器的信息,进入redis-cli之后
-
-
-# key的操作
-keys *  # 查看所有的key
-del key  # 删除键
-exists key  # 判断给定的key是否存在
-
-dump key  # 序列化给定key，并返回序列化的值
-restore key 0 "\x00\x15hello, dumping world!\x06\x00E\xa0Z\x82\xd8r\xc1\xde"  # 将序列化的值反序列化,0为ttl的时间
-
-expire key 10  # 给key设置过期时间为10秒
-ttl key  # 查看key的剩余生存时间(s)
-persist key  # 将一个带有过期的key设置为永久的不过期的key
-
-move key 1  # 将key移动到新的数据库1
-type key  # 查看key所存储的值的类型
-rename key <new_key>  # 修改key的名称
-
-
-# 调试
-ping  # 客户端向服务器发送查看服务器是否正常
-```
-
 ## 2.五大数据类型
 
 ### 2.1字符串(string)
@@ -118,11 +66,6 @@ ping  # 客户端向服务器发送查看服务器是否正常
 - `一个键最多存储512MB`
 - 使用场景：`缓存，计数，共享session，限速`
 
-```sh
-set name "tony"  # 设置键值
-get name  # 取值
-```
-
 ### 2.2哈希(Hash)
 
 - 一个键值对集合
@@ -130,24 +73,11 @@ get name  # 取值
 - 每个hash可以存储$2^{32 - 1}$（40多亿）键值对
 - 使用场景：`键值对存储，缓存等`
 
-```sh
-hmset user:1 name tony pwd 123456  # 设置hash键值对
-hgetall user:1  # 取得hash键值对
-```
-
 ### 2.3列表(List)
 
 - 简单的字符串列表
 - 每个列表最多可以存储$2^{32-1}$键值对
 - 使用场景：`消息队列，栈，文章列表`
-
-```sh
-# 添加一个元素到列表的头部
-lpush names tony
-lpush names tom
-
-lrange names 0 10  # 获取列表的内容
-```
 
 ### 2.4集合(Set)
 
@@ -156,37 +86,11 @@ lrange names 0 10  # 获取列表的内容
 - 每个集合最多可以存储$2^{32-1}$成员
 - 使用场景：`用户加标签，抽奖功能`
 
-```sh
-# 添加一个string元素到key对应的set集合中，成功返回1
-# 再次添加相同的元素会因为唯一性被忽略,返回0
-sadd names tony
-
-# 获取集合中的元素
-smembers names
-
-# 使用交集
-sinter tags1 tags2
-
-# 随机获取3个元素,列表长度不变
-srandmember names 3 
-
-# 随机弹出3个元素，列表长度改变
-spop names 3
-```
-
 ### 2.5有序集合(Sorted List)
 
 - 类似集合，不同的是每个元素都会关联一个double类型的分数，通过该分数对成员进行从小到大的排列
 - 成员唯一，但是分数却可以重复
 - 使用场景：`排行榜，延迟消息队列`
-
-```sh
-# 添加元素到有序集合
-zadd names 0 tony
-zadd names 10 jim
-
-zrangebyscore names 0 100  # 取有序集合中的元素
-```
 
 ## 3.使用场景
 
@@ -246,26 +150,6 @@ zrangebyscore names 0 100  # 取有序集合中的元素
 - `事务是一个单独的隔离操作`：事务中的所有命令都会序列化，按顺序的执行,事务执行的过程中不会被其他命令打断
 - 事务是`原子操作`，要么全部执行，要么全部不执行
 
-### 4.2redis事务机制命令
-
-- `MULTI`
-- `EXEC`
-- `DISCARD`
-- `WATCH`
-
-```sh
-# 开始事务。
-# 命令入队。
-# 执行事务。
-
-# 一下为一个事务的全过程
-
-multi
-set name tony
-get name tony
-exec
-```
-
 ## 5.持久化
 
 即`数据备份和恢复`
@@ -287,18 +171,6 @@ exec
 ### 5.3虚拟内存方式
 
 1. 当key很小而value很大时，使用效果会很好
-
-```sh
-# 创建当前数据库的备份，会在安装的目录创建dump.rdb文件
-# 在生产环境很少执行 SAVE 操作，因为它会阻塞所有客户端，保存数据库的任务通常由 BGSAVE 命令异步地执行
-save
-
-# 恢复数据，只需要将备份文件`dump.rdb`移动到redis的安装目录
-
-config get dir  # 查看备份文件的位置
-bgsave  # 在后台异步的保存数据库
-lastsave  # 返回最近一次Redis成功将数据保存到磁盘的时间，Unix时间戳形式
-```
 
 ## 6.数据回收
 
@@ -347,47 +219,152 @@ redis哈希槽(`hash算法+槽位`)，使用的hash算法是`crc16校验算法`�
 - 每个key计算后落到一个槽位
 - 槽位由用户分配，内存大的可以分配多个槽位
 
-## a.其他
+## 8.redis命令
 
-### a.1客户端连接
+- [redis命令参考](http://redisdoc.com/)
+
+### 8.1安装启动
 
 ```sh
+sudo apt-get install redis-server  # 安装brew
+vim /etc/redis/redis.conf  # 可以配置redis的绑定ip为0.0.0.0
+
+sudo service redis-server restart  # 启动redis
+
+redis-server  # 进入redis服务端
+redis-cli  # 进入redis客户端，输入ping来判断是否可以连接
+redis-cli -h <host> -p <port> -a <password>  # 在远程的服务器上执行
+```
+
+### 8.2数据库操作
+
+```sh
+# 数据库的操作
+select 1  # 切换到不同的数据库，默认为0，共16个
+dbsize  # 查看当前数据库的key的数量
+
+flushdb  # 清空当前数据库的所有key
+flushall  # 清空整个redis服务器的数据(所有数据库的所有key)
+
+swapdb 0 1  # 对换0,1两个数据库
+
+info  # 查看redis服务器的信息,进入redis-cli之后
+
+
+# key的操作
+keys *  # 查看所有的key
+del key  # 删除键
+exists key  # 判断给定的key是否存在
+
+dump key  # 序列化给定key，并返回序列化的值
+restore key 0 "\x00\x15hello, dumping world!\x06\x00E\xa0Z\x82\xd8r\xc1\xde"  # 将序列化的值反序列化,0为ttl的时间
+
+expire key 10  # 给key设置过期时间为10秒
+ttl key  # 查看key的剩余生存时间(s)
+persist key  # 将一个带有过期的key设置为永久的不过期的key
+
+move key 1  # 将key移动到新的数据库1
+type key  # 查看key所存储的值的类型
+rename key <new_key>  # 修改key的名称
+
+
+# 调试
+ping  # 客户端向服务器发送查看服务器是否正常
+
+
+# 客户端连接
 config get maxclients  # 获取最大连接数量
 redis-server --maxclients 10000  # 服务端启动时候设置最大连接数
-```
 
-### a.2安全
 
-设置密码，客户端连接的时候就需要验证。
-
-```sh
+# 安全设置
 config get requirepass  # 查看是否设置了密码
 config set requirepass "123456"  # 设置密码
-
 config get requirepass  # 获取密码
 auth 123456  # 验证密码
-```
 
-### a.3性能测试
 
-```sh
-redis-benchmark -n 1000  # 模拟同时执行1000个请求来检测性能
-```
-
-### a.4发布-订阅
-
-发布-订阅(pub/sub)是一种消息通信模式。
-
-```sh
+# 发布-订阅测试
 subscribe channel1  # 在客户端1订阅channel1频道的消息
 psubscribe news.*channel  # 订阅多个符合条件的频道
 
 unsubscribe  # 退订频道
-
 publish channel1 hello  # 在客户端2发送消息到channel1,返回结果会显示订阅该频道的数量
-
 pubsub channels  # 查看当前的活跃频道(即至少有一个订阅者的频道)
 ```
+
+### 8.3数据操作
+
+```sh
+# 查看数据类型
+type key1
+
+# 字符串
+set name "tony"  # 设置键值
+get name  # 取值
+
+# 哈希
+hmset user:1 name tony pwd 123456  # 设置hash键值对
+hgetall user:1  # 取得hash键值对
+
+# 列表
+# 添加一个元素到列表的头部
+lpush names tony
+lpush names tom
+lrange names 0 10  # 获取列表的内容
+
+# 集合
+# 添加一个string元素到key对应的set集合中，成功返回1
+# 再次添加相同的元素会因为唯一性被忽略,返回0
+sadd names tony
+smembers names  # 获取集合中的元素
+sinter tags1 tags2  # 使用交集
+srandmember names 3  # 随机获取3个元素,列表长度不变
+spop names 3  # 随机弹出3个元素，列表长度改变
+
+
+# 有序集合
+# 添加元素到有序集合
+zadd names 0 tony
+zadd names 10 jim
+zrangebyscore names 0 100  # 取有序集合中的元素
+```
+
+### 8.4事务操作
+
+- `MULTI`
+- `EXEC`
+- `DISCARD`
+- `WATCH`
+
+```sh
+# 开始事务。
+# 命令入队。
+# 执行事务。
+
+# 一下为一个事务的全过程
+
+multi
+set name tony
+get name tony
+exec
+```
+
+### 8.5持久化操作
+
+```sh
+# 创建当前数据库的备份，会在安装的目录创建dump.rdb文件
+# 在生产环境很少执行 SAVE 操作，因为它会阻塞所有客户端，保存数据库的任务通常由 BGSAVE 命令异步地执行
+save
+
+# 恢复数据，只需要将备份文件`dump.rdb`移动到redis的安装目录
+
+config get dir  # 查看备份文件的位置
+bgsave  # 在后台异步的保存数据库
+lastsave  # 返回最近一次Redis成功将数据保存到磁盘的时间，Unix时间戳形式
+```
+
+## a.其他
 
 ### a.5面试
 
