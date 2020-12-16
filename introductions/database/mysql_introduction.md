@@ -182,7 +182,8 @@ select * from user where JSON_CONTAINS(scores, '[4, 3]');  # scores同时包含4
 5. 覆盖索引，一个索引包含所有需要查询的字段值
 6. `聚簇索引`，叶一种数据存储方式，子节点只存储了当前的key值，类似于数据行和相邻的键值紧凑的存储在一起, 可以将相关的数据保存到一起，索引较快; 非聚簇索引：叶子节点存储了当前的key值以及整行的数据
 7. 冗余和重复索引，允许创建，但是需要单独维护，应该避免
-8. 未使用的索引，创建之后用不到，应该删除
+8. 未使用的索引，用不到应该删除,使用特定的工具分析
+9. 索引可以让查询使用更少的行
 
 ### 2.4判断索引是否被使用
 
@@ -474,6 +475,11 @@ alter table tab1 modify column number default null;  # 修改字段number默认�
 alter table tab1 drop age;  # 删除指定字段，删除列
 alter table tab1 drop column age  # 删除质指定字段，删除列
 drop table tab1;  # 删除整张表
+
+# 检查表状态，是否有损坏,索引是否有错误等
+check table tab1;
+# 修复表，可能部分存储引擎不支持
+repair table tab1;
 ```
 
 ### 6.4数据操作相关命令
@@ -657,6 +663,7 @@ explain结果字段分析：
 4. `rows`：查询需要扫描的行数，一个预估值
 
 ```sh
+# 检查该语句的执行情况
 explain select * from table1;
 ```
 
