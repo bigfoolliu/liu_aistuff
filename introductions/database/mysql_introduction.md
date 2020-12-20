@@ -7,6 +7,7 @@
         - [1.2数据类型](#1.2数据类型)
                 + [1.2.1json](#1.2.1json)
         - [1.3基准测试](#1.3基准测试)
+        - [1.3sql规范](#1.3sql规范)
 * [2.索引](#2.索引)
         - [2.1基础介绍](#2.1基础介绍)
         - [2.2索引类型](#2.2索引类型)
@@ -37,20 +38,6 @@
                 + [5.2.2NULL与NOT NULL](#5.2.2null与not-null)
                 + [5.2.3用户密码散列用什么类型存储](#5.2.3用户密码散列用什么类型存储)
         - [5.3分库分表](#5.3分库分表)
-* [6.mysql相关命令](#6.mysql相关命令)
-        - [6.1安装启动等](#6.1安装启动等)
-        - [6.2数据库操作相关命令](#6.2数据库操作相关命令)
-        - [6.3数据表操作相关命令](#6.3数据表操作相关命令)
-        - [6.4数据操作相关命令](#6.4数据操作相关命令)
-                + [6.4.1CRUD基本操作](#6.4.1crud基本操作)
-                + [6.4.2索引基础](#6.4.2索引基础)
-                + [6.4.3创建计算字段](#6.4.3创建计算字段)
-        - [6.5用户以及权限操作相关命令](#6.5用户以及权限操作相关命令)
-                + [6.5.1用户管理](#6.5.1用户管理)
-                + [6.5.2权限管理](#6.5.2权限管理)
-        - [6.6字符集相关操作](#6.6字符集相关操作)
-                + [6.6.1查看已经设定的字符集](#6.6.1查看已经设定的字符集)
-                + [6.6.2设置字符集](#6.6.2设置字符集)
 * [7.性能和优化](#7.性能和优化)
         - [7.1基本介绍](#7.1基本介绍)
         - [7.2查询性能优化](#7.2查询性能优化)
@@ -59,6 +46,7 @@
                 + [7.2.3利用慢查询日志分析](#7.2.3利用慢查询日志分析)
         - [7.3数据类型优化](#7.3数据类型优化)
         - [7.4范式和反范式](#7.4范式和反范式)
+        - [7.5总结](#7.5总结)
 * [8.数据类型](#8.数据类型)
         - [8.1整数类型](#8.1整数类型)
         - [8.2实数类型](#8.2实数类型)
@@ -70,13 +58,8 @@
 * [9.mysql高级特性](#9.mysql高级特性)
         - [9.1分区表](#9.1分区表)
         - [9.2视图](#9.2视图)
-* [- 虚拟表，不存放任何数据](#--虚拟表，不存放任何数据)
 * [7.其他](#7.其他)
-        - [7.2视图](#7.2视图)
-        - [7.3几个写sql的好习惯](#7.3几个写sql的好习惯)
-                + [7.3.1sql性能优化](#7.3.1sql性能优化)
-                + [7.3.2sql后悔药](#7.3.2sql后悔药)
-                + [7.3.3sql规范](#7.3.3sql规范)
+        - [7.3.2sql后悔药](#7.3.2sql后悔药)
 * [x.面试](#x.面试)
         - [x.1char与varchar的区别](#x.1char与varchar的区别)
         - [x.2varchar10与int10的区别](#x.2varchar10与int10的区别)
@@ -89,6 +72,7 @@
         - [x.9mybatis中的`#`与`$`的区别](#x.9mybatis中的`#`与`$`的区别)
         - [x.10E-R图](#x.10e-r图)
         - [x.11mysql单表多次查询与多表联合查询效率对比](#x.11mysql单表多次查询与多表联合查询效率对比)
+        - [x.12sql后悔药](#x.12sql后悔药)
 
 <!-- vim-markdown-toc -->
 
@@ -131,6 +115,45 @@ select * from user where JSON_CONTAINS(scores, '[4, 3]');  # scores同时包含4
 - 针对系统设计的一种压力测试
 - 测试指标：`吞吐量（单位时间事务处理数量），响应时间，并发性，可扩展性`
 - 测试工具：`ab, http_load, JMeter`
+
+### 1.3sql规范
+
+1. 设计表的时候，所有的表和字段都增加注释，便于后期的维护
+2. sql书写格式，关键字大小写一致，使用缩进
+3. insert语句表明对应的字段名称(`insert into Student(id, name, age) values('1', 'tony', '100')`)
+4. 设计数据库表的时候，加上三个字段：主键，create_time,update_time。
+5. 尽量把所有列定义为NOT NULL
+    - `NOT NULL列更节省空间`，NULL列需要一个额外字节作为判断是否为 NULL 的标志位。
+    - NULL列需要注意空指针问题，NULL列在计算和比较的时候，需要注意空指针问题。
+6. 所有表必须使用Innodb存储引擎(innodb不支持列存储，存储空间数据等)
+7. 数据库和表的字符集统一使用UTF8
+8. 如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释
+9. 索引命名要规范
+    - 主键索引名为 pk_字段名, primary_key
+    - 唯一索引名为 uk_索引名, unique_key
+    - 普通索引名则为 idx_字段, index
+10. 如果修改\更新数据过多，考虑批量进行(for each)
+    - 大批量操作会会造成主从延迟。
+    - 大批量操作会产生大事务，阻塞。
+    - 大批量操作，数据量过大，会把cpu打满。
+
+```sh
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键Id',
+  `name` varchar(255) DEFAULT NULL COMMENT '账户名',
+  `balance` int(11) DEFAULT NULL COMMENT '余额',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_name` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1570068 DEFAULT CHARSET=utf8 ROW_FORMAT=REDUNDANT COMMENT='账户表';
+```
+
+### 1.4服务器配置
+
+```sh
+
+```
 
 ## 2.索引
 
@@ -368,7 +391,7 @@ commit;
 
 - 保证数据行的唯一性
 - 尽量使用自增长id而不是uuid,innodb中主键索引作为聚簇索引，如果是自增id,叶子节点排序时只要依次就行，减小开销
-- [14个实用的数据库设计技巧(知乎)](https://zhuanlan.zhihu.com/p/82338929
+- [14个实用的数据库设计技巧(知乎)](https://zhuanlan.zhihu.com/p/82338929)
 
 #### 5.2.2NULL与NOT NULL
 
@@ -382,272 +405,6 @@ commit;
 ### 5.3分库分表
 
 - [csdn:如何进行分库分表](https://blog.csdn.net/wdcl2468/article/details/10291160)
-
-## 6.mysql相关命令
-
-### 6.1安装启动等
-
-```sh
-# mysql命令(linux系统):
-sudo apt-get install mysql-server  # 安装mysql服务器
-sudo apt-get install mysql-client  # 安装mysql客户端
-sudo apt-get install libmysqlclient-dev  # 安装mysql客户端其他相关
-
-ps aux | grep mysql  # 查看mysql的进程是否启动
-sudo service mysql start  # 开启mysql
-sudo service mysql stop  # 关闭mysql
-sudo service mysql restart  # 重启mysql
-sudo service mysql status  # 查看服务状态
-
-# 连接到数据库进行操作
-mysql -h(ip地址,默认为localhost) -P(端口号,默认为3306) -uroot -p(密码,可输可先不输)
-
-# 更改登录密码
-use user;
-update user set authentication_string="123456" where User="root";
-flush privileges;
-# 然后重启mysql，登录
-
-# 忘记root密码,修改my.conf，加上字段
-# [mysqld]
-# skip-grant-tables
-# 就可以免密码登录
-# 然后修改密码
-
-# 将整个数据库导出
-mysqldump -u root -p db_name > db_name.sql
-
-# 导出数据库的一张表
-mysqldump -u root -p db_name table_name > table_name.sql
-
-# 执行sql文件,导入数据库
-use db1;
-source /home/xxx.sql;
-```
-
-### 6.2数据库操作相关命令
-
-```sh
-# 创建数据库:
-create database db1;
-create database db1 character set utf8  # 创建指定字符集的数据库
-create database db1 charset utf8  # 创建指定字符集的数据库,简写
-alter database db1 charset utf8  # 修改已经创建的数据库的字符集
-
-# 查看数据库:
-show databases;
-show create database db1;  # 查看创建数据库的过程
-
-# 使用数据库:
-use db1;  # 只有这一句后面可以增加或者不加;
-select database();  # 查询当前使用的数据库
-
-# 删除数据库:
-drop database db1;
-
-# 使用dump备份数据库
-mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db > /data/db.sql  # 备份整个testdb数据库
-mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db | gzip > /data/db.sql  # 整个testdb数据库,但是进行压缩,防止文件过大
-mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db t1 t2 > /data/db.sql  # 备份数据库的多张表
-mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --databases db1 db2 > /data/dbs.sql  # 备份一个实例的多个数据库
-mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --all-databases > /data/db.sql  # 备份实例上的所有数据库
-```
-
-### 6.3数据表操作相关命令
-
-```sh
-# 数据表操作:
-# 创建表:
-create table tab1(id int, name char(10));
-create table tab1(id int(5), name char(10));
-create table tab1(c1 int, c2 int, KEY(c1));   # 创建表并在c1列建立索引
-
-# 查看表:
-show tables;
-show create table tab1;  # 查看创建表的过程
-desc tab1;  # 清晰的查看表的结构
-show table status like 'tab1';  # 查看表的信息，包括存储引擎，版本，行数，占用大小，更新时间等
-
-# 显示表列
-show columns from tab1;
-
-# 修改表:
-alter table tab1 rename to tab2;  # 修改表tab1的名字为tab2
-alter table tab1 add age int;  # 追加一个整型字段age
-alter table tab1 modify column number varchar(100);  # 修改字段number的数据类型为varchar
-alter table tab1 change id number int(5);  # 更改字段名id为number, 同时要说明类型
-alter table tab1 modify column number default null;  # 修改字段number默认可以为空
-
-# 删除表:
-alter table tab1 drop age;  # 删除指定字段，删除列
-alter table tab1 drop column age  # 删除质指定字段，删除列
-drop table tab1;  # 删除整张表
-
-# 检查表状态，是否有损坏,索引是否有错误等
-check table tab1;
-# 修复表，可能部分存储引擎不支持
-repair table tab1;
-```
-
-### 6.4数据操作相关命令
-
-#### 6.4.1CRUD基本操作
-
-```sh
-# 从表中查询所有的数据:
-select * from tab1;
-select id, name, age from tab1;  # 指定显示的列
-select distinct age from tab1;  # 只返回不同的值
-select age from tab1 limit 10;  # 指定返回前10行
-
-# 数据显示排序
-select name, age from tab1 order by age;  # 按年龄排序
-select name, age from tab1 order by age desc;  # 按年龄降序排序
-
-# 插入数据:
-insert into tab1 values(1, 'tom');  # 向所有字段插入一条数据,需要一一对应
-insert into tab1(name,id) values('jim',2);  # 向指定多个字段插入数据,需要一一对应
-insert into tab1(id,name) values(3,'mary'),(4,'tony'),(5,'sam');  # 向指定字段插入多条数据
-
-insert into tab1(id) values(2);  # 向指定单个字段插入一条数据, 推荐
-
-
-# 修改数据:
-update tab1 set id=5;  # 将字段中所有的值更改
-update tab1 set id=5 where name='tom';  # 有条件的修改字段中所有的值
-
-# 删除数据:
-truncate tab1;  # 直接删除,不可恢复
-delete from tab1 where name='tony';  # 指定条件删除,部分情况可通过回滚来恢复
-delete from tab1;  # 不指定条件删除
-```
-
-#### 6.4.2索引基础
-
-索引设计的原则：
-
-1. 最适合索引的列是出现在WHERE子句和连接子句中的列。
-2. 索引列的基数越大（取值多重复值少），索引的效果就越好。
-3. 使用前缀索引可以减少索引占用的空间，内存中可以缓存更多的索引。
-4. 索引不是越多越好，虽然索引加速了读操作（查询），但是写操作（增、删、改）都会变得更慢，因为数据的变化会导致索引的更新，就如同书籍章节的增删需要更新目录一样。
-5. 使用InnoDB存储引擎时，表的普通索引都会保存主键的值，所以主键要尽可能选择较短的数据类型，这样可以有效的减少索引占用的空间，利用提升索引的缓存效果。
-
-```sh
-# 创建索引
-create index name on tab1(name);  # 创建最简单的索引
-create index index1 on tab1(name(20));
-
-# 查看索引
-show index from tab1;
-
-# 删除索引
-drop index1 from tab1;
-```
-
-#### 6.4.3创建计算字段
-
-- 存储在表中的数据不是应用所需要或者能直接使用的，`计算字段是从数据库中检索出转换，计算或者格式化的数据，不实际存在于数据库表中，而是在运行select语句的时候创建的`。
-
-```sh
-# 创建计算字段，经name和age拼接为 name(age) 格式,注意空格
-select Contat(name, ' (', age, ')') from tab1;
-select Contat(name, ' (', age, ')') as title from tab1;  # 创建计算字段并设置别名
-
-# 创建执行计算的计算字段
-select price*numbers as total_price from tab1;
-
-# 汇总数据
-# 汇总平均数
-select Avg(price) as avg_price from tab1;
-
-# 计算最大值
-select Max(price) as max_price from tab1;
-
-# 分组数据
-# 通过年龄分组
-select name from tab1 group by age;
-```
-
-### 6.5用户以及权限操作相关命令
-
-#### 6.5.1用户管理
-
-```sh
-# 用户管理:
-# 避免非开发用户误操作.
-# 查看所有用户 MySQL中所有的用户及权限信息都存储在MySQL数据库的user表中
-
-# 查看所有用户:
-select host, user, authentication_string from user;
-
-# 添加用户并分配权限
-# https://blog.csdn.net/xudejun/article/details/84779442
-use mysql;
-create user tonyliu@localhost identified by "123456";
-flush privileges;
-
-# 删除用户:
-drop user "liu"@"localhost";
-```
-
-#### 6.5.2权限管理
-
-- [mysql权限详解](https://blog.csdn.net/BlingZeng/article/details/89351946)
-- [mysql grant用户权限总结](https://blog.csdn.net/anzhen0429/article/details/78296814)
-
-```sh
-# 查看权限:
-show grants for 用户名@主机地址
-show grants for liu@localhost
-
-# 修改权限:
-grant 权限名称 on 数据库 to 账户@主机 with grant option;
-grant all privileges on *.* to "liu"@"localhost" with grant option;  # 赋予该用户所有数据库的权限
-flush privileges;  # 刷新权限
-
-# 当使用orm连数据库,仍有权限问题的时候,需要修改用户的密码并重启mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new-password';
-```
-
-### 6.6字符集相关操作
-
-- mysql的utf8不是真正的utf8，utf8mb4才是真正的utf8
-
-#### 6.6.1查看已经设定的字符集
-
-```sh
-# 查看mysql支持的字符集
-show charset;
-
-# 查看数据库服务器和数据库字符集
-show variables like '%character%';
-
-# 查看指定数据库的字符集
-show create database test_db;
-
-# 查看表的字符集
-show create table test_table;
-show table status from test_tb like "test_table";
-
-# 查看表中所有列的字符集
-show full columns from test_table;
-```
-
-#### 6.6.2设置字符集
-
-```sh
-# 创建数据库的时候设置字符集
-create database test_db default character set="utf8mb4";
-# 创建表的时候设置字符集
-create table test_table(id int(6), name char(10)) default character set="utf8mb4";
-
-# 修改库的字符集
-alter database test_db default character set "utf8mb4";
-# 修改表的字符集
-alter table test_table convert to character set "utf8mb4";
-# 修改字段的字符集
-alter table test_table modify test_field char(10) character set "utf8mb4";
-```
 
 ## 7.性能和优化
 
@@ -722,6 +479,19 @@ explain select * from table1;
 
 **实际中，最好要范式和反范式化的shema，缓存表和其他技巧混用。**
 
+### 7.5总结
+
+1. 写完sql，用`explain`来检查一下是否走的索引
+2. 写完SQL语句，检查where,order by,group by后面的列，多表关联的列是否已加索引，优先考虑组合索引
+3. where后面的字段，留意其数据类型的隐式转换
+    - `select * from user where id=1`与`select * from id='1'`
+    - 因为不加单引号时，是字符串跟数字的比较，它们类型不匹配，MySQL会做隐式的类型转换，把它们转换为浮点数再做比较，最后导致索引失效
+4. 减少不必要的字段返回，如使用select <具体字段> 代替 select *
+5. 尽量使用varchar代替 char
+    - 因为首先变长字段存储空间小，可以节省存储空间。
+    - 其次对于查询来说，在一个相对较小的字段内搜索，效率更高。
+6. WHERE从句中不对列进行函数转换和表达式计算,因为索引列上使用内置函数会使索引失效
+
 ## 8.数据类型
 
 ### 8.1整数类型
@@ -776,98 +546,38 @@ explain select * from table1;
 
 ### 9.2视图
 
-- 虚拟表，不存放任何数据
-
-## 7.其他
-
-### 7.2视图
-
-视图的定义：
-
+- `虚拟表`，不存放任何数据
 - 视图是关系型数据库中将一组查询指令构成的结果集组合成可查询的数据表的对象
 - 视图即`虚拟的表`，但与数据表不同的是，数据表是一种实体结构，而视图是一种虚拟结构
 - 视图理解为`保存在数据库中被赋予名字的SQL语句`，不包含数据，所以每次使用时候都会重新查询以获得数据，所以在使用复杂的视图的时候要检验性能
 
-视图的优缺点：
+**优缺点：**
 
-1. 可以将实体数据表隐藏起来，让外部程序无法得知实际的数据结构，让访问者可以使用表的组成部分而不是整个表，降低数据库被攻击的风险
-2. 在大多数的情况下视图是只读的（更新视图的操作通常都有诸多的限制），外部程序无法直接透过视图修改数据。
-3. 重用SQL语句，将高度复杂的查询包装在视图表中，直接访问该视图即可取出需要的数据；也可以将视图视为数据表进行连接查询。
-4. 视图可以返回与实体数据表不同格式的数据，
+1. 可以将`实体数据表隐藏起来`，让外部程序无法得知实际的数据结构，让访问者可以使用表的组成部分而不是整个表，`降低数据库被攻击的风险`
+2. 在大多数的情况下视图是只读的（更新视图的操作通常都有诸多的限制），外部程序无法直接透过视图修改数据
+3. 重用SQL语句，`将高度复杂的查询包装在视图表中`，直接访问该视图即可取出需要的数据；也可以将视图视为数据表进行连接查询
+4. 视图可以返回与实体数据表不同格式的数据
 
-```sh
-# 创建视图
-create view view_avg_score
-as
-        select id, round(avg(score), 1) as avg_score
-        from student group by id;
+### 9.3插件
 
-# 使用视图
-select * from view_avg_score;
+可以在mysql中新增启动项和状态值。
 
-# 删除视图
-drop view view_avg_score;
-```
+- 存储过程插件
+- 后台插件
+- information_shema插件
+- 全文解析插件
+- 审计插件
+- 认证插件
 
-### 7.3几个写sql的好习惯
+### 9.4全文索引
 
-#### 7.3.1sql性能优化
+可以用来通过关键字来查询数据，属于基于相似度的查询，而不是精确查询，索引类型(Index type)为`FULLTEXT`。
 
-1. 写完sql，用`explain`来检查一下是否走的索引
-2. 写完SQL语句，检查where,order by,group by后面的列，多表关联的列是否已加索引，优先考虑组合索引
-3. where后面的字段，留意其数据类型的隐式转换
-    - `select * from user where id=1`与`select * from id='1'`
-    - 因为不加单引号时，是字符串跟数字的比较，它们类型不匹配，MySQL会做隐式的类型转换，把它们转换为浮点数再做比较，最后导致索引失效
-4. 减少不必要的字段返回，如使用select <具体字段> 代替 select *
-5. 尽量使用varchar代替 char
-    - 因为首先变长字段存储空间小，可以节省存储空间。
-    - 其次对于查询来说，在一个相对较小的字段内搜索，效率更高。
-6. WHERE从句中不对列进行函数转换和表达式计算,因为索引列上使用内置函数会使索引失效
+### 9.5查询缓存
 
-#### 7.3.2sql后悔药
+- 缓存select的完整查询结果
 
-1. 操作delete或者update加个`limit`
-    - 降低写错sql的代价;
-    - sql的效率更高;
-    - 避免长事务，因为当字段加了索引，mysql会将相关行锁住，如果delete的行过多的时候可能会导致业务不可用；
-    - 数据量大的时候，会讲cpu打满
-2. 变更SQL操作先在测试环境执行，写明详细的操作步骤以及回滚方案，并在上生产前review
-3. 修改或删除重要数据前，要先备份
-4. 修改或者删除SQL，先写WHERE查一下，确认后再补充 delete 或 update
-5. SQL修改数据，养成begin + commit 事务的习惯(`begin; update account set money=1000; commit;`)
-
-#### 7.3.3sql规范
-
-1. 设计表的时候，所有的表和字段都增加注释，便于后期的维护
-2. sql书写格式，关键字大小写一致，使用缩进
-3. insert语句表明对应的字段名称(`insert into Student(id, name, age) values('1', 'tony', '100')`)
-4. 设计数据库表的时候，加上三个字段：主键，create_time,update_time。
-5. 尽量把所有列定义为NOT NULL
-    - `NOT NULL列更节省空间`，NULL列需要一个额外字节作为判断是否为 NULL 的标志位。
-    - NULL列需要注意空指针问题，NULL列在计算和比较的时候，需要注意空指针问题。
-6. 所有表必须使用Innodb存储引擎(innodb不支持列存储，存储空间数据等)
-7. 数据库和表的字符集统一使用UTF8
-8. 如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释
-9. 索引命名要规范
-    - 主键索引名为 pk_字段名, primary_key
-    - 唯一索引名为 uk_索引名, unique_key
-    - 普通索引名则为 idx_字段, index
-10. 如果修改\更新数据过多，考虑批量进行(for each)
-    - 大批量操作会会造成主从延迟。
-    - 大批量操作会产生大事务，阻塞。
-    - 大批量操作，数据量过大，会把cpu打满。
-
-```sh
-CREATE TABLE `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键Id',
-  `name` varchar(255) DEFAULT NULL COMMENT '账户名',
-  `balance` int(11) DEFAULT NULL COMMENT '余额',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`),
-  KEY `idx_name` (`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1570068 DEFAULT CHARSET=utf8 ROW_FORMAT=REDUNDANT COMMENT='账户表';
-```
+## 10.优化服务器配置
 
 ## x.面试
 
@@ -948,3 +658,15 @@ CREATE TABLE `account` (
 
 - [MySQL多表关联查询效率高点还是多次单表查询效率高，为什么？](https://www.zhihu.com/question/68258877)
 - 总体来说多次单表用的比较多一些
+
+### x.12sql后悔药
+
+1. 操作delete或者update加个`limit`
+    - 降低写错sql的代价;
+    - sql的效率更高;
+    - 避免长事务，因为当字段加了索引，mysql会将相关行锁住，如果delete的行过多的时候可能会导致业务不可用；
+    - 数据量大的时候，会讲cpu打满
+2. 变更SQL操作先在测试环境执行，写明详细的操作步骤以及回滚方案，并在上生产前review
+3. 修改或删除重要数据前，要先备份
+4. 修改或者删除SQL，先写WHERE查一下，确认后再补充 delete 或 update
+5. SQL修改数据，养成begin + commit 事务的习惯(`begin; update account set money=1000; commit;`)
