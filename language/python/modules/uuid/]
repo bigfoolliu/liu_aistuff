@@ -18,7 +18,7 @@ import uuid
 
 def uuid1_demo():
     """基于时间戳以及mac地址,在Global分布式环境下使用较好"""
-    Plugin 'davidhalter/jedi-vim'id1 = uuid.uuid1()
+    id1 = uuid.uuid1()
     print(id1)
 
 
