@@ -125,6 +125,8 @@ fd
 
 # mac下查看端口占用较好的命令
 lsof -i :8000
+
+sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 ```
 
 ## 2.safari命令
@@ -145,19 +147,6 @@ command + shift + tab  # 移动到上一个标签页
 - [终端颜色设定介绍](https://blog.csdn.net/liumiaocn/article/details/102962691)
 
 ```sh
-# shell相关
-cat /etc/shells  # 查看当前可用的shells
-echo $SHELL  # 查看当前使用的shell
-chsh -s /bin/bash  # 将终端shell切换为bash，需要重启
-chsh -s /bin/zsh  # 将终端shell切换为zsh，需要重启
-
-ctrl + a  # 跳到命令首部
-ctrl + e  # 跳到命令尾部
-
-ctrl + w  # 删除当前光标前到单词首位的字符
-ctrl + k  # 删除光标之前到行尾的字符
-ctrl + u  # 删除光标之前到行首的字符
-
 # homebrew命令
 brew update  # 更新 Homebrew
 brew upgrade  # 更新所有安装过的软件包
@@ -176,10 +165,6 @@ git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew
 
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-
-ncdu  # 查看磁盘目录占用情况
-
-sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 ```
 
 ### 3.2iterm2
@@ -280,6 +265,20 @@ musicbox
 ### 3.5zsh插件命令
 
 ```sh
+# shell相关
+cat /etc/shells  # 查看当前可用的shells
+echo $SHELL  # 查看当前使用的shell
+chsh -s /bin/bash  # 将终端shell切换为bash，需要重启
+chsh -s /bin/zsh  # 将终端shell切换为zsh，需要重启
+
+ctrl + a  # 跳到命令首部
+ctrl + e  # 跳到命令尾部
+
+ctrl + w  # 删除当前光标前到单词首位的字符
+ctrl + k  # 删除光标之前到行尾的字符
+ctrl + u  # 删除光标之前到行首的字符
+
+
 # emoji
 display_emoji  # 显示所有可展示的emoji
 echo $emoji[family]  # 展示特定的emoji
@@ -346,6 +345,8 @@ echo '{"b":2, "a":1}' | urlencode_json  # 将内容json编码
 
 # zsh_reload
 src  # 直接source .zsh配置文件
+
+ncdu  # 查看磁盘目录占用情况
 ```
 
 ### 3.6youtube-dl
@@ -448,4 +449,3 @@ command + space  # 打开spotlight搜索
 
 - 对于只是想简单查看一下内容的文档,按空格，使用**预览**功能打开,速度更快
 - 有时候finder卡死的时候，桌面会出现透明边框，点击`苹果`，然后`强制退出`，关闭finder重启
-
