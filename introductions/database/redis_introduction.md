@@ -3,7 +3,8 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.概述](#1.概述)
-        - [1.1介绍](#1.1介绍)
+        - [1.1教程](#1.1教程)
+        - [1.2基本介绍](#1.2基本介绍)
 * [2.五大数据类型](#2.五大数据类型)
         - [2.1字符串(string)](#2.1字符串(string))
         - [2.2哈希(Hash)](#2.2哈希(hash))
@@ -39,17 +40,23 @@
 
 ## 1.概述
 
-- [github中redis知识点](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md)
-- [redis中文网以及教程](https://www.redis.net.cn/tutorial/3501.html)
+### 1.1教程
 
-### 1.1介绍
+- [github中redis知识点](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md)
+- [redis中文网以及教程](https://www.redis.net.cn)
+- [redis中文教程](https://www.redis.com.cn/tutorial.html)
+
+### 1.2基本介绍
 
 - 全称：`Remote Dictionary Server`
 - `纯内存的key-value数据库`，整个数据库加载到内存中，性能极高，通过`异步定期将数据持久化到硬盘`
 - 支持多种数据类型，且最大的value值为GB级别，因此可以实现多种功能(如：list实现消息队列，set实现标签系统)
 - `数据库容量受物理内存限制`，适合较小数量的高性能操作和运算
 - 单机的支持并发量可能支持10几万
-- **redis的命令不区分大小写**
+- redis的命令`不区分大小写`
+- 不支持为单一的数据库设置密码，要么访问所有的全部数据库，要么不能访问
+- redis的数据库db更像一种命令空间，不适合一个实例存储不同应用的数据，不同的应用应该使用不同的redis实例(单个redis实例只占用内存约1m)来存储数据
+- 集群情况下不支持使用select来切换db,只有一个db0
 
 ## 2.五大数据类型
 
@@ -212,6 +219,33 @@ redis哈希槽(`hash算法+槽位`)，使用的hash算法是`crc16校验算法`�
 - redis哈希槽包含16384个槽位
 - 每个key计算后落到一个槽位
 - 槽位由用户分配，内存大的可以分配多个槽位
+
+## 8.常用配置
+
+- `redis.conf`配置
+
+```sh
+daemonize yes  # 配置为守护进程(在后台运行并且不受任何终端控制的进程)的方式运行
+databases 16  # 设置数据库的数量，默认使用的为数据库0
+
+port 6379  # 指定监听端口
+bind  # 绑定的主机地址
+
+timeout 300  # 客户端闲置多久时间关闭连接
+loglevel verbose  # 指定日志级别，一共支持四个级别，debug, verbose(默认), notice, warning
+
+logfile stdout  # 日志记录方式，默认为标准输出
+
+slaveof <masterip> <masterport>  # 当设置本机为slave服务时，设置master服务的ip地址和端口
+masterauth <master-password>  # master服务设置密码保护的时候连接master的密码
+
+requirepass 123456  # 设置连接密码，客户端连接redis的时候需要通过 auth <password> 提供密码
+maxclients 128  # 设置同一时间能够连接的最大客户端连接数，默认无限制，达到最大连接数的时候返回 max number
+
+maxmemory <bytes>  # 设置最大内存闲置，达到最大内存的时候会尝试清除已到期或者即将到期的key
+
+include /path/to/local.conf  # 指定包含其他的配置文件，可以在同一主机上多个 Redis 实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件
+```
 
 ## a.其他
 

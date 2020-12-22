@@ -18,13 +18,21 @@
 sudo apt-get install redis-server  # 安装brew
 vim /etc/redis/redis.conf  # 可以配置redis的绑定ip为0.0.0.0
 
+# linux启动
 sudo service redis-server restart  # 启动redis
+# macos启动
+brew services start redis
 
 redis-server  # 进入redis服务端
 redis-cli  # 进入redis客户端，输入ping来判断是否可以连接
 
 redis-cli -h <host> -p <port> -a <password>  # 在远程的服务器上执行
 redis-cli -h 192.168.1.2 -p 6379 -a 123456  # eg
+
+# 查看所有配置
+config get *
+config get masterauth  # 获取具体的一项配置
+config set masterauth xxx  # 设置一项具体配置
 ```
 
 ## 2.数据库操作
