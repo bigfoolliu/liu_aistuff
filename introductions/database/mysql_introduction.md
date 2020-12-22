@@ -138,6 +138,7 @@ select * from user where JSON_CONTAINS(scores, '[4, 3]');  # scores同时包含4
     - 大批量操作，数据量过大，会把cpu打满。
 
 ```sh
+# 创建一个表的较好的方式
 CREATE TABLE `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键Id',
   `name` varchar(255) DEFAULT NULL COMMENT '账户名',
@@ -150,6 +151,10 @@ CREATE TABLE `account` (
 ```
 
 ### 1.4服务器配置
+
+- mysql获取配置途径：命令行参数和配置文件
+- 配置文件路径以及顺序有： `/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf`
+- 查看配置文件路径可以： `mysqld --verbose --help | grep -A 1 'Default options'`
 
 ```sh
 
