@@ -13,6 +13,7 @@
 ## 1.安装启动
 
 - [redis命令参考](http://redisdoc.com/)
+- 使用 Lua 解释器来执行脚本
 
 ```sh
 sudo apt-get install redis-server  # 安装brew
@@ -33,6 +34,9 @@ redis-cli -h 192.168.1.2 -p 6379 -a 123456  # eg
 config get *
 config get masterauth  # 获取具体的一项配置
 config set masterauth xxx  # 设置一项具体配置
+
+redis-benchmark -n 1000  # redis基准测试，-n指定请求数
+redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 100000 -q  # 只执行set和lpush命令10000次，-q 参数让结果只显示每秒执行的请求数
 ```
 
 ## 2.数据库操作
@@ -51,7 +55,7 @@ info  # 查看redis服务器的信息,进入redis-cli之后
 
 # 调试
 ping  # 客户端向服务器发送查看服务器是否正常
-
+quit  # 关闭当前连接
 
 # 客户端连接
 config get maxclients  # 获取最大连接数量
@@ -77,12 +81,12 @@ pubsub channels  # 查看当前的活跃频道(即至少有一个订阅者的频
 ## 3.数据操作
 
 ```sh
-# key的操作
+# keys的操作
 keys *  # 查看所有的key
 del key  # 删除键
 exists key  # 判断给定的key是否存在
 
-dump key  # 序列化给定key，并返回序列化的值
+dump key  # 序列化给定key，并返回序列化的值,eg: "\x00\x04tony\t\x00\xebU\x96oF~6\xa8"
 restore key 0 "\x00\x15hello, dumping world!\x06\x00E\xa0Z\x82\xd8r\xc1\xde"  # 将序列化的值反序列化,0为ttl的时间
 
 expire key 10  # 给key设置过期时间为10秒
@@ -100,16 +104,25 @@ type key1
 # 字符串
 set name "tony"  # 设置键值
 get name  # 取值
+mset name "tony" age "10"  # 同时设置多个key-value对
+mget name age  # 同时获取多个key值
 
 # 哈希
 hmset user:1 name tony pwd 123456  # 设置hash键值对
 hgetall user:1  # 取得hash键值对
+hdel user:1  # 删除一个或多个哈希表字段
+hexists user:1  # 判断哈希表指定的key是否存在
+hkeys *  # 查看所有哈希表中的字段
 
 # 列表
 # 添加一个元素到列表的头部
-lpush names tony
-lpush names tom
-lrange names 0 10  # 获取列表的内容
+lset names 0 "b"  # 设置索引为0的元素为b
+lpush names tony  # 将一个或者多个值插入到列表头部
+lrange names 0 -1  # 获取列表的内容,0到-1则是所有的值
+llen names  # 查看列表的长度    
+blpop names  # 移出并获取列表的第一个元素
+brpop names  # 移出并获取列表的最后一个元素
+lindex names 0  # 通过索引获取元素
 
 # 集合
 # 添加一个string元素到key对应的set集合中，成功返回1
@@ -120,12 +133,14 @@ sinter tags1 tags2  # 使用交集
 srandmember names 3  # 随机获取3个元素,列表长度不变
 spop names 3  # 随机弹出3个元素，列表长度改变
 
-
 # 有序集合
 # 添加元素到有序集合
 zadd names 0 tony
 zadd names 10 jim
 zrangebyscore names 0 100  # 取有序集合中的元素
+
+# 位图(redis bitmap)
+setbit aaa:001 10001 1  # 返回操作之前的数值
 ```
 
 ## 4.事务操作
@@ -142,10 +157,12 @@ zrangebyscore names 0 100  # 取有序集合中的元素
 
 # 一下为一个事务的全过程
 
-multi
+multi  # 标记一个事务块的开始
 set name tony
 get name tony
-exec
+exec  # 执行所有事务块的命令
+
+discard  # 取消事务
 ```
 
 ## 5.持久化操作
@@ -160,4 +177,16 @@ save
 config get dir  # 查看备份文件的位置
 bgsave  # 在后台异步的保存数据库
 lastsave  # 返回最近一次Redis成功将数据保存到磁盘的时间，Unix时间戳形式
+```
+
+## 6.redis客户端命令
+
+```sh
+client list  # 返回连接到redis服务的客户端的列表
+
+client setname tony  # 设置当前连接的名称
+client getname  # 获取当前连接的名称
+
+client pause  # 挂起客户端连接
+client kill  # 关闭客户端连接
 ```
