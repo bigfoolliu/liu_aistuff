@@ -107,6 +107,9 @@ get name  # 取值
 mset name "tony" age "10"  # 同时设置多个key-value对
 mget name age  # 同时获取多个key值
 
+setnx name "tony"  # 当key不存在的时候设置key的值
+setex name 10 "tony"  # 设置key同时设置过期时间
+
 # 哈希
 hmset user:1 name tony pwd 123456  # 设置hash键值对
 hgetall user:1  # 取得hash键值对
