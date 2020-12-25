@@ -16,6 +16,7 @@
         - [3.7uglifyjs](#3.7uglifyjs)
         - [3.8term2048](#3.8term2048)
         - [3.9train-cli](#3.9train-cli)
+        - [3.10cheat.sh](#3.10cheat.sh)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -398,6 +399,25 @@ trash-rm
 
 # 清空回收站
 trash-empty
+```
+
+### 3.10cheat.sh
+
+- 它提供一个简单的 curl/浏览器接口方便我们查询
+- 目前覆盖 58 种编程语言，多种 DBMS以及超过 1000 个UNIX/Linux 常用命令
+
+```sh
+# 查看介绍
+curl cht.sh
+
+# 查询具体的命令使用
+curl cht.sh/tar
+
+# 关键字查询
+curl cht.sh/~lsof
+
+# 语言的操作,空格用+代替
+curl cht.sh/python/os+path
 ```
 
 ## 4.安装python环境
