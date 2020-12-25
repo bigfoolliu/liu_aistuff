@@ -1,4 +1,5 @@
 # What I add
+*\.dSYM/
 node_modules/
 practice/
 temp/

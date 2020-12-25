@@ -2,12 +2,15 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.gcc基础](#1.gcc基础)
+* [1.基础知识](#1.基础知识)
 * [2.c语言基础](#2.c语言基础)
+* [3.Clion和cMake](#3.clion和cmake)
 
 <!-- vim-markdown-toc -->
 
 ## 1.基础知识
+
+### 1.1gcc编译器
 
 - [gcc基础知识](https://www.cnblogs.com/roverliang/p/11493452.html)
 
@@ -28,6 +31,21 @@ file main
 clang --version
 ```
 
+### 1.2make命令
+
+```sh
+# 创建hello.c
+# 同一目录下执行，make hello，即创建名为hello的文件
+# 1.查看当前目录下文件是否存在
+# 2.查找当前目录下是否有文件以hello开头
+# 3.存在hello.c, 执行运行命令cc hello.c -o hello来构建它
+
+make hello
+
+# 添加-Wall选项。告诉cc编译器要报告所有的警告
+make -Wall hello
+```
+
 ## 2.c语言基础
 
 ```sh
@@ -41,3 +59,5 @@ hello > text.txt
 - cmake使用CMakeLists文件来构建项目，类似makefile
 
 CMakeLists文件编写:
+
+TODO:
