@@ -37,6 +37,9 @@ brew install nmap
 
 # 端口扫描
 nmap -A -T4 -Pn baidu.com
+
+# 简单扫描，使用tcp连接
+nmap -sT 55.12.23.12
 ```
 
 ## 3.密码破解
@@ -63,4 +66,4 @@ john hash.txt
 - 端口扫描，网络通信，文件传输，加密传输，硬盘克隆，远程控制等
 
 ```sh
-``
+```
