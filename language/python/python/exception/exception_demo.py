@@ -33,4 +33,4 @@ try:
 except EOFError as e:
     print(e)
 finally:
-    print("haha")
+    print("hello")

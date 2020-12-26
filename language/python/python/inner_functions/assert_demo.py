@@ -12,8 +12,8 @@ assert 断言
 
 
 def basic_demo():
-    # a = []
-    a = {}
+    a = []
+    # a = {}
 
     # 下面的操作都是基于a为list来操作，可以避免下面操作出现意外
     assert isinstance(a, list), "输入a必须为list"

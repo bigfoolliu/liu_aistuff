@@ -36,4 +36,5 @@ def fool(num):
     print("num is {}".format(num))
 
 
-fool()
+fool(12)
+

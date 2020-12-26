@@ -9,9 +9,9 @@
 
 def log_decorator(func):
     """增加日志信息的装饰器"""
-    def add_info(*args, **kargs):
-        print("[INFO]Function {} running with args {} and kargs {}.".format(func.__name__, args, kargs))
-        return func(*args, **kargs)
+    def add_info(*args, **kwargs):
+        print("[INFO]Function {} running with args {} and kwargs {}.".format(func.__name__, args, kwargs))
+        return func(*args, **kwargs)
 
     return add_info
 
@@ -25,7 +25,7 @@ def func2(*args):
     print("func2 run")
 
 @log_decorator
-def func3(*args, **kargs):
+def func3(*args, **kwargs):
     print("func3 run")
 
 

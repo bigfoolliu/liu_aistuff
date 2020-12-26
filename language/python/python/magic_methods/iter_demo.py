@@ -16,15 +16,19 @@ class Fib(object):
     def __iter__(self):
         return self  # 实例本身就是迭代对象，故返回自己
 
-    def next(self):
+    def __next__(self):
         self.a, self.b = self.b, self.a + self.b  # 计算下一个值
         if self.a > 1000000000000000000000000000000:  # 退出循环的条件
-            raise StopIteration();
+            raise StopIteration()
         return self.a  # 返回下一个值
 
 
-i = 0
-fib = Fib()
-while i < 100:
-    print(fib.next())
-    i += 1
+if __name__ == "__main__":
+    fib = Fib()
+
+    n = 0
+    for i in fib:  # 每遍历一次都会执行一次fib.__next__()方法
+        if n == 10:
+            break
+        print(i)
+        n += 1

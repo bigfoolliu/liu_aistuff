@@ -37,4 +37,3 @@ for file_name in glob.glob('./*.py'):
 _iglob = glob.iglob('./*.py')
 print(type(_iglob))
 print(list(_iglob))
-

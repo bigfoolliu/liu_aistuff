@@ -15,7 +15,7 @@ class SingleItem(object):
 
     def __new__(cls, *args, **kwargs):
         if cls not in cls._instance:
-            cls._instance[cls] = super().__new__(cls)
+            cls._instance[cls] = super().__new__(cls, *args, **kwargs)
         return cls._instance[cls]
 
 

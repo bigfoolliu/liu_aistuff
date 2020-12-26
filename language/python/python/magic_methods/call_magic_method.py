@@ -22,6 +22,18 @@ class A(object):
     #     print("ret: {}".format(self.__a + num))
 
 
+class B(object):
+
+    def __init__(self, b):
+        self.__b = b
+    
+    def __call__(self):
+        print(f'b: {self.__b}')
+
+
 if __name__ == "__main__":
     a = A(12)
-    a(23)  # 直接调用实例
+
+    b = B(23)
+    b()  # 直接调用实例, 和下面的方法等价
+    b.__call__()
