@@ -10,6 +10,7 @@ python枚举类和普通类的不同
 
 1.枚举类值不可变
 2.具有防止相同标签的功能，不同标签的值可以相同
+3.枚举类型是单例模式，不能实例化
 
 使用场景：
 当某个类的对象是有限且固定的，比如性别，季节等。
@@ -34,9 +35,11 @@ def basic_demo():
     print(months(1))
     print(months["Jan"])
 
-    # 枚举所有的成员
-    for name, member in months.__members__.items():
-        print("name: ", member.name, "value:", member.value)  # value属性是自动赋值给成员的int常量，默认从1计数
+    # # 枚举所有的成员
+    # print(type(months))
+    # for name, member in months.__members__.items():
+    #     print("name: ", member.name, "value:", member.value)  # value属性是自动赋值给成员的int常量，默认从1计数
+    #     print(name, member)
 
 
 # 定义枚举类方式二：继承使用
@@ -52,7 +55,10 @@ def inhert_demo():
     print(male, type(male))
     print(female, type(female))
 
+    for gender, value in Gender.__members__.items():
+        print(f'gender: {gender}, value: {value}')
+
 
 if __name__ == "__main__":
-    # basic_demo()
+    basic_demo()
     inhert_demo()

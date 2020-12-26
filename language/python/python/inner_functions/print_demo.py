@@ -12,7 +12,7 @@ import time
 
 def end_demo():
     """print结尾控制，加flush强制刷新"""
-    for i in range(100):
+    for _ in range(100):
         print("#", end="", flush=True)
         time.sleep(0.01)
     print()

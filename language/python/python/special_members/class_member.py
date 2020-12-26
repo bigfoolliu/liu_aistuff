@@ -80,7 +80,7 @@ class E(list):
         return super().__new__(cls, *args, **kwargs)
 
     def __init__(self, *args, **kwargs):
-        return super().__init__(self, *args, **kwargs)
+        super(E, self).__init__(*args, **kwargs)
 
 
 
