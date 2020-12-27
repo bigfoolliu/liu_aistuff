@@ -513,3 +513,16 @@ o  # 在可视模式下，可以切换高亮选区的活动端，即开始端选
 ### 5.6文件
 
 ### 5.7更快的移动和跳转
+
+## 6.neovim使用
+
+```sh
+# 安装
+brew install neovim
+
+# 配置文件路径: ～/.config/nvim/init.vim
+
+# 安装vim-plug插件管理器
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+```
