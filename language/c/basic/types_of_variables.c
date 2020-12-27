@@ -1,8 +1,14 @@
+/**********************************
+Author: bigfoolliu
+Description:
+**********************************/
+
+
 // 变量类型和格式化输出示例
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
     int age = 10;
     printf("i am %d years old.\n", age);
 
