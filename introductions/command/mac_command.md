@@ -17,6 +17,7 @@
     - [3.8term2048](#3.8term2048)
     - [3.9train-cli](#3.9train-cli)
     - [3.10cheat.sh](#3.10cheat.sh)
+    - [3.11iredis工具](#3.11iredis工具)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -421,6 +422,17 @@ curl cht.sh/~lsof
 
 # 语言的操作,空格用+代替
 curl cht.sh/python/os+path
+```
+
+### 3.11iredis工具
+
+```sh
+# 安装
+pip3 install iredis
+
+
+# 使用
+iredis
 ```
 
 ## 4.安装python环境
