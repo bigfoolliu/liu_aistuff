@@ -56,4 +56,3 @@ if __name__ == '__main__':
     # celery_task_add.delay(1, 2)
 
     app.worker_main()
-

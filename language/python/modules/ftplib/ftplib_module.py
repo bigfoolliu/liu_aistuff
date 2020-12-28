@@ -92,7 +92,7 @@ class SimpleFtp(object):
         try:
             self.ftp.cwd(remote_path)
         except Exception as e:
-            self.debug_print("rempte path {} not exist:{}".format(remote_path, e))
+            self.debug_print("remote path {} not exist:{}".format(remote_path, e))
             return
 
         if not os.path.exists(local_path):

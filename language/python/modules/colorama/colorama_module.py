@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
 colorama模块使用
 
@@ -33,4 +38,3 @@ def basic_demo():
 
 if __name__ == "__main__":
     basic_demo()
-

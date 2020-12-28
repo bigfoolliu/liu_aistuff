@@ -115,7 +115,7 @@ def sub_demo():
     print(content)
 
 
-def complile_demo():
+def compile_demo():
     """
     5. compile()
 
@@ -158,6 +158,6 @@ if __name__ == "__main__":
     # match_demo()
     # findall_demo()
     # sub_demo()
-    # complile_demo()
+    # compile_demo()
     # constant_demo()
     test_demo()

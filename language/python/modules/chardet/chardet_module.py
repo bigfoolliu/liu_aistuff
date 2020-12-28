@@ -26,4 +26,3 @@ def detect_demo():
 
 if __name__ == "__main__":
     detect_demo()
-

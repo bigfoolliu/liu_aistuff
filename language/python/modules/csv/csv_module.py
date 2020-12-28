@@ -21,23 +21,23 @@ def create_csv_demo():
     # 自定义一个带有标题的csv格式的文件
     villains = [
         {"first": "doctor", "last": "no"},
-        {"first": "rosa", "last": "klebb"},
+        {"first": "rosa", "last": "tony"},
         {"first": "mister", "last": "big"},
-        {"first": "auric", "last": "goldfinge"},
-        {"first": "ernst", "last": "blofeld"}
+        {"first": "auric", "last": "gold"},
+        {"first": "ernst", "last": "blob"}
     ]
 
     # 将已存在的结构化的文本写入至本地并保存为csv格式文件
     with open("./csv_test.txt", "wt") as f:
         # 创建一个DictWriter对象
-        cout = csv.DictWriter(f, ["first", "last"])
+        f = csv.DictWriter(f, ["first", "last"])
 
         # 将头("first", "last")写入
-        cout.writeheader()
+        f.writeheader()
 
         # 写入单行或同时写入多行
-        cout.writerow({"first": "doctor", "last": "yes"})
-        cout.writerows(villains)
+        f.writerow({"first": "doctor", "last": "yes"})
+        f.writerows(villains)
     print("create csv demo done")
 
 
@@ -75,10 +75,10 @@ def no_header_csv_demo():
     """
     villains = [
         ["doctor", "no"],
-        ["rosa", "klebb"],
+        ["rosa", "tony"],
         ["mister", "big"],
         ["auric", "goldfinger"],
-        ["sophia", "blod"]
+        ["sophia", "blob"]
     ]
 
     # 写入

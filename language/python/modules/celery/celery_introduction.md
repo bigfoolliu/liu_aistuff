@@ -77,7 +77,7 @@ pip3 install "celery[librabbitmq,redis,auth,msgpack]"
 
 ```sh
 # 使用redis作为中间人
-pip3 intall -U "celery[redis]"  # 安装依赖库
+pip3 install -U "celery[redis]"  # 安装依赖库
 
 # 配置broker为redis, uri的格式为: redis://:password@hostname:port/db_number
 app.conf.broken_url = 'redis://localhost:6379/0'
@@ -95,13 +95,11 @@ app.conf.result_backend = 'redis://localhost:7379/0'
 
 - Celery需要将结果保存到某个地方
 - 有几种保存的方案可选:
-    - - SQLAlchemy
-    - - Django ORM
-    - - Memcached
-    - - Redis
-    - - RPC (RabbitMQ/AMQP)
-
-
+  - SQLAlchemy
+  - Django ORM
+  - Memcached
+  - Redis
+  - RPC (RabbitMQ/AMQP)
 
 ## 4.celery命令
 
@@ -113,6 +111,6 @@ celery -h  # 查看帮助
 ## a.参考资料
 
 - 中文资料参考书：[celery中文手册](https://www.celerycn.io/)
-- [celert5.2文档](- [python之celery使用详解(二)](https://www.cnblogs.com/cwp-bg/p/10575688.html)
+- [celery5.2文档](- [python之celery使用详解(二)](https://www.cnblogs.com/cwp-bg/p/10575688.html)
 - [celery初级教程](https://blog.csdn.net/mbl114/article/details/78046694)
 - [python之celery使用详解](https://www.cnblogs.com/cwp-bg/p/8759638.html)

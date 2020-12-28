@@ -126,7 +126,7 @@ def deque_demo():
     - 一个新的双向队列对象
     - 从左到右初始化(用方法 append()) ，从 iterable （迭代对象) 数据创建。如果 iterable 没有指定，新队列为空。
       - 支持线程安全，对于从两端添加(append)或者弹出(pop)，复杂度O(1)
-    - 如果 maxlen 没有指定或者是 None ，deques 可以增长到任意长度。否则，deque就限定到指定最大长度。一旦限定长度的deque满了，当新项加入时，同样数量的项就从另一端弹出。
+    - 如果 maxlen 没有指定或者是 None ，deque 可以增长到任意长度。否则，deque就限定到指定最大长度。一旦限定长度的deque满了，当新项加入时，同样数量的项就从另一端弹出。
 
     append(x)：添加x到右端
     appendleft(x)：添加x到左端

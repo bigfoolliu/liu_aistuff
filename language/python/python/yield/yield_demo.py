@@ -40,7 +40,7 @@ def yield_demo1():
     """yield基本使用"""
     a = generator_basic()
     try:
-        for m in range(100):  # 为了让迭代结束
+        for _ in range(100):  # 为了让迭代结束
             print(next(a))
     except StopIteration:
         print("iter is over")

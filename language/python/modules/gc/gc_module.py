@@ -12,7 +12,7 @@ gc模块示例
 gc.enable()
 gc.disable()
 gc.isebabled()
-gc.collec([generation])
+gc.collect([generation])
 gc.set_debug(flags)
 gc.get_debug()
 gc.get_objects()
@@ -37,4 +37,5 @@ def collect_demo():
 
 
 if __name__ == "__main__":
+    # TODO:
     pass
