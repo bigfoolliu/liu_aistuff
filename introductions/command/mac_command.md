@@ -3,27 +3,27 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.命令行命令](#1.命令行命令)
-        - [1.1通用系统命令](#1.1通用系统命令)
-        - [1.2其他命令行命令](#1.2其他命令行命令)
+    - [1.1通用系统命令](#1.1通用系统命令)
+    - [1.2其他命令行命令](#1.2其他命令行命令)
 * [2.safari命令](#2.safari命令)
 * [3.终端命令](#3.终端命令)
-        - [3.1brew](#3.1brew)
-        - [3.2iterm2](#3.2iterm2)
-        - [3.3fzf](#3.3fzf)
-        - [3.4musicbox](#3.4musicbox)
-        - [3.5zsh插件命令](#3.5zsh插件命令)
-        - [3.6youtube-dl](#3.6youtube-dl)
-        - [3.7uglifyjs](#3.7uglifyjs)
-        - [3.8term2048](#3.8term2048)
-        - [3.9train-cli](#3.9train-cli)
-        - [3.10cheat.sh](#3.10cheat.sh)
+    - [3.1brew](#3.1brew)
+    - [3.2iterm2](#3.2iterm2)
+    - [3.3fzf](#3.3fzf)
+    - [3.4musicbox](#3.4musicbox)
+    - [3.5zsh插件命令](#3.5zsh插件命令)
+    - [3.6youtube-dl](#3.6youtube-dl)
+    - [3.7uglifyjs](#3.7uglifyjs)
+    - [3.8term2048](#3.8term2048)
+    - [3.9train-cli](#3.9train-cli)
+    - [3.10cheat.sh](#3.10cheat.sh)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
 * [7.系统快捷键](#7.系统快捷键)
 * [8.其他](#8.其他)
-        - [8.1开发工具](#8.1开发工具)
-        - [8.2使用技巧](#8.2使用技巧)
+    - [8.1开发工具](#8.1开发工具)
+    - [8.2使用技巧](#8.2使用技巧)
 
 <!-- vim-markdown-toc -->
 
@@ -126,6 +126,9 @@ fd
 
 # mac下查看端口占用较好的命令
 lsof -i :8000
+
+# 将之前的命令结果返回到系统剪贴板
+pwd | pbcopy
 
 sudo killall -HUP mDNSResponder  # 最新版本系统刷新dns缓存
 ```
