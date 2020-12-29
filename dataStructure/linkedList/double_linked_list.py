@@ -35,3 +35,7 @@ class DoubleLinList(object):
             cur = cur.next
         cur.next = node
         node.prev = cur
+
+
+if __name__ == "__main__":
+    pass

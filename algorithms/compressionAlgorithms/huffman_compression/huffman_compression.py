@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 # author: bigfoolliu
 
+
 """
 Use several ways to compress string `everyday is awesome!`
 1. use simple bits to replace ASCII value
