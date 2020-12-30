@@ -3,13 +3,13 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.域名/IP查看](#1.域名/ip查看)
-        - [1.1fping](#1.1fping)
+    - [1.1fping](#1.1fping)
 * [2.端口扫描](#2.端口扫描)
-        - [2.1nmap](#2.1nmap)
+    - [2.1nmap](#2.1nmap)
 * [3.密码破解](#3.密码破解)
-        - [3.1john](#3.1john)
+    - [3.1john](#3.1john)
 * [4.网络](#4.网络)
-        - [4.1netcat](#4.1netcat)
+    - [4.1netcat](#4.1netcat)
 
 <!-- vim-markdown-toc -->
 
