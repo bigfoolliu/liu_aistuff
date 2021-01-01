@@ -747,7 +747,7 @@ document.URL;
 dom事件监听器:
 
 - `addEventListener("click", displayDate, useCapture)`为指定元素增加事件处理程序,useCapture为布尔值，表示是否使用事件冒泡顺序
-- `removeEventListener("mousemove", myfunction)`删除元素指定额事件处理程序
+- `removeEventListener("mousemove", my_function)`删除元素指定额事件处理程序
 
 ### 8.4DOM事件传播顺序
 

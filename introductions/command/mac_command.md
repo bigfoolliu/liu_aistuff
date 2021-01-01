@@ -101,8 +101,15 @@ open -a /Applications/*.app <file_name>
 # 在finder中打开指定的路径
 open ./
 
-
 ctrl + command + space  # 快速打开emoji表情😄
+
+option + click  # 按住option再点击wifi，可显示更多信息
+
+
+# 关闭系统更新
+sudo /usr/sbin/softwareupdate --ignore "macOS Catalina"
+# 启动系统更新
+sudo /usr/sbin/softwareupdate --reset-ignored
 ```
 
 ### 1.2其他命令行命令

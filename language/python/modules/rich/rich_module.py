@@ -14,17 +14,29 @@ python -m rich
 
 
 from rich import print
+from rich.console import Console
 from rich.progress import track
 import time
 
 
-print("Hello, [bold magenta]World[/bold magenta]!", ":vampire:", locals())
+def basic_demo():
+    print("Hello, [bold magenta]World[/bold magenta]!", ":vampire:", locals())
 
 
-def do_step(step):
-    time.sleep(0.1)
+
+def time_line_demo():
+	def do_step(step):
+        time.sleep(0.1)
+
+    for step in track(range(100)):
+        do_step(step)
 
 
-for step in track(range(100)):
-    do_step(step)
+def console_demo():
+    console = Console()
+    console.print('hello, world', style='red bold')
+
+
+if __name__ == '__main__':
+    console_demo()
 
