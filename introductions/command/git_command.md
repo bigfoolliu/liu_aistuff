@@ -5,45 +5,45 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.基础命令](#1.基础命令)
-        - [1.1配置(config)](#1.1配置(config))
-        - [1.2仓库克隆(clone)](#1.2仓库克隆(clone))
-        - [1.3暂存(add)](#1.3暂存(add))
-        - [1.4本地提交(commit)](#1.4本地提交(commit))
-        - [1.5远程提交于拉取(push, pull)](#1.5远程提交于拉取(push,-pull))
-        - [1.6提交堆栈(stash)](#1.6提交堆栈(stash))
-        - [1.7分支(fetch, branch, checkout)](#1.7分支(fetch,-branch,-checkout))
-        - [1.8撤销(reset, revert)](#1.8撤销(reset,-revert))
-        - [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
-        - [1.10标签(tag)](#1.10标签(tag))
-        - [1.11查看内容(show)](#1.11查看内容(show))
-        - [1.12状态(status)](#1.12状态(status))
-        - [1.13删除(rm)](#1.13删除(rm))
-        - [1.14移动(mv)](#1.14移动(mv))
-        - [1.15查看更新(diff)](#1.15查看更新(diff))
-        - [1.16远程(remote)](#1.16远程(remote))
-        - [1.17清除(clean)](#1.17清除(clean))
+    - [1.1配置(config)](#1.1配置(config))
+    - [1.2仓库初始化或克隆(clone)](#1.2仓库初始化或克隆(clone))
+    - [1.3暂存(add)](#1.3暂存(add))
+    - [1.4本地提交(commit)](#1.4本地提交(commit))
+    - [1.5远程提交于拉取(push, pull)](#1.5远程提交于拉取(push,-pull))
+    - [1.6提交堆栈(stash)](#1.6提交堆栈(stash))
+    - [1.7分支(fetch, branch, checkout)](#1.7分支(fetch,-branch,-checkout))
+    - [1.8撤销(reset, revert)](#1.8撤销(reset,-revert))
+    - [1.9操作记录(log, reflog)](#1.9操作记录(log,-reflog))
+    - [1.10标签(tag)](#1.10标签(tag))
+    - [1.11查看内容(show)](#1.11查看内容(show))
+    - [1.12状态(status)](#1.12状态(status))
+    - [1.13删除(rm)](#1.13删除(rm))
+    - [1.14移动(mv)](#1.14移动(mv))
+    - [1.15查看更新(diff)](#1.15查看更新(diff))
+    - [1.16远程(remote)](#1.16远程(remote))
+    - [1.17清除(clean)](#1.17清除(clean))
 * [2.操作命令组](#2.操作命令组)
-        - [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
-        - [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
-        - [2.3提交之后因为大文件而push失败](#2.3提交之后因为大文件而push失败)
-        - [2.4提交错误且已经push到远程](#2.4提交错误且已经push到远程)
+    - [2.1修改已经push的commit的message](#2.1修改已经push的commit的message)
+    - [2.2修改多次commit的信息为一个](#2.2修改多次commit的信息为一个)
+    - [2.3提交之后因为大文件而push失败](#2.3提交之后因为大文件而push失败)
+    - [2.4提交错误且已经push到远程](#2.4提交错误且已经push到远程)
 * [3.gitignore文件](#3.gitignore文件)
-        - [3.1介绍](#3.1介绍)
-        - [3.2格式规范](#3.2格式规范)
+    - [3.1介绍](#3.1介绍)
+    - [3.2格式规范](#3.2格式规范)
 * [4.gitmodule](#4.gitmodule)
-        - [4.1介绍](#4.1介绍)
-        - [4.2使用](#4.2使用)
+    - [4.1介绍](#4.1介绍)
+    - [4.2使用](#4.2使用)
 * [5.其他](#5.其他)
-        - [5.1非常用命令](#5.1非常用命令)
-        - [5.2github](#5.2github)
-                + [5.2.1github搜索技巧](#5.2.1github搜索技巧)
-                + [5.2.2github知识](#5.2.2github知识)
-        - [5.3在服务器上搭建git](#5.3在服务器上搭建git)
-        - [5.4如何选择git的分支模式](#5.4如何选择git的分支模式)
-                + [5.4.1TBD](#5.4.1tbd)
-                + [5.4.2Git-Flow模式](#5.4.2git-flow模式)
-                + [5.4.3Github-Flow模式](#5.4.3github-flow模式)
-                + [5.4.4Gitlab-Flow模式](#5.4.4gitlab-flow模式)
+    - [5.1非常用命令](#5.1非常用命令)
+    - [5.2github](#5.2github)
+        + [5.2.1github搜索技巧](#5.2.1github搜索技巧)
+        + [5.2.2github知识](#5.2.2github知识)
+    - [5.3在服务器上搭建git](#5.3在服务器上搭建git)
+    - [5.4如何选择git的分支模式](#5.4如何选择git的分支模式)
+        + [5.4.1TBD](#5.4.1tbd)
+        + [5.4.2Git-Flow模式](#5.4.2git-flow模式)
+        + [5.4.3Github-Flow模式](#5.4.3github-flow模式)
+        + [5.4.4Gitlab-Flow模式](#5.4.4gitlab-flow模式)
 
 <!-- vim-markdown-toc -->
 
@@ -59,8 +59,8 @@
 git --version
 
 # 获取全局登陆的用户,邮箱
-git config --global user.name
-git config --global user.email
+git config --global "user.name"
+git config --global "user.email"
 
 # 设置启动的编辑器
 git config --global core.editor vim
@@ -70,35 +70,22 @@ git config --global core.editor emacs
 git config --local user.name
 git config --local user.email
 
-# 查看所有的配置以及配置文件所在的位置
-git config --list --show-origin
-# 查看当前所有的git能找到的配置
-git config --list
+git config --list --show-origin  # 查看所有的配置以及配置文件所在的位置
+git config --list  # 查看当前所有的git能找到的配置
 
-# 直接进入编辑全局配置文件
-git config -e --global
+git config -e --global  # 直接进入编辑全局配置文件
 
-# 设置别名,commit别名为ci, 则git ci来替代git commit
-git config --global alias.ci commit
-
-# 登陆git
-# 设置全局git账户
-git config --global user.name "userName"
-git config --global user.email "userEmail"
+git config --global alias.ci commit  # 设置别名,commit别名为ci, 则git ci来替代git commit
 
 # 设置单个仓库的git账户
 git config --local user.name "userName"
 git config --local user.email "userEmail"
 
-
-# 将git的文本编辑器修改为vim
-git config --global core.editor vim
-
 # 当不能显示中文的时候
 git config --global core.quotepath false
 ```
 
-### 1.2仓库克隆(clone)
+### 1.2仓库初始化或克隆(clone)
 
 git可以使用四种不同的协议来传输数据：
 
@@ -108,11 +95,13 @@ git可以使用四种不同的协议来传输数据：
 4. Git协议
 
 ```sh
-# 从远程克隆一个版本库
-git clone <git_address>
+# 1.初始化
+git init repo   # 创建一个git仓库，有.git目录，不能推送修改到“非裸仓库”
+git init --bare repo.git  # 创建一个裸库，没有.git目录，没有工作区（不能在仓库里进行git操作），只会记录git提交的历史信息，裸仓库一般情况下仅作为远程仓库使用，主要是为了维护远程的仓库的“干净”
 
-# 浅克隆，不要commit历史，只要代码
-git clone --depth 1 <git_address>
+# 2.克隆
+git clone <git_address>  # 从远程克隆一个版本库
+git clone --depth 1 <git_address>  # 浅克隆，不要commit历史，只要代码
 ```
 
 ### 1.3暂存(add)
@@ -120,14 +109,9 @@ git clone --depth 1 <git_address>
 - 由于git commit的操作是原子性的,如果本次commit的内容没有完成，却要切换至其他分支等操作，那么可以将其暂存
 
 ```sh
-# 将所有修改文件暂存
-git add .
-
-# 将指定文件暂存
-git add test.py
-
-# 使用交互式的暂存
-git add -i
+git add .  # 将所有修改文件暂存
+git add test.py  # 将指定文件暂存
+git add -i  # 使用交互式的暂存
 ```
 
 ### 1.4本地提交(commit)
@@ -135,14 +119,9 @@ git add -i
 - git commit在提交信息中换行，只需要单引号，且换行之后再补齐另一半单引号即可
 
 ```sh
-# 直接提交
-git commit
-
-# 带注释的提交
-git commit -m "init"
-
-# 提交当前repo的所有改变，可以跳过git add(慎用，可能会添加不需要的文件)
-git commit -a -m "format"
+git commit  # 直接提交
+git commit -m "init"  # 带注释的提交
+git commit -a -m "format"  # 提交当前repo的所有改变，可以跳过git add(慎用，可能会添加不需要的文件)
 
 # 1. 如果上次提交以来修改了，会将暂存区中的文件提交,从而将本次的修改合并到上一次的提交(适用于一次提交忘了提交某些信息的场景)
 # 2. 如果上次提交以来没有任何修改，则只是修改上一次提交的信息(适用于修改提交信息的场景)
@@ -158,14 +137,9 @@ git push <远程主机名>　<本地分支名>:<远程分支名>
 git push origin master:master  # 将本地的master分支推送到远程的master分支
 git push origin master:dev  # 将本地的master分支推送到远程的dev分支
 
-
-# 当前分支只有一个追踪分支，直接取回远程主机某个分支的更新，与本地的分支合并
-git pull
-# 与本地的指定合并
-git pull <远程主机名>　<远程分支名>:<本地分支名>
-
-# 强制推到远程(慎用)
-git push -f
+git pull  # 当前分支只有一个追踪分支，直接取回远程主机某个分支的更新，与本地的分支合并
+git pull <远程主机名>　<远程分支名>:<本地分支名>  # 与本地的指定合并
+git push -f  # 强制推到远程(慎用)
 ```
 
 ### 1.6提交堆栈(stash)
@@ -173,35 +147,19 @@ git push -f
 - [git stash clear之后如何找回数据](https://www.jianshu.com/p/3c2292223335)
 
 ```sh
-
 # 当前分支内容修改了，但是还不想提交，此时需要切换到另一个分支，则该命令将当前分支修改的内容
 # 保存到堆栈中，然后就可以在不同的分支中进行切换了
 # 将所有未提交的修改（工作区和暂存区）保存到堆栈
 git stash
 
-# 等同于stash,但是可以加一些注释
-git stash save "message"
-
-# 查看当前stash中内容
-git stash list
-
-# 将当前stash中的内容弹出，并应用到当前分支对应的工作目录（会删除堆栈中最近保存的内容）
-git stash pop
-
-# 删除存储堆栈中指定的进度
-git stash drop stash@{0}
-
-# 删除所有存储的进度
-git stash clear
-
-# 将当前stash中的内容应用到当前分支对应的工作目录（不会删除堆栈中最近保存的内容）
-git stash apply
-
-# 使用指定的堆栈中的内容
-git stash apply stash@{0}
-
-# 查看某个堆栈中的修改内容
-git stash show -p stash@{1}
+git stash save "message"  # 等同于stash,但是可以加一些注释
+git stash list  # 查看当前stash中内容
+git stash pop  # 将当前stash中的内容弹出，并应用到当前分支对应的工作目录（会删除堆栈中最近保存的内容）
+git stash drop stash@{0}  # 删除存储堆栈中指定的进度
+git stash clear  # 删除所有存储的进度
+git stash apply  # 将当前stash中的内容应用到当前分支对应的工作目录（不会删除堆栈中最近保存的内容）
+git stash apply stash@{0}  # 使用指定的堆栈中的内容
+git stash show -p stash@{1}  # 查看某个堆栈中的修改内容
 git stash show -p  # 查看最近一个stash里面的修改
 ```
 
@@ -210,55 +168,27 @@ git stash show -p  # 查看最近一个stash里面的修改
 - 特殊指针HEAD，用来指向当前所处的本地分支
 
 ```sh
-# 取回所有分支的更新
-git fetch
-# 取回指定的分支更新(eg:git fetch origin master)
-git fetch <远程主机名> <分支名>
-
+git fetch  # 取回所有分支的更新
+git fetch <远程主机名> <分支名>  # 取回指定的分支更新(eg:git fetch origin master)
 git fetch -p # 跟随远程删除分支的操作删除本地分支
 git fetch -P # 跟随远程删除分支的操作删除本地tag
 
-# 取消对某个文件的修改(即没有文件),恢复暂存区的指定文件到工作区
-git checkout a.txt
+git checkout a.txt  # 取消对某个文件的修改(即没有文件),恢复暂存区的指定文件到工作区
+git checkout [commit] [file]  # 恢复某个commit的指定文件到工作区
+git checkout dev  # 切换到本地的dev分支
+git checkout -b dev  # 建立一个新的本地dev分支
+git checkout -  # 导航到之前的一个分支
 
-# 恢复某个commit的指定文件到工作区
-git checkout [commit] [file]
+git branch  # 查看本地所有分支
+git branch -v  # 查看本地所有分支和分支的最后一次提交
+git branch -vv -a  # 查询本地仓库，远程仓库，跟踪关系最全的命令
+git branch -d dev  # 删除本地分支
+git branch --merged  # 查看本地已经合并到当前的分支
+git branch --no-merged  # 查看本地还没有合并到当前的分支
 
-# 恢复上一个commit的所有文件到工作区
+git push origin --delete dev  # 删除远程分支
 
-# 切换到本地的dev分支
-git checkout dev
-
-# 建立一个新的本地dev分支
-git checkout -b dev
-
-# 导航到之前的一个分支
-git checkout -
-
-
-# 查看本地所有分支
-git branch
-
-# 查看本地所有分支和分支的最后一次提交
-git branch -v
-
-# 查询本地仓库，远程仓库，跟踪关系最全的命令
-git branch -vv -a
-
-# 删除本地分支
-git branch -d dev
-
-# 查看本地已经合并到当前的分支
-git branch --merged
-
-# 查看本地还没有合并到当前的分支
-git branch --no-merged
-
-# 删除远程分支
-git push origin --delete dev
-
-# 获取远程仓库的地址
-git remote get-url origin
+git remote get-url origin  # 获取远程仓库的地址
 ```
 
 ### 1.8撤销(reset, revert)
@@ -267,29 +197,19 @@ git remote get-url origin
 - revert会将操作之前和之后的信息都会保留, 用新的commit回滚旧的commit
 
 ```sh
-# 撤销对所有文件的暂存, add到暂存区的代码想撤销
-git reset HEAD
-# 撤销对指定文件的暂存(适用于误将文件暂存add的场景)
-git reset HEAD test.py
-
-# 如果想要将一个分支的最后一个提交转移到另外一个分支,然后git stash，应用到另外一个分支
-git reset HEAD~1
+git reset HEAD  # 撤销对所有文件的暂存, add到暂存区的代码想撤销
+git reset HEAD test.py  # 撤销对指定文件的暂存(适用于误将文件暂存add的场景)
+git reset HEAD~1  # 如果想要将一个分支的最后一个提交转移到另外一个分支,然后git stash，应用到另外一个分支
 
 git reset --soft HEAD~1  # 将刚刚的提交撤回到暂存区
 git reset --soft HEAD^  # 将刚刚的提交撤回到暂存区
-
 git reset --soft HEAD~3  # 撤销最近的三次提交，HEAD, HEAD^ 和HEAD~2均被撤销
 
 git reset --hard <commit_id/版本号>  # 提交到本地仓库的代码想撤销
 
-# 撤销前一次commit
-git revert HEAD
-
-# 撤销前前一次commit
-git revert HEAD^
-
-# 撤销指定的版本
-git revert commit d92761fec08ecca646f81402a415e9a07f9638b6
+git revert HEAD  # 撤销前一次commit
+git revert HEAD^  # 撤销前前一次commit
+git revert commit d92761fec08ecca646f81402a415e9a07f9638b6  # 撤销指定的版本
 ```
 
 ### 1.9操作记录(log, reflog)
@@ -298,54 +218,38 @@ git revert commit d92761fec08ecca646f81402a415e9a07f9638b6
 - git reflog常用于恢复本地的错误操作
 
 ```sh
-# 查看提交历史
-git log
+git log  # 查看提交历史
 
-# 查看提交历史并显示每次提交的差异
-git log -p
+git log -p  # 查看提交历史并显示每次提交的差异
 git log -p -2  # 只查看最近的两次提交
-
 git log -p <file_name>  # 查看某个文件每次提交的diff
 
-# 每次提交的简略统计信息，加减行数
-git log --stat
+git log --stat  # 每次提交的简略统计信息，加减行数
+git log --graph  # 带简单ascii字符来图形化展示
+git log --author=bigfoolliu  # 筛选作者
+git log --grep content  # 模糊搜索
+git log --pretty=format:"%H - %an, %cd : %s"  # 使用特定的格式输出log
 
-# 带简单ascii字符来图形化展示
-git log --graph
+# %H 提交的完整哈希值
+# %h 提交的简写哈希值
+# %T 树的完整哈希值
+# %t 树的简写哈希值
+# %P 父提交的完整哈希值
+# %p 父提交的简写哈希值
+# %an 作者名字
+# %ae 作者的电子邮件地址
+# %ad 作者修订日期(可以用 --date=选项 来定制格式)
+# %ar 作者修订日期，按多久以前的方式显示
+# %cn 提交者的名字
+# %ce 提交者的电子邮件地址
+# %cd 提交日期
+# %cr 提交日期(距今多长时间)
+# %s 提交说明
 
-# 筛选作者
-git log --author=bigfoolliu
 
-# 模糊搜索
-git log --grep content
-
-# 使用特定的格式输出log
-git log --pretty=format:"%H - %an, %cd : %s"
-
-%H 提交的完整哈希值
-%h 提交的简写哈希值
-%T 树的完整哈希值
-%t 树的简写哈希值
-%P 父提交的完整哈希值
-%p 父提交的简写哈希值
-%an 作者名字
-%ae 作者的电子邮件地址
-%ad 作者修订日期(可以用 --date=选项 来定制格式)
-%ar 作者修订日期，按多久以前的方式显示
-%cn 提交者的名字
-%ce 提交者的电子邮件地址
-%cd 提交日期
-%cr 提交日期(距今多长时间)
-%s 提交说明
-
-# 查看所有的操作记录
-git reflog show
-
-# 查看分支操作记录
-git reflog master
-
-# 查看branch_name分支是基于哪个分支创建的
-git reflog --date=local | grep branch_name
+git reflog show  # 查看所有的操作记录
+git reflog master  # 查看分支操作记录
+git reflog --date=local | grep branch_name  # 查看branch_name分支是基于哪个分支创建的
 ```
 
 ### 1.10标签(tag)
@@ -354,20 +258,14 @@ git reflog --date=local | grep branch_name
 - 一般的打tag都是建立在head上
 
 ```sh
-# 查看目前已经打上的标签
-git tag
+git tag  # 查看目前已经打上的标签
 
-# 显示tag，并通过关键字过滤
-git tag -l "v1"
+git tag -l "v1"  # 显示tag，并通过关键字过滤
 
-# 直接创建一个tag
-git tag v1.0
+git tag v1.0  # 直接创建一个tag
 
-# 创建一个带备注信息的tag
-git tag -a v1.0 -m "有备注信息的tag"
-
-# 在某一个提交对象上打tag，只要提交对象的校验和前几位
-git tag -a v1.0 <commit_id> -m "有备注信息的tag"
+git tag -a v1.0 -m "有备注信息的tag"  # 创建一个带备注信息的tag
+git tag -a v1.0 <commit_id> -m "有备注信息的tag"  # 在某一个提交对象上打tag，只要提交对象的校验和前几位
 
 # tag创建完成之后，需要单独推送到远程,如果
 # 推送单个tag
@@ -380,34 +278,23 @@ git push origin --tags
 git tag -d v1.0  # 删除本地的tag
 git push origin :refs/tags/v1.0  # 将冒号之前的空值推动到远程的tag从而删除远程的tag
 git push origin --delete v1.0  # 更直观的删除远程标签
-
-
 ```
 
 ### 1.11查看内容(show)
 
 ```sh
-# 查看最近的commit
-git show
+git show  # 查看最近的commit
+git show v1.0  # 查看tag的详细信息
+git show <commit_id>  # 查看某次提交的内容
 
-# 查看tag的详细信息
-git show v1.0
-
-
-# 查看某次提交的内容
-git show <commit_id>
-# 查看某次提交的某个文件的修改
-git show <commit_id> <file_name>
+git show <commit_id> <file_name>  # 查看某次提交的某个文件的修改
 ```
 
 ### 1.12状态(status)
 
 ```sh
-# 检查当前文件状态
-git status
-
-# 以更简短的方式检查文件状态
-git status -s
+git status  # 检查当前文件状态
+git status -s  # 以更简短的方式检查文件状态
 ```
 
 ### 1.13删除(rm)
@@ -427,31 +314,22 @@ git rm -f test.txt
 - mv .., git rm .., git add ..
 
 ```sh
-# 将file1重命名为file2
-git mv file1 file2
+git mv file1 file2  # 将file1重命名为file2
 ```
 
 ### 1.15查看更新(diff)
 
 ```sh
-# 查看暂未暂存的文件更新哪些部分
-git diff
+git diff  # 查看暂未暂存的文件更新哪些部分
 
 # 查看暂存起来(即add之后)的更新
 git diff --cached
 git diff --staged
 
-# 检查空白错误，可以在提交之前运行一次
-git diff --check
-
-# 检查自上次提交以来的所有变化
-git diff HEAD
-
-# 查看和某个分支的不同
-git diff <branch>
-
-# 仅仅查看修改，重命名等，不看增删
-git diff --diff-filter=MRC
+git diff --check  # 检查空白错误，可以在提交之前运行一次
+git diff HEAD  # 检查自上次提交以来的所有变化
+git diff <branch>  # 查看和某个分支的不同
+git diff --diff-filter=MRC  # 仅仅查看修改，重命名等，不看增删
 ```
 
 ### 1.16远程(remote)
@@ -464,36 +342,21 @@ git diff --diff-filter=MRC
 git remote
 git remote -v  # 读写仓库服务器以及对应的简写url
 
-# 添加远程仓库，并设置简写,那么本地fetch之后就可以在tom/master访问
-git remote add tom https://github.com/tom/liu_aistuff
+git remote add tom https://github.com/tom/liu_aistuff  # 添加远程仓库，并设置简写,那么本地fetch之后就可以在tom/master访问
+git remote show origin  # 查看某个远程仓库的更多信息
+git remote rename tom tom1  # 将远程分支重命名
+git remote remove tom  # 移除远程仓库(适用于远程仓库搬走了或者没人贡献了场景)
 
-# 查看某个远程仓库的更多信息
-git remote show origin
-
-# 将远程分支重命名
-git remote rename tom tom1
-
-# 移除远程仓库(适用于远程仓库搬走了或者没人贡献了场景)
-git remote remove tom
-
-# 查看远程分支列表
-git ls-remote origin
+git ls-remote origin  # 查看远程分支列表
 ```
 
 ### 1.17清除(clean)
 
 ```sh
-# 演示，查看哪些文件会被删除
-git clean -n
-
-# 删除当前目录下所有没有track的文件,不清理.gitignore文件中指定的文件和文件夹
-git clean -f
-
-# 删除当前目录下所有没有没有被track的文件和文件夹
-git clean -df
-
-# 删除当前目录下的所有文件和文件夹，不管是否在.gitignore中指定
-git clean -xf
+git clean -n  # 演示，查看哪些文件会被删除
+git clean -f  # 删除当前目录下所有没有track的文件,不清理.gitignore文件中指定的文件和文件夹
+git clean -df  # 删除当前目录下所有没有没有被track的文件和文件夹
+git clean -xf  # 删除当前目录下的所有文件和文件夹，不管是否在.gitignore中指定
 ```
 
 ## 2.操作命令组
@@ -515,20 +378,24 @@ git rebase --continue
 ### 2.2修改多次commit的信息为一个
 
 ```sh
-# 定位到指定的commit，修改commit的message，倒数的修改为`squash`
+# 1.定位到指定的commit，修改commit的message，倒数的修改为`squash`
 git rebase -i <commit_id>
-# 修改掉多余的commit message
+
+# 2.修改掉多余的commit message
 git rebase --continue
 ```
 
 ### 2.3提交之后因为大文件而push失败
 
 ```sh
-# 回退至指定的版本号
+# 1.回退至指定的版本号
 git reset --hard `commit_id`
-# 远程提交回退
+
+# 2.远程提交回退
+
 git push origin HEAD --force
-# 删除缓存
+
+# 3.删除缓存
 git rm -r --cached .
 ```
 
