@@ -121,6 +121,7 @@ git add -i  # 使用交互式的暂存
 ```sh
 git commit  # 直接提交
 git commit -m "init"  # 带注释的提交
+git commit -m "line1" -m "line2"  # 带注释的提交,可以有多个-m,表示多行
 git commit -a -m "format"  # 提交当前repo的所有改变，可以跳过git add(慎用，可能会添加不需要的文件)
 
 # 1. 如果上次提交以来修改了，会将暂存区中的文件提交,从而将本次的修改合并到上一次的提交(适用于一次提交忘了提交某些信息的场景)
@@ -176,7 +177,7 @@ git fetch -P # 跟随远程删除分支的操作删除本地tag
 git checkout a.txt  # 取消对某个文件的修改(即没有文件),恢复暂存区的指定文件到工作区
 git checkout [commit] [file]  # 恢复某个commit的指定文件到工作区
 git checkout dev  # 切换到本地的dev分支
-git checkout -b dev  # 建立一个新的本地dev分支
+git checkout -b dev  # 建立一个新的本地dev分支并切换到该分支
 git checkout -  # 导航到之前的一个分支
 
 git branch  # 查看本地所有分支
@@ -259,11 +260,9 @@ git reflog --date=local | grep branch_name  # 查看branch_name分支是基于�
 
 ```sh
 git tag  # 查看目前已经打上的标签
-
 git tag -l "v1"  # 显示tag，并通过关键字过滤
 
 git tag v1.0  # 直接创建一个tag
-
 git tag -a v1.0 -m "有备注信息的tag"  # 创建一个带备注信息的tag
 git tag -a v1.0 <commit_id> -m "有备注信息的tag"  # 在某一个提交对象上打tag，只要提交对象的校验和前几位
 
