@@ -95,6 +95,7 @@
 ### 1.4CGI基础
 
 - [x] [tkinter](../projects/tk_projects)
+- [ ] pyqt
 
 ## 2.中级篇
 

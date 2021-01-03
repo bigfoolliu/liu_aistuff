@@ -166,7 +166,7 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 2. 前端获取到服务器返回的token，保存在浏览器本地存储中（可以保存在localStorage或sessionStorage中，对于使用Vue.js的前端项目来说，还可以通过Vuex进行状态管理）；
 3. 对于使用了前端路由的项目来说，前端每次路由跳转，可以先判断localStorage中有无token，如果没有则跳转到登录页；
 4.每次请求后端数据接口，在HTTP请求头里携带token；后端接口判断请求头有无token，如果没有token以及token是无效的或过期的，服务器统一返回401；
-5. 如果前端收到HTTP响应状态码401，则重定向到登录页面。
+4. 如果前端收到HTTP响应状态码401，则重定向到登录页面。
 
 ### 1.5同源策略及跨域解决方案
 
@@ -263,7 +263,7 @@ If-Modified-Since:Thu, 4 Feb 2010 20:39:13 GMT
 
 - [阿里云SSL配置Apache,nginx等](https://help.aliyun.com/video_detail/54216.html?spm=a2c4g.11186623.4.1.WbwjQN)
 
-```nginx
+```sh
 "nginx新增配置项"
 listen 443 ssl;
 ssl_certificate     /iyunwen/server/ssl/20180731.cer;

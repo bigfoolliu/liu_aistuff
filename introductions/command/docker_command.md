@@ -263,13 +263,13 @@ docker exec -it my_app1 mysql1 --host=my_app1 --user=my_user --password
 ## 7.docker-compose命令
 
 ```sh
-# 拉取所有的镜像文件，但是不启动
-docker-compose pull
+# 1.拉取镜像
+docker-compose pull  # 拉取所有的镜像文件，但是不启动
 
-# 列出所有的容器
+# 2.列出所有的容器
 docker-compose ps
 
-# 验证和查看compose文件配置
+# 3.验证和查看compose文件配置
 docker-compose config
 docker-compose config --services
 

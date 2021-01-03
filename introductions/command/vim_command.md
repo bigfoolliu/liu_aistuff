@@ -374,7 +374,7 @@ l  # 向右边移动一个字符
 
 ### 4.1vundle
 
-- vim插件管理器，不能并行处理
+- vim插件管理器，`不能并行处理`
 - [github地址](https://github.com/vundlevim/vundle.vim)
 
 ```sh
@@ -382,15 +382,15 @@ l  # 向右边移动一个字符
 git clone https://github.com/vundlevim/vundle.vim.git ~/.vim/bundle/vundle.vim
 
 # 将配置文件放到.vimrc
+:w
 
 # 常用命令
-
-:pluginlist       - 查看已经安装的插件
-:plugininstall    - 安装插件
-:pluginupdate     - 更新插件
-:pluginsearch     - 搜索插件，例如 :pluginsearch xml就能搜到xml相关的插件
-:pluginclean      - 删除插件，把安装插件对应行删除，然后执行这个命令即可
-h: vundle         - 获取帮助
+:pluginlist       # 查看已经安装的插件
+:plugininstall    # 安装插件
+:pluginupdate     # 更新插件
+:pluginsearch     # 搜索插件，例如 :pluginsearch xml就能搜到xml相关的插件
+:pluginclean      # 删除插件，把安装插件对应行删除，然后执行这个命令即可
+h: vundle         # 获取帮助
 ```
 
 ### 4.2nerdtree
@@ -399,7 +399,6 @@ h: vundle         - 获取帮助
 - [github地址](https://github.com/preservim/nerdtree)
 
 ```sh
-
 # 移动光标定位
 h j k l
 
@@ -524,5 +523,5 @@ brew install neovim
 
 # 安装vim-plug插件管理器
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 ```
+
