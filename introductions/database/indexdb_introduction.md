@@ -2,7 +2,7 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.基本介绍](#1.基本介绍)
+* [1.概述](#1.概述)
 * [2.操作](#2.操作)
     - [2.1数据库：IDBDatabase对象](#2.1数据库：idbdatabase对象)
     - [2.2对象仓库：IDBObjectStore 对象](#2.2对象仓库：idbobjectstore-对象)
@@ -14,7 +14,7 @@
 
 <!-- vim-markdown-toc -->
 
-## 1.基本介绍
+## 1.概述
 
 - 浏览器的本地数据库，用来弥补localStorage和cookie的不足
 - 不属于sql数据库,`接近Nosql数据库`，不支持sql查询

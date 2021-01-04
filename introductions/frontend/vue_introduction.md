@@ -2,12 +2,12 @@ vue介绍
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.vue基础](#1.vue基础)
+* [1.概述](#1.概述)
 * [2.vue-cli脚手架](#2.vue-cli脚手架)
 
 <!-- vim-markdown-toc -->
 
-## 1.vue基础
+## 1.概述
 
 ## 2.vue-cli脚手架
 

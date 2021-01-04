@@ -2,30 +2,30 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.基础知识](#1.基础知识)
-        - [1.1简介](#1.1简介)
-                + [1.1.1特点](#1.1.1特点)
-                + [1.1.2功能](#1.1.2功能)
-        - [1.2概念介绍](#1.2概念介绍)
-                + [1.2.1Broker(消息中间件的服务节点)](#1.2.1broker(消息中间件的服务节点))
-                + [1.2.2Virtual host(虚拟主机)](#1.2.2virtual-host(虚拟主机))
-                + [1.2.3Connection(连接)](#1.2.3connection(连接))
-                + [1.2.4Channel(信道)](#1.2.4channel(信道))
-                + [1.2.5Exchange(交换器)](#1.2.5exchange(交换器))
-                + [1.2.6Queue(队列)](#1.2.6queue(队列))
-                + [1.2.7Binding(绑定)](#1.2.7binding(绑定))
-                + [1.2.8Producer(生产者)](#1.2.8producer(生产者))
-                + [1.2.9Consumer(消费者)](#1.2.9consumer(消费者))
+* [1.概述](#1.概述)
+    - [1.1简介](#1.1简介)
+        + [1.1.1特点](#1.1.1特点)
+        + [1.1.2功能](#1.1.2功能)
+    - [1.2概念介绍](#1.2概念介绍)
+        + [1.2.1Broker(消息中间件的服务节点)](#1.2.1broker(消息中间件的服务节点))
+        + [1.2.2Virtual host(虚拟主机)](#1.2.2virtual-host(虚拟主机))
+        + [1.2.3Connection(连接)](#1.2.3connection(连接))
+        + [1.2.4Channel(信道)](#1.2.4channel(信道))
+        + [1.2.5Exchange(交换器)](#1.2.5exchange(交换器))
+        + [1.2.6Queue(队列)](#1.2.6queue(队列))
+        + [1.2.7Binding(绑定)](#1.2.7binding(绑定))
+        + [1.2.8Producer(生产者)](#1.2.8producer(生产者))
+        + [1.2.9Consumer(消费者)](#1.2.9consumer(消费者))
 * [2.安装使用](#2.安装使用)
-        - [2.1window安装](#2.1window安装)
-        - [2.2ubuntu安装](#2.2ubuntu安装)
-        - [2.3Macos安装](#2.3macos安装)
+    - [2.1window安装](#2.1window安装)
+    - [2.2ubuntu安装](#2.2ubuntu安装)
+    - [2.3Macos安装](#2.3macos安装)
 * [3.rabbitmq命令](#3.rabbitmq命令)
 * [4.工作模式](#4.工作模式)
 
 <!-- vim-markdown-toc -->
 
-## 1.基础知识
+## 1.概述
 
 ### 1.1简介
 

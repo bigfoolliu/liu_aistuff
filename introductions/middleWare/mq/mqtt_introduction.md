@@ -1,20 +1,19 @@
 # mqtt介绍
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [mqtt介绍](#mqtt介绍)
-  - [1.基本概念](#1基本概念)
-    - [1.1Publish/Subscribe System](#11publishsubscribe-system)
-    - [1.2Messages](#12messages)
-    - [1.3Topics](#13topics)
-    - [1.4Broker](#14broker)
-  - [2.使用](#2使用)
-    - [2.1安装python模块](#21安装python模块)
-    - [2.2Publish](#22publish)
+* [1.概述](#1.概述)
+    - [1.1Publish/Subscribe System](#1.1publish/subscribe-system)
+    - [1.2Messages](#1.2messages)
+    - [1.3Topics](#1.3topics)
+    - [1.4Broker](#1.4broker)
+* [2.使用](#2.使用)
+    - [2.1安装python模块](#2.1安装python模块)
+    - [2.2Publish](#2.2publish)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
-## 1.基本概念
+## 1.概述
 
 一个轻量级的"发布/订阅"机器对机器的互联网消息传递协议，专为受限设备和低带宽，高延迟或不可靠的网络设计。
 

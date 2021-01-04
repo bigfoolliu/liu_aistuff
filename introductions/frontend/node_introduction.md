@@ -2,15 +2,14 @@
 
 <!-- vim-markdown-toc Marked -->
 
-- [nodejs介绍](#nodejs介绍)
-  - [1.基本知识](#1基本知识)
-    - [2.1node命令](#21node命令)
-    - [2.2npm命令](#22npm命令)
-  - [3.使用cnpm](#3使用cnpm)
+* [1.概述](#1.概述)
+    - [2.1node命令](#2.1node命令)
+    - [2.2npm命令](#2.2npm命令)
+* [3.使用cnpm](#3.使用cnpm)
 
 <!-- vim-markdown-toc -->
 
-## 1.基本知识
+## 1.概述
 
 - node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器
 - node.js中含有npm(node package manager), npm是nodejs的包管理器

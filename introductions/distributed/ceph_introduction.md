@@ -2,14 +2,14 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.ceph FileSystem文件系统介绍](#1.ceph-filesystem文件系统介绍)
-        - [1.1使用fuse挂载cephfs](#1.1使用fuse挂载cephfs)
+* [1.概述](#1.概述)
+    - [1.1使用fuse挂载cephfs](#1.1使用fuse挂载cephfs)
 
 <!-- vim-markdown-toc -->
 
-## 1.ceph FileSystem文件系统介绍
+## 1.概述
 
-使用ceph文件系统在ceph存储集群上需要至少一个`Ceph Metadata Server(MDS)`，ceph元数据服务器。
+- 使用ceph文件系统在ceph存储集群上需要至少一个`Ceph Metadata Server(MDS)`，ceph元数据服务器
 
 ### 1.1使用fuse挂载cephfs
 
@@ -32,3 +32,4 @@ sudo chmod 644 ceph.keyring
 sudo mkdir /home/tonyl/remote
 sudo ceph-fuse -m REMOTE_SERVER:6789 /home/tonyl/remote
 ```
+

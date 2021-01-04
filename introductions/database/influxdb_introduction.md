@@ -2,14 +2,14 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.特点](#1.特点)
+* [1.概述](#1.概述)
 * [2.基础命令](#2.基础命令)
 
 <!-- vim-markdown-toc -->
 
 时序数据库，Time Series Database，最大的特点就是每个条数据都带有Time列。
 
-## 1.特点
+## 1.概述
 
 1. 支持类似SQL的查询语法
 2. 提供了Http Api直接访问

@@ -2,12 +2,12 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.介绍](#1.介绍)
+* [1.概述](#1.概述)
 * [2.使用](#2.使用)
 
 <!-- vim-markdown-toc -->
 
-## 1.介绍
+## 1.概述
 
 - [Ansible超详细使用指南](https://www.jianshu.com/p/f0cf027225df)
 - 自动化运维工具

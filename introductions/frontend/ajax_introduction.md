@@ -2,14 +2,14 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.介绍](#1.介绍)
+* [1.概述](#1.概述)
 * [2.功能](#2.功能)
-        - [2.1XMLHttpRequest对象](#2.1xmlhttprequest对象)
-        - [2.2解决ajax跨域问题](#2.2解决ajax跨域问题)
+    - [2.1XMLHttpRequest对象](#2.1xmlhttprequest对象)
+    - [2.2解决ajax跨域问题](#2.2解决ajax跨域问题)
 
 <!-- vim-markdown-toc -->
 
-## 1.介绍
+## 1.概述
 
 - 异步js和xml，由js编写，程序异步执行，用xml来存储和传输数据
 - 核心是`XMLHttpRequest`,为运行于浏览器的js脚本在页面内与服务器通信的手段

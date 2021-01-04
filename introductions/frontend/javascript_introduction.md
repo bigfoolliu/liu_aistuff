@@ -2,7 +2,7 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.javascript基础](#1.javascript基础)
+* [1.概述](#1.概述)
     - [1.1介绍](#1.1介绍)
     - [1.2注释](#1.2注释)
     - [1.3关键字](#1.3关键字)
@@ -63,7 +63,7 @@
 
 <!-- vim-markdown-toc -->
 
-## 1.javascript基础
+## 1.概述
 
 ### 1.1介绍
 

@@ -2,7 +2,7 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.localStorage和sessionStorage基本介绍](#1.localstorage和sessionstorage基本介绍)
+* [1.概述](#1.概述)
     - [1.1localStorage](#1.1localstorage)
     - [1.2sessionStorage](#1.2sessionstorage)
 * [2.操作](#2.操作)
@@ -11,7 +11,7 @@
 
 <!-- vim-markdown-toc -->
 
-## 1.localStorage和sessionStorage基本介绍
+## 1.概述
 
 ### 1.1localStorage
 

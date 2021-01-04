@@ -1,15 +1,14 @@
 # elastic search 全文搜索引擎
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [elastic search 全文搜索引擎](#elastic-search-全文搜索引擎)
-  - [1.elasticsearch项目以及介绍](#1elasticsearch项目以及介绍)
-    - [1.1全文搜索引擎介绍](#11全文搜索引擎介绍)
-    - [1.2elasticsearch介绍](#12elasticsearch介绍)
+* [1.概述](#1.概述)
+    - [1.1全文搜索引擎介绍](#1.1全文搜索引擎介绍)
+    - [1.2elasticsearch介绍](#1.2elasticsearch介绍)
 
-<!-- /TOC -->
+<!-- vim-markdown-toc -->
 
-## 1.elasticsearch项目以及介绍
+## 1.概述
 
 - [elasticsearch项目地址](https://github.com/elastic/elasticsearch)
 - [elasticsearch权威指南](https://es.xiaoleilu.com/)

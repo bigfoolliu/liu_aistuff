@@ -2,7 +2,7 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [1.基本概念](#1.基本概念)
+* [1.概述](#1.概述)
     - [1.1端口映射](#1.1端口映射)
     - [1.2dockerfile使用](#1.2dockerfile使用)
     - [1.3docker内部时区问题](#1.3docker内部时区问题)
@@ -26,7 +26,7 @@
 
 <!-- vim-markdown-toc -->
 
-## 1.基本概念
+## 1.概述
 
 - `镜像(Image)`
 - `容器`(Container, [docker容器文件系统](http://guide.daocloud.io/dcs/docker-9153976.html))

@@ -1,29 +1,30 @@
 # 编码设计相关规范
 
-<!-- TOC -->
+<!-- vim-markdown-toc Marked -->
 
-- [编码设计相关规范](#%e7%bc%96%e7%a0%81%e8%ae%be%e8%ae%a1%e7%9b%b8%e5%85%b3%e8%a7%84%e8%8c%83)
-  - [1.shell](#1shell)
-    - [1.1参考](#11%e5%8f%82%e8%80%83)
-    - [1.2background](#12background)
-    - [1.3environment](#13environment)
-    - [1.4comments](#14comments)
-    - [1.5formatting](#15formatting)
-  - [2.http-api设计规范](#2http-api%e8%ae%be%e8%ae%a1%e8%a7%84%e8%8c%83)
-    - [2.1参考](#21%e5%8f%82%e8%80%83)
-  - [3.开发和部署规范](#3%e5%bc%80%e5%8f%91%e5%92%8c%e9%83%a8%e7%bd%b2%e8%a7%84%e8%8c%83)
-    - [3.1参考](#31%e5%8f%82%e8%80%83)
-    - [3.2](#32)
+* [1.shell](#1.shell)
+    - [1.1参考](#1.1参考)
+    - [1.2background](#1.2background)
+    - [1.3environment](#1.3environment)
+    - [1.4comments](#1.4comments)
+    - [1.5formatting](#1.5formatting)
+* [2.http-api设计规范](#2.http-api设计规范)
+    - [2.1参考](#2.1参考)
+* [3.开发和部署规范](#3.开发和部署规范)
+    - [3.1参考](#3.1参考)
+    - [3.2](#3.2)
+* [4.git提交信息规范](#4.git提交信息规范)
+    - [4.1commit格式参考](#4.1commit格式参考)
+    - [4.2commit格式示例](#4.2commit格式示例)
 
-<!-- /TOC -->
-
-来源：[github编码规范](https://github.com/NARKOZ/guides)
+<!-- vim-markdown-toc -->
 
 ## 1.shell
 
 ### 1.1参考
 
 - [google shell规范](https://google.github.io/styleguide/shell.xml)
+- [github编码规范](https://github.com/NARKOZ/guides)
 
 ### 1.2background
 
