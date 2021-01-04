@@ -575,9 +575,9 @@ scp -r my_project.git user@git.example.com:/srv/git
 
 #### 5.4.1TBD
 
-- 主干开发模式
+- `主干开发模式`
 - 在一个分支开发，变更要小，要快速完成验证
-- 适合小规模团队
+- 适合`小规模`团队
 
 #### 5.4.2Git-Flow模式
 
@@ -586,7 +586,7 @@ scp -r my_project.git user@git.example.com:/srv/git
 - release(版本发布分支)，如果有缺陷修改，会同步到develop和master分支
 - hotfix(线上缺陷紧急修改分支)，从master拉出，修复后验证，并将问题修复合并到develop和release上
 - master(保存最新发布版本基线的分支)，主干分支，保存的是可工作版本的基线
-- 适合大规模团队
+- 适合`大规模团队`
 
 #### 5.4.3Github-Flow模式
 
