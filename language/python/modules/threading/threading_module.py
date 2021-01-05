@@ -207,7 +207,7 @@ def inner_func_demo(session_id=1):
 
     inner_thread.join()   # 写在这里不会一直阻塞
     inner2_thread.join()
-    print("innner func demo end")
+    print("inner func demo end")
     print(f"time: {time.time()-t1}")
 
 

@@ -12,9 +12,9 @@ import wechatsogou
 
 
 def basic_demo():
-    wechats = wechatsogou.WechatSogouAPI()
+    we_chats = wechatsogou.WechatSogouAPI()
     name = "编程派"
-    wechat_infos = wechats.search_gzh(name)
+    wechat_infos = we_chats.search_gzh(name)
     print(list(wechat_infos))
 
 

@@ -78,7 +78,7 @@
 
 **commit message格式:**
 
-```shell
+```sh
 <type>(<scope>):<subject>
 
 <body>
@@ -111,9 +111,8 @@ header包含三个部分: type(必需),scope(可选),subject(必需)
 `footer`用于两种情况:
 
 1. 不兼容变动,即当前代码和上一个版本不兼容,格式为:`BREAKING CHANGE:`,后跟变动的描述,以及变动理由和迁移方法
-2. 关闭issaue,如`close #123`
+2. 关闭issue,如`close #123`
 
 **commit为revert撤销操作的时候:**
 
 以`revert:`为开头,后面跟着被撤销commit的header,如:`revert: feat(model): add something this revert commit d92761fec08ecca646f81402a415e9a07f9638b6`.
-

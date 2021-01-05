@@ -12,15 +12,13 @@
 
 <!-- vim-markdown-toc -->
 
-
 ## 1.概述
 
 ### 1.1介绍
 
-- 保存在浏览器的一小段文本信息,存储在硬盘，.txt格式
+- 保存在浏览器的一小段简直对文本信息,明文存储在硬盘，.txt格式
 - 一般`单个域名的cookie数量不超过30个`，`每个cookie大小不超过4k`，超过的则忽略
 - 每次向服务器请求都会带上cookie
-- 键值对存储
 - 服务器接收到cookie的时候：`1.不知道cookie的过期时间；2.不知道是哪个域名设置的cookie`
 
 ### 1.2使用场景
@@ -58,7 +56,6 @@
 ```javascript
 // 查看浏览器是否打开cookie
 window.navigator.cookieEnabled  // true
-
 
 // 创建cookie, 日期格式可以使用Date.prototype.toUTCString()进行日期格式转换
 document.cookie = "username=tony;expires=Fri, 31 Dec 2020 23:59:59 GMT";

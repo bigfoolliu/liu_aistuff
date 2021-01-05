@@ -20,7 +20,7 @@
 
 ### 2.1安装
 
-```shell
+```sh
 wget http://www.acme.com/software/http_load/http_load-12mar2006.tar.gz
 tar -xzvf http_load-12mar2006.tar.gz
 make && make install
@@ -31,7 +31,7 @@ make && make install
 1. 创建一个包含要测的url或者域名的文件(注意文件中不能有多余的空行)
 2. 使用命令测试
 
-```shell
+```sh
 # -parallel 简写-p ：含义是并发的用户进程数。
 # -fetches 简写-f ：含义是总计的访问次数
 # -rate 简写-p ：含义是每秒的访问频率
@@ -44,7 +44,7 @@ http_load -parallel 1000 -fetches 1000 url.txt  # 模拟1000个用户，共访�
 
 ### 2.3结果解析
 
-```shell
+```sh
 # 3352个请求，最大并发进程数是10，10.0001秒内传输数据量为1.1732e+06字节
 3352 fetches, 10 max parallel, 1.1732e+06 bytes, in 10.0001 seconds
 
@@ -60,4 +60,3 @@ msecs/first-response: 28.2572 mean, 238.049 max, 11.271 min
 HTTP response codes:
   code 200 -- 3352
 ```
-

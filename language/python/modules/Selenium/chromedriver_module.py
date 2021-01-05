@@ -1,4 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 from selenium import webdriver
 
-brower = webdriver.Chrome()
-
+browser = webdriver.Chrome()
+print(browser, dir(browser))

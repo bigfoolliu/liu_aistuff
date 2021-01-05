@@ -12,6 +12,10 @@
     - [2.1状态码必须明确](#2.1状态码必须明确)
 * [3.api](#3.api)
     - [3.1 open api](#3.1-open-api)
+* [4.Restful规范](#4.restful规范)
+    - [4.1restful中相关概念](#4.1restful中相关概念)
+    - [4.2对restful的理解](#4.2对restful的理解)
+    - [4.3相关规范](#4.3相关规范)
 * [ａ.api,sdk,app的区别](#ａ.api,sdk,app的区别)
 
 <!-- vim-markdown-toc -->
@@ -109,6 +113,35 @@ HTTP状态码:
 
 - 标准api
 - 专有api
+
+## 4.Restful规范
+
+- [阮一峰:理解restful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
+- [restful规范以及架构](http://www.imooc.com/article/details/id/265729)
+
+`restful本质上是一种网站即软件思想下的架构设计规范。`
+
+### 4.1restful中相关概念
+
+- `Representational State Transfer,(资源)表现层状态转换`
+- 资源就是网络中的一个实体，图片，文字等，用url来标识，`上网就是和这些资源互动，调用其url`
+- 表现层指对资源的呈现形式，如文字可以是txt，html或者二进制
+- 客户端与服务端交互过程就是`数据和状态的转化`
+
+### 4.2对restful的理解
+
+- 每一个url代表一种资源
+- `客户端和服务端传递这种资源的表现层`
+- 客户端通过四个HTTP动词(get,post,put,delete)来操作资源，实现表现层状态转化
+
+### 4.3相关规范
+
+1. api与用户通信的规范使用https
+2. 尽量将api部署到专用的域名之下，如:api.example.com
+3. api路径(url)中不能有动词，且名词使用复数
+4. 记录数量过多，提供过滤信息的参数
+5. 避免多级url,使用查询字符串代替
+6. 状态码以及返回值都指定特殊的格式
 
 ## ａ.api,sdk,app的区别
 

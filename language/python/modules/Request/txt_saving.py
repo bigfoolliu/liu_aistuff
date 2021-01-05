@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# author: bigfoolliu
+
+
 """
 保存知乎“发现”页面“热门话题”部分，将问题和答案保存为文本形式
 """
