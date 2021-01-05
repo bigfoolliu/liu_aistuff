@@ -30,6 +30,10 @@
     - [4.9请求过滤](#4.9请求过滤)
     - [4.10HTTP转发HTTPS](#4.10http转发https)
     - [4.11图片等缓存](#4.11图片等缓存)
+    - [4.12限制一段时间内同一ip的访问次数](#4.12限制一段时间内同一ip的访问次数)
+        + [4.12.1基础配置](#4.12.1基础配置)
+        + [4.12.2高级配置](#4.12.2高级配置)
+    - [4.13限制并发连接实例数](#4.13限制并发连接实例数)
 * [a.其他](#a.其他)
     - [a.1nginx如何做到热部署](#a.1nginx如何做到热部署)
 
@@ -553,6 +557,102 @@ server {
 location ~ .*\.(css|js|jpg|png|gif|swf|woff|woff2|eot|svg|ttf|otf|mp3|m4a|aac|txt)$ {
 	expires 7d;    # 设置缓存日期为7days, 如果不希望缓存 expires -1;
 }
+```
+
+### 4.12限制一段时间内同一ip的访问次数
+
+#### 4.12.1基础配置
+
+- 可以配置一个`block_ip.conf`，然后在nginx中`include block_ip.conf`
+- 屏蔽策略文件可以放在http, server, location, limit_except语句块中，可以根据需要合理的配置
+- http:	nginx中所有服务起效; server: 指定的服务起效; location: 满足的location下起效; limit_except: 指定的http方法谓词起效
+
+```sh
+# 屏蔽单个ip的访问
+deny 123.68.23.5;
+
+# 屏蔽所有ip的访问
+deny all;
+
+
+# 允许单个ip的访问
+allow 123.68.23.5;
+
+# 允许所有ip的访问
+allow all;
+```
+
+#### 4.12.2高级配置
+
+- 使用`HttpLimitReqModul`模块
+
+```sh
+# 限制某一段时间内同一ip访问数实例
+
+http{
+    ...
+
+    # 定义一个名为allips的limit_req_zone用来存储session，大小是10M内存，
+    # 以$binary_remote_addr 为key,限制平均每秒的请求为20个，
+    # 1M能存储16000个状态，rete的值必须为整数，
+    # 如果限制两秒钟一个请求，可以设置成30r/m
+
+    limit_req_zone $binary_remote_addr zone=allips:10m rate=20r/s;
+    ...
+    server{
+        ...
+        location {
+            ...
+
+            # 限制每ip每秒不超过20个请求，漏桶数burst为5
+            # brust的意思就是，如果第1秒、2,3,4秒请求为19个，第5秒的请求为25个是被允许的。
+            # 但是如果你第1秒就25个请求，第2秒超过20的请求返回503错误。
+            # nodelay，如果不设置该选项，严格使用平均速率限制请求数，
+            # 第1秒25个请求时，5个请求放到第2秒执行，
+            # 设置nodelay，25个请求将在第1秒执行。
+
+            limit_req zone=allips burst=5 nodelay;
+            ...
+        }
+        ...
+    }
+    ...
+}
+```
+
+### 4.13限制并发连接实例数
+
+- 使用`HttpLimitZoneModule`模块实现
+
+```sh
+# 限制并发连接数实例
+# limit_zone只能定义在http作用域，limit_conn可以定义在http server location作用域
+
+http{
+    ...
+
+    # 定义一个名为one的limit_zone,大小10M内存来存储session，
+    # 以$binary_remote_addr 为key
+    # nginx 1.18以后用limit_conn_zone替换了limit_conn
+    # 且只能放在http作用域
+    limit_conn_zone   one  $binary_remote_addr  10m;
+    ...
+    server{
+        ...
+        location {
+            ...
+           limit_conn one 20;          # 连接数限制
+
+           # 带宽限制,对单个连接限数，如果一个ip两个连接，就是500x2k
+           limit_rate 500k;
+
+            ...
+        }
+        ...
+    }
+    ...
+}
+
 ```
 
 ## a.其他
