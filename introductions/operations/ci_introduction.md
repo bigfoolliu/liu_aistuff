@@ -49,4 +49,4 @@
 ## 3.gitlab-ci
 
 - [gitlab-ci介绍](https://www.cnblogs.com/hallejuayahaha/p/13079698.html)
-
+- [gitlab ci/cd](https://www.cnblogs.com/cjsblog/p/12256843.html)
