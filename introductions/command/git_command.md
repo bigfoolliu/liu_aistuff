@@ -44,6 +44,9 @@
         + [5.4.2Git-Flow模式](#5.4.2git-flow模式)
         + [5.4.3Github-Flow模式](#5.4.3github-flow模式)
         + [5.4.4Gitlab-Flow模式](#5.4.4gitlab-flow模式)
+    - [5.5git-lfs使用](#5.5git-lfs使用)
+        + [5.5.1概述](#5.5.1概述)
+        + [5.5.2使用](#5.5.2使用)
 
 <!-- vim-markdown-toc -->
 
@@ -598,3 +601,39 @@ scp -r my_project.git user@git.example.com:/srv/git
 #### 5.4.4Gitlab-Flow模式
 
 - 类似于github-flow模式，开发将`pull request` 改成了 `merge request`
+
+### 5.5git-lfs使用
+
+#### 5.5.1概述
+
+- [简书: git-lfs使用](https://www.jianshu.com/p/493b81544f80)
+- github开发的git扩展，用于实现git对大文件的支持, 可以减少提交的变动量
+- 在检出版本时,根据指针的变化情况下更新对应的大文件.而不是在本地保存所有版本的大文件
+
+#### 5.5.2使用
+
+```sh
+# 1.mac安装
+brew install git-lfs
+git lfs install  # 开启git-lfs功能
+
+
+# 2.文件追踪
+git lfs track  # 查看当前的文件追踪模式
+git lfs track "*.mp4"  # 追踪所有的.mp4文件
+
+
+# 3.提交代码需要将gitattributes文件提交至仓库. 它保存了文件的追踪记录
+
+# 4.可以查看当前跟踪的文件列表
+git lfs ls-files
+
+# 5.将代码 push 到远程仓库后
+git add *.mp4
+git commit
+git push
+
+# LFS 跟踪的文件会以『Git LFS』的形式显示:
+# clone 时 使用'git clone' 或 git lfs clone均可
+```
+
