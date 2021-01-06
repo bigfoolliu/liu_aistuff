@@ -3,38 +3,38 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.系统管理](#1.系统管理)
-        - [1.1系统时间(tzselect, uptime)](#1.1系统时间(tzselect,-uptime))
-        - [1.2系统信息(free, lsusb, v4l2-ctl, cpuinfo, udevadm)](#1.2系统信息(free,-lsusb,-v4l2-ctl,-cpuinfo,-udevadm))
-        - [1.3系统用户(id, passwd, uname, last, useradd, userdel, groupadd)](#1.3系统用户(id,-passwd,-uname,-last,-useradd,-userdel,-groupadd))
-        - [1.4系统命令以及别名(alias,unalias)](#1.4系统命令以及别名(alias,unalias))
+    - [1.1系统时间(tzselect, uptime)](#1.1系统时间(tzselect,-uptime))
+    - [1.2系统信息(free, lsusb, v4l2-ctl, cpuinfo, udevadm)](#1.2系统信息(free,-lsusb,-v4l2-ctl,-cpuinfo,-udevadm))
+    - [1.3系统用户(id, passwd, uname, last, useradd, userdel, groupadd)](#1.3系统用户(id,-passwd,-uname,-last,-useradd,-userdel,-groupadd))
+    - [1.4系统命令以及别名(alias,unalias)](#1.4系统命令以及别名(alias,unalias))
 * [2.文件目录管理](#2.文件目录管理)
-        - [2.1目录基本操作(ls, tree, cd, dirs, pushd, popd)](#2.1目录基本操作(ls,-tree,-cd,-dirs,-pushd,-popd))
-        - [2.2文件信息(fuser, du, file, less)](#2.2文件信息(fuser,-du,-file,-less))
-        - [2.3文件查找和比较(find, ag, wc, grep)](#2.3文件查找和比较(find,-ag,-wc,-grep))
-        - [2.4文件归档(tar, gzip, gunzip, extract)](#2.4文件归档(tar,-gzip,-gunzip,-extract))
-        - [2.x文件其他(>, >>, ln)](#2.x文件其他(>,->>,-ln))
+    - [2.1目录基本操作(ls, tree, cd, dirs, pushd, popd)](#2.1目录基本操作(ls,-tree,-cd,-dirs,-pushd,-popd))
+    - [2.2文件信息(fuser, du, file, less)](#2.2文件信息(fuser,-du,-file,-less))
+    - [2.3文件查找和比较(find, ag, wc, grep)](#2.3文件查找和比较(find,-ag,-wc,-grep))
+    - [2.4文件归档(tar, gzip, gunzip, extract)](#2.4文件归档(tar,-gzip,-gunzip,-extract))
+    - [2.x文件其他(>, >>, ln)](#2.x文件其他(>,->>,-ln))
 * [3.进程相关](#3.进程相关)
-        - [3.1基本进程信息(strace, lsof)](#3.1基本进程信息(strace,-lsof))
-        - [3.2杀死进程的几种方式(kill, pkill)](#3.2杀死进程的几种方式(kill,-pkill))
-        - [3.3进程管理(supervisor,systemctl)](#3.3进程管理(supervisor,systemctl))
+    - [3.1基本进程信息(strace, lsof)](#3.1基本进程信息(strace,-lsof))
+    - [3.2杀死进程的几种方式(kill, pkill)](#3.2杀死进程的几种方式(kill,-pkill))
+    - [3.3进程管理(supervisor,systemctl)](#3.3进程管理(supervisor,systemctl))
 * [4.网络管理](#4.网络管理)
-        - [4.1网络抓包(tcpdump)](#4.1网络抓包(tcpdump))
-        - [4.2网络服务器(ifconfig, route)](#4.2网络服务器(ifconfig,-route))
-        - [4.3网络应用(curl, wget, telnet, ping)](#4.3网络应用(curl,-wget,-telnet,-ping))
-        - [4.5网络其他](#4.5网络其他)
+    - [4.1网络抓包(tcpdump)](#4.1网络抓包(tcpdump))
+    - [4.2网络服务器(ifconfig, route)](#4.2网络服务器(ifconfig,-route))
+    - [4.3网络应用(curl, wget, telnet, ping)](#4.3网络应用(curl,-wget,-telnet,-ping))
+    - [4.5网络其他](#4.5网络其他)
 * [5.实用工具](#5.实用工具)
-        - [5.1dos2unix](#5.1dos2unix)
-        - [5.2watch](#5.2watch)
-        - [5.3jq](#5.3jq)
-        - [5.4when-changed工具](#5.4when-changed工具)
-        - [5.5ranger](#5.5ranger)
-        - [5.6sed](#5.6sed)
-        - [5.7pandoc](#5.7pandoc)
-        - [5.8ripgrep](#5.8ripgrep)
-        - [5.9ncdu](#5.9ncdu)
-        - [5.x其他](#5.x其他)
+    - [5.1dos2unix](#5.1dos2unix)
+    - [5.2watch](#5.2watch)
+    - [5.3jq](#5.3jq)
+    - [5.4when-changed工具](#5.4when-changed工具)
+    - [5.5ranger](#5.5ranger)
+    - [5.6sed](#5.6sed)
+    - [5.7pandoc](#5.7pandoc)
+    - [5.8ripgrep](#5.8ripgrep)
+    - [5.9ncdu](#5.9ncdu)
+    - [5.x其他](#5.x其他)
 * [性能检测与优化](#性能检测与优化)
-        - [ifstat](#ifstat)
+    - [ifstat](#ifstat)
 
 <!-- vim-markdown-toc -->
 
@@ -206,13 +206,13 @@ find . -name "*.py" | xargs wc -l
 # 查找文件并用file查看详细信息
 find . -name "core*" | xargs file
 
-
-# 使用正则表达式查找,注意不同版本的find命令有所差异,对于mac版本，需要对文明名称的全匹配
+# 使用正则表达式查找,注意不同版本的find命令有所差异,对于mac版本，需要对文件名称的全匹配
 find . -regex '.*vim.*' -type f  # 查找文件名称带有vim
 
 # 更快的搜索
 ag <something>
 ag <something> ./  # 指定文件夹搜索
+ag -G ".+\.md" "find"  # ag使用正则表达式在指定的文件类型中查找文件
 
 # 递归的统计一目录下及其子目录下所有匹配文件的总的行数和每个文件的行数，可以使用一下命令
 wc -l `find ./ -name "*.csv"`

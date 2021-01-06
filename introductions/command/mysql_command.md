@@ -3,22 +3,32 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.安装启动](#1.安装启动)
-* [2.数据库操作相关命令](#2.数据库操作相关命令)
-* [3.数据表操作相关命令](#3.数据表操作相关命令)
+    - [1.1安装](#1.1安装)
+    - [1.2启动连接](#1.2启动连接)
+* [2.数据库操作](#2.数据库操作)
+    - [2.1数据库CRUD](#2.1数据库crud)
+    - [2.2数据库备份](#2.2数据库备份)
+    - [2.3数据库外部导入](#2.3数据库外部导入)
+* [3.数据表操作](#3.数据表操作)
+    - [3.1数据表CRUD](#3.1数据表crud)
+    - [3.2表信息](#3.2表信息)
 * [4.数据操作相关命令](#4.数据操作相关命令)
-        - [4.1CRUD基本操作](#4.1crud基本操作)
-        - [4.2索引基础](#4.2索引基础)
-        - [4.3创建计算字段](#4.3创建计算字段)
+    - [4.1CRUD基本操作](#4.1crud基本操作)
+    - [4.2索引操作](#4.2索引操作)
+    - [4.3计算字段](#4.3计算字段)
+    - [4.4视图操作](#4.4视图操作)
 * [5.用户以及权限操作相关命令](#5.用户以及权限操作相关命令)
-        - [5.1用户管理](#5.1用户管理)
-        - [5.2权限管理](#5.2权限管理)
+    - [5.1用户管理](#5.1用户管理)
+    - [5.2权限管理](#5.2权限管理)
 * [6.字符集相关操作](#6.字符集相关操作)
-        - [6.1查看已经设定的字符集](#6.1查看已经设定的字符集)
-        - [6.2设置字符集](#6.2设置字符集)
+    - [6.1查看已经设定的字符集](#6.1查看已经设定的字符集)
+    - [6.2设置字符集](#6.2设置字符集)
 
 <!-- vim-markdown-toc -->
 
 ## 1.安装启动
+
+### 1.1安装
 
 ```sh
 # mysql命令(linux系统)
@@ -26,7 +36,11 @@
 sudo apt-get install mysql-server  # 安装mysql服务器
 sudo apt-get install mysql-client  # 安装mysql客户端
 sudo apt-get install libmysqlclient-dev  # 安装mysql客户端其他相关
+```
 
+### 1.2启动连接
+
+```sh
 # 开启关闭mysql服务
 ps aux | grep mysql  # 查看mysql的进程是否启动
 sudo service mysql start  # 开启mysql
@@ -57,6 +71,8 @@ which mysqld  # /usr/bin/mysqld
 
 ## 2.数据库操作
 
+### 2.1数据库CRUD
+
 ```sh
 # 创建数据库:
 create database db1;
@@ -74,7 +90,11 @@ select database();  # 查询当前使用的数据库
 
 # 删除数据库:
 drop database db1;
+```
 
+### 2.2数据库备份
+
+```sh
 # 使用dump备份数据库
 mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db > /data/db.sql  # 备份整个testdb数据库
 mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --database db | gzip > /data/db.sql  # 整个testdb数据库,但是进行压缩,防止文件过大
@@ -84,16 +104,31 @@ mysqldump -h 127.0.0.1 -p 3306 -uroot -p123456 --all-databases > /data/db.sql  #
 
 mysqldump -u root -p db_name > db_name.sql  # 将整个数据库导出
 mysqldump -u root -p db_name table_name > table_name.sql  # 导出数据库的一张表
+```
 
+### 2.3数据库外部导入
+
+```sh
 # 执行sql文件,导入数据库
 use db1;
 source /home/xxx.sql;
+
+
+# 有可能过一段时间在打开时发现命令行提示链接超时,等待重新链接
+# 这时候需要再执行以下 sql：
+
+set global max_allowed_packet=100000000;  # 客户端/服务器之间通信的缓存区的最大大小
+set global net_buffer_length=100000;  # TCP/IP 和套接字通信缓冲区大小,创建长度达 net_buffer_length 的行
+set global interactive_timeout=28800000;  # 对后续起的交互链接有效时间
+set global wait_timeout=28800000;  # 对当前交互链接有效时间
+
 ```
 
 ## 3.数据表操作
 
+### 3.1数据表CRUD
+
 ```sh
-# 数据表操作:
 # 创建表:
 create table tab1(id int, name char(10));
 create table tab1(id int(5), name char(10));
@@ -119,7 +154,11 @@ alter table tab1 modify column number default null;  # 修改字段number默认�
 alter table tab1 drop age;  # 删除指定字段，删除列
 alter table tab1 drop column age  # 删除质指定字段，删除列
 drop table tab1;  # 删除整张表
+```
 
+### 3.2表信息
+
+```sh
 # 检查表状态，是否有损坏,索引是否有错误等
 check table tab1;
 # 修复表，可能部分存储引擎不支持
