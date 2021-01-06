@@ -19,7 +19,7 @@ def long_io(callback):
     def func(callback):
         print("start long io")
         time.sleep(5)
-        ret = "longio ret"
+        ret = "long io ret"
         print("end long io")
         callback(ret)
 

@@ -22,7 +22,7 @@ def list_pickle_demo():
                 else:
                     ret.append(item)
         else:
-            ret.append(item)
+            ret.append(l)
 
     list_pickle(l)
     print(ret)
@@ -41,7 +41,7 @@ def dict_pickle_demo():
                 else:
                     ret.append(value)
         else:
-            ret.append(value)
+            ret.append(d)
 
     dict_pickle(d)
     print(ret)
