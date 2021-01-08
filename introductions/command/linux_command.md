@@ -479,6 +479,22 @@ netstat -anptu
 # 查询DNS的记录，查看域名解析是否正常，在网络故障的时候用来诊断网络问题
 # https://www.cnblogs.com/yonghegn/p/10059997.html
 nslookup -q=TXT coding3min.com
+
+# 远程与本地的文件相互复制, 复制目录加-r
+scp a.txt user@hostname:/a.txt  # 将本地文件复制到远程主机
+scp user@hostname:/a.txt a.txt  # 将远程主机文件复制到本地
+
+# ftp安全版
+# FTP 的提示符下面，就可以输入各种 FTP 命令了，这部分完全跟传统的 FTP 用法完全一样。
+# ls [directory]：列出一个远程目录的内容。如果没有指定目标目录，则默认列出当前目录。
+# cd directory：从当前目录改到指定目录。
+# mkdir directory：创建一个远程目录。
+# rmdir path：删除一个远程目录。
+# put localfile [remotefile]：本地文件传输到远程主机。
+# get remotefile [localfile]：远程文件传输到本地。
+# help：显示帮助信息。
+# bye/quit/exit：退出 sftp。
+sftp user@hostame
 ```
 
 ## 5.实用工具
