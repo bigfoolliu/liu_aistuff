@@ -6,15 +6,29 @@
 """
 python 字符串操作
 
-https://www.runoob.com/python/python-strings.html
+- https://www.runoob.com/python/python-strings.html
 """
+
+
+def ascii_demo():
+    """ascii示例"""
+    print(chr(65))  # 将一个整数( 0-255 )返回对应的字符或者符号, 'A'
+    print(chr(0))
+    print(chr(255))
+    # print(chr(-1))
+
+    print(ord('a'))  # 返回一个字符的ascii数值
+
+    # 小写转大写示例
+    A = chr(ord('a') - 32)
+    print(A)
 
 
 def basic_demo():
     """
     基本操作
     """
-    print("hello" + "python")  # 字符串拼接    
+    print("hello" + "python")  # 字符串拼接
     print("a" * 5)  # 字符串操作
     print("he" in "hello")  # 逻辑操作
 
@@ -78,8 +92,9 @@ def operate_demo():
 
     print(s.title())  # 返回标题化的字符串，即所有单词首字母大写
 
+    # 按照行('\r', '\r\n', \n')分隔，返回包含各行作为元素的列表，如果keepends为 False，不包含换行符
     s = " abcada \n asd"
-    print(s.splitlines(keepends=True))  # 按照行('\r', '\r\n', \n')分隔，返回包含各行作为元素的列表，如果keepends为 False，不包含换行符
+    print(s.splitlines(keepends=True))
     print(s.splitlines(keepends=False))
 
 
@@ -105,5 +120,7 @@ def is_demo():
 if __name__ == "__main__":
     # basic_demo()
     # index_demo()
-    operate_demo()
+    # operate_demo()
     # is_demo()
+
+    ascii_demo()
