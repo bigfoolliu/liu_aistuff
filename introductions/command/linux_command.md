@@ -14,7 +14,7 @@
     - [2.4文件归档(tar, gzip, gunzip, extract)](#2.4文件归档(tar,-gzip,-gunzip,-extract))
     - [2.x文件其他(>, >>, ln)](#2.x文件其他(>,->>,-ln))
 * [3.进程相关](#3.进程相关)
-    - [3.1基本进程信息(strace, lsof)](#3.1基本进程信息(strace,-lsof))
+    - [3.1基本进程信息(strace, lsof, ps)](#3.1基本进程信息(strace,-lsof,-ps))
     - [3.2杀死进程的几种方式(kill, pkill)](#3.2杀死进程的几种方式(kill,-pkill))
     - [3.3进程管理(supervisor,systemctl)](#3.3进程管理(supervisor,systemctl))
 * [4.网络管理](#4.网络管理)
@@ -273,13 +273,12 @@ ln -s a.txt aa.txt  # 符号连接(软连接)，删除源头，另一个无法�
 
 ## 3.进程相关
 
-### 3.1基本进程信息(strace, lsof)
+### 3.1基本进程信息(strace, lsof, ps)
 
 ```sh
 # 查看运行中的进程
 # 进程信息介绍：https://juejin.im/post/6889817932633735181
 top
-
 
 # 打开应用进程,查看系统调用，排查问题
 strace
@@ -294,6 +293,10 @@ lsof -p 1  # 通过某个进程号来显示对应打开的文件
 lsof -i tcp/udp  # 列出所有tcp或者udp协议正在使用的文件
 lsof -i :3306  # 查看某个端口在被哪些引用占用
 lsof -i tcp:8000  # 查看特定的tcp端口在被哪个程序使用
+
+# 查看打开的进程, 古老的命令，不同的系统使用的参数可能不同
+ps -ax  # 查看所有的进程，-a为所有进程，-x展示没有控制终端的进程。或者ps -ax | less
+ps -u liu  # 查看指定用户的进程
 ```
 
 ### 3.2杀死进程的几种方式(kill, pkill)

@@ -18,6 +18,7 @@
     - [3.9train-cli](#3.9train-cli)
     - [3.10cheat.sh](#3.10cheat.sh)
     - [3.11iredis工具](#3.11iredis工具)
+    - [3.12grc命令](#3.12grc命令)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -437,9 +438,17 @@ curl cht.sh/python/os+path
 # 安装
 pip3 install iredis
 
-
 # 使用
 iredis
+```
+
+### 3.12grc命令
+
+```sh
+# 可以使输出有颜色
+grc ps -l
+grc ls -al
+grc netstat
 ```
 
 ## 4.安装python环境
