@@ -584,11 +584,11 @@ scp -r my_project.git user@git.example.com:/srv/git
 
 #### 5.4.2Git-Flow模式
 
-- feature(新功能分支)，开发者从develop分支拉取新的分支，开发完成，再merge到develop分支
-- develop(新功能集成分支)，永远是保存开发集成中最新的版本，代码验证可发布之后，单独从develop分支拉release分支进行发布
-- release(版本发布分支)，如果有缺陷修改，会同步到develop和master分支
-- hotfix(线上缺陷紧急修改分支)，从master拉出，修复后验证，并将问题修复合并到develop和release上
-- master(保存最新发布版本基线的分支)，主干分支，保存的是可工作版本的基线
+- `feature(新功能分支)`，开发者从develop分支拉取新的分支，开发完成，再merge到develop分支
+- `develop(新功能集成分支)`，永远是保存开发集成中最新的版本，代码验证可发布之后，单独从develop分支拉release分支进行发布
+- `release(版本发布分支)`，如果有缺陷修改，会同步到develop和master分支
+- `hotfix(线上缺陷紧急修改分支)`，从master拉出，修复后验证，并将问题修复合并到develop和release上
+- `master(保存最新发布版本基线的分支`)，主干分支，保存的是可工作版本的基线,即稳定随时可以上线的分支
 - 适合`大规模团队`
 
 #### 5.4.3Github-Flow模式
