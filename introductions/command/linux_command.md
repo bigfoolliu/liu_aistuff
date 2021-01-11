@@ -19,7 +19,7 @@
     - [3.3进程管理(supervisor,systemctl)](#3.3进程管理(supervisor,systemctl))
 * [4.网络管理](#4.网络管理)
     - [4.1网络抓包(tcpdump)](#4.1网络抓包(tcpdump))
-    - [4.2网络服务器(ifconfig, route)](#4.2网络服务器(ifconfig,-route))
+    - [4.2网络服务器(ifconfig, route, traceroute)](#4.2网络服务器(ifconfig,-route,-traceroute))
     - [4.3网络应用(curl, wget, telnet, ping)](#4.3网络应用(curl,-wget,-telnet,-ping))
     - [4.5网络其他](#4.5网络其他)
 * [5.实用工具](#5.实用工具)
@@ -386,7 +386,7 @@ tcpdump -i ens33 dst host node1  # 监视所有发送到主机node1的数据包
 tcpdump -i ens433 port 8888 and host node1  # 监视指定主机和端口的数据包
 ```
 
-### 4.2网络服务器(ifconfig, route)
+### 4.2网络服务器(ifconfig, route, traceroute)
 
 ```sh
 # 查看操作系统维护的路由表
@@ -399,11 +399,41 @@ route add default gw 192.168.0.1 wlan0
 # 查看与远端服务器之间的多个网关或者设备节点，获取分组途径中的所有网关地址
 traceroute google.com
 
+# ifconfig分析
+# eth0          网卡设备号
+# Link encap	基本描述，链接概况
+# HWaddr	    硬件MAC地址
+# inet addr	    网络ip地址
+# Bcast 	    广播ip地址
+# Mask	        子网掩码
+# inet6 addr	对应的ipv6地址
+# Scope	        作用域，范围
+# UP        	网卡已经启用
+# BROADCAST	    支持多播
+# RUNNING   	网卡正在运行
+# MULTICAST	    支持多播
+# MTU	        最大传输单元
+# Metric	    度量值，用于估算路由成本
+# RX packets:	接收正确的数据包数
+# errors:	    错误的数据包数
+# dropped   	接收丢弃的数据包数
+# overruns:	    接收时由于过速丢弃的数据包数
+# frame:	    接收时，由于frame错误而丢弃的数据包数
+# TX packets	发送时正确的数据包数
+# errors:	    接收时错误的数据包数
+# dropped:	    接收时，丢弃的数据包数
+# overruns:	    发送时，由于过速丢弃的数据包数
+# carrier:	    发送时，由于carrier错误而丢弃的数据包数
+# collisions:	冲突信息包的数目
+# txqueuelen:	发送队列的大小，此处是1000MB
+# RX bytes:	    接收的数据包数
+# TX bytes:	    发送的数据包数
+# Interrupt	IRQ 中断地址
+# Base address	基址
+
 # 开启和关闭网卡:
-# 关闭ens33网卡
-sudo ifconfig ens33 down
-# 开启ens33网卡
-sudo ifconfig ens33 up
+sudo ifconfig ens33 down  # 关闭ens33网卡
+sudo ifconfig ens33 up  # 开启ens33网卡
 
 # 本地局域网ip为动态分配的
 # 修改网卡ip地址(即手动设置ip),不建议手动设置:

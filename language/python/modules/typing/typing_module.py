@@ -33,7 +33,7 @@ from typing import List, Any, Union
 from typing import NoReturn
 
 
-def func(a: int, b: str) -> List[int or str]:
+def func(a: int=0, b: str) -> List[int or str]:
     """类型注解的基本示例"""
     l1 = []
     l1.append(a)
