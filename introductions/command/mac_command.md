@@ -19,6 +19,7 @@
     - [3.10cheat.sh](#3.10cheat.sh)
     - [3.11iredis工具](#3.11iredis工具)
     - [3.12grc命令](#3.12grc命令)
+    - [3.13myqr生成二维码](#3.13myqr生成二维码)
 * [4.安装python环境](#4.安装python环境)
 * [5.安装使用mysql](#5.安装使用mysql)
 * [6.pycharm快捷键](#6.pycharm快捷键)
@@ -449,6 +450,18 @@ iredis
 grc ps -l
 grc ls -al
 grc netstat
+```
+
+### 3.13myqr生成二维码
+
+- [qrcode使用](https://github.com/sylnsfar/qrcode/blob/master/README-cn.md)
+
+```sh
+# 安装
+pip3 install myqr
+
+# 使用
+myqr https://github.com  # 当前目录生成一个qrcode.png二维码
 ```
 
 ## 4.安装python环境
