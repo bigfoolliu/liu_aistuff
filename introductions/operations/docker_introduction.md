@@ -11,6 +11,8 @@
 * [3.docker构建自己的镜像](#3.docker构建自己的镜像)
     - [3.1使用makefile](#3.1使用makefile)
     - [3.2在运行中的容器构建](#3.2在运行中的容器构建)
+    - [3.3docker镜像托管到docker hub](#3.3docker镜像托管到docker-hub)
+    - [3.4docker自建仓库](#3.4docker自建仓库)
 * [4.docker容器间通信](#4.docker容器间通信)
     - [4.1容器间通信方式](#4.1容器间通信方式)
     - [4.2docker网络驱动模型](#4.2docker网络驱动模型)
@@ -101,6 +103,29 @@ hostport:containerport #未指定ip、指定宿主机port、指定容器port
 3. 退回宿主机的终端,使用`ctrl+P，然后ctrl+Q`,不中断容器的退出
 4. 从一个正在运行的容器中创建镜像
 
+### 3.3docker镜像托管到docker hub
+
+1. docker hub上面注册一个账号, 然后创建自己的仓库
+2. 本地使用`docker login`登录docker hub
+3. 本地给镜像打标签， `docker tag tag1 liu/image1`
+4. 将本地打包的docker镜像推送到远程，`docker push liu/image1`
+5. 检查是否推送成功，`docker inspect liu/image1`，或者直接登录docker hub查看
+
+### 3.4docker自建仓库
+
+- 使用Registry软件
+
+```sh
+# 1.拉取registry的镜像
+docker pull registry
+
+# 2.运行registry容器
+# Registry服务默认会将上传的镜像保存在容器的/var/lib/registry，将主机的/opt/registry目录挂载到该目录，即可实现将镜像保存到主机的/opt/registry目录了 
+docker run -d -v /opt/registry:/var/lib/registry -p 5000:5000 --restart=always --name registry registry:latest
+
+# 3.可以访问
+```
+
 ## 4.docker容器间通信
 
 - [容器间通信](https://juejin.im/post/5ce26cb9f265da1bcd37aa7c)
@@ -153,25 +178,25 @@ Docker的网络驱动模型分类：
 - [掘金:docker compose入门指南](https://juejin.im/post/6886018425353682951)
 
 ```yml
- services:
-  mysql:
-    image: mysql:latest
-    ports:
-      - '3306:3306'
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: '123456'
+services:
+ mysql:
+   image: mysql:latest
+   ports:
+     - '3306:3306'
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: '123456'
 
-  webapp:
-    build: .
-    container_name: webapp
-    restart: always
-    depends_on:
-      - 'mysql'
-    environment:
-      NODE_ENV: 'production'
-    ports:
-      - '80:8080'
+ webapp:
+   build: .
+   container_name: webapp
+   restart: always
+   depends_on:
+     - 'mysql'
+   environment:
+     NODE_ENV: 'production'
+   ports:
+     - '80:8080'
 ```
 
 ## 6.docker Machine介绍

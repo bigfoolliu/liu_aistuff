@@ -3,7 +3,7 @@
 <!-- vim-markdown-toc Marked -->
 
 * [1.介绍](#1.介绍)
-        - [1.1go与python对比](#1.1go与python对比)
+    - [1.1go与python对比](#1.1go与python对比)
 
 <!-- vim-markdown-toc -->
 
