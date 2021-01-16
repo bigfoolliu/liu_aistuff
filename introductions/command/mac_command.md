@@ -173,6 +173,8 @@ brew info wget  # 查看软件包信息
 brew deps wget  # 列出软件包的依赖关系
 brew outdated  # 列出可以更新的软件包
 
+brew services list  # 查看当前通过brew services启动的后台服务
+
 # homebrew修改为国内源
 cd "$(brew --repo)"
 git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
