@@ -32,6 +32,7 @@
     - [5.7pandoc](#5.7pandoc)
     - [5.8ripgrep](#5.8ripgrep)
     - [5.9ncdu](#5.9ncdu)
+    - [5.10iconv](#5.10iconv)
     - [5.x其他](#5.x其他)
 * [性能检测与优化](#性能检测与优化)
     - [ifstat](#ifstat)
@@ -178,8 +179,10 @@ du -hs /data/ | sort -n
 # 查看目录下的文件夹占用空间情况
 du -h --max-depth=1 /data/
 
-# 查看文件信息, 了解文件类型
+# 查看文件信息, 了解文件类型(文件类型，编码格式)
 file test.py
+file -b test.py  # 只显示编码格式
+file -i test.py  # 输出文件的MIME类型字符串(多用途互联网邮件扩展类型)
 
 # 以可以滚动翻页的方式查看文件
 less test.py
@@ -624,6 +627,20 @@ rg 'name'
 ```sh
 # du的替代工具,更好的使用体验,可以用来分析磁盘使用空间
 ncdu
+```
+
+### 5.10iconv
+
+- 文件编码类型转换
+
+```sh
+iconv -l  # 列出所有相应的编码
+
+# 将文件file1从GBK编码转换为UTF-8编码并输出到fil2中
+iconv -f GBK -t UTF-8 file1 -o file2
+
+# 部分文件通过file看到的编码类型可能不一致，需要再查询，如ISO-8859实际为GB2312
+iconv -f GB2312 -t UTF-8 file1 -o file2
 ```
 
 ### 5.x其他

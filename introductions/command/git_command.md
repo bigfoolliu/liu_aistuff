@@ -143,6 +143,8 @@ git push origin master:dev  # 将本地的master分支推送到远程的dev分�
 
 git pull  # 当前分支只有一个追踪分支，直接取回远程主机某个分支的更新，与本地的分支合并
 git pull <远程主机名>　<远程分支名>:<本地分支名>  # 与本地的指定合并
+
+
 git push -f  # 强制推到远程(慎用)
 ```
 
