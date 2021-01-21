@@ -7,6 +7,7 @@
 matplotlib模块基本使用
 """
 
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import style
@@ -22,6 +23,7 @@ def sin_demo():
     # 计算得到纵坐标
     y = np.sin(x)
     # 画图
+    plt.title('y=sinx')
     plt.plot(x, y)
     # 显示图像
     plt.show()
@@ -35,6 +37,7 @@ def axis_demo():
     y = np.sin(x)
 
     # 定义坐标轴,横坐标为-10至10, 纵坐标为-2至2
+    plt.title('y=sinx, (-10<x<10)')
     plt.axis([-10, 10, -2, 2])
     plt.plot(x, y)
     plt.show()
@@ -46,6 +49,8 @@ def grid_demo():
     """
     x = np.arange(-np.pi * 2, np.pi * 2, 0.02)
     y = np.sin(x)
+
+    plt.title('y=sinx, grid')
     plt.axis([-10, 10, -2, 2])
     plt.plot(x, y)
     # 增加网格线
@@ -53,47 +58,42 @@ def grid_demo():
     plt.show()
 
 
-"""
-matplot，3D绘图
-axes3d，不需要不同种类的轴域，便于绘制
-"""
+def three_dimention_graph():
+    """
+    matplot，3D绘图
+    axes3d，不需要不同种类的轴域，便于绘制
+    """
+    style.use('fivethirtyeight')
+    
+    fig = plt.figure('3D Scatter Plots')
+    ax1 = fig.add_subplot(1, 2, 1, projection='3d')
+    
+    x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    y = [5, 6, 7, 8, 2, 5, 6, 3, 7, 2]
+    z = [1, 2, 6, 3, 2, 7, 3, 3, 7, 2]
+    
+    ax1.scatter(x, y, z)  # 绘制散点图
+    
+    ax1.set_xlabel('x axis')
+    ax1.set_ylabel('y axis')
+    ax1.set_zlabel('z axis')
 
-style.use('fivethirtyeight')
-
-fig = plt.figure('3D Scatter Plots')
-ax1 = fig.add_subplot(1, 2, 1, projection='3d')
-
-x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-y = [5, 6, 7, 8, 2, 5, 6, 3, 7, 2]
-z = [1, 2, 6, 3, 2, 7, 3, 3, 7, 2]
-
-ax1.scatter(x, y, z)  # 绘制散点图
-
-ax1.set_xlabel('x axis')
-ax1.set_ylabel('y axis')
-ax1.set_zlabel('z axis')
-
-"""
-绘制空间曲面
-
-z = x ^ 2 + y ^ 2 
-"""
-
-ax2 = fig.add_subplot(1, 2, 2, projection='3d')
-
-x = np.linspace(-10, 10, 50)
-y = x
-x, y = np.meshgrid(x, y)
-
-z = x ** 2 + y ** 2
-
-ax2.plot_wireframe(x, y, z)
-
-ax2.set_xlabel('x axis')
-ax2.set_ylabel('y axis')
-ax2.set_zlabel('z axis')
-
-plt.show()
+    # 绘制空间曲面: z = x ^ 2 + y ^ 2 
+    ax2 = fig.add_subplot(1, 2, 2, projection='3d')
+    
+    x = np.linspace(-10, 10, 50)
+    y = x
+    x, y = np.meshgrid(x, y)
+    
+    z = x ** 2 + y ** 2
+    
+    ax2.plot_wireframe(x, y, z)
+    
+    ax2.set_xlabel('x axis')
+    ax2.set_ylabel('y axis')
+    ax2.set_zlabel('z axis')
+    
+    plt.show()
 
 
 def hist_demo():
@@ -174,11 +174,7 @@ def pie_demo():
     working = [8, 7, 9, 8, 10]
     playing = [5, 8, 7, 10, 12]
 
-    """
-    以下的代码段是为了给数据添加标签
-    在任何不止是线条，带有像这样的填充或堆叠图的地方，我们不能以固有方式标记出特定的部分。
-    均可使用下面的方式
-    """
+    # 给数据添加标签, 任何带有像这样的填充或堆叠图的地方,不能以固有方式标记出特定的部分,均可使用下面的方式
     plt.plot([], [], color='m', label='sleeping', linewidth=5)
     plt.plot([], [], color='c', label='eating', linewidth=5)
     plt.plot([], [], color='k', label='working', linewidth=5)
@@ -236,4 +232,11 @@ def legend_demo():
 
 
 if __name__ == "__main__":
-    pass
+    sin_demo()
+    axis_demo()
+    grid_demo()
+    hist_demo()
+    scatter_demo()
+    pie_demo()
+    legend_demo()
+    three_dimention_graph()

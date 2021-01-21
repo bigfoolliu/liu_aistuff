@@ -19,7 +19,8 @@ l = []
 # 创建事件
 event = threading.Event()
 
-# 
+# a创建全局的ThreadLocal对象，可以用来存储各个线程的变量，即线程局部变量
+# 用来替换即iii要陪你的udjaa
 local_obj = threading.local()
 
 
