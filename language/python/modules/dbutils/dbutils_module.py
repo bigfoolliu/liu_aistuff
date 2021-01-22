@@ -27,8 +27,8 @@ PooledDB, 创建一批连接供所有的线程共享使用, 也是单例模式�
 5. conn.close() - 未关闭连接，只是将连接放回池子，供所有线程共享使用；当线程终止时，连接自动关闭；
 """
 
-import os
 
+import os
 import pymysql
 from dbutils.pooled_db import PooledDB
 
