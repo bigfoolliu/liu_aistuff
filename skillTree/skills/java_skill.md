@@ -12,6 +12,9 @@
 - [jenv官网](https://www.jenv.be/)
 
 ```sh
+# 查看java安装版本和路径
+/usr/libexec/java_home -V
+
 brew install jenv
 
 # 添加java版本
