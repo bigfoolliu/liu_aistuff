@@ -107,15 +107,16 @@ ctrl + command + space  # 快速打开emoji表情😄
 
 option + click  # 按住option再点击wifi，可显示更多信息
 
-
 # 关闭系统更新
 sudo /usr/sbin/softwareupdate --ignore "macOS Catalina"
 # 启动系统更新
 sudo /usr/sbin/softwareupdate --reset-ignored
 
-
 # 将系统默认的截图格式设置为jpg
 defaults write com.apple.screencapture type jpg
+
+# 查看mac地址以及arp表
+arp -a
 ```
 
 ### 1.2其他命令行命令
