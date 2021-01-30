@@ -469,9 +469,20 @@ let g:vmt_auto_update_on_save = 0
 
 ```sh
 # 先选中多行
-<leader>cc  # <leader>表示符号\
+\cc  # <leader>表示符号\
+\cu  # 取消注释
+```
 
-<leader>cu  # 取消注释
+### 4.6easy-motion
+
+- 屏幕快速跳转
+
+```sh
+\\w  # 快速标记当前页面光标下部所有的单词
+\\b  # 快速标记当前页面光标上部所有的单词
+
+\\j  # 标记下方的行
+\\k  # 标记上方的行
 ```
 
 ## 5.介绍
