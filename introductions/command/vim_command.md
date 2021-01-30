@@ -465,6 +465,15 @@ let g:vmt_auto_update_on_save = 0
 :gentocredcarpet
 ```
 
+### 4.5nerdcommenter
+
+```sh
+# 先选中多行
+<leader>cc  # <leader>表示符号\
+
+<leader>cu  # 取消注释
+```
+
 ## 5.介绍
 
 ### 5.1模式
